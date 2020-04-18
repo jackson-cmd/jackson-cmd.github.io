@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://images0.cnblogs.com/i/294206/201405/281727152591175.png">
 <meta property="og:image" content="https://images0.cnblogs.com/i/294206/201407/241348457447790.png">
 <meta property="article:published_time" content="2020-04-18T16:18:14.000Z">
-<meta property="article:modified_time" content="2020-04-18T17:04:35.866Z">
+<meta property="article:modified_time" content="2020-04-18T18:01:18.801Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://images0.cnblogs.com/i/294206/201405/281715112591828.png">
@@ -183,7 +183,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-18 11:18:14 / Modified: 12:04:35" itemprop="dateCreated datePublished" datetime="2020-04-18T11:18:14-05:00">2020-04-18</time>
+              <time title="Created: 2020-04-18 11:18:14 / Modified: 13:01:18" itemprop="dateCreated datePublished" datetime="2020-04-18T11:18:14-05:00">2020-04-18</time>
             </span>
 
           
@@ -350,9 +350,21 @@
 
 <p>效果：</p>
 <p><img src="https://images0.cnblogs.com/i/294206/201407/241348457447790.png" alt="img"></p>
-<p>- </p>
+<ul>
+<li></li>
+</ul>
 </li>
 </ol>
+<h2 id="Python-notes-day-3"><a href="#Python-notes-day-3" class="headerlink" title="Python notes day 3"></a>Python notes day 3</h2><p>1.if, elif, else</p>
+<h2 id="Python-notes-day-4"><a href="#Python-notes-day-4" class="headerlink" title="Python notes day 4"></a>Python notes day 4</h2><ol>
+<li>for in 循环： for x in range(a, b, c):# a是初始值，b是最终，到b-1, c是iterate的长度。</li>
+<li>while循环，配上break，continue</li>
+</ol>
+<h2 id="Python-notes-day-5"><a href="#Python-notes-day-5" class="headerlink" title="Python notes day 5"></a>Python notes day 5</h2><p>CRAPS game:</p>
+<p>非常好玩的游戏， 在桌面新建.py结尾的文件或用idle直接打开即可</p>
+<p><em>注意</em>： python2可能不支持中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">money = <span class="number">1000</span></span><br><span class="line"><span class="keyword">while</span> money &gt; <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">'你的总资产为:'</span>, money)</span><br><span class="line">    needs_go_on = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        debt = int(input(<span class="string">'请下注: '</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt; debt &lt;= money:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    first = randint(<span class="number">1</span>, <span class="number">6</span>) + randint(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">    print(<span class="string">'玩家摇出了%d点'</span> % first)</span><br><span class="line">    <span class="keyword">if</span> first == <span class="number">7</span> <span class="keyword">or</span> first == <span class="number">11</span>:</span><br><span class="line">        print(<span class="string">'玩家胜!'</span>)</span><br><span class="line">        money += debt</span><br><span class="line">    <span class="keyword">elif</span> first == <span class="number">2</span> <span class="keyword">or</span> first == <span class="number">3</span> <span class="keyword">or</span> first == <span class="number">12</span>:</span><br><span class="line">        print(<span class="string">'庄家胜!'</span>)</span><br><span class="line">        money -= debt</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        needs_go_on = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">while</span> needs_go_on:</span><br><span class="line">        needs_go_on = <span class="literal">False</span></span><br><span class="line">        current = randint(<span class="number">1</span>, <span class="number">6</span>) + randint(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">        print(<span class="string">'玩家摇出了%d点'</span> % current)</span><br><span class="line">        <span class="keyword">if</span> current == <span class="number">7</span>:</span><br><span class="line">            print(<span class="string">'庄家胜'</span>)</span><br><span class="line">            money -= debt</span><br><span class="line">        <span class="keyword">elif</span> current == first:</span><br><span class="line">            print(<span class="string">'玩家胜'</span>)</span><br><span class="line">            money += debt</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            needs_go_on = <span class="literal">True</span></span><br><span class="line">print(<span class="string">'你破产了, 游戏结束!'</span>)</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -430,7 +442,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-1"><span class="nav-number">1.</span> <span class="nav-text">Python notes day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-2"><span class="nav-number">2.</span> <span class="nav-text">Python notes day 2</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-1"><span class="nav-number">1.</span> <span class="nav-text">Python notes day 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-2"><span class="nav-number">2.</span> <span class="nav-text">Python notes day 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-3"><span class="nav-number">3.</span> <span class="nav-text">Python notes day 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-4"><span class="nav-number">4.</span> <span class="nav-text">Python notes day 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-notes-day-5"><span class="nav-number">5.</span> <span class="nav-text">Python notes day 5</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
