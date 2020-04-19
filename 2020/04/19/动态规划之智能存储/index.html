@@ -20,19 +20,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="I want to recommand you some wonderful tools for Mac.  VS code, it is an excellent editor for all programming, you are see, it has command line and easy to debug. I will have a future article takes ab">
+  <meta name="description" content="304. 二维区域和检索 - 矩阵不可变难度中等79收藏分享切换为英文关注反馈 给定一个二维矩阵，计算其子矩形范围内元素的总和，该子矩阵的左上角为 (row1, col1) ，右下角为 (row2, col2)。 上图子矩阵左上角 (row1, col1) &#x3D; (2, 1) ，右下角(row2, col2) &#x3D; (4, 3)，该子矩形内元素的总和为 8。 示例: 1234567891011给定 m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="recommandtool">
-<meta property="og:url" content="http://yoursite.com/2020/04/18/recommandtool/index.html">
+<meta property="og:title" content="动态规划之智能存储">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%99%BA%E8%83%BD%E5%AD%98%E5%82%A8/index.html">
 <meta property="og:site_name" content="Jackson Blog">
-<meta property="og:description" content="I want to recommand you some wonderful tools for Mac.  VS code, it is an excellent editor for all programming, you are see, it has command line and easy to debug. I will have a future article takes ab">
+<meta property="og:description" content="304. 二维区域和检索 - 矩阵不可变难度中等79收藏分享切换为英文关注反馈 给定一个二维矩阵，计算其子矩形范围内元素的总和，该子矩阵的左上角为 (row1, col1) ，右下角为 (row2, col2)。 上图子矩阵左上角 (row1, col1) &#x3D; (2, 1) ，右下角(row2, col2) &#x3D; (4, 3)，该子矩形内元素的总和为 8。 示例: 1234567891011给定 m">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-18T14:10:33.000Z">
-<meta property="article:modified_time" content="2020-04-18T16:33:33.475Z">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/images/304.png">
+<meta property="article:published_time" content="2020-04-19T14:37:02.000Z">
+<meta property="article:modified_time" content="2020-04-19T15:16:05.416Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/images/304.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/18/recommandtool/">
+<link rel="canonical" href="http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%99%BA%E8%83%BD%E5%AD%98%E5%82%A8/">
 
 
 <script id="page-configurations">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>recommandtool | Jackson Blog</title>
+  <title>动态规划之智能存储 | Jackson Blog</title>
   
 
 
@@ -150,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/recommandtool/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%99%BA%E8%83%BD%E5%AD%98%E5%82%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          recommandtool
+          动态规划之智能存储
         </h1>
 
         <div class="post-meta">
@@ -174,7 +176,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-18 09:10:33 / Modified: 11:33:33" itemprop="dateCreated datePublished" datetime="2020-04-18T09:10:33-05:00">2020-04-18</time>
+              <time title="Created: 2020-04-19 09:37:02 / Modified: 10:16:05" itemprop="dateCreated datePublished" datetime="2020-04-19T09:37:02-05:00">2020-04-19</time>
             </span>
 
           
@@ -188,21 +190,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>I want to recommand you some wonderful tools for Mac.</p>
+        <h2 id="304-二维区域和检索-矩阵不可变"><a href="#304-二维区域和检索-矩阵不可变" class="headerlink" title="304. 二维区域和检索 - 矩阵不可变"></a><a href="https://leetcode-cn.com/problems/range-sum-query-2d-immutable/" target="_blank" rel="noopener">304. 二维区域和检索 - 矩阵不可变</a></h2><p>难度中等79收藏分享切换为英文关注反馈</p>
+<p>给定一个二维矩阵，计算其子矩形范围内元素的总和，该子矩阵的左上角为 (<em>row</em>1, <em>col</em>1) ，右下角为 (<em>row</em>2, <em>col</em>2)。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/images/304.png" alt="Range Sum Query 2D"><br>上图子矩阵左上角 (row1, col1) = <strong>(2, 1)</strong> ，右下角(row2, col2) = <strong>(4, 3)，</strong>该子矩形内元素的总和为 8。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定 matrix &#x3D; [</span><br><span class="line">  [3, 0, 1, 4, 2],</span><br><span class="line">  [5, 6, 3, 2, 1],</span><br><span class="line">  [1, 2, 0, 1, 5],</span><br><span class="line">  [4, 1, 0, 1, 7],</span><br><span class="line">  [1, 0, 3, 0, 5]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">sumRegion(2, 1, 4, 3) -&gt; 8</span><br><span class="line">sumRegion(1, 1, 2, 2) -&gt; 11</span><br><span class="line">sumRegion(1, 2, 2, 4) -&gt; 12</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明:</strong></p>
 <ol>
-<li><p>VS code, it is an excellent editor for all programming, you are see, it has command line and easy to debug. I will have a future article takes about vs code more, and shortcut of it.</p>
+<li><p>你可以假设矩阵不可变。</p>
 </li>
-<li><p>Keka is an uncompress or compress application, so amazing.</p>
+<li><p>会多次调用 <em>sumRegion</em> 方法<em>。</em></p>
 </li>
-<li><p>IINA is a multiple support player，you can play avi, mp4, etc. Almost everything, it has poweful function, like 16 times speed.</p>
+<li><p>你可以假设 <em>row</em>1 ≤ <em>row</em>2 且 <em>col</em>1 ≤ <em>col</em>2。</p>
 </li>
-<li><p>Intellij IDEA, a java idle, very powerful, i will have a eesay about shortcut and introduction for this in the future.</p>
-</li>
-<li><p>Dash, the best tools, it has almost all the api files of all programming language, so good to use it.</p>
-</li>
-<li><p>VM fusion, the virtual machine, it is so stable, although it have some bug in it, like offnetwork sometime, but when you face this, restart your laptop, it works for most time.</p>
-<h2 id="Keep-update-in-the-future"><a href="#Keep-update-in-the-future" class="headerlink" title="Keep update in the future."></a>Keep update in the future.</h2></li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumMatrix</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] dp;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NumMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length==<span class="number">0</span> || matrix[<span class="number">0</span>].length==<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> r=matrix.length;</span><br><span class="line">        <span class="keyword">int</span> c=matrix[<span class="number">0</span>].length;</span><br><span class="line">        dp=<span class="keyword">new</span> <span class="keyword">int</span>[r+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;r;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;c;j++)&#123;</span><br><span class="line">                dp[i+<span class="number">1</span>][j+<span class="number">1</span>]=dp[i][j+<span class="number">1</span>]+dp[i+<span class="number">1</span>][j]+matrix[i][j]-dp[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumRegion</span><span class="params">(<span class="keyword">int</span> row1, <span class="keyword">int</span> col1, <span class="keyword">int</span> row2, <span class="keyword">int</span> col2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dp[row2+<span class="number">1</span>][col2+<span class="number">1</span>]-dp[row1][col2+<span class="number">1</span>]-dp[row2+<span class="number">1</span>][col1]+dp[row1][col1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NumMatrix object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * NumMatrix obj = new NumMatrix(matrix);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.sumRegion(row1,col1,row2,col2);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -218,12 +222,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/17/DynamicProgramming/" rel="prev" title="DynamicProgramming">
-      <i class="fa fa-chevron-left"></i> DynamicProgramming
+    <a href="/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/" rel="prev" title="动态规划之最长公共子序列问题">
+      <i class="fa fa-chevron-left"></i> 动态规划之最长公共子序列问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/18/java/" rel="next" title="java">
-      java <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E5%85%B6%E4%BB%96%E9%A2%98/" rel="next" title="动态规划之其他题">
+      动态规划之其他题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -283,7 +287,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep-update-in-the-future"><span class="nav-number">1.</span> <span class="nav-text">Keep update in the future.</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#304-二维区域和检索-矩阵不可变"><span class="nav-number">1.</span> <span class="nav-text">304. 二维区域和检索 - 矩阵不可变</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
