@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="linux 100集P19-22 文件和目录（ls常用选项）自动不全：tab键 查看曾经用过命令：上下光标键，退出选择用ctrl+c ls命令扩展： 最常用，.开头的文件为隐藏文件，需要-a才可以打开， ls -a才可以显示出来 .表示当前目录  ..表示上级目录， cd ..返回上一个目录 ls -l以列表方式显示文件详细信息 ls -h配合-l以人性化方式显示文件大小（文件大小用k，m表示，而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux基础（19-35集）">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/linux%E5%9F%BA%E7%A1%802/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="linux 100集P19-22 文件和目录（ls常用选项）自动不全：tab键 查看曾经用过命令：上下光标键，退出选择用ctrl+c ls命令扩展： 最常用，.开头的文件为隐藏文件，需要-a才可以打开， ls -a才可以显示出来 .表示当前目录  ..表示上级目录， cd ..返回上一个目录 ls -l以列表方式显示文件详细信息 ls -h配合-l以人性化方式显示文件大小（文件大小用k，m表示，而">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174106974-1962045890.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174309686-515187362.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174409329-147595255.png">
+<meta property="article:published_time" content="2020-04-25T21:41:07.000Z">
+<meta property="article:modified_time" content="2020-04-25T22:34:36.743Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174106974-1962045890.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/25/linux%E5%9F%BA%E7%A1%802/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>linux基础（19-35集） | Jackson Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/linux%E5%9F%BA%E7%A1%802/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux基础（19-35集）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-25 16:41:07 / Modified: 17:34:36" itemprop="dateCreated datePublished" datetime="2020-04-25T16:41:07-05:00">2020-04-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="linux-100集"><a href="#linux-100集" class="headerlink" title="linux 100集"></a>linux 100集</h1><h2 id="P19-22-文件和目录（ls常用选项）"><a href="#P19-22-文件和目录（ls常用选项）" class="headerlink" title="P19-22 文件和目录（ls常用选项）"></a>P19-22 文件和目录（ls常用选项）</h2><p>自动不全：tab键</p>
+<p>查看曾经用过命令：上下光标键，退出选择用ctrl+c</p>
+<p>ls命令扩展：</p>
+<p>最常用，.开头的文件为隐藏文件，需要-a才可以打开， ls -a才可以显示出来</p>
+<p>.表示当前目录 </p>
+<p>..表示上级目录， cd ..返回上一个目录</p>
+<p>ls -l以列表方式显示文件详细信息</p>
+<p>ls -h配合-l以人性化方式显示文件大小（文件大小用k，m表示，而不是byte，人易读）：ls -l -h或者 ls -lh</p>
+<p>所以可以ls -alh</p>
+<p>drw… 这里d是目录</p>
+<h2 id="P23-文件和目录（ls常用通配符）"><a href="#P23-文件和目录（ls常用通配符）" class="headerlink" title="P23 文件和目录（ls常用通配符）"></a>P23 文件和目录（ls常用通配符）</h2><p>*：任意个数字符(0或多个)</p>
+<p>？：任意一个字符，至少一个（只一个，不可为0）</p>
+<p>[]:可匹配字符组任意一个</p>
+<p>ls功能： 列出非目录的文件项，然后是每一个目录中的“可显示”文件（可理解为ls命令将本目录向下展开两级）</p>
+<p>ls用法：ls  [参数]  [目录名]</p>
+<p>​    （如过要显示当前目录的文件可不加目录名）</p>
+<p>ls常用参数</p>
+<p>   -a 显示所有文件，包含隐藏文件</p>
+<p>   -A 显示所有文件，包含隐藏文件，但不包含.及..</p>
+<p> -l  显示为long format（长格式），列出文件的类型、权限、链接数、owner、group、大 小，时间，名字</p>
+<p>   -R  </p>
+<p>   -d 不展开目录，只显示目录自身，一般与-l配合使用以显示目录自身的属性信息（只显示当前目录的内容）</p>
+<p>   -1 数字1，成列显示内容</p>
+<p>   -S 以文件大小排序显示，默认从大到小 -r后，从小到大</p>
+<p>   -U 按存放顺序排序显示</p>
+<p>   -X 按扩展名的首字母来排序</p>
+<p>   -t  按mtime排序（先显示时间最近的）</p>
+<p>   -ul  按atime排序（先显示时间最近的）</p>
+<p>   -ct  按ctime排序（先显示时间最近的）</p>
+<p>​     补充：</p>
+<p>关于时间戳：</p>
+<p>​     atime  访问时间</p>
+<p>​     mtime 数据修改时间 （写入，修改数据mtime改变，mtime改变ctime必改变）</p>
+<p>​     ctime  元数据修改时间 （修改权限的时候只有ctime改变）</p>
+<p>​     可过“stat 文件路径”查看全部时间戳</p>
+<p><strong>扩展**</strong>: 如何通过ls只显示指定格式的文件**</p>
+<p>首先我们要了解什么是文件名通配符</p>
+<p>Shell提供了一套完整的字符串模式匹配规则，或者称之为元字符，当s h e l l遇到上述字符时，就会把它们当作特殊字符，而不是文件名中的普通字符，这样用户就可以用它们来匹配相应的文件名，我理解这可以称为通配符。</p>
+<p>常用通配符：</p>
+<p>* 匹配0或多个任意字符</p>
+<p>? 匹配任意1个字符</p>
+<p>[  ]  当中括号内为几个确定字符时，表示匹配括号内任意一个字符，当中括号内为一个范围时表示匹配这个范围中的任意一个字符（中括号表示的是一个范围，匹配的是一个字符）</p>
+<p>例：</p>
+<p> [ab46e] 表示是a,b,4,6,e中的任意一个字符</p>
+<p> [a-z] 表示aAbBcC……z（Linux中的默认编码顺序是一个小写字母一个大写字母即aAbBcC…..Z）</p>
+<p>​     [A-Z] 表示AbBcC……Z</p>
+<p>​    [a- Z] 表示所有大小写字母</p>
+<p>​    [^ae] 表示即不是a也不是e的其他任意单一字符</p>
+<p>[:lower:] 表示一个小写字母 </p>
+<p>[:upper:] 表示一个大写字母</p>
+<p>[:alpha:] 表示一个大小写字母 等同于[a-Z]</p>
+<p>[:digit:]  表示任意一个数字 等同于[0-9]</p>
+<p>[:alnum:] 表示任意一个字母或数字 等于[a-Z0-9]或[[:digit:][:alpha:]]</p>
+<p>[:blank:]：一个水平空白字符</p>
+<p>[:space:]：一个水平或垂直空白字符（文件名不可能包含回车，故此处使用与[:blank:]：效果相同）</p>
+<p>通过ls命令和通配符查找指定格式的文件：</p>
+<p> 格式：ls  [参数]  [目录名][通配符]</p>
+<p>以下是一些例子：</p>
+<p>\1. 查找/usr/share/man 目录下以m开头且以一个数字加x结尾的文件</p>
+<p>命令：ls  -d  /usr/share/man/m*[0-9]x</p>
+<p>运行结果：</p>
+<p> <img src="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174106974-1962045890.png" alt="img"></p>
+<p>解释：-d 只展开一级目录</p>
+<p>   /usr/share/man/  目录路径</p>
+<p> m*[0-9]x  m表示以m开头，[0-9]x表示以数字加x结尾,因为对文件的中间没</p>
+<p>有加以限制所以用<em>代替中间部分，</em>表示任意个数的任意字符</p>
+<p>\2. 查找root下的隐藏文件和目录</p>
+<p>   命令： ls  -d  /root/.*</p>
+<p>   运行结果：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174309686-515187362.png" alt="img"></p>
+<p>解释：-d 只展开一级目录</p>
+<p>   /root 目录路径</p>
+<p>   因为Linux下以“.”开头的文件是隐藏文件，所以用“.”加上“*”来表示隐藏文件</p>
+<p>\3. 查找/etc下所有以k开头，以一个小写字母结尾，且中间出现至少一位数字的文件</p>
+<p>​    命令：ls  -d  /etc/k<em>[0-9]</em>[[:lower:]]</p>
+<p>​    运行结果：</p>
+<p> <img src="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174409329-147595255.png" alt="img"></p>
+<p>解释：-d 只展开一级目录 </p>
+<p>   /etc 目录路径</p>
+<p>​    k表示以k开头，[0-9]表示一个数字，[[:lower:]]表示一个小写字母，因为[:lower:]表示为小写字母，也就是abcdefg…z，所以在[:lower:]外面加</p>
+<p>   上[ ]以表示在这写子母中取任意一个，因为只规定了开头和结尾，对中间只要求至少出现一位数字，所以中间用*[0-9]*来表示</p>
+<h2 id="P25-文件和目录（cd常用选项）"><a href="#P25-文件和目录（cd常用选项）" class="headerlink" title="P25 文件和目录（cd常用选项）"></a>P25 文件和目录（cd常用选项）</h2><p>cd </p>
+<p>跳入test目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com]#cd testDir&#x2F;</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#ls</span><br><span class="line">file1  file2  file3</span><br></pre></td></tr></table></figure>
+
+<p>跳至上层目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#cd ..</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com]#ls</span><br><span class="line">testDir</span><br></pre></td></tr></table></figure>
+
+<p>跳至上上层目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#cd ..&#x2F;..&#x2F;</span><br><span class="line">[root@&#x2F;root]#ls</span><br></pre></td></tr></table></figure>
+
+<p>跳入用户主目录: cd ~或者cd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#ls</span><br><span class="line">file1  file2  file3</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#cd ~&#x2F;</span><br><span class="line">[root@&#x2F;root]#pwd</span><br><span class="line">&#x2F;root</span><br></pre></td></tr></table></figure>
+
+<p>使用绝对路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root]#cd &#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#ls</span><br><span class="line">file1  file2  file3</span><br></pre></td></tr></table></figure>
+
+<p>使用环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root]#cd $TEST_PATH</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#ls</span><br><span class="line">file1  file2  file3</span><br></pre></td></tr></table></figure>
+
+<p>跳入上次使用目录: cd -, 可以在最近两次工作目录间切换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@&#x2F;root]#pwd</span><br><span class="line">&#x2F;root</span><br><span class="line">[root@&#x2F;root]#cd -</span><br><span class="line">&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir</span><br><span class="line">[root@&#x2F;root&#x2F;linuxdaxue.com&#x2F;testDir]#</span><br></pre></td></tr></table></figure>
+
+<h2 id="P26-文件和目录（相对路径绝对路径）"><a href="#P26-文件和目录（相对路径绝对路径）" class="headerlink" title="P26 文件和目录（相对路径绝对路径）"></a>P26 文件和目录（相对路径绝对路径）</h2><ul>
+<li>绝对路径：路径的写法一定是由根目录 / 写起的，例如 /usr/local/mysql</li>
+<li>相对路径：路径的写法不是由根目录 / 写起的，例如 首先用户进入到 /home，然后再进入到test，执行的命令为 “#cd /home,#cd test”。此时用户所在的路径为 /home/test。第一个cd命令后紧跟/home，前面有斜杠；而第二个cd命令后紧跟test，前面没有斜杠。<strong>这个test是相对于/home目录来讲的，所以称为相对路径</strong>。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/25/linux%E5%9F%BA%E7%A1%80/" rel="prev" title="linux基础（1-18集）">
+      <i class="fa fa-chevron-left"></i> linux基础（1-18集）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-100集"><span class="nav-number">1.</span> <span class="nav-text">linux 100集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P19-22-文件和目录（ls常用选项）"><span class="nav-number">1.1.</span> <span class="nav-text">P19-22 文件和目录（ls常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P23-文件和目录（ls常用通配符）"><span class="nav-number">1.2.</span> <span class="nav-text">P23 文件和目录（ls常用通配符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P25-文件和目录（cd常用选项）"><span class="nav-number">1.3.</span> <span class="nav-text">P25 文件和目录（cd常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P26-文件和目录（相对路径绝对路径）"><span class="nav-number">1.4.</span> <span class="nav-text">P26 文件和目录（相对路径绝对路径）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
