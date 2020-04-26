@@ -20,17 +20,30 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="P42">
+  <meta name="description" content="P42远程管理常用命令关机重启shutdownLinux shutdown命令可以用来进行关机程序，并且在关机以前传送讯息给所有使用者正在执行的程序，shutdown 也可以用来重开机。 使用权限：系统管理者。 语法1shutdown [-t seconds] [-rkhncfF] time [message]  shutdown now 立即关机 shutdown +10 10分钟后关机 参数说">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux基础3（P42-P55）">
+<meta property="og:title" content="linux基础（42-59集）">
 <meta property="og:url" content="http://yoursite.com/2020/04/26/linux3/index.html">
 <meta property="og:site_name" content="Jackson Blog">
-<meta property="og:description" content="P42">
+<meta property="og:description" content="P42远程管理常用命令关机重启shutdownLinux shutdown命令可以用来进行关机程序，并且在关机以前传送讯息给所有使用者正在执行的程序，shutdown 也可以用来重开机。 使用权限：系统管理者。 语法1shutdown [-t seconds] [-rkhncfF] time [message]  shutdown now 立即关机 shutdown +10 10分钟后关机 参数说">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425105-243399260.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425878-2009080640.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235426686-779103595.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201808/519608-20180812120135470-239324972.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235428167-614741798.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164712431-1409487808.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164724290-117606623.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20150118231938468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20150118232419468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20150118234218989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20150119000500906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20150119000931595?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="article:published_time" content="2020-04-26T05:03:11.000Z">
-<meta property="article:modified_time" content="2020-04-26T05:03:59.280Z">
+<meta property="article:modified_time" content="2020-04-26T22:37:49.332Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425105-243399260.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/26/linux3/">
 
@@ -45,7 +58,7 @@
   };
 </script>
 
-  <title>linux基础3（P42-P55） | Jackson Blog</title>
+  <title>linux基础（42-59集） | Jackson Blog</title>
   
 
 
@@ -163,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          linux基础3（P42-P55）
+          linux基础（42-59集）
         </h1>
 
         <div class="post-meta">
@@ -174,7 +187,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-26 00:03:11 / Modified: 00:03:59" itemprop="dateCreated datePublished" datetime="2020-04-26T00:03:11-05:00">2020-04-26</time>
+              <time title="Created: 2020-04-26 00:03:11 / Modified: 17:37:49" itemprop="dateCreated datePublished" datetime="2020-04-26T00:03:11-05:00">2020-04-26</time>
             </span>
 
           
@@ -188,7 +201,338 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="P42"><a href="#P42" class="headerlink" title="P42"></a>P42</h2>
+        <h2 id="P42远程管理常用命令"><a href="#P42远程管理常用命令" class="headerlink" title="P42远程管理常用命令"></a>P42远程管理常用命令</h2><h3 id="关机重启shutdown"><a href="#关机重启shutdown" class="headerlink" title="关机重启shutdown"></a>关机重启shutdown</h3><p>Linux shutdown命令可以用来进行关机程序，并且在关机以前传送讯息给所有使用者正在执行的程序，shutdown 也可以用来重开机。</p>
+<p>使用权限：系统管理者。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown [-t seconds] [-rkhncfF] time [message]</span><br></pre></td></tr></table></figure>
+
+<p>shutdown now 立即关机</p>
+<p>shutdown +10 10分钟后关机</p>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-t seconds : 设定在几秒钟之后进行关机程序。</li>
+<li>-k : 并不会真的关机，只是将警告讯息传送给所有使用者。</li>
+<li>-r : 关机后重新开机。（常用，一定要加，不加会启动不了了）</li>
+<li>-h : 关机后停机。</li>
+<li>-n : 不采用正常程序来关机，用强迫的方式杀掉所有执行中的程序后自行关机。</li>
+<li>-c : 取消目前已经进行中的关机动作。（常用，取消之前动作）</li>
+<li>-f : 关机时，不做 fcsk 动作(检查 Linux 档系统)。</li>
+<li>-F : 关机时，强迫进行 fsck 动作。</li>
+<li>time : 设定关机的时间。</li>
+<li>message : 传送给所有使用者的警告讯息。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>立即关机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h now</span><br></pre></td></tr></table></figure>
+
+<p>指定 10 分钟后关机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h 10</span><br></pre></td></tr></table></figure>
+
+<p>重新启动计算机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -r now</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看或配置网卡信息"><a href="#查看或配置网卡信息" class="headerlink" title="查看或配置网卡信息"></a>查看或配置网卡信息</h3><h3 id="Ifconfig"><a href="#Ifconfig" class="headerlink" title="Ifconfig"></a>Ifconfig</h3><p>网卡：一个专门负责网络通讯的硬件设备。</p>
+<p>Linux ifconfig命令用于显示或设置网络设备。</p>
+<p>ifconfig可设置网络设备的状态，或是显示目前的设置。</p>
+<p>ifconfig | grep inet： 查看网卡对应IP地址</p>
+<p>ifconfig：查看网卡配置信息</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig [网络设备][down up -allmulti -arp -promisc][add&lt;地址&gt;][del&lt;地址&gt;][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][io_addr&lt;I&#x2F;O地址&gt;][irq&lt;IRQ地址&gt;][media&lt;网络媒介类型&gt;][mem_start&lt;内存地址&gt;][metric&lt;数目&gt;][mtu&lt;字节&gt;][netmask&lt;子网掩码&gt;][tunnel&lt;地址&gt;][-broadcast&lt;地址&gt;][-pointopoint&lt;地址&gt;][IP地址]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>add&lt;地址&gt; 设置网络设备IPv6的IP地址。</li>
+<li>del&lt;地址&gt; 删除网络设备IPv6的IP地址。</li>
+<li>down 关闭指定的网络设备。</li>
+<li>&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt; 设置网络设备的类型与硬件地址。</li>
+<li>io_addr&lt;I/O地址&gt; 设置网络设备的I/O地址。</li>
+<li>irq&lt;IRQ地址&gt; 设置网络设备的IRQ。</li>
+<li>media&lt;网络媒介类型&gt; 设置网络设备的媒介类型。</li>
+<li>mem_start&lt;内存地址&gt; 设置网络设备在主内存所占用的起始地址。</li>
+<li>metric&lt;数目&gt; 指定在计算数据包的转送次数时，所要加上的数目。</li>
+<li>mtu&lt;字节&gt; 设置网络设备的MTU。</li>
+<li>netmask&lt;子网掩码&gt; 设置网络设备的子网掩码。</li>
+<li>tunnel&lt;地址&gt; 建立IPv4与IPv6之间的隧道通信地址。</li>
+<li>up 启动指定的网络设备。</li>
+<li>-broadcast&lt;地址&gt; 将要送往指定地址的数据包当成广播数据包来处理。</li>
+<li>-pointopoint&lt;地址&gt; 与指定地址的网络设备建立直接连线，此模式具有保密功能。</li>
+<li>-promisc 关闭或启动指定网络设备的promiscuous模式。</li>
+<li>[IP地址] 指定网络设备的IP地址。</li>
+<li>[网络设备] 指定网络设备的名称。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>显示网络设备信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig        </span><br><span class="line">eth0   Link encap:Ethernet HWaddr 00:50:56:0A:0B:0C </span><br><span class="line">     inet addr:192.168.0.3 Bcast:192.168.0.255 Mask:255.255.255.0</span><br><span class="line">     inet6 addr: fe80::250:56ff:fe0a:b0c&#x2F;64 Scope:Link</span><br><span class="line">     UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1</span><br><span class="line">     RX packets:172220 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">     TX packets:132379 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">     collisions:0 txqueuelen:1000 </span><br><span class="line">     RX bytes:87101880 (83.0 MiB) TX bytes:41576123 (39.6 MiB)</span><br><span class="line">     Interrupt:185 Base address:0x2024 </span><br><span class="line"></span><br><span class="line">lo    Link encap:Local Loopback </span><br><span class="line">     inet addr:127.0.0.1 Mask:255.0.0.0</span><br><span class="line">     inet6 addr: ::1&#x2F;128 Scope:Host</span><br><span class="line">     UP LOOPBACK RUNNING MTU:16436 Metric:1</span><br><span class="line">     RX packets:2022 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">     TX packets:2022 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">     collisions:0 txqueuelen:0 </span><br><span class="line">     RX bytes:2459063 (2.3 MiB) TX bytes:2459063 (2.3 MiB)</span><br></pre></td></tr></table></figure>
+
+<p>启动关闭指定网卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 down</span><br><span class="line"># ifconfig eth0 up</span><br></pre></td></tr></table></figure>
+
+<p>为网卡配置和删除IPv6地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 add 33ffe:3240:800:1005::2&#x2F; 64 &#x2F;&#x2F;为网卡诶之IPv6地址</span><br><span class="line"></span><br><span class="line"># ifconfig eth0 del 33ffe:3240:800:1005::2&#x2F; 64 &#x2F;&#x2F;为网卡删除IPv6地址</span><br></pre></td></tr></table></figure>
+
+<p>用ifconfig修改MAC地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 down &#x2F;&#x2F;关闭网卡</span><br><span class="line"># ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE &#x2F;&#x2F;修改MAC地址</span><br><span class="line"># ifconfig eth0 up &#x2F;&#x2F;启动网卡</span><br><span class="line"># ifconfig eth1 hw ether 00:1D:1C:1D:1E &#x2F;&#x2F;关闭网卡并修改MAC地址 </span><br><span class="line"># ifconfig eth1 up &#x2F;&#x2F;启动网卡</span><br></pre></td></tr></table></figure>
+
+<p>配置IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 192.168.1.56 </span><br><span class="line">&#x2F;&#x2F;给eth0网卡配置IP地址</span><br><span class="line"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0 </span><br><span class="line">&#x2F;&#x2F; 给eth0网卡配置IP地址,并加上子掩码</span><br><span class="line"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0 broadcast 192.168.1.255</span><br><span class="line">&#x2F;&#x2F; 给eth0网卡配置IP地址,加上子掩码,加上个广播地址</span><br></pre></td></tr></table></figure>
+
+<p>启用和关闭ARP协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 arp  &#x2F;&#x2F;开启</span><br><span class="line"># ifconfig eth0 -arp  &#x2F;&#x2F;关闭</span><br></pre></td></tr></table></figure>
+
+<p>设置最大传输单元</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 mtu 1500 </span><br><span class="line">&#x2F;&#x2F;设置能通过的最大数据包大小为 1500 bytes</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>ping ip地址：检查目标主机连接是否正常</p>
+<p>ping 本地ip：检查本地ip是否正常。（一般127.0.0.1是本地回环地址，用了检查本机网卡是否正常，localhost）</p>
+<p>ping用来检查计算机间网络是否通畅，数值越大，速度越慢，ping一下计算机看是否开着</p>
+<p>Linux ping命令用于检测主机。</p>
+<p>执行ping指令会使用ICMP传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping [-dfnqrRv][-c&lt;完成次数&gt;][-i&lt;间隔秒数&gt;][-I&lt;网络界面&gt;][-l&lt;前置载入&gt;][-p&lt;范本样式&gt;][-s&lt;数据包大小&gt;][-t&lt;存活数值&gt;][主机名称或IP地址]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-d 使用Socket的SO_DEBUG功能。</li>
+<li>-c&lt;完成次数&gt; 设置完成要求回应的次数。</li>
+<li>-f 极限检测。</li>
+<li>-i&lt;间隔秒数&gt; 指定收发信息的间隔时间。</li>
+<li>-I&lt;网络界面&gt; 使用指定的网络接口送出数据包。</li>
+<li>-l&lt;前置载入&gt; 设置在送出要求信息之前，先行发出的数据包。</li>
+<li>-n 只输出数值。</li>
+<li>-p&lt;范本样式&gt; 设置填满数据包的范本样式。</li>
+<li>-q 不显示指令执行过程，开头和结尾的相关信息除外。</li>
+<li>-r 忽略普通的Routing Table，直接将数据包送到远端主机上。</li>
+<li>-R 记录路由过程。</li>
+<li>-s&lt;数据包大小&gt; 设置数据包的大小。</li>
+<li>-t&lt;存活数值&gt; 设置存活数值TTL的大小。</li>
+<li>-v 详细显示指令的执行过程。</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>检测是否与主机连通</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># ping www.w3cschool.cc &#x2F;&#x2F;ping主机</span><br><span class="line">PING aries.m.alikunlun.com (114.80.174.110) 56(84) bytes of data.</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;1 ttl&#x3D;64 time&#x3D;0.025 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;2 ttl&#x3D;64 time&#x3D;0.036 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;3 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;4 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;5 ttl&#x3D;64 time&#x3D;0.028 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;6 ttl&#x3D;64 time&#x3D;0.028 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;7 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;8 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;9 ttl&#x3D;64 time&#x3D;0.036 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;10 ttl&#x3D;64 time&#x3D;0.041 ms</span><br><span class="line"></span><br><span class="line">--- aries.m.alikunlun.com ping statistics ---</span><br><span class="line">10 packets transmitted, 30 received, 0% packet loss, time 29246ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 0.021&#x2F;0.035&#x2F;0.078&#x2F;0.011 ms</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;需要手动终止Ctrl+C</span><br></pre></td></tr></table></figure>
+
+<p>指定接收包的次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># ping -c 2 www.w3cschool.cc</span><br><span class="line">PING aries.m.alikunlun.com (114.80.174.120) 56(84) bytes of data.</span><br><span class="line">64 bytes from 114.80.174.120: icmp_seq&#x3D;1 ttl&#x3D;54 time&#x3D;6.18 ms</span><br><span class="line">64 bytes from 114.80.174.120: icmp_seq&#x3D;2 ttl&#x3D;54 time&#x3D;15.4 ms</span><br><span class="line"></span><br><span class="line">--- aries.m.alikunlun.com ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1016ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 6.185&#x2F;10.824&#x2F;15.464&#x2F;4.640 ms</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;收到两次包后，自动退出</span><br></pre></td></tr></table></figure>
+
+<p>多参数使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ping -i 3 -s 1024 -t 255 g.cn &#x2F;&#x2F;ping主机</span><br><span class="line">PING g.cn (203.208.37.104) 1024(1052) bytes of data.</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;0 ttl&#x3D;243 time&#x3D;62.5 ms</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;1 ttl&#x3D;243 time&#x3D;63.9 ms</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;2 ttl&#x3D;243 time&#x3D;61.9 ms</span><br><span class="line"></span><br><span class="line">--- g.cn ping statistics ---</span><br><span class="line">3 packets transmitted, 3 received, 0% packet loss, time 6001ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 61.959&#x2F;62.843&#x2F;63.984&#x2F;0.894 ms, pipe 2</span><br><span class="line">[root@linux ~]# </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;-i 3 发送周期为 3秒 -s 设置发送包的大小 -t 设置TTL值为 255</span><br></pre></td></tr></table></figure>
+
+<h2 id="P47-52远程登录和复制文件（ssh）"><a href="#P47-52远程登录和复制文件（ssh）" class="headerlink" title="P47-52远程登录和复制文件（ssh）"></a>P47-52远程登录和复制文件（ssh）</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh:"></a>ssh:</h3><p>Security shell, 数据传输加密，压缩</p>
+<p>ssh [-p port] user@remote</p>
+<p>user是远程机器上的用户名，如果不指定的话默认当前用户。</p>
+<p>remote是远程机器的地址，可以是ip/域名，或者是后面会提到的别名。</p>
+<p>port是ssh server的监听端口， 如果不指定，默认22.</p>
+<p>windows下载：putty和xshell</p>
+<p>使用exit退出用户登录</p>
+<p><strong>ip：ip是是分配给网络上使用IP协议的设备的数字标签。</strong>我们现在经常使用的是 ipv4， 由32位二进制数字组成，常以XXX.XXX.XXX.XXX形式表现。</p>
+<p><strong>域名：是由一串用“点”分隔的字符组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。</strong>如 i.cnblogs.com。</p>
+<p>域名按域名系统（DNS）的规则流程组成。在DNS中注册的任何名称都是域名。域名用于各种网络环境和应用程序特定的命名和寻址目的。</p>
+<p>域名和ip有区别也有联系，域名通常都会和IP绑定起来，通过访问域名来访问网络主机上的服务。ip地址通常是指主机，而域名通常表示一个网站。一个域名可以绑定到多个ip，多个域名也可以绑定到一个ip。</p>
+<p><strong>域名系统（DNS）：因特网上作为域名和ip地址相互映射的分布式数据库，能使用户更方便地访问互联网，而不用去记住能够被机器直接读取的IP地址。通过主机名，最终得到该主机名对应的ip地址的过程叫做域名解析。 DNS协议运行在UDP协议之上，端口号53。</strong></p>
+<p><strong>端口号：端口，（英语：port），主要分为物理端口和逻辑端口。</strong>我们一般说的都是逻辑端口，用于区分不同的服务。因为网络中一台主机只有一个IP，但是一个主机可以提供多个服务，端口号就用于区分一个主机上的不同服务。一个IP地址的端口通过16bit进行编号，最多可以有65536个端口，标识是从0<del>65535。**端口号分为公认端口（0</del>1023）、注册端口（1024<del>49151）和动态端口（49152</del>65535）。**我们自己的服务一般都绑定在注册端口上。</p>
+<p><strong>跨域：</strong>在 HTML 中，<code>,</code>, <code>,</code>, <code>,</code> 等标签以及 Ajax 都可以指向一个资源地址，<strong>而所谓的跨域请求就是指</strong>：当前发起请求的域与该请求指向的资源所在的域不一样。<strong>这里的域指的是这样的一个概念：我们认为若协议 + 域名 + 端口号均相同，那么就是同域。</strong></p>
+<h3 id="常见的端口号及其用途"><a href="#常见的端口号及其用途" class="headerlink" title="常见的端口号及其用途"></a><a href="https://www.cnblogs.com/innershare/p/10749981.html" target="_blank" rel="noopener">常见的端口号及其用途</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">一些常见的端口号及其用途如下：</span><br><span class="line">21端口：FTP 文件传输服务（常用）</span><br><span class="line">22端口：SSH 端口（常用）</span><br><span class="line">23端口：TELNET 终端仿真服务</span><br><span class="line">25端口：SMTP 简单邮件传输服务</span><br><span class="line">53端口：DNS 域名解析服务</span><br><span class="line">80端口：HTTP 超文本传输服务，web端口（常用）</span><br><span class="line">110端口：POP3 “邮局协议版本3”使用的端口</span><br><span class="line">443端口：HTTPS 加密的超文本传输服务（常用）</span><br><span class="line">1433端口：MS SQL*SERVER数据库 默认端口号</span><br><span class="line">1521端口：Oracle数据库服务</span><br><span class="line">1863端口：MSN Messenger的文件传输功能所使用的端口</span><br><span class="line">3306端口：MYSQL 默认端口号（常用）</span><br><span class="line">3389端口：Microsoft RDP 微软远程桌面使用的端口</span><br><span class="line">5631端口：Symantec pcAnywhere 远程控制数据传输时使用的端口</span><br><span class="line">5632端口：Symantec pcAnywhere 主控端扫描被控端时使用的端口</span><br><span class="line">5000端口：MS SQL Server使用的端口</span><br><span class="line">8000端口：腾讯QQ</span><br></pre></td></tr></table></figure>
+
+<p>   SSH(远程连接工具)连接原理：ssh服务是一个守护进程(demon)，系统后台监听客户端的连接，ssh服务端的进程名为sshd,负责实时监听客户端的请求(IP 22端口)，包括公共秘钥等交换等信息。</p>
+<p>ssh服务端由2部分组成： openssh(提供ssh服务)  openssl(提供加密的程序)</p>
+<p>ssh的客户端可以用 XSHELL，Securecrt, Mobaxterm等工具进行连接</p>
+<h3 id="SSH的工作机制"><a href="#SSH的工作机制" class="headerlink" title="SSH的工作机制"></a>SSH的工作机制</h3><p>   服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit),发回给服务器端，建立连接通过key-pair数据传输。    </p>
+<h3 id="SSH的加密技术"><a href="#SSH的加密技术" class="headerlink" title="SSH的加密技术"></a>SSH的加密技术</h3><p>加密技术：传输过程，数据加密。<br>1.SSH1没有对客户端的秘钥进行校验，很容易被植入恶意代码<br>2.SSH2增加了一个确认联机正确性的Diffe_Hellman机制，每次数据的传输，Server都会检查数据来源的正确性，避免黑客入侵。<br> SSH2支持RSA和DSA密钥<br>    DSA:digital signature Algorithm 数字签名<br>    RSA:既可以数字签名又可以加密    </p>
+<h3 id="SSH知识小结"><a href="#SSH知识小结" class="headerlink" title="SSH知识小结"></a>SSH知识小结</h3><p>  1.SSH是安全的加密协议，用于远程连接Linux服务器<br>  2.SSH的默认端口是22，安全协议版本是SSH2<br>  3.SSH服务器端主要包含2个服务功能SSH连接和SFTP服务器<br>  4.SSH客户端包含ssh连接命令和远程拷贝scp命令等 </p>
+<h3 id="如何防止SSH登录入侵"><a href="#如何防止SSH登录入侵" class="headerlink" title="如何防止SSH登录入侵"></a>如何防止SSH登录入侵</h3><p>  1.密钥登录,更改端口<br>  2.牤牛阵法<br>  3.监听本地内网IP(ListenAddress 192.168.25.*)</p>
+<h3 id="SSH功能大全"><a href="#SSH功能大全" class="headerlink" title="SSH功能大全"></a>SSH功能大全</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.登录          &#96;&#96;    &#96;&#96;ssh&#96; &#96;-p22 omd@192.168.25.137        &#96;&#96;  &#96;&#96;2.直接执行命令 --&gt;最好全路径          &#96;&#96;    &#96;&#96;ssh&#96; &#96;root@192.168.25.137 &#96;&#96;ls&#96; &#96;-ltr &#96;&#96;&#x2F;backup&#x2F;data&#96;            &#96;      &#96;&#96;&#x3D;&#x3D;&gt;&#96;&#96;ssh&#96; &#96;root@192.168.25.137 &#96;&#96;&#x2F;bin&#x2F;ls&#96; &#96;-ltr &#96;&#96;&#x2F;backup&#x2F;data&#96;        &#96;  &#96;&#96;3.查看已知主机           &#96;&#96;    &#96;&#96;cat&#96; &#96;&#x2F;root&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;known_hosts&#96;&#96;  &#96;&#96;4.&#96;&#96;ssh&#96;&#96;远程执行&#96;&#96;sudo&#96;&#96;命令&#96;&#96;    &#96;&#96;ssh&#96; &#96;-t omd@192.168.25.137 &#96;&#96;sudo&#96; &#96;rsync&#96; &#96;hosts &#96;&#96;&#x2F;etc&#x2F;&#96; &#96;  &#96;&#96;5.&#96;&#96;scp&#96;        &#96;       &#96;&#96;1.功能  --&gt;远程文件的安全(加密)拷贝          &#96;&#96;         &#96;&#96;scp&#96; &#96;-P22 -r -p &#96;&#96;&#x2F;home&#x2F;omd&#x2F;h&#96;&#96;.txt omd@192.168.25.137:&#96;&#96;&#x2F;home&#x2F;omd&#x2F;&#96;        &#96;       &#96;&#96;2.&#96;&#96;scp&#96;&#96;知识小结          &#96;&#96;         &#96;&#96;scp&#96;&#96;是加密远程拷贝，&#96;&#96;cp&#96;&#96;为本地拷贝          &#96;&#96;         &#96;&#96;可以推送过去，也可以拉过来          &#96;&#96;         &#96;&#96;每次都是全量拷贝(效率不高，适合第一次)，增量拷贝用&#96;&#96;rsync&#96; &#96;  &#96;&#96;6.&#96;&#96;ssh&#96;&#96;自带的&#96;&#96;sftp&#96;&#96;功能        &#96;&#96;       &#96;&#96;1.Window和Linux的传输工具          &#96;&#96;         &#96;&#96;wincp  filezip          &#96;&#96;        &#96;&#96;sftp&#96; &#96;--&gt;基于&#96;&#96;ssh&#96;&#96;的安全加密传输          &#96;&#96;        &#96;&#96;samba  &#96;&#96;       &#96;&#96;2.&#96;&#96;sftp&#96;&#96;客户端连接          &#96;&#96;        &#96;&#96;sftp&#96; &#96;-oPort&#x3D;22 root@192.168.25.137          &#96;&#96;        &#96;&#96;put &#96;&#96;&#x2F;etc&#x2F;hosts&#96; &#96;&#x2F;tmp&#96;          &#96;        &#96;&#96;get &#96;&#96;&#x2F;etc&#x2F;hosts&#96; &#96;&#x2F;home&#x2F;omd&#96;  &#96;      &#96;&#96;3.&#96;&#96;sftp&#96;&#96;小结：          &#96;&#96;        &#96;&#96;1.linux下使用命令： &#96;&#96;sftp&#96; &#96;-oPort&#x3D;22 root@x.x.x.x          &#96;&#96;        &#96;&#96;2.put加客户端本地路径上传          &#96;&#96;        &#96;&#96;3.get下载服务器端内容到本地          &#96;&#96;        &#96;&#96;4.远程连接默认连接用户的家目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh常见命令参数"><a href="#ssh常见命令参数" class="headerlink" title="ssh常见命令参数"></a>ssh常见命令参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usage: &#96;&#96;ssh&#96; &#96;[-1246AaCfgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]&#96;&#96;      &#96;&#96;[-D [bind_address:]port] [-e escape_char] [-F configfile]&#96;&#96;      &#96;&#96;[-i identity_file] [-L [bind_address:]port:host:hostport]&#96;&#96;      &#96;&#96;[-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]&#96;&#96;      &#96;&#96;[-R [bind_address:]port:host:hostport] [-S ctl_path]&#96;&#96;      &#96;&#96;[-W host:port] [-w local_tun[:remote_tun]]&#96;&#96;      &#96;&#96;[user@]&#96;&#96;hostname&#96; &#96;[&#96;&#96;command&#96;&#96;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于后台ssh服务的相关"><a href="#关于后台ssh服务的相关" class="headerlink" title="关于后台ssh服务的相关"></a>关于后台ssh服务的相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查询openssl软件&#96;&#96;  &#96;&#96;rpm -qa openssh openssl&#96;&#96;# 查询sshd进程&#96;&#96;  &#96;&#96;ps&#96; &#96;-ef | &#96;&#96;grep&#96; &#96;ssh&#96;&#96;    &#96;&#96;--&gt; &#96;&#96;&#x2F;usr&#x2F;sbin&#x2F;sshd&#96;&#96;# 查看ssh端口&#96;&#96;  &#96;&#96;netstat&#96; &#96;-lntup | &#96;&#96;grep&#96; &#96;ssh&#96; &#96;  &#96;&#96;ss | &#96;&#96;grep&#96; &#96;ssh&#96;        &#96;(效果同上，同下，好用)&#96;&#96;  &#96;&#96;netstat&#96; &#96;-a | &#96;&#96;grep&#96; &#96;ssh&#96;&#96;(记住这个)&#96;&#96;  &#96;&#96;netstat&#96; &#96;-lnt | &#96;&#96;grep&#96; &#96;22  &#x3D;&#x3D;&gt; 查看22端口有没有开&#96;&#96;&#x2F;ssh&#96;&#96;服务有没有开启&#96;&#96;  &#96;&#96;技巧： &#96;&#96;netstat&#96; &#96;-lnt | &#96;&#96;grep&#96; &#96;ssh&#96; &#96;| &#96;&#96;wc&#96; &#96;-l --&gt;只要大于2个就是&#96;&#96;ssh&#96;&#96;服务就是好的&#96;&#96;# 查看ssh的秘钥目录&#96;&#96;  &#96;&#96;ll &#96;&#96;&#x2F;root&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;known_hosts&#96; &#96;# 当前用户家目录的.ssh目录下&#96;&#96;# ssh的配置文件&#96;&#96;  &#96;&#96;cat&#96; &#96;&#x2F;etc&#x2F;ssh&#x2F;sshd_config&#96;  &#96;# ssh服务的关闭&#96;&#96;  &#96;&#96;service sshd stop&#96;&#96;# ssh服务的开启：&#96;&#96;  &#96;&#96;service sshd start&#96;&#96;# ssh服务的重启&#96;&#96;  &#96;&#96;service sshd reload  [停止进程后重启] &#x3D;&#x3D;&gt; 推荐&#96;&#96;  &#96;&#96;service sshd restart  [干掉进程后重启] &#x3D;&#x3D;&gt; 不推荐&#96;&#96;# ssh远程登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;192.168.1.100   &#96;&#96;# 默认利用当前宿主用户的用户名登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 &#96;&#96;# 利用远程机的用户登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 -o stricthostkeychecking&#x3D;no &#96;&#96;# 首次登陆免输yes登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 &#96;&#96;&quot;ls &#x2F;home&#x2F;omd&quot;&#96; &#96;# 当前服务器A远程登录服务器B后执行某个命令&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 -t &#96;&#96;&quot;sh &#x2F;home&#x2F;omd&#x2F;ftl.sh&quot;&#96; &#96;# 当前服务器A远程登录服务器B后执行某个脚本</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235424314-1763487959.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425105-243399260.png" alt="image"></a></p>
+<h3 id="ssh免密设置"><a href="#ssh免密设置" class="headerlink" title="ssh免密设置"></a>ssh免密设置</h3><p>1、进入用户的家目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]&#96;&#96;# cd &#x2F;root&#x2F;.ssh&#x2F;       【root用户就在root目录下的.ssh目录】&#96;&#96;[root@localhost ~]&#96;&#96;# cd &#x2F;home&#x2F;omd&#x2F;.ssh&#x2F;  【普通用户就是在家目录下的.ssh目录】</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425480-983102625.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425878-2009080640.png" alt="image"></a></p>
+<p>2、根据DSA算法生成私钥和公钥【默认建立在当前用户的家目录】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-keygen -t dsa   # 一路回车即可&#96;&#96;        &#96;&#96;id_dsa     --&gt;私钥(钥匙) &#96;&#96;        &#96;&#96;id_dsa.pub   --&gt;公钥(锁)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235426240-141091905.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235426686-779103595.png" alt="image"></a></p>
+<p>3.拷贝公钥给目标服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-copy-id -i id_dsa.pub omd@192.168.25.110       【 使用ssh登录的默认端口22】&#96;&#96;[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-copy-id -i id_dsa.pub –p 666 omd@192.168.25.120  【使用ssh登录设置的端口666】</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180812120135470-239324972.png" alt="img"></p>
+<p>\4. 查看目标服务器生成的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[omd@localhost .&#96;&#96;ssh&#96;&#96;]$ ll &#96;&#96;&#x2F;home&#x2F;omd&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235427845-1655006958.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235428167-614741798.png" alt="image"></a></p>
+<p>\5. 免密码登录目标服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh&#96; &#96;omd@192.168.25.110</span><br></pre></td></tr></table></figure>
+
+<p>\6. 总结一下钥匙和锁的关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.多个钥匙开一把锁&#96;&#96;   &#96;&#96;把id_dsa.pub 复制给各个服务器&#96; &#96;2.一个钥匙开duobasuo&#96;&#96;   &#96;&#96;把id_dsa 传给各个服务器&#96;&#96;   &#96;&#96;把id_dsa 传给自己</span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh排查问题"><a href="#ssh排查问题" class="headerlink" title="ssh排查问题"></a>ssh排查问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.判断物理链路是否通 &#96;&#96;ping&#96; &#96;192.168.25.130   线路 | 防火墙 | 是否同一个网的&#96;&#96;      &#96;&#96;ping&#96;  &#96;本身是icmp协议&#96;&#96;2.判断服务是否正常</span><br><span class="line">telnet 192.168.25.130 22</span><br><span class="line">3.Linux防火墙</span><br><span class="line">service iptables status &#x3D;&#x3D;&gt; &#96;&#96;&#x2F;etc&#x2F;init&#96;&#96;.d&#96;&#96;&#x2F;iptables&#96; &#96;status　　</span><br><span class="line">4.打开&#96;&#96;ssh&#96;&#96;的调测进行观察</span><br><span class="line">ssh&#96; &#96;-vvv omd@192.168.1.100</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH批量分发与管理方案小结"><a href="#SSH批量分发与管理方案小结" class="headerlink" title="SSH批量分发与管理方案小结"></a>SSH批量分发与管理方案小结</h3><p>1.利用root做ssh key验证</p>
+<blockquote>
+<p>优点：简单，易用<br>  缺点：安全性能差，无法禁止root远程连接</p>
+</blockquote>
+<p>2.利用普通用户omd        –&gt;推荐</p>
+<blockquote>
+<p>  思路：把要分发的文件拷贝到服务器用户的家目录，然后利用sudo提权拷贝分发的文件和对应目录<br>  优点：安全<br>  缺点：复杂，配置麻烦<br>  1.sudo提权<br>    echo ‘omd   All=(All)   NOPASSWD:/usr/bin/rsync’ &gt;&gt; /etc/sudoers<br>    visudo -c<br>    grep omd /etc/sudoers<br>  2.ssh分发到服务器的家目录<br>    ssh -p22 -r /etc/hosts <a href="mailto:omd@192.168.25.137">omd@192.168.25.137</a>:~<br>  3.ssh使用sudo复制到目标服务器的/etc<br>    ssh -t <a href="mailto:omd@192.168.25.137">omd@192.168.25.137</a> sudo rsync hosts /etc/</p>
+</blockquote>
+<p>3.拓展方案2，不用sudo，而是设置suid对固定命令提权</p>
+<blockquote>
+<p> 优点：相当安全<br>    缺点：复杂，安全性较差，任何人都可以处理带有suid权限的命令<br>    1.which rsync<br>    2.chmod 4755 /usr/bin/rsync    </p>
+</blockquote>
+<h3 id="ssh章节小结"><a href="#ssh章节小结" class="headerlink" title="ssh章节小结"></a>ssh章节小结</h3><p>  1.ssh远程的加密连接协议，相关软件openssh,openssl<br>  2.默认端口22<br>  3.ssh版本协议<br>  4.服务器ssh连接，ftp连接，sshd守护进程，开机启动<br>  5.ssh客户端重要命令：ssh(用户登录&amp;&amp;远程命令),scp,sftp,<br>  6.安全验证方式：口令，密钥 学习原理<br>  7.ssh服务优化：改端口，改监听，no root,no empty,no DNS,<br>  8.ssh密钥对，公钥在服务器端，私钥在客户端</p>
+<h3 id="修改ssh服务的启动文件sshd的几个点"><a href="#修改ssh服务的启动文件sshd的几个点" class="headerlink" title="修改ssh服务的启动文件sshd的几个点"></a>修改ssh服务的启动文件sshd的几个点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-1修改 &#96;&#96;&#x2F;etc&#x2F;ssh&#x2F;sshd_config&#96;&#96;     GSSAPIAuthentication &#96;&#96;yes&#96;  &#96;解决一台服务器管理多个&#96;&#96;ssh&#96;&#96;服务&#96;&#96;  &#96;&#96;UseDNS no 加快响应速度因为在内网环境下&#96;&#96;  &#96;&#96;PermitRootLogin no 不运行root用户直接登录&#96;&#96;  &#96;&#96;Port 11544 更改访问端口号&#96;&#96;  &#96;&#96;ListenAddress 192.168.25.130 只监听内网的IP&#96;&#96;  &#96;&#96;Match User anoncvs   当前环境允许登录的用户&#96;&#96;  &#96;&#96;PermitRootLogin no   是否允许root用户登录，一般不允许开&#96;&#96;1-2重启服务&#96;&#96;  &#96;&#96;service sshd restart    写入命令进内存&#96;&#96;  &#96;&#96;service sshd reload(优先) reload是一个平滑的访问，不影响用户使用&#96;&#96;1-3查看连接端口&#96;&#96;  &#96;&#96;netstat&#96; &#96;-an | &#96;&#96;grep&#96; &#96;EST</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH跳过HostKeyChecking，不用输入yes"><a href="#SSH跳过HostKeyChecking，不用输入yes" class="headerlink" title="SSH跳过HostKeyChecking，不用输入yes"></a><strong>SSH跳过</strong>HostKeyChecking，不用输入yes</h3><p>SSH跳过输入ssh跳过RSA key fingerprint输入yes/no</p>
+<p>在配置大量的节点之间需要ssh连通的时候，如果自动复制很多节点，都需要输入yes，两两节点之间都要互通一次，这样会造成很大的麻烦</p>
+<p><strong>解决1；</strong>修改配置文件/etc/ssh/ssh_config</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找 到 # StrictHostKeyChecking ask &#96;&#96;修改为：StrictHostKeyChecking &#96;&#96;no</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决2：</strong> 添加参数 –o 【o=option】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.25.133 -o &#96;&#96;&quot;StrictHostKeyChecking no&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164712431-1409487808.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o &#96;&#96;&quot;StrictHostKeyChecking no&quot;&#96; &#96;newfile.txt &#96;&quot;mailto:root@192.168.25.133:&#x2F;root&quot;&#96;&#96;&gt;root@192.168.25.133:&#x2F;root</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164724290-117606623.png" alt="img"></p>
+<h2 id="P53-55远程登录和复制文件（scp）"><a href="#P53-55远程登录和复制文件（scp）" class="headerlink" title="P53-55远程登录和复制文件（scp）"></a>P53-55远程登录和复制文件（scp）</h2><p>scp：secure copy </p>
+<p>指定端口-P port：注意是大写的P, port是指定数据传输用到的端口号（常用）</p>
+<p>Linux scp 命令用于 Linux 之间复制文件和目录。</p>
+<p>scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令。</p>
+<p>scp 是加密的，<a href="https://www.runoob.com/linux/linux-comm-rcp.html" target="_blank" rel="noopener">rcp</a> 是不加密的，scp 是 rcp 的加强版。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]</span><br><span class="line">[-l limit] [-o ssh_option] [-P port] [-S program]</span><br><span class="line">[[user@]host1:]file1 [...] [[user@]host2:]file2</span><br></pre></td></tr></table></figure>
+
+<p>简易写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [可选参数] file_source file_target</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>-1： 强制scp命令使用协议ssh1</li>
+<li>-2： 强制scp命令使用协议ssh2</li>
+<li>-4： 强制scp命令只使用IPv4寻址</li>
+<li>-6： 强制scp命令只使用IPv6寻址</li>
+<li>-B： 使用批处理模式（传输过程中不询问传输口令或短语）</li>
+<li>-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</li>
+<li>-p：保留原文件的修改时间，访问时间和访问权限。</li>
+<li>-q： 不显示传输进度条。</li>
+<li>-r： 递归复制整个目录。(常用)</li>
+<li>-v：详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</li>
+<li>-c cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</li>
+<li>-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</li>
+<li>-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</li>
+<li>-l limit： 限定用户所能使用的带宽，以Kbit/s为单位。</li>
+<li>-o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</li>
+<li>-P port：注意是大写的P, port是指定数据传输用到的端口号（常用）</li>
+<li>-S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><h4 id="1、从本地复制到远程"><a href="#1、从本地复制到远程" class="headerlink" title="1、从本地复制到远程"></a>1、从本地复制到远程</h4><p>命令格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scp local_file remote_username@remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_username@remote_ip:remote_file </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>第1,2个指定了用户名，命令执行后需要再输入密码，第1个仅指定了远程的目录，文件名字不变，第2个指定了文件名； </li>
+<li>第3,4个没有指定用户名，命令执行后需要输入用户名和密码，第3个仅指定了远程的目录，文件名字不变，第4个指定了文件名；</li>
+</ul>
+<p>应用实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music&#x2F;001.mp3 </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music&#x2F;001.mp3</span><br></pre></td></tr></table></figure>
+
+<p>复制目录命令格式： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -r local_folder remote_username@remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp -r local_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第1个指定了用户名，命令执行后需要再输入密码；</li>
+<li>第2个没有指定用户名，命令执行后需要输入用户名和密码；</li>
+</ul>
+<p>应用实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r &#x2F;home&#x2F;space&#x2F;music&#x2F; root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F; </span><br><span class="line">scp -r &#x2F;home&#x2F;space&#x2F;music&#x2F; www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>上面命令将本地 music 目录复制到远程 others 目录下。</p>
+<h4 id="2、从远程复制到本地"><a href="#2、从远程复制到本地" class="headerlink" title="2、从远程复制到本地"></a>2、从远程复制到本地</h4><p>从远程复制到本地，只要将从本地复制到远程的命令的后2个参数调换顺序即可，如下实例 </p>
+<p>应用实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 </span><br><span class="line">scp -r www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F; &#x2F;home&#x2F;space&#x2F;music&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>1.如果远程服务器防火墙有为scp命令设置了指定的端口，我们需要使用 -P 参数来设置命令的端口号，命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#scp 命令使用端口号 4588</span><br><span class="line">scp -P 4588 remote@www.runoob.com:&#x2F;usr&#x2F;local&#x2F;sin.sh &#x2F;home&#x2F;administrator</span><br></pre></td></tr></table></figure>
+
+<p>2.使用scp命令要确保使用的用户具有可读取远程服务器相应文件的权限，否则scp命令是无法起作用的。</p>
+<h2 id="（scp-remote-to-local）："><a href="#（scp-remote-to-local）：" class="headerlink" title="（scp remote to local）："></a>（scp remote to local）：</h2><h2 id="scp-r-XXX-atlas-cselabs-umn-edu-Desktop-p3-code-Desktop："><a href="#scp-r-XXX-atlas-cselabs-umn-edu-Desktop-p3-code-Desktop：" class="headerlink" title="scp -r XXX@atlas.cselabs.umn.edu:~/Desktop/p3-code ~/Desktop："></a>scp -r <a href="mailto:XXX@atlas.cselabs.umn.edu">XXX@atlas.cselabs.umn.edu</a>:~/Desktop/p3-code ~/Desktop：</h2><h2 id="（scp-local-to-remote）"><a href="#（scp-local-to-remote）" class="headerlink" title="（scp local to remote）:"></a>（scp local to remote）:</h2><h2 id="scp-r-Desktop-C-CODE-xxx-ipaddress-Desktop"><a href="#scp-r-Desktop-C-CODE-xxx-ipaddress-Desktop" class="headerlink" title="scp -r /Desktop/C++CODE xxx@ipaddress:/Desktop"></a>scp -r <del>/Desktop/C++CODE xxx@ipaddress:</del>/Desktop</h2><p>df -h:查看磁盘容量</p>
+<p>Windows没有scp命令，需要安装PuTTy，用pscp命令或者安装FileZilla使用FTP进行文件传输。</p>
+<h2 id="P56-59（ssh高级）"><a href="#P56-59（ssh高级）" class="headerlink" title="P56-59（ssh高级）"></a>P56-59（ssh高级）</h2><h3 id="免密码登录和配置别名"><a href="#免密码登录和配置别名" class="headerlink" title="免密码登录和配置别名"></a>免密码登录和配置别名</h3><p>ssh配置都在用户家目录下的.ssh目录下</p>
+<p>ls -alh, 找到.ssh隐藏文件，如何cd进入，然后ls -alh看known_hosts，可以看到已经有的连接。</p>
+<h3 id="免密码登录："><a href="#免密码登录：" class="headerlink" title="免密码登录："></a>免密码登录：</h3><p>步骤：1. 配置公钥: ssh-keygen即可生成ssh钥匙，一路回车即可</p>
+<p>​            2.上传公钥到服务器：ssh-copy-id -p port user@remote, 可以让服务器记住公钥。</p>
+<p>ssh是什么？ssh (SSH client) is a program for logging into a remote machine and for executing commands on a remote machine. （自己翻译哈）</p>
+<p>讲ssh服务的用法之前得需要知道这个服务是否已经开启</p>
+<p>查看ssh服务是否开启的命令:systemctl status sshd。输入这个命令之后，会得到如下的一个提示</p>
+<p><img src="https://img-blog.csdn.net/20150118231938468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>第二行最后一个单词disabled表示sshd服务开机不自动启动</p>
+<p>第三行inactive（dead）表示sshd服务当前是关闭的</p>
+<p>现在我们来开启sshd服务，输入systemctl start sshd，然后再输入systemctl status sshd查看结果</p>
+<p><img src="https://img-blog.csdn.net/20150118232419468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>现在我们可以看到第三行是active（running），这表示sshd服务当前是开启的，但仍然是开机不启动。不过，这并不影响我们使用sshd，至于如何管理这些服务，并不在我们本节讨论范围内。</p>
+<p>ssh可以干什么，举个例子，我现在有个朋友电脑出了点问题，但是现在他在北京，我在西安 ，为给他修个电脑，我不划算去北京吧，怎么办？用ssh。</p>
+<p>首先得知道他的ip地址，然后登录他的root用户，用命令：ssh root@<strong><em>.</em></strong>.<em>.**</em>  星号代表ip</p>
+<p><img src="https://img-blog.csdn.net/20150118234218989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>输入完命令后，会有一个提示，问你是否确信连接？输入yes，再然后输入他root的密码，就进入他的电脑了。但这样有个不好的地方，我知道了他root的密码，那以后岂不是可以在他的电脑上为所欲为了，这样他肯定是不愿意的，我要是不小心删掉了他珍藏多年的种子，他肯定会杀了我。</p>
+<p>######我现在是他的身份#####</p>
+<p>  那在这种情况下，他应该怎么办？（ps：我现在以他的身份来做）可以先给自己的电脑上一把锁，然后需要进入你电脑的人一把钥匙，你不想让别人进的时候把锁删掉就行了。那具体怎么做呢？</p>
+<p>第一步：删除/root/.ssh/下的所有东西，如果没有.shh文件夹，建立一个。</p>
+<p>第二步：在.ssh文件夹下，建立钥匙，使用命令ssh-keygen</p>
+<p><img src="https://img-blog.csdn.net/20150119000500906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>输入命令后，第一个提示问你存在哪里，默认就好，直接回车。第二个问题让你输入一个密码，这个密码就是以后别人在拥有私钥的情况下，进入你主机需要的密码。输入完再输入一次，就会生成一个钥匙跟一把锁。</p>
+<p><img src="https://img-blog.csdn.net/20150119000931595?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>id_rsa叫私钥，也就是钥匙，id_rsa.pub叫公钥。</p>
+<p>第三步：用锁来锁定本机的哪个用户，以root为例，命令是ssh-copy-id root@<strong><em>.</em></strong>.<em>.**</em>  id为本机的id。回车之后会提示你是否连接？回答yes就行，然后会提示你输入要锁定用户的密码，现在要锁定root ，那就输入root密码就行。</p>
+<p>第四步：谁想连本机，把私钥发给谁就行，比如说，我发给一个叫playsand的用户。命令是：</p>
+<p> scp id_rsa playsand@<strong><em>.</em></strong>.<em>.**</em>:/home/playsand/.ssh 这个星号代表的是playsand用户的id，后面代表的是存储路径，一定要在playsand下建立一个.ssh目录，如果有，则将里面内容清空。</p>
+<p>#####现在我是playsand用户#####</p>
+<p>在自己的.ssh目录下，输入ssh root@<strong><em>.</em></strong>.<em>.**</em> id是root的id，回车之后会提示你是否连接？回答yes，然后会提示输入密码，这个密码就是上面第二步设定的密码，输入之后，就进入了。如果输入错了，系统会提示你输入root的密码，同样，输入root密码也可以进入，这就跟刚开始一样。</p>
+<p>#####现在我是root用户####</p>
+<p>在这里有几个小小的设置：</p>
+<p>1.让别人登录自己的root用户是件很危险的事，怎么能让别人怎么都登录不了自己的root用户呢；</p>
+<p>编辑ssh_config文件(vim /etc/ssh/ssh_config),将#PermitRootLogin yes改成PermitRootLogin no(大约在48行)，推出保存之后，重启以下ssh服务（systemctl reload sshd）</p>
+<p>2.要是不认识的人或者有恶意的人不小心得到了私钥和密码，对于本机来说很危险，可以设置白名单，让指定的人可以登录；</p>
+<p>同样vim /etc/ssh/ssh_config,找一个空行写下：allowusers 指定用户名，这样只有指定的用户可以登录本机。e.g：allowusers playsand  就是允许playsand用户登录，其他用户都登录不了，同理，重启下ssh服务。</p>
+<p>3.让别人知道登录自己的root密码或者用户密码总是不安全的，怎样让别人只能通过私钥密码登录？</p>
+<p>同样vim /etc/ssh/ssh_config,将passwordAuthentication yes 改成passwordAuthentication no ，这样，别人只能通过私钥密码登录本机。修改完重启ssh服务。</p>
+<p>使用ssh登录服务器的时候，需要输入ip地址、端口、用户名、密码等信息，比较麻烦，容易输错。还好，通过客户端和服务器的配置参数，可实现免密码快速登录。服务器可通过保存客户端的公钥，用于验证客户端的身份，从而省去输入密码的步骤。客户端也可通过配置服务器参数来简化登录命令。<br>本文主要是记录了ssh面密码快速登录的配置过程，主要分为以下几个步骤。</p>
+<ol>
+<li>客户端生成密钥，包括私钥和公钥。</li>
+<li>在服务器中配置客户端的公钥。</li>
+<li>在客户端配置服务器登录相关参数。</li>
+</ol>
+<p>本文示例中的服务器ip地址为192.168.1.1，ssh端口为22。</p>
+<h2 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h2><p>客户端生成密钥的方法很简单，只需要使用ssh-keygen命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>生成密钥过程中，建议采用默认值，只需要按三次回车之后，就会再～/.ssh目录下生成密钥文件，其中，id_rsa为私钥，id_rsa.pub为公钥。 </p>
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>服务器的~/.ssh/authorized_keys文件保存可快速连接的客户端的公钥。只需把客户端生成的id_rsa.pub文件的内容拷贝到authorized_keys文件的末尾。拷贝的方法有：</p>
+<ol>
+<li>直接拷贝。由于id_rsa.pub和authorized_keys都是文本文件，可通过拷贝命令直接拷贝。</li>
+<li>把id_rsa.pub上传到服务器，然后再把内容添加到authorized_keys文件中。<br>在客户端把文件上传到服务器的用户目录的操作命令如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~&#x2F;.ssh&#x2F;id_rsa.pub root@192.168.1.1:</span><br></pre></td></tr></table></figure>
+
+<p>在服务器操作的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
+
+
+<p>配置好之后，登录服务器就不再需要密码了。 </p>
+<h2 id="在客户端配置服务器登录相关参数"><a href="#在客户端配置服务器登录相关参数" class="headerlink" title="在客户端配置服务器登录相关参数"></a>在客户端配置服务器登录相关参数</h2><p>除了密码之外，登录时，还需要配置ip地址、端口、用户等信息，也比较繁琐。可通过客户端的~/.ssh/config配置服务器的相关参数简化登录命令。<br>config文件的配置内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host server</span><br><span class="line">Hostname 192.168.1.1</span><br><span class="line">Port 22</span><br><span class="line">User bingoli</span><br></pre></td></tr></table></figure>
+
+
+<p>其中，Host为服务器的名称，输入登录命令时使用，后续登录只需要记住这个名字就可以；Hostname为服务器的ip地址；Port为ssh的端口；User为服务器的用户名。配置好相关参数之后，就可以使用简化的命令登录服务器了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh server</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><p>在本地.ssh文件夹下vi config，然后</p>
+<p>Host school</p>
+<p>​    HostName ip地址</p>
+<p>​    User xxxx</p>
+<p>​    Port 22</p>
+
     </div>
 
     
@@ -206,7 +550,10 @@
     <a href="/2020/04/25/linux%E5%9F%BA%E7%A1%802/" rel="prev" title="linux基础（19-41集）">
       <i class="fa fa-chevron-left"></i> linux基础（19-41集）
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/26/linux4/" rel="next" title="linux4">
+      linux4 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -265,7 +612,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P42"><span class="nav-number">1.</span> <span class="nav-text">P42</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P42远程管理常用命令"><span class="nav-number">1.</span> <span class="nav-text">P42远程管理常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关机重启shutdown"><span class="nav-number">1.1.</span> <span class="nav-text">关机重启shutdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看或配置网卡信息"><span class="nav-number">1.4.</span> <span class="nav-text">查看或配置网卡信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ifconfig"><span class="nav-number">1.5.</span> <span class="nav-text">Ifconfig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">1.6.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">1.7.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ping"><span class="nav-number">1.8.</span> <span class="nav-text">Ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-2"><span class="nav-number">1.9.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">1.10.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P47-52远程登录和复制文件（ssh）"><span class="nav-number">2.</span> <span class="nav-text">P47-52远程登录和复制文件（ssh）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh"><span class="nav-number">2.1.</span> <span class="nav-text">ssh:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的端口号及其用途"><span class="nav-number">2.2.</span> <span class="nav-text">常见的端口号及其用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH的工作机制"><span class="nav-number">2.3.</span> <span class="nav-text">SSH的工作机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH的加密技术"><span class="nav-number">2.4.</span> <span class="nav-text">SSH的加密技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH知识小结"><span class="nav-number">2.5.</span> <span class="nav-text">SSH知识小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何防止SSH登录入侵"><span class="nav-number">2.6.</span> <span class="nav-text">如何防止SSH登录入侵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH功能大全"><span class="nav-number">2.7.</span> <span class="nav-text">SSH功能大全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh常见命令参数"><span class="nav-number">2.8.</span> <span class="nav-text">ssh常见命令参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于后台ssh服务的相关"><span class="nav-number">2.9.</span> <span class="nav-text">关于后台ssh服务的相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh免密设置"><span class="nav-number">2.10.</span> <span class="nav-text">ssh免密设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh排查问题"><span class="nav-number">2.11.</span> <span class="nav-text">ssh排查问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH批量分发与管理方案小结"><span class="nav-number">2.12.</span> <span class="nav-text">SSH批量分发与管理方案小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh章节小结"><span class="nav-number">2.13.</span> <span class="nav-text">ssh章节小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改ssh服务的启动文件sshd的几个点"><span class="nav-number">2.14.</span> <span class="nav-text">修改ssh服务的启动文件sshd的几个点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH跳过HostKeyChecking，不用输入yes"><span class="nav-number">2.15.</span> <span class="nav-text">SSH跳过HostKeyChecking，不用输入yes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P53-55远程登录和复制文件（scp）"><span class="nav-number">3.</span> <span class="nav-text">P53-55远程登录和复制文件（scp）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-3"><span class="nav-number">3.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、从本地复制到远程"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、从本地复制到远程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、从远程复制到本地"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、从远程复制到本地</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">3.3.</span> <span class="nav-text">说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（scp-remote-to-local）："><span class="nav-number">4.</span> <span class="nav-text">（scp remote to local）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp-r-XXX-atlas-cselabs-umn-edu-Desktop-p3-code-Desktop："><span class="nav-number">5.</span> <span class="nav-text">scp -r XXX@atlas.cselabs.umn.edu:~&#x2F;Desktop&#x2F;p3-code ~&#x2F;Desktop：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（scp-local-to-remote）"><span class="nav-number">6.</span> <span class="nav-text">（scp local to remote）:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp-r-Desktop-C-CODE-xxx-ipaddress-Desktop"><span class="nav-number">7.</span> <span class="nav-text">scp -r &#x2F;Desktop&#x2F;C++CODE xxx@ipaddress:&#x2F;Desktop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P56-59（ssh高级）"><span class="nav-number">8.</span> <span class="nav-text">P56-59（ssh高级）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#免密码登录和配置别名"><span class="nav-number">8.1.</span> <span class="nav-text">免密码登录和配置别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免密码登录："><span class="nav-number">8.2.</span> <span class="nav-text">免密码登录：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端生成密钥"><span class="nav-number">9.</span> <span class="nav-text">客户端生成密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器配置"><span class="nav-number">10.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在客户端配置服务器登录相关参数"><span class="nav-number">11.</span> <span class="nav-text">在客户端配置服务器登录相关参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置别名"><span class="nav-number">11.1.</span> <span class="nav-text">配置别名</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -279,7 +626,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
