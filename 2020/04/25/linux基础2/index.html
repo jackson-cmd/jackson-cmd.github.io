@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174309686-515187362.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174409329-147595255.png">
 <meta property="article:published_time" content="2020-04-25T21:41:07.000Z">
-<meta property="article:modified_time" content="2020-04-25T22:34:36.743Z">
+<meta property="article:modified_time" content="2020-04-26T02:04:04.998Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1440488/201807/1440488-20180714174106974-1962045890.png">
@@ -178,7 +178,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-25 16:41:07 / Modified: 17:34:36" itemprop="dateCreated datePublished" datetime="2020-04-25T16:41:07-05:00">2020-04-25</time>
+              <time title="Created: 2020-04-25 16:41:07 / Modified: 21:04:04" itemprop="dateCreated datePublished" datetime="2020-04-25T16:41:07-05:00">2020-04-25</time>
             </span>
 
           
@@ -299,6 +299,68 @@
 <li>绝对路径：路径的写法一定是由根目录 / 写起的，例如 /usr/local/mysql</li>
 <li>相对路径：路径的写法不是由根目录 / 写起的，例如 首先用户进入到 /home，然后再进入到test，执行的命令为 “#cd /home,#cd test”。此时用户所在的路径为 /home/test。第一个cd命令后紧跟/home，前面有斜杠；而第二个cd命令后紧跟test，前面没有斜杠。<strong>这个test是相对于/home目录来讲的，所以称为相对路径</strong>。</li>
 </ul>
+<h2 id="P27-文件和目录（mkdir和touch）"><a href="#P27-文件和目录（mkdir和touch）" class="headerlink" title="P27 文件和目录（mkdir和touch）"></a>P27 文件和目录（mkdir和touch）</h2><p>Linux touch命令用于修改文件或者目录的时间属性，包括存取时间和更改时间。若文件不存在，系统会建立一个新的文件。</p>
+<p>ls -l 可以显示档案的时间记录。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch [-acfm][-d&lt;日期时间&gt;][-r&lt;参考文件或目录&gt;] [-t&lt;日期时间&gt;][--help][--version][文件或目录…]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>参数说明</strong>：</li>
+<li>a 改变档案的读取时间记录。</li>
+<li>m 改变档案的修改时间记录。</li>
+<li>c 假如目的档案不存在，不会建立新的档案。与 –no-create 的效果一样。</li>
+<li>f 不使用，是为了与其他 unix 系统的相容性而保留。</li>
+<li>r 使用参考档的时间记录，与 –file 的效果一样。</li>
+<li>d 设定时间与日期，可以使用各种不同的格式。</li>
+<li>t 设定档案的时间记录，格式与 date 指令相同。</li>
+<li>–no-create 不会建立新档案。</li>
+<li>–help 列出指令格式。</li>
+<li>–version 列出版本讯息。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>使用指令”touch”修改文件”testfile”的时间属性为当前系统时间，输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch testfile                #修改文件的时间属性</span><br></pre></td></tr></table></figure>
+
+<p>首先，使用ls命令查看testfile文件的属性，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l testfile                #查看文件的时间属性  </span><br><span class="line">#原来文件的修改时间为16:09  </span><br><span class="line">-rw-r--r-- 1 hdd hdd 55 2011-08-22 16:09 testfile</span><br></pre></td></tr></table></figure>
+
+<p>执行指令”touch”修改文件属性以后，并再次查看该文件的时间属性，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ touch testfile                #修改文件时间属性为当前系统时间  </span><br><span class="line">$ ls -l testfile                #查看文件的时间属性  </span><br><span class="line">#修改后文件的时间属性为当前系统时间  </span><br><span class="line">-rw-r--r-- 1 hdd hdd 55 2011-08-22 19:53 testfile</span><br></pre></td></tr></table></figure>
+
+<p>使用指令”touch”时，如果指定的文件不存在，则将创建一个新的空白文件。例如，在当前目录下，使用该指令创建一个空白文件”file”，输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch file            #创建一个名为“file”的新的空白文件</span><br></pre></td></tr></table></figure>
+
+<p>Linux mkdir命令用于建立名称为 dirName 之子目录。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-p] dirName</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-p 确保目录名称存在，不存在的就建一个。</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>在工作目录下，建立一个名为 AAA 的子目录 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir AAA</span><br></pre></td></tr></table></figure>
+
+<p>在工作目录下的 BBB 目录中，建立一个名为 Test 的子目录。 若 BBB 目录原本不存在，则建立一个。（注：本例若不加 -p，且原本 BBB目录不存在，则产生错误。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p BBB&#x2F;Test</span><br></pre></td></tr></table></figure>
+
+<p>linux中文件目录不可以重名</p>
+<h2 id="P28-文件和目录（rm）"><a href="#P28-文件和目录（rm）" class="headerlink" title="P28 文件和目录（rm）"></a>P28 文件和目录（rm）</h2><p>rm删除的不能恢复。Linux rm命令用于删除一个文件或者目录。</p>
+<p>rm也可以使用通配符。</p>
+<p>格式化电脑：rm -rf *</p>
+<p>所有数据全部删除。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [options] name...</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数</strong>：</p>
+<ul>
+<li>-i 删除前逐一询问确认。</li>
+<li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。（没有此文件也可以删除，不会报错）</li>
+<li>-r 将目录及以下之档案亦逐一删除。（不加无法删目录）（用递归方法）</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>删除文件可以直接使用rm命令，若删除目录则必须配合选项”-r”，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># rm  test.txt </span><br><span class="line">rm：是否删除 一般文件 &quot;test.txt&quot;? y  </span><br><span class="line"># rm  homework  </span><br><span class="line">rm: 无法删除目录&quot;homework&quot;: 是一个目录  </span><br><span class="line"># rm  -r  homework  </span><br><span class="line">rm：是否删除 目录 &quot;homework&quot;? y</span><br></pre></td></tr></table></figure>
+
+<p>删除当前目录下的所有文件及目录，命令行为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm  -r  *</span><br></pre></td></tr></table></figure>
+
+<p>文件一旦通过rm命令删除，则无法恢复，所以必须格外小心地使用该命令。</p>
 
     </div>
 
@@ -376,7 +438,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-100集"><span class="nav-number">1.</span> <span class="nav-text">linux 100集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P19-22-文件和目录（ls常用选项）"><span class="nav-number">1.1.</span> <span class="nav-text">P19-22 文件和目录（ls常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P23-文件和目录（ls常用通配符）"><span class="nav-number">1.2.</span> <span class="nav-text">P23 文件和目录（ls常用通配符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P25-文件和目录（cd常用选项）"><span class="nav-number">1.3.</span> <span class="nav-text">P25 文件和目录（cd常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P26-文件和目录（相对路径绝对路径）"><span class="nav-number">1.4.</span> <span class="nav-text">P26 文件和目录（相对路径绝对路径）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-100集"><span class="nav-number">1.</span> <span class="nav-text">linux 100集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P19-22-文件和目录（ls常用选项）"><span class="nav-number">1.1.</span> <span class="nav-text">P19-22 文件和目录（ls常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P23-文件和目录（ls常用通配符）"><span class="nav-number">1.2.</span> <span class="nav-text">P23 文件和目录（ls常用通配符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P25-文件和目录（cd常用选项）"><span class="nav-number">1.3.</span> <span class="nav-text">P25 文件和目录（cd常用选项）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P26-文件和目录（相对路径绝对路径）"><span class="nav-number">1.4.</span> <span class="nav-text">P26 文件和目录（相对路径绝对路径）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P27-文件和目录（mkdir和touch）"><span class="nav-number">1.5.</span> <span class="nav-text">P27 文件和目录（mkdir和touch）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.5.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.5.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">1.5.3.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">1.5.4.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P28-文件和目录（rm）"><span class="nav-number">1.6.</span> <span class="nav-text">P28 文件和目录（rm）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-2"><span class="nav-number">1.6.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">1.6.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
