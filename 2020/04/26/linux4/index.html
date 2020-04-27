@@ -20,15 +20,28 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="linux4">
+  <meta name="description" content="P60-61（用户文件权限）用户管理包括用户与组管理。  Linux操作系统对多用户的管理，是非常繁琐的，所以用组的概念来管理用户就变得简单，每个用户可以在一个独立的组，每个组也可以有零个用户或者多个用户。 Linux系统用户是根据用户ID来识别的，默认ID长度为32位，从默认ID编号从0开始，但是为了和老式系统兼容，用户ID限制在60000以下，Linux用户分总共分为三种，分别如下：  roo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux基础（61-80集）">
 <meta property="og:url" content="http://yoursite.com/2020/04/26/linux4/index.html">
 <meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="P60-61（用户文件权限）用户管理包括用户与组管理。  Linux操作系统对多用户的管理，是非常繁琐的，所以用组的概念来管理用户就变得简单，每个用户可以在一个独立的组，每个组也可以有零个用户或者多个用户。 Linux系统用户是根据用户ID来识别的，默认ID长度为32位，从默认ID编号从0开始，但是为了和老式系统兼容，用户ID限制在60000以下，Linux用户分总共分为三种，分别如下：  roo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442922-137320976.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626161252656-1763498520.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626165146255-1650931601.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626170509313-1815193220.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172146490-1231316404.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172519622-446882410.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173131946-156221821.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173426757-2120027575.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174110254-908588857.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174709974-11233329.png">
 <meta property="article:published_time" content="2020-04-26T22:38:19.000Z">
-<meta property="article:modified_time" content="2020-04-26T22:38:19.282Z">
+<meta property="article:modified_time" content="2020-04-27T02:50:42.315Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442922-137320976.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/26/linux4/">
 
@@ -43,7 +56,7 @@
   };
 </script>
 
-  <title>linux4 | Jackson Blog</title>
+  <title>linux基础（61-80集） | Jackson Blog</title>
   
 
 
@@ -161,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          linux4
+          linux基础（61-80集）
         </h1>
 
         <div class="post-meta">
@@ -170,8 +183,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-04-26 17:38:19" itemprop="dateCreated datePublished" datetime="2020-04-26T17:38:19-05:00">2020-04-26</time>
+              <time title="Created: 2020-04-26 17:38:19 / Modified: 21:50:42" itemprop="dateCreated datePublished" datetime="2020-04-26T17:38:19-05:00">2020-04-26</time>
             </span>
 
           
@@ -185,7 +199,975 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="P60-61（用户文件权限）"><a href="#P60-61（用户文件权限）" class="headerlink" title="P60-61（用户文件权限）"></a>P60-61（用户文件权限）</h2><p>用户管理包括用户与组管理。</p>
+<p> Linux操作系统对多用户的管理，是非常繁琐的，所以用组的概念来管理用户就变得简单，每个用户可以在一个独立的组，每个组也可以有零个用户或者多个用户。</p>
+<p>Linux系统用户是根据用户ID来识别的，默认ID长度为32位，从默认ID编号从0开始，但是为了和老式系统兼容，用户ID限制在60000以下，Linux用户分总共分为三种，分别如下：</p>
+<p> root用户  （ID 0）</p>
+<p> 系统用户 （ID 1-499）</p>
+<p>普通用户 （ID 500以上）</p>
+<p>Linux系统中的每个文件或者文件夹，都有一个所属用户及所属组，使用id命令可以显示当前用户的信息，使用passwd命令可以修改当前用户密码。Linux操作系统用户的特点如下：</p>
+<p>每个用户拥有一个UserID，操作系统实际读取的是UID，而非用户名；</p>
+<p>每个用户属于一个主组，属于一个或多个附属组，一个用户最多有31个附属组；</p>
+<p>每个组拥有一个GroupID；</p>
+<p>每个进程以一个用户身份运行，该用户可对进程拥有资源控制权限；</p>
+<p>每个可登陆用户拥有一个指定的Shell环境。</p>
+<h2 id="Linux用户管理"><a href="#Linux用户管理" class="headerlink" title="Linux用户管理"></a>Linux用户管理</h2><p>Linux用户在操作系统可以进行日常管理和维护，涉及到的相关配置文件如下：</p>
+<p>/etc/passwd   保存用户信息</p>
+<p> /etc/shdaow   保存用户密码（以加密形式保存）</p>
+<p> /etc/group    保存组信息</p>
+<p> /etc/login.defs  用户属性限制,密码过期时间,密码最大长度等限制</p>
+<p> /etc/default/useradd 显示或更改默认的useradd配置文件</p>
+<p>如需创建新用户，可以使用命令useradd，执行命令useradd test1即可创建test1用户，同时会创建一个同名的组test1，默认该用户属于test1主组。</p>
+<p>Useradd test1命令默认创建用户test1，会根据如下步骤进行操作：</p>
+<p> 在/etc/passwd文件中添加用户信息；</p>
+<p>如使用passwd命令创建密码，密码会被加密保存在/etc/shdaow中；</p>
+<p> 为test1创建家目录：/home/test1；</p>
+<p> 将/etc/skel中的.bash开头的文件复制至/home/test1家目录；</p>
+<p> 创建与用户名相同的test1组，test1用户默认属于test1同名组；</p>
+<p> test1组信息保存在/etc/group配置文件中。</p>
+<p>在使用useradd命令创建用户时，可以支持如下参数：</p>
+<p>用法：useradd [选项] 登录</p>
+<p>useradd -D</p>
+<p>useradd -D [选项]</p>
+<p>选项：</p>
+<p>-b, –base-dir BASE_DIR     指定新账户的家目录；</p>
+<p>-c, –comment COMMENT      新账户的 GECOS 字段；</p>
+<p>-d, –home-dir HOME_DIR     新账户的主目录；</p>
+<p>-D, –defaults         显示或更改默认的 useradd 配置；</p>
+<p>-e, –expiredate EXPIRE_DATE  新账户的过期日期；</p>
+<p>-f, –inactive INACTIVE     新账户的密码不活动期；</p>
+<p>-g, –gid GROUP         新账户主组的名称或ID；</p>
+<p>-G, –groups GROUPS     新账户的附加组列表；</p>
+<p>-h, –help           显示此帮助信息并推出；</p>
+<p>-k, –skel SKEL_DIR       使用此目录作为骨架目录；</p>
+<p>-K, –key KEY=VALUE       不使用 /etc/login.defs 中的默认值；</p>
+<p>-l, –no-log-init      不要将此用户添加到最近登录和登录失败数据库；</p>
+<p>-m, –create-home      创建用户的主目录；</p>
+<p>-M, –no-create-home    不创建用户的主目录；</p>
+<p>-N, –no-user-group     不创建同名的组；</p>
+<p>-o, –non-unique        允许使用重复的 UID 创建用户；</p>
+<p>-p, –password  PASSWORD     加密后的新账户密码；</p>
+<p>-r, –system          创建一个系统账户；</p>
+<p>-R, –root CHROOT_DIR      chroot 到的目录；</p>
+<p>-s, –shell SHELL        新账户的登录 shell；</p>
+<p>-u, –uid UID          新账户的用户 ID；</p>
+<p>-U, –user-group        创建与用户同名的组；</p>
+<p>-Z, –selinux-user SEUSER    为SELinux 用户映射使用指定 SEUSER。</p>
+<h2 id="Linux组管理"><a href="#Linux组管理" class="headerlink" title="Linux组管理"></a>Linux组管理</h2><p> 所有的Linux或者Windows系统都有组的概念，通过组可以更加方便的管理用户，组的概念应用于各行行业，例如企业会使用部门、职能或地理区域的分类方式来管理成员，映射在Linux系统，同样可以创建用户，并用组的概念对其管理。</p>
+<p>Linux组有如下特点：</p>
+<p> 每个组有一个组ID；</p>
+<p> 组信息保存在/etc/group中；</p>
+<p> 每个用户至少拥有一个主组，同时还可以拥有31个附属组。</p>
+<p>通过命令groupadd、groupdel、groupmod来对组进行管理，详细参数使用如下：</p>
+<p>groupadd用法</p>
+<p>-f, –force       如果组已经存在则成功退出；</p>
+<p>并且如果 GID 已经存在则取消 –g；</p>
+<p>-g, –gid GID       为新组使用 GID；</p>
+<p>-h, –help         显示此帮助信息并推出；</p>
+<p>-K, –key KEY=VALUE    不使用 /etc/login.defs 中的默认值；</p>
+<p>-o, –non-unique      允许创建有重复 GID 的组；</p>
+<p>-p, –password PASSWORD  为新组使用此加密过的密码；</p>
+<p>-r, –system        创建一个系统账户；</p>
+<p>groupmod用法</p>
+<p>-g, –gid GID       将组 ID 改为 GID；</p>
+<p>-h, –help         显示此帮助信息并推出；</p>
+<p>-n, –new-name NEW_GROUP 改名为 NEW_GROUP；</p>
+<p>-o, –non-unique      允许使用重复的 GID；</p>
+<p>-p, –password PASSWORD  将密码更改为(加密过的) PASSWORD；</p>
+<p>groupdel用法</p>
+<p>groupdel admin         删除admin组；</p>
+<h2 id="二、-Linux权限管理"><a href="#二、-Linux权限管理" class="headerlink" title="二、 Linux权限管理"></a>二、 Linux权限管理</h2><p>Linux权限是操作系统用来限制对资源访问的机制，权限一般分为读、写、执行。系统中每个文件都拥有特定的权限、所属用户及所属组，通过这样的机制来限制哪些用户或用户组可以对特定文件进行相应的操作。</p>
+<p>Linux每个进程都是以某个用户身份运行，进程的权限与该用户的权限一样，用户的权限越大，则进程拥有的权限就越大。</p>
+<p>Lnux中有的文件及文件夹都有至少权限三种权限，常见的权限如表5-1所示:</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对文件的影响</th>
+<th>对目录的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r（读取）</td>
+<td>可读取文件内容</td>
+<td>可列出目录内容</td>
+</tr>
+<tr>
+<td>w（写入）</td>
+<td>可修改文件内容</td>
+<td>可在目录中创建删除内容</td>
+</tr>
+<tr>
+<td>x（执行）</td>
+<td>可作为命令执行</td>
+<td>可访问目录内容</td>
+</tr>
+<tr>
+<td>目录必须拥有 x 权限，否则无法查看其内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Linux权限授权，默认是授权给三种角色，分别是user、group、other，Linux权限与用户之间的关联如下：</p>
+<p>U代表User，G代表Group，O代表Other；</p>
+<p> 每个文件的权限基于UGO进行设置；</p>
+<p>权限三位一组（rwx），同时需授权给三种角色，UGO；</p>
+<p> 每个文件拥有一个所属用户和所属组，对应UGO，不属于该文件所属用户或所属组使用O来表示；</p>
+<p>在Linux系统中，可以通过ls –l查看peter.net目录的详细属性，如图5-1所示：</p>
+<p>drwxrwxr-x  2 peter1 peter1 4096 Dec 10 01:36 peter.net</p>
+<p>peter.net目录属性参数详解如下：</p>
+<p> d 表示目录，同一位置如果为-则表示普通文件；</p>
+<p> rwxrwxr-x 表示三种角色的权限，每三位为一种角色，依次为u，g，o权限，如上则表示user的权限为rwx，group的权限为rwx，other的权限为r-x；</p>
+<p> 2表示文件夹的链接数量，可理解为该目录下子目录的数量；</p>
+<p> 从左到右，第一个peter1表示该用户名，第二个peter1则为组名，其他人角色默认不显示；</p>
+<p> 4096表示该文件夹占据的字节数；</p>
+<p> Dec 10 01:36 表示文件创建或者修改的时间；</p>
+<p>peter.net 为目录的名，或者文件名。</p>
+<p>peter.net目录属性参数详解如下：</p>
+<p> d 表示目录，同一位置如果为-则表示普通文件；</p>
+<p> rwxrwxr-x 表示三种角色的权限，每三位为一种角色，依次为u，g，o权限，如上则表示user的权限为rwx，group的权限为rwx，other的权限为r-x；</p>
+<p> 2表示文件夹的链接数量，可理解为该目录下子目录的数量；</p>
+<p> 从左到右，第一个peter1表示该用户名，第二个peter1则为组名，其他人角色默认不显示；</p>
+<p> 4096表示该文件夹占据的字节数；</p>
+<p> Dec 10 01:36 表示文件创建或者修改的时间；</p>
+<p>peter.net 为目录的名，或者文件名。</p>
+<h2 id="Chmod用户及组权限"><a href="#Chmod用户及组权限" class="headerlink" title="Chmod用户及组权限"></a>Chmod用户及组权限</h2><p>修改某个用户、组对文件夹的权限，用命令chmod实现，其中以代指ugo，、-、=代表加入、删除和等于对应权限，具体案例如下：</p>
+<p>（1） 授予用户对peter.net目录拥有rwx权限</p>
+<p>chmod  –R  u+rwx  peter.net</p>
+<p>（2） 授予组对peter.net目录拥有rwx权限</p>
+<p>chmod  –R  g+rwx  peter.net</p>
+<p>（3） 授予用户、组、其他人对jpeter.net目录拥有rwx权限</p>
+<p>chmod  –R  u+rwx,g+rwx,o+rwx  peter.net</p>
+<p>（4） 撤销用户对peter.net目录拥有w权限</p>
+<p>chmod  –R  u-w  peter.net</p>
+<p>（5） 撤销用户、组、其他人对peter.net目录拥有x权限</p>
+<p>chmod  –R  u-x,g-x,o-x peter.net</p>
+<p>（6） 授予用户、组、其他人对jpeter.net目录只有rx权限</p>
+<p>chmod  –R  u=rx,g=rx,o=rx  peter.net</p>
+<h2 id="Chmod二进制权限"><a href="#Chmod二进制权限" class="headerlink" title="Chmod二进制权限"></a>Chmod二进制权限</h2><p>Linux权限默认使用rwx来表示，为了更简化在系统中对权限进行配置和修改，Linux权限引入二进制表示方法，如下代码：</p>
+<p>Linux权限可以将rwx用二进制来表示，其中有权限用1表示，没有权限用0表示；Linux权限用二进制显示如下：rwx=111r-x=101rw-=110r–=100依次类推，转化为十进制，对应十进制结果显示如下：rwx=111=4+2+1=7r-x=101=4+0+1=5rw-=110=4+4+0=6r–=100=4+0+0=4得出结论，用r=4,w=2,x=1来表示权限。</p>
+<p>使用二进制方式来修改权限案例演示如下，其中默认peter.nett目录权限为755：</p>
+<p>（1） 授予用户对peter.net目录拥有rwx权限</p>
+<p>chmod  –R  755 peter.net</p>
+<p>（2） 授予组对peter.net目录拥有rwx权限</p>
+<p>chmod  –R  775 peter.net</p>
+<p>（3） 授予用户、组、其他人对peter.net目录拥有rwx权限</p>
+<p>chmod  –R  777  peter.net</p>
+<h2 id="Linux特殊权限及掩码"><a href="#Linux特殊权限及掩码" class="headerlink" title="Linux特殊权限及掩码"></a>Linux特殊权限及掩码</h2><p>Linux权限除了常见的rwx权限之外，还有很多特殊的权限，细心的读者会发现，为什么Linux目录默认权限755，而文件默认权限为644呢，这是因为Linux权限掩码umask导致。</p>
+<p>每个Linux终端都拥有一个umask属性，umask熟悉可以用来确定新建文件、目录的默认权限，默认系统权限掩码为022。在系统中每创建一个文件或者目录，文件默认权限是666，而目录权限则为777，权限对外开放比较大，所以设置了权限掩码之后，默认的文件和目录权限减去umask值才是真实的文件和目录的权限。</p>
+<p> 对应目录权限为：777-022=755；</p>
+<p> 对应文件权限为：666-022=644；</p>
+<p> 执行umask命令可以查看当前默认的掩码，umask -S 023可以设置默认的权限掩码。</p>
+<p>在Linux权限中，除了普通权限外，还有如下表5-2所示，三个特殊权限：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对文件的影响</th>
+<th>对目录的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Suid</td>
+<td>以文件的所属用户身份执行，而非执行文件的用户</td>
+<td>无</td>
+</tr>
+<tr>
+<td>sgid</td>
+<td>以文件所属组身份去执行</td>
+<td>在该目录中创建任意新文件的所属组与该目录的所属组相同</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>无</td>
+<td>对目录拥有写入权限的用户仅可以删除其拥有的文件，无法删除其他用户所拥有的文件</td>
+</tr>
+</tbody></table>
+<p>表5-2 Linux三种特殊权限</p>
+<p>Linux中设置特殊权限方法如下：</p>
+<p>q 设置suid： chmod u+s peter.net</p>
+<p>q 设置sgid： chmod g+s peter.net</p>
+<p>q 设置sticky： chmod o+t peter.net</p>
+<p>特殊权限与设置普通权限一样，可以使用数字方式表示：</p>
+<p> SUID   = 4</p>
+<p> SGID   = 2</p>
+<p> Sticky = 1</p>
+<p>可以通过chmod 4755 peter.net对该目录授予特殊权限为s的权限，Linux系统中s权限的应用常见包括：su、passwd、sudo，</p>
+<h2 id="P62-63-ls-l"><a href="#P62-63-ls-l" class="headerlink" title="P62-63(ls -l)"></a>P62-63(ls -l)</h2><table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对文件的影响</th>
+<th>对目录的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r（读取）</td>
+<td>可读取文件内容</td>
+<td>可列出目录内容</td>
+</tr>
+<tr>
+<td>w（写入）</td>
+<td>可修改文件内容</td>
+<td>可在目录中创建删除内容</td>
+</tr>
+<tr>
+<td>x（执行）</td>
+<td>可作为命令执行</td>
+<td>可访问目录内容</td>
+</tr>
+<tr>
+<td>目录必须拥有 x 权限，否则无法查看其内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>-rw-rw-r–: rw, rw, r</p>
+<p>drwxrwxr-x:目录，rwx,rwx,r-x</p>
+<p><em>d是目录，第一组是拥有者权限，第二组是组权限，第三组是其他用户权限，每3个一组。</em></p>
+<p><em>”/“是根目录，”~“是家目录。Linux存储是以挂载的方式，相当于是树状的，源头就是”/“，也就是根目录。而每个用户都有”家“目录，也就是用户的个人目录，比如root用户的”家“目录就是/root,普通用户a的家目录就是/home/a</em></p>
+<h3 id="ls常见命令参数"><a href="#ls常见命令参数" class="headerlink" title="ls常见命令参数"></a>ls常见命令参数</h3><p>ls: -F 给不同的文件添加不同表示,添加帽子</p>
+<p>d/   l*  =s </p>
+<p>-a: 显示隐藏文件  以.开头的文件</p>
+<p>-p: 只给目录添加/</p>
+<p>-t: 按照修改时间排序 time </p>
+<p>   –time-style=long-iso: ls -l –time-style=long-iso  显示友好长格式时间</p>
+<p>-r: 倒着排序 reverse</p>
+<p>-S: 按照文件大小排序</p>
+<p>-h: 以人类理解的范围显示</p>
+<p>-i: 索引节点(inode==书的目录) print the index number of each file(内核根据此区别文件是否同一文件)</p>
+<h3 id="ls-–l-文件显示内容分析"><a href="#ls-–l-文件显示内容分析" class="headerlink" title="ls –l 文件显示内容分析"></a>ls –l 文件显示内容分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">第一列： 文件类型(共10个字符) + 权限  --&gt; &#96;&#96;man&#96; &#96;find&#96; &#96;搜索&#96;&#96;type&#96;&#96;可看</span><br><span class="line">      &#96;&#96;-:普通文件</span><br><span class="line">      &#96;&#96;d:目录</span><br><span class="line">      &#96;&#96;c:字符设备 --&gt; &#96;&#96;&#x2F;dev&#x2F;tty&#96;   &#96;例如 USB接口、猫等一些串行端口设备</span><br><span class="line">      &#96;&#96;b:块设备  --&gt; &#96;&#96;&#x2F;dev&#96;&#96;下查找 例如光驱，硬盘等属于块设备</span><br><span class="line">      &#96;&#96;.:SELINUX相关 </span><br><span class="line">      &#96;&#96;l:链接文件 --&gt; 软连接</span><br><span class="line">第二列：硬链接个数 默认从1开始 如果是目录，则默认是2(目录不做硬链接)：几种到达的方法</span><br><span class="line">第三列：文件属主</span><br><span class="line">第四列：文件属组</span><br><span class="line">第五列：文件大小</span><br><span class="line">第六-八列：创建时间&#x2F;最后一次修改时间</span><br><span class="line">第九列：文件名</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442504-449878811.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442922-137320976.png" alt="image"></a></p>
+<h2 id="P64-65-chmod"><a href="#P64-65-chmod" class="headerlink" title="P64-65(chmod)"></a>P64-65(chmod)</h2><p>Linux/Unix 的文件调用权限分为三级 : 文件拥有者、群组、其他。利用 chmod 可以藉以控制文件如何被他人所调用。</p>
+<p><strong>使用权限</strong> : 所有使用者</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] [--help] [--version] mode file...</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>mode : 权限设定字串，格式如下 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ugoa...][[+-&#x3D;][rwxX]...][,...]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
+<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
+<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+</ul>
+<p>其他参数说明：</p>
+<ul>
+<li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
+<li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
+<li>-v : 显示权限变更的详细资料</li>
+<li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>将文件 file1.txt 设为所有人皆可读取 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ugo+r file1.txt</span><br></pre></td></tr></table></figure>
+
+<p>将文件 file1.txt 设为所有人皆可读取 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+r file1.txt</span><br></pre></td></tr></table></figure>
+
+<p>将文件 file1.txt 与 file2.txt 设为该文件拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ug+w,o-w file1.txt file2.txt</span><br></pre></td></tr></table></figure>
+
+<p>将 ex1.py 设定为只有该文件拥有者可以执行 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x ex1.py</span><br></pre></td></tr></table></figure>
+
+<p>将目前目录下的所有文件与子目录皆设为任何人可读取 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
+
+<p>此外chmod也可以用数字来表示权限如 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 file</span><br></pre></td></tr></table></figure>
+
+<p>语法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod abc file</span><br></pre></td></tr></table></figure>
+
+<p>其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。</p>
+<h4 id="r-4，w-2，x-1"><a href="#r-4，w-2，x-1" class="headerlink" title="r=4，w=2，x=1"></a>r=4，w=2，x=1</h4><ul>
+<li>若要rwx属性则4+2+1=7；</li>
+<li>若要rw-属性则4+2=6；</li>
+<li>若要r-x属性则4+1=5。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a&#x3D;rwx file</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 file</span><br></pre></td></tr></table></figure>
+
+<p>效果相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ug&#x3D;rwx,o&#x3D;x file</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 771 file</span><br></pre></td></tr></table></figure>
+
+<p>效果相同</p>
+<p>若用chmod 4755 filename可使此程序具有root的权限</p>
+<h2 id="P65-66（超级用户）"><a href="#P65-66（超级用户）" class="headerlink" title="P65-66（超级用户）"></a>P65-66（超级用户）</h2><p>sudo的全称为Superuser do的意思</p>
+<p>日常使用用标准用户administrator，root用户用来系统维护和管理，对所有资源都有访问权限</p>
+<p>默认安装完成之后并不知道root用户的密码，那么如何应用root权限呢？</p>
+<h3 id="1-sudo-命令"><a href="#1-sudo-命令" class="headerlink" title="(1)sudo 命令"></a>(1)sudo 命令</h3><p>xzm@ubuntu:~$ sudo</p>
+<p>这样输入当前管理员用户密码就可以得到超级用户的权限。但默认的情况下5分钟root权限就失效了。</p>
+<h3 id="2-sudo-i"><a href="#2-sudo-i" class="headerlink" title="(2)sudo -i"></a>(2)sudo -i</h3><p>xzm@ubuntu:~$ sudo -i</p>
+<p>通过这种方法输入当前管理员用户的密码就可以进到root用户。</p>
+<h3 id="3-如果想一直使用root权限，要通过su切换到root用户。"><a href="#3-如果想一直使用root权限，要通过su切换到root用户。" class="headerlink" title="(3)如果想一直使用root权限，要通过su切换到root用户。"></a>(3)如果想一直使用root权限，要通过su切换到root用户。</h3><p>那我们首先要重设置root用户的密码：</p>
+<p>xzm@ubuntu:~$ sudo passwd root</p>
+<p>这样就可以设置root用户的密码了。</p>
+<h3 id="4-之后就可以自由的切换到root用户了"><a href="#4-之后就可以自由的切换到root用户了" class="headerlink" title="(4)之后就可以自由的切换到root用户了"></a>(4)之后就可以自由的切换到root用户了</h3><p>xzm@ubuntu:~$ su</p>
+<p>输入root用户的密码即可。</p>
+<p>su “king” 或者 exit回到用户权限</p>
+<p>Linux su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。</p>
+<p>使用权限：所有使用者。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [-fmp] [-c command] [-s shell] [--help] [--version] [-] [USER [ARG]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-f 或 –fast 不必读启动档（如 csh.cshrc 等），仅用于 csh 或 tcsh</li>
+<li>-m -p 或 –preserve-environment 执行 su 时不改变环境变数</li>
+<li>-c command 或 –command=command 变更为帐号为 USER 的使用者并执行指令（command）后再变回原来使用者</li>
+<li>-s shell 或 –shell=shell 指定要执行的 shell （bash csh tcsh 等），预设值为 /etc/passwd 内的该使用者（USER） shell</li>
+<li>–help 显示说明文件</li>
+<li>–version 显示版本资讯</li>
+<li>- -l 或 –login 这个参数加了之后，就好像是重新 login 为该使用者一样，大部份环境变数（HOME SHELL USER等等）都是以该使用者（USER）为主，并且工作目录也会改变，如果没有指定 USER ，内定是 root</li>
+<li>USER 欲变更的使用者帐号</li>
+<li>ARG 传入新的 shell 参数</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>变更帐号为 root 并在执行 ls 指令后退出变回原使用者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su -c ls root</span><br></pre></td></tr></table></figure>
+
+<p>变更帐号为 root 并传入 -f 参数给新执行的 shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root -f</span><br></pre></td></tr></table></figure>
+
+<p>变更帐号为 clsung 并改变工作目录至 clsung 的家目录（home dir）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - clsung</span><br></pre></td></tr></table></figure>
+
+<p>切换用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br></pre></td></tr></table></figure>
+
+<p>切换用户，改变环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su - root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;root</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="P67-69（组管理）"><a href="#P67-69（组管理）" class="headerlink" title="P67-69（组管理）"></a>P67-69（组管理）</h2><p>sudo来创建删除组，不用sudo会permission denied</p>
+<ol>
+<li>groupadd 组名：添加组</li>
+<li>groupdel 组名 ：删除组</li>
+<li>cat /etc/group： 确认组信息</li>
+<li>chgrp -R 组名 文件/目录名：递归修改文件/目录所属组</li>
+</ol>
+<p>Linux系统是一个多用户多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统。</p>
+<p>用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制他们对系统资源的访问；另一方面也可以帮助用户组织文件，并为用户提供安全性保护。</p>
+<p>每个用户账号都拥有一个唯一的用户名和各自的口令。</p>
+<p>用户在登录时键入正确的用户名和口令后，就能够进入系统和自己的主目录。 </p>
+<p>实现用户账号的管理，要完成的工作主要有如下几个方面：</p>
+<ul>
+<li>用户账号的添加、删除与修改。 </li>
+<li>用户口令的管理。</li>
+<li>用户组的管理。 </li>
+</ul>
+<hr>
+<h2 id="一、Linux系统用户账号的管理"><a href="#一、Linux系统用户账号的管理" class="headerlink" title="一、Linux系统用户账号的管理"></a>一、Linux系统用户账号的管理</h2><p>用户账号的管理工作主要涉及到用户账号的添加、修改和删除。</p>
+<p>添加用户账号就是在系统中创建一个新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源。刚添加的账号是被锁定的，无法使用。</p>
+<h3 id="1、添加新的用户账号使用useradd命令，其语法如下："><a href="#1、添加新的用户账号使用useradd命令，其语法如下：" class="headerlink" title="1、添加新的用户账号使用useradd命令，其语法如下："></a>1、添加新的用户账号使用useradd命令，其语法如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd 选项 用户名</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><p>选项:</p>
+<ul>
+<li>-c comment 指定一段注释性描述。</li>
+<li>-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。</li>
+<li>-g 用户组 指定用户所属的用户组。</li>
+<li>-G 用户组，用户组 指定用户所属的附加组。</li>
+<li>-s Shell文件 指定用户的登录Shell。</li>
+<li>-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。</li>
+</ul>
+</li>
+<li><p>用户名: </p>
+<p>指定新账号的登录名。</p>
+</li>
+</ul>
+<h4 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># useradd –d  &#x2F;home&#x2F;sam -m sam</span><br></pre></td></tr></table></figure>
+
+<p>此命令创建了一个用户sam，其中-d和-m选项用来为登录名sam产生一个主目录 /home/sam（/home为默认的用户主目录所在的父目录）。</p>
+<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># useradd -s &#x2F;bin&#x2F;sh -g group –G adm,root gem</span><br></pre></td></tr></table></figure>
+
+<p>此命令新建了一个用户gem，该用户的登录Shell是 <code>/bin/sh</code>，它属于group用户组，同时又属于adm和root用户组，其中group用户组是其主组。</p>
+<p>这里可能新建组：<code>#groupadd group及groupadd adm</code></p>
+<p>增加用户账号就是在/etc/passwd文件中为新用户增加一条记录，同时更新其他系统文件如/etc/shadow, /etc/group等。</p>
+<p>Linux提供了集成的系统管理工具userconf，它可以用来对用户账号进行统一管理。</p>
+<h3 id="2、删除帐号"><a href="#2、删除帐号" class="headerlink" title="2、删除帐号"></a>2、删除帐号</h3><p>如果一个用户的账号不再使用，可以从系统中删除。删除用户账号就是要将/etc/passwd等系统文件中的该用户记录删除，必要时还删除用户的主目录。</p>
+<p>删除一个已有的用户账号使用<code>userdel</code>命令，其格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel 选项 用户名</span><br></pre></td></tr></table></figure>
+
+<p>常用的选项是 <strong>-r</strong>，它的作用是把用户的主目录一起删除。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># userdel -r sam</span><br></pre></td></tr></table></figure>
+
+<p>此命令删除用户sam在系统文件中（主要是/etc/passwd, /etc/shadow, /etc/group等）的记录，同时删除用户的主目录。</p>
+<h3 id="3、修改帐号"><a href="#3、修改帐号" class="headerlink" title="3、修改帐号"></a>3、修改帐号</h3><p>修改用户账号就是根据实际情况更改用户的有关属性，如用户号、主目录、用户组、登录Shell等。</p>
+<p>修改已有用户的信息使用<code>usermod</code>命令，其格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod 选项 用户名</span><br></pre></td></tr></table></figure>
+
+<p>常用的选项包括<code>-c, -d, -m, -g, -G, -s, -u以及-o等</code>，这些选项的意义与<code>useradd</code>命令中的选项一样，可以为用户指定新的资源值。</p>
+<p>另外，有些系统可以使用选项：-l 新用户名</p>
+<p>这个选项指定一个新的账号，即将原来的用户名改为新的用户名。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -s &#x2F;bin&#x2F;ksh -d &#x2F;home&#x2F;z –g developer sam</span><br></pre></td></tr></table></figure>
+
+<p>此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。</p>
+<h3 id="4、用户口令的管理"><a href="#4、用户口令的管理" class="headerlink" title="4、用户口令的管理"></a>4、用户口令的管理</h3><p>用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用，即使是指定空口令。</p>
+<p>指定和修改用户口令的Shell命令是<code>passwd</code>。超级用户可以为自己和其他用户指定口令，普通用户只能用它修改自己的口令。命令的格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd 选项 用户名</span><br></pre></td></tr></table></figure>
+
+<p>可使用的选项：</p>
+<ul>
+<li>-l 锁定口令，即禁用账号。</li>
+<li>-u 口令解锁。</li>
+<li>-d 使账号无口令。</li>
+<li>-f 强迫用户下次登录时修改口令。</li>
+</ul>
+<p>如果默认用户名，则修改当前用户的口令。</p>
+<p>例如，假设当前用户是sam，则下面的命令修改该用户自己的口令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ passwd </span><br><span class="line">Old password:****** </span><br><span class="line">New password:******* </span><br><span class="line">Re-enter new password:*******</span><br></pre></td></tr></table></figure>
+
+<p>如果是超级用户，可以用下列形式指定任何用户的口令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># passwd sam </span><br><span class="line">New password:******* </span><br><span class="line">Re-enter new password:*******</span><br></pre></td></tr></table></figure>
+
+<p>普通用户修改自己的口令时，passwd命令会先询问原口令，验证后再要求用户输入两遍新口令，如果两次输入的口令一致，则将这个口令指定给用户；而超级用户为用户指定口令时，就不需要知道原口令。</p>
+<p>为了系统安全起见，用户应该选择比较复杂的口令，例如最好使用8位长的口令，口令中包含有大写、小写字母和数字，并且应该与姓名、生日等不相同。</p>
+<p>为用户指定空口令时，执行下列形式的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd -d sam</span><br></pre></td></tr></table></figure>
+
+<p>此命令将用户 sam 的口令删除，这样用户 sam 下一次登录时，系统就不再允许该用户登录了。</p>
+<p>passwd 命令还可以用 -l(lock) 选项锁定某一用户，使其不能登录，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd -l sam</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、Linux系统用户组的管理"><a href="#二、Linux系统用户组的管理" class="headerlink" title="二、Linux系统用户组的管理"></a>二、Linux系统用户组的管理</h2><p>每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理。不同Linux 系统对用户组的规定有所不同，如Linux下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建。</p>
+<p>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对/etc/group文件的更新。</p>
+<h3 id="1、增加一个新的用户组使用groupadd命令。其格式如下："><a href="#1、增加一个新的用户组使用groupadd命令。其格式如下：" class="headerlink" title="1、增加一个新的用户组使用groupadd命令。其格式如下："></a>1、增加一个新的用户组使用groupadd命令。其格式如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd 选项 用户组</span><br></pre></td></tr></table></figure>
+
+<p>可以使用的选项有：</p>
+<ul>
+<li>-g GID 指定新用户组的组标识号（GID）。</li>
+<li>-o 一般与-g选项同时使用，表示新用户组的GID可以与系统已有用户组的GID相同。</li>
+</ul>
+<h4 id="实例1："><a href="#实例1：" class="headerlink" title="实例1："></a>实例1：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupadd group1</span><br></pre></td></tr></table></figure>
+
+<p>此命令向系统中增加了一个新组group1，新组的组标识号是在当前已有的最大组标识号的基础上加1。</p>
+<h4 id="实例2："><a href="#实例2：" class="headerlink" title="实例2："></a>实例2：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupadd -g 101 group2</span><br></pre></td></tr></table></figure>
+
+<p>此命令向系统中增加了一个新组group2，同时指定新组的组标识号是101。</p>
+<h3 id="2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下："><a href="#2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下：" class="headerlink" title="2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下："></a>2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel 用户组</span><br></pre></td></tr></table></figure>
+
+<h4 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupdel group1</span><br></pre></td></tr></table></figure>
+
+<p>此命令从系统中删除组group1。</p>
+<h3 id="3、修改用户组的属性使用groupmod命令。其语法如下："><a href="#3、修改用户组的属性使用groupmod命令。其语法如下：" class="headerlink" title="3、修改用户组的属性使用groupmod命令。其语法如下："></a>3、修改用户组的属性使用groupmod命令。其语法如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod 选项 用户组</span><br></pre></td></tr></table></figure>
+
+<p>常用的选项有：</p>
+<ul>
+<li>-g GID 为用户组指定新的组标识号。</li>
+<li>-o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。</li>
+<li>-n新用户组 将用户组的名字改为新名字</li>
+</ul>
+<h4 id="实例1：-1"><a href="#实例1：-1" class="headerlink" title="实例1："></a>实例1：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupmod -g 102 group2</span><br></pre></td></tr></table></figure>
+
+<p>此命令将组group2的组标识号修改为102。</p>
+<h4 id="实例2：-1"><a href="#实例2：-1" class="headerlink" title="实例2："></a>实例2：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupmod –g 10000 -n group3 group2</span><br></pre></td></tr></table></figure>
+
+<p>此命令将组group2的标识号改为10000，组名修改为group3。</p>
+<h3 id="4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。"><a href="#4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。" class="headerlink" title="4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。"></a>4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。</h3><p>用户可以在登录后，使用命令newgrp切换到其他用户组，这个命令的参数就是目的用户组。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ newgrp root</span><br></pre></td></tr></table></figure>
+
+<p>这条命令将当前用户切换到root用户组，前提条件是root用户组确实是该用户的主组或附加组。类似于用户账号的管理，用户组的管理也可以通过集成的系统管理工具来完成。</p>
+<hr>
+<h2 id="三、与用户账号有关的系统文件"><a href="#三、与用户账号有关的系统文件" class="headerlink" title="三、与用户账号有关的系统文件"></a>三、与用户账号有关的系统文件</h2><p>完成用户管理的工作有许多种方法，但是每一种方法实际上都是对有关的系统文件进行修改。</p>
+<p>与用户和用户组相关的信息都存放在一些系统文件中，这些文件包括/etc/passwd, /etc/shadow, /etc/group等。</p>
+<p>下面分别介绍这些文件的内容。</p>
+<h3 id="1、-etc-passwd文件是用户管理工作涉及的最重要的一个文件。"><a href="#1、-etc-passwd文件是用户管理工作涉及的最重要的一个文件。" class="headerlink" title="1、/etc/passwd文件是用户管理工作涉及的最重要的一个文件。"></a>1、/etc/passwd文件是用户管理工作涉及的最重要的一个文件。</h3><p>Linux系统中的每个用户都在/etc/passwd文件中有一个对应的记录行，它记录了这个用户的一些基本属性。</p>
+<p>这个文件对所有用户都是可读的。它的内容类似下面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">＃ cat &#x2F;etc&#x2F;passwd</span><br><span class="line"></span><br><span class="line">root:x:0:0:Superuser:&#x2F;:</span><br><span class="line">daemon:x:1:1:System daemons:&#x2F;etc:</span><br><span class="line">bin:x:2:2:Owner of system commands:&#x2F;bin:</span><br><span class="line">sys:x:3:3:Owner of system files:&#x2F;usr&#x2F;sys:</span><br><span class="line">adm:x:4:4:System accounting:&#x2F;usr&#x2F;adm:</span><br><span class="line">uucp:x:5:5:UUCP administrator:&#x2F;usr&#x2F;lib&#x2F;uucp:</span><br><span class="line">auth:x:7:21:Authentication administrator:&#x2F;tcb&#x2F;files&#x2F;auth:</span><br><span class="line">cron:x:9:16:Cron daemon:&#x2F;usr&#x2F;spool&#x2F;cron:</span><br><span class="line">listen:x:37:4:Network daemon:&#x2F;usr&#x2F;net&#x2F;nls:</span><br><span class="line">lp:x:71:18:Printer administrator:&#x2F;usr&#x2F;spool&#x2F;lp:</span><br><span class="line">sam:x:200:50:Sam san:&#x2F;home&#x2F;sam:&#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
+
+<p>从上面的例子我们可以看到，/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段，其格式和具体含义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</span><br></pre></td></tr></table></figure>
+
+<h3 id="1）”用户名”是代表用户账号的字符串。"><a href="#1）”用户名”是代表用户账号的字符串。" class="headerlink" title="1）”用户名”是代表用户账号的字符串。"></a>1）”用户名”是代表用户账号的字符串。</h3><p>通常长度不超过8个字符，并且由大小写字母和/或数字组成。登录名中不能有冒号(:)，因为冒号在这里是分隔符。</p>
+<p>为了兼容起见，登录名中最好不要包含点字符(.)，并且不使用连字符(-)和加号(+)打头。</p>
+<h3 id="2）“口令”一些系统中，存放着加密后的用户口令字。"><a href="#2）“口令”一些系统中，存放着加密后的用户口令字。" class="headerlink" title="2）“口令”一些系统中，存放着加密后的用户口令字。"></a>2）“口令”一些系统中，存放着加密后的用户口令字。</h3><p>虽然这个字段存放的只是用户口令的加密串，不是明文，但是由于/etc/passwd文件对所有用户都可读，所以这仍是一个安全隐患。因此，现在许多Linux 系统（如SVR4）都使用了shadow技术，把真正的加密后的用户口令字存放到/etc/shadow文件中，而在/etc/passwd文件的口令字段中只存放一个特殊的字符，例如“x”或者“*”。</p>
+<h3 id="3）“用户标识号”是一个整数，系统内部用它来标识用户。"><a href="#3）“用户标识号”是一个整数，系统内部用它来标识用户。" class="headerlink" title="3）“用户标识号”是一个整数，系统内部用它来标识用户。"></a>3）“用户标识号”是一个整数，系统内部用它来标识用户。</h3><p>一般情况下它与用户名是一一对应的。如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等。</p>
+<p>通常用户标识号的取值范围是0～65 535。0是超级用户root的标识号，1～99由系统保留，作为管理账号，普通用户的标识号从100开始。在Linux系统中，这个界限是500。</p>
+<h3 id="4）“组标识号”字段记录的是用户所属的用户组。"><a href="#4）“组标识号”字段记录的是用户所属的用户组。" class="headerlink" title="4）“组标识号”字段记录的是用户所属的用户组。"></a>4）“组标识号”字段记录的是用户所属的用户组。</h3><p>它对应着/etc/group文件中的一条记录。</p>
+<h3 id="5-“注释性描述”字段记录着用户的一些个人情况。"><a href="#5-“注释性描述”字段记录着用户的一些个人情况。" class="headerlink" title="5)“注释性描述”字段记录着用户的一些个人情况。"></a>5)“注释性描述”字段记录着用户的一些个人情况。</h3><p>例如用户的真实姓名、电话、地址等，这个字段并没有什么实际的用途。在不同的Linux 系统中，这个字段的格式并没有统一。在许多Linux系统中，这个字段存放的是一段任意的注释性描述文字，用做finger命令的输出。</p>
+<h3 id="6-“主目录”，也就是用户的起始工作目录。"><a href="#6-“主目录”，也就是用户的起始工作目录。" class="headerlink" title="6)“主目录”，也就是用户的起始工作目录。"></a>6)“主目录”，也就是用户的起始工作目录。</h3><p>它是用户在登录到系统之后所处的目录。在大多数系统中，各用户的主目录都被组织在同一个特定的目录下，而用户主目录的名称就是该用户的登录名。各用户对自己的主目录有读、写、执行（搜索）权限，其他用户对此目录的访问权限则根据具体情况设置。</p>
+<h3 id="7-用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。"><a href="#7-用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。" class="headerlink" title="7)用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。"></a>7)用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。</h3><p>Shell是用户与Linux系统之间的接口。Linux的Shell有许多种，每种都有不同的特点。常用的有sh(Bourne Shell), csh(C Shell), ksh(Korn Shell), tcsh(TENEX/TOPS-20 type C Shell), bash(Bourne Again Shell)等。</p>
+<p>系统管理员可以根据系统情况和用户习惯为用户指定某个Shell。如果不指定Shell，那么系统使用sh为默认的登录Shell，即这个字段的值为/bin/sh。</p>
+<p>用户的登录Shell也可以指定为某个特定的程序（此程序不是一个命令解释器）。</p>
+<p>利用这一特点，我们可以限制用户只能运行指定的应用程序，在该应用程序运行结束后，用户就自动退出了系统。有些Linux 系统要求只有那些在系统中登记了的程序才能出现在这个字段中。</p>
+<h3 id="8-系统中有一类用户称为伪用户（pseudo-users）。"><a href="#8-系统中有一类用户称为伪用户（pseudo-users）。" class="headerlink" title="8)系统中有一类用户称为伪用户（pseudo users）。"></a>8)系统中有一类用户称为伪用户（pseudo users）。</h3><p>这些用户在/etc/passwd文件中也占有一条记录，但是不能登录，因为它们的登录Shell为空。它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。</p>
+<p>常见的伪用户如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">伪 用 户 含 义 </span><br><span class="line">bin 拥有可执行的用户命令文件 </span><br><span class="line">sys 拥有系统文件 </span><br><span class="line">adm 拥有帐户文件 </span><br><span class="line">uucp UUCP使用 </span><br><span class="line">lp lp或lpd子系统使用 </span><br><span class="line">nobody NFS使用</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="拥有帐户文件"><a href="#拥有帐户文件" class="headerlink" title="拥有帐户文件"></a>拥有帐户文件</h2><p><strong>1、除了上面列出的伪用户外，还有许多标准的伪用户，例如：audit, cron, mail, usenet等，它们也都各自为相关的进程和文件所需要。</strong></p>
+<p>由于/etc/passwd文件是所有用户都可读的，如果用户的密码太简单或规律比较明显的话，一台普通的计算机就能够很容易地将它破解，因此对安全性要求较高的Linux系统都把加密后的口令字分离出来，单独存放在一个文件中，这个文件是/etc/shadow文件。 有超级用户才拥有该文件读权限，这就保证了用户密码的安全性。</p>
+<p><strong>2、/etc/shadow中的记录行与/etc/passwd中的一一对应，它由pwconv命令根据/etc/passwd中的数据自动产生</strong></p>
+<p>它的文件格式与/etc/passwd类似，由若干个字段组成，字段之间用”:”隔开。这些字段是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>“登录名”是与/etc/passwd文件中的登录名相一致的用户账号</li>
+<li>“口令”字段存放的是加密后的用户口令字，长度为13个字符。如果为空，则对应用户没有口令，登录时不需要口令；如果含有不属于集合 { ./0-9A-Za-z }中的字符，则对应的用户不能登录。</li>
+<li>“最后一次修改时间”表示的是从某个时刻起，到用户最后一次修改口令时的天数。时间起点对不同的系统可能不一样。例如在SCO Linux 中，这个时间起点是1970年1月1日。</li>
+<li>“最小时间间隔”指的是两次修改口令之间所需的最小天数。</li>
+<li>“最大时间间隔”指的是口令保持有效的最大天数。</li>
+<li>“警告时间”字段表示的是从系统开始警告用户到用户密码正式失效之间的天数。</li>
+<li>“不活动时间”表示的是用户没有登录活动但账号仍能保持有效的最大天数。</li>
+<li>“失效时间”字段给出的是一个绝对的天数，如果使用了这个字段，那么就给出相应账号的生存期。期满后，该账号就不再是一个合法的账号，也就不能再用来登录了。</li>
+</ol>
+<p>下面是/etc/shadow的一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">＃ cat &#x2F;etc&#x2F;shadow</span><br><span class="line"></span><br><span class="line">root:Dnakfw28zf38w:8764:0:168:7:::</span><br><span class="line">daemon:*::0:0::::</span><br><span class="line">bin:*::0:0::::</span><br><span class="line">sys:*::0:0::::</span><br><span class="line">adm:*::0:0::::</span><br><span class="line">uucp:*::0:0::::</span><br><span class="line">nuucp:*::0:0::::</span><br><span class="line">auth:*::0:0::::</span><br><span class="line">cron:*::0:0::::</span><br><span class="line">listen:*::0:0::::</span><br><span class="line">lp:*::0:0::::</span><br><span class="line">sam:EkdiSECLWPdSa:9740:0:0::::</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、用户组的所有信息都存放在-etc-group文件中。"><a href="#3、用户组的所有信息都存放在-etc-group文件中。" class="headerlink" title="3、用户组的所有信息都存放在/etc/group文件中。"></a>3、用户组的所有信息都存放在/etc/group文件中。</h3><p>将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段。</p>
+<p>每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不同的组。</p>
+<p>当一个用户同时是多个组中的成员时，在/etc/passwd文件中记录的是用户所属的主组，也就是登录时所属的默认组，而其他组称为附加组。</p>
+<p>用户要访问属于附加组的文件时，必须首先使用newgrp命令使自己成为所要访问的组中的成员。</p>
+<p>用户组的所有信息都存放在/etc/group文件中。此文件的格式也类似于/etc/passwd文件，由冒号(:)隔开若干个字段，这些字段有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组名:口令:组标识号:组内用户列表</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>“组名”是用户组的名称，由字母或数字构成。与/etc/passwd中的登录名一样，组名不应重复。</li>
+<li>“口令”字段存放的是用户组加密后的口令字。一般Linux 系统的用户组都没有口令，即这个字段一般为空，或者是*。</li>
+<li>“组标识号”与用户标识号类似，也是一个整数，被系统内部用来标识组。</li>
+<li>“组内用户列表”是属于这个组的所有用户的列表/b]，不同用户之间用逗号(,)分隔。这个用户组可能是用户的主组，也可能是附加组。</li>
+</ol>
+<p>/etc/group文件的一个例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root::0:root</span><br><span class="line">bin::2:root,bin</span><br><span class="line">sys::3:root,uucp</span><br><span class="line">adm::4:root,adm</span><br><span class="line">daemon::5:root,daemon</span><br><span class="line">lp::7:root,lp</span><br><span class="line">users::20:root,sam</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、添加批量用户"><a href="#四、添加批量用户" class="headerlink" title="四、添加批量用户"></a>四、添加批量用户</h3><p>添加和删除用户对每位Linux系统管理员都是轻而易举的事，比较棘手的是如果要添加几十个、上百个甚至上千个用户时，我们不太可能还使用useradd一个一个地添加，必然要找一种简便的创建大量用户的方法。Linux系统提供了创建大量用户的工具，可以让您立即创建大量用户，方法如下：</p>
+<h3 id="（1）先编辑一个文本用户文件。"><a href="#（1）先编辑一个文本用户文件。" class="headerlink" title="（1）先编辑一个文本用户文件。"></a>（1）先编辑一个文本用户文件。</h3><p>每一列按照<code>/etc/passwd</code>密码文件的格式书写，要注意每个用户的用户名、UID、宿主目录都不可以相同，其中密码栏可以留做空白或输入x号。一个范例文件user.txt内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user001::600:100:user:&#x2F;home&#x2F;user001:&#x2F;bin&#x2F;bash</span><br><span class="line">user002::601:100:user:&#x2F;home&#x2F;user002:&#x2F;bin&#x2F;bash</span><br><span class="line">user003::602:100:user:&#x2F;home&#x2F;user003:&#x2F;bin&#x2F;bash</span><br><span class="line">user004::603:100:user:&#x2F;home&#x2F;user004:&#x2F;bin&#x2F;bash</span><br><span class="line">user005::604:100:user:&#x2F;home&#x2F;user005:&#x2F;bin&#x2F;bash</span><br><span class="line">user006::605:100:user:&#x2F;home&#x2F;user006:&#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）以root身份执行命令-usr-sbin-newusers，从刚创建的用户文件user-txt中导入数据，创建用户："><a href="#（2）以root身份执行命令-usr-sbin-newusers，从刚创建的用户文件user-txt中导入数据，创建用户：" class="headerlink" title="（2）以root身份执行命令 /usr/sbin/newusers，从刚创建的用户文件user.txt中导入数据，创建用户："></a>（2）以root身份执行命令 <code>/usr/sbin/newusers</code>，从刚创建的用户文件<code>user.txt</code>中导入数据，创建用户：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># newusers &lt; user.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后可以执行命令 <code>vipw</code> 或 <code>vi /etc/passwd</code> 检查 <code>/etc/passwd</code> 文件是否已经出现这些用户的数据，并且用户的宿主目录是否已经创建。</p>
+<h3 id="（3）执行命令-usr-sbin-pwunconv。"><a href="#（3）执行命令-usr-sbin-pwunconv。" class="headerlink" title="（3）执行命令/usr/sbin/pwunconv。"></a>（3）执行命令/usr/sbin/pwunconv。</h3><p>将 <code>/etc/shadow</code> 产生的 <code>shadow</code> 密码解码，然后回写到 <code>/etc/passwd</code> 中，并将<code>/etc/shadow</code>的<code>shadow</code>密码栏删掉。这是为了方便下一步的密码转换工作，即先取消 <code>shadow password</code> 功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pwunconv</span><br></pre></td></tr></table></figure>
+
+<h3 id="（4）编辑每个用户的密码对照文件。"><a href="#（4）编辑每个用户的密码对照文件。" class="headerlink" title="（4）编辑每个用户的密码对照文件。"></a>（4）编辑每个用户的密码对照文件。</h3><p>格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:密码</span><br></pre></td></tr></table></figure>
+
+<p>实例文件 <code>passwd.txt</code> 内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user001:123456</span><br><span class="line">user002:123456</span><br><span class="line">user003:123456</span><br><span class="line">user004:123456</span><br><span class="line">user005:123456</span><br><span class="line">user006:123456</span><br></pre></td></tr></table></figure>
+
+<h3 id="（5）以-root-身份执行命令-usr-sbin-chpasswd。"><a href="#（5）以-root-身份执行命令-usr-sbin-chpasswd。" class="headerlink" title="（5）以 root 身份执行命令 /usr/sbin/chpasswd。"></a>（5）以 root 身份执行命令 <code>/usr/sbin/chpasswd</code>。</h3><p>创建用户密码，<code>chpasswd</code> 会将经过 <code>/usr/bin/passwd</code> 命令编码过的密码写入 <code>/etc/passwd</code> 的密码栏。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chpasswd &lt; passwd.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="（6）确定密码经编码写入-etc-passwd的密码栏后。"><a href="#（6）确定密码经编码写入-etc-passwd的密码栏后。" class="headerlink" title="（6）确定密码经编码写入/etc/passwd的密码栏后。"></a>（6）确定密码经编码写入/etc/passwd的密码栏后。</h3><p>执行命令 <code>/usr/sbin/pwconv</code> 将密码编码为 <code>shadow password</code>，并将结果写入 <code>/etc/shadow</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pwconv</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了大量用户的创建了，之后您可以到/home下检查这些用户宿主目录的权限设置是否都正确，并登录验证用户密码是否正确。</p>
+<h2 id="P70-71-用户管理"><a href="#P70-71-用户管理" class="headerlink" title="P70-71(用户管理)"></a>P70-71(用户管理)</h2><ol>
+<li><p>useradd -m -g 组 新建用户名：添加新用户 -m自动建立用户加目录， -g指定用户所在组，否则会建立一个同名的组。</p>
+<p>例： sudo useradd -m -g dev zhangsan </p>
+<p>drwxr-xr-x  2 zhangsan     dev          4096 Apr 26 18:30 zhangsan</p>
+</li>
+<li><p>passwd 用户名： 设置用户密码，如果是普通用户，直接passwd可以修改密码</p>
+</li>
+<li><p>userdel -r 用户名；删除用户， -r会自动删除用户家目录</p>
+</li>
+<li><p>cat /etc/passwd | grep 用户名 ：确认用户信息，新建用户后，用户信息会保存在/etc/passwd文件中</p>
+</li>
+</ol>
+<h2 id="P72-75（id，whoami，who）"><a href="#P72-75（id，whoami，who）" class="headerlink" title="P72-75（id，whoami，who）"></a>P72-75（id，whoami，who）</h2><h3 id="id-用户名：查看用户UID和GID信息"><a href="#id-用户名：查看用户UID和GID信息" class="headerlink" title="id 用户名：查看用户UID和GID信息"></a>id 用户名：查看用户UID和GID信息</h3><p>passwd文件：/etc/passwd文件存放用户信息，6个分号组成7个信息</p>
+<p>信息说明<br>第一字段: 用户名(vampire)<br>第二字段: 密码位(x),只是一个占位符,真正的密码存放在/etc/shadow文件中（x，表示加密密码）<br>第三字段: UID(501)用户id,0为超级用户,1~499系统用户,一般不能登录系统,也叫做伪用户,500及以上普通用户,管理员创建的,一般可登录（用户标识）<br>第四字段: GID(501)用户初始组id,一般添加用户时,系统自动分配的（组标识）<br>第五字段: GECOS 用户的一些说明信息（用户全名或本地账号）<br>第六字段: $HOME(/home/vampire) 用户家目录,也叫做宿主目录,普通用户家目录在/home下,root用户在/下（家目录）</p>
+<p>第七字段: shell(/bin/bash)用户登录后的shell，ubuntu默认是dash</p>
+<p> UID，gid，组 依次打印</p>
+<p>Linux id命令用于显示用户的ID，以及所属群组的ID。</p>
+<p>id会显示用户以及所属群组的实际与有效ID。若两个ID相同，则仅显示实际ID。若仅指定用户名称，则显示目前用户的ID。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id [-gGnru][--help][--version][用户名称]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-g或–group 　显示用户所属群组的ID。</li>
+<li>-G或–groups 　显示用户所属附加群组的ID。</li>
+<li>-n或–name 　显示用户，所属群组或附加群组的名称。</li>
+<li>-r或–real 　显示实际ID。</li>
+<li>-u或–user 　显示用户ID。</li>
+<li>-help 　显示帮助。</li>
+<li>-version 　显示版本信息。</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>显示当前用户信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id &#x2F;&#x2F;显示当前用户ID</span><br><span class="line">uid&#x3D;0(root) gid&#x3D;0(root) groups&#x3D;0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel) context&#x3D;root:system_r:unconfined_t</span><br></pre></td></tr></table></figure>
+
+<p>显示用户群组的ID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id -g</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>显示所有群组的ID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id -g</span><br><span class="line">0 1 2 3 4 5 6 10</span><br></pre></td></tr></table></figure>
+
+<p>显示指定用户信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># id hnlinux</span><br></pre></td></tr></table></figure>
+
+<h3 id="who：查看当前所有登录的用户列表"><a href="#who：查看当前所有登录的用户列表" class="headerlink" title="who：查看当前所有登录的用户列表"></a>who：查看当前所有登录的用户列表</h3><p>Linux who命令用于显示系统中有哪些使用者正在上面，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。</p>
+<p>使用权限：所有使用者都可使用。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who - [husfV] [user]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-H 或 –heading：显示各栏位的标题信息列；</li>
+<li>-i 或 -u 或 –idle：显示闲置时间，若该用户在前一分钟之内有进行任何动作，将标示成”.”号，如果该用户已超过24小时没有任何动作，则标示出”old”字符串；</li>
+<li>-m：此参数的效果和指定”am i”字符串相同；</li>
+<li>-q 或–count：只显示登入系统的帐号名称和总人数；</li>
+<li>-s：此参数将忽略不予处理，仅负责解决who指令其他版本的兼容性问题；</li>
+<li>-w 或-T或–mesg或–message或–writable：显示用户的信息状态栏；</li>
+<li>–help：在线帮助；</li>
+<li>–version：显示版本信息。</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>显示当前登录系统的用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># who  &#x2F;&#x2F;显示当前登录系统的用户</span><br><span class="line">root   tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
+
+<p>显示标题栏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># who -H</span><br><span class="line">NAME   LINE     TIME       COMMENT</span><br><span class="line">root   tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
+
+<p>显示用户登录来源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># who -l -H</span><br><span class="line">NAME   LINE     TIME       IDLE     PID COMMENT</span><br><span class="line">LOGIN  tty4     2014-05-13 12:11        852 id&#x3D;4</span><br><span class="line">LOGIN  tty5     2014-05-13 12:11        855 id&#x3D;5</span><br><span class="line">LOGIN  tty2     2014-05-13 12:11        862 id&#x3D;2</span><br><span class="line">LOGIN  tty3     2014-05-13 12:11        864 id&#x3D;3</span><br><span class="line">LOGIN  tty6     2014-05-13 12:11        867 id&#x3D;6</span><br><span class="line">LOGIN  tty1     2014-05-13 12:11       1021 id&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>显示终端属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># who -T -H</span><br><span class="line">NAME    LINE     TIME       COMMENT</span><br><span class="line">root   + tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   + pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   - pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   - pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
+
+<p>只显示当前用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># who -m -H</span><br><span class="line">NAME   LINE     TIME       COMMENT</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br></pre></td></tr></table></figure>
+
+<p>精简模式显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># who -q</span><br><span class="line">root root root root</span><br><span class="line"># users&#x3D;4</span><br></pre></td></tr></table></figure>
+
+<h3 id="whoami：查看当前登录用户的账户名"><a href="#whoami：查看当前登录用户的账户名" class="headerlink" title="whoami：查看当前登录用户的账户名"></a>whoami：查看当前登录用户的账户名</h3><p>Linux whoami命令用于显示自身用户名称。</p>
+<p>显示自身的用户名称，本指令相当于执行”id -un”指令。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami [--help][--version]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>–help 　在线帮助。</li>
+<li>–version 　显示版本信息。</li>
+</ul>
+<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>显示用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># whoami </span><br><span class="line">root</span><br></pre></td></tr></table></figure>
+
+<h3 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h3><p>用来设置用户主组/附加组 和登录shell</p>
+<p>Linux系统以组Group方式管理用户，用户和组的对应关系为多对多，即某个用户可加入/属于一个或多个组，某个组可以有0个、1个或多个用户。</p>
+<p>组的分类<br>从用户的角度，分为主组和附属组。<br>主组：也被称为primary group、first group或initial login group，用户的默认组，用户的gid所标识的组。<br>附属组：也被称为Secondary group或supplementary group，用户的附加组。</p>
+<p>通过id命令可查看当前用户的主组和附属组</p>
+<p>[root@localhost ~]# id root<br>uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel)</p>
+<p>[root@localhost ~]# id gg<br>uid=503(gg) gid=503(gg) groups=503(gg)</p>
+<p>[root@localhost ~]# id mm<br>uid=502(mm) gid=500(jww) groups=500(jww)</p>
+<p>gid标识主组，groups表示用户所属的全部组（主组和附属组）</p>
+<ol>
+<li><p>用户必须有且只能有一个主组，可以有0个、1个或多个附属组，就如我们一定会有一个用来安家的房子（类同主组），还可以有n个用于投资或其他打算的房子（附属组）。</p>
+</li>
+<li><p>主组也为默认组，当用户own某个文件或目录时，默认该文件或目录的group owner为该用户的主组（当然，可以通过chgrp修改group owner）。</p>
+</li>
+<li><p>在/etc/passwd文件中，记录行第四个字段为gid，即用户的主组id。</p>
+</li>
+<li><p>在/etc/group文件中，记录行第四个字段为组的成员，不显示将该组作为主组的组成员，只显示将该组作为附属组的组成员，因此，/etc/group的记录行的第四个字段没有完整地列出该组的全部成员。</p>
+</li>
+<li><p>当通过useradd命令创建新用户时，可以通过-g参数指定已存在的某个组为其主组，若没有使用-g参数，<br>则系统自动创建名称和用户名相同的组作为该用户的主组（前提是variable in /etc/login.defs的USERGROUPS_ENAB属性值为yes），如命令手册的useradd关于-g参数的描述所示：<br>-g, –gid GROUP<br>The group name or number of the user′s initial login group. The<br>group name must exist. A group number must refer to an already<br>existing group.<br>If not specified, the bahavior of useradd will depend on the<br>USERGROUPS_ENAB variable in /etc/login.defs. If this variable is<br>set to yes (or -U/–user-group is specified on the command line), a<br>group will be created for the user, with the same name as her<br>loginname. If the variable is set to no (or -N/–no-user-group is<br>specified on the command line), useradd will set the primary group<br>of the new user to the value specified by the GROUP variable in<br>/etc/default/useradd, or 100 by default.</p>
+</li>
+</ol>
+<p>另外，可通过usermod -g 将普通用户的主组/gid设置为系e799bee5baa6e79fa5e98193e4b893e5b19e31333337613161统中存在的任意某个组（永久性）；<br>也可以通过newgrp暂时性变更当前用户的主组/gid（只对于当前login session有效，非永久性）。<br>通过usermod -G 设置普通用户的附属组。</p>
+<p>Linux usermod命令用于修改用户帐号。</p>
+<p>usermod可用来修改用户帐号的各项设定。</p>
+<p>usermod 命令通过修改系统帐户文件来修改用户账户信息<br>usermod [options] user_name<br>选项(options)<br>-a|–append ##把用户追加到某些组中，仅与-G选项一起使用<br>-c|–comment ##修改/etc/passwd文件第五段comment<br>-d|–home ##修改用户的家目录通常和-m选项一起使用<br>-e|–expiredate ##指定用户帐号禁用的日期，格式YY-MM-DD<br>-f|–inactive ##用户密码过期多少天后采用就禁用该帐号，0表示密码已过期就禁用帐号，-1表示禁用此功能，默认值是-1<br>-g|–gid ##修改用户的gid，改组一定存在<br>-G|–groups ##把用户追加到某些组中，仅与-a选项一起使用<br>-l|–login ##修改用户的登录名称<br>-L|–lock ##锁定用户的密码<br>-m|–move-home ##修改用户的家目录通常和-d选项一起使用<br>-s|–shell ##修改用户的shell<br>-u|–uid ##修改用户的uid，该uid必须唯一<br>-U|–unlock ##解锁用户的密码</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod [-LU][-c &lt;备注&gt;][-d &lt;登入目录&gt;][-e &lt;有效期限&gt;][-f &lt;缓冲天数&gt;][-g &lt;群组&gt;][-G &lt;群组&gt;][-l &lt;帐号名称&gt;][-s &lt;shell&gt;][-u &lt;uid&gt;][用户帐号]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><p>-c&lt;备注&gt; 　修改用户帐号的备注文字。</p>
+</li>
+<li><p>-d登入目录&gt; 　修改用户登入时的目录。</p>
+</li>
+<li><p>-e&lt;有效期限&gt; 　修改帐号的有效期限。</p>
+</li>
+<li><p>-f&lt;缓冲天数&gt; 　修改在密码过期后多少天即关闭该帐号。</p>
+</li>
+<li><p>-g&lt;群组&gt; 　修改用户所属的群组。（常用）</p>
+</li>
+<li><p>-G&lt;群组&gt; 　修改用户所属的附加群组。（常用）</p>
+</li>
+<li><p>-l&lt;帐号名称&gt; 　修改用户帐号名称。</p>
+</li>
+<li><p>-L 　锁定用户密码，使密码无效。</p>
+</li>
+<li><p>-s<shell> 　修改用户登入后所使用的shell。（常用）</p>
+<p>例：usermod -S /bin/bash 用户名</p>
+</li>
+<li><p>-u<uid> 　修改用户ID。</p>
+</li>
+<li><p>-U 　解除密码锁定。</p>
+</li>
+</ul>
+<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>更改登录目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -d &#x2F;home&#x2F;hnlinux root</span><br></pre></td></tr></table></figure>
+
+<p>改变用户的uid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -u 777 root</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="usermod-S-bin-bash-用户名"><a href="#usermod-S-bin-bash-用户名" class="headerlink" title="usermod -S /bin/bash 用户名"></a>usermod -S /bin/bash 用户名</h3><p>用户ubuntu默认是dash，而windows不是，想windows登录也是dash，需要上面的命令修改shell为dash</p>
+<p>Bash(GNU Bourne-Again Shell)是许多Linux平台的内定Shell，事实上，还有许多传统UNIX上用的Shell，像tcsh、csh、ash、bsh、ksh等等。</p>
+<p>GNU/Linux 操作系统中的 /bin/sh 本是 bash (Bourne-Again Shell) 的符号链接，但鉴于 bash 过于复杂，有人把 bash 从 NetBSD 移植到 Linux 并更名为 dash (Debian Almquist Shell)，并建议将 /bin/sh 指向它，以获得更快的脚本执行速度。Dash Shell 比 Bash Shell 小的多，符合POSIX标准。</p>
+<p>Debian和Ubuntu中，/bin/sh默认已经指向dash，这是一个不同于bash的shell，它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准。</p>
+<p>就是这个倒霉的dash解释器使得我按照bash语法写的shell 脚本不能运行。</p>
+<p>要知道自己的/bin/sh指向何种解释器，可以用 <strong>ls /bin/sh -al</strong> 命令查看：</p>
+<p>​    $ ls /bin/sh -al</p>
+<p>​    lrwxrwxrwx 1 root root 4 11月 16 15:33 /bin/sh -&gt; bash</p>
+<p>以上结果就表示当前系统用的是dash解释器。</p>
+<p>切换到bash的方式其实挺简单的，关键是一直没找出这个原因……</p>
+<p>修改默认的sh，可以采用命令<strong>sudo dpkg-reconfigure dash</strong></p>
+<p>会出现一个图片状的配置菜单，选no就可以了</p>
+<p>再次检查一下， <strong>ls /bin/sh -al</strong> 发现软链接指向/bin/bash</p>
+<p>​     lrwxrwxrwx 1 root root 4 11月 16 15:33 /bin/sh -&gt; bash</p>
+<h2 id="P76which"><a href="#P76which" class="headerlink" title="P76which"></a>P76which</h2><p>Linux which命令用于查找文件。可以查看指向命令所在位置</p>
+<p>/etc/passwd: 用于保存用户信息的文件</p>
+<p>/etc/bin/passwd:用于修改用户密码的程序</p>
+<p>which指令会在环境变量$PATH设置的目录里查找符合条件的文件。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which [文件...]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数</strong>：</p>
+<ul>
+<li>-n&lt;文件名长度&gt; 　指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</li>
+<li>-p&lt;文件名长度&gt; 　与-n参数相同，但此处的&lt;文件名长度&gt;包括了文件的路径。</li>
+<li>-w 　指定输出时栏位的宽度。</li>
+<li>-V 　显示版本信息。</li>
+</ul>
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>使用指令”which”查看指令”bash”的绝对路径，输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ which bash</span><br></pre></td></tr></table></figure>
+
+<p>上面的指令执行后，输出信息如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash                   #bash可执行程序的绝对路径</span><br></pre></td></tr></table></figure>
+
+<p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：</p>
+<p><strong>which</strong> 　查看可执行文件的位置。</p>
+<p><strong>whereis</strong> 查看文件的位置。</p>
+<p><strong>locate</strong> 　配合数据库查看文件位置。</p>
+<p><strong>find</strong> 　　实际搜寻硬盘查询文件名称。</p>
+<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p><strong>1．命令格式：</strong></p>
+<p>which 可执行文件名称</p>
+<p><strong>2．命令功能：</strong></p>
+<p>which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。</p>
+<p><strong>3．命令参数：</strong></p>
+<p><strong>-n</strong> 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</p>
+<p><strong>-p</strong> 与-n参数相同，但此处的包括了文件的路径。</p>
+<p><strong>-w</strong> 指定输出时栏位的宽度。</p>
+<p><strong>-V</strong> 显示版本信息</p>
+<p><strong>4．使用实例：</strong></p>
+<p><strong>实例1：</strong>查找文件、显示命令路径</p>
+<p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which lsmod</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# which pwd</span><br><span class="line">&#x2F;bin&#x2F;pwd</span><br><span class="line">[root@localhost ~]# which adduser</span><br><span class="line">&#x2F;usr&#x2F;sbin&#x2F;adduser</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的！所以，不同的 PATH 配置内容所找到的命令当然不一样的！</p>
+<p><strong>实例2：</strong>用 which 去找出 which</p>
+<p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which which</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# which which</span><br><span class="line">alias which&#x3D;&#39;alias | &#x2F;usr&#x2F;bin&#x2F;which --tty-only --read-alias --show-dot --show-tilde&#39;</span><br><span class="line">&#x2F;usr&#x2F;bin&#x2F;which</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>竟然会有两个 which ，其中一个是 alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！</p>
+<p><strong>实例3：</strong>找出 cd 这个命令</p>
+<p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which cd</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>cd 这个常用的命令竟然找不到啊！为什么呢？这是因为 cd 是bash 内建的命令！ 但是 which 默认是找 PATH 内所规范的目录，所以当然一定找不到的！</p>
+<p>bin:<br>bin为binary的简写主要放置一些<strong>系统的必备执行</strong>档例如:cat、cp、chmod df、dmesg、gzip、kill、ls、mkdir、more、mount、rm、su、tar等。</p>
+<p>/usr/bin:<br>主 要放置一些<strong>应用软体工具的必备执行</strong>档例如c++、g++、gcc、chdrv、diff、dig、du、eject、elm、free、gnome<em>、 gzip、htpasswd、kfm、ktop、last、less、locale、m4、make、man、mcopy、ncftp、 newaliases、nslookup passwd、quota、smb</em>、wget等。 </p>
+<p>/sbin:<br>主 要放置一些<strong>系统管理的必备</strong>程式例如:cfdisk、dhcpcd、dump、e2fsck、fdisk、halt、ifconfig、ifup、 ifdown、init、insmod、lilo、lsmod、mke2fs、modprobe、quotacheck、reboot、rmmod、 runlevel、shutdown等。</p>
+<p>/usr/sbin: </p>
+<p>放置一些<strong>网路管理的必备</strong>程式例如:dhcpd、httpd、imap、in.*d、inetd、lpd、named、netconfig、nmbd、samba、sendmail、squid、swap、tcpd、tcpdump等</p>
+<h2 id="P77（su切换用户）"><a href="#P77（su切换用户）" class="headerlink" title="P77（su切换用户）"></a>P77（su切换用户）</h2><p>Linux su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。不安全，会返回root。然后无需sudo了，即可改系统等。</p>
+<p>使用权限：所有使用者。</p>
+<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [-fmp] [-c command] [-s shell] [--help] [--version] [-] [USER [ARG]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li>-f 或 –fast 不必读启动档（如 csh.cshrc 等），仅用于 csh 或 tcsh</li>
+<li>-m -p 或 –preserve-environment 执行 su 时不改变环境变数</li>
+<li>-c command 或 –command=command 变更为帐号为 USER 的使用者并执行指令（command）后再变回原来使用者</li>
+<li>-s shell 或 –shell=shell 指定要执行的 shell （bash csh tcsh 等），预设值为 /etc/passwd 内的该使用者（USER） shell</li>
+<li>–help 显示说明文件</li>
+<li>–version 显示版本资讯</li>
+<li>- -l 或 –login 这个参数加了之后，就好像是重新 login 为该使用者一样，大部份环境变数（HOME SHELL USER等等）都是以该使用者（USER）为主，并且工作目录也会改变，如果没有指定 USER ，内定是 root</li>
+<li>USER 欲变更的使用者帐号</li>
+<li>ARG 传入新的 shell 参数</li>
+</ul>
+<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>变更帐号为 root 并在执行 ls 指令后退出变回原使用者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su -c ls root</span><br></pre></td></tr></table></figure>
+
+<p>变更帐号为 root 并传入 -f 参数给新执行的 shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root -f</span><br></pre></td></tr></table></figure>
+
+<p>变更帐号为 clsung 并改变工作目录至 clsung 的家目录（home dir）（常用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - clsung</span><br></pre></td></tr></table></figure>
+
+<p>切换用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br></pre></td></tr></table></figure>
+
+<p>切换用户，改变环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su - root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;root</span><br></pre></td></tr></table></figure>
+
+<h2 id="P78修改文件权限"><a href="#P78修改文件权限" class="headerlink" title="P78修改文件权限"></a>P78修改文件权限</h2><p>1。 chown: 修改拥有者</p>
+<p>2。chgrp：修改组</p>
+<p>3 。chmod：修改权限</p>
+<p>想要改文件的权限，只有管理员root和所有者才能修改</p>
+<p>Linux/Unix 是多人多工操作系统，所有的文件皆有拥有者。利用 chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户ID；组可以是组名或者组ID；文件是以空格分开的要改变权限的文件列表，支持通配符。 。</p>
+<p>一般来说，这个指令只有是由系统管理者(root)所使用，一般使用者没有权限可以改变别人的文件拥有者，也没有权限把自己的文件拥有者改设为别人。只有系统管理者(root)才有这样的权限。</p>
+<p><strong>使用权限</strong> : root</p>
+<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数</strong> :</p>
+<ul>
+<li>user : 新的文件拥有者的使用者 ID</li>
+<li>group : 新的文件拥有者的使用者组(group)</li>
+<li>-c : 显示更改的部分的信息</li>
+<li>-f : 忽略错误信息</li>
+<li>-h :修复符号链接</li>
+<li>-v : 显示详细的处理信息</li>
+<li>-R : 处理指定目录以及其子目录下的所有文件</li>
+<li>–help : 显示辅助说明</li>
+<li>–version : 显示版本</li>
+</ul>
+<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>将文件 file1.txt 的拥有者设为 runoob，群体的使用者 runoobgroup :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown runoob:runoobgroup file1.txt</span><br></pre></td></tr></table></figure>
+
+<p>将目前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R runoob:runoobgroup *</span><br></pre></td></tr></table></figure>
+
+<h3 id="1、chmod：更改文件9个属性"><a href="#1、chmod：更改文件9个属性" class="headerlink" title="1、chmod：更改文件9个属性"></a>1、chmod：更改文件9个属性</h3><p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626161252656-1763498520.png" alt="img"></p>
+<p>Linux文件属性有两种设置方法，一种是数字，一种是符号。</p>
+<p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
+<h4 id="①-数字改变文件权限（常用）"><a href="#①-数字改变文件权限（常用）" class="headerlink" title="① 数字改变文件权限（常用）"></a>① 数字改变文件权限（常用）</h4><p>我们可以使用数字来代表各个权限，各权限的分数对照表如下：</p>
+<ul>
+<li>r:4</li>
+<li>w:2</li>
+<li>x:1</li>
+</ul>
+<p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为： [-rwxrwx—] 分数则是：</p>
+<ul>
+<li>owner = rwx = 4+2+1 = 7</li>
+<li>group = rwx = 4+2+1 = 7</li>
+<li>others= — = 0+0+0 = 0</li>
+</ul>
+<p>所以等我们设定权限的变更时，该文件的权限数字就是770啦！变更权限的指令chmod的语法是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-R] xyz 文件或目录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>xyz : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。</li>
+<li>-R : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件都会变更</li>
+</ul>
+<h4 id="②-符号类型改变文件权限"><a href="#②-符号类型改变文件权限" class="headerlink" title="② 符号类型改变文件权限"></a>② 符号类型改变文件权限</h4><p> 我们就可以藉由u, g, o来代表三种身份的权限！</p>
+<p>此外， a 则代表 all 亦即全部的身份！那么读写的权限就可以写成r, w, x！也就是可以使用底下的方式来看：</p>
+<table>
+<thead>
+<tr>
+<th>chmod</th>
+<th>u g o a</th>
+<th>+(加入) -(除去) =(设定)</th>
+<th>r w x</th>
+<th>文件或目录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>如果我们需要将文件权限设置为 <strong>-rwxr-xr–</strong> ，可以使用 chmod u=rwx,g=rx,o=r 文件名 来设定。</p>
+<p>注意：如果一个目录有写的权限，其他用户对于这个目录下的文件也可以删除。</p>
+<h3 id="2、chown：更改文件属主，也可以同时更改文件属组"><a href="#2、chown：更改文件属主，也可以同时更改文件属组" class="headerlink" title="2、chown：更改文件属主，也可以同时更改文件属组"></a>2、chown：更改文件属主，也可以同时更改文件属组</h3><p>注意：这个命令只有管理员root才可以操作。而且系统里是必须存在这个用户。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626165146255-1650931601.png" alt="img"></p>
+<p>语法：</p>
+<p>chown [–R] 属主名： 文件名</p>
+<p>chown [-R] 属主名：属组名 文件名</p>
+<h3 id="3、chgrp：更改文件属组。"><a href="#3、chgrp：更改文件属组。" class="headerlink" title="3、chgrp：更改文件属组。"></a>3、chgrp：更改文件属组。</h3><p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626170509313-1815193220.png" alt="img"></p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-R] 属组名 文件名</span><br></pre></td></tr></table></figure>
+
+<p>参数选项</p>
+<ul>
+<li>-R：递归更改文件属组，就是在更改某个目录文件的属组时，如果加上-R的参数，那么该目录下的所有文件的属组都会更改。</li>
+</ul>
+<h3 id="4、umask设置预设的权限掩码"><a href="#4、umask设置预设的权限掩码" class="headerlink" title="4、umask设置预设的权限掩码"></a><strong>4、umask设置预设的权限掩码</strong></h3><p>Linux umask命令指定在建立文件时预设的权限掩码，在学习这个命令之前，先了解一下默认的所有者和所属组是哪来的？</p>
+<p>一个文件创建的时候所有者和所属组是哪来的？</p>
+<p>所有者：谁创建的文件谁就是这个文件的所有者。</p>
+<p>所属组：就是这个文件创建者的缺省组，每个用户只能有一个缺省组。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172146490-1231316404.png" alt="img"></p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172519622-446882410.png" alt="img">显示新建文件的缺省权限。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173131946-156221821.png" alt="img"></p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173426757-2120027575.png" alt="img"></p>
+<p>创建一个目录的时候查看发现 权限跟缺省权限是一致的，但是在test目录里创建一个文件后，查看文件缺省权限跟默认缺省权限不一致，这个是为什么呢？</p>
+<p>rwxr-xr-x</p>
+<p>rw-r–r–  对比发现都少了一个x可执行权限，这是因为在Linux里缺省权限创建的文件是不可具有可执行权限的。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174110254-908588857.png" alt="img"></p>
+<p>单独执行  <strong>umask</strong>  发现现实出 <strong>0022</strong> ，这是什么意思呢？</p>
+<p>022是权限掩码意思，真正的权限是777-022=755 写出来就是rwxr-xr-x.</p>
+<p>如果我们自己要是想修改这个缺省权限，该怎么修改的。</p>
+<p>先把想修改的权限格式表示出来，算出对应的数字，再用777-对应的数字就可以，例如：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174709974-11233329.png" alt="img"></p>
+<h2 id="P79chmod详解"><a href="#P79chmod详解" class="headerlink" title="P79chmod详解"></a>P79chmod详解</h2><p>这是使用chmod命令时的正确语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [options] mode [，mode] file1 [file2 ...]</span><br></pre></td></tr></table></figure>
+
+<p>以下是chmod使用的一些常用选项：</p>
+<p>　●　-f， - silent， - quiet（抑制大多数错误消息）</p>
+<p>　●　-v， - verbose（为每个处理的文件输出诊断信息）</p>
+<p>　●　-c， - changes（类似于详细但仅在进行更改时报告）</p>
+<p>　●　-R， - recursive（递归更改文件和目录）（常用）</p>
+<p>　●　–help（显示帮助和退出）</p>
+<p>　●　–version（输出版本信息和退出）</p>
+<p>下面是可以为用户，组以及计算机上的其他所有人设置的几个数字权限的列表。数字旁边是读/写/执行字母等价物。</p>
+<p>　●　7：表示rwx，拥有读、写和执行的权限</p>
+<p>　●　6：表示rw-，拥有读和写的权限</p>
+<p>　●　5：表示rx，拥有读取和执行的权限</p>
+<p>　●　4：表示r–，拥有只读权限</p>
+<p>　●　3：表示-wx，拥有写入和执行的权限</p>
+<p>　●　2：表示-w-，拥有只写权限</p>
+<p>　●　1：表示 - x，仅拥有执行权限</p>
+<p>　●　0：表示—，无权限</p>
+<p>注：如果需要列出文件的权限，需要使用ls命令。</p>
+<p><strong>chmod命令示例</strong></p>
+<p>如果用户想要更改文件“participants”的权限，以便所有人都可以完全访问该文件，需要输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 participants</span><br></pre></td></tr></table></figure>
+
+<p>说明：第1个7设置用户的权限，第2个7设置组的权限，第3个7设置其他所有者的权限。</p>
+<p>如果用户想成为唯一可以访问它的人，可以使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 participants</span><br></pre></td></tr></table></figure>
+
+<p>用户想要为自己和其小组成员提供完全访问权限，可以使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 770 participants</span><br></pre></td></tr></table></figure>
+
+<p>如果用户想为自己保留完全访问权限，但希望阻止其他人修改文件，可以使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 participants</span><br></pre></td></tr></table></figure>
+
+<p>以下使用上面的字母来更改文件“participants”的权限，以便所有者可以读取和写入文件，但不会更改其他任何人的权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u&#x3D;rw participants</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置模式</strong> </p>
+<p>使用chmod命令可以为文件和目录设置其他文件系统模式。例如，要设置粘滞位 - 这意味着只有文件所有者，目录所有者或超级用户可以删除该文件，而不管文件的读写组权限如何 - 在数字序列前加1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 1755 participants</span><br></pre></td></tr></table></figure>
+
+<p>其他：</p>
+<p>用户还可以使用chgrp命令更改现有文件和文件夹的组所有权，使用newgrp命令更改新文件和文件夹的默认组。</p>
+<p>请记住，chmod命令中使用的符号链接将影响真实的目标对象。</p>
+
     </div>
 
     
@@ -203,7 +1185,10 @@
     <a href="/2020/04/26/linux3/" rel="prev" title="linux基础（42-59集）">
       <i class="fa fa-chevron-left"></i> linux基础（42-59集）
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/26/linux5/" rel="next" title="linux基础（81-100集）">
+      linux基础（81-100集） <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -262,6 +1247,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P60-61（用户文件权限）"><span class="nav-number">1.</span> <span class="nav-text">P60-61（用户文件权限）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux用户管理"><span class="nav-number">2.</span> <span class="nav-text">Linux用户管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux组管理"><span class="nav-number">3.</span> <span class="nav-text">Linux组管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-Linux权限管理"><span class="nav-number">4.</span> <span class="nav-text">二、 Linux权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chmod用户及组权限"><span class="nav-number">5.</span> <span class="nav-text">Chmod用户及组权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chmod二进制权限"><span class="nav-number">6.</span> <span class="nav-text">Chmod二进制权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux特殊权限及掩码"><span class="nav-number">7.</span> <span class="nav-text">Linux特殊权限及掩码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P62-63-ls-l"><span class="nav-number">8.</span> <span class="nav-text">P62-63(ls -l)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls常见命令参数"><span class="nav-number">8.1.</span> <span class="nav-text">ls常见命令参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-–l-文件显示内容分析"><span class="nav-number">8.2.</span> <span class="nav-text">ls –l 文件显示内容分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P64-65-chmod"><span class="nav-number">9.</span> <span class="nav-text">P64-65(chmod)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">9.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数说明"><span class="nav-number">9.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">9.3.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#r-4，w-2，x-1"><span class="nav-number">9.3.1.</span> <span class="nav-text">r&#x3D;4，w&#x3D;2，x&#x3D;1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P65-66（超级用户）"><span class="nav-number">10.</span> <span class="nav-text">P65-66（超级用户）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-sudo-命令"><span class="nav-number">10.1.</span> <span class="nav-text">(1)sudo 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sudo-i"><span class="nav-number">10.2.</span> <span class="nav-text">(2)sudo -i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如果想一直使用root权限，要通过su切换到root用户。"><span class="nav-number">10.3.</span> <span class="nav-text">(3)如果想一直使用root权限，要通过su切换到root用户。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-之后就可以自由的切换到root用户了"><span class="nav-number">10.4.</span> <span class="nav-text">(4)之后就可以自由的切换到root用户了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">10.5.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">10.6.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P67-69（组管理）"><span class="nav-number">11.</span> <span class="nav-text">P67-69（组管理）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Linux系统用户账号的管理"><span class="nav-number">12.</span> <span class="nav-text">一、Linux系统用户账号的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、添加新的用户账号使用useradd命令，其语法如下："><span class="nav-number">12.1.</span> <span class="nav-text">1、添加新的用户账号使用useradd命令，其语法如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例1"><span class="nav-number">12.1.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2"><span class="nav-number">12.1.2.</span> <span class="nav-text">实例2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、删除帐号"><span class="nav-number">12.2.</span> <span class="nav-text">2、删除帐号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、修改帐号"><span class="nav-number">12.3.</span> <span class="nav-text">3、修改帐号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、用户口令的管理"><span class="nav-number">12.4.</span> <span class="nav-text">4、用户口令的管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Linux系统用户组的管理"><span class="nav-number">13.</span> <span class="nav-text">二、Linux系统用户组的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、增加一个新的用户组使用groupadd命令。其格式如下："><span class="nav-number">13.1.</span> <span class="nav-text">1、增加一个新的用户组使用groupadd命令。其格式如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例1："><span class="nav-number">13.1.1.</span> <span class="nav-text">实例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2："><span class="nav-number">13.1.2.</span> <span class="nav-text">实例2：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下："><span class="nav-number">13.2.</span> <span class="nav-text">2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例如："><span class="nav-number">13.2.1.</span> <span class="nav-text">例如：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、修改用户组的属性使用groupmod命令。其语法如下："><span class="nav-number">13.3.</span> <span class="nav-text">3、修改用户组的属性使用groupmod命令。其语法如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例1：-1"><span class="nav-number">13.3.1.</span> <span class="nav-text">实例1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2：-1"><span class="nav-number">13.3.2.</span> <span class="nav-text">实例2：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。"><span class="nav-number">13.4.</span> <span class="nav-text">4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、与用户账号有关的系统文件"><span class="nav-number">14.</span> <span class="nav-text">三、与用户账号有关的系统文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-etc-passwd文件是用户管理工作涉及的最重要的一个文件。"><span class="nav-number">14.1.</span> <span class="nav-text">1、&#x2F;etc&#x2F;passwd文件是用户管理工作涉及的最重要的一个文件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1）”用户名”是代表用户账号的字符串。"><span class="nav-number">14.2.</span> <span class="nav-text">1）”用户名”是代表用户账号的字符串。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）“口令”一些系统中，存放着加密后的用户口令字。"><span class="nav-number">14.3.</span> <span class="nav-text">2）“口令”一些系统中，存放着加密后的用户口令字。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）“用户标识号”是一个整数，系统内部用它来标识用户。"><span class="nav-number">14.4.</span> <span class="nav-text">3）“用户标识号”是一个整数，系统内部用它来标识用户。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）“组标识号”字段记录的是用户所属的用户组。"><span class="nav-number">14.5.</span> <span class="nav-text">4）“组标识号”字段记录的是用户所属的用户组。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-“注释性描述”字段记录着用户的一些个人情况。"><span class="nav-number">14.6.</span> <span class="nav-text">5)“注释性描述”字段记录着用户的一些个人情况。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-“主目录”，也就是用户的起始工作目录。"><span class="nav-number">14.7.</span> <span class="nav-text">6)“主目录”，也就是用户的起始工作目录。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。"><span class="nav-number">14.8.</span> <span class="nav-text">7)用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-系统中有一类用户称为伪用户（pseudo-users）。"><span class="nav-number">14.9.</span> <span class="nav-text">8)系统中有一类用户称为伪用户（pseudo users）。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥有帐户文件"><span class="nav-number">15.</span> <span class="nav-text">拥有帐户文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3、用户组的所有信息都存放在-etc-group文件中。"><span class="nav-number">15.1.</span> <span class="nav-text">3、用户组的所有信息都存放在&#x2F;etc&#x2F;group文件中。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、添加批量用户"><span class="nav-number">15.2.</span> <span class="nav-text">四、添加批量用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）先编辑一个文本用户文件。"><span class="nav-number">15.3.</span> <span class="nav-text">（1）先编辑一个文本用户文件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）以root身份执行命令-usr-sbin-newusers，从刚创建的用户文件user-txt中导入数据，创建用户："><span class="nav-number">15.4.</span> <span class="nav-text">（2）以root身份执行命令 &#x2F;usr&#x2F;sbin&#x2F;newusers，从刚创建的用户文件user.txt中导入数据，创建用户：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）执行命令-usr-sbin-pwunconv。"><span class="nav-number">15.5.</span> <span class="nav-text">（3）执行命令&#x2F;usr&#x2F;sbin&#x2F;pwunconv。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）编辑每个用户的密码对照文件。"><span class="nav-number">15.6.</span> <span class="nav-text">（4）编辑每个用户的密码对照文件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）以-root-身份执行命令-usr-sbin-chpasswd。"><span class="nav-number">15.7.</span> <span class="nav-text">（5）以 root 身份执行命令 &#x2F;usr&#x2F;sbin&#x2F;chpasswd。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）确定密码经编码写入-etc-passwd的密码栏后。"><span class="nav-number">15.8.</span> <span class="nav-text">（6）确定密码经编码写入&#x2F;etc&#x2F;passwd的密码栏后。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P70-71-用户管理"><span class="nav-number">16.</span> <span class="nav-text">P70-71(用户管理)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P72-75（id，whoami，who）"><span class="nav-number">17.</span> <span class="nav-text">P72-75（id，whoami，who）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#id-用户名：查看用户UID和GID信息"><span class="nav-number">17.1.</span> <span class="nav-text">id 用户名：查看用户UID和GID信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-2"><span class="nav-number">17.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">17.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#who：查看当前所有登录的用户列表"><span class="nav-number">17.4.</span> <span class="nav-text">who：查看当前所有登录的用户列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">17.5.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-3"><span class="nav-number">17.6.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#whoami：查看当前登录用户的账户名"><span class="nav-number">17.7.</span> <span class="nav-text">whoami：查看当前登录用户的账户名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-4"><span class="nav-number">17.8.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-4"><span class="nav-number">17.9.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod"><span class="nav-number">17.10.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-5"><span class="nav-number">17.11.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-5"><span class="nav-number">17.12.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usermod-S-bin-bash-用户名"><span class="nav-number">17.13.</span> <span class="nav-text">usermod -S &#x2F;bin&#x2F;bash 用户名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P76which"><span class="nav-number">18.</span> <span class="nav-text">P76which</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-6"><span class="nav-number">18.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-6"><span class="nav-number">18.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P77（su切换用户）"><span class="nav-number">19.</span> <span class="nav-text">P77（su切换用户）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-7"><span class="nav-number">19.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-7"><span class="nav-number">19.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P78修改文件权限"><span class="nav-number">20.</span> <span class="nav-text">P78修改文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-8"><span class="nav-number">20.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-8"><span class="nav-number">20.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、chmod：更改文件9个属性"><span class="nav-number">20.3.</span> <span class="nav-text">1、chmod：更改文件9个属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#①-数字改变文件权限（常用）"><span class="nav-number">20.3.1.</span> <span class="nav-text">① 数字改变文件权限（常用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#②-符号类型改变文件权限"><span class="nav-number">20.3.2.</span> <span class="nav-text">② 符号类型改变文件权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、chown：更改文件属主，也可以同时更改文件属组"><span class="nav-number">20.4.</span> <span class="nav-text">2、chown：更改文件属主，也可以同时更改文件属组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、chgrp：更改文件属组。"><span class="nav-number">20.5.</span> <span class="nav-text">3、chgrp：更改文件属组。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、umask设置预设的权限掩码"><span class="nav-number">20.6.</span> <span class="nav-text">4、umask设置预设的权限掩码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P79chmod详解"><span class="nav-number">21.</span> <span class="nav-text">P79chmod详解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -275,7 +1261,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
