@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="文件操作（IO技术）一个完整的程序一般都包括数据的存储和读取;我们在前面写的程序数据都没有进行实 际的存储，因此 python 解释器执行完数据就消失了。实际开发中，我们经常需要从外部存 储介质(硬盘、光盘、U 盘等)读取数据，或者将程序产生的数据存储到文件中，实现“持 久化”保存。 很多软件系统是将数据存储的数据库中;数据库实际也是基于文件 形式存储的 文本文件和二进制文件 按文件中数据组织形式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python400集5">
+<meta property="og:url" content="http://yoursite.com/2020/05/03/python400%E9%9B%865/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="文件操作（IO技术）一个完整的程序一般都包括数据的存储和读取;我们在前面写的程序数据都没有进行实 际的存储，因此 python 解释器执行完数据就消失了。实际开发中，我们经常需要从外部存 储介质(硬盘、光盘、U 盘等)读取数据，或者将程序产生的数据存储到文件中，实现“持 久化”保存。 很多软件系统是将数据存储的数据库中;数据库实际也是基于文件 形式存储的 文本文件和二进制文件 按文件中数据组织形式">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-04T00:13:49.000Z">
+<meta property="article:modified_time" content="2020-05-05T20:06:02.474Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/03/python400%E9%9B%865/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>python400集5 | Jackson Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/python400%E9%9B%865/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python400集5
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-03 19:13:49" itemprop="dateCreated datePublished" datetime="2020-05-03T19:13:49-05:00">2020-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-05 15:06:02" itemprop="dateModified" datetime="2020-05-05T15:06:02-05:00">2020-05-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="文件操作（IO技术）"><a href="#文件操作（IO技术）" class="headerlink" title="文件操作（IO技术）"></a>文件操作（IO技术）</h1><p>一个完整的程序一般都包括数据的存储和读取;我们在前面写的程序数据都没有进行实 际的存储，因此 python 解释器执行完数据就消失了。实际开发中，我们经常需要从外部存 储介质(硬盘、光盘、U 盘等)读取数据，或者将程序产生的数据存储到文件中，实现“持 久化”保存。</p>
+<p>很多软件系统是将数据存储的数据库中;数据库实际也是基于文件 形式存储的</p>
+<p><strong>文本文件和二进制文件</strong></p>
+<p>按文件中数据组织形式，我们把文件分为文本文件和二进制文件两大类。</p>
+<ol>
+<li>文本文件</li>
+</ol>
+<p>文本文件存储的是普通“字符”文本，python 默认为 unicode 字符集(两个字节表示 一个字符，最多可以表示:65536 个)，可以使用记事本程序打开。但是，像 word 软件 编辑的文档不是文本文件。</p>
+<ol start="2">
+<li>二进制文件</li>
+</ol>
+<p>二进制文件把数据内容用“字节”进行存储，无法用记事本打开。必须使用专用的软件 解码。常见的有:MP4 视频文件、MP3 音频文件、JPG 图片、doc 文档等等。</p>
+<h2 id="文件操作相关模块概述"><a href="#文件操作相关模块概述" class="headerlink" title="文件操作相关模块概述"></a><strong>文件操作相关模块概述</strong></h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>io 模块</td>
+<td>文件流的输入和输出操作 input output</td>
+</tr>
+<tr>
+<td>os 模块</td>
+<td>基本操作系统功能，包括文件操作</td>
+</tr>
+<tr>
+<td>glob 模块</td>
+<td><code>查找符合特定规则的文件路径名</code></td>
+</tr>
+<tr>
+<td>fnmatch 模块</td>
+<td><code>使用模式来匹配文件路径名</code></td>
+</tr>
+<tr>
+<td>fileinput 模块</td>
+<td>处理多个输入文件</td>
+</tr>
+<tr>
+<td>filecmp 模块</td>
+<td>用于文件的比较</td>
+</tr>
+<tr>
+<td>cvs 模块</td>
+<td>用于 csv 文件处理</td>
+</tr>
+<tr>
+<td>pickle 和 cPickle</td>
+<td>用于序列化和反序列化</td>
+</tr>
+<tr>
+<td>xml 包</td>
+<td>用于 XML 数据处理</td>
+</tr>
+<tr>
+<td>bz2、gzip、zipfile、zlib、tarfile</td>
+<td><code>用于处理压缩和解压缩文件(分别对应不同的算法)</code></td>
+</tr>
+</tbody></table>
+<h2 id="创建文件对象-open"><a href="#创建文件对象-open" class="headerlink" title="创建文件对象 open()"></a><strong>创建文件对象 open()</strong></h2><p>open()函数用于创建文件对象，基本语法格式如下: open(文件名[,打开方式])</p>
+<p>如果只是文件名，代表在当前目录下的文件。文件名可以录入全路径，比如:D:\a\b.txt。</p>
+<h3 id="为了减少“-”的输入，可以使用原始字符串-r-“d-b-txt”。"><a href="#为了减少“-”的输入，可以使用原始字符串-r-“d-b-txt”。" class="headerlink" title="为了减少“\”的输入，可以使用原始字符串:r “d:\b.txt”。"></a>为了减少“\”的输入，可以使用原始字符串:r “d:\b.txt”。</h3><h3 id="示例如下"><a href="#示例如下" class="headerlink" title="示例如下:"></a>示例如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(r&quot;d:\b.txt&quot;,&quot;w&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>打开方式有如下几种:</p>
+<p>模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> r 读 read 模式</span><br><span class="line"></span><br><span class="line">w 写 write 模式。如果文件不存在则创建;如果文件存在，则重写新内容;</span><br><span class="line"></span><br><span class="line">a 追加 append 模式。如果文件不存在则创建;如果文件存在，则在文件末尾追加内容</span><br><span class="line"></span><br><span class="line">b 二进制 binary 模式(可与其他模式组合使用)</span><br><span class="line"></span><br><span class="line">+ 读、写模式(可与其他模式组合使用)</span><br></pre></td></tr></table></figure>
+
+<p>文本文件对象和二进制文件对象的创建: 如果我们没有增加模式“b”，则默认创建的是文本文件对象，处理的基本单元是“字符”。如果是二进制模式“b”，则创建的是二进制文件对象，处理的基本单元是“字节”。</p>
+<h2 id="文本文件的写入"><a href="#文本文件的写入" class="headerlink" title="文本文件的写入"></a><strong>文本文件的写入</strong></h2><p><strong>基本的文件写入操作</strong></p>
+<p>文本文件的写入一般就是三个步骤: </p>
+<ol>
+<li>创建文件对象</li>
+<li>写入数据</li>
+<li>关闭文件对象</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">r"a.txt"</span>,<span class="string">"a"</span>) </span><br><span class="line">s = <span class="string">"itbaizhan\nsxt\n"</span> </span><br><span class="line">f.write(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用编码介绍"><a href="#常用编码介绍" class="headerlink" title="常用编码介绍"></a><strong>常用编码介绍</strong></h2><p>在操作文本文件时，经常会操作中文，这时候就经常会碰到乱码问题。</p>
+<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a><strong>ASCII</strong></h3><p>全称为 American Standard Code for Information Interchange，美国信 息交换标准代码，这是世界上最早最通用的单字节编码系统，主要用来显示现代 英语及其他西欧语言。</p>
+<p>ASCII 码用 7 位表示，只能表示 128 个字符。只定义了 27=128 个字符，用 7bit 即可完全编码，而一字节 8bit 的容量是 256，所以一字节 ASCII 的编码最 高位总是 0。</p>
+<p>0<del>31 表示控制字符如回车、退格、删除等;32</del>126 表示打印字符即可以 通过键盘输入并且能显示出来的字符;其中 48<del>57 为 0 到 9 十个阿拉伯数字， 65</del>90 为 26 个大写英文字母，97~122 号为 26 个小写英文字母，其余为一 些标点符号、运算符号等，具体可以参考 ASCII 标准表(大家自行百度，不在此 赘述)。</p>
+<h3 id="ISO8859-1"><a href="#ISO8859-1" class="headerlink" title="ISO8859-1"></a><strong>ISO8859-1</strong></h3><p>ISO-8859-1 又称 Latin-1，是一个 8 位单字节字符集，它把 ASCII 的最高 位也利用起来，并兼容了 ASCII，新增的空间是 128，但它并没有完全用完。</p>
+<p>在 ASCII 编码之上又增加了西欧语言、希腊语、泰语、阿拉伯语、希伯来语 对应的文字符号，它是向下兼容 ASCII 编码</p>
+<h3 id="GB2312-GBK-GB18030"><a href="#GB2312-GBK-GB18030" class="headerlink" title="GB2312,GBK,GB18030"></a><strong>GB2312,GBK,GB18030</strong></h3><h4 id="·GB2312"><a href="#·GB2312" class="headerlink" title="·GB2312"></a><strong>·GB2312</strong></h4><p>GB2312 全称为信息交换用汉字编码字符集，是中国于 1980 年发布，主要 用于计算机系统中的汉字处理。GB2312 主要收录了 6763 个汉字、682 个符号。</p>
+<p>GB2312 覆盖了汉字的大部分使用率，但不能处理像古汉语等特殊的罕用字， 所以后来出现了像 GBK、GB18030 这种编码。</p>
+<p><strong>GB2312 完全兼容 ISO8859-1。</strong></p>
+<h4 id="·GBK"><a href="#·GBK" class="headerlink" title="·GBK"></a><strong>·GBK</strong></h4><p>全称为 Chinese Internal Code Specification，即汉字内码扩展规范，于 1995 年制定。 它主要是扩展了 GB2312，在它的基础上又加了更多的汉字，它一共收录了 21003 个汉字</p>
+<h4 id="·GB18030"><a href="#·GB18030" class="headerlink" title="·GB18030"></a><strong>·GB18030</strong></h4><p>现在最新的内码字集于 2000 年发布，并于 2001 年强制执行，包含了中国大部分少数 民族的语言字符，收录汉字数超过 70000 余个。</p>
+<p>它主要采用单字节、双字节、四字节对字符编码，它是向下兼容 GB2312 和 GBK 的， 虽然是我国的强制使用标准，但在实际生产中很少用到，用得最多的反而是 GBK 和 GB2312</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a><strong>Unicode</strong></h3><p>Unicode 编码设计成了固定两个字节，所有的字符都用 16 位(2^16=65536) 表示，包括之前只占 8 位的英文字符等，所以会造成空间的浪费，UNICODE 在 很长的一段时间内都没有得到推广应用。</p>
+<p>6</p>
+<p>北京尚学堂·百战程序员 高淇的 python400 集:从零打好内功，直达手写神经网络 Unicode 完全重新设计，不兼容 iso8859-1，也不兼容任何其他编码。</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a><strong>UTF-8</strong></h3><p>对于英文字母，unicode 也需要两个字节来表示。所以 unicode 不便 于传输和存储。因此而产生了 UTF 编码，UTF-8 全称是(8-bit Unicode Transformation Format)。</p>
+<p>UTF 编码兼容 iso8859-1 编码，同时也可以用来表示所有语言的字符， 不过，UTF 编码是不定长编码，每一个字符的长度从 1-4 个字节不等。其中， 英文字母都是用一个字节表示，而汉字使用三个字节。</p>
+<p>【老鸟建议】一般项目都会使用 UTF-8。unicode 中虽然汉字是两个字节， UTF-8 中汉字是 3 个字节。但是互联网中一个网页也包含了大量的英文字母， 这些英文字母只占用 1 个字节，整体占用空间，UTF-8 仍然由于 Unicode。</p>
+<h2 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a><strong>中文乱码问题</strong></h2><p>windows 操作系统默认的编码是 GBK，Linux 操作系统默认的编码是 UTF-8。当我们 用 open()时，调用的是操作系统打开的文件，默认的编码是 GBK。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们在文件编辑区单击右键，选择 FileEncoding，选择 GBK 即可:</span><br></pre></td></tr></table></figure>
+
+<h2 id="write-writelines-写入数据"><a href="#write-writelines-写入数据" class="headerlink" title="write()/writelines()写入数据"></a><strong>write()/writelines()写入数据</strong></h2><p>write(a):把字符串 a 写入到文件中 </p>
+<p>writelines(b):把字符串列表写入文件中，不添加换行符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">r"d:\bb.txt"</span>,<span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) </span><br><span class="line">s = [<span class="string">"高淇\n"</span>,<span class="string">"高老三\n"</span>,<span class="string">"高老四\n"</span>] </span><br><span class="line">f.writelines(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="close-关闭文件流"><a href="#close-关闭文件流" class="headerlink" title="close()关闭文件流"></a><strong>close()关闭文件流</strong></h2><p>由于文件底层是由操作系统控制，所以我们打开的文件对象必须显式调用 close()方法 关闭文件对象。当调用 close()方法时，首先会把缓冲区数据写入文件(也可以直接调用 flush() 方法)，再关闭文件，释放文件对象。</p>
+<p>为了确保打开的文件对象正常关闭，一般结合异常机制的 finally 或者 with 关键字实现 无论何种情况都能关闭打开的文件对象。</p>
+<p>结合异常机制 finally 确保关闭文件对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	f = open(<span class="string">r"my01.txt"</span>,<span class="string">"a"</span>) </span><br><span class="line">  str = <span class="string">"gaoqi"</span></span><br><span class="line">	f.write(str)</span><br><span class="line"><span class="keyword">except</span> BaseException <span class="keyword">as</span> e: </span><br><span class="line">  print(e)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="with-语句-上下文管理器"><a href="#with-语句-上下文管理器" class="headerlink" title="with 语句(上下文管理器)"></a><strong>with 语句(上下文管理器)</strong></h2><p>with 关键字(上下文管理器)可以自动管理上下文资源，不论什么原因跳出 with 块，都能 确保文件正确的关闭，并且可以在代码块执行完毕后自动还原进入该代码块时的现场。</p>
+<p>使用 with 管理文件写入操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = [<span class="string">"高淇\n"</span>,<span class="string">"高老三\n"</span>,<span class="string">"高老五\n"</span>]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\bb.txt"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.writelines(s)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文本文件的读取"><a href="#文本文件的读取" class="headerlink" title="文本文件的读取"></a><strong>文本文件的读取</strong></h2><p>文件的读取一般使用如下三个方法: 1. read([size])</p>
+<p>从文件中读取 size 个字符，并作为结果返回。如果没有 size 参数，则读取整个文件。</p>
+<p>读取到文件末尾，会返回空字符串。 2. readline()</p>
+<p>读取一行内容作为结果返回。读取到文件末尾，会返回空字符串。 3. readlines()</p>
+<p>文本文件中，每一行作为一个字符串存入列表中，返回该列表</p>
+<p>读取一个文件前 4 个字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;bb&quot;,&quot;r&quot;,encoding&#x3D;&quot;utf-8&quot;) as f: </span><br><span class="line">	print(f.read(4))</span><br></pre></td></tr></table></figure>
+
+<p>文件较小，一次将文件内容读入到程序中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;d:\bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	print(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>按行读取一个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	while True:</span><br><span class="line">		fragment &#x3D; f.readline() </span><br><span class="line">		if not fragment:</span><br><span class="line">			break </span><br><span class="line">		else:</span><br><span class="line">			print(fragment,end&#x3D;&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>使用迭代器(每次返回一行)读取文本文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;d:\bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	for a in f:</span><br><span class="line">		print(a,end&#x3D;&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>为文本文件每一行的末尾增加行号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"e.txt"</span>,<span class="string">"r"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f: </span><br><span class="line">  lines = f.readlines()</span><br><span class="line">  lines = [ line.rstrip()+<span class="string">" #"</span>+str(index+<span class="number">1</span>)+<span class="string">"\n"</span> <span class="keyword">for</span> index,line <span class="keyword">in</span> enumerate(lines)] <span class="comment">#推导式生成列表</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"e.txt"</span>,<span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f: </span><br><span class="line">  f.writelines(lines)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">执行前文件内容:</span><br><span class="line">我 love u! </span><br><span class="line">尚学堂 </span><br><span class="line">百战程序员</span><br><span class="line">执行程序后文件内容:</span><br><span class="line">我 love u! #1 </span><br><span class="line">尚学堂 #2 </span><br><span class="line">百战程序员 #3</span><br></pre></td></tr></table></figure>
+
+<p><strong>二进制文件的读取和写入</strong></p>
+<p>二进制文件的处理流程和文本文件流程一致。首先还是要创建文件对象，不过，我们需要指 定二进制模式，从而创建出二进制文件对象。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;wb&#39;) #可写的、重写模式的二进制文件对象</span><br><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;ab&#39;)  #可写的、追加模式的二进制文件对象</span><br><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;rb&#39;) #可读的二进制文件对象</span><br></pre></td></tr></table></figure>
+
+<p>创建好二进制文件对象后，仍然可以使用 write()、read()实现文件的读写操作。</p>
+<p>读取图片文件，实现文件的拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;aa.gif&#39;, &#39;rb&#39;) as f:</span><br><span class="line">	with open(&#39;aa_copy.gif&#39;, &#39;wb&#39;) as w:</span><br><span class="line">		for line in f.readlines():</span><br><span class="line">    w.write(line)</span><br><span class="line">print(&#39;图片拷贝完成!&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件对象的常用属性和方法"><a href="#文件对象的常用属性和方法" class="headerlink" title="文件对象的常用属性和方法"></a>文件对象的常用属性和方法</h2><p>文件对象封装了文件相关的操作。在前面我们学习了通过文件对象对文件进行读写操作。本 节我们详细列出文件对象的常用属性和方法，并进行说明。</p>
+<p>文件对象的属性<br> 属性                                                说明</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>返回文件的名字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mode</td>
+<td>返回文件的打开模式</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>若文件被关闭则返回 True</td>
+</tr>
+</tbody></table>
+<p>文件对象的打开模式</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>读模式</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写模式</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加模式</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>二进制模式(可与其他模式组合)</code></td>
+</tr>
+<tr>
+<td>+</td>
+<td><code>读写模式(可以其他模式组合)</code></td>
+</tr>
+</tbody></table>
+<p>文件对象的常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read([size])</td>
+<td>从文件中读取 size 个字节或字符的内容返回。若省略[size]，则读 取到文件末尾，即一次读取文件所有内容</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>从文本文件中读取一行内容</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>把文本文件中每一行都作为独立的字符串对象，并将这些对象放入 列表返回</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>将字符串 str 内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(s)</td>
+<td>将字符串列表 s 写入文件文件，不添加换行符</td>
+</tr>
+<tr>
+<td>seek(offset ,whence])</td>
+<td>把文件指针移动到新的位置，offset 表示相对于 whence 的多少个 字节的偏移量; offset:                                 off 为正往结束方向移动，为负往开始方向移动 whence 不同的值代表不同含义:  0: 从文件头开始计算(默认值) 1:从当前位置开始计算  2:从文件尾开始计算</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tell()</td>
+<td>返回文件指针的当前位置</td>
+</tr>
+<tr>
+<td>truncate([size])</td>
+<td>不论指针在什么位置，只留下指针前 size 个字节的内容，其余全 部删除;  如果没有传入 size，则当指针当前位置到文件末尾内容全部删除</td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>把缓冲区的内容写入文件，但不关闭文件</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>把缓冲区内容写入文件，同时关闭文件，释放文件对象相关资源</td>
+</tr>
+</tbody></table>
+<h2 id="文件任意位置操作"><a href="#文件任意位置操作" class="headerlink" title="文件任意位置操作"></a><strong>文件任意位置操作</strong></h2><p>seek()移动文件指针示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;e.txt&quot;,&quot;r&quot;,encoding&#x3D;&quot;utf-8&quot;) as f: </span><br><span class="line">	print(&quot;文件名是:&#123;0&#125;&quot;.format(f.name)) </span><br><span class="line">	print(f.tell())</span><br><span class="line">	print(&quot;读取的内容:&#123;0&#125;&quot;.format(str(f.readline()))) </span><br><span class="line">	print(f.tell())</span><br><span class="line">	f.seek(0,0) </span><br><span class="line">	print(&quot;读取的内容:&#123;0&#125;&quot;.format(str(f.readline())))</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-pickle-序列化"><a href="#使用-pickle-序列化" class="headerlink" title="使用 pickle 序列化"></a><strong>使用 pickle 序列化</strong></h2><p>Python 中，一切皆对象，对象本质上就是一个“存储数据的内存块”。有时候，我们 需要将“内存块的数据”保存到硬盘上，或者通过网络传输到其他的计算机上。这时候，就 需要“对象的序列化和反序列化”。 对象的序列化机制广泛的应用在分布式、并行系统上。</p>
+<p>序列化指的是:将对象转化成“串行化”数据形式，存储到硬盘或通过网络传输到其他 地方。反序列化是指相反的过程，将读取到的“串行化数据”转化成对象。</p>
+<p>我们可以使用 pickle 模块中的函数，实现序列化和反序列操作。</p>
+<p>序列化我们使用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> pickle.dump(obj, file) obj 就是要被序列化的对象，file 指的是存储的文件</span><br><span class="line">pickle.load(file) 从 file 读取数据，反序列化成对象</span><br></pre></td></tr></table></figure>
+
+<p>1.序列化是指把对象转换为字节序列的过程，而反序列化是指把字节序列恢复为对象的过程</p>
+<p>2.对象序列化的最主要的用处就是在传递和保存对象的时候，保证对象的完整性和可传递性。序列化是把对象转换成有序字节流，以便在网络上传输或者保存在本地文件中。</p>
+<p>3.序列化机制的核心作用就是对象状态的保存与重建。</p>
+<p>4.反序列化就是客户端从文件中或网络上获得序列化后的对象字节流后，根据字节流中所保存的对象状态及描述信息，通过反序列化重建对象。</p>
+<p>5.序列化就是把实体对象状态按照一定的格式写入到有序字节流，反序列化就是从有序字节流重建对象，恢复对象状态。</p>
+<p>6.序列化算法一般会按步骤做如下事情：</p>
+<p>（1）将对象实例相关的类元数据输出。<br>（2）递归地输出类的超类描述直到不再有超类。<br>（3）类元数据完了以后，开始从最顶层的超类开始输出对象实例的实际数据值。<br>（4）从上至下递归输出实例的数据</p>
+<p>7.序列化的好处：</p>
+<p>一是实现了数据的持久化，通过序列化可以把数据永久地保存到硬盘上（通常存放在文件里），</p>
+<p>二是，利用序列化实现远程通信，即在网络上传送对象的字节序列。</p>
+<h4 id="对象序列化到文件中-反序列化"><a href="#对象序列化到文件中-反序列化" class="headerlink" title="对象序列化到文件中,反序列化"></a>对象序列化到文件中,反序列化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\data.dat"</span>,<span class="string">"wb"</span>) <span class="keyword">as</span> f:<span class="comment">#序列化</span></span><br><span class="line">  a1=<span class="string">"nihao"</span></span><br><span class="line">  a2=<span class="string">"223"</span></span><br><span class="line">  pickle.dump(a1,f)</span><br><span class="line">  pickle.dump(a2,f)</span><br><span class="line"> <span class="comment">#反序列化</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\data.dat"</span>,<span class="string">"rb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">  a1 = pickle.load(f)</span><br><span class="line">  a2 = pickle.load(f)</span><br><span class="line">  print(a1);print(a2)</span><br><span class="line">  <span class="comment">#打印出：nihao</span></span><br><span class="line">          <span class="number">223</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CSV-文件的操作"><a href="#CSV-文件的操作" class="headerlink" title="CSV 文件的操作"></a><strong>CSV 文件的操作</strong></h2><p>csv(Comma Separated Values)是逗号分隔符文本格式，常用于数据交换、Excel 文件和数据库数据的导入和导出。与 Excel 文件不同，CSV 文件中:</p>
+<p>值没有类型，所有值都是字符串 不能指定字体颜色等样式 不能指定单元格的宽高，不能合并单元格，没有多个工作表</p>
+<p>不能嵌入图像图表</p>
+<h3 id="csv-reader-对象和-csv-文件读取"><a href="#csv-reader-对象和-csv-文件读取" class="headerlink" title="csv.reader 对象和 csv 文件读取"></a><strong>csv.reader 对象和 csv 文件读取</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\a.csv"</span>) <span class="keyword">as</span> a:</span><br><span class="line">	a_csv = csv.reader(a) <span class="comment">#创建 csv 对象,它是一个包含所有数据的列表，每一行为一个元素</span></span><br><span class="line">  headers = next(a_csv) <span class="comment">#获得列表对象，包含标题行的信息</span></span><br><span class="line">  print(headers)</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> a_csv:<span class="comment">#循环打印各行内容</span></span><br><span class="line">		print(row)</span><br><span class="line">    <span class="comment">#['高老三', '19', '测试工程师', '20000'] </span></span><br><span class="line">    [<span class="string">'高老五'</span>, <span class="string">'20'</span>, <span class="string">'人工智能开发'</span>, <span class="string">'50000'</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="csv-writer-对象和-csv-文件写入"><a href="#csv-writer-对象和-csv-文件写入" class="headerlink" title="csv.writer 对象和 csv 文件写入"></a><strong>csv.writer 对象和 csv 文件写入</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">headers = [<span class="string">"工号"</span>,<span class="string">"姓名"</span>,<span class="string">"年龄"</span>,<span class="string">"地址"</span>,<span class="string">"月薪"</span>]</span><br><span class="line">rows = [(<span class="string">"1001"</span>,<span class="string">"高淇"</span>,<span class="number">18</span>,<span class="string">"西三旗 1 号院"</span>,<span class="string">"50000"</span>),(<span class="string">"1002"</span>,<span class="string">"高八"</span>,<span class="number">19</span>,<span class="string">"西三旗 1 号院"</span>,<span class="string">"30000"</span>)] </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\b.csv"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> b:</span><br><span class="line">	b_csv = csv.writer(b) <span class="comment">#创建 csv 对象</span></span><br><span class="line">	b_csv.writerow(headers) <span class="comment">#写入一行(标题)</span></span><br><span class="line">	b_csv.writerows(rows)  <span class="comment">#写入多行(数据)</span></span><br><span class="line">```</span><br><span class="line">执行结果:</span><br><span class="line">工号,姓名,年龄,地址,月薪 </span><br><span class="line"><span class="number">1001</span>,高淇,<span class="number">18</span>,西三旗 <span class="number">1</span> 号院,<span class="number">50000</span> </span><br><span class="line"><span class="number">1002</span>,高八,<span class="number">19</span>,西三旗 <span class="number">1</span> 号院,<span class="number">30000</span></span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h2 id="os-和-os-path-模块"><a href="#os-和-os-path-模块" class="headerlink" title="os 和 os.path 模块"></a><strong>os 和 os.path 模块</strong></h2><p>os 模块可以帮助我们直接对操作系统进行操作。我们可以直接调用操作系统的可执行 文件、命令，直接操作文件、目录等等。在系统运维的核心基础。</p>
+<p>**os 模块-调用操作系统命令</p>
+<h3 id="·os-system-可以帮助我们直接调用系统的命令"><a href="#·os-system-可以帮助我们直接调用系统的命令" class="headerlink" title="** ·os.system 可以帮助我们直接调用系统的命令"></a>** <strong>·os.system 可以帮助我们直接调用系统的命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os </span><br><span class="line">os.system(&quot;notepad.exe&quot;)#os.system 调用 windows 系统的记事本程序</span><br><span class="line">import os</span><br><span class="line">os.system(&quot;ping www.baidu.com&quot;)#os.system 调用 windows 系统中 ping 命令</span><br><span class="line">import os</span><br><span class="line">os.startfile(r&quot;C:\Program Files (x86)\Tencent\WeChat\WeChat.exe&quot;)#运行安装好的微信</span><br></pre></td></tr></table></figure>
+
+<p><strong>【注】</strong>Linux 是命令行操作更容易，我们可以通过 os.system 可以更加容易的调用相关的命 令;</p>
+<p>【注】控制台输出中文可能会有乱码问题，可以在 file–&gt;setting 中设置</p>
+<p><strong>os.startfile:直接调用可执行文件</strong></p>
+<p><strong>os 模块-文件和目录操作</strong></p>
+<p>我们可以通过前面讲的文件对象实现对于文件内容的读写操作。如果，还需要对文件和 目录做其他操作，可以使用 os 和 os.path 模块。</p>
+<p>os 模块下常用操作文件的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>remove(path)</td>
+<td>删除指定的文件</td>
+</tr>
+<tr>
+<td>rename(src,dest)</td>
+<td>重命名文件或目录</td>
+</tr>
+<tr>
+<td>stat(path)</td>
+<td>返回文件的所有属性</td>
+</tr>
+<tr>
+<td>listdir(path)</td>
+<td>返回 path 目录下的文件和目录列表</td>
+</tr>
+</tbody></table>
+<p>os 模块下关于目录操作的相关方法，汇总如下:</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mkdir(path)</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>makedirs(path1/path2/path3/… )</td>
+<td>创建多级目录</td>
+</tr>
+<tr>
+<td>rmdir(path)</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>removedirs(path1/path2…)</td>
+<td>删除多级目录</td>
+</tr>
+<tr>
+<td>getcwd()</td>
+<td>返回当前工作目录:current work dir</td>
+</tr>
+<tr>
+<td>chdir(path)</td>
+<td>把 path 设为当前工作目录</td>
+</tr>
+<tr>
+<td>walk()</td>
+<td>遍历目录树</td>
+</tr>
+<tr>
+<td>sep</td>
+<td><code>当前操作系统所使用的路径分隔符</code></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/01/rsa%E5%8A%A0%E5%AF%86/" rel="prev" title="rsa加密算法详解">
+      <i class="fa fa-chevron-left"></i> rsa加密算法详解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/03/python400%E9%9B%866/" rel="next" title="python400集6">
+      python400集6 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作（IO技术）"><span class="nav-number">1.</span> <span class="nav-text">文件操作（IO技术）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作相关模块概述"><span class="nav-number">1.1.</span> <span class="nav-text">文件操作相关模块概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建文件对象-open"><span class="nav-number">1.2.</span> <span class="nav-text">创建文件对象 open()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为了减少“-”的输入，可以使用原始字符串-r-“d-b-txt”。"><span class="nav-number">1.2.1.</span> <span class="nav-text">为了减少“\”的输入，可以使用原始字符串:r “d:\b.txt”。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例如下"><span class="nav-number">1.2.2.</span> <span class="nav-text">示例如下:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件的写入"><span class="nav-number">1.3.</span> <span class="nav-text">文本文件的写入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用编码介绍"><span class="nav-number">1.4.</span> <span class="nav-text">常用编码介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII"><span class="nav-number">1.4.1.</span> <span class="nav-text">ASCII</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISO8859-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">ISO8859-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GB2312-GBK-GB18030"><span class="nav-number">1.4.3.</span> <span class="nav-text">GB2312,GBK,GB18030</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#·GB2312"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">·GB2312</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#·GBK"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">·GBK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#·GB18030"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">·GB18030</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode"><span class="nav-number">1.4.4.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.4.5.</span> <span class="nav-text">UTF-8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文乱码问题"><span class="nav-number">1.5.</span> <span class="nav-text">中文乱码问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#write-writelines-写入数据"><span class="nav-number">1.6.</span> <span class="nav-text">write()&#x2F;writelines()写入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close-关闭文件流"><span class="nav-number">1.7.</span> <span class="nav-text">close()关闭文件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with-语句-上下文管理器"><span class="nav-number">1.8.</span> <span class="nav-text">with 语句(上下文管理器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件的读取"><span class="nav-number">1.9.</span> <span class="nav-text">文本文件的读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件对象的常用属性和方法"><span class="nav-number">1.10.</span> <span class="nav-text">文件对象的常用属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件任意位置操作"><span class="nav-number">1.11.</span> <span class="nav-text">文件任意位置操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-pickle-序列化"><span class="nav-number">1.12.</span> <span class="nav-text">使用 pickle 序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象序列化到文件中-反序列化"><span class="nav-number">1.12.0.1.</span> <span class="nav-text">对象序列化到文件中,反序列化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSV-文件的操作"><span class="nav-number">1.13.</span> <span class="nav-text">CSV 文件的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#csv-reader-对象和-csv-文件读取"><span class="nav-number">1.13.1.</span> <span class="nav-text">csv.reader 对象和 csv 文件读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#csv-writer-对象和-csv-文件写入"><span class="nav-number">1.13.2.</span> <span class="nav-text">csv.writer 对象和 csv 文件写入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-和-os-path-模块"><span class="nav-number">1.14.</span> <span class="nav-text">os 和 os.path 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#·os-system-可以帮助我们直接调用系统的命令"><span class="nav-number">1.14.1.</span> <span class="nav-text">** ·os.system 可以帮助我们直接调用系统的命令</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
