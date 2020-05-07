@@ -28,7 +28,7 @@
 <meta property="og:description" content="文件操作（IO技术）一个完整的程序一般都包括数据的存储和读取;我们在前面写的程序数据都没有进行实 际的存储，因此 python 解释器执行完数据就消失了。实际开发中，我们经常需要从外部存 储介质(硬盘、光盘、U 盘等)读取数据，或者将程序产生的数据存储到文件中，实现“持 久化”保存。 很多软件系统是将数据存储的数据库中;数据库实际也是基于文件 形式存储的 文本文件和二进制文件 按文件中数据组织形式">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-04T00:13:49.000Z">
-<meta property="article:modified_time" content="2020-05-05T20:06:02.474Z">
+<meta property="article:modified_time" content="2020-05-07T01:20:09.787Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
 
@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-05 15:06:02" itemprop="dateModified" datetime="2020-05-05T15:06:02-05:00">2020-05-05</time>
+                <time title="Modified: 2020-05-06 20:20:09" itemprop="dateModified" datetime="2020-05-06T20:20:09-05:00">2020-05-06</time>
               </span>
 
           
@@ -543,6 +543,82 @@
 <td><code>当前操作系统所使用的路径分隔符</code></td>
 </tr>
 </tbody></table>
+<p>os 模块:创建、删除目录、获取文件信息等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#coding&#x3D;utf-8</span><br><span class="line">#测试 os 模块中，关于文件和目录的操作 import os</span><br><span class="line">#############获取文件和文件夹相关的信息################ print(os.name) #windows-&gt;nt linux 和 unix-&gt;posix print(os.sep) #windows-&gt;\ linux 和 unix-&gt;&#x2F; print(repr(os.linesep)) #windows-&gt;\r\n linux--&gt;\n\</span><br><span class="line">print(os.stat(&quot;my02.py&quot;))</span><br><span class="line">##############关于工作目录的操作############### #print(os.getcwd())</span><br><span class="line">#os.chdir(&quot;d:&quot;) #改变当前的工作目录为:d:盘根目录 #os.mkdir(&quot;书籍&quot;) ################创建目录、创建多级目录、删除############# #os.mkdir(&quot;书籍&quot;)</span><br><span class="line">#os.rmdir(&quot;书籍&quot;) #相对路径都是相对于当前的工作目录</span><br><span class="line"></span><br><span class="line">#os.rename(&quot;电影&quot;,&quot;movie&quot;)</span><br><span class="line">dirs &#x3D; os.listdir(&quot;movie&quot;)</span><br><span class="line">print(dirs)</span><br></pre></td></tr></table></figure>
+
+<p><strong>os.path 模块</strong></p>
+<p>os.path 模块提供了目录相关(路径判断、路径切分、路径连接、文件夹遍历)的操作</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isabs(path)</td>
+<td>判断 path 是否绝对路径</td>
+</tr>
+<tr>
+<td>isdir(path)</td>
+<td>判断 path 是否为目录</td>
+</tr>
+<tr>
+<td>isfile(path)</td>
+<td>判断 path 是否为文件</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>exists(path)</th>
+<th><code>判断指定路径的文件是否存在</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getsize(filename)</td>
+<td>返回文件的大小</td>
+</tr>
+<tr>
+<td>abspath(path)</td>
+<td>返回绝对路径</td>
+</tr>
+<tr>
+<td>dirname(p)</td>
+<td>返回目录的路径</td>
+</tr>
+<tr>
+<td>getatime(filename)</td>
+<td>返回文件的最后访问时间</td>
+</tr>
+<tr>
+<td>getmtime(filename)</td>
+<td>返回文件的最后修改时间</td>
+</tr>
+<tr>
+<td>walk(top,func,arg)</td>
+<td>递归方式遍历目录</td>
+</tr>
+<tr>
+<td>join(path,*paths)</td>
+<td>连接多个 path</td>
+</tr>
+<tr>
+<td>split(path)</td>
+<td>对路径进行分割，以列表形式返回</td>
+</tr>
+<tr>
+<td>splitext(path)</td>
+<td><code>从路径中分割文件的扩展名</code></td>
+</tr>
+</tbody></table>
+<p><strong>walk()递归遍历所有文件和目录</strong></p>
+<p>os.walk()方法:</p>
+<p>返回一个 3 个元素的元组，(dirpath, dirnames, filenames), </p>
+<p>dirpath:要列出指定目录的路径 dirnames:目录下的所有文件夹 filenames:目录下的所有文件</p>
+<p><strong>shutil 模块(拷贝和压缩)</strong></p>
+<p>shutil 模块是 python 标准库中提供的，主要用来做文件和文件夹的拷贝、移动、删除等;还可以做 文件和文件夹的压缩、解压缩操作。</p>
+<p>os 模块提供了对目录或文件的一般操作。shutil 模块作为补充，提供了移动、复制、压缩、解压等操 作，这些 os 模块都没有提供。</p>
 
     </div>
 
