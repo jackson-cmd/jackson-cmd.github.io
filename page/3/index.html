@@ -145,6 +145,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/05/%E5%BC%80%E5%85%B3app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/%E5%BC%80%E5%85%B3app/" class="post-title-link" itemprop="url">开关app，terminal上网</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-05 15:13:13 / Modified: 16:22:06" itemprop="dateCreated datePublished" datetime="2020-05-05T15:13:13-05:00">2020-05-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Use-terminal-to-open-and-close-application-or-file"><a href="#Use-terminal-to-open-and-close-application-or-file" class="headerlink" title="Use terminal to open and close application or file"></a>Use terminal to open and close application or file</h1><h2 id="What-the-heck-a-new-world"><a href="#What-the-heck-a-new-world" class="headerlink" title="What the heck, a new world!"></a>What the heck, a new world!</h2><p>Very simple, so first of all, if we want to open a application</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">open -a applicationname</span><br><span class="line">#我这里用的是Google Chrome</span><br><span class="line">open -a &quot;Google Chrome&quot;#不加”“也可以,最好别加，好像有bug，因为下面atom加了显示失败</span><br><span class="line">如果要打开某个文件</span><br><span class="line">open .&#x2F;Desktop&#x2F;a.cpp -a Atom  #打开桌面的c++文件用atom打开</span><br></pre></td></tr></table></figure>
+
+<p>Hell no, how to close</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">osascript -e &#39;quit app &quot;Atom&quot;&#39;#osascript -e &#39;quit app &quot;Applicationname&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>用terminal玩转web browser</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">You’ll want to install the main w3m package and the w3m-img package if you want inline image support. Use the following command on Ubuntu:</span><br><span class="line"></span><br><span class="line">sudo apt-get install w3m w3m-img</span><br><span class="line"></span><br><span class="line">For Mac following command will install:</span><br><span class="line"></span><br><span class="line">brew install w3m</span><br><span class="line"></span><br><span class="line">You can use the arrow keys to move the cursor around or click at the desired location to move the cursor there. If you want to type in a text box, select the text box with your cursor and press Enter before typing your text. Load a hyperlink by selecting it with your cursor and pressing Enter.</span><br><span class="line">Shortcuts:</span><br><span class="line">Tab: Press the Tab key to position your cursor over the next hyperlink on the page.</span><br><span class="line">Shift-B: will take you back a page.</span><br><span class="line">Shif-U: If you want to load a different URL, you’ll get an URL prompt.</span><br><span class="line">Shift-H: To view the help page if you want to see a more complete list of keyboard shortcuts.</span><br><span class="line">Shift-T: To open a new tab and then you can press Shift-U and enter the new URL. Yes, it does support tab browsing:)</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">w3m 网址</span><br><span class="line">w3m baidu.com</span><br><span class="line">Tab: move to next interaction point</span><br><span class="line">Enter:Trigger interaction item(click&#x2F;enter)</span><br><span class="line">有text的话可以输入想search的内容</span><br><span class="line">jk，上下左右 移动光标</span><br><span class="line">qy 退出w3m</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/python400%E9%9B%8610/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2538,495 +2610,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/python400%E9%9B%862/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/29/python400%E9%9B%862/" class="post-title-link" itemprop="url">python400集2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-29 15:09:25" itemprop="dateCreated datePublished" datetime="2020-04-29T15:09:25-05:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-30 13:07:49" itemprop="dateModified" datetime="2020-04-30T13:07:49-05:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="python基础入门"><a href="#python基础入门" class="headerlink" title="python基础入门"></a>python基础入门</h1><h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>python 中常用的序列结构有:</p>
-<p>字符串、列表、元组、字典、集合</p>
-<h2 id="列表简介"><a href="#列表简介" class="headerlink" title="列表简介"></a><strong>列表简介</strong></h2><p><strong>列表:用于存储任意数目、任意类型的数据集合。</strong></p>
-<p>列表是内置可变序列，是包含多个元素的有序连续的内存空间。列表定义的标准语法格式: a = [10,20,30,40]</p>
-<p>其中，10,20,30,40 这些称为:列表 a 的元素。 列表中的元素可以各不相同，可以是任意类型。比如:</p>
-<p>a = [10,20,’abc’,True] 列表对象的常用方法汇总如下，方便大家学习和查阅。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>要点</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>list.append(x)</td>
-<td>增加元素</td>
-<td>将元素 x 增加到列表 list 尾部</td>
-</tr>
-<tr>
-<td>list.extend(aList)</td>
-<td>增加元素</td>
-<td>将列表 alist 所有元素加到列表 list 尾部</td>
-</tr>
-<tr>
-<td>list.insert(index,x)</td>
-<td>增加元素</td>
-<td>在列表 list 指定位置 index 处插入元素 x</td>
-</tr>
-<tr>
-<td>list.remove(x)</td>
-<td>删除元素</td>
-<td>在列表 list 中删除首次出现的指定元素 x</td>
-</tr>
-<tr>
-<td>list.pop([index])</td>
-<td>删除元素</td>
-<td>删除并返回列表 list 指定为止 index 处的元素，默认是 最后一个元素</td>
-</tr>
-<tr>
-<td>list.clear()</td>
-<td>删除所有元素</td>
-<td>删除列表所有元素，并不是删除列表对象</td>
-</tr>
-<tr>
-<td>list.index(x)</td>
-<td>访问元素</td>
-<td>返回第一个 x 的索引位置，若不存在 x 元素抛出异常</td>
-</tr>
-<tr>
-<td>list.count(x)</td>
-<td>计数</td>
-<td>返回指定元素 x 在列表 list 中出现的次数</td>
-</tr>
-<tr>
-<td>len(list)</td>
-<td>列表长度</td>
-<td><code>返回列表中包含元素的个数</code></td>
-</tr>
-<tr>
-<td>list.reverse()</td>
-<td>翻转列表</td>
-<td>所有元素原地翻转</td>
-</tr>
-<tr>
-<td>list.sort()</td>
-<td>排序</td>
-<td>所有元素原地排序</td>
-</tr>
-<tr>
-<td>list.copy()</td>
-<td>浅拷贝</td>
-<td>返回列表对象的浅拷贝</td>
-</tr>
-</tbody></table>
-<p>Python 的列表大小可变，根据需要随时增加或缩小。</p>
-<p>字符串和列表都是序列类型，一个字符串是一个字符序列，一个列表是任何元素的序列。我 们前面学习的很多字符串的方法，在列表中也有类似的用法，几乎一模一样。</p>
-<p><strong>列表的创建</strong></p>
-<h5 id="基本语法-创建"><a href="#基本语法-创建" class="headerlink" title="基本语法[]创建"></a><strong>基本语法[]创建</strong></h5><p><strong>list()创建</strong>: 使用 list()可以将任何可迭代的数据转化成列表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; list(&quot;gaoqi,sxt&quot;)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[&#39;g&#39;, &#39;a&#39;, &#39;o&#39;, &#39;q&#39;, &#39;i&#39;, &#39;,&#39;, &#39;s&#39;, &#39;x&#39;, &#39;t&#39;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>range()创建整数列表</strong></p>
-<p>range()可以帮助我们非常方便的创建整数列表，这在开发中及其有用。语法格式为: range([start,] end [,step])</p>
-<p>start 参数:可选，表示起始数字。默认是 0<br> end 参数:必选，表示结尾数字。<br> step 参数:可选，表示步长，默认为 1<br> python3 中 range()返回的是一个 range 对象，而不是列表。我们需要通过 list()方法将其 转换成列表对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(range(3,15,2))</span><br><span class="line">[3, 5, 7, 9, 11, 13]</span><br></pre></td></tr></table></figure>
-
-<p><strong>推导式生成列表</strong></p>
-<p>使用列表推导式可以非常方便的创建列表，在开发中经常使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> a &#x3D; [x*2 for x in range(100) if x%9&#x3D;&#x3D;0] #通过 if 过滤元素 </span><br><span class="line"> &gt;&gt;&gt; a</span><br><span class="line">[0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198]</span><br></pre></td></tr></table></figure>
-
-<p><strong>列表元素的增加和删除</strong></p>
-<p>当列表增加和删除元素时，列表会自动进行内存管理，大大减少了程序员的负担。但这 个特点涉及列表元素的大量移动，效率较低。除非必要，我们一般只在列表的尾部添加元素 或删除元素，这会大大提高列表的操作效率。</p>
-<p><strong>append()方法</strong></p>
-<p>原地修改列表对象，是真正的列表尾部添加新的元素，速度最快，推荐使用。 a.append(80)</p>
-<p><strong>+运算符操作</strong></p>
-<p>并不是真正的尾部添加元素，而是创建新的列表对象;将原列表的元素和新列表的元素依次 复制到新的列表对象中。这样，会涉及大量的复制操作，对于操作大量元素不建议使用。a = a+[50]</p>
-<p><strong>extend()方法</strong></p>
-<p>将目标列表的所有元素添加到本列表的尾部，属于原地操作，不创建新的列表对象。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [20,40]</span><br><span class="line">&gt;&gt;&gt; id(a)</span><br><span class="line">46016072</span><br><span class="line">&gt;&gt;&gt; a.extend([50,60])</span><br><span class="line">&gt;&gt;&gt; id(a)</span><br><span class="line">46016072</span><br></pre></td></tr></table></figure>
-
-<p><strong>insert()插入元素</strong></p>
-<p>使用 insert()方法可以将指定的元素插入到列表对象的任意制定位置。这样会让插入位置后 面所有的元素进行移动，会影响处理速度。涉及大量元素时，尽量避免使用。类似发生这种 移动的函数还有:remove()、pop()、del()，它们在删除非尾部元素时也会发生操作位置后 面元素的移动。</p>
-<p>a.insert(2,100)#在index2处加入100</p>
-<p><strong>乘法扩展</strong></p>
-<p>使用乘法扩展列表，生成一个新列表，新列表元素时原列表元素的多次重复。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">b &#x3D; a*3 </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[&#39;sxt&#39;, 100] </span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">[&#39;sxt&#39;, 100, &#39;sxt&#39;, 100, &#39;sxt&#39;, 100]</span><br></pre></td></tr></table></figure>
-
-<p><strong>列表元素的删除 del 删除</strong></p>
-<p>删除列表指定位置的元素。del a[1]</p>
-<p><strong>pop()方法</strong></p>
-<p>pop()删除并返回指定位置元素，如果未指定位置则默认操作列表最后一个元素。</p>
-<p>a.pop(1)#返回index 1的元素</p>
-<p><strong>remove()方法</strong></p>
-<p>删除首次出现的指定元素，若不存在该元素抛出异常。a.remove(20)</p>
-<h3 id="列表元素访问和计数"><a href="#列表元素访问和计数" class="headerlink" title="列表元素访问和计数"></a>列表元素访问和计数</h3><p>我们可以通过索引直接访问元素。索引的区间在[0, 列表长度-1]这个范围。超过这个范围则 会抛出异常。</p>
-<p><strong>index()获得指定元素在列表中首次出现的索引</strong></p>
-<p>index()可以获取指定元素首次出现的索引位置。语法是:index(value,[start,[end]])。其中， start 和 end 指定了搜索的范围。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a.index(30,5,7) #从索引位置 5 到 7 这个区间，第一次出现 30 元素的位置</span><br></pre></td></tr></table></figure>
-
-<p><strong>count()获得指定元素在列表中出现的次数</strong></p>
-<p>count()可以返回指定元素在列表中出现的次数。 a.count(20)</p>
-<p><strong>len()返回列表长度</strong></p>
-<p>len()返回列表长度，即列表中包含元素的个数。 len(a)</p>
-<p><strong>成员资格判断</strong></p>
-<p>判断列表中是否存在指定的元素，我们可以使用 count()方法，返回 0 则表示不存在，返回 大于 0 则表示存在。但是，一般我们会使用更加简洁的 in 关键字来判断，直接返回 True 或 False。100 not in a</p>
-<ol>
-<li><p><strong>切片操作</strong></p>
-<p>我们在前面学习字符串时，学习过字符串的切片操作，对于列表的切片操作和字符串类似。 切片是 Python 序列及其重要的操作，适用于列表、元组、字符串等等。切片的格式如下:</p>
-<p>切片 slice 操作可以让我们快速提取子列表或修改。标准格式为: [起始偏移量 start:终止偏移量 end[:步长 step]]</p>
-<p>注:当步长省略时顺便可以省略第二个冒号</p>
-<table>
-<thead>
-<tr>
-<th>操作和说明</th>
-<th>示例</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[:] 提取整个列表</td>
-<td>[10,20,30][:]</td>
-<td>[10,20,30]</td>
-</tr>
-<tr>
-<td>[start:]从 start 索引开始到 结尾</td>
-<td>[10,20,30][1:]</td>
-<td>[20,30]</td>
-</tr>
-<tr>
-<td>[:end]从头开始知道 end-1</td>
-<td>[10,20,30][:2]</td>
-<td>[10,20]</td>
-</tr>
-<tr>
-<td>[start:end]从 start 到 end-1</td>
-<td>[10,20,30,40][1:3]</td>
-<td>[20,30]</td>
-</tr>
-<tr>
-<td>[start:end:step] 从 start 提 取到 end-1，步长是 step</td>
-<td>[10,20,30,40,50,60,70][1:6: 2]</td>
-<td>[20, 40, 60]</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[10,20,30,40,50,60,70][-3:]</td>
-<td>倒数三个</td>
-<td>[50,60,70]</td>
-</tr>
-<tr>
-<td>10,20,30,40,50,60,70][-5:-3]</td>
-<td>倒数第五个到倒数 第三个(包头不包尾)</td>
-<td>[30,40]</td>
-</tr>
-<tr>
-<td>[10,20,30,40,50,60,70][::-1]</td>
-<td>步长为负，从右到左 反向提取</td>
-<td>[70, 60, 50, 40, 30, 20, 10]</td>
-</tr>
-</tbody></table>
-<p>切片操作时，起始偏移量和终止偏移量不在[0,字符串长度-1]这个范围，也不会报错。起始 偏移量小于 0 则会当做 0，终止偏移量大于“长度-1”会被当成”长度-1”</p>
-<p><strong>列表的遍历</strong></p>
-<p>for obj in listObj: print(obj)</p>
-<h3 id="复制列表所有的元素到新列表对象"><a href="#复制列表所有的元素到新列表对象" class="headerlink" title="复制列表所有的元素到新列表对象"></a>复制列表所有的元素到新列表对象</h3><p>我们可以通过如下简单方式，实现列表元素内容的复制: list1 = [30,40,50]</p>
-<p>list2 = [] + list1</p>
-<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="*列表排序 *"></a>*<em>列表排序 *</em></h3><p><strong>修改原列表，不建新列表的排序</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [20,10,30,40]</span><br><span class="line">&gt;&gt;&gt; id(a)</span><br><span class="line">46017416</span><br><span class="line">&gt;&gt;&gt; a.sort() #默认是升序排列 </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[10, 20, 30, 40]</span><br><span class="line">&gt;&gt;&gt; a &#x3D; [10,20,30,40] </span><br><span class="line">&gt;&gt;&gt; a.sort(reverse&#x3D;True) #降序</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[40, 30, 20, 10]</span><br><span class="line">&gt;&gt;&gt; import random </span><br><span class="line">&gt;&gt;&gt; random.shuffle(a) #打乱排序</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[20, 40, 30, 10]</span><br></pre></td></tr></table></figure>
-
-<h3 id="建新列表排序"><a href="#建新列表排序" class="headerlink" title="建新列表排序"></a>建新列表排序</h3><p>我们也可以通过内置函数 sorted()进行排序，这个方法返回新列表，不对原列表做修改。</p>
-<p> a = sorted(a)</p>
-<p> c = sorted(a,reverse=True)   #降序</p>
-<p><strong>reversed()返回迭代器</strong></p>
-<p>内置函数 reversed()也支持进行逆序排列，与列表对象 reverse()方法不同的是，内置函数 reversed()不对原列表做任何修改，只是返回一个逆序排列的迭代器对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">20</span>,<span class="number">10</span>,<span class="number">30</span>,<span class="number">40</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = reversed(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">&lt;list_reverseiterator object at <span class="number">0x0000000002BCCEB8</span>&gt; </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(c)</span><br><span class="line">[<span class="number">40</span>, <span class="number">30</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(c)</span><br><span class="line">[]</span><br><span class="line">···</span><br><span class="line">我们打印输出 c 发现提示是:list_reverseiterator。也就是一个迭代对象。同时，我们使用 list(c)进行输出，发现只能使用一次。第一次输出了元素，第二次为空。那是因为迭代对象 在第一次时已经遍历结束了，第二次不能再使用。</span><br><span class="line"></span><br><span class="line">···</span><br></pre></td></tr></table></figure>
-
-<p><strong>列表相关的其他内置函数汇总 max 和 min</strong></p>
-<p>用于返回列表中最大和最小值。max（a）</p>
-<p><strong>sum</strong></p>
-<p>对数值型列表的所有元素进行求和操作，对非数值型列表运算则会报错。</p>
-<h2 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组 tuple"></a><strong>元组 tuple</strong></h2><p>列表属于可变序列，可以任意修改列表中的元素。元组属于不可变序列，不能修改元组中的 元素。因此，元组没有增加元素、修改元素、删除元素相关的方法。</p>
-<p>因此，我们只需要学习元组的创建和删除，元组中元素的访问和计数即可。元组支持如 下操作:</p>
-<p>\1. 索引访问<br> \2. 切片操作<br> \3. 连接操作<br> \4. 成员关系操作<br> \5. 比较运算操作<br> \6. 计数:元组长度 len()、最大值 max()、最小值 min()、求和 sum()等。</p>
-<h3 id="元组的创建"><a href="#元组的创建" class="headerlink" title="元组的创建"></a><strong>元组的创建</strong></h3><p>\1. 通过()创建元组。小括号可以省略。</p>
-<p> 如果元组只有一个元素，则必须后面加逗号。这是因为解释器会把(1)解释为整数 1，(1,) 解释为元组。</p>
-<p>a = (10,20,30) 或者 a = 10,20,30</p>
-<p>\2. 通过 tuple()创建元组 tuple(可迭代的对象)</p>
-<p>tuple()可以接收列表、字符串、其他序列类型、迭代器等生成元组。 list()可以接收元组、字符串、其他序列类型、迭代器等生成列表。</p>
-<h3 id="元组的元素访问和计数"><a href="#元组的元素访问和计数" class="headerlink" title="元组的元素访问和计数"></a><strong>元组的元素访问和计数</strong></h3><p>\1. 元组的元素不能修改</p>
-<p>\2. 元组的元素访问和列表一样，只不过返回的仍然是元组对象。</p>
-<p>\3. 列表关于排序的方法 list.sorted()是修改原列表对象，元组没有该方法。如果要对元组排 序，只能使用内置函数 sorted(tupleObj)，并生成新的列表对象。 sorted(a)</p>
-<p><strong>zip</strong></p>
-<p>zip(列表 1，列表 2，…)将多个列表对应位置的元素组合成为元组，并返回这个 zip 对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; [10,20,30]</span><br><span class="line">&gt;&gt;&gt; b &#x3D; [40,50,60]</span><br><span class="line">&gt;&gt;&gt; c &#x3D; [70,80,90]</span><br><span class="line">&gt;&gt;&gt; d &#x3D; zip(a,b,c)</span><br><span class="line">&gt;&gt;&gt; list(d)</span><br><span class="line">[(10, 40, 70), (20, 50, 80), (30, 60, 90)]</span><br></pre></td></tr></table></figure>
-
-<p><strong>生成器推导式创建元组</strong></p>
-<p>从形式上看，生成器推导式与列表推导式类似，只是生成器推导式使用小括号。列表推 导式直接生成列表对象，生成器推导式生成的不是列表也不是元组，而是一个生成器对象。</p>
-<p>我们可以通过生成器对象，转化成列表或者元组。也可以使用生成器对象的<strong>next</strong>() 方法进行遍历，或者直接作为迭代器对象来使用。不管什么方式使用，元素访问结束后，如 果需要重新访问其中的元素，必须重新创建该生成器对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s &#x3D; (x*2 for x in range(5))</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x0000000002BDEB48&gt;</span><br><span class="line">&gt;&gt;&gt; tuple(s)</span><br><span class="line">(0, 2, 4, 6, 8)</span><br><span class="line">&gt;&gt;&gt; list(s) #只能访问一次元素。第二次就为空了。需要再生成一次 </span><br><span class="line">[]</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x0000000002BDEB48&gt;</span><br><span class="line">&gt;&gt;&gt; tuple(s)</span><br><span class="line">()</span><br><span class="line">&gt;&gt;&gt; s &#x3D; (x*2 for x in range(5))</span><br><span class="line">&gt;&gt;&gt; s.__next__()</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; s.__next__()</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; s.__next__()</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-
-<p><strong>元组总结</strong></p>
-<p>\1. 元组的核心特点是:不可变序列。<br> \2. 元组的访问和处理速度比列表快。<br> \3. 与整数和字符串一样，元组可以作为字典的键，列表则永远不能作为字典的键使用。</p>
-<h2 id="字典介绍"><a href="#字典介绍" class="headerlink" title="字典介绍"></a><strong>字典介绍</strong></h2><p>字典是“键值对”的无序可变序列，字典中的每个元素都是一个“键值对”，包含:“键 对象”和“值对象”。可以通过“键对象”实现快速获取、删除、更新对应的“值对象”。</p>
-<p>列表中我们通过“下标数字”找到对应的对象。字典中通过“键对象”找到对应的“值 对象”。“键”是任意的不可变数据，比如:整数、浮点数、字符串、元组。但是:列表、 字典、集合这些可变对象，不能作为“键”。并且“键”不可重复。</p>
-<p>“值”可以是任意的数据，并且可重复。</p>
-<p><strong>字典的创建</strong></p>
-<p>\1. 我们可以通过{}、dict()来创建字典对象。</p>
-<p>\2. 通过 zip()创建字典对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; k &#x3D; [&#39;name&#39;,&#39;age&#39;,&#39;job&#39;]</span><br><span class="line">&gt;&gt;&gt; v &#x3D; [&#39;gaoqi&#39;,18,&#39;techer&#39;]</span><br><span class="line">&gt;&gt;&gt; d &#x3D; dict(zip(k,v))</span><br></pre></td></tr></table></figure>
-
-<p>\3. 通过 fromkeys 创建值为空的字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; dict.fromkeys([&#39;name&#39;,&#39;age&#39;,&#39;job&#39;]) </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&#123;&#39;name&#39;: None, &#39;age&#39;: None, &#39;job&#39;: None&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>字典元素的访问</strong></p>
-<p>\1. 通过 [键] 获得“值”。若键不存在，则抛出异常。 a[‘name’]</p>
-<p>\2. 通过 get()方法获得“值”。推荐使用。优点是:指定键不存在，返回 None;也可以设 定指定键不存在时默认返回的对象。推荐使用 get()获取“值对象”。a.get(‘name’)</p>
-<p>\3. 列出所有的键值对</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a.items()</span><br><span class="line">dict_items([(&#39;name&#39;, &#39;gaoqi&#39;), (&#39;age&#39;, 18), (&#39;job&#39;, &#39;programmer&#39;)])</span><br></pre></td></tr></table></figure>
-
-<p>\4. 列出所有的键，列出所有的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a.keys()</span><br><span class="line">dict_keys([&#39;name&#39;, &#39;age&#39;, &#39;job&#39;])</span><br><span class="line">&gt;&gt;&gt; a.values()</span><br><span class="line">dict_values([&#39;gaoqi&#39;, 18, &#39;programmer&#39;])</span><br></pre></td></tr></table></figure>
-
-<p>\5. len() 键值对的个数<br> \6. 检测一个“键”是否在字典中 用in</p>
-<h3 id="字典元素添加、修改、删除"><a href="#字典元素添加、修改、删除" class="headerlink" title="字典元素添加、修改、删除"></a><strong>字典元素添加、修改、删除</strong></h3><p>\1. 给字典新增“键值对”。如果“键”已经存在，则覆盖旧的键值对;如果“键”不存在， 则新增“键值对”。a[‘age’]=16</p>
-<p>\2. 使用 update()将新字典中所有键值对全部添加到旧字典对象上。如果 key 有重复，则直 接覆盖。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; &#123;&#39;name&#39;:&#39;gaoqi&#39;,&#39;age&#39;:18,&#39;job&#39;:&#39;programmer&#39;&#125; </span><br><span class="line">&gt;&gt;&gt; b &#x3D; &#123;&#39;name&#39;:&#39;gaoxixi&#39;,&#39;money&#39;:1000,&#39;sex&#39;:&#39;男的&#39;&#125; </span><br><span class="line">&gt;&gt;&gt; a.update(b)</span><br></pre></td></tr></table></figure>
-
-<p>\3. 字典中元素的删除，可以使用 del()方法;或者 clear()删除所有键值对;pop()删除指定 键值对，并返回对应的“值对象”;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; del(a[&#39;name&#39;])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&#123;&#39;age&#39;: 18, &#39;job&#39;: &#39;programmer&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; b &#x3D; a.pop(&#39;age&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>\4. popitem() :随机删除和返回该键值对。字典是“无序可变序列”，因此没有第一个元 素、最后一个元素的概念;popitem 弹出随机的项，因为字典并没有”最后的元素”或者其 他有关顺序的概念。若想一个接一个地移除并处理项，这个方法就非常有效(因为不用首先获取键的列表)。</p>
-<p> a.popitem()</p>
-<p><strong>序列解包</strong></p>
-<p>序列解包可以用于元组、列表、字典。序列解包可以让我们方便的对多个变量赋值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x,y,z&#x3D;(20,30,10)</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">20</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">30</span><br><span class="line">&gt;&gt;&gt; z</span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; (a,b,c)&#x3D;(9,8,10) </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; [a,b,c]&#x3D;[10,20,30] </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
-
-<p>序列解包用于字典时，默认是对“键”进行操作; 如果需要对键值对操作，则需要使用 items();如果需要对“值”进行操作，则需要使用 values();</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s &#x3D; &#123;&#39;name&#39;:&#39;gaoqi&#39;,&#39;age&#39;:18,&#39;job&#39;:&#39;teacher&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; name,age,job&#x3D;s #默认对键进行操作 </span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&#39;name&#39;</span><br><span class="line">&gt;&gt;&gt; name,age,job&#x3D;s.items() </span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">(&#39;name&#39;, &#39;gaoqi&#39;)</span><br><span class="line">&gt;&gt;&gt; name,age,job&#x3D;s.values() </span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&#39;gaoqi&#39;</span><br></pre></td></tr></table></figure>
-
-<h3 id="字典核心底层原理-重要"><a href="#字典核心底层原理-重要" class="headerlink" title="字典核心底层原理(重要)"></a><strong>字典核心底层原理(重要)</strong></h3><p>字典对象的核心是散列表。散列表是一个稀疏数组(总是有空白元素的数组)，数组的 每个单元叫做 bucket。每个 bucket 有两部分:一个是键对象的引用，一个是值对象的引 用。<br> 由于，所有 bucket 结构和大小一致，我们可以通过偏移量来读取指定 bucket。</p>
-<p><strong>扩容</strong></p>
-<p>python 会根据散列表的拥挤程度扩容。“扩容”指的是:创造更大的数组，将原有内容 拷贝到新数组中。</p>
-<p>接近 2/3 时，数组就会扩容。</p>
-<p>用法总结:<br> \1. 键必须可散列</p>
-<p>(1) 数字、字符串、元组，都是可散列的。 </p>
-<p>(2) 自定义对象需要支持下面三点:</p>
-<ol>
-<li>1  支持 hash()函数</li>
-<li>2  支持通过<strong>eq</strong>()方法检测相等性。</li>
-<li>3  若 a==b 为真，则 hash(a)==hash(b)也为真。</li>
-</ol>
-<p>\2. 字典在内存中开销巨大，典型的空间换时间。<br> \3. 键查询速度很快<br> \4. 往字典里面添加新建可能导致扩容，导致散列表中键的次序变化。因此，不要在遍历字 典的同时进行字典的修改。</p>
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a><strong>集合</strong></h2><p><strong>集合创建和删除</strong></p>
-<p>\1. 使用{}创建集合对象，并使用 add()方法添加元素</p>
-<p>\2. 使用 set()，将列表、元组等可迭代对象转成集合。如果原来数据存在重复数据，则只保 留一个。</p>
-<p>\3. remove()删除指定元素;clear()清空整个集合</p>
-<p><strong>集合相关操作</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a &#x3D; &#123;1,3,&#39;sxt&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; b &#x3D; &#123;&#39;he&#39;,&#39;it&#39;,&#39;sxt&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a|b #并集</span><br><span class="line">&#123;1, 3, &#39;sxt&#39;, &#39;he&#39;, &#39;it&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a&amp;b #交集 </span><br><span class="line">&#123;&#39;sxt&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a-b #差集 </span><br><span class="line">&#123;1, 3&#125;</span><br><span class="line">&gt;&gt;&gt; a.union(b) #并集 </span><br><span class="line">&#123;1, 3, &#39;sxt&#39;, &#39;he&#39;, &#39;it&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a.intersection(b) #交集 </span><br><span class="line">&#123;&#39;sxt&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; a.difference(b) #差集 </span><br><span class="line">&#123;1, 3&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h1><h2 id="三元条件运算符"><a href="#三元条件运算符" class="headerlink" title="三元条件运算符"></a><strong>三元条件运算符</strong></h2><p>Python 提供了三元运算符，用来在某些简单双分支赋值情况。三元条件运算符语法格式如 下:</p>
-<h3 id="条件为真时的值-if-条件表达式-else-条件为假时的值"><a href="#条件为真时的值-if-条件表达式-else-条件为假时的值" class="headerlink" title="条件为真时的值 if (条件表达式) else 条件为假时的值"></a>条件为真时的值 if (条件表达式) else 条件为假时的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print( num if int(num)&lt;10 else &quot;数字太大&quot;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>可迭代对象</strong></p>
-<p>Python 包含以下几种可迭代对象: </p>
-<ol>
-<li>​    序列。包含:字符串、列表、元组 </li>
-<li><ol start="2">
-<li>字典</li>
-<li>. 迭代器对象(iterator)<br>  \4. 生成器函数(generator)<br>  \5. 文件对象</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">for x in print(x)</span><br><span class="line">for x in print(x)</span><br><span class="line">d.keys():#遍历字典所有的 key</span><br><span class="line">d.values():#遍历字典所有的 value</span><br><span class="line">for x in d.items():#遍历字典所有的&quot;键值对&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">【操作】利用嵌套循环打印九九乘法表</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		<span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">1</span>,m+<span class="number">1</span>):</span><br><span class="line">			print(<span class="string">"&#123;0&#125;*&#123;1&#125;=&#123;2&#125;"</span>.format(m,n,(m*n)),end=<span class="string">"\t"</span>) </span><br><span class="line">		print()</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用 zip()并行迭代</strong></p>
-<p>我们可以通过 zip()函数对多个序列进行并行迭代，zip()函数在最短序列“用完”时就会停止。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; (&quot;高淇&quot;,&quot;高老二&quot;,&quot;高老三&quot;,&quot;高老四&quot;) </span><br><span class="line">ages &#x3D; (18,16,20,25)</span><br><span class="line">jobs &#x3D; (&quot;老师&quot;,&quot;程序员&quot;,&quot;公务员&quot;)</span><br><span class="line">for name,age,job in zip(names,ages,jobs): </span><br><span class="line">	print(&quot;&#123;0&#125;--&#123;1&#125;--&#123;2&#125;&quot;.format(name,age,job))</span><br></pre></td></tr></table></figure>
-
-<p><strong>推导式创建序列</strong></p>
-<p>推导式是从一个或者多个迭代器快速创建序列的一种方法。它可以将循环和条件判断结合， 从而避免冗长的代码。推导式是典型的 Python 风格，会使用它代表你已经超过 Python 初 学者的水平。</p>
-<p><strong>列表推导式</strong></p>
-<p>列表推导式生成列表对象，语法如下:<br> [表达式 for item in 可迭代对象 ]</p>
-<p>或者:{表达式 for item in 可迭代对象 if 条件判断}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;&gt;&gt; [x for x in range(1,5)] </span><br><span class="line">[1, 2, 3, 4]</span><br><span class="line">&gt;&gt;&gt; [x*2 for x in range(1,5)]</span><br><span class="line">[2, 4, 6, 8]</span><br><span class="line">&gt;&gt;&gt; [x*2 for x in range(1,20) if x%5&#x3D;&#x3D;0 ] </span><br><span class="line">[10, 20, 30]</span><br><span class="line">&gt;&gt;&gt; [a for a in &quot;abcdefg&quot;]</span><br><span class="line">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]</span><br><span class="line">&gt;&gt;&gt; cells &#x3D; [(row,col) for row in range(1,10) for col in range(1,10)]</span><br><span class="line">#可以使用两个循环</span><br><span class="line">&gt;&gt;&gt; for cell in cells:</span><br><span class="line">print(cell)</span><br></pre></td></tr></table></figure>
-
-<p><strong>字典推导式</strong></p>
-<p>row in range(1,10) for col in range(1,10)]</p>
-<p>#可以使用两</p>
-<p>字典的推导式生成字典对象，格式如下:<br> {key_expression : value_expression for 表达式 in 可迭代对象}</p>
-<p>类似于列表推导式，字典推导也可以增加 if 条件判断、多个 for 循环。</p>
-<p>统计文本中字符出现的次数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\&gt;&gt;&gt; my_text &#x3D; &#39; i love you, i love sxt, i love gaoqi&#39;</span><br><span class="line">\&gt;&gt;&gt; char_count &#x3D; &#123;c:my_text.count(c) for c in my_text&#125;</span><br><span class="line">\&gt;&gt;&gt; char_count</span><br><span class="line">&#123;&#39; &#39;: 9, &#39;i&#39;: 4, &#39;l&#39;: 3, &#39;o&#39;: 5, &#39;v&#39;: 3, &#39;e&#39;: 3, &#39;y&#39;: 1, &#39;u&#39;: 1, &#39;,&#39;: 2, &#39;s&#39;: 1, &#39;x&#39;: 1, &#39;t&#39;: 1, &#39;g&#39;: 1, &#39;a&#39;: 1, &#39;q&#39;: 1&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>集合推导式</strong></p>
-<p>集合推导式生成集合，和列表推导式的语法格式类似:<br> {表达式 for item in 可迭代对象 }</p>
-<p>或者:{表达式 for item in 可迭代对象 if 条件判断}</p>
-<p>&gt;&gt;&gt; {x for x in range(1,100) if x%9==0} {99, 36, 72, 9, 45, 81, 18, 54, 90, 27, 63}</p>
-<h4 id="生成器推导式-生成元组"><a href="#生成器推导式-生成元组" class="headerlink" title="生成器推导式(生成元组)"></a>生成器推导式(生成元组)</h4><p>很多同学可能会问:“都有推导式，元组有没有?”，能不能用小括号呢? </p>
-<p> (x for x in range(1,100) if x%9==0)<br> &lt;generator object <genexpr> at 0x0000000002BD3048&gt; </p>
-<p>我们发现提示的是“一个生成器对象”。显然，元组是没有推导式的。</p>
-<p>一个生成器只能运行一次。第一次迭代可以得到数据，第二次迭代发现数据已经没有了。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; gnt &#x3D; (x for x in range(1,100) if x%9&#x3D;&#x3D;0)</span><br><span class="line"> &gt;&gt;&gt; for x in gnt:</span><br><span class="line"></span><br><span class="line">print(x,end&#x3D;&#39; &#39;)</span><br><span class="line"> 9 18 27 36 45 54 63 72 81 90 99 </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; for x in gnt:</span><br><span class="line"></span><br><span class="line">print(x,end&#x3D;&#39; &#39;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>Python 中函数分为如下几类: 1. 内置函数</p>
-<p>我们前面使用的 str()、list()、len()等这些都是内置函数，我们可以拿来直接使用。</p>
-<ol start="2">
-<li>标准库函数</li>
-</ol>
-<p>我们可以通过 import 语句导入库，然后使用其中定义的函数 </p>
-<ol start="3">
-<li>第三方库函数</li>
-</ol>
-<p>Python 社区也提供了很多高质量的库。下载安装这些库后，也是通过 import 语句导 入，然后可以使用这些第三方库的函数</p>
-<ol start="4">
-<li>用户自定义函数</li>
-</ol>
-<p>用户自己定义的函数，显然也是开发中适应用户自身需求定义的函数。今天我们学习的 就是如何自定义函数。</p>
-<h2 id="文档字符串-函数的注释"><a href="#文档字符串-函数的注释" class="headerlink" title="文档字符串(函数的注释)"></a><strong>文档字符串(函数的注释)</strong></h2><p>程序的可读性最重要，一般建议在函数体开始的部分附上函数定义说明，这就是“文档字符 串”，也有人成为“函数的注释”。我们通过三个单引号或者三个双引号来实现，中间可以</p>
-<p>北京尚学堂·百战程序员 实战 系统 好教育</p>
-<p>加入多行文字进行说明。</p>
-<p><strong>函数也是对象，内存底层分析</strong></p>
-<p>Python 中，“一切都是对象”。实际上，执行 def 定义函数后，系统就创建了相应的函数 对象。</p>
-<h3 id="变量的作用域-全局变量和局部变量"><a href="#变量的作用域-全局变量和局部变量" class="headerlink" title="变量的作用域(全局变量和局部变量)"></a>变量的作用域<strong>(</strong>全局变量和局部变量<strong>)</strong></h3><p>变量起作用的范围称为变量的作用域，不同作用域内同名变量之间互不影响。变量分为:全局变量、局部变量。</p>
-<p>全局变量:</p>
-<p>\1. 在函数和类定义之外声明的变量。作用域为定义的模块，从定义位置开始直到模块 结束。</p>
-<ol>
-<li>全局变量降低了函数的通用性和可读性。应尽量避免全局变量的使用。</li>
-<li>全局变量一般做常量使用。</li>
-<li>函数内要改变全局变量的值，使用 global 声明一下</li>
-</ol>
-<p>局部变量:<br> \1. 在函数体中(包含形式参数)声明的变量。<br> \2. 局部变量的引用比全局变量快，优先考虑使用。<br> \3. 如果局部变量和全局变量同名，则在函数内隐藏全局变量，只使用同名的局部变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">100</span> <span class="comment">#全局变量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">global</span> a <span class="comment">#如果要在函数内改变全局变量的值，增加 global 关键字声明</span></span><br><span class="line">	print(a) <span class="comment">#打印全局变量 a 的值, </span></span><br><span class="line">	a = <span class="number">300</span></span><br><span class="line">  print(a)<span class="comment">#局部变量a</span></span><br><span class="line">  print(locals())</span><br><span class="line">  print(globals())</span><br><span class="line">f1() </span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">```结果</span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="number">300</span></span><br><span class="line">&#123;&#125;</span><br><span class="line">&#123;'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': &lt;class '_frozen_importlib.BuiltinImporter'&gt;, '__spec__': None, '__annotations__': &#123;&#125;, '__builtins__': &lt;module 'builtins' (built-in)&gt;, '__file__': '/Users/mengxiaowang/Documents/a.py', 'a': 300, 'f1': &lt;function f1 at 0x7ff5602dc430&gt;&#125;</span><br><span class="line"><span class="number">300</span></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<p>另一种输出，因为local变global后没有了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">100</span> <span class="comment">#全局变量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">    a = <span class="number">300</span></span><br><span class="line">    print(locals())<span class="comment">#&#123;'a': 300&#125;</span></span><br><span class="line">    print(globals())<span class="comment">#&#123;'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': &lt;class '_frozen_importlib.BuiltinImporter'&gt;, '__spec__': None, '__annotations__': &#123;&#125;, '__builtins__': &lt;module 'builtins' (built-in)&gt;, 'a': &lt;function a at 0x7f9388270830&gt;&#125;</span></span><br><span class="line">f1() </span><br><span class="line">print(a)</span><br><span class="line"><span class="comment">#输出</span></span><br><span class="line">```</span><br><span class="line">&#123;<span class="string">'a'</span>: <span class="number">300</span>&#125;</span><br><span class="line">&#123;'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': &lt;class '_frozen_importlib.BuiltinImporter'&gt;, '__spec__': None, '__annotations__': &#123;&#125;, '__builtins__': &lt;module 'builtins' (built-in)&gt;, '__file__': '/Users/mengxiaowang/Documents/a.py', 'a': 100, 'f1': &lt;function f1 at 0x7fc050745430&gt;&#125;</span><br><span class="line"><span class="number">100</span></span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<h3 id="局部变量和全局变量效率测试"><a href="#局部变量和全局变量效率测试" class="headerlink" title="局部变量和全局变量效率测试"></a>局部变量和全局变量效率测试</h3><p>局部变量的查询和访问速度比全局变量快，优先考虑使用，尤其是在循环的时候。 在特别强调效率的地方或者循环次数较多的地方，可以通过将全局变量转为局部变量提高运 行速度。</p>
-<h3 id="参数的传递"><a href="#参数的传递" class="headerlink" title="参数的传递"></a><strong>参数的传递</strong></h3><p>函数的参数传递本质上就是:从实参到形参的赋值操作。 Python 中“一切皆对象”， 所有的赋值操作都是“引用的赋值”。所以，Python 中参数的传递都是“引用传递”，不 是“值传递”。具体操作时分为两类:</p>
-<p>\1. 对“可变对象”进行“写操作”，直接作用于原对象本身。</p>
-<p>\2. 对“不可变对象”进行“写操作”，会产生一个新的“对象空间”，并用新的值填 充这块空间。(起到其他语言的“值传递”效果，但不是“值传递”)</p>
-<p>可变对象有: 字典、列表、集合、自定义的对象等</p>
-<p>不可变对象有: 数字、字符串、元组、function 等</p>
-<h3 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a><strong>浅拷贝和深拷贝</strong></h3><p>为了更深入的了解参数传递的底层原理，我们需要讲解一下“浅拷贝和深拷贝”。我们可以 使用内置函数:copy(浅拷贝)、deepcopy(深拷贝)。</p>
-<p>浅拷贝:不拷贝子对象的内容，只是拷贝子对象的引用。 深拷贝:会连子对象的内存也全部拷贝一份，对子对象的修改不会影响源对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testCopy</span><span class="params">()</span>:</span> <span class="string">'''测试浅拷贝'''</span></span><br><span class="line">	a = [<span class="number">10</span>, <span class="number">20</span>, [<span class="number">5</span>, <span class="number">6</span>]] </span><br><span class="line">  b = copy.copy(a)</span><br><span class="line">	print(<span class="string">"a"</span>, a) </span><br><span class="line">  print(<span class="string">"b"</span>, b) </span><br><span class="line">  b.append(<span class="number">30</span>) </span><br><span class="line">  b[<span class="number">2</span>].append(<span class="number">7</span>) </span><br><span class="line">  print(<span class="string">"浅拷贝......"</span>) </span><br><span class="line">  print(<span class="string">"a"</span>, a) </span><br><span class="line">  print(<span class="string">"b"</span>, b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">testDeepCopy</span><span class="params">()</span>:</span> <span class="string">'''测试深拷贝'''</span></span><br><span class="line">	a = [<span class="number">10</span>, <span class="number">20</span>, [<span class="number">5</span>, <span class="number">6</span>]]</span><br><span class="line">  b = copy.deepcopy(a)</span><br><span class="line">	print(<span class="string">"a"</span>, a) </span><br><span class="line">  print(<span class="string">"b"</span>, b) </span><br><span class="line">  b.append(<span class="number">30</span>) </span><br><span class="line">  b[<span class="number">2</span>].append(<span class="number">7</span>) </span><br><span class="line">  print(<span class="string">"深拷贝......"</span>) </span><br><span class="line">  print(<span class="string">"a"</span>, a) </span><br><span class="line">  print(<span class="string">"b"</span>, b)</span><br><span class="line">testCopy() </span><br><span class="line">print(<span class="string">"*************"</span>) </span><br><span class="line">testDeepCopy()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">结果</span><br><span class="line"></span><br><span class="line">a [10, 20, [5, 6]]</span><br><span class="line">b [10, 20, [5, 6]]</span><br><span class="line">浅拷贝......</span><br><span class="line">a [10, 20, [5, 6, 7]]</span><br><span class="line">b [10, 20, [5, 6, 7], 30]</span><br><span class="line">   *************</span><br><span class="line">a [10, 20, [5, 6]]</span><br><span class="line">b [10, 20, [5, 6]] </span><br><span class="line">深拷贝......</span><br><span class="line">a [10, 20, [5, 6]]</span><br><span class="line">b [10, 20, [5, 6, 7], 30]</span><br></pre></td></tr></table></figure>
-
-<h3 id="传递不可变对象包含的子对象是可变的情况"><a href="#传递不可变对象包含的子对象是可变的情况" class="headerlink" title="传递不可变对象包含的子对象是可变的情况"></a>传递不可变对象包含的子对象是可变的情况</h3><p>#传递不可变对象时。不可变对象里面包含的子对象是可变的。则 方法内修改了这个可变对象，源对象也发生了变化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">10</span>,<span class="number">20</span>,[<span class="number">5</span>,<span class="number">6</span>]) </span><br><span class="line">print(<span class="string">"a:"</span>,id(a))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test01</span><span class="params">(m)</span>:</span> </span><br><span class="line">	print(<span class="string">"m:"</span>,id(m)) </span><br><span class="line">  m[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">888</span> </span><br><span class="line">  print(m) </span><br><span class="line">  print(<span class="string">"m:"</span>,id(m))</span><br><span class="line">test01(a)</span><br><span class="line">print(a)</span><br><span class="line">运行结果:</span><br><span class="line">a: <span class="number">41611632</span></span><br><span class="line">m: <span class="number">41611632</span> </span><br><span class="line">  (<span class="number">10</span>, <span class="number">20</span>, [<span class="number">888</span>, <span class="number">6</span>]) </span><br><span class="line">  m: <span class="number">41611632</span> </span><br><span class="line">    (<span class="number">10</span>, <span class="number">20</span>, [<span class="number">888</span>, <span class="number">6</span>])</span><br></pre></td></tr></table></figure>
-
-<p>id相对于c中地址符&amp;</p>
-<h3 id="参数的几种类型"><a href="#参数的几种类型" class="headerlink" title="*参数的几种类型 *"></a>*<em>参数的几种类型 *</em></h3><p><strong>位置参数</strong></p>
-<p>函数调用时，实参默认按位置顺序传递，需要个数和形参匹配。按位置传递的参数，称为: “位置参数”。</p>
-<p><strong>默认值参数</strong></p>
-<p>我们可以为某些参数设置默认值，这样这些参数在传递时就是可选的。称为“默认值参数”。 默认值参数放到位置参数后面。def f1(a,b,c=10,d=20): #默认值参数必须位于普通位置参数后面</p>
-<p><strong>命名参数</strong></p>
-<p>我们也可以按照形参的名称传递参数，称为“命名参数”，也称“关键字参数”。f1(8,9,19) #位置参数 f1(c=10,a=20,b=30) #命名参数</p>
-<p><strong>强制命名参数</strong></p>
-<p>在带星号的“可变参数”后面增加新的参数，必须在调用的时候“强制命名参数”。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(*a,b,c)</span>:</span> </span><br><span class="line">	print(a,b,c)</span><br><span class="line"><span class="comment">#f1(2,3,4) #会报错。由于 a 是可变参数，将 2,3,4 全部收集。造成 b 和 c 没有赋值。 </span></span><br><span class="line">f1(<span class="number">2</span>,b=<span class="number">3</span>,c=<span class="number">4</span>)</span><br><span class="line">执行结果: (<span class="number">2</span>,) <span class="number">3</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="lambda-表达式和匿名函数"><a href="#lambda-表达式和匿名函数" class="headerlink" title="lambda 表达式和匿名函数"></a><strong>lambda 表达式和匿名函数</strong></h2><p>lambda 表达式可以用来声明匿名函数。lambda 函数是一种简单的、在同一行中定义函数 的方法。lambda 函数实际生成了一个函数对象。<br> lambda 表达式只允许包含一个表达式，不能包含复杂语句，该表达式的计算结果就是函数 的返回值。</p>
-<p>lambda 表达式的基本语法如下:<br> lambda arg1,arg2,arg3… : &lt;表达式&gt;</p>
-<p>arg1/arg2/arg3 为函数的参数。&lt;表达式&gt;相当于函数体。运算结果是:表达式的运算结果。</p>
-<p>g = [lambda a:a<em>2,lambda b:b</em>3,lambda c:c*4]</p>
-<h3 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval()函数"></a><strong>eval()函数</strong></h3><p>功能:将字符串 str 当成有效的表达式来求值并返回计算结果。</p>
-<p>语法: eval(source[, globals[, locals]]) -&gt; value</p>
-<p>参数:<br> source:一个 Python 表达式或函数 compile()返回的代码对象 globals:可选。必须是 dictionary locals:可选。任意映射对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict1 = dict(a=<span class="number">100</span>,b=<span class="number">200</span>)</span><br><span class="line">d = eval(<span class="string">"a+b"</span>,dict1) </span><br><span class="line">print(d)<span class="comment">#eval 函数会将字符串当做语句来执行，因此会被注入安全隐患。比如:字符串中含有删除文 件的语句。那就麻烦大了。因此，使用时候，要慎重!!!</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a><strong>递归函数</strong></h2><p>递归函数指的是:自己调用自己的函数，在函数体内部直接或间接的自己调用自己。递归类 似于大家中学数学学习过的“数学归纳法”。 每个递归函数必须包含两个部分:<br> \1. 终止条件</p>
-<p>表示递归什么时候结束。一般用于返回值，不再调用自己。 2. 递归步骤</p>
-<p>把第 n 步的值和第 n-1 步相关联。</p>
-<p>递归函数由于会创建大量的函数对象、过量的消耗内存和运算能力。在处理大量数据时，谨 慎使用。</p>
-<p><strong>嵌套函数(内部函数)</strong></p>
-<p>嵌套函数: 在函数内部定义的函数!</p>
-<p>一般在什么情况下使用嵌套函数? </p>
-<ol>
-<li>封装 - 数据隐藏外部无法访问“嵌套函数”。</li>
-<li>贯彻 DRY(Don’t Repeat Yourself) 原则嵌套函数，可以让我们在函数内部避免重复代码。</li>
-<li>闭包</li>
-</ol>
-<h3 id="nonlocal-关键字"><a href="#nonlocal-关键字" class="headerlink" title="nonlocal 关键字"></a><strong>nonlocal 关键字</strong></h3><p>nonlocal 用来声明外层的局部变量。 global 用来声明全局变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">100</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">  b=<span class="number">10</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">  	<span class="keyword">nonlocal</span> b<span class="comment">#声明外部函数的局部变量</span></span><br><span class="line">  	print(<span class="string">"inner b:"</span>,b)</span><br><span class="line"> 		b=<span class="number">20</span></span><br><span class="line">  	<span class="keyword">global</span> a<span class="comment">#声明全局变量</span></span><br><span class="line">  	a=<span class="number">1000</span></span><br><span class="line">	inner()</span><br><span class="line">	print(<span class="string">"outer b:"</span>,b)</span><br><span class="line">outer()</span><br><span class="line">print(<span class="string">"a:"</span>,a)</span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line">inner b: <span class="number">10</span></span><br><span class="line">outer b: <span class="number">20</span></span><br><span class="line">a: <span class="number">1000</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="LEGB-规则"><a href="#LEGB-规则" class="headerlink" title="LEGB 规则"></a><strong>LEGB 规则</strong></h2><h3 id="Python-在查找“名称”时，是按照-LEGB-规则查找的-Local–-gt-Enclosed–-gt-Global–-gt-Built-in"><a href="#Python-在查找“名称”时，是按照-LEGB-规则查找的-Local–-gt-Enclosed–-gt-Global–-gt-Built-in" class="headerlink" title="Python 在查找“名称”时，是按照 LEGB 规则查找的: Local–&gt;Enclosed–&gt;Global–&gt;Built in"></a>Python 在查找“名称”时，是按照 LEGB 规则查找的: Local–&gt;Enclosed–&gt;Global–&gt;Built in</h3><p>Local 指的就是函数或者类的方法内部<br> Enclosed 指的是嵌套函数(一个函数包裹另一个函数，闭包) Global 指的是模块中的全局变量<br> Built in 指的是 Python 为自己保留的特殊名称。</p>
-<p>如果某个 name 映射在局部(local)命名空间中没有找到，接下来就会在闭包作用域 (enclosed)进行搜索，如果闭包作用域也没有找到，Python 就会到全局(global)命名空 间中进行查找，最后会在内建(built-in)命名空间搜索 (如果一个名称在所有命名空间 中都没有找到，就会产生一个 NameError)。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -3092,7 +2679,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
