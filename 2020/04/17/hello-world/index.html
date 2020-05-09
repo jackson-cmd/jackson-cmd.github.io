@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Commandsinit1$ hexo init [folder]  Initializes a website. If no folder is provided, Hexo will set up the website in the current directory. new1$ hexo new [layout] &lt;title&gt;  Creates a new article.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use Hexo? Find out!">
 <meta property="og:url" content="http://yoursite.com/2020/04/17/hello-world/index.html">
 <meta property="og:site_name" content="Jackson Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Commandsinit1$ hexo init [folder]  Initializes a website. If no folder is provided, Hexo will set up the website in the current directory. new1$ hexo new [layout] &lt;title&gt;  Creates a new article.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-17T22:50:37.356Z">
-<meta property="article:modified_time" content="2020-04-26T02:34:02.174Z">
+<meta property="article:modified_time" content="2020-05-09T03:47:12.512Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
 
@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-25 21:34:02" itemprop="dateModified" datetime="2020-04-25T21:34:02-05:00">2020-04-25</time>
+                <time title="Modified: 2020-05-08 22:47:12" itemprop="dateModified" datetime="2020-05-08T22:47:12-05:00">2020-05-08</time>
               </span>
 
           
@@ -194,19 +194,159 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>Initializes a website. If no <code>folder</code> is provided, Hexo will set up the website in the current directory.</p>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>Creates a new article. If no <code>layout</code> is provided, Hexo will use the <code>default_layout</code> from <a href="https://hexo.io/docs/configuration" target="_blank" rel="noopener">_config.yml</a>. If the <code>title</code> contains spaces, surround it with quotation marks.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-p</code>, <code>--path</code></td>
+<td align="left">Post path. Customize the path of the post.</td>
+</tr>
+<tr>
+<td align="left"><code>-r</code>, <code>--replace</code></td>
+<td align="left">Replace the current post if existed.</td>
+</tr>
+<tr>
+<td align="left"><code>-s</code>, <code>--slug</code></td>
+<td align="left">Post slug. Customize the URL of the post.</td>
+</tr>
+</tbody></table>
+<p>By default, Hexo will use the title to define the path of the file. For pages, it will create a directory of that name and an <code>index.md</code> file in it. Use the <code>--path</code> option to override that behaviour and define the file path:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page --path about&#x2F;me &quot;About me&quot;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>will create <code>source/about/me.md</code> file with the title “About me” set in the front matter.</p>
+<p>Please note that the title is mandatory. For example, this will not result in the behaviour you might expect:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page --path about&#x2F;me</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>will create the post <code>source/_posts/about/me.md</code> with the title “page” in the front matter. This is because there is only one argument (<code>page</code>) and the default layout is <code>post</code>.</p>
+<h2 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>Generates static files.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-d</code>, <code>--deploy</code></td>
+<td align="left">Deploy after generation finishes</td>
+</tr>
+<tr>
+<td align="left"><code>-w</code>, <code>--watch</code></td>
+<td align="left">Watch file changes</td>
+</tr>
+<tr>
+<td align="left"><code>-b</code>, <code>--bail</code></td>
+<td align="left">Raise an error if any unhandled exception is thrown during generation</td>
+</tr>
+<tr>
+<td align="left"><code>-f</code>, <code>--force</code></td>
+<td align="left">Force regenerate</td>
+</tr>
+<tr>
+<td align="left"><code>-c</code>, <code>--concurrency</code></td>
+<td align="left">Maximum number of files to be generated in parallel. Default is infinity</td>
+</tr>
+</tbody></table>
+<h2 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Publishes a draft.</p>
+<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>Starts a local server. By default, this is at <code>http://localhost:4000/</code>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-p</code>, <code>--port</code></td>
+<td align="left">Override default port</td>
+</tr>
+<tr>
+<td align="left"><code>-s</code>, <code>--static</code></td>
+<td align="left">Only serve static files</td>
+</tr>
+<tr>
+<td align="left"><code>-l</code>, <code>--log</code></td>
+<td align="left">Enable logger. Override logger format.</td>
+</tr>
+</tbody></table>
+<h2 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>Deploys your website.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-g</code>, <code>--generate</code></td>
+<td align="left">Generate before deployment</td>
+</tr>
+</tbody></table>
+<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure>
+
+<p>Renders files.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-o</code>, <code>--output</code></td>
+<td align="left">Output destination</td>
+</tr>
+</tbody></table>
+<h2 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo migrate &lt;type&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://hexo.io/docs/migration" target="_blank" rel="noopener">Migrates</a> content from other blog systems.</p>
+<h2 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>Cleans the cache file (<code>db.json</code>) and generated files (<code>public</code>).</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Lists all routes.</p>
+<h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+
+<p>Displays version information.</p>
+<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><h3 id="Safe-mode"><a href="#Safe-mode" class="headerlink" title="Safe mode"></a>Safe mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --safe</span><br></pre></td></tr></table></figure>
+
+<p>Disables loading plugins and scripts. Try this if you encounter problems after installing a new plugin.</p>
+<h3 id="Debug-mode"><a href="#Debug-mode" class="headerlink" title="Debug mode"></a>Debug mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --debug</span><br></pre></td></tr></table></figure>
+
+<p>Logs verbose messages to the terminal and to <code>debug.log</code>. Try this if you encounter any problems with Hexo. If you see errors, please <a href="https://github.com/hexojs/hexo/issues/new" target="_blank" rel="noopener">raise a GitHub issue</a>.</p>
+<h3 id="Silent-mode"><a href="#Silent-mode" class="headerlink" title="Silent mode"></a>Silent mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --silent</span><br></pre></td></tr></table></figure>
+
+<p>Silences output to the terminal.</p>
+<h3 id="Customize-config-file-path"><a href="#Customize-config-file-path" class="headerlink" title="Customize config file path"></a>Customize config file path</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --config custom.yml</span><br></pre></td></tr></table></figure>
+
+<p>Uses a custom config file (instead of <code>_config.yml</code>). Also accepts a comma-separated list (no spaces) of JSON or YAML config files that will combine the files into a single <code>_multiconfig.yml</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --config custom.yml,custom2.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="Display-drafts"><a href="#Display-drafts" class="headerlink" title="Display drafts"></a>Display drafts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --draft</span><br></pre></td></tr></table></figure>
+
+<p>Displays draft posts (stored in the <code>source/_drafts</code> folder).</p>
+<h3 id="Customize-CWD"><a href="#Customize-CWD" class="headerlink" title="Customize CWD"></a>Customize CWD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --cwd &#x2F;path&#x2F;to&#x2F;cwd</span><br></pre></td></tr></table></figure>
+
+<p>Customizes the path of current working directory.</p>
 
     </div>
 
@@ -287,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Commands"><span class="nav-number">1.</span> <span class="nav-text">Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init"><span class="nav-number">1.1.</span> <span class="nav-text">init</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">1.2.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generate"><span class="nav-number">1.3.</span> <span class="nav-text">generate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#publish"><span class="nav-number">1.4.</span> <span class="nav-text">publish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server"><span class="nav-number">1.5.</span> <span class="nav-text">server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deploy"><span class="nav-number">1.6.</span> <span class="nav-text">deploy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render"><span class="nav-number">1.7.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#migrate"><span class="nav-number">1.8.</span> <span class="nav-text">migrate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clean"><span class="nav-number">1.9.</span> <span class="nav-text">clean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">1.10.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#version"><span class="nav-number">1.11.</span> <span class="nav-text">version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Options"><span class="nav-number">1.12.</span> <span class="nav-text">Options</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Safe-mode"><span class="nav-number">1.12.1.</span> <span class="nav-text">Safe mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debug-mode"><span class="nav-number">1.12.2.</span> <span class="nav-text">Debug mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Silent-mode"><span class="nav-number">1.12.3.</span> <span class="nav-text">Silent mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Customize-config-file-path"><span class="nav-number">1.12.4.</span> <span class="nav-text">Customize config file path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display-drafts"><span class="nav-number">1.12.5.</span> <span class="nav-text">Display drafts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Customize-CWD"><span class="nav-number">1.12.6.</span> <span class="nav-text">Customize CWD</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
