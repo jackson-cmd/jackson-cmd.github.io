@@ -145,6 +145,272 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" class="post-title-link" itemprop="url">计算机网络1（1-20）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-07 20:12:58" itemprop="dateCreated datePublished" datetime="2020-05-07T20:12:58-05:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-08 11:35:43" itemprop="dateModified" datetime="2020-05-08T11:35:43-05:00">2020-05-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>操作系统：</p>
+<p>网络基础服务： DNS DHCP RAS FTP Web </p>
+<p>网络：思科CCNA OSI参考模型 TCPIP协议</p>
+<p>计算机网络书分为五层：物理层，数据链路层，网络层，运输层，应用层</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>网络：电信网络，计算机网络，有线电视网络。</p>
+<p>有3个特点：数字化，网络化，信息化</p>
+<p>计算机网络分为：因特网，其他网络</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><h3 id="网络互联网因特网区别"><a href="#网络互联网因特网区别" class="headerlink" title="网络互联网因特网区别"></a>网络互联网因特网区别</h3><p>网络（Network）：许多计算机连接在一起</p>
+<p>互联网（Network of Networks，internet）：许多网络连接在一起</p>
+<p>因特网（Internet）：全球最大的一个互联网</p>
+<p>因特网是美国发明的属于美国国家的网络。<br>互联网是基于因特网，百全球各网络与网络之间所串连成的庞大网络。<br>注意：因特网属于美国其有最高权利，又链接世界，拥有世界唯度一服务器，可以随时停止某些地区网络内的服务，历史案例有伊拉克和叙利亚。中国用的不是互联网而是美国的因特网，所以这方面国家网络安全堪忧！而国家网络安全是国家主权非常重要的延伸和表现！因容特网也是维持美国霸权的一个重要方面。</p>
+<p>n网络(network)由若干结点(node)和连接这些结点的链路(link)组成。 </p>
+<p>n互联网是“网络的网络”(network of networks)。</p>
+<p>n连接在因特网上的计算机都称为主机(host)。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node</span><br><span class="line">在网络中的 node 的标准译名是“结点”而不是“节点”。</span><br><span class="line">但数据结构的树(tree)中的 node 应当译为“节点”</span><br></pre></td></tr></table></figure>
+
+<h3 id="因特网发展3阶段"><a href="#因特网发展3阶段" class="headerlink" title="因特网发展3阶段"></a>因特网发展3阶段</h3><p>第一阶段是从单个网络 ARPANET 向互联网发展的过程。 </p>
+<p>1983 年 TCP/IP 协议成为 ARPANET 上的标准协议。</p>
+<p>人们把 1983 年作为因特网的诞生时间。 </p>
+<p>第二阶段的特点是建成了三级结构的因特网。 </p>
+<p>三级计算机网络，分为主干网、地区网和校园网（或企业网）</p>
+<p>第三阶段的特点是逐渐形成了多层次 ISP 结构的因特网。</p>
+<p>出现了因特网服务提供者 ISP (Internet Service Provider)。 </p>
+<p>根据提供服务的覆盖面积大小以及所拥有的IP 地址数目的不同，ISP 也分成为不同的层次。</p>
+<p>主机A → 本地 ISP → 第二层 ISP → NAP → 第一层 ISP → NAP → 第二层 ISP → 本地 ISP → 主机B</p>
+<p>因特网的迅猛发展始于 20 世纪 90 年代。由欧洲原子核研究组织 CERN 开发的万维网 <strong>WWW</strong> (World Wide Web)被广泛使用在因特网上，大大方便了广大非网络专业人员对网络的使用，成为因特网的这种指数级增长的主要驱动力。 </p>
+<h3 id="万维网因特网互联网区别"><a href="#万维网因特网互联网区别" class="headerlink" title="万维网因特网互联网区别"></a>万维网因特网互联网区别</h3><p>互联网包含因特网，因特网包含万维网。即互联网&gt;因特网&gt;万维网。</p>
+<p>互联网是设备之间互联通信， 万维网是服务与数据资源之间的共享利用</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><h3 id="因特网组成"><a href="#因特网组成" class="headerlink" title="因特网组成"></a>因特网组成</h3><p>从因特网的工作方式上看，可以划分为以下的两大块：</p>
+<p>(1) 边缘部分 由所有连接在因特网上的主机组成。这部分是用户直接使用的，用来进行通信（传送数据、音频或视频）和资源共享。</p>
+<p>(2) 核心部分 由大量网络和连接这些网络的路由器组成。这部分是为边缘部分提供服务的（提供连通性和交换）</p>
+<h3 id="两种通信方式"><a href="#两种通信方式" class="headerlink" title="两种通信方式"></a>两种通信方式</h3><p>在网络边缘的端系统中运行的程序之间的通信方式通常可划分为两大类：</p>
+<p>客户服务器方式（C/S 方式） 即Client/Server方式 ：客户是服务的请求方，服务器是服务的提供方。</p>
+<p>对等方式（P2P 方式） 即 Peer-to-Peer方式 ：对等连接(peer-to-peer，简写为 P2P)是指两个主机在通信时并不区分哪一个是服务请求方还是服务提供方。只要两个主机都运行了对等连接软件（P2P 软件），它们就可以进行平等的、对等连接通信。双方都可以下载对方已经存储在硬盘中的共享文档。主机既是客户又同时是服务器</p>
+<h3 id="因特网核心：数据交换方式"><a href="#因特网核心：数据交换方式" class="headerlink" title="因特网核心：数据交换方式"></a>因特网核心：数据交换方式</h3><p>网络中的核心部分要向网络边缘中的大量主机提供连通性，使边缘部分中的任何一个主机都能够向其他主机通信（即传送或接收各种形式的数据）。</p>
+<p>在网络核心部分起特殊作用的是<strong>路由器(router)</strong>。</p>
+<p>路由器是实现分组交换(packet switching)的关键构件，其任务是转发收到的分组，这是网络核心部分最重要的功能。 </p>
+<h4 id="电路交换Circuit-Switching-电路交换必定是面向连接的。"><a href="#电路交换Circuit-Switching-电路交换必定是面向连接的。" class="headerlink" title="电路交换Circuit Switching:电路交换必定是面向连接的。"></a>电路交换Circuit Switching:电路交换必定是面向连接的。</h4><p>电路交换的三个阶段：建立连接,通信,释放连接</p>
+<p>一般打电话就是电路交换</p>
+<h4 id="报文交换Message-Switching：比分组长很多，交换时延也长，基本不用了"><a href="#报文交换Message-Switching：比分组长很多，交换时延也长，基本不用了" class="headerlink" title="报文交换Message Switching：比分组长很多，交换时延也长，基本不用了"></a>报文交换Message Switching：比分组长很多，交换时延也长，基本不用了</h4><h4 id="分组交换Packet-Switching：在发送端，先把较长的报文划分成较短的、固定长度的数据段。"><a href="#分组交换Packet-Switching：在发送端，先把较长的报文划分成较短的、固定长度的数据段。" class="headerlink" title="分组交换Packet Switching：在发送端，先把较长的报文划分成较短的、固定长度的数据段。"></a>分组交换Packet Switching：在发送端，先把较长的报文划分成较短的、固定长度的数据段。</h4><p>每个数据段前添加首部构成分组，接收端收到分组后剥去首部还原成报文，最后还原成原来的报文</p>
+<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><h3 id="不同类别网络"><a href="#不同类别网络" class="headerlink" title="不同类别网络"></a>不同类别网络</h3><h3 id="不同作用范围的网络"><a href="#不同作用范围的网络" class="headerlink" title="不同作用范围的网络"></a>不同作用范围的网络</h3><p>广域网 <strong>WAN</strong> (Wide Area Network)：花钱买服务 花钱买带宽</p>
+<p>局域网 <strong>LAN</strong> (Local Area Network)：自己买设备，自己维护，带宽固定 100M100M 距离100米以内</p>
+<p>城域网 <strong>MAN</strong> (Metropolitan Area Network)</p>
+<h3 id="个人区域网-PAN-Personal-Area-Network"><a href="#个人区域网-PAN-Personal-Area-Network" class="headerlink" title="个人区域网 PAN (Personal Area Network)"></a>个人区域网 <strong>PAN</strong> (Personal Area Network)</h3><p>从网络的使用者进行分类</p>
+<p>公用网 (public network) </p>
+<p>专用网 (private network) </p>
+<h3 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h3><p>星型，总线型，环形，树形，网状</p>
+<h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><h3 id="计算机网络性能指标"><a href="#计算机网络性能指标" class="headerlink" title="计算机网络性能指标"></a>计算机网络性能指标</h3><p>1.速率</p>
+<p>比特（bit）是计算机中数据量的单位，也是信息论中使用的信息量的单位。Bit 来源于 binary digit，意思是一个“二进制数字”，因此一个比特就是二进制数字中的一个 1 或 0。</p>
+<p>速率即数据率(data rate)或比特率(bit rate)是计算机网络中最重要的一个性能指标。速率的单位是 b/s，或kb/s, Mb/s, Gb/s 等。速率往往是指额定速率或标称速率。 </p>
+<p>2.带宽</p>
+<p>带宽”(bandwidth)本来是指信号具有的频带宽度，单位是赫（或千赫、兆赫、吉赫等）。</p>
+<p>现在“带宽”是数字信道所能传送的“最高数据率”的同义语，单位是“比特每秒”，或 b/s (bit/s)。  </p>
+<p>兆比每秒，即 Mb/s</p>
+<p>3.吞吐量</p>
+<p>吞吐量(throughput)表示在单位时间内通过某个网络（或信道、接口）的数据量。</p>
+<p>吞吐量更经常地用于对现实世界中的网络的一种测量，以便知道实际上到底有多少数据量能够通过网络。</p>
+<p>吞吐量受网络的带宽或网络的额定速率的限制。 </p>
+<p>4.时延(delay 或 latency)</p>
+<p>传输时延（发送时延 ）  发送数据时，数据块从结点进入到传输媒体所需要的时间。</p>
+<p>也就是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。 </p>
+<p>数据经历的总时延就是发送时延、传播时延、处理时延和排队时延</p>
+<p>5.时延带宽积</p>
+<p>时延带宽积 = 传播时延 *带宽</p>
+<p>链路的时延带宽积又称为以比特为单位的链路长度。 </p>
+<p>6.往返时间 Round-Trip TIme</p>
+<p>7.利用率</p>
+<p>信道利用率指出某信道有百分之几的时间是被利用的（有数据通过）。完全空闲的信道的利用率是零。</p>
+<p>网络利用率则是全网络的信道利用率的加权平均值。</p>
+<p>信道利用率并非越高越好。 </p>
+<h2 id="9"><a href="#9" class="headerlink" title="9"></a>9</h2><h3 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h3><p>ISO：国家标准化组织</p>
+<p>OSI/RM：互联网法律上的国际标准</p>
+<p>TCP/IP Suite：因特网事实上的国际标准</p>
+<p>Network Protocols：数据交换遵循的规则.标准或约定</p>
+<p>网络体系结构：计算机网络各层及其协议的集合</p>
+<h3 id="OSI七层模型："><a href="#OSI七层模型：" class="headerlink" title="OSI七层模型："></a>OSI七层模型：</h3><p>Application应用层：能够产生网络流量，能够和用户交互的应用程序</p>
+<p>Presentation表示层：加密，压缩，开发人员</p>
+<p>Session会话层：服务和客户端建立的会话，查木马， netstat -nb</p>
+<p>网络工程师解决下面三层传输，不包括物理层</p>
+<p>Transport传输层：可靠传输建立对话， 不可靠传输，流量控制</p>
+<p>Network网络层：ip地址编制，选择最佳路径</p>
+<p>Date Link数据链路层：数据如何封装，添加物理层地址 MAC地址</p>
+<p>Physical物理层：电压 接口标准</p>
+<h2 id="11"><a href="#11" class="headerlink" title="11"></a>11</h2><p>网络排错：从底层到高层</p>
+<h3 id="网络完全："><a href="#网络完全：" class="headerlink" title="网络完全："></a>网络完全：</h3><p>物理层安全</p>
+<p>数据链路层安全 ADSL AP密码</p>
+<p>网络层安全</p>
+<p>应用层安全 SQL注入漏洞 上传漏洞</p>
+<h2 id="13"><a href="#13" class="headerlink" title="13"></a>13</h2><h3 id="TCP-IP-四层模型"><a href="#TCP-IP-四层模型" class="headerlink" title="TCP/IP 四层模型"></a>TCP/IP 四层模型</h3><p>Application, Transport,Internet,Network Access</p>
+<p>TCP/IP 是四层的体系结构：应用层、运输层、网际层和网络接口层。</p>
+<p>往往采取折中的办法，即综合 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构 。 </p>
+<h3 id="本书5层模型："><a href="#本书5层模型：" class="headerlink" title="本书5层模型："></a>本书5层模型：</h3><p>Application, Transport,Internet,Data Link，Physical</p>
+<p>应用层(application layer) ：传输数据单元PDU</p>
+<p>运输层(transport layer) ：运输层报文</p>
+<p>网络层(network layer) ：ip数据报（ip分组）</p>
+<p>数据链路层(data link layer) ：数据帧</p>
+<p>物理层(physical layer) ：0101</p>
+<h3 id="发送数据过程"><a href="#发送数据过程" class="headerlink" title="发送数据过程"></a>发送数据过程</h3><p>应用层数据加上运输层首部，网络层首部，链路层首部和尾部，最后转化为比特流</p>
+<h2 id="15"><a href="#15" class="headerlink" title="15"></a>15</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>  物理层的主要任务描述为确定与传输媒体的接口的一些特性，即： </p>
+<p>机械特性  指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。</p>
+<p>电气特性  指明在接口电缆的各条线上出现的电压的范围。</p>
+<p>功能特性  指明某条线上出现的某一电平的电压表示何种意义。</p>
+<p>过程特性  指明对于不同功能的各种可能事件的出现顺序。 </p>
+<h3 id="数据通信系统模型"><a href="#数据通信系统模型" class="headerlink" title="数据通信系统模型"></a>数据通信系统模型</h3><p>输入信息到源点，然后输入数据到发送器然后发送信号到传输系统，然后接收器接受信号，然后输出数据到终点，然后输出信息。</p>
+<h2 id="16"><a href="#16" class="headerlink" title="16"></a>16</h2><h3 id="几个术语"><a href="#几个术语" class="headerlink" title="几个术语"></a>几个术语</h3><p>通信的目的是传送消息。</p>
+<p>数据(data)——运送消息的实体。</p>
+<p>信号(signal)——数据的电气的或电磁的表现。 </p>
+<p>“模拟的”(analogous)——代表消息的参数的取值是连续的。 </p>
+<p>“数字的”(digital)——代表消息的参数的取值是离散的。 </p>
+<p>码元(code)——在使用时间域（或简称为时域）的波形表示数字信号时，代表不同离散数值的基本波形。</p>
+<h3 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h3><p>信道一般表示向一个方向传送信息的媒体。</p>
+<p>单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。</p>
+<p>双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。</p>
+<p>双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。 </p>
+<h3 id="基带-baseband-信号和-带通-band-pass-信号"><a href="#基带-baseband-信号和-带通-band-pass-信号" class="headerlink" title="基带(baseband)信号和 带通(band pass)信号"></a>基带(baseband)信号和 带通(band pass)信号</h3><p>基带信号（即基本频带信号）——来自信源的信号</p>
+<p>带通信号——把基带信号经过载波调制后，把信号的频率范围搬移到较高的频段以便在信道中传输（即仅在一段频率范围内能够通过信道）。 </p>
+<h3 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h3><p>基带信号往往包含有较多的低频成分，甚至有直流成分，而许多信道并不能传输这种低频分量或直流分量。为了解决这一问题，就必须对基带信号进行调制(modulation)。 </p>
+<p>最基本的二元制调制方法有以下几种：</p>
+<p>调幅(AM)：载波的振幅随基带数字信号而变化。 </p>
+<p>调频(FM)：载波的频率随基带数字信号而变化。</p>
+<p>调相(PM) ：载波的初始相位随基带数字信号而变化。 </p>
+<h3 id="数据通信常见编码"><a href="#数据通信常见编码" class="headerlink" title="数据通信常见编码"></a>数据通信常见编码</h3><p>单极性不归零码：只用一个电压值，用高电平表示1，没电平表示0 </p>
+<p>双极性不归零码：正负电平表示二进制1，0，正负幅值相等</p>
+<p>双极性归零码：正负零三电平</p>
+<p>曼彻斯特编码(Manchester Encoding): 位中间电平从低到高跳变表示”0”;位中间电平从高到低跳变表示”1”。 </p>
+<p>差分曼彻斯特编码(differential Manchester encoding): 在最初信号的时候,即第一个信号时:如果中间位电平从低到高,则表示0;如果中间位电平从高到低,则表示1。抗干扰能力比曼彻斯特编码强</p>
+<h2 id="17"><a href="#17" class="headerlink" title="17"></a>17</h2><h3 id="信道极限容量"><a href="#信道极限容量" class="headerlink" title="信道极限容量"></a>信道极限容量</h3><p>任何实际的信道都不是理想的，在传输信号时会产生各种失真以及带来多种干扰。 </p>
+<p>码元传输的速率越高，或信号传输的距离越远，在信道的输出端的波形的失真就越严重。 </p>
+<p>数字信号通过实际的信道 ：1.有失真，但是可识别 2. 失真大，无法识别 </p>
+<h3 id="1-信道能够通过的频率范围"><a href="#1-信道能够通过的频率范围" class="headerlink" title="1.信道能够通过的频率范围"></a>1.信道能够通过的频率范围</h3><p>奈氏准则**。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">理想低通信道下的最高码元传输速率＝2W Baud</span><br><span class="line"></span><br><span class="line">其中W是理想低通信道的带宽，单位为赫兹；Baud是波特，即码元传输速率的单位，1波特为每秒传送1个码元。</span><br></pre></td></tr></table></figure>
+
+<p>在任何信道中，码元传输的速率是有上限的，否则就会出现码间串扰的问题，使接收端对码元的判决（即识别）成为不可能。如果信道的频带越宽，也就是能够通过的信号高频分量越多，那么就可以用更高的速率传送码元而不出现码间串扰。</p>
+<p> <strong>奈氏准则</strong>指出，码元传输速率是受限的；香农定理则给出了信息传输速率的极限。也就是说，奈氏准则认为码元编码足够好，就不会限制信息传输速率。<br>码元传输速率（波特率），是指传输码元的速率（废话）。与制信息传输速率（比特率）的区别在于，一个码元通过调频调相，可以显示出多种变化，就可以代表多个比特。一般来讲，信息传输速率=码元传输速率*log2(码元变化数量百)。<br>所以其实区别只有一个度，那就是奈氏准则是针对波特率的，没有限制比特率，他认为码元传输速率一旦确定，再确定码元所载的比特数，极限知信息传输速率也就确定了；而香农公式通过极其复杂的推演（我看不懂），得出了结论：信息传输速率也是有极限的，且这个极限不是由波特率单独决定，还是由传输带宽和信道噪比决定的。</p>
+<h3 id="2-信噪比"><a href="#2-信噪比" class="headerlink" title="2.信噪比"></a>2.信噪比</h3><p><strong>香农公式</strong></p>
+<p>香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。</p>
+<p>信道的极限信息传输速率 <em>C</em> 可表达为</p>
+<p>​    <em>C</em> = <em>W</em> log2(1+<em>S</em>/<em>N</em>) b/s </p>
+<p><em>W</em> 为信道的带宽（以 Hz 为单位）；</p>
+<p><em>S</em> 为信道内所传信号的平均功率；</p>
+<p><em>N</em> 为信道内部的高斯噪声功率。 </p>
+<p>结论：信道的带宽或信道中的信噪比越大，则信息的极限传输速率就越高。 </p>
+<p>只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。 </p>
+<p>若信道带宽 <em>W</em> 或信噪比 <em>S</em>/<em>N</em> 没有上限（当然实际信道不可能是这样的），则信道的极限信息传输速率 <em>C</em> 也就没有上限。</p>
+<p>实际信道上能够达到的信息传输速率要比香农的极限传输速率低不少。 </p>
+<h4 id="信息传输速率受香农公式限制，而码元传输速率受奈氏准则的限制"><a href="#信息传输速率受香农公式限制，而码元传输速率受奈氏准则的限制" class="headerlink" title="信息传输速率受香农公式限制，而码元传输速率受奈氏准则的限制"></a>信息传输速率受香农公式限制，而码元传输速率受奈氏准则的限制</h4><h2 id="18"><a href="#18" class="headerlink" title="18"></a>18</h2><h3 id="电信领域使用电磁波频率"><a href="#电信领域使用电磁波频率" class="headerlink" title="电信领域使用电磁波频率"></a>电信领域使用电磁波频率</h3><p>数据通信：小于10^-4HZ 大于10^16HZ</p>
+<h3 id="导向传输媒体"><a href="#导向传输媒体" class="headerlink" title="导向传输媒体"></a>导向传输媒体</h3><p>双绞线：屏蔽双绞线 STP (Shielded Twisted Pair)，无屏蔽双绞线 UTP (Unshielded Twisted Pair)</p>
+<p>同轴电缆：50 W 同轴电缆，75 W 同轴电缆</p>
+<p>光缆 ：光线在纤芯中传输的方式是不断地全反射</p>
+<h3 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h3><p>（Hub）是指将多条以太网双绞线或光纤集合连接在同一段物理介质下的设备；是一个多端口的转发器，当以HUB为中心设备时，网络中某条线路产生了故障，并不影响其它线路的工作。主要功能是对接收到的信号进行再生整形放大，以扩大网络的传输距离，同时把所有节点集中在以它为中心的节点上。<br>它工作于OSI参考模型第一层，即“物理层”，属于局域网中的基础设备版，采用CSMA/CD（即带冲突检测的载波监听多路访问技术)介质访问控制机制。集线器每个接口简单的收发比特，收到权1就转发1，收到0就转发0，不进行碰撞检测。HUB不具备交换机所具有的MAC地址表，所以它发送数据时都是没有针对性的，而是采用广播方式发送。在局域网中得到广泛应用。</p>
+<h2 id="20"><a href="#20" class="headerlink" title="20"></a>20</h2><h3 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h3><p>复用(multiplexing)是通信技术中的基本概念。 就是共享信道。</p>
+<h4 id="频分复用-FDM-Frequency-Division-Multiplexing-：常用，电话就是。"><a href="#频分复用-FDM-Frequency-Division-Multiplexing-：常用，电话就是。" class="headerlink" title="频分复用 FDM(Frequency Division Multiplexing) ：常用，电话就是。"></a>频分复用 FDM(Frequency Division Multiplexing) ：常用，电话就是。</h4><p>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。</p>
+<p>频分复用的所有用户在同样的时间占用不同的带宽资源（请注意，这里的“带宽”是频率带宽而不是数据的发送速率</p>
+<h4 id="时分复用TDM-Time-Division-Multiplexing"><a href="#时分复用TDM-Time-Division-Multiplexing" class="headerlink" title="时分复用TDM (Time Division Multiplexing)"></a>时分复用TDM (Time Division Multiplexing)</h4><p>时分复用则是将时间划分为一段段等长的时分复用帧（TDM 帧）。每一个时分复用的用户在每一个 TDM 帧中占用固定序号的时隙。</p>
+<p>每一个用户所占用的时隙是周期性地出现（其周期就是 TDM 帧的长度）。</p>
+<p>TDM 信号也称为等时(isochronous)信号。</p>
+<p>时分复用的所有用户是在不同的时间占用同样的频带宽度。</p>
+<p>使用时分复用系统传送计算机数据时，由于计算机数据的突发性质，用户对分配到的子信道的利用率一般是不高的。时分复用可能会造成线路资源的浪费 </p>
+<h4 id="统计时分复用-STDM-Statistic-TDM"><a href="#统计时分复用-STDM-Statistic-TDM" class="headerlink" title="统计时分复用 STDM (Statistic TDM)"></a>统计时分复用 STDM (Statistic TDM)</h4><h4 id="波分复用-WDM-Wavelength-Division-Multiplexing-：光的频分复用"><a href="#波分复用-WDM-Wavelength-Division-Multiplexing-：光的频分复用" class="headerlink" title="波分复用 WDM(Wavelength Division Multiplexing)  ：光的频分复用"></a>波分复用 WDM(Wavelength Division Multiplexing)  ：光的频分复用</h4><h3 id="码分复用-CDM-Code-Division-Multiplexing"><a href="#码分复用-CDM-Code-Division-Multiplexing" class="headerlink" title="码分复用 CDM (Code Division Multiplexing)"></a>码分复用 CDM (Code Division Multiplexing)</h3><p>常用的名词是码分多址 CDMA  (Code Division Multiple Access)。</p>
+<p>各用户使用经过特殊挑选的不同码型，因此彼此不会造成干扰。</p>
+<p>这种系统发送的信号有很强的抗干扰能力，其频谱类似于白噪声，不易被敌人发现。 </p>
+<p>每一个比特时间划分为 <em>m</em> 个短的间隔，称为码片(chip)。</p>
+<p>CDMA特点：每个站分配的码片序列不仅必须各不相同，并且还必须互相正交(orthogonal)。在实用的系统中是使用伪随机码序列。 </p>
+<h4 id="码片序列的正交关系"><a href="#码片序列的正交关系" class="headerlink" title="码片序列的正交关系"></a>码片序列的正交关系</h4><p>令向量 <strong>S</strong> 表示站 S 的码片向量，令 <strong>T</strong> 表示其他任何站的码片向量。 </p>
+<p>两个不同站的码片序列正交，就是向量 <strong>S</strong> 和<strong>T</strong> 的规格化内积(inner product)都是 0： </p>
+<img src="/Users/mengxiaowang/Library/Application Support/typora-user-images/image-20200508103821364.png" alt="image-20200508103821364" style="zoom:25%;" />
+
+<p>任何一个码片向量和该码片向量自己的规格化内积都是1 。</p>
+<p>一个码片向量和该码片反码的向量的规格化内积值是 –1。 </p>
+<img src="/Users/mengxiaowang/Library/Application Support/typora-user-images/image-20200508103923650.png" alt="image-20200508103923650" style="zoom:25%;" />
+
+<h3 id="数字传输系统"><a href="#数字传输系统" class="headerlink" title="数字传输系统"></a>数字传输系统</h3><p>1.脉码调制 PCM 体制 </p>
+<p>脉码调制 PCM 体制最初是为了在电话局之间的中继线上传送多路的电话。</p>
+<p>由于历史上的原因，PCM 有两个互不兼容的国际标准，即北美的 24 路 PCM（简称为 T1）和欧洲的 30 路 PCM（简称为 E1）。我国采用的是欧洲的 E1 标准。</p>
+<ol start="2">
+<li>同步光纤网 SONET 和 同步数字系列 SDH </li>
+</ol>
+<p>速率标准不统一，不是同步传输。</p>
+<h3 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h3><h4 id="xDSL技术"><a href="#xDSL技术" class="headerlink" title="xDSL技术"></a>xDSL技术</h4><p>xDSL 技术就是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带业务。</p>
+<p>虽然标准模拟电话信号的频带被限制在 300~3400 kHz 的范围内，但用户线本身实际可通过的信号频率仍然超过 1 MHz。</p>
+<p>xDSL 技术就把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。</p>
+<p>DSL 就是数字用户线(Digital Subscriber Line)的缩写。而 DSL 的前缀 x 则表示在数字用户线上实现的不同宽带方案。 </p>
+<p>分为</p>
+<p>ADSL (Asymmetric Digital Subscriber Line)：非对称数字用户线</p>
+<p>HDSL (High speed DSL)：高速数字用户线</p>
+<p>SDSL (Single-line DSL)：1 对线的数字用户线</p>
+<p>VDSL (Very high speed DSL)：甚高速数字用户线</p>
+<p>DSL ：ISDN 用户线。</p>
+<p>RADSL (Rate-Adaptive DSL)：速率自适应 DSL，是 ADSL 的一个子集，可自动调节线路速率）。 </p>
+<h4 id="ADSL特点"><a href="#ADSL特点" class="headerlink" title="ADSL特点"></a>ADSL特点</h4><p>上行和下行带宽做成不对称的。</p>
+<p>上行指从用户到 ISP，而下行指从 ISP 到用户。</p>
+<p>ADSL 在用户线（铜线）的两端各安装一个 ADSL 调制解调器。</p>
+<p>我国目前采用的方案是离散多音调 <strong>DMT</strong> (Discrete Multi-Tone)调制技术。这里的“多音调”就是“多载波”或“多子信道”的意思。</p>
+<p>光纤同轴混合网</p>
+<h4 id="HFC-Hybrid-Fiber-Coax"><a href="#HFC-Hybrid-Fiber-Coax" class="headerlink" title="HFC (Hybrid Fiber Coax)"></a>HFC (Hybrid Fiber Coax)</h4><p>HFC 网是在目前覆盖面很广的有线电视网 CATV 的基础上开发的一种居民宽带接入网。</p>
+<p>HFC 网除可传送 CATV 外，还提供电话、数据和其他宽带交互型业务。</p>
+<p>现有的 CATV 网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向传输。而 HFC 网则需要对 CATV 网进行改造， </p>
+<p>HFC特点：(1) HFC网的主干线路采用光纤(2) HFC 网采用结点体系结构 (3) HFC 网具有比 CATV 网更宽的频谱，且具有双向传输功能 </p>
+<h4 id="FTTx-技术"><a href="#FTTx-技术" class="headerlink" title="FTTx 技术"></a>FTTx 技术</h4><p>实现宽带居民接入网的方案。这里字母 x 可代表不同意思。</p>
+<p>光纤到家 FTTH (Fiber To The Home)：光纤一直铺设到用户家庭可能是居民接入网最后的解决方法。</p>
+<p>光纤到大楼 FTTB (Fiber To The Building)：光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。</p>
+<p>光纤到路边 FTTC (Fiber To The Curb)：从路边到各用户可使用星形结构双绞线作为传输媒体。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E9%BB%91%E5%AE%A2%E5%A4%A7%E5%85%A81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -674,63 +940,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD2/" class="post-title-link" itemprop="url">人工智能2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 11:28:18" itemprop="dateCreated datePublished" datetime="2020-05-07T11:28:18-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -800,7 +1009,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
