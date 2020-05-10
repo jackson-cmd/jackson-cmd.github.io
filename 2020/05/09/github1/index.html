@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="注: 文章摘自: IT大飞说 - 掘金   用户配置12git config --global user.name &quot;Your Name&quot; &#x2F;&#x2F; Git 姓名git config --global user.email &quot;email@example.com&quot; &#x2F;&#x2F; Git 邮箱  初始化仓库1git init  添加文件提交至本地 “暂存区” (.git&#x2F;index) 123456&#x2F;&#x2F; 单个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git命令大全">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/github1/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="注: 文章摘自: IT大飞说 - 掘金   用户配置12git config --global user.name &quot;Your Name&quot; &#x2F;&#x2F; Git 姓名git config --global user.email &quot;email@example.com&quot; &#x2F;&#x2F; Git 邮箱  初始化仓库1git init  添加文件提交至本地 “暂存区” (.git&#x2F;index) 123456&#x2F;&#x2F; 单个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4804567-3243cbd5978fa871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/980">
+<meta property="article:published_time" content="2020-05-10T03:33:20.000Z">
+<meta property="article:modified_time" content="2020-05-10T03:33:44.189Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4804567-3243cbd5978fa871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/980">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/09/github1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>git命令大全 | Jackson Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/github1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git命令大全
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-09 22:33:20 / Modified: 22:33:44" itemprop="dateCreated datePublished" datetime="2020-05-09T22:33:20-05:00">2020-05-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"/>
+
+<blockquote>
+<p>注: 文章摘自: IT大飞说 - 掘金</p>
+</blockquote>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3243cbd5978fa871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/980" alt="img"></p>
+<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> user.name <span class="string">"Your Name"</span> <span class="comment">// Git 姓名</span></span><br><span class="line">git config --<span class="keyword">global</span> user.email <span class="string">"email@example.com"</span> <span class="comment">// Git 邮箱</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><p>提交至本地 “暂存区” (.git/index)</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个文件添加至仓库</span></span><br><span class="line">git <span class="keyword">add</span> README.md</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会忽略 .gitignore 把任何文件都加入</span></span><br><span class="line">git <span class="keyword">add</span> *</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会根据 .gitignore 做过滤</span></span><br><span class="line">git <span class="keyword">add</span> .</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交暂存区的文件至本地仓库"><a href="#提交暂存区的文件至本地仓库" class="headerlink" title="提交暂存区的文件至本地仓库"></a>提交暂存区的文件至本地仓库</h2><p>将已添加的文件提交至本地 Git 仓库 (默认 master 分支)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 会弹出一个 Vim 编辑器输入内容后再提交</span></span><br><span class="line">git commit</span><br><span class="line"><span class="comment">// 直接输入内容并提交</span></span><br><span class="line">git commit -m <span class="string">"feat: 修改 xx 文件"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="比较当前文件的修改"><a href="#比较当前文件的修改" class="headerlink" title="比较当前文件的修改"></a>比较当前文件的修改</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>在 Git 中, 用 <code>HEAD</code> 表示当前版本. 上一个版本就是 <code>HEAD^</code>, 上上一个版本就是 <code>HEAD^^</code>, 以此类推…</p>
+<p>如果需要回退几十个版本的话可以这样写：<code>HEAD~50</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<p>如果你回退完版本又后悔了, 一般情况下是回不来的.</p>
+<p>但如果你可以找到之前 <code>commit id</code> 的话，也是可以的</p>
+<p><code>commit id</code> (版本号) 就是一个使用 SHA1 计算出来的一个非常大的十六进制数字, 提交时看到的一大串类似 <code>3628164...882e1e0</code> 的就是了</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard + commit <span class="keyword">id</span></span><br></pre></td></tr></table></figure>
+
+<p>如果忘记 <code>commit id</code> 的话可以执行下一步命令找回</p>
+<h2 id="查看历史命令记录"><a href="#查看历史命令记录" class="headerlink" title="查看历史命令记录"></a>查看历史命令记录</h2><p>会将你之前所有的操作类型及相关信息打印出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件提交前后的区别"><a href="#查看文件提交前后的区别" class="headerlink" title="查看文件提交前后的区别"></a>查看文件提交前后的区别</h2><p>查看工作区和版本库里面最新版本文件的区别，也可以不加 <code>HEAD</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+
+<h2 id="丢弃工作区的修改"><a href="#丢弃工作区的修改" class="headerlink" title="丢弃工作区的修改"></a>丢弃工作区的修改</h2><p>适用于工作区修改没有 <code>add</code> 的文件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="丢弃暂存区的文件"><a href="#丢弃暂存区的文件" class="headerlink" title="丢弃暂存区的文件"></a>丢弃暂存区的文件</h2><p>适用于暂存区已经 <code>add</code> 的文件</p>
+<p>他会将暂存区的修改放回到工作区中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后提交即可</p>
+<p>如果不小心删错了, 且还没有提交的话使用下面命令即可恢复删除</p>
+<p>注意它只能恢复最近版本提交的修改, 你工作区的修改是不能被恢复的</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建SSH-key"><a href="#创建SSH-key" class="headerlink" title="创建SSH key"></a>创建SSH key</h2><p>一般本地 Git 仓库和远程 Git 仓库之间的传输是通过 SSH 加密的, 所以我们可以将其生成的公钥添加到 Git 服务端的设置中即可, 这样 Git 就可以知道是你提交的了</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh-keygen</span> <span class="selector-tag">-t</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-C</span> "<span class="selector-tag">youremail</span><span class="keyword">@example</span>.com"</span><br></pre></td></tr></table></figure>
+
+<h2 id="与远程仓库协作"><a href="#与远程仓库协作" class="headerlink" title="与远程仓库协作"></a>与远程仓库协作</h2><h5 id="与远程库关联"><a href="#与远程库关联" class="headerlink" title="与远程库关联"></a>与远程库关联</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> origin git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除本地库与远程库的关联"><a href="#删除本地库与远程库的关联" class="headerlink" title="删除本地库与远程库的关联"></a>删除本地库与远程库的关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+
+<p>作用：有时候我们需要关联其他远程库，需要先删除旧的关联，再添加新的关联，因为如果你已经关联过了就不能在关联了，不过想关联多个远程库也是可以的，前提是你的本地库没有关联任何远程库，操作如下：</p>
+<ul>
+<li>先关联Github远程库：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> github git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再关联码云远程库：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> gitee git@gitee.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们用 <code>git remote -v</code> 查看远程库的关联信息，如果看到两组关联信息就说明关联成功了</p>
+<p>如果要推送到GitHub，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push github master</span><br></pre></td></tr></table></figure>
+
+<p>如果要推送到码云，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push gitee master</span><br></pre></td></tr></table></figure>
+
+<h2 id="将远程库中的更改合并到当前分支中"><a href="#将远程库中的更改合并到当前分支中" class="headerlink" title="将远程库中的更改合并到当前分支中"></a>将远程库中的更改合并到当前分支中</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull <span class="tag">&lt;<span class="name">远程主机名</span>&gt;</span> <span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>比如，要取回 <code>origin</code> 主机的 <code>next</code> 分支，与本地的 <code>master</code> 分支合并</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">pull</span> <span class="selector-tag">origin</span> <span class="selector-tag">next</span><span class="selector-pseudo">:master</span></span><br></pre></td></tr></table></figure>
+
+<p>如果远程分支 <code>next</code> 要与当前分支合并，则冒号后面的部分可以省略</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
+
+<p>实质上，这等同于先做 <code>git fetch</code>，再执行 <code>git merge</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git merge origin/<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="从远程库获取分支-标签"><a href="#从远程库获取分支-标签" class="headerlink" title="从远程库获取分支 / 标签"></a>从远程库获取分支 / 标签</h2><p>更新远程所有分支到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><p><strong>注意：第一次提交需要加一个参数 <code>-u</code>, 以后不需要</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="克隆一个远程库"><a href="#克隆一个远程库" class="headerlink" title="克隆一个远程库"></a>克隆一个远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><ul>
+<li>创建一个分支 <code>branch1</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>切换到 <code>branch1</code> 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建并切换到 <code>branch1</code> 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看分支</li>
+</ul>
+<p>提示：显示的结果中，其中有一个分支前有个*号，表示的是当前所在的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将 <code>branch1</code> 合并到当前分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除分支 <code>branch1</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看提交历史记录"><a href="#查看提交历史记录" class="headerlink" title="查看提交历史记录"></a>查看提交历史记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>命令可以看到分支合并图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>禁用 Fast forward 模式合并分支</p>
+<p>默认 Git 合并分支时使用的是 Fast forward 模式, 删除分支后会丢掉分支信息, 所以我们需要强制禁用此模式来合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m <span class="string">"merge"</span> branch1</span><br></pre></td></tr></table></figure>
+
+<p>补充内容：实际开发中分支管理的策略</p>
+<ul>
+<li><code>master</code> 分支应该是非常稳定的, 也就是仅用来发布新版本, 平时不能在上面提交</li>
+<li>我们可以新开一个 <code>dev</code> 分支, 也就是说 <code>dev</code> 分支是不稳定的. 到版本发布时, 再把 <code>dev</code> 分支合并到 <code>master</code>上，在 <code>master</code> 分支发布新版本</li>
+<li>你和你的协作者平时都在 <code>dev</code> 分支上提交, 每个人都有自己的分支, 时不时地往 <code>dev</code> 分支上合并就可以了</li>
+</ul>
+<h2 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a>保存工作现场</h2><p>作用：当你需要去修改其他内容时，这时候你的工作还没有做完，先临时保存起来，等干完其他事之后，再回来回复现场，再继续干活；为什么？因为暂存区是公用的，如果不通过 stash 命令隐藏，会带到其它分支去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+
+<p>查看已经保存的工作现场列表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+<p>恢复工作现场 (恢复并从 <code>stash list</code> 删除)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式1</span></span><br><span class="line">git stash pop</span><br><span class="line"><span class="comment">// 方式2</span></span><br><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
+
+<p>恢复工作现场，但 <code>stash</code> 内容并不删除，如果你需要删除执行如下命令</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">drop</span></span><br></pre></td></tr></table></figure>
+
+<p>恢复指定的 stash</p>
+<p>说明：其中 <code>stash@{0}</code> 为 <code>git stash list</code> 中的一种编号</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">stash</span> <span class="selector-tag">apply</span> <span class="selector-tag">stash</span>@&#123;0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除一个没有被合并过的分支"><a href="#删除一个没有被合并过的分支" class="headerlink" title="删除一个没有被合并过的分支"></a>删除一个没有被合并过的分支</h2><p>实际开发中，添加一个新 <code>feature</code>, 最好新建一个分支, 如果要丢弃这个没有被合并过的分支, 可以通过下面的命令强行删除</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D <span class="tag">&lt;<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看远程库的信息"><a href="#查看远程库的信息" class="headerlink" title="查看远程库的信息"></a>查看远程库的信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+
+<p>显示更详细的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment">// 推送 master 分支到远程库</span></span><br><span class="line">git push origin branch1 <span class="comment">// 推送branch1到远程库</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h2><p>如果远程库中有分支, <code>clone</code> 之后默认只有 <code>master</code> 分支的, 所以需要执行如上命令来创建本地分支才能与远程的分支关联起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1 origin&#x2F;branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地与远程分支关联"><a href="#本地与远程分支关联" class="headerlink" title="本地与远程分支关联"></a>本地与远程分支关联</h2><p>如果你本地新建的 <code>branch1</code> 分支，远程库中也有一个 <code>branch1</code> 分支 (别人创建的), 而刚好你也没有提交过到这个分支, 即没有关联过. 这时会报一个 “no tracking information” 信息，通过下面命令关联即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-upstream branch1 origin/branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;name&gt; <span class="comment">// 例: git tag v1.0</span></span><br></pre></td></tr></table></figure>
+
+<p>查看所有标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+
+<p>对历史提交打 tag</p>
+<p>先使用 <code>$ git log --pretty=oneline --abbrev-commit</code> 命令找到历史提交的 <code>commit id</code></p>
+<p>例如对 <code>commit id</code> 为 “123456” 的提交打一个 tag</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">v0</span><span class="selector-class">.9</span> 123456</span><br></pre></td></tr></table></figure>
+
+<p>查看标签信息</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">show</span> &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建带有说明的标签，用 <code>-a</code> 指定标签名，<code>-m</code> 指定说明文字，”123456” 为 <code>commit id</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-a</span> <span class="selector-tag">v1</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">V1</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 123456</span><br></pre></td></tr></table></figure>
+
+<p>用私钥签名一个标签</p>
+<p>签名采用 PGP 签名，因此，必须先要安装 gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错，具体请参考GnuPG帮助文档配置Key；</p>
+<p>作用：用 PGP 签名的标签是不可伪造的，因为可以验证 PGP 签名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-s</span> <span class="selector-tag">v2</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">signed</span> <span class="selector-tag">V2</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 345678</span><br></pre></td></tr></table></figure>
+
+<p>删除标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>删除远程库中的标签</p>
+<p>比如要删除远程库中的 V1.0 标签，分两步</p>
+<ul>
+<li>先删除本地标签</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-d</span> <span class="selector-tag">V1</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再推送删除</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="symbol">:refs/tags/V1</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>推送标签到远程库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>推送所有标签到远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义Git设置"><a href="#自定义Git设置" class="headerlink" title="自定义Git设置"></a>自定义Git设置</h2><p>Git 显示颜色，会让命令输出看起来更清晰、醒目</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> color.ui <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>设置命令别名</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.st status</span><br></pre></td></tr></table></figure>
+
+<p>说明：<code>--global</code> 表示全局，即设置完之后全局生效，<code>st</code> 表示别名，<code>status</code> 表示原始名</p>
+<p>好了，现在敲 <code>git st</code> 就相当于是 <code>git status</code> 命令了，是不是方便？</p>
+<p>当然还有其他命令可以简写，这里举几个：很多人都用 <code>co</code> 表示 <code>checkout</code>，<code>ci</code> 表示 <code>commit</code>，<code>br</code> 表示 <code>branch</code>…根据自己的喜好可以设置即可，个人觉得不是很推荐使用别名的方式</p>
+<p>推荐一个比较丧心病狂的别名设置</p>
+<p>效果自己去体会…</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.lg <span class="string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span></span><br></pre></td></tr></table></figure>
+
+<p>其他说明：<br>配置的时候加上 <code>--global</code> 是针对当前用户起作用的，如果不加只对当前的仓库起作用<br>每个仓库的 Git 配置文件都放在 <code>.git/config</code> 文件中，我们可以打开对其中的配置作修改，可以删除设置的别名<br>而当前用户的 Git 配置文件放在用户主目录下的一个隐藏文件 <code>.gitconfig</code> 中，我们也可以对其进行配置和修改</p>
+<h2 id="忽略文件规则"><a href="#忽略文件规则" class="headerlink" title="忽略文件规则"></a>忽略文件规则</h2><p>在 Git 工作区的根目录下创建一个特殊的 <code>.gitignore</code> 文件，然后把要忽略的文件名或者相关规则填进去，Git就会自动忽略这些文件<br>如果你想添加一个被 <code>.gitignore</code> 忽略的文件到 Git 中，但发现是添加不了的，所以我们可以强制添加</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">add</span> -f &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者我们可以检查及修改 <code>.gitignore</code> 文件的忽略规则</p>
+<p>Git 会告诉我们具体的 <code>.gitignore</code> 文件中的第几行规则忽略了该文件，这样我们就知道应该修改哪个规则了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git check-ignore -v <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如何忽略已经提交到远程库中的文件？<br>如果你已经将一些文件提交到远程库中了，然后你想忽略掉此文件，然后在 <code>.gitignore</code> 文件中添加忽略，然而你会发现并没有生效，因为 Git 添加忽略时只有对没有跟踪的文件才生效，也就是说你没有 add 过和提交过的文件才生效</p>
+<p>比如说：我们要忽略 <code>.idea</code> 目录，先删除已经提交到本地库的文件目录</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示：<code>fatal: not removing &#39;.idea&#39; recursively without -r</code><br>加个参数 -r 即可强制删除</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">-r</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，执行 <code>git status</code> 会提示你已经删除 <code>.idea</code> 目录了，然后执行 <code>commit</code> 再 <code>push</code> 就可以了，此时的 <code>.idea</code> 目录是没有被跟踪的，将 <code>.idea</code> 目录添加到 <code>.gitignore</code> 文件中就可以忽略了</p>
+<p>作者：小贤笔记<br>链接：<a href="https://www.jianshu.com/p/dd7f18ed0bb1" target="_blank" rel="noopener">https://www.jianshu.com/p/dd7f18ed0bb1</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<a id="more"></a>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/09/github/" rel="prev" title="github新手入门">
+      <i class="fa fa-chevron-left"></i> github新手入门
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户配置"><span class="nav-number">1.</span> <span class="nav-text">用户配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化仓库"><span class="nav-number">2.</span> <span class="nav-text">初始化仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文件"><span class="nav-number">3.</span> <span class="nav-text">添加文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交暂存区的文件至本地仓库"><span class="nav-number">4.</span> <span class="nav-text">提交暂存区的文件至本地仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看仓库状态"><span class="nav-number">5.</span> <span class="nav-text">查看仓库状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较当前文件的修改"><span class="nav-number">6.</span> <span class="nav-text">比较当前文件的修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看历史提交记录"><span class="nav-number">7.</span> <span class="nav-text">查看历史提交记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回退版本"><span class="nav-number">8.</span> <span class="nav-text">回退版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看历史命令记录"><span class="nav-number">9.</span> <span class="nav-text">查看历史命令记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件提交前后的区别"><span class="nav-number">10.</span> <span class="nav-text">查看文件提交前后的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#丢弃工作区的修改"><span class="nav-number">11.</span> <span class="nav-text">丢弃工作区的修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#丢弃暂存区的文件"><span class="nav-number">12.</span> <span class="nav-text">丢弃暂存区的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">13.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建SSH-key"><span class="nav-number">14.</span> <span class="nav-text">创建SSH key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与远程仓库协作"><span class="nav-number">15.</span> <span class="nav-text">与远程仓库协作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#与远程库关联"><span class="nav-number">15.0.0.1.</span> <span class="nav-text">与远程库关联</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除本地库与远程库的关联"><span class="nav-number">15.0.0.2.</span> <span class="nav-text">删除本地库与远程库的关联</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将远程库中的更改合并到当前分支中"><span class="nav-number">16.</span> <span class="nav-text">将远程库中的更改合并到当前分支中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从远程库获取分支-标签"><span class="nav-number">17.</span> <span class="nav-text">从远程库获取分支 &#x2F; 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送到远程仓库"><span class="nav-number">18.</span> <span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆一个远程库"><span class="nav-number">19.</span> <span class="nav-text">克隆一个远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">20.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看提交历史记录"><span class="nav-number">21.</span> <span class="nav-text">查看提交历史记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并分支"><span class="nav-number">22.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存工作现场"><span class="nav-number">23.</span> <span class="nav-text">保存工作现场</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除一个没有被合并过的分支"><span class="nav-number">24.</span> <span class="nav-text">删除一个没有被合并过的分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程库的信息"><span class="nav-number">25.</span> <span class="nav-text">查看远程库的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送分支"><span class="nav-number">26.</span> <span class="nav-text">推送分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建本地分支"><span class="nav-number">27.</span> <span class="nav-text">创建本地分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地与远程分支关联"><span class="nav-number">28.</span> <span class="nav-text">本地与远程分支关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建标签"><span class="nav-number">29.</span> <span class="nav-text">创建标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Git设置"><span class="nav-number">30.</span> <span class="nav-text">自定义Git设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略文件规则"><span class="nav-number">31.</span> <span class="nav-text">忽略文件规则</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

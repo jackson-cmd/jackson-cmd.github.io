@@ -145,6 +145,589 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/python400%E9%9B%865/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/03/python400%E9%9B%865/" class="post-title-link" itemprop="url">python400集5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-03 19:13:49" itemprop="dateCreated datePublished" datetime="2020-05-03T19:13:49-05:00">2020-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-06 20:20:09" itemprop="dateModified" datetime="2020-05-06T20:20:09-05:00">2020-05-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="文件操作（IO技术）"><a href="#文件操作（IO技术）" class="headerlink" title="文件操作（IO技术）"></a>文件操作（IO技术）</h1><p>一个完整的程序一般都包括数据的存储和读取;我们在前面写的程序数据都没有进行实 际的存储，因此 python 解释器执行完数据就消失了。实际开发中，我们经常需要从外部存 储介质(硬盘、光盘、U 盘等)读取数据，或者将程序产生的数据存储到文件中，实现“持 久化”保存。</p>
+<p>很多软件系统是将数据存储的数据库中;数据库实际也是基于文件 形式存储的</p>
+<p><strong>文本文件和二进制文件</strong></p>
+<p>按文件中数据组织形式，我们把文件分为文本文件和二进制文件两大类。</p>
+<ol>
+<li>文本文件</li>
+</ol>
+<p>文本文件存储的是普通“字符”文本，python 默认为 unicode 字符集(两个字节表示 一个字符，最多可以表示:65536 个)，可以使用记事本程序打开。但是，像 word 软件 编辑的文档不是文本文件。</p>
+<ol start="2">
+<li>二进制文件</li>
+</ol>
+<p>二进制文件把数据内容用“字节”进行存储，无法用记事本打开。必须使用专用的软件 解码。常见的有:MP4 视频文件、MP3 音频文件、JPG 图片、doc 文档等等。</p>
+<h2 id="文件操作相关模块概述"><a href="#文件操作相关模块概述" class="headerlink" title="文件操作相关模块概述"></a><strong>文件操作相关模块概述</strong></h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>io 模块</td>
+<td>文件流的输入和输出操作 input output</td>
+</tr>
+<tr>
+<td>os 模块</td>
+<td>基本操作系统功能，包括文件操作</td>
+</tr>
+<tr>
+<td>glob 模块</td>
+<td><code>查找符合特定规则的文件路径名</code></td>
+</tr>
+<tr>
+<td>fnmatch 模块</td>
+<td><code>使用模式来匹配文件路径名</code></td>
+</tr>
+<tr>
+<td>fileinput 模块</td>
+<td>处理多个输入文件</td>
+</tr>
+<tr>
+<td>filecmp 模块</td>
+<td>用于文件的比较</td>
+</tr>
+<tr>
+<td>cvs 模块</td>
+<td>用于 csv 文件处理</td>
+</tr>
+<tr>
+<td>pickle 和 cPickle</td>
+<td>用于序列化和反序列化</td>
+</tr>
+<tr>
+<td>xml 包</td>
+<td>用于 XML 数据处理</td>
+</tr>
+<tr>
+<td>bz2、gzip、zipfile、zlib、tarfile</td>
+<td><code>用于处理压缩和解压缩文件(分别对应不同的算法)</code></td>
+</tr>
+</tbody></table>
+<h2 id="创建文件对象-open"><a href="#创建文件对象-open" class="headerlink" title="创建文件对象 open()"></a><strong>创建文件对象 open()</strong></h2><p>open()函数用于创建文件对象，基本语法格式如下: open(文件名[,打开方式])</p>
+<p>如果只是文件名，代表在当前目录下的文件。文件名可以录入全路径，比如:D:\a\b.txt。</p>
+<h3 id="为了减少“-”的输入，可以使用原始字符串-r-“d-b-txt”。"><a href="#为了减少“-”的输入，可以使用原始字符串-r-“d-b-txt”。" class="headerlink" title="为了减少“\”的输入，可以使用原始字符串:r “d:\b.txt”。"></a>为了减少“\”的输入，可以使用原始字符串:r “d:\b.txt”。</h3><h3 id="示例如下"><a href="#示例如下" class="headerlink" title="示例如下:"></a>示例如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(r&quot;d:\b.txt&quot;,&quot;w&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>打开方式有如下几种:</p>
+<p>模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> r 读 read 模式</span><br><span class="line"></span><br><span class="line">w 写 write 模式。如果文件不存在则创建;如果文件存在，则重写新内容;</span><br><span class="line"></span><br><span class="line">a 追加 append 模式。如果文件不存在则创建;如果文件存在，则在文件末尾追加内容</span><br><span class="line"></span><br><span class="line">b 二进制 binary 模式(可与其他模式组合使用)</span><br><span class="line"></span><br><span class="line">+ 读、写模式(可与其他模式组合使用)</span><br></pre></td></tr></table></figure>
+
+<p>文本文件对象和二进制文件对象的创建: 如果我们没有增加模式“b”，则默认创建的是文本文件对象，处理的基本单元是“字符”。如果是二进制模式“b”，则创建的是二进制文件对象，处理的基本单元是“字节”。</p>
+<h2 id="文本文件的写入"><a href="#文本文件的写入" class="headerlink" title="文本文件的写入"></a><strong>文本文件的写入</strong></h2><p><strong>基本的文件写入操作</strong></p>
+<p>文本文件的写入一般就是三个步骤: </p>
+<ol>
+<li>创建文件对象</li>
+<li>写入数据</li>
+<li>关闭文件对象</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">r"a.txt"</span>,<span class="string">"a"</span>) </span><br><span class="line">s = <span class="string">"itbaizhan\nsxt\n"</span> </span><br><span class="line">f.write(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用编码介绍"><a href="#常用编码介绍" class="headerlink" title="常用编码介绍"></a><strong>常用编码介绍</strong></h2><p>在操作文本文件时，经常会操作中文，这时候就经常会碰到乱码问题。</p>
+<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a><strong>ASCII</strong></h3><p>全称为 American Standard Code for Information Interchange，美国信 息交换标准代码，这是世界上最早最通用的单字节编码系统，主要用来显示现代 英语及其他西欧语言。</p>
+<p>ASCII 码用 7 位表示，只能表示 128 个字符。只定义了 27=128 个字符，用 7bit 即可完全编码，而一字节 8bit 的容量是 256，所以一字节 ASCII 的编码最 高位总是 0。</p>
+<p>0<del>31 表示控制字符如回车、退格、删除等;32</del>126 表示打印字符即可以 通过键盘输入并且能显示出来的字符;其中 48<del>57 为 0 到 9 十个阿拉伯数字， 65</del>90 为 26 个大写英文字母，97~122 号为 26 个小写英文字母，其余为一 些标点符号、运算符号等，具体可以参考 ASCII 标准表(大家自行百度，不在此 赘述)。</p>
+<h3 id="ISO8859-1"><a href="#ISO8859-1" class="headerlink" title="ISO8859-1"></a><strong>ISO8859-1</strong></h3><p>ISO-8859-1 又称 Latin-1，是一个 8 位单字节字符集，它把 ASCII 的最高 位也利用起来，并兼容了 ASCII，新增的空间是 128，但它并没有完全用完。</p>
+<p>在 ASCII 编码之上又增加了西欧语言、希腊语、泰语、阿拉伯语、希伯来语 对应的文字符号，它是向下兼容 ASCII 编码</p>
+<h3 id="GB2312-GBK-GB18030"><a href="#GB2312-GBK-GB18030" class="headerlink" title="GB2312,GBK,GB18030"></a><strong>GB2312,GBK,GB18030</strong></h3><h4 id="·GB2312"><a href="#·GB2312" class="headerlink" title="·GB2312"></a><strong>·GB2312</strong></h4><p>GB2312 全称为信息交换用汉字编码字符集，是中国于 1980 年发布，主要 用于计算机系统中的汉字处理。GB2312 主要收录了 6763 个汉字、682 个符号。</p>
+<p>GB2312 覆盖了汉字的大部分使用率，但不能处理像古汉语等特殊的罕用字， 所以后来出现了像 GBK、GB18030 这种编码。</p>
+<p><strong>GB2312 完全兼容 ISO8859-1。</strong></p>
+<h4 id="·GBK"><a href="#·GBK" class="headerlink" title="·GBK"></a><strong>·GBK</strong></h4><p>全称为 Chinese Internal Code Specification，即汉字内码扩展规范，于 1995 年制定。 它主要是扩展了 GB2312，在它的基础上又加了更多的汉字，它一共收录了 21003 个汉字</p>
+<h4 id="·GB18030"><a href="#·GB18030" class="headerlink" title="·GB18030"></a><strong>·GB18030</strong></h4><p>现在最新的内码字集于 2000 年发布，并于 2001 年强制执行，包含了中国大部分少数 民族的语言字符，收录汉字数超过 70000 余个。</p>
+<p>它主要采用单字节、双字节、四字节对字符编码，它是向下兼容 GB2312 和 GBK 的， 虽然是我国的强制使用标准，但在实际生产中很少用到，用得最多的反而是 GBK 和 GB2312</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a><strong>Unicode</strong></h3><p>Unicode 编码设计成了固定两个字节，所有的字符都用 16 位(2^16=65536) 表示，包括之前只占 8 位的英文字符等，所以会造成空间的浪费，UNICODE 在 很长的一段时间内都没有得到推广应用。</p>
+<p>6</p>
+<p>北京尚学堂·百战程序员 高淇的 python400 集:从零打好内功，直达手写神经网络 Unicode 完全重新设计，不兼容 iso8859-1，也不兼容任何其他编码。</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a><strong>UTF-8</strong></h3><p>对于英文字母，unicode 也需要两个字节来表示。所以 unicode 不便 于传输和存储。因此而产生了 UTF 编码，UTF-8 全称是(8-bit Unicode Transformation Format)。</p>
+<p>UTF 编码兼容 iso8859-1 编码，同时也可以用来表示所有语言的字符， 不过，UTF 编码是不定长编码，每一个字符的长度从 1-4 个字节不等。其中， 英文字母都是用一个字节表示，而汉字使用三个字节。</p>
+<p>【老鸟建议】一般项目都会使用 UTF-8。unicode 中虽然汉字是两个字节， UTF-8 中汉字是 3 个字节。但是互联网中一个网页也包含了大量的英文字母， 这些英文字母只占用 1 个字节，整体占用空间，UTF-8 仍然由于 Unicode。</p>
+<h2 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a><strong>中文乱码问题</strong></h2><p>windows 操作系统默认的编码是 GBK，Linux 操作系统默认的编码是 UTF-8。当我们 用 open()时，调用的是操作系统打开的文件，默认的编码是 GBK。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们在文件编辑区单击右键，选择 FileEncoding，选择 GBK 即可:</span><br></pre></td></tr></table></figure>
+
+<h2 id="write-writelines-写入数据"><a href="#write-writelines-写入数据" class="headerlink" title="write()/writelines()写入数据"></a><strong>write()/writelines()写入数据</strong></h2><p>write(a):把字符串 a 写入到文件中 </p>
+<p>writelines(b):把字符串列表写入文件中，不添加换行符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">r"d:\bb.txt"</span>,<span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) </span><br><span class="line">s = [<span class="string">"高淇\n"</span>,<span class="string">"高老三\n"</span>,<span class="string">"高老四\n"</span>] </span><br><span class="line">f.writelines(s)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="close-关闭文件流"><a href="#close-关闭文件流" class="headerlink" title="close()关闭文件流"></a><strong>close()关闭文件流</strong></h2><p>由于文件底层是由操作系统控制，所以我们打开的文件对象必须显式调用 close()方法 关闭文件对象。当调用 close()方法时，首先会把缓冲区数据写入文件(也可以直接调用 flush() 方法)，再关闭文件，释放文件对象。</p>
+<p>为了确保打开的文件对象正常关闭，一般结合异常机制的 finally 或者 with 关键字实现 无论何种情况都能关闭打开的文件对象。</p>
+<p>结合异常机制 finally 确保关闭文件对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	f = open(<span class="string">r"my01.txt"</span>,<span class="string">"a"</span>) </span><br><span class="line">  str = <span class="string">"gaoqi"</span></span><br><span class="line">	f.write(str)</span><br><span class="line"><span class="keyword">except</span> BaseException <span class="keyword">as</span> e: </span><br><span class="line">  print(e)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  f.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="with-语句-上下文管理器"><a href="#with-语句-上下文管理器" class="headerlink" title="with 语句(上下文管理器)"></a><strong>with 语句(上下文管理器)</strong></h2><p>with 关键字(上下文管理器)可以自动管理上下文资源，不论什么原因跳出 with 块，都能 确保文件正确的关闭，并且可以在代码块执行完毕后自动还原进入该代码块时的现场。</p>
+<p>使用 with 管理文件写入操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = [<span class="string">"高淇\n"</span>,<span class="string">"高老三\n"</span>,<span class="string">"高老五\n"</span>]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\bb.txt"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.writelines(s)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文本文件的读取"><a href="#文本文件的读取" class="headerlink" title="文本文件的读取"></a><strong>文本文件的读取</strong></h2><p>文件的读取一般使用如下三个方法: 1. read([size])</p>
+<p>从文件中读取 size 个字符，并作为结果返回。如果没有 size 参数，则读取整个文件。</p>
+<p>读取到文件末尾，会返回空字符串。 2. readline()</p>
+<p>读取一行内容作为结果返回。读取到文件末尾，会返回空字符串。 3. readlines()</p>
+<p>文本文件中，每一行作为一个字符串存入列表中，返回该列表</p>
+<p>读取一个文件前 4 个字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;bb&quot;,&quot;r&quot;,encoding&#x3D;&quot;utf-8&quot;) as f: </span><br><span class="line">	print(f.read(4))</span><br></pre></td></tr></table></figure>
+
+<p>文件较小，一次将文件内容读入到程序中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;d:\bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	print(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>按行读取一个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	while True:</span><br><span class="line">		fragment &#x3D; f.readline() </span><br><span class="line">		if not fragment:</span><br><span class="line">			break </span><br><span class="line">		else:</span><br><span class="line">			print(fragment,end&#x3D;&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>使用迭代器(每次返回一行)读取文本文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(r&quot;d:\bb.txt&quot;,&quot;r&quot;) as f: </span><br><span class="line">	for a in f:</span><br><span class="line">		print(a,end&#x3D;&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>为文本文件每一行的末尾增加行号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"e.txt"</span>,<span class="string">"r"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f: </span><br><span class="line">  lines = f.readlines()</span><br><span class="line">  lines = [ line.rstrip()+<span class="string">" #"</span>+str(index+<span class="number">1</span>)+<span class="string">"\n"</span> <span class="keyword">for</span> index,line <span class="keyword">in</span> enumerate(lines)] <span class="comment">#推导式生成列表</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"e.txt"</span>,<span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f: </span><br><span class="line">  f.writelines(lines)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">执行前文件内容:</span><br><span class="line">我 love u! </span><br><span class="line">尚学堂 </span><br><span class="line">百战程序员</span><br><span class="line">执行程序后文件内容:</span><br><span class="line">我 love u! #1 </span><br><span class="line">尚学堂 #2 </span><br><span class="line">百战程序员 #3</span><br></pre></td></tr></table></figure>
+
+<p><strong>二进制文件的读取和写入</strong></p>
+<p>二进制文件的处理流程和文本文件流程一致。首先还是要创建文件对象，不过，我们需要指 定二进制模式，从而创建出二进制文件对象。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;wb&#39;) #可写的、重写模式的二进制文件对象</span><br><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;ab&#39;)  #可写的、追加模式的二进制文件对象</span><br><span class="line">f &#x3D; open(r&quot;d:\a.txt&quot;, &#39;rb&#39;) #可读的二进制文件对象</span><br></pre></td></tr></table></figure>
+
+<p>创建好二进制文件对象后，仍然可以使用 write()、read()实现文件的读写操作。</p>
+<p>读取图片文件，实现文件的拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;aa.gif&#39;, &#39;rb&#39;) as f:</span><br><span class="line">	with open(&#39;aa_copy.gif&#39;, &#39;wb&#39;) as w:</span><br><span class="line">		for line in f.readlines():</span><br><span class="line">    w.write(line)</span><br><span class="line">print(&#39;图片拷贝完成!&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件对象的常用属性和方法"><a href="#文件对象的常用属性和方法" class="headerlink" title="文件对象的常用属性和方法"></a>文件对象的常用属性和方法</h2><p>文件对象封装了文件相关的操作。在前面我们学习了通过文件对象对文件进行读写操作。本 节我们详细列出文件对象的常用属性和方法，并进行说明。</p>
+<p>文件对象的属性<br> 属性                                                说明</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>返回文件的名字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mode</td>
+<td>返回文件的打开模式</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>若文件被关闭则返回 True</td>
+</tr>
+</tbody></table>
+<p>文件对象的打开模式</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>读模式</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写模式</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加模式</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>二进制模式(可与其他模式组合)</code></td>
+</tr>
+<tr>
+<td>+</td>
+<td><code>读写模式(可以其他模式组合)</code></td>
+</tr>
+</tbody></table>
+<p>文件对象的常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read([size])</td>
+<td>从文件中读取 size 个字节或字符的内容返回。若省略[size]，则读 取到文件末尾，即一次读取文件所有内容</td>
+</tr>
+<tr>
+<td>readline()</td>
+<td>从文本文件中读取一行内容</td>
+</tr>
+<tr>
+<td>readlines()</td>
+<td>把文本文件中每一行都作为独立的字符串对象，并将这些对象放入 列表返回</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>将字符串 str 内容写入文件</td>
+</tr>
+<tr>
+<td>writelines(s)</td>
+<td>将字符串列表 s 写入文件文件，不添加换行符</td>
+</tr>
+<tr>
+<td>seek(offset ,whence])</td>
+<td>把文件指针移动到新的位置，offset 表示相对于 whence 的多少个 字节的偏移量; offset:                                 off 为正往结束方向移动，为负往开始方向移动 whence 不同的值代表不同含义:  0: 从文件头开始计算(默认值) 1:从当前位置开始计算  2:从文件尾开始计算</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tell()</td>
+<td>返回文件指针的当前位置</td>
+</tr>
+<tr>
+<td>truncate([size])</td>
+<td>不论指针在什么位置，只留下指针前 size 个字节的内容，其余全 部删除;  如果没有传入 size，则当指针当前位置到文件末尾内容全部删除</td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>把缓冲区的内容写入文件，但不关闭文件</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>把缓冲区内容写入文件，同时关闭文件，释放文件对象相关资源</td>
+</tr>
+</tbody></table>
+<h2 id="文件任意位置操作"><a href="#文件任意位置操作" class="headerlink" title="文件任意位置操作"></a><strong>文件任意位置操作</strong></h2><p>seek()移动文件指针示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;e.txt&quot;,&quot;r&quot;,encoding&#x3D;&quot;utf-8&quot;) as f: </span><br><span class="line">	print(&quot;文件名是:&#123;0&#125;&quot;.format(f.name)) </span><br><span class="line">	print(f.tell())</span><br><span class="line">	print(&quot;读取的内容:&#123;0&#125;&quot;.format(str(f.readline()))) </span><br><span class="line">	print(f.tell())</span><br><span class="line">	f.seek(0,0) </span><br><span class="line">	print(&quot;读取的内容:&#123;0&#125;&quot;.format(str(f.readline())))</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-pickle-序列化"><a href="#使用-pickle-序列化" class="headerlink" title="使用 pickle 序列化"></a><strong>使用 pickle 序列化</strong></h2><p>Python 中，一切皆对象，对象本质上就是一个“存储数据的内存块”。有时候，我们 需要将“内存块的数据”保存到硬盘上，或者通过网络传输到其他的计算机上。这时候，就 需要“对象的序列化和反序列化”。 对象的序列化机制广泛的应用在分布式、并行系统上。</p>
+<p>序列化指的是:将对象转化成“串行化”数据形式，存储到硬盘或通过网络传输到其他 地方。反序列化是指相反的过程，将读取到的“串行化数据”转化成对象。</p>
+<p>我们可以使用 pickle 模块中的函数，实现序列化和反序列操作。</p>
+<p>序列化我们使用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> pickle.dump(obj, file) obj 就是要被序列化的对象，file 指的是存储的文件</span><br><span class="line">pickle.load(file) 从 file 读取数据，反序列化成对象</span><br></pre></td></tr></table></figure>
+
+<p>1.序列化是指把对象转换为字节序列的过程，而反序列化是指把字节序列恢复为对象的过程</p>
+<p>2.对象序列化的最主要的用处就是在传递和保存对象的时候，保证对象的完整性和可传递性。序列化是把对象转换成有序字节流，以便在网络上传输或者保存在本地文件中。</p>
+<p>3.序列化机制的核心作用就是对象状态的保存与重建。</p>
+<p>4.反序列化就是客户端从文件中或网络上获得序列化后的对象字节流后，根据字节流中所保存的对象状态及描述信息，通过反序列化重建对象。</p>
+<p>5.序列化就是把实体对象状态按照一定的格式写入到有序字节流，反序列化就是从有序字节流重建对象，恢复对象状态。</p>
+<p>6.序列化算法一般会按步骤做如下事情：</p>
+<p>（1）将对象实例相关的类元数据输出。<br>（2）递归地输出类的超类描述直到不再有超类。<br>（3）类元数据完了以后，开始从最顶层的超类开始输出对象实例的实际数据值。<br>（4）从上至下递归输出实例的数据</p>
+<p>7.序列化的好处：</p>
+<p>一是实现了数据的持久化，通过序列化可以把数据永久地保存到硬盘上（通常存放在文件里），</p>
+<p>二是，利用序列化实现远程通信，即在网络上传送对象的字节序列。</p>
+<h4 id="对象序列化到文件中-反序列化"><a href="#对象序列化到文件中-反序列化" class="headerlink" title="对象序列化到文件中,反序列化"></a>对象序列化到文件中,反序列化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\data.dat"</span>,<span class="string">"wb"</span>) <span class="keyword">as</span> f:<span class="comment">#序列化</span></span><br><span class="line">  a1=<span class="string">"nihao"</span></span><br><span class="line">  a2=<span class="string">"223"</span></span><br><span class="line">  pickle.dump(a1,f)</span><br><span class="line">  pickle.dump(a2,f)</span><br><span class="line"> <span class="comment">#反序列化</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\data.dat"</span>,<span class="string">"rb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">  a1 = pickle.load(f)</span><br><span class="line">  a2 = pickle.load(f)</span><br><span class="line">  print(a1);print(a2)</span><br><span class="line">  <span class="comment">#打印出：nihao</span></span><br><span class="line">          <span class="number">223</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CSV-文件的操作"><a href="#CSV-文件的操作" class="headerlink" title="CSV 文件的操作"></a><strong>CSV 文件的操作</strong></h2><p>csv(Comma Separated Values)是逗号分隔符文本格式，常用于数据交换、Excel 文件和数据库数据的导入和导出。与 Excel 文件不同，CSV 文件中:</p>
+<p>值没有类型，所有值都是字符串 不能指定字体颜色等样式 不能指定单元格的宽高，不能合并单元格，没有多个工作表</p>
+<p>不能嵌入图像图表</p>
+<h3 id="csv-reader-对象和-csv-文件读取"><a href="#csv-reader-对象和-csv-文件读取" class="headerlink" title="csv.reader 对象和 csv 文件读取"></a><strong>csv.reader 对象和 csv 文件读取</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\a.csv"</span>) <span class="keyword">as</span> a:</span><br><span class="line">	a_csv = csv.reader(a) <span class="comment">#创建 csv 对象,它是一个包含所有数据的列表，每一行为一个元素</span></span><br><span class="line">  headers = next(a_csv) <span class="comment">#获得列表对象，包含标题行的信息</span></span><br><span class="line">  print(headers)</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> a_csv:<span class="comment">#循环打印各行内容</span></span><br><span class="line">		print(row)</span><br><span class="line">    <span class="comment">#['高老三', '19', '测试工程师', '20000'] </span></span><br><span class="line">    [<span class="string">'高老五'</span>, <span class="string">'20'</span>, <span class="string">'人工智能开发'</span>, <span class="string">'50000'</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="csv-writer-对象和-csv-文件写入"><a href="#csv-writer-对象和-csv-文件写入" class="headerlink" title="csv.writer 对象和 csv 文件写入"></a><strong>csv.writer 对象和 csv 文件写入</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">headers = [<span class="string">"工号"</span>,<span class="string">"姓名"</span>,<span class="string">"年龄"</span>,<span class="string">"地址"</span>,<span class="string">"月薪"</span>]</span><br><span class="line">rows = [(<span class="string">"1001"</span>,<span class="string">"高淇"</span>,<span class="number">18</span>,<span class="string">"西三旗 1 号院"</span>,<span class="string">"50000"</span>),(<span class="string">"1002"</span>,<span class="string">"高八"</span>,<span class="number">19</span>,<span class="string">"西三旗 1 号院"</span>,<span class="string">"30000"</span>)] </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">r"d:\b.csv"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> b:</span><br><span class="line">	b_csv = csv.writer(b) <span class="comment">#创建 csv 对象</span></span><br><span class="line">	b_csv.writerow(headers) <span class="comment">#写入一行(标题)</span></span><br><span class="line">	b_csv.writerows(rows)  <span class="comment">#写入多行(数据)</span></span><br><span class="line">```</span><br><span class="line">执行结果:</span><br><span class="line">工号,姓名,年龄,地址,月薪 </span><br><span class="line"><span class="number">1001</span>,高淇,<span class="number">18</span>,西三旗 <span class="number">1</span> 号院,<span class="number">50000</span> </span><br><span class="line"><span class="number">1002</span>,高八,<span class="number">19</span>,西三旗 <span class="number">1</span> 号院,<span class="number">30000</span></span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h2 id="os-和-os-path-模块"><a href="#os-和-os-path-模块" class="headerlink" title="os 和 os.path 模块"></a><strong>os 和 os.path 模块</strong></h2><p>os 模块可以帮助我们直接对操作系统进行操作。我们可以直接调用操作系统的可执行 文件、命令，直接操作文件、目录等等。在系统运维的核心基础。</p>
+<p>**os 模块-调用操作系统命令</p>
+<h3 id="·os-system-可以帮助我们直接调用系统的命令"><a href="#·os-system-可以帮助我们直接调用系统的命令" class="headerlink" title="** ·os.system 可以帮助我们直接调用系统的命令"></a>** <strong>·os.system 可以帮助我们直接调用系统的命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import os </span><br><span class="line">os.system(&quot;notepad.exe&quot;)#os.system 调用 windows 系统的记事本程序</span><br><span class="line">import os</span><br><span class="line">os.system(&quot;ping www.baidu.com&quot;)#os.system 调用 windows 系统中 ping 命令</span><br><span class="line">import os</span><br><span class="line">os.startfile(r&quot;C:\Program Files (x86)\Tencent\WeChat\WeChat.exe&quot;)#运行安装好的微信</span><br></pre></td></tr></table></figure>
+
+<p><strong>【注】</strong>Linux 是命令行操作更容易，我们可以通过 os.system 可以更加容易的调用相关的命 令;</p>
+<p>【注】控制台输出中文可能会有乱码问题，可以在 file–&gt;setting 中设置</p>
+<p><strong>os.startfile:直接调用可执行文件</strong></p>
+<p><strong>os 模块-文件和目录操作</strong></p>
+<p>我们可以通过前面讲的文件对象实现对于文件内容的读写操作。如果，还需要对文件和 目录做其他操作，可以使用 os 和 os.path 模块。</p>
+<p>os 模块下常用操作文件的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>remove(path)</td>
+<td>删除指定的文件</td>
+</tr>
+<tr>
+<td>rename(src,dest)</td>
+<td>重命名文件或目录</td>
+</tr>
+<tr>
+<td>stat(path)</td>
+<td>返回文件的所有属性</td>
+</tr>
+<tr>
+<td>listdir(path)</td>
+<td>返回 path 目录下的文件和目录列表</td>
+</tr>
+</tbody></table>
+<p>os 模块下关于目录操作的相关方法，汇总如下:</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mkdir(path)</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>makedirs(path1/path2/path3/… )</td>
+<td>创建多级目录</td>
+</tr>
+<tr>
+<td>rmdir(path)</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>removedirs(path1/path2…)</td>
+<td>删除多级目录</td>
+</tr>
+<tr>
+<td>getcwd()</td>
+<td>返回当前工作目录:current work dir</td>
+</tr>
+<tr>
+<td>chdir(path)</td>
+<td>把 path 设为当前工作目录</td>
+</tr>
+<tr>
+<td>walk()</td>
+<td>遍历目录树</td>
+</tr>
+<tr>
+<td>sep</td>
+<td><code>当前操作系统所使用的路径分隔符</code></td>
+</tr>
+</tbody></table>
+<p>os 模块:创建、删除目录、获取文件信息等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#coding&#x3D;utf-8</span><br><span class="line">#测试 os 模块中，关于文件和目录的操作 import os</span><br><span class="line">#############获取文件和文件夹相关的信息################ print(os.name) #windows-&gt;nt linux 和 unix-&gt;posix print(os.sep) #windows-&gt;\ linux 和 unix-&gt;&#x2F; print(repr(os.linesep)) #windows-&gt;\r\n linux--&gt;\n\</span><br><span class="line">print(os.stat(&quot;my02.py&quot;))</span><br><span class="line">##############关于工作目录的操作############### #print(os.getcwd())</span><br><span class="line">#os.chdir(&quot;d:&quot;) #改变当前的工作目录为:d:盘根目录 #os.mkdir(&quot;书籍&quot;) ################创建目录、创建多级目录、删除############# #os.mkdir(&quot;书籍&quot;)</span><br><span class="line">#os.rmdir(&quot;书籍&quot;) #相对路径都是相对于当前的工作目录</span><br><span class="line"></span><br><span class="line">#os.rename(&quot;电影&quot;,&quot;movie&quot;)</span><br><span class="line">dirs &#x3D; os.listdir(&quot;movie&quot;)</span><br><span class="line">print(dirs)</span><br></pre></td></tr></table></figure>
+
+<p><strong>os.path 模块</strong></p>
+<p>os.path 模块提供了目录相关(路径判断、路径切分、路径连接、文件夹遍历)的操作</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isabs(path)</td>
+<td>判断 path 是否绝对路径</td>
+</tr>
+<tr>
+<td>isdir(path)</td>
+<td>判断 path 是否为目录</td>
+</tr>
+<tr>
+<td>isfile(path)</td>
+<td>判断 path 是否为文件</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>exists(path)</th>
+<th><code>判断指定路径的文件是否存在</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getsize(filename)</td>
+<td>返回文件的大小</td>
+</tr>
+<tr>
+<td>abspath(path)</td>
+<td>返回绝对路径</td>
+</tr>
+<tr>
+<td>dirname(p)</td>
+<td>返回目录的路径</td>
+</tr>
+<tr>
+<td>getatime(filename)</td>
+<td>返回文件的最后访问时间</td>
+</tr>
+<tr>
+<td>getmtime(filename)</td>
+<td>返回文件的最后修改时间</td>
+</tr>
+<tr>
+<td>walk(top,func,arg)</td>
+<td>递归方式遍历目录</td>
+</tr>
+<tr>
+<td>join(path,*paths)</td>
+<td>连接多个 path</td>
+</tr>
+<tr>
+<td>split(path)</td>
+<td>对路径进行分割，以列表形式返回</td>
+</tr>
+<tr>
+<td>splitext(path)</td>
+<td><code>从路径中分割文件的扩展名</code></td>
+</tr>
+</tbody></table>
+<p><strong>walk()递归遍历所有文件和目录</strong></p>
+<p>os.walk()方法:</p>
+<p>返回一个 3 个元素的元组，(dirpath, dirnames, filenames), </p>
+<p>dirpath:要列出指定目录的路径 dirnames:目录下的所有文件夹 filenames:目录下的所有文件</p>
+<p><strong>shutil 模块(拷贝和压缩)</strong></p>
+<p>shutil 模块是 python 标准库中提供的，主要用来做文件和文件夹的拷贝、移动、删除等;还可以做 文件和文件夹的压缩、解压缩操作。</p>
+<p>os 模块提供了对目录或文件的一般操作。shutil 模块作为补充，提供了移动、复制、压缩、解压等操 作，这些 os 模块都没有提供。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/rsa%E5%8A%A0%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/01/rsa%E5%8A%A0%E5%AF%86/" class="post-title-link" itemprop="url">rsa加密算法详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-01 14:12:10 / Modified: 14:25:12" itemprop="dateCreated datePublished" datetime="2020-05-01T14:12:10-05:00">2020-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们日常传输数据想防止hacker的攻击，需要加密算法，常见的：对称加密，非对称加密，对称加密相对于交易双方有相同钥匙，但是任意一方被黑，两方都有危险，而非对称加密，最经典的rsa解决了这个问题。</p>
+<p>rsa算法原理：</p>
+<p>首先找出两个质数 p和q</p>
+<p>计算   n = p * q</p>
+<p>φ(n) = (p-1)  * (q-1)      这个函数又叫欧拉函数</p>
+<p>公钥e    1 &lt; e &lt; φ(n)   在这个范围取出一个整数，并且 e 和 φ(n) 互质</p>
+<p>私钥d    (e * d ) / φ(n)  = x  ······ 1       (x是几无所谓，余数必须是1，比如 φ(n)是20 e是3 那么d就是7)</p>
+<p> 加密  m^e / n =x  ······  c     (这几个x都代表任意数的商，在这里面没有直接意义，可以忽略不看，这三个x也都不相等)</p>
+<p> 解密  c^d  / n =x   ······ m   (可以从数学上证明，经过这一系列的计算，得到结果的余数一定是m)<br>————————————————<br>版权声明：本文为CSDN博主「狱蝶阿一」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/weixin_42510528/java/article/details/80765361" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42510528/java/article/details/80765361</a></p>
+<p><strong>一、RSA加密简介</strong>（ssh典型用此算法）</p>
+<p>　　RSA加密是一种非对称加密。可以在不直接传递密钥的情况下，完成解密。这能够确保信息的安全性，避免了直接传递密钥所造成的被破解的风险。是由一对密钥来进行加解密的过程，分别称为公钥和私钥。两者之间有数学相关，该加密算法的原理就是对一极大整数做因数分解的困难性来保证安全性。通常个人保存私钥，公钥是公开的（可能同时多人持有）。</p>
+<p>　　</p>
+<p><strong>二、RSA加密、签名区别</strong></p>
+<p>　　加密和签名都是为了安全性考虑，但略有不同。常有人问加密和签名是用私钥还是公钥？其实都是对加密和签名的作用有所混淆。简单的说，加密是为了防止信息被泄露，而签名是为了防止信息被篡改。这里举2个例子说明。</p>
+<p><strong>第一个场景</strong>：战场上，B要给A传递一条消息，内容为某一指令。</p>
+<p>RSA的加密过程如下：</p>
+<p>（1）A生成一对密钥（公钥和私钥），私钥不公开，A自己保留。公钥为公开的，任何人可以获取。</p>
+<p>（2）A传递自己的公钥给B，B用A的公钥对消息进行加密。</p>
+<p>（3）A接收到B加密的消息，利用A自己的私钥对消息进行解密。</p>
+<p>　　在这个过程中，只有2次传递过程，第一次是A传递公钥给B，第二次是B传递加密消息给A，即使都被敌方截获，也没有危险性，因为只有A的私钥才能对消息进行解密，防止了消息内容的泄露。</p>
+<p>所以.ssh文件中私钥千万别动，那是你唯一救命稻草。但是公钥随便给别人。 </p>
+<p><strong>第二个场景：</strong>A收到B发的消息后，需要进行回复“收到”。</p>
+<p>RSA签名的过程如下：</p>
+<p>（1）A生成一对密钥（公钥和私钥），私钥不公开，A自己保留。公钥为公开的，任何人可以获取。</p>
+<p>（2）A用自己的私钥对消息加签，形成签名，并将加签的消息和消息本身一起传递给B。</p>
+<p>（3）B收到消息后，在获取A的公钥进行验签，如果验签出来的内容与消息本身一致，证明消息是A回复的。</p>
+<p>　　在这个过程中，只有2次传递过程，第一次是A传递加签的消息和消息本身给B，第二次是B获取A的公钥，即使都被敌方截获，也没有危险性，因为只有A的私钥才能对消息进行签名，即使知道了消息内容，也无法伪造带签名的回复给B，防止了消息内容的篡改。</p>
+<p>　　但是，综合两个场景你会发现，第一个场景虽然被截获的消息没有泄露，但是可以利用截获的公钥，将假指令进行加密，然后传递给A。第二个场景虽然截获的消息不能被篡改，但是消息的内容可以利用公钥验签来获得，并不能防止泄露。所以在实际应用中，要根据情况使用，也可以同时使用加密和签名，比如A和B都有一套自己的公钥和私钥，当A要给B发送消息时，先用B的公钥对消息加密，再对加密的消息使用A的私钥加签名，达到既不泄露也不被篡改，更能保证消息的安全性。</p>
+<p>　　<strong>总结：公钥加密、私钥解密、私钥签名、公钥验签。</strong></p>
+<p><strong>三、RSA加密、签名的方法，代码例子如下：</strong></p>
+<p>java实现此算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">  1 import java.io.ByteArrayOutputStream;&#x2F;&#x2F;都是javase6以后的包</span><br><span class="line">  2 import java.security.KeyFactory;</span><br><span class="line">  3 import java.security.KeyPair;</span><br><span class="line">  4 import java.security.KeyPairGenerator;</span><br><span class="line">  5 import java.security.PrivateKey;</span><br><span class="line">  6 import java.security.PublicKey;</span><br><span class="line">  7 import java.security.Signature;</span><br><span class="line">  8 import java.security.spec.PKCS8EncodedKeySpec;</span><br><span class="line">  9 import java.security.spec.X509EncodedKeySpec;</span><br><span class="line"> 10 import javax.crypto.Cipher;</span><br><span class="line"> 11 import org.apache.commons.codec.binary.Base64;</span><br><span class="line"> 12 </span><br><span class="line"> 13 public class TestRSA &#123;</span><br><span class="line"> 14 </span><br><span class="line"> 15     &#x2F;**</span><br><span class="line"> 16      * RSA最大加密明文大小</span><br><span class="line"> 17      *&#x2F;</span><br><span class="line"> 18     private static final int MAX_ENCRYPT_BLOCK &#x3D; 117;</span><br><span class="line"> 19 </span><br><span class="line"> 20     &#x2F;**</span><br><span class="line"> 21      * RSA最大解密密文大小</span><br><span class="line"> 22      *&#x2F;</span><br><span class="line"> 23     private static final int MAX_DECRYPT_BLOCK &#x3D; 128;</span><br><span class="line"> 24 </span><br><span class="line"> 25     &#x2F;**</span><br><span class="line"> 26      * 获取密钥对</span><br><span class="line"> 27      * </span><br><span class="line"> 28      * @return 密钥对</span><br><span class="line"> 29      *&#x2F;</span><br><span class="line"> 30     public static KeyPair getKeyPair() throws Exception &#123;</span><br><span class="line"> 31         KeyPairGenerator generator &#x3D; KeyPairGenerator.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 32         generator.initialize(1024);</span><br><span class="line"> 33         return generator.generateKeyPair();</span><br><span class="line"> 34     &#125;</span><br><span class="line"> 35 </span><br><span class="line"> 36     &#x2F;**</span><br><span class="line"> 37      * 获取私钥</span><br><span class="line"> 38      * </span><br><span class="line"> 39      * @param privateKey 私钥字符串</span><br><span class="line"> 40      * @return</span><br><span class="line"> 41      *&#x2F;</span><br><span class="line"> 42     public static PrivateKey getPrivateKey(String privateKey) throws Exception &#123;</span><br><span class="line"> 43         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 44         byte[] decodedKey &#x3D; Base64.decodeBase64(privateKey.getBytes());</span><br><span class="line"> 45         PKCS8EncodedKeySpec keySpec &#x3D; new PKCS8EncodedKeySpec(decodedKey);</span><br><span class="line"> 46         return keyFactory.generatePrivate(keySpec);</span><br><span class="line"> 47     &#125;</span><br><span class="line"> 48 </span><br><span class="line"> 49     &#x2F;**</span><br><span class="line"> 50      * 获取公钥</span><br><span class="line"> 51      * </span><br><span class="line"> 52      * @param publicKey 公钥字符串</span><br><span class="line"> 53      * @return</span><br><span class="line"> 54      *&#x2F;</span><br><span class="line"> 55     public static PublicKey getPublicKey(String publicKey) throws Exception &#123;</span><br><span class="line"> 56         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 57         byte[] decodedKey &#x3D; Base64.decodeBase64(publicKey.getBytes());</span><br><span class="line"> 58         X509EncodedKeySpec keySpec &#x3D; new X509EncodedKeySpec(decodedKey);</span><br><span class="line"> 59         return keyFactory.generatePublic(keySpec);</span><br><span class="line"> 60     &#125;</span><br><span class="line"> 61     </span><br><span class="line"> 62     &#x2F;**</span><br><span class="line"> 63      * RSA加密</span><br><span class="line"> 64      * </span><br><span class="line"> 65      * @param data 待加密数据</span><br><span class="line"> 66      * @param publicKey 公钥</span><br><span class="line"> 67      * @return</span><br><span class="line"> 68      *&#x2F;</span><br><span class="line"> 69     public static String encrypt(String data, PublicKey publicKey) throws Exception &#123;</span><br><span class="line"> 70         Cipher cipher &#x3D; Cipher.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 71         cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span><br><span class="line"> 72         int inputLen &#x3D; data.getBytes().length;</span><br><span class="line"> 73         ByteArrayOutputStream out &#x3D; new ByteArrayOutputStream();</span><br><span class="line"> 74         int offset &#x3D; 0;</span><br><span class="line"> 75         byte[] cache;</span><br><span class="line"> 76         int i &#x3D; 0;</span><br><span class="line"> 77         &#x2F;&#x2F; 对数据分段加密</span><br><span class="line"> 78         while (inputLen - offset &gt; 0) &#123;</span><br><span class="line"> 79             if (inputLen - offset &gt; MAX_ENCRYPT_BLOCK) &#123;</span><br><span class="line"> 80                 cache &#x3D; cipher.doFinal(data.getBytes(), offset, MAX_ENCRYPT_BLOCK);</span><br><span class="line"> 81             &#125; else &#123;</span><br><span class="line"> 82                 cache &#x3D; cipher.doFinal(data.getBytes(), offset, inputLen - offset);</span><br><span class="line"> 83             &#125;</span><br><span class="line"> 84             out.write(cache, 0, cache.length);</span><br><span class="line"> 85             i++;</span><br><span class="line"> 86             offset &#x3D; i * MAX_ENCRYPT_BLOCK;</span><br><span class="line"> 87         &#125;</span><br><span class="line"> 88         byte[] encryptedData &#x3D; out.toByteArray();</span><br><span class="line"> 89         out.close();</span><br><span class="line"> 90         &#x2F;&#x2F; 获取加密内容使用base64进行编码,并以UTF-8为标准转化成字符串</span><br><span class="line"> 91         &#x2F;&#x2F; 加密后的字符串</span><br><span class="line"> 92         return new String(Base64.encodeBase64String(encryptedData));</span><br><span class="line"> 93     &#125;</span><br><span class="line"> 94 </span><br><span class="line"> 95     &#x2F;**</span><br><span class="line"> 96      * RSA解密</span><br><span class="line"> 97      * </span><br><span class="line"> 98      * @param data 待解密数据</span><br><span class="line"> 99      * @param privateKey 私钥</span><br><span class="line">100      * @return</span><br><span class="line">101      *&#x2F;</span><br><span class="line">102     public static String decrypt(String data, PrivateKey privateKey) throws Exception &#123;</span><br><span class="line">103         Cipher cipher &#x3D; Cipher.getInstance(&quot;RSA&quot;);</span><br><span class="line">104         cipher.init(Cipher.DECRYPT_MODE, privateKey);</span><br><span class="line">105         byte[] dataBytes &#x3D; Base64.decodeBase64(data);</span><br><span class="line">106         int inputLen &#x3D; dataBytes.length;</span><br><span class="line">107         ByteArrayOutputStream out &#x3D; new ByteArrayOutputStream();</span><br><span class="line">108         int offset &#x3D; 0;</span><br><span class="line">109         byte[] cache;</span><br><span class="line">110         int i &#x3D; 0;</span><br><span class="line">111         &#x2F;&#x2F; 对数据分段解密</span><br><span class="line">112         while (inputLen - offset &gt; 0) &#123;</span><br><span class="line">113             if (inputLen - offset &gt; MAX_DECRYPT_BLOCK) &#123;</span><br><span class="line">114                 cache &#x3D; cipher.doFinal(dataBytes, offset, MAX_DECRYPT_BLOCK);</span><br><span class="line">115             &#125; else &#123;</span><br><span class="line">116                 cache &#x3D; cipher.doFinal(dataBytes, offset, inputLen - offset);</span><br><span class="line">117             &#125;</span><br><span class="line">118             out.write(cache, 0, cache.length);</span><br><span class="line">119             i++;</span><br><span class="line">120             offset &#x3D; i * MAX_DECRYPT_BLOCK;</span><br><span class="line">121         &#125;</span><br><span class="line">122         byte[] decryptedData &#x3D; out.toByteArray();</span><br><span class="line">123         out.close();</span><br><span class="line">124         &#x2F;&#x2F; 解密后的内容 </span><br><span class="line">125         return new String(decryptedData, &quot;UTF-8&quot;);</span><br><span class="line">126     &#125;</span><br><span class="line">127 </span><br><span class="line">128     &#x2F;**</span><br><span class="line">129      * 签名</span><br><span class="line">130      * </span><br><span class="line">131      * @param data 待签名数据</span><br><span class="line">132      * @param privateKey 私钥</span><br><span class="line">133      * @return 签名</span><br><span class="line">134      *&#x2F;</span><br><span class="line">135     public static String sign(String data, PrivateKey privateKey) throws Exception &#123;</span><br><span class="line">136         byte[] keyBytes &#x3D; privateKey.getEncoded();</span><br><span class="line">137         PKCS8EncodedKeySpec keySpec &#x3D; new PKCS8EncodedKeySpec(keyBytes);</span><br><span class="line">138         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line">139         PrivateKey key &#x3D; keyFactory.generatePrivate(keySpec);</span><br><span class="line">140         Signature signature &#x3D; Signature.getInstance(&quot;MD5withRSA&quot;);</span><br><span class="line">141         signature.initSign(key);</span><br><span class="line">142         signature.update(data.getBytes());</span><br><span class="line">143         return new String(Base64.encodeBase64(signature.sign()));</span><br><span class="line">144     &#125;</span><br><span class="line">145 </span><br><span class="line">146     &#x2F;**</span><br><span class="line">147      * 验签</span><br><span class="line">148      * </span><br><span class="line">149      * @param srcData 原始字符串</span><br><span class="line">150      * @param publicKey 公钥</span><br><span class="line">151      * @param sign 签名</span><br><span class="line">152      * @return 是否验签通过</span><br><span class="line">153      *&#x2F;</span><br><span class="line">154     public static boolean verify(String srcData, PublicKey publicKey, String sign) throws Exception &#123;</span><br><span class="line">155         byte[] keyBytes &#x3D; publicKey.getEncoded();</span><br><span class="line">156         X509EncodedKeySpec keySpec &#x3D; new X509EncodedKeySpec(keyBytes);</span><br><span class="line">157         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line">158         PublicKey key &#x3D; keyFactory.generatePublic(keySpec);</span><br><span class="line">159         Signature signature &#x3D; Signature.getInstance(&quot;MD5withRSA&quot;);</span><br><span class="line">160         signature.initVerify(key);</span><br><span class="line">161         signature.update(srcData.getBytes());</span><br><span class="line">162         return signature.verify(Base64.decodeBase64(sign.getBytes()));</span><br><span class="line">163     &#125;</span><br><span class="line">164 </span><br><span class="line">165     public static void main(String[] args) &#123;</span><br><span class="line">166         try &#123;</span><br><span class="line">167             &#x2F;&#x2F; 生成密钥对</span><br><span class="line">168             KeyPair keyPair &#x3D; getKeyPair();</span><br><span class="line">169             String privateKey &#x3D; new String(Base64.encodeBase64(keyPair.getPrivate().getEncoded()));</span><br><span class="line">170             String publicKey &#x3D; new String(Base64.encodeBase64(keyPair.getPublic().getEncoded()));</span><br><span class="line">171             System.out.println(&quot;私钥:&quot; + privateKey);</span><br><span class="line">172             System.out.println(&quot;公钥:&quot; + publicKey);</span><br><span class="line">173             &#x2F;&#x2F; RSA加密</span><br><span class="line">174             String data &#x3D; &quot;待加密的文字内容&quot;;</span><br><span class="line">175             String encryptData &#x3D; encrypt(data, getPublicKey(publicKey));</span><br><span class="line">176             System.out.println(&quot;加密后内容:&quot; + encryptData);</span><br><span class="line">177             &#x2F;&#x2F; RSA解密</span><br><span class="line">178             String decryptData &#x3D; decrypt(encryptData, getPrivateKey(privateKey));</span><br><span class="line">179             System.out.println(&quot;解密后内容:&quot; + decryptData);</span><br><span class="line">180             </span><br><span class="line">181             &#x2F;&#x2F; RSA签名</span><br><span class="line">182             String sign &#x3D; sign(data, getPrivateKey(privateKey));</span><br><span class="line">183             &#x2F;&#x2F; RSA验签</span><br><span class="line">184             boolean result &#x3D; verify(data, getPublicKey(publicKey), sign);</span><br><span class="line">185             System.out.print(&quot;验签结果:&quot; + result);</span><br><span class="line">186         &#125; catch (Exception e) &#123;</span><br><span class="line">187             e.printStackTrace();</span><br><span class="line">188             System.out.print(&quot;加解密异常&quot;);</span><br><span class="line">189         &#125;</span><br><span class="line">190     &#125;</span><br><span class="line">191 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　PS:RSA加密对明文的长度有所限制，规定需加密的明文最大长度=密钥长度-11（单位是字节，即byte），所以在<strong>加密和解密的过程中需要分块进行</strong>。而密钥默认是1024位，即1024位/8位-11=128-11=117字节。所以默认加密前的明文最大长度117字节，解密密文最大长度为128字。那么为啥两者相差11字节呢？是因为RSA加密使用到了填充模式（padding），即内容不足117字节时会自动填满，用到填充模式自然会占用一定的字节，而且这部分字节也是参与加密的。</p>
+<p>　　密钥长度的设置就是上面例子的第32行。可自行调整，当然非对称加密随着密钥变长，安全性上升的同时性能也会有所下降。</p>
+<p>改编自：<a href="https://www.cnblogs.com/pcheng/p/9629621.html，https://blog.csdn.net/weixin_42510528/java/article/details/80765361" target="_blank" rel="noopener">https://www.cnblogs.com/pcheng/p/9629621.html，https://blog.csdn.net/weixin_42510528/java/article/details/80765361</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/python400%E9%9B%864/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2573,1427 +3156,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/linux4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/linux4/" class="post-title-link" itemprop="url">linux基础（61-80集）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-26 17:38:19 / Modified: 21:50:42" itemprop="dateCreated datePublished" datetime="2020-04-26T17:38:19-05:00">2020-04-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="P60-61（用户文件权限）"><a href="#P60-61（用户文件权限）" class="headerlink" title="P60-61（用户文件权限）"></a>P60-61（用户文件权限）</h2><p>用户管理包括用户与组管理。</p>
-<p> Linux操作系统对多用户的管理，是非常繁琐的，所以用组的概念来管理用户就变得简单，每个用户可以在一个独立的组，每个组也可以有零个用户或者多个用户。</p>
-<p>Linux系统用户是根据用户ID来识别的，默认ID长度为32位，从默认ID编号从0开始，但是为了和老式系统兼容，用户ID限制在60000以下，Linux用户分总共分为三种，分别如下：</p>
-<p> root用户  （ID 0）</p>
-<p> 系统用户 （ID 1-499）</p>
-<p>普通用户 （ID 500以上）</p>
-<p>Linux系统中的每个文件或者文件夹，都有一个所属用户及所属组，使用id命令可以显示当前用户的信息，使用passwd命令可以修改当前用户密码。Linux操作系统用户的特点如下：</p>
-<p>每个用户拥有一个UserID，操作系统实际读取的是UID，而非用户名；</p>
-<p>每个用户属于一个主组，属于一个或多个附属组，一个用户最多有31个附属组；</p>
-<p>每个组拥有一个GroupID；</p>
-<p>每个进程以一个用户身份运行，该用户可对进程拥有资源控制权限；</p>
-<p>每个可登陆用户拥有一个指定的Shell环境。</p>
-<h2 id="Linux用户管理"><a href="#Linux用户管理" class="headerlink" title="Linux用户管理"></a>Linux用户管理</h2><p>Linux用户在操作系统可以进行日常管理和维护，涉及到的相关配置文件如下：</p>
-<p>/etc/passwd   保存用户信息</p>
-<p> /etc/shdaow   保存用户密码（以加密形式保存）</p>
-<p> /etc/group    保存组信息</p>
-<p> /etc/login.defs  用户属性限制,密码过期时间,密码最大长度等限制</p>
-<p> /etc/default/useradd 显示或更改默认的useradd配置文件</p>
-<p>如需创建新用户，可以使用命令useradd，执行命令useradd test1即可创建test1用户，同时会创建一个同名的组test1，默认该用户属于test1主组。</p>
-<p>Useradd test1命令默认创建用户test1，会根据如下步骤进行操作：</p>
-<p> 在/etc/passwd文件中添加用户信息；</p>
-<p>如使用passwd命令创建密码，密码会被加密保存在/etc/shdaow中；</p>
-<p> 为test1创建家目录：/home/test1；</p>
-<p> 将/etc/skel中的.bash开头的文件复制至/home/test1家目录；</p>
-<p> 创建与用户名相同的test1组，test1用户默认属于test1同名组；</p>
-<p> test1组信息保存在/etc/group配置文件中。</p>
-<p>在使用useradd命令创建用户时，可以支持如下参数：</p>
-<p>用法：useradd [选项] 登录</p>
-<p>useradd -D</p>
-<p>useradd -D [选项]</p>
-<p>选项：</p>
-<p>-b, –base-dir BASE_DIR     指定新账户的家目录；</p>
-<p>-c, –comment COMMENT      新账户的 GECOS 字段；</p>
-<p>-d, –home-dir HOME_DIR     新账户的主目录；</p>
-<p>-D, –defaults         显示或更改默认的 useradd 配置；</p>
-<p>-e, –expiredate EXPIRE_DATE  新账户的过期日期；</p>
-<p>-f, –inactive INACTIVE     新账户的密码不活动期；</p>
-<p>-g, –gid GROUP         新账户主组的名称或ID；</p>
-<p>-G, –groups GROUPS     新账户的附加组列表；</p>
-<p>-h, –help           显示此帮助信息并推出；</p>
-<p>-k, –skel SKEL_DIR       使用此目录作为骨架目录；</p>
-<p>-K, –key KEY=VALUE       不使用 /etc/login.defs 中的默认值；</p>
-<p>-l, –no-log-init      不要将此用户添加到最近登录和登录失败数据库；</p>
-<p>-m, –create-home      创建用户的主目录；</p>
-<p>-M, –no-create-home    不创建用户的主目录；</p>
-<p>-N, –no-user-group     不创建同名的组；</p>
-<p>-o, –non-unique        允许使用重复的 UID 创建用户；</p>
-<p>-p, –password  PASSWORD     加密后的新账户密码；</p>
-<p>-r, –system          创建一个系统账户；</p>
-<p>-R, –root CHROOT_DIR      chroot 到的目录；</p>
-<p>-s, –shell SHELL        新账户的登录 shell；</p>
-<p>-u, –uid UID          新账户的用户 ID；</p>
-<p>-U, –user-group        创建与用户同名的组；</p>
-<p>-Z, –selinux-user SEUSER    为SELinux 用户映射使用指定 SEUSER。</p>
-<h2 id="Linux组管理"><a href="#Linux组管理" class="headerlink" title="Linux组管理"></a>Linux组管理</h2><p> 所有的Linux或者Windows系统都有组的概念，通过组可以更加方便的管理用户，组的概念应用于各行行业，例如企业会使用部门、职能或地理区域的分类方式来管理成员，映射在Linux系统，同样可以创建用户，并用组的概念对其管理。</p>
-<p>Linux组有如下特点：</p>
-<p> 每个组有一个组ID；</p>
-<p> 组信息保存在/etc/group中；</p>
-<p> 每个用户至少拥有一个主组，同时还可以拥有31个附属组。</p>
-<p>通过命令groupadd、groupdel、groupmod来对组进行管理，详细参数使用如下：</p>
-<p>groupadd用法</p>
-<p>-f, –force       如果组已经存在则成功退出；</p>
-<p>并且如果 GID 已经存在则取消 –g；</p>
-<p>-g, –gid GID       为新组使用 GID；</p>
-<p>-h, –help         显示此帮助信息并推出；</p>
-<p>-K, –key KEY=VALUE    不使用 /etc/login.defs 中的默认值；</p>
-<p>-o, –non-unique      允许创建有重复 GID 的组；</p>
-<p>-p, –password PASSWORD  为新组使用此加密过的密码；</p>
-<p>-r, –system        创建一个系统账户；</p>
-<p>groupmod用法</p>
-<p>-g, –gid GID       将组 ID 改为 GID；</p>
-<p>-h, –help         显示此帮助信息并推出；</p>
-<p>-n, –new-name NEW_GROUP 改名为 NEW_GROUP；</p>
-<p>-o, –non-unique      允许使用重复的 GID；</p>
-<p>-p, –password PASSWORD  将密码更改为(加密过的) PASSWORD；</p>
-<p>groupdel用法</p>
-<p>groupdel admin         删除admin组；</p>
-<h2 id="二、-Linux权限管理"><a href="#二、-Linux权限管理" class="headerlink" title="二、 Linux权限管理"></a>二、 Linux权限管理</h2><p>Linux权限是操作系统用来限制对资源访问的机制，权限一般分为读、写、执行。系统中每个文件都拥有特定的权限、所属用户及所属组，通过这样的机制来限制哪些用户或用户组可以对特定文件进行相应的操作。</p>
-<p>Linux每个进程都是以某个用户身份运行，进程的权限与该用户的权限一样，用户的权限越大，则进程拥有的权限就越大。</p>
-<p>Lnux中有的文件及文件夹都有至少权限三种权限，常见的权限如表5-1所示:</p>
-<table>
-<thead>
-<tr>
-<th>权限</th>
-<th>对文件的影响</th>
-<th>对目录的影响</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>r（读取）</td>
-<td>可读取文件内容</td>
-<td>可列出目录内容</td>
-</tr>
-<tr>
-<td>w（写入）</td>
-<td>可修改文件内容</td>
-<td>可在目录中创建删除内容</td>
-</tr>
-<tr>
-<td>x（执行）</td>
-<td>可作为命令执行</td>
-<td>可访问目录内容</td>
-</tr>
-<tr>
-<td>目录必须拥有 x 权限，否则无法查看其内容</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>Linux权限授权，默认是授权给三种角色，分别是user、group、other，Linux权限与用户之间的关联如下：</p>
-<p>U代表User，G代表Group，O代表Other；</p>
-<p> 每个文件的权限基于UGO进行设置；</p>
-<p>权限三位一组（rwx），同时需授权给三种角色，UGO；</p>
-<p> 每个文件拥有一个所属用户和所属组，对应UGO，不属于该文件所属用户或所属组使用O来表示；</p>
-<p>在Linux系统中，可以通过ls –l查看peter.net目录的详细属性，如图5-1所示：</p>
-<p>drwxrwxr-x  2 peter1 peter1 4096 Dec 10 01:36 peter.net</p>
-<p>peter.net目录属性参数详解如下：</p>
-<p> d 表示目录，同一位置如果为-则表示普通文件；</p>
-<p> rwxrwxr-x 表示三种角色的权限，每三位为一种角色，依次为u，g，o权限，如上则表示user的权限为rwx，group的权限为rwx，other的权限为r-x；</p>
-<p> 2表示文件夹的链接数量，可理解为该目录下子目录的数量；</p>
-<p> 从左到右，第一个peter1表示该用户名，第二个peter1则为组名，其他人角色默认不显示；</p>
-<p> 4096表示该文件夹占据的字节数；</p>
-<p> Dec 10 01:36 表示文件创建或者修改的时间；</p>
-<p>peter.net 为目录的名，或者文件名。</p>
-<p>peter.net目录属性参数详解如下：</p>
-<p> d 表示目录，同一位置如果为-则表示普通文件；</p>
-<p> rwxrwxr-x 表示三种角色的权限，每三位为一种角色，依次为u，g，o权限，如上则表示user的权限为rwx，group的权限为rwx，other的权限为r-x；</p>
-<p> 2表示文件夹的链接数量，可理解为该目录下子目录的数量；</p>
-<p> 从左到右，第一个peter1表示该用户名，第二个peter1则为组名，其他人角色默认不显示；</p>
-<p> 4096表示该文件夹占据的字节数；</p>
-<p> Dec 10 01:36 表示文件创建或者修改的时间；</p>
-<p>peter.net 为目录的名，或者文件名。</p>
-<h2 id="Chmod用户及组权限"><a href="#Chmod用户及组权限" class="headerlink" title="Chmod用户及组权限"></a>Chmod用户及组权限</h2><p>修改某个用户、组对文件夹的权限，用命令chmod实现，其中以代指ugo，、-、=代表加入、删除和等于对应权限，具体案例如下：</p>
-<p>（1） 授予用户对peter.net目录拥有rwx权限</p>
-<p>chmod  –R  u+rwx  peter.net</p>
-<p>（2） 授予组对peter.net目录拥有rwx权限</p>
-<p>chmod  –R  g+rwx  peter.net</p>
-<p>（3） 授予用户、组、其他人对jpeter.net目录拥有rwx权限</p>
-<p>chmod  –R  u+rwx,g+rwx,o+rwx  peter.net</p>
-<p>（4） 撤销用户对peter.net目录拥有w权限</p>
-<p>chmod  –R  u-w  peter.net</p>
-<p>（5） 撤销用户、组、其他人对peter.net目录拥有x权限</p>
-<p>chmod  –R  u-x,g-x,o-x peter.net</p>
-<p>（6） 授予用户、组、其他人对jpeter.net目录只有rx权限</p>
-<p>chmod  –R  u=rx,g=rx,o=rx  peter.net</p>
-<h2 id="Chmod二进制权限"><a href="#Chmod二进制权限" class="headerlink" title="Chmod二进制权限"></a>Chmod二进制权限</h2><p>Linux权限默认使用rwx来表示，为了更简化在系统中对权限进行配置和修改，Linux权限引入二进制表示方法，如下代码：</p>
-<p>Linux权限可以将rwx用二进制来表示，其中有权限用1表示，没有权限用0表示；Linux权限用二进制显示如下：rwx=111r-x=101rw-=110r–=100依次类推，转化为十进制，对应十进制结果显示如下：rwx=111=4+2+1=7r-x=101=4+0+1=5rw-=110=4+4+0=6r–=100=4+0+0=4得出结论，用r=4,w=2,x=1来表示权限。</p>
-<p>使用二进制方式来修改权限案例演示如下，其中默认peter.nett目录权限为755：</p>
-<p>（1） 授予用户对peter.net目录拥有rwx权限</p>
-<p>chmod  –R  755 peter.net</p>
-<p>（2） 授予组对peter.net目录拥有rwx权限</p>
-<p>chmod  –R  775 peter.net</p>
-<p>（3） 授予用户、组、其他人对peter.net目录拥有rwx权限</p>
-<p>chmod  –R  777  peter.net</p>
-<h2 id="Linux特殊权限及掩码"><a href="#Linux特殊权限及掩码" class="headerlink" title="Linux特殊权限及掩码"></a>Linux特殊权限及掩码</h2><p>Linux权限除了常见的rwx权限之外，还有很多特殊的权限，细心的读者会发现，为什么Linux目录默认权限755，而文件默认权限为644呢，这是因为Linux权限掩码umask导致。</p>
-<p>每个Linux终端都拥有一个umask属性，umask熟悉可以用来确定新建文件、目录的默认权限，默认系统权限掩码为022。在系统中每创建一个文件或者目录，文件默认权限是666，而目录权限则为777，权限对外开放比较大，所以设置了权限掩码之后，默认的文件和目录权限减去umask值才是真实的文件和目录的权限。</p>
-<p> 对应目录权限为：777-022=755；</p>
-<p> 对应文件权限为：666-022=644；</p>
-<p> 执行umask命令可以查看当前默认的掩码，umask -S 023可以设置默认的权限掩码。</p>
-<p>在Linux权限中，除了普通权限外，还有如下表5-2所示，三个特殊权限：</p>
-<table>
-<thead>
-<tr>
-<th>权限</th>
-<th>对文件的影响</th>
-<th>对目录的影响</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Suid</td>
-<td>以文件的所属用户身份执行，而非执行文件的用户</td>
-<td>无</td>
-</tr>
-<tr>
-<td>sgid</td>
-<td>以文件所属组身份去执行</td>
-<td>在该目录中创建任意新文件的所属组与该目录的所属组相同</td>
-</tr>
-<tr>
-<td>sticky</td>
-<td>无</td>
-<td>对目录拥有写入权限的用户仅可以删除其拥有的文件，无法删除其他用户所拥有的文件</td>
-</tr>
-</tbody></table>
-<p>表5-2 Linux三种特殊权限</p>
-<p>Linux中设置特殊权限方法如下：</p>
-<p>q 设置suid： chmod u+s peter.net</p>
-<p>q 设置sgid： chmod g+s peter.net</p>
-<p>q 设置sticky： chmod o+t peter.net</p>
-<p>特殊权限与设置普通权限一样，可以使用数字方式表示：</p>
-<p> SUID   = 4</p>
-<p> SGID   = 2</p>
-<p> Sticky = 1</p>
-<p>可以通过chmod 4755 peter.net对该目录授予特殊权限为s的权限，Linux系统中s权限的应用常见包括：su、passwd、sudo，</p>
-<h2 id="P62-63-ls-l"><a href="#P62-63-ls-l" class="headerlink" title="P62-63(ls -l)"></a>P62-63(ls -l)</h2><table>
-<thead>
-<tr>
-<th>权限</th>
-<th>对文件的影响</th>
-<th>对目录的影响</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>r（读取）</td>
-<td>可读取文件内容</td>
-<td>可列出目录内容</td>
-</tr>
-<tr>
-<td>w（写入）</td>
-<td>可修改文件内容</td>
-<td>可在目录中创建删除内容</td>
-</tr>
-<tr>
-<td>x（执行）</td>
-<td>可作为命令执行</td>
-<td>可访问目录内容</td>
-</tr>
-<tr>
-<td>目录必须拥有 x 权限，否则无法查看其内容</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>-rw-rw-r–: rw, rw, r</p>
-<p>drwxrwxr-x:目录，rwx,rwx,r-x</p>
-<p><em>d是目录，第一组是拥有者权限，第二组是组权限，第三组是其他用户权限，每3个一组。</em></p>
-<p><em>”/“是根目录，”~“是家目录。Linux存储是以挂载的方式，相当于是树状的，源头就是”/“，也就是根目录。而每个用户都有”家“目录，也就是用户的个人目录，比如root用户的”家“目录就是/root,普通用户a的家目录就是/home/a</em></p>
-<h3 id="ls常见命令参数"><a href="#ls常见命令参数" class="headerlink" title="ls常见命令参数"></a>ls常见命令参数</h3><p>ls: -F 给不同的文件添加不同表示,添加帽子</p>
-<p>d/   l*  =s </p>
-<p>-a: 显示隐藏文件  以.开头的文件</p>
-<p>-p: 只给目录添加/</p>
-<p>-t: 按照修改时间排序 time </p>
-<p>   –time-style=long-iso: ls -l –time-style=long-iso  显示友好长格式时间</p>
-<p>-r: 倒着排序 reverse</p>
-<p>-S: 按照文件大小排序</p>
-<p>-h: 以人类理解的范围显示</p>
-<p>-i: 索引节点(inode==书的目录) print the index number of each file(内核根据此区别文件是否同一文件)</p>
-<h3 id="ls-–l-文件显示内容分析"><a href="#ls-–l-文件显示内容分析" class="headerlink" title="ls –l 文件显示内容分析"></a>ls –l 文件显示内容分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">第一列： 文件类型(共10个字符) + 权限  --&gt; &#96;&#96;man&#96; &#96;find&#96; &#96;搜索&#96;&#96;type&#96;&#96;可看</span><br><span class="line">      &#96;&#96;-:普通文件</span><br><span class="line">      &#96;&#96;d:目录</span><br><span class="line">      &#96;&#96;c:字符设备 --&gt; &#96;&#96;&#x2F;dev&#x2F;tty&#96;   &#96;例如 USB接口、猫等一些串行端口设备</span><br><span class="line">      &#96;&#96;b:块设备  --&gt; &#96;&#96;&#x2F;dev&#96;&#96;下查找 例如光驱，硬盘等属于块设备</span><br><span class="line">      &#96;&#96;.:SELINUX相关 </span><br><span class="line">      &#96;&#96;l:链接文件 --&gt; 软连接</span><br><span class="line">第二列：硬链接个数 默认从1开始 如果是目录，则默认是2(目录不做硬链接)：几种到达的方法</span><br><span class="line">第三列：文件属主</span><br><span class="line">第四列：文件属组</span><br><span class="line">第五列：文件大小</span><br><span class="line">第六-八列：创建时间&#x2F;最后一次修改时间</span><br><span class="line">第九列：文件名</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442504-449878811.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201806/519608-20180630125442922-137320976.png" alt="image"></a></p>
-<h2 id="P64-65-chmod"><a href="#P64-65-chmod" class="headerlink" title="P64-65(chmod)"></a>P64-65(chmod)</h2><p>Linux/Unix 的文件调用权限分为三级 : 文件拥有者、群组、其他。利用 chmod 可以藉以控制文件如何被他人所调用。</p>
-<p><strong>使用权限</strong> : 所有使用者</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-cfvR] [--help] [--version] mode file...</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>mode : 权限设定字串，格式如下 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ugoa...][[+-&#x3D;][rwxX]...][,...]</span><br></pre></td></tr></table></figure>
-
-<p>其中：</p>
-<ul>
-<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
-<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
-<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
-</ul>
-<p>其他参数说明：</p>
-<ul>
-<li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
-<li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
-<li>-v : 显示权限变更的详细资料</li>
-<li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
-<li>–help : 显示辅助说明</li>
-<li>–version : 显示版本</li>
-</ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>将文件 file1.txt 设为所有人皆可读取 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ugo+r file1.txt</span><br></pre></td></tr></table></figure>
-
-<p>将文件 file1.txt 设为所有人皆可读取 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+r file1.txt</span><br></pre></td></tr></table></figure>
-
-<p>将文件 file1.txt 与 file2.txt 设为该文件拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ug+w,o-w file1.txt file2.txt</span><br></pre></td></tr></table></figure>
-
-<p>将 ex1.py 设定为只有该文件拥有者可以执行 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x ex1.py</span><br></pre></td></tr></table></figure>
-
-<p>将目前目录下的所有文件与子目录皆设为任何人可读取 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
-
-<p>此外chmod也可以用数字来表示权限如 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 file</span><br></pre></td></tr></table></figure>
-
-<p>语法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod abc file</span><br></pre></td></tr></table></figure>
-
-<p>其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。</p>
-<h4 id="r-4，w-2，x-1"><a href="#r-4，w-2，x-1" class="headerlink" title="r=4，w=2，x=1"></a>r=4，w=2，x=1</h4><ul>
-<li>若要rwx属性则4+2+1=7；</li>
-<li>若要rw-属性则4+2=6；</li>
-<li>若要r-x属性则4+1=5。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a&#x3D;rwx file</span><br></pre></td></tr></table></figure>
-
-<p>和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 file</span><br></pre></td></tr></table></figure>
-
-<p>效果相同</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod ug&#x3D;rwx,o&#x3D;x file</span><br></pre></td></tr></table></figure>
-
-<p>和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 771 file</span><br></pre></td></tr></table></figure>
-
-<p>效果相同</p>
-<p>若用chmod 4755 filename可使此程序具有root的权限</p>
-<h2 id="P65-66（超级用户）"><a href="#P65-66（超级用户）" class="headerlink" title="P65-66（超级用户）"></a>P65-66（超级用户）</h2><p>sudo的全称为Superuser do的意思</p>
-<p>日常使用用标准用户administrator，root用户用来系统维护和管理，对所有资源都有访问权限</p>
-<p>默认安装完成之后并不知道root用户的密码，那么如何应用root权限呢？</p>
-<h3 id="1-sudo-命令"><a href="#1-sudo-命令" class="headerlink" title="(1)sudo 命令"></a>(1)sudo 命令</h3><p>xzm@ubuntu:~$ sudo</p>
-<p>这样输入当前管理员用户密码就可以得到超级用户的权限。但默认的情况下5分钟root权限就失效了。</p>
-<h3 id="2-sudo-i"><a href="#2-sudo-i" class="headerlink" title="(2)sudo -i"></a>(2)sudo -i</h3><p>xzm@ubuntu:~$ sudo -i</p>
-<p>通过这种方法输入当前管理员用户的密码就可以进到root用户。</p>
-<h3 id="3-如果想一直使用root权限，要通过su切换到root用户。"><a href="#3-如果想一直使用root权限，要通过su切换到root用户。" class="headerlink" title="(3)如果想一直使用root权限，要通过su切换到root用户。"></a>(3)如果想一直使用root权限，要通过su切换到root用户。</h3><p>那我们首先要重设置root用户的密码：</p>
-<p>xzm@ubuntu:~$ sudo passwd root</p>
-<p>这样就可以设置root用户的密码了。</p>
-<h3 id="4-之后就可以自由的切换到root用户了"><a href="#4-之后就可以自由的切换到root用户了" class="headerlink" title="(4)之后就可以自由的切换到root用户了"></a>(4)之后就可以自由的切换到root用户了</h3><p>xzm@ubuntu:~$ su</p>
-<p>输入root用户的密码即可。</p>
-<p>su “king” 或者 exit回到用户权限</p>
-<p>Linux su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。</p>
-<p>使用权限：所有使用者。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [-fmp] [-c command] [-s shell] [--help] [--version] [-] [USER [ARG]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-f 或 –fast 不必读启动档（如 csh.cshrc 等），仅用于 csh 或 tcsh</li>
-<li>-m -p 或 –preserve-environment 执行 su 时不改变环境变数</li>
-<li>-c command 或 –command=command 变更为帐号为 USER 的使用者并执行指令（command）后再变回原来使用者</li>
-<li>-s shell 或 –shell=shell 指定要执行的 shell （bash csh tcsh 等），预设值为 /etc/passwd 内的该使用者（USER） shell</li>
-<li>–help 显示说明文件</li>
-<li>–version 显示版本资讯</li>
-<li>- -l 或 –login 这个参数加了之后，就好像是重新 login 为该使用者一样，大部份环境变数（HOME SHELL USER等等）都是以该使用者（USER）为主，并且工作目录也会改变，如果没有指定 USER ，内定是 root</li>
-<li>USER 欲变更的使用者帐号</li>
-<li>ARG 传入新的 shell 参数</li>
-</ul>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>变更帐号为 root 并在执行 ls 指令后退出变回原使用者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su -c ls root</span><br></pre></td></tr></table></figure>
-
-<p>变更帐号为 root 并传入 -f 参数给新执行的 shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root -f</span><br></pre></td></tr></table></figure>
-
-<p>变更帐号为 clsung 并改变工作目录至 clsung 的家目录（home dir）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - clsung</span><br></pre></td></tr></table></figure>
-
-<p>切换用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br></pre></td></tr></table></figure>
-
-<p>切换用户，改变环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su - root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;root</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="P67-69（组管理）"><a href="#P67-69（组管理）" class="headerlink" title="P67-69（组管理）"></a>P67-69（组管理）</h2><p>sudo来创建删除组，不用sudo会permission denied</p>
-<ol>
-<li>groupadd 组名：添加组</li>
-<li>groupdel 组名 ：删除组</li>
-<li>cat /etc/group： 确认组信息</li>
-<li>chgrp -R 组名 文件/目录名：递归修改文件/目录所属组</li>
-</ol>
-<p>Linux系统是一个多用户多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统。</p>
-<p>用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制他们对系统资源的访问；另一方面也可以帮助用户组织文件，并为用户提供安全性保护。</p>
-<p>每个用户账号都拥有一个唯一的用户名和各自的口令。</p>
-<p>用户在登录时键入正确的用户名和口令后，就能够进入系统和自己的主目录。 </p>
-<p>实现用户账号的管理，要完成的工作主要有如下几个方面：</p>
-<ul>
-<li>用户账号的添加、删除与修改。 </li>
-<li>用户口令的管理。</li>
-<li>用户组的管理。 </li>
-</ul>
-<hr>
-<h2 id="一、Linux系统用户账号的管理"><a href="#一、Linux系统用户账号的管理" class="headerlink" title="一、Linux系统用户账号的管理"></a>一、Linux系统用户账号的管理</h2><p>用户账号的管理工作主要涉及到用户账号的添加、修改和删除。</p>
-<p>添加用户账号就是在系统中创建一个新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源。刚添加的账号是被锁定的，无法使用。</p>
-<h3 id="1、添加新的用户账号使用useradd命令，其语法如下："><a href="#1、添加新的用户账号使用useradd命令，其语法如下：" class="headerlink" title="1、添加新的用户账号使用useradd命令，其语法如下："></a>1、添加新的用户账号使用useradd命令，其语法如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd 选项 用户名</span><br></pre></td></tr></table></figure>
-
-<p>参数说明：</p>
-<ul>
-<li><p>选项:</p>
-<ul>
-<li>-c comment 指定一段注释性描述。</li>
-<li>-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。</li>
-<li>-g 用户组 指定用户所属的用户组。</li>
-<li>-G 用户组，用户组 指定用户所属的附加组。</li>
-<li>-s Shell文件 指定用户的登录Shell。</li>
-<li>-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。</li>
-</ul>
-</li>
-<li><p>用户名: </p>
-<p>指定新账号的登录名。</p>
-</li>
-</ul>
-<h4 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># useradd –d  &#x2F;home&#x2F;sam -m sam</span><br></pre></td></tr></table></figure>
-
-<p>此命令创建了一个用户sam，其中-d和-m选项用来为登录名sam产生一个主目录 /home/sam（/home为默认的用户主目录所在的父目录）。</p>
-<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># useradd -s &#x2F;bin&#x2F;sh -g group –G adm,root gem</span><br></pre></td></tr></table></figure>
-
-<p>此命令新建了一个用户gem，该用户的登录Shell是 <code>/bin/sh</code>，它属于group用户组，同时又属于adm和root用户组，其中group用户组是其主组。</p>
-<p>这里可能新建组：<code>#groupadd group及groupadd adm</code></p>
-<p>增加用户账号就是在/etc/passwd文件中为新用户增加一条记录，同时更新其他系统文件如/etc/shadow, /etc/group等。</p>
-<p>Linux提供了集成的系统管理工具userconf，它可以用来对用户账号进行统一管理。</p>
-<h3 id="2、删除帐号"><a href="#2、删除帐号" class="headerlink" title="2、删除帐号"></a>2、删除帐号</h3><p>如果一个用户的账号不再使用，可以从系统中删除。删除用户账号就是要将/etc/passwd等系统文件中的该用户记录删除，必要时还删除用户的主目录。</p>
-<p>删除一个已有的用户账号使用<code>userdel</code>命令，其格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel 选项 用户名</span><br></pre></td></tr></table></figure>
-
-<p>常用的选项是 <strong>-r</strong>，它的作用是把用户的主目录一起删除。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># userdel -r sam</span><br></pre></td></tr></table></figure>
-
-<p>此命令删除用户sam在系统文件中（主要是/etc/passwd, /etc/shadow, /etc/group等）的记录，同时删除用户的主目录。</p>
-<h3 id="3、修改帐号"><a href="#3、修改帐号" class="headerlink" title="3、修改帐号"></a>3、修改帐号</h3><p>修改用户账号就是根据实际情况更改用户的有关属性，如用户号、主目录、用户组、登录Shell等。</p>
-<p>修改已有用户的信息使用<code>usermod</code>命令，其格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod 选项 用户名</span><br></pre></td></tr></table></figure>
-
-<p>常用的选项包括<code>-c, -d, -m, -g, -G, -s, -u以及-o等</code>，这些选项的意义与<code>useradd</code>命令中的选项一样，可以为用户指定新的资源值。</p>
-<p>另外，有些系统可以使用选项：-l 新用户名</p>
-<p>这个选项指定一个新的账号，即将原来的用户名改为新的用户名。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -s &#x2F;bin&#x2F;ksh -d &#x2F;home&#x2F;z –g developer sam</span><br></pre></td></tr></table></figure>
-
-<p>此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。</p>
-<h3 id="4、用户口令的管理"><a href="#4、用户口令的管理" class="headerlink" title="4、用户口令的管理"></a>4、用户口令的管理</h3><p>用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用，即使是指定空口令。</p>
-<p>指定和修改用户口令的Shell命令是<code>passwd</code>。超级用户可以为自己和其他用户指定口令，普通用户只能用它修改自己的口令。命令的格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd 选项 用户名</span><br></pre></td></tr></table></figure>
-
-<p>可使用的选项：</p>
-<ul>
-<li>-l 锁定口令，即禁用账号。</li>
-<li>-u 口令解锁。</li>
-<li>-d 使账号无口令。</li>
-<li>-f 强迫用户下次登录时修改口令。</li>
-</ul>
-<p>如果默认用户名，则修改当前用户的口令。</p>
-<p>例如，假设当前用户是sam，则下面的命令修改该用户自己的口令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ passwd </span><br><span class="line">Old password:****** </span><br><span class="line">New password:******* </span><br><span class="line">Re-enter new password:*******</span><br></pre></td></tr></table></figure>
-
-<p>如果是超级用户，可以用下列形式指定任何用户的口令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># passwd sam </span><br><span class="line">New password:******* </span><br><span class="line">Re-enter new password:*******</span><br></pre></td></tr></table></figure>
-
-<p>普通用户修改自己的口令时，passwd命令会先询问原口令，验证后再要求用户输入两遍新口令，如果两次输入的口令一致，则将这个口令指定给用户；而超级用户为用户指定口令时，就不需要知道原口令。</p>
-<p>为了系统安全起见，用户应该选择比较复杂的口令，例如最好使用8位长的口令，口令中包含有大写、小写字母和数字，并且应该与姓名、生日等不相同。</p>
-<p>为用户指定空口令时，执行下列形式的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd -d sam</span><br></pre></td></tr></table></figure>
-
-<p>此命令将用户 sam 的口令删除，这样用户 sam 下一次登录时，系统就不再允许该用户登录了。</p>
-<p>passwd 命令还可以用 -l(lock) 选项锁定某一用户，使其不能登录，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd -l sam</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="二、Linux系统用户组的管理"><a href="#二、Linux系统用户组的管理" class="headerlink" title="二、Linux系统用户组的管理"></a>二、Linux系统用户组的管理</h2><p>每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理。不同Linux 系统对用户组的规定有所不同，如Linux下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建。</p>
-<p>用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对/etc/group文件的更新。</p>
-<h3 id="1、增加一个新的用户组使用groupadd命令。其格式如下："><a href="#1、增加一个新的用户组使用groupadd命令。其格式如下：" class="headerlink" title="1、增加一个新的用户组使用groupadd命令。其格式如下："></a>1、增加一个新的用户组使用groupadd命令。其格式如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd 选项 用户组</span><br></pre></td></tr></table></figure>
-
-<p>可以使用的选项有：</p>
-<ul>
-<li>-g GID 指定新用户组的组标识号（GID）。</li>
-<li>-o 一般与-g选项同时使用，表示新用户组的GID可以与系统已有用户组的GID相同。</li>
-</ul>
-<h4 id="实例1："><a href="#实例1：" class="headerlink" title="实例1："></a>实例1：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupadd group1</span><br></pre></td></tr></table></figure>
-
-<p>此命令向系统中增加了一个新组group1，新组的组标识号是在当前已有的最大组标识号的基础上加1。</p>
-<h4 id="实例2："><a href="#实例2：" class="headerlink" title="实例2："></a>实例2：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupadd -g 101 group2</span><br></pre></td></tr></table></figure>
-
-<p>此命令向系统中增加了一个新组group2，同时指定新组的组标识号是101。</p>
-<h3 id="2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下："><a href="#2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下：" class="headerlink" title="2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下："></a>2、如果要删除一个已有的用户组，使用groupdel命令，其格式如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel 用户组</span><br></pre></td></tr></table></figure>
-
-<h4 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupdel group1</span><br></pre></td></tr></table></figure>
-
-<p>此命令从系统中删除组group1。</p>
-<h3 id="3、修改用户组的属性使用groupmod命令。其语法如下："><a href="#3、修改用户组的属性使用groupmod命令。其语法如下：" class="headerlink" title="3、修改用户组的属性使用groupmod命令。其语法如下："></a>3、修改用户组的属性使用groupmod命令。其语法如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod 选项 用户组</span><br></pre></td></tr></table></figure>
-
-<p>常用的选项有：</p>
-<ul>
-<li>-g GID 为用户组指定新的组标识号。</li>
-<li>-o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。</li>
-<li>-n新用户组 将用户组的名字改为新名字</li>
-</ul>
-<h4 id="实例1：-1"><a href="#实例1：-1" class="headerlink" title="实例1："></a>实例1：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupmod -g 102 group2</span><br></pre></td></tr></table></figure>
-
-<p>此命令将组group2的组标识号修改为102。</p>
-<h4 id="实例2：-1"><a href="#实例2：-1" class="headerlink" title="实例2："></a>实例2：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># groupmod –g 10000 -n group3 group2</span><br></pre></td></tr></table></figure>
-
-<p>此命令将组group2的标识号改为10000，组名修改为group3。</p>
-<h3 id="4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。"><a href="#4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。" class="headerlink" title="4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。"></a>4、如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限。</h3><p>用户可以在登录后，使用命令newgrp切换到其他用户组，这个命令的参数就是目的用户组。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ newgrp root</span><br></pre></td></tr></table></figure>
-
-<p>这条命令将当前用户切换到root用户组，前提条件是root用户组确实是该用户的主组或附加组。类似于用户账号的管理，用户组的管理也可以通过集成的系统管理工具来完成。</p>
-<hr>
-<h2 id="三、与用户账号有关的系统文件"><a href="#三、与用户账号有关的系统文件" class="headerlink" title="三、与用户账号有关的系统文件"></a>三、与用户账号有关的系统文件</h2><p>完成用户管理的工作有许多种方法，但是每一种方法实际上都是对有关的系统文件进行修改。</p>
-<p>与用户和用户组相关的信息都存放在一些系统文件中，这些文件包括/etc/passwd, /etc/shadow, /etc/group等。</p>
-<p>下面分别介绍这些文件的内容。</p>
-<h3 id="1、-etc-passwd文件是用户管理工作涉及的最重要的一个文件。"><a href="#1、-etc-passwd文件是用户管理工作涉及的最重要的一个文件。" class="headerlink" title="1、/etc/passwd文件是用户管理工作涉及的最重要的一个文件。"></a>1、/etc/passwd文件是用户管理工作涉及的最重要的一个文件。</h3><p>Linux系统中的每个用户都在/etc/passwd文件中有一个对应的记录行，它记录了这个用户的一些基本属性。</p>
-<p>这个文件对所有用户都是可读的。它的内容类似下面的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">＃ cat &#x2F;etc&#x2F;passwd</span><br><span class="line"></span><br><span class="line">root:x:0:0:Superuser:&#x2F;:</span><br><span class="line">daemon:x:1:1:System daemons:&#x2F;etc:</span><br><span class="line">bin:x:2:2:Owner of system commands:&#x2F;bin:</span><br><span class="line">sys:x:3:3:Owner of system files:&#x2F;usr&#x2F;sys:</span><br><span class="line">adm:x:4:4:System accounting:&#x2F;usr&#x2F;adm:</span><br><span class="line">uucp:x:5:5:UUCP administrator:&#x2F;usr&#x2F;lib&#x2F;uucp:</span><br><span class="line">auth:x:7:21:Authentication administrator:&#x2F;tcb&#x2F;files&#x2F;auth:</span><br><span class="line">cron:x:9:16:Cron daemon:&#x2F;usr&#x2F;spool&#x2F;cron:</span><br><span class="line">listen:x:37:4:Network daemon:&#x2F;usr&#x2F;net&#x2F;nls:</span><br><span class="line">lp:x:71:18:Printer administrator:&#x2F;usr&#x2F;spool&#x2F;lp:</span><br><span class="line">sam:x:200:50:Sam san:&#x2F;home&#x2F;sam:&#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
-
-<p>从上面的例子我们可以看到，/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段，其格式和具体含义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</span><br></pre></td></tr></table></figure>
-
-<h3 id="1）”用户名”是代表用户账号的字符串。"><a href="#1）”用户名”是代表用户账号的字符串。" class="headerlink" title="1）”用户名”是代表用户账号的字符串。"></a>1）”用户名”是代表用户账号的字符串。</h3><p>通常长度不超过8个字符，并且由大小写字母和/或数字组成。登录名中不能有冒号(:)，因为冒号在这里是分隔符。</p>
-<p>为了兼容起见，登录名中最好不要包含点字符(.)，并且不使用连字符(-)和加号(+)打头。</p>
-<h3 id="2）“口令”一些系统中，存放着加密后的用户口令字。"><a href="#2）“口令”一些系统中，存放着加密后的用户口令字。" class="headerlink" title="2）“口令”一些系统中，存放着加密后的用户口令字。"></a>2）“口令”一些系统中，存放着加密后的用户口令字。</h3><p>虽然这个字段存放的只是用户口令的加密串，不是明文，但是由于/etc/passwd文件对所有用户都可读，所以这仍是一个安全隐患。因此，现在许多Linux 系统（如SVR4）都使用了shadow技术，把真正的加密后的用户口令字存放到/etc/shadow文件中，而在/etc/passwd文件的口令字段中只存放一个特殊的字符，例如“x”或者“*”。</p>
-<h3 id="3）“用户标识号”是一个整数，系统内部用它来标识用户。"><a href="#3）“用户标识号”是一个整数，系统内部用它来标识用户。" class="headerlink" title="3）“用户标识号”是一个整数，系统内部用它来标识用户。"></a>3）“用户标识号”是一个整数，系统内部用它来标识用户。</h3><p>一般情况下它与用户名是一一对应的。如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等。</p>
-<p>通常用户标识号的取值范围是0～65 535。0是超级用户root的标识号，1～99由系统保留，作为管理账号，普通用户的标识号从100开始。在Linux系统中，这个界限是500。</p>
-<h3 id="4）“组标识号”字段记录的是用户所属的用户组。"><a href="#4）“组标识号”字段记录的是用户所属的用户组。" class="headerlink" title="4）“组标识号”字段记录的是用户所属的用户组。"></a>4）“组标识号”字段记录的是用户所属的用户组。</h3><p>它对应着/etc/group文件中的一条记录。</p>
-<h3 id="5-“注释性描述”字段记录着用户的一些个人情况。"><a href="#5-“注释性描述”字段记录着用户的一些个人情况。" class="headerlink" title="5)“注释性描述”字段记录着用户的一些个人情况。"></a>5)“注释性描述”字段记录着用户的一些个人情况。</h3><p>例如用户的真实姓名、电话、地址等，这个字段并没有什么实际的用途。在不同的Linux 系统中，这个字段的格式并没有统一。在许多Linux系统中，这个字段存放的是一段任意的注释性描述文字，用做finger命令的输出。</p>
-<h3 id="6-“主目录”，也就是用户的起始工作目录。"><a href="#6-“主目录”，也就是用户的起始工作目录。" class="headerlink" title="6)“主目录”，也就是用户的起始工作目录。"></a>6)“主目录”，也就是用户的起始工作目录。</h3><p>它是用户在登录到系统之后所处的目录。在大多数系统中，各用户的主目录都被组织在同一个特定的目录下，而用户主目录的名称就是该用户的登录名。各用户对自己的主目录有读、写、执行（搜索）权限，其他用户对此目录的访问权限则根据具体情况设置。</p>
-<h3 id="7-用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。"><a href="#7-用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。" class="headerlink" title="7)用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。"></a>7)用户登录后，要启动一个进程，负责将用户的操作传给内核，这个进程是用户登录到系统后运行的命令解释器或某个特定的程序，即Shell。</h3><p>Shell是用户与Linux系统之间的接口。Linux的Shell有许多种，每种都有不同的特点。常用的有sh(Bourne Shell), csh(C Shell), ksh(Korn Shell), tcsh(TENEX/TOPS-20 type C Shell), bash(Bourne Again Shell)等。</p>
-<p>系统管理员可以根据系统情况和用户习惯为用户指定某个Shell。如果不指定Shell，那么系统使用sh为默认的登录Shell，即这个字段的值为/bin/sh。</p>
-<p>用户的登录Shell也可以指定为某个特定的程序（此程序不是一个命令解释器）。</p>
-<p>利用这一特点，我们可以限制用户只能运行指定的应用程序，在该应用程序运行结束后，用户就自动退出了系统。有些Linux 系统要求只有那些在系统中登记了的程序才能出现在这个字段中。</p>
-<h3 id="8-系统中有一类用户称为伪用户（pseudo-users）。"><a href="#8-系统中有一类用户称为伪用户（pseudo-users）。" class="headerlink" title="8)系统中有一类用户称为伪用户（pseudo users）。"></a>8)系统中有一类用户称为伪用户（pseudo users）。</h3><p>这些用户在/etc/passwd文件中也占有一条记录，但是不能登录，因为它们的登录Shell为空。它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。</p>
-<p>常见的伪用户如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">伪 用 户 含 义 </span><br><span class="line">bin 拥有可执行的用户命令文件 </span><br><span class="line">sys 拥有系统文件 </span><br><span class="line">adm 拥有帐户文件 </span><br><span class="line">uucp UUCP使用 </span><br><span class="line">lp lp或lpd子系统使用 </span><br><span class="line">nobody NFS使用</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="拥有帐户文件"><a href="#拥有帐户文件" class="headerlink" title="拥有帐户文件"></a>拥有帐户文件</h2><p><strong>1、除了上面列出的伪用户外，还有许多标准的伪用户，例如：audit, cron, mail, usenet等，它们也都各自为相关的进程和文件所需要。</strong></p>
-<p>由于/etc/passwd文件是所有用户都可读的，如果用户的密码太简单或规律比较明显的话，一台普通的计算机就能够很容易地将它破解，因此对安全性要求较高的Linux系统都把加密后的口令字分离出来，单独存放在一个文件中，这个文件是/etc/shadow文件。 有超级用户才拥有该文件读权限，这就保证了用户密码的安全性。</p>
-<p><strong>2、/etc/shadow中的记录行与/etc/passwd中的一一对应，它由pwconv命令根据/etc/passwd中的数据自动产生</strong></p>
-<p>它的文件格式与/etc/passwd类似，由若干个字段组成，字段之间用”:”隔开。这些字段是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>“登录名”是与/etc/passwd文件中的登录名相一致的用户账号</li>
-<li>“口令”字段存放的是加密后的用户口令字，长度为13个字符。如果为空，则对应用户没有口令，登录时不需要口令；如果含有不属于集合 { ./0-9A-Za-z }中的字符，则对应的用户不能登录。</li>
-<li>“最后一次修改时间”表示的是从某个时刻起，到用户最后一次修改口令时的天数。时间起点对不同的系统可能不一样。例如在SCO Linux 中，这个时间起点是1970年1月1日。</li>
-<li>“最小时间间隔”指的是两次修改口令之间所需的最小天数。</li>
-<li>“最大时间间隔”指的是口令保持有效的最大天数。</li>
-<li>“警告时间”字段表示的是从系统开始警告用户到用户密码正式失效之间的天数。</li>
-<li>“不活动时间”表示的是用户没有登录活动但账号仍能保持有效的最大天数。</li>
-<li>“失效时间”字段给出的是一个绝对的天数，如果使用了这个字段，那么就给出相应账号的生存期。期满后，该账号就不再是一个合法的账号，也就不能再用来登录了。</li>
-</ol>
-<p>下面是/etc/shadow的一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">＃ cat &#x2F;etc&#x2F;shadow</span><br><span class="line"></span><br><span class="line">root:Dnakfw28zf38w:8764:0:168:7:::</span><br><span class="line">daemon:*::0:0::::</span><br><span class="line">bin:*::0:0::::</span><br><span class="line">sys:*::0:0::::</span><br><span class="line">adm:*::0:0::::</span><br><span class="line">uucp:*::0:0::::</span><br><span class="line">nuucp:*::0:0::::</span><br><span class="line">auth:*::0:0::::</span><br><span class="line">cron:*::0:0::::</span><br><span class="line">listen:*::0:0::::</span><br><span class="line">lp:*::0:0::::</span><br><span class="line">sam:EkdiSECLWPdSa:9740:0:0::::</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、用户组的所有信息都存放在-etc-group文件中。"><a href="#3、用户组的所有信息都存放在-etc-group文件中。" class="headerlink" title="3、用户组的所有信息都存放在/etc/group文件中。"></a>3、用户组的所有信息都存放在/etc/group文件中。</h3><p>将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段。</p>
-<p>每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不同的组。</p>
-<p>当一个用户同时是多个组中的成员时，在/etc/passwd文件中记录的是用户所属的主组，也就是登录时所属的默认组，而其他组称为附加组。</p>
-<p>用户要访问属于附加组的文件时，必须首先使用newgrp命令使自己成为所要访问的组中的成员。</p>
-<p>用户组的所有信息都存放在/etc/group文件中。此文件的格式也类似于/etc/passwd文件，由冒号(:)隔开若干个字段，这些字段有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组名:口令:组标识号:组内用户列表</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>“组名”是用户组的名称，由字母或数字构成。与/etc/passwd中的登录名一样，组名不应重复。</li>
-<li>“口令”字段存放的是用户组加密后的口令字。一般Linux 系统的用户组都没有口令，即这个字段一般为空，或者是*。</li>
-<li>“组标识号”与用户标识号类似，也是一个整数，被系统内部用来标识组。</li>
-<li>“组内用户列表”是属于这个组的所有用户的列表/b]，不同用户之间用逗号(,)分隔。这个用户组可能是用户的主组，也可能是附加组。</li>
-</ol>
-<p>/etc/group文件的一个例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root::0:root</span><br><span class="line">bin::2:root,bin</span><br><span class="line">sys::3:root,uucp</span><br><span class="line">adm::4:root,adm</span><br><span class="line">daemon::5:root,daemon</span><br><span class="line">lp::7:root,lp</span><br><span class="line">users::20:root,sam</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、添加批量用户"><a href="#四、添加批量用户" class="headerlink" title="四、添加批量用户"></a>四、添加批量用户</h3><p>添加和删除用户对每位Linux系统管理员都是轻而易举的事，比较棘手的是如果要添加几十个、上百个甚至上千个用户时，我们不太可能还使用useradd一个一个地添加，必然要找一种简便的创建大量用户的方法。Linux系统提供了创建大量用户的工具，可以让您立即创建大量用户，方法如下：</p>
-<h3 id="（1）先编辑一个文本用户文件。"><a href="#（1）先编辑一个文本用户文件。" class="headerlink" title="（1）先编辑一个文本用户文件。"></a>（1）先编辑一个文本用户文件。</h3><p>每一列按照<code>/etc/passwd</code>密码文件的格式书写，要注意每个用户的用户名、UID、宿主目录都不可以相同，其中密码栏可以留做空白或输入x号。一个范例文件user.txt内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user001::600:100:user:&#x2F;home&#x2F;user001:&#x2F;bin&#x2F;bash</span><br><span class="line">user002::601:100:user:&#x2F;home&#x2F;user002:&#x2F;bin&#x2F;bash</span><br><span class="line">user003::602:100:user:&#x2F;home&#x2F;user003:&#x2F;bin&#x2F;bash</span><br><span class="line">user004::603:100:user:&#x2F;home&#x2F;user004:&#x2F;bin&#x2F;bash</span><br><span class="line">user005::604:100:user:&#x2F;home&#x2F;user005:&#x2F;bin&#x2F;bash</span><br><span class="line">user006::605:100:user:&#x2F;home&#x2F;user006:&#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="（2）以root身份执行命令-usr-sbin-newusers，从刚创建的用户文件user-txt中导入数据，创建用户："><a href="#（2）以root身份执行命令-usr-sbin-newusers，从刚创建的用户文件user-txt中导入数据，创建用户：" class="headerlink" title="（2）以root身份执行命令 /usr/sbin/newusers，从刚创建的用户文件user.txt中导入数据，创建用户："></a>（2）以root身份执行命令 <code>/usr/sbin/newusers</code>，从刚创建的用户文件<code>user.txt</code>中导入数据，创建用户：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># newusers &lt; user.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后可以执行命令 <code>vipw</code> 或 <code>vi /etc/passwd</code> 检查 <code>/etc/passwd</code> 文件是否已经出现这些用户的数据，并且用户的宿主目录是否已经创建。</p>
-<h3 id="（3）执行命令-usr-sbin-pwunconv。"><a href="#（3）执行命令-usr-sbin-pwunconv。" class="headerlink" title="（3）执行命令/usr/sbin/pwunconv。"></a>（3）执行命令/usr/sbin/pwunconv。</h3><p>将 <code>/etc/shadow</code> 产生的 <code>shadow</code> 密码解码，然后回写到 <code>/etc/passwd</code> 中，并将<code>/etc/shadow</code>的<code>shadow</code>密码栏删掉。这是为了方便下一步的密码转换工作，即先取消 <code>shadow password</code> 功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pwunconv</span><br></pre></td></tr></table></figure>
-
-<h3 id="（4）编辑每个用户的密码对照文件。"><a href="#（4）编辑每个用户的密码对照文件。" class="headerlink" title="（4）编辑每个用户的密码对照文件。"></a>（4）编辑每个用户的密码对照文件。</h3><p>格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户名:密码</span><br></pre></td></tr></table></figure>
-
-<p>实例文件 <code>passwd.txt</code> 内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user001:123456</span><br><span class="line">user002:123456</span><br><span class="line">user003:123456</span><br><span class="line">user004:123456</span><br><span class="line">user005:123456</span><br><span class="line">user006:123456</span><br></pre></td></tr></table></figure>
-
-<h3 id="（5）以-root-身份执行命令-usr-sbin-chpasswd。"><a href="#（5）以-root-身份执行命令-usr-sbin-chpasswd。" class="headerlink" title="（5）以 root 身份执行命令 /usr/sbin/chpasswd。"></a>（5）以 root 身份执行命令 <code>/usr/sbin/chpasswd</code>。</h3><p>创建用户密码，<code>chpasswd</code> 会将经过 <code>/usr/bin/passwd</code> 命令编码过的密码写入 <code>/etc/passwd</code> 的密码栏。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chpasswd &lt; passwd.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="（6）确定密码经编码写入-etc-passwd的密码栏后。"><a href="#（6）确定密码经编码写入-etc-passwd的密码栏后。" class="headerlink" title="（6）确定密码经编码写入/etc/passwd的密码栏后。"></a>（6）确定密码经编码写入/etc/passwd的密码栏后。</h3><p>执行命令 <code>/usr/sbin/pwconv</code> 将密码编码为 <code>shadow password</code>，并将结果写入 <code>/etc/shadow</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pwconv</span><br></pre></td></tr></table></figure>
-
-<p>这样就完成了大量用户的创建了，之后您可以到/home下检查这些用户宿主目录的权限设置是否都正确，并登录验证用户密码是否正确。</p>
-<h2 id="P70-71-用户管理"><a href="#P70-71-用户管理" class="headerlink" title="P70-71(用户管理)"></a>P70-71(用户管理)</h2><ol>
-<li><p>useradd -m -g 组 新建用户名：添加新用户 -m自动建立用户加目录， -g指定用户所在组，否则会建立一个同名的组。</p>
-<p>例： sudo useradd -m -g dev zhangsan </p>
-<p>drwxr-xr-x  2 zhangsan     dev          4096 Apr 26 18:30 zhangsan</p>
-</li>
-<li><p>passwd 用户名： 设置用户密码，如果是普通用户，直接passwd可以修改密码</p>
-</li>
-<li><p>userdel -r 用户名；删除用户， -r会自动删除用户家目录</p>
-</li>
-<li><p>cat /etc/passwd | grep 用户名 ：确认用户信息，新建用户后，用户信息会保存在/etc/passwd文件中</p>
-</li>
-</ol>
-<h2 id="P72-75（id，whoami，who）"><a href="#P72-75（id，whoami，who）" class="headerlink" title="P72-75（id，whoami，who）"></a>P72-75（id，whoami，who）</h2><h3 id="id-用户名：查看用户UID和GID信息"><a href="#id-用户名：查看用户UID和GID信息" class="headerlink" title="id 用户名：查看用户UID和GID信息"></a>id 用户名：查看用户UID和GID信息</h3><p>passwd文件：/etc/passwd文件存放用户信息，6个分号组成7个信息</p>
-<p>信息说明<br>第一字段: 用户名(vampire)<br>第二字段: 密码位(x),只是一个占位符,真正的密码存放在/etc/shadow文件中（x，表示加密密码）<br>第三字段: UID(501)用户id,0为超级用户,1~499系统用户,一般不能登录系统,也叫做伪用户,500及以上普通用户,管理员创建的,一般可登录（用户标识）<br>第四字段: GID(501)用户初始组id,一般添加用户时,系统自动分配的（组标识）<br>第五字段: GECOS 用户的一些说明信息（用户全名或本地账号）<br>第六字段: $HOME(/home/vampire) 用户家目录,也叫做宿主目录,普通用户家目录在/home下,root用户在/下（家目录）</p>
-<p>第七字段: shell(/bin/bash)用户登录后的shell，ubuntu默认是dash</p>
-<p> UID，gid，组 依次打印</p>
-<p>Linux id命令用于显示用户的ID，以及所属群组的ID。</p>
-<p>id会显示用户以及所属群组的实际与有效ID。若两个ID相同，则仅显示实际ID。若仅指定用户名称，则显示目前用户的ID。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id [-gGnru][--help][--version][用户名称]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-g或–group 　显示用户所属群组的ID。</li>
-<li>-G或–groups 　显示用户所属附加群组的ID。</li>
-<li>-n或–name 　显示用户，所属群组或附加群组的名称。</li>
-<li>-r或–real 　显示实际ID。</li>
-<li>-u或–user 　显示用户ID。</li>
-<li>-help 　显示帮助。</li>
-<li>-version 　显示版本信息。</li>
-</ul>
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>显示当前用户信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id &#x2F;&#x2F;显示当前用户ID</span><br><span class="line">uid&#x3D;0(root) gid&#x3D;0(root) groups&#x3D;0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel) context&#x3D;root:system_r:unconfined_t</span><br></pre></td></tr></table></figure>
-
-<p>显示用户群组的ID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id -g</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>显示所有群组的ID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># id -g</span><br><span class="line">0 1 2 3 4 5 6 10</span><br></pre></td></tr></table></figure>
-
-<p>显示指定用户信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># id hnlinux</span><br></pre></td></tr></table></figure>
-
-<h3 id="who：查看当前所有登录的用户列表"><a href="#who：查看当前所有登录的用户列表" class="headerlink" title="who：查看当前所有登录的用户列表"></a>who：查看当前所有登录的用户列表</h3><p>Linux who命令用于显示系统中有哪些使用者正在上面，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。</p>
-<p>使用权限：所有使用者都可使用。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who - [husfV] [user]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-H 或 –heading：显示各栏位的标题信息列；</li>
-<li>-i 或 -u 或 –idle：显示闲置时间，若该用户在前一分钟之内有进行任何动作，将标示成”.”号，如果该用户已超过24小时没有任何动作，则标示出”old”字符串；</li>
-<li>-m：此参数的效果和指定”am i”字符串相同；</li>
-<li>-q 或–count：只显示登入系统的帐号名称和总人数；</li>
-<li>-s：此参数将忽略不予处理，仅负责解决who指令其他版本的兼容性问题；</li>
-<li>-w 或-T或–mesg或–message或–writable：显示用户的信息状态栏；</li>
-<li>–help：在线帮助；</li>
-<li>–version：显示版本信息。</li>
-</ul>
-<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>显示当前登录系统的用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># who  &#x2F;&#x2F;显示当前登录系统的用户</span><br><span class="line">root   tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
-
-<p>显示标题栏</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># who -H</span><br><span class="line">NAME   LINE     TIME       COMMENT</span><br><span class="line">root   tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
-
-<p>显示用户登录来源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># who -l -H</span><br><span class="line">NAME   LINE     TIME       IDLE     PID COMMENT</span><br><span class="line">LOGIN  tty4     2014-05-13 12:11        852 id&#x3D;4</span><br><span class="line">LOGIN  tty5     2014-05-13 12:11        855 id&#x3D;5</span><br><span class="line">LOGIN  tty2     2014-05-13 12:11        862 id&#x3D;2</span><br><span class="line">LOGIN  tty3     2014-05-13 12:11        864 id&#x3D;3</span><br><span class="line">LOGIN  tty6     2014-05-13 12:11        867 id&#x3D;6</span><br><span class="line">LOGIN  tty1     2014-05-13 12:11       1021 id&#x3D;1</span><br></pre></td></tr></table></figure>
-
-<p>显示终端属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># who -T -H</span><br><span class="line">NAME    LINE     TIME       COMMENT</span><br><span class="line">root   + tty7     2014-05-13 12:12 (:0)</span><br><span class="line">root   + pts&#x2F;0    2014-05-14 17:09 (:0.0)</span><br><span class="line">root   - pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br><span class="line">root   - pts&#x2F;2    2014-05-14 19:48 (192.168.1.17)</span><br></pre></td></tr></table></figure>
-
-<p>只显示当前用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># who -m -H</span><br><span class="line">NAME   LINE     TIME       COMMENT</span><br><span class="line">root   pts&#x2F;1    2014-05-14 18:51 (192.168.1.17)</span><br></pre></td></tr></table></figure>
-
-<p>精简模式显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># who -q</span><br><span class="line">root root root root</span><br><span class="line"># users&#x3D;4</span><br></pre></td></tr></table></figure>
-
-<h3 id="whoami：查看当前登录用户的账户名"><a href="#whoami：查看当前登录用户的账户名" class="headerlink" title="whoami：查看当前登录用户的账户名"></a>whoami：查看当前登录用户的账户名</h3><p>Linux whoami命令用于显示自身用户名称。</p>
-<p>显示自身的用户名称，本指令相当于执行”id -un”指令。</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami [--help][--version]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>–help 　在线帮助。</li>
-<li>–version 　显示版本信息。</li>
-</ul>
-<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>显示用户名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># whoami </span><br><span class="line">root</span><br></pre></td></tr></table></figure>
-
-<h3 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h3><p>用来设置用户主组/附加组 和登录shell</p>
-<p>Linux系统以组Group方式管理用户，用户和组的对应关系为多对多，即某个用户可加入/属于一个或多个组，某个组可以有0个、1个或多个用户。</p>
-<p>组的分类<br>从用户的角度，分为主组和附属组。<br>主组：也被称为primary group、first group或initial login group，用户的默认组，用户的gid所标识的组。<br>附属组：也被称为Secondary group或supplementary group，用户的附加组。</p>
-<p>通过id命令可查看当前用户的主组和附属组</p>
-<p>[root@localhost ~]# id root<br>uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel)</p>
-<p>[root@localhost ~]# id gg<br>uid=503(gg) gid=503(gg) groups=503(gg)</p>
-<p>[root@localhost ~]# id mm<br>uid=502(mm) gid=500(jww) groups=500(jww)</p>
-<p>gid标识主组，groups表示用户所属的全部组（主组和附属组）</p>
-<ol>
-<li><p>用户必须有且只能有一个主组，可以有0个、1个或多个附属组，就如我们一定会有一个用来安家的房子（类同主组），还可以有n个用于投资或其他打算的房子（附属组）。</p>
-</li>
-<li><p>主组也为默认组，当用户own某个文件或目录时，默认该文件或目录的group owner为该用户的主组（当然，可以通过chgrp修改group owner）。</p>
-</li>
-<li><p>在/etc/passwd文件中，记录行第四个字段为gid，即用户的主组id。</p>
-</li>
-<li><p>在/etc/group文件中，记录行第四个字段为组的成员，不显示将该组作为主组的组成员，只显示将该组作为附属组的组成员，因此，/etc/group的记录行的第四个字段没有完整地列出该组的全部成员。</p>
-</li>
-<li><p>当通过useradd命令创建新用户时，可以通过-g参数指定已存在的某个组为其主组，若没有使用-g参数，<br>则系统自动创建名称和用户名相同的组作为该用户的主组（前提是variable in /etc/login.defs的USERGROUPS_ENAB属性值为yes），如命令手册的useradd关于-g参数的描述所示：<br>-g, –gid GROUP<br>The group name or number of the user′s initial login group. The<br>group name must exist. A group number must refer to an already<br>existing group.<br>If not specified, the bahavior of useradd will depend on the<br>USERGROUPS_ENAB variable in /etc/login.defs. If this variable is<br>set to yes (or -U/–user-group is specified on the command line), a<br>group will be created for the user, with the same name as her<br>loginname. If the variable is set to no (or -N/–no-user-group is<br>specified on the command line), useradd will set the primary group<br>of the new user to the value specified by the GROUP variable in<br>/etc/default/useradd, or 100 by default.</p>
-</li>
-</ol>
-<p>另外，可通过usermod -g 将普通用户的主组/gid设置为系e799bee5baa6e79fa5e98193e4b893e5b19e31333337613161统中存在的任意某个组（永久性）；<br>也可以通过newgrp暂时性变更当前用户的主组/gid（只对于当前login session有效，非永久性）。<br>通过usermod -G 设置普通用户的附属组。</p>
-<p>Linux usermod命令用于修改用户帐号。</p>
-<p>usermod可用来修改用户帐号的各项设定。</p>
-<p>usermod 命令通过修改系统帐户文件来修改用户账户信息<br>usermod [options] user_name<br>选项(options)<br>-a|–append ##把用户追加到某些组中，仅与-G选项一起使用<br>-c|–comment ##修改/etc/passwd文件第五段comment<br>-d|–home ##修改用户的家目录通常和-m选项一起使用<br>-e|–expiredate ##指定用户帐号禁用的日期，格式YY-MM-DD<br>-f|–inactive ##用户密码过期多少天后采用就禁用该帐号，0表示密码已过期就禁用帐号，-1表示禁用此功能，默认值是-1<br>-g|–gid ##修改用户的gid，改组一定存在<br>-G|–groups ##把用户追加到某些组中，仅与-a选项一起使用<br>-l|–login ##修改用户的登录名称<br>-L|–lock ##锁定用户的密码<br>-m|–move-home ##修改用户的家目录通常和-d选项一起使用<br>-s|–shell ##修改用户的shell<br>-u|–uid ##修改用户的uid，该uid必须唯一<br>-U|–unlock ##解锁用户的密码</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod [-LU][-c &lt;备注&gt;][-d &lt;登入目录&gt;][-e &lt;有效期限&gt;][-f &lt;缓冲天数&gt;][-g &lt;群组&gt;][-G &lt;群组&gt;][-l &lt;帐号名称&gt;][-s &lt;shell&gt;][-u &lt;uid&gt;][用户帐号]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li><p>-c&lt;备注&gt; 　修改用户帐号的备注文字。</p>
-</li>
-<li><p>-d登入目录&gt; 　修改用户登入时的目录。</p>
-</li>
-<li><p>-e&lt;有效期限&gt; 　修改帐号的有效期限。</p>
-</li>
-<li><p>-f&lt;缓冲天数&gt; 　修改在密码过期后多少天即关闭该帐号。</p>
-</li>
-<li><p>-g&lt;群组&gt; 　修改用户所属的群组。（常用）</p>
-</li>
-<li><p>-G&lt;群组&gt; 　修改用户所属的附加群组。（常用）</p>
-</li>
-<li><p>-l&lt;帐号名称&gt; 　修改用户帐号名称。</p>
-</li>
-<li><p>-L 　锁定用户密码，使密码无效。</p>
-</li>
-<li><p>-s<shell> 　修改用户登入后所使用的shell。（常用）</p>
-<p>例：usermod -S /bin/bash 用户名</p>
-</li>
-<li><p>-u<uid> 　修改用户ID。</p>
-</li>
-<li><p>-U 　解除密码锁定。</p>
-</li>
-</ul>
-<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>更改登录目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -d &#x2F;home&#x2F;hnlinux root</span><br></pre></td></tr></table></figure>
-
-<p>改变用户的uid</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># usermod -u 777 root</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="usermod-S-bin-bash-用户名"><a href="#usermod-S-bin-bash-用户名" class="headerlink" title="usermod -S /bin/bash 用户名"></a>usermod -S /bin/bash 用户名</h3><p>用户ubuntu默认是dash，而windows不是，想windows登录也是dash，需要上面的命令修改shell为dash</p>
-<p>Bash(GNU Bourne-Again Shell)是许多Linux平台的内定Shell，事实上，还有许多传统UNIX上用的Shell，像tcsh、csh、ash、bsh、ksh等等。</p>
-<p>GNU/Linux 操作系统中的 /bin/sh 本是 bash (Bourne-Again Shell) 的符号链接，但鉴于 bash 过于复杂，有人把 bash 从 NetBSD 移植到 Linux 并更名为 dash (Debian Almquist Shell)，并建议将 /bin/sh 指向它，以获得更快的脚本执行速度。Dash Shell 比 Bash Shell 小的多，符合POSIX标准。</p>
-<p>Debian和Ubuntu中，/bin/sh默认已经指向dash，这是一个不同于bash的shell，它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准。</p>
-<p>就是这个倒霉的dash解释器使得我按照bash语法写的shell 脚本不能运行。</p>
-<p>要知道自己的/bin/sh指向何种解释器，可以用 <strong>ls /bin/sh -al</strong> 命令查看：</p>
-<p>​    $ ls /bin/sh -al</p>
-<p>​    lrwxrwxrwx 1 root root 4 11月 16 15:33 /bin/sh -&gt; bash</p>
-<p>以上结果就表示当前系统用的是dash解释器。</p>
-<p>切换到bash的方式其实挺简单的，关键是一直没找出这个原因……</p>
-<p>修改默认的sh，可以采用命令<strong>sudo dpkg-reconfigure dash</strong></p>
-<p>会出现一个图片状的配置菜单，选no就可以了</p>
-<p>再次检查一下， <strong>ls /bin/sh -al</strong> 发现软链接指向/bin/bash</p>
-<p>​     lrwxrwxrwx 1 root root 4 11月 16 15:33 /bin/sh -&gt; bash</p>
-<h2 id="P76which"><a href="#P76which" class="headerlink" title="P76which"></a>P76which</h2><p>Linux which命令用于查找文件。可以查看指向命令所在位置</p>
-<p>/etc/passwd: 用于保存用户信息的文件</p>
-<p>/etc/bin/passwd:用于修改用户密码的程序</p>
-<p>which指令会在环境变量$PATH设置的目录里查找符合条件的文件。</p>
-<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which [文件...]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong>：</p>
-<ul>
-<li>-n&lt;文件名长度&gt; 　指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</li>
-<li>-p&lt;文件名长度&gt; 　与-n参数相同，但此处的&lt;文件名长度&gt;包括了文件的路径。</li>
-<li>-w 　指定输出时栏位的宽度。</li>
-<li>-V 　显示版本信息。</li>
-</ul>
-<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>使用指令”which”查看指令”bash”的绝对路径，输入如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ which bash</span><br></pre></td></tr></table></figure>
-
-<p>上面的指令执行后，输出信息如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash                   #bash可执行程序的绝对路径</span><br></pre></td></tr></table></figure>
-
-<p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：</p>
-<p><strong>which</strong> 　查看可执行文件的位置。</p>
-<p><strong>whereis</strong> 查看文件的位置。</p>
-<p><strong>locate</strong> 　配合数据库查看文件位置。</p>
-<p><strong>find</strong> 　　实际搜寻硬盘查询文件名称。</p>
-<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
-<p><strong>1．命令格式：</strong></p>
-<p>which 可执行文件名称</p>
-<p><strong>2．命令功能：</strong></p>
-<p>which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。</p>
-<p><strong>3．命令参数：</strong></p>
-<p><strong>-n</strong> 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</p>
-<p><strong>-p</strong> 与-n参数相同，但此处的包括了文件的路径。</p>
-<p><strong>-w</strong> 指定输出时栏位的宽度。</p>
-<p><strong>-V</strong> 显示版本信息</p>
-<p><strong>4．使用实例：</strong></p>
-<p><strong>实例1：</strong>查找文件、显示命令路径</p>
-<p>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which lsmod</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# which pwd</span><br><span class="line">&#x2F;bin&#x2F;pwd</span><br><span class="line">[root@localhost ~]# which adduser</span><br><span class="line">&#x2F;usr&#x2F;sbin&#x2F;adduser</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-<p>说明：</p>
-<p>which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的！所以，不同的 PATH 配置内容所找到的命令当然不一样的！</p>
-<p><strong>实例2：</strong>用 which 去找出 which</p>
-<p>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which which</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# which which</span><br><span class="line">alias which&#x3D;&#39;alias | &#x2F;usr&#x2F;bin&#x2F;which --tty-only --read-alias --show-dot --show-tilde&#39;</span><br><span class="line">&#x2F;usr&#x2F;bin&#x2F;which</span><br><span class="line">[root@localhost ~]#</span><br></pre></td></tr></table></figure>
-
-<p>说明：</p>
-<p>竟然会有两个 which ，其中一个是 alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！</p>
-<p><strong>实例3：</strong>找出 cd 这个命令</p>
-<p>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which cd</span><br></pre></td></tr></table></figure>
-
-<p>说明：</p>
-<p>cd 这个常用的命令竟然找不到啊！为什么呢？这是因为 cd 是bash 内建的命令！ 但是 which 默认是找 PATH 内所规范的目录，所以当然一定找不到的！</p>
-<p>bin:<br>bin为binary的简写主要放置一些<strong>系统的必备执行</strong>档例如:cat、cp、chmod df、dmesg、gzip、kill、ls、mkdir、more、mount、rm、su、tar等。</p>
-<p>/usr/bin:<br>主 要放置一些<strong>应用软体工具的必备执行</strong>档例如c++、g++、gcc、chdrv、diff、dig、du、eject、elm、free、gnome<em>、 gzip、htpasswd、kfm、ktop、last、less、locale、m4、make、man、mcopy、ncftp、 newaliases、nslookup passwd、quota、smb</em>、wget等。 </p>
-<p>/sbin:<br>主 要放置一些<strong>系统管理的必备</strong>程式例如:cfdisk、dhcpcd、dump、e2fsck、fdisk、halt、ifconfig、ifup、 ifdown、init、insmod、lilo、lsmod、mke2fs、modprobe、quotacheck、reboot、rmmod、 runlevel、shutdown等。</p>
-<p>/usr/sbin: </p>
-<p>放置一些<strong>网路管理的必备</strong>程式例如:dhcpd、httpd、imap、in.*d、inetd、lpd、named、netconfig、nmbd、samba、sendmail、squid、swap、tcpd、tcpdump等</p>
-<h2 id="P77（su切换用户）"><a href="#P77（su切换用户）" class="headerlink" title="P77（su切换用户）"></a>P77（su切换用户）</h2><p>Linux su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。不安全，会返回root。然后无需sudo了，即可改系统等。</p>
-<p>使用权限：所有使用者。</p>
-<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [-fmp] [-c command] [-s shell] [--help] [--version] [-] [USER [ARG]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-f 或 –fast 不必读启动档（如 csh.cshrc 等），仅用于 csh 或 tcsh</li>
-<li>-m -p 或 –preserve-environment 执行 su 时不改变环境变数</li>
-<li>-c command 或 –command=command 变更为帐号为 USER 的使用者并执行指令（command）后再变回原来使用者</li>
-<li>-s shell 或 –shell=shell 指定要执行的 shell （bash csh tcsh 等），预设值为 /etc/passwd 内的该使用者（USER） shell</li>
-<li>–help 显示说明文件</li>
-<li>–version 显示版本资讯</li>
-<li>- -l 或 –login 这个参数加了之后，就好像是重新 login 为该使用者一样，大部份环境变数（HOME SHELL USER等等）都是以该使用者（USER）为主，并且工作目录也会改变，如果没有指定 USER ，内定是 root</li>
-<li>USER 欲变更的使用者帐号</li>
-<li>ARG 传入新的 shell 参数</li>
-</ul>
-<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>变更帐号为 root 并在执行 ls 指令后退出变回原使用者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su -c ls root</span><br></pre></td></tr></table></figure>
-
-<p>变更帐号为 root 并传入 -f 参数给新执行的 shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root -f</span><br></pre></td></tr></table></figure>
-
-<p>变更帐号为 clsung 并改变工作目录至 clsung 的家目录（home dir）（常用）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - clsung</span><br></pre></td></tr></table></figure>
-
-<p>切换用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br></pre></td></tr></table></figure>
-
-<p>切换用户，改变环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hnlinux@runoob.com:~$ whoami &#x2F;&#x2F;显示当前用户</span><br><span class="line">hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;home&#x2F;hnlinux</span><br><span class="line">hnlinux@runoob.com:~$ su - root &#x2F;&#x2F;切换到root用户</span><br><span class="line">密码： </span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# whoami </span><br><span class="line">root</span><br><span class="line">root@runoob.com:&#x2F;home&#x2F;hnlinux# pwd &#x2F;&#x2F;显示当前目录</span><br><span class="line">&#x2F;root</span><br></pre></td></tr></table></figure>
-
-<h2 id="P78修改文件权限"><a href="#P78修改文件权限" class="headerlink" title="P78修改文件权限"></a>P78修改文件权限</h2><p>1。 chown: 修改拥有者</p>
-<p>2。chgrp：修改组</p>
-<p>3 。chmod：修改权限</p>
-<p>想要改文件的权限，只有管理员root和所有者才能修改</p>
-<p>Linux/Unix 是多人多工操作系统，所有的文件皆有拥有者。利用 chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户ID；组可以是组名或者组ID；文件是以空格分开的要改变权限的文件列表，支持通配符。 。</p>
-<p>一般来说，这个指令只有是由系统管理者(root)所使用，一般使用者没有权限可以改变别人的文件拥有者，也没有权限把自己的文件拥有者改设为别人。只有系统管理者(root)才有这样的权限。</p>
-<p><strong>使用权限</strong> : root</p>
-<h3 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-cfhvR] [--help] [--version] user[:group] file...</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong> :</p>
-<ul>
-<li>user : 新的文件拥有者的使用者 ID</li>
-<li>group : 新的文件拥有者的使用者组(group)</li>
-<li>-c : 显示更改的部分的信息</li>
-<li>-f : 忽略错误信息</li>
-<li>-h :修复符号链接</li>
-<li>-v : 显示详细的处理信息</li>
-<li>-R : 处理指定目录以及其子目录下的所有文件</li>
-<li>–help : 显示辅助说明</li>
-<li>–version : 显示版本</li>
-</ul>
-<h3 id="实例-8"><a href="#实例-8" class="headerlink" title="实例"></a>实例</h3><p>将文件 file1.txt 的拥有者设为 runoob，群体的使用者 runoobgroup :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown runoob:runoobgroup file1.txt</span><br></pre></td></tr></table></figure>
-
-<p>将目前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R runoob:runoobgroup *</span><br></pre></td></tr></table></figure>
-
-<h3 id="1、chmod：更改文件9个属性"><a href="#1、chmod：更改文件9个属性" class="headerlink" title="1、chmod：更改文件9个属性"></a>1、chmod：更改文件9个属性</h3><p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626161252656-1763498520.png" alt="img"></p>
-<p>Linux文件属性有两种设置方法，一种是数字，一种是符号。</p>
-<p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
-<h4 id="①-数字改变文件权限（常用）"><a href="#①-数字改变文件权限（常用）" class="headerlink" title="① 数字改变文件权限（常用）"></a>① 数字改变文件权限（常用）</h4><p>我们可以使用数字来代表各个权限，各权限的分数对照表如下：</p>
-<ul>
-<li>r:4</li>
-<li>w:2</li>
-<li>x:1</li>
-</ul>
-<p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为： [-rwxrwx—] 分数则是：</p>
-<ul>
-<li>owner = rwx = 4+2+1 = 7</li>
-<li>group = rwx = 4+2+1 = 7</li>
-<li>others= — = 0+0+0 = 0</li>
-</ul>
-<p>所以等我们设定权限的变更时，该文件的权限数字就是770啦！变更权限的指令chmod的语法是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-R] xyz 文件或目录</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>xyz : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。</li>
-<li>-R : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件都会变更</li>
-</ul>
-<h4 id="②-符号类型改变文件权限"><a href="#②-符号类型改变文件权限" class="headerlink" title="② 符号类型改变文件权限"></a>② 符号类型改变文件权限</h4><p> 我们就可以藉由u, g, o来代表三种身份的权限！</p>
-<p>此外， a 则代表 all 亦即全部的身份！那么读写的权限就可以写成r, w, x！也就是可以使用底下的方式来看：</p>
-<table>
-<thead>
-<tr>
-<th>chmod</th>
-<th>u g o a</th>
-<th>+(加入) -(除去) =(设定)</th>
-<th>r w x</th>
-<th>文件或目录</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>如果我们需要将文件权限设置为 <strong>-rwxr-xr–</strong> ，可以使用 chmod u=rwx,g=rx,o=r 文件名 来设定。</p>
-<p>注意：如果一个目录有写的权限，其他用户对于这个目录下的文件也可以删除。</p>
-<h3 id="2、chown：更改文件属主，也可以同时更改文件属组"><a href="#2、chown：更改文件属主，也可以同时更改文件属组" class="headerlink" title="2、chown：更改文件属主，也可以同时更改文件属组"></a>2、chown：更改文件属主，也可以同时更改文件属组</h3><p>注意：这个命令只有管理员root才可以操作。而且系统里是必须存在这个用户。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626165146255-1650931601.png" alt="img"></p>
-<p>语法：</p>
-<p>chown [–R] 属主名： 文件名</p>
-<p>chown [-R] 属主名：属组名 文件名</p>
-<h3 id="3、chgrp：更改文件属组。"><a href="#3、chgrp：更改文件属组。" class="headerlink" title="3、chgrp：更改文件属组。"></a>3、chgrp：更改文件属组。</h3><p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626170509313-1815193220.png" alt="img"></p>
-<p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-R] 属组名 文件名</span><br></pre></td></tr></table></figure>
-
-<p>参数选项</p>
-<ul>
-<li>-R：递归更改文件属组，就是在更改某个目录文件的属组时，如果加上-R的参数，那么该目录下的所有文件的属组都会更改。</li>
-</ul>
-<h3 id="4、umask设置预设的权限掩码"><a href="#4、umask设置预设的权限掩码" class="headerlink" title="4、umask设置预设的权限掩码"></a><strong>4、umask设置预设的权限掩码</strong></h3><p>Linux umask命令指定在建立文件时预设的权限掩码，在学习这个命令之前，先了解一下默认的所有者和所属组是哪来的？</p>
-<p>一个文件创建的时候所有者和所属组是哪来的？</p>
-<p>所有者：谁创建的文件谁就是这个文件的所有者。</p>
-<p>所属组：就是这个文件创建者的缺省组，每个用户只能有一个缺省组。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172146490-1231316404.png" alt="img"></p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626172519622-446882410.png" alt="img">显示新建文件的缺省权限。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173131946-156221821.png" alt="img"></p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626173426757-2120027575.png" alt="img"></p>
-<p>创建一个目录的时候查看发现 权限跟缺省权限是一致的，但是在test目录里创建一个文件后，查看文件缺省权限跟默认缺省权限不一致，这个是为什么呢？</p>
-<p>rwxr-xr-x</p>
-<p>rw-r–r–  对比发现都少了一个x可执行权限，这是因为在Linux里缺省权限创建的文件是不可具有可执行权限的。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174110254-908588857.png" alt="img"></p>
-<p>单独执行  <strong>umask</strong>  发现现实出 <strong>0022</strong> ，这是什么意思呢？</p>
-<p>022是权限掩码意思，真正的权限是777-022=755 写出来就是rwxr-xr-x.</p>
-<p>如果我们自己要是想修改这个缺省权限，该怎么修改的。</p>
-<p>先把想修改的权限格式表示出来，算出对应的数字，再用777-对应的数字就可以，例如：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1264413/201806/1264413-20180626174709974-11233329.png" alt="img"></p>
-<h2 id="P79chmod详解"><a href="#P79chmod详解" class="headerlink" title="P79chmod详解"></a>P79chmod详解</h2><p>这是使用chmod命令时的正确语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [options] mode [，mode] file1 [file2 ...]</span><br></pre></td></tr></table></figure>
-
-<p>以下是chmod使用的一些常用选项：</p>
-<p>　●　-f， - silent， - quiet（抑制大多数错误消息）</p>
-<p>　●　-v， - verbose（为每个处理的文件输出诊断信息）</p>
-<p>　●　-c， - changes（类似于详细但仅在进行更改时报告）</p>
-<p>　●　-R， - recursive（递归更改文件和目录）（常用）</p>
-<p>　●　–help（显示帮助和退出）</p>
-<p>　●　–version（输出版本信息和退出）</p>
-<p>下面是可以为用户，组以及计算机上的其他所有人设置的几个数字权限的列表。数字旁边是读/写/执行字母等价物。</p>
-<p>　●　7：表示rwx，拥有读、写和执行的权限</p>
-<p>　●　6：表示rw-，拥有读和写的权限</p>
-<p>　●　5：表示rx，拥有读取和执行的权限</p>
-<p>　●　4：表示r–，拥有只读权限</p>
-<p>　●　3：表示-wx，拥有写入和执行的权限</p>
-<p>　●　2：表示-w-，拥有只写权限</p>
-<p>　●　1：表示 - x，仅拥有执行权限</p>
-<p>　●　0：表示—，无权限</p>
-<p>注：如果需要列出文件的权限，需要使用ls命令。</p>
-<p><strong>chmod命令示例</strong></p>
-<p>如果用户想要更改文件“participants”的权限，以便所有人都可以完全访问该文件，需要输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 participants</span><br></pre></td></tr></table></figure>
-
-<p>说明：第1个7设置用户的权限，第2个7设置组的权限，第3个7设置其他所有者的权限。</p>
-<p>如果用户想成为唯一可以访问它的人，可以使用以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 participants</span><br></pre></td></tr></table></figure>
-
-<p>用户想要为自己和其小组成员提供完全访问权限，可以使用以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 770 participants</span><br></pre></td></tr></table></figure>
-
-<p>如果用户想为自己保留完全访问权限，但希望阻止其他人修改文件，可以使用以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 participants</span><br></pre></td></tr></table></figure>
-
-<p>以下使用上面的字母来更改文件“participants”的权限，以便所有者可以读取和写入文件，但不会更改其他任何人的权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u&#x3D;rw participants</span><br></pre></td></tr></table></figure>
-
-<p><strong>设置模式</strong> </p>
-<p>使用chmod命令可以为文件和目录设置其他文件系统模式。例如，要设置粘滞位 - 这意味着只有文件所有者，目录所有者或超级用户可以删除该文件，而不管文件的读写组权限如何 - 在数字序列前加1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 1755 participants</span><br></pre></td></tr></table></figure>
-
-<p>其他：</p>
-<p>用户还可以使用chgrp命令更改现有文件和文件夹的组所有权，使用newgrp命令更改新文件和文件夹的默认组。</p>
-<p>请记住，chmod命令中使用的符号链接将影响真实的目标对象。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/linux3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/linux3/" class="post-title-link" itemprop="url">linux基础（42-59集）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-26 00:03:11 / Modified: 19:03:49" itemprop="dateCreated datePublished" datetime="2020-04-26T00:03:11-05:00">2020-04-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="P42远程管理常用命令"><a href="#P42远程管理常用命令" class="headerlink" title="P42远程管理常用命令"></a>P42远程管理常用命令</h2><h3 id="关机重启shutdown"><a href="#关机重启shutdown" class="headerlink" title="关机重启shutdown"></a>关机重启shutdown</h3><p>Linux shutdown命令可以用来进行关机程序，并且在关机以前传送讯息给所有使用者正在执行的程序，shutdown 也可以用来重开机。</p>
-<p>使用权限：系统管理者。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown [-t seconds] [-rkhncfF] time [message]</span><br></pre></td></tr></table></figure>
-
-<p>shutdown now 立即关机</p>
-<p>shutdown +10 10分钟后关机</p>
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-t seconds : 设定在几秒钟之后进行关机程序。</li>
-<li>-k : 并不会真的关机，只是将警告讯息传送给所有使用者。</li>
-<li>-r : 关机后重新开机。（常用，一定要加，不加会启动不了了）</li>
-<li>-h : 关机后停机。</li>
-<li>-n : 不采用正常程序来关机，用强迫的方式杀掉所有执行中的程序后自行关机。</li>
-<li>-c : 取消目前已经进行中的关机动作。（常用，取消之前动作）</li>
-<li>-f : 关机时，不做 fcsk 动作(检查 Linux 档系统)。</li>
-<li>-F : 关机时，强迫进行 fsck 动作。</li>
-<li>time : 设定关机的时间。</li>
-<li>message : 传送给所有使用者的警告讯息。</li>
-</ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>立即关机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h now</span><br></pre></td></tr></table></figure>
-
-<p>指定 10 分钟后关机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h 10</span><br></pre></td></tr></table></figure>
-
-<p>重新启动计算机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -r now</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="查看或配置网卡信息"><a href="#查看或配置网卡信息" class="headerlink" title="查看或配置网卡信息"></a>查看或配置网卡信息</h3><h3 id="Ifconfig"><a href="#Ifconfig" class="headerlink" title="Ifconfig"></a>Ifconfig</h3><p>网卡：一个专门负责网络通讯的硬件设备。</p>
-<p>Linux ifconfig命令用于显示或设置网络设备。</p>
-<p>ifconfig可设置网络设备的状态，或是显示目前的设置。</p>
-<p>ifconfig | grep inet： 查看网卡对应IP地址</p>
-<p>ifconfig：查看网卡配置信息</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig [网络设备][down up -allmulti -arp -promisc][add&lt;地址&gt;][del&lt;地址&gt;][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][io_addr&lt;I&#x2F;O地址&gt;][irq&lt;IRQ地址&gt;][media&lt;网络媒介类型&gt;][mem_start&lt;内存地址&gt;][metric&lt;数目&gt;][mtu&lt;字节&gt;][netmask&lt;子网掩码&gt;][tunnel&lt;地址&gt;][-broadcast&lt;地址&gt;][-pointopoint&lt;地址&gt;][IP地址]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>add&lt;地址&gt; 设置网络设备IPv6的IP地址。</li>
-<li>del&lt;地址&gt; 删除网络设备IPv6的IP地址。</li>
-<li>down 关闭指定的网络设备。</li>
-<li>&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt; 设置网络设备的类型与硬件地址。</li>
-<li>io_addr&lt;I/O地址&gt; 设置网络设备的I/O地址。</li>
-<li>irq&lt;IRQ地址&gt; 设置网络设备的IRQ。</li>
-<li>media&lt;网络媒介类型&gt; 设置网络设备的媒介类型。</li>
-<li>mem_start&lt;内存地址&gt; 设置网络设备在主内存所占用的起始地址。</li>
-<li>metric&lt;数目&gt; 指定在计算数据包的转送次数时，所要加上的数目。</li>
-<li>mtu&lt;字节&gt; 设置网络设备的MTU。</li>
-<li>netmask&lt;子网掩码&gt; 设置网络设备的子网掩码。</li>
-<li>tunnel&lt;地址&gt; 建立IPv4与IPv6之间的隧道通信地址。</li>
-<li>up 启动指定的网络设备。</li>
-<li>-broadcast&lt;地址&gt; 将要送往指定地址的数据包当成广播数据包来处理。</li>
-<li>-pointopoint&lt;地址&gt; 与指定地址的网络设备建立直接连线，此模式具有保密功能。</li>
-<li>-promisc 关闭或启动指定网络设备的promiscuous模式。</li>
-<li>[IP地址] 指定网络设备的IP地址。</li>
-<li>[网络设备] 指定网络设备的名称。</li>
-</ul>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>显示网络设备信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig        </span><br><span class="line">eth0   Link encap:Ethernet HWaddr 00:50:56:0A:0B:0C </span><br><span class="line">     inet addr:192.168.0.3 Bcast:192.168.0.255 Mask:255.255.255.0</span><br><span class="line">     inet6 addr: fe80::250:56ff:fe0a:b0c&#x2F;64 Scope:Link</span><br><span class="line">     UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1</span><br><span class="line">     RX packets:172220 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">     TX packets:132379 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">     collisions:0 txqueuelen:1000 </span><br><span class="line">     RX bytes:87101880 (83.0 MiB) TX bytes:41576123 (39.6 MiB)</span><br><span class="line">     Interrupt:185 Base address:0x2024 </span><br><span class="line"></span><br><span class="line">lo    Link encap:Local Loopback </span><br><span class="line">     inet addr:127.0.0.1 Mask:255.0.0.0</span><br><span class="line">     inet6 addr: ::1&#x2F;128 Scope:Host</span><br><span class="line">     UP LOOPBACK RUNNING MTU:16436 Metric:1</span><br><span class="line">     RX packets:2022 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">     TX packets:2022 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">     collisions:0 txqueuelen:0 </span><br><span class="line">     RX bytes:2459063 (2.3 MiB) TX bytes:2459063 (2.3 MiB)</span><br></pre></td></tr></table></figure>
-
-<p>启动关闭指定网卡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 down</span><br><span class="line"># ifconfig eth0 up</span><br></pre></td></tr></table></figure>
-
-<p>为网卡配置和删除IPv6地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 add 33ffe:3240:800:1005::2&#x2F; 64 &#x2F;&#x2F;为网卡诶之IPv6地址</span><br><span class="line"></span><br><span class="line"># ifconfig eth0 del 33ffe:3240:800:1005::2&#x2F; 64 &#x2F;&#x2F;为网卡删除IPv6地址</span><br></pre></td></tr></table></figure>
-
-<p>用ifconfig修改MAC地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 down &#x2F;&#x2F;关闭网卡</span><br><span class="line"># ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE &#x2F;&#x2F;修改MAC地址</span><br><span class="line"># ifconfig eth0 up &#x2F;&#x2F;启动网卡</span><br><span class="line"># ifconfig eth1 hw ether 00:1D:1C:1D:1E &#x2F;&#x2F;关闭网卡并修改MAC地址 </span><br><span class="line"># ifconfig eth1 up &#x2F;&#x2F;启动网卡</span><br></pre></td></tr></table></figure>
-
-<p>配置IP地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 192.168.1.56 </span><br><span class="line">&#x2F;&#x2F;给eth0网卡配置IP地址</span><br><span class="line"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0 </span><br><span class="line">&#x2F;&#x2F; 给eth0网卡配置IP地址,并加上子掩码</span><br><span class="line"># ifconfig eth0 192.168.1.56 netmask 255.255.255.0 broadcast 192.168.1.255</span><br><span class="line">&#x2F;&#x2F; 给eth0网卡配置IP地址,加上子掩码,加上个广播地址</span><br></pre></td></tr></table></figure>
-
-<p>启用和关闭ARP协议</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 arp  &#x2F;&#x2F;开启</span><br><span class="line"># ifconfig eth0 -arp  &#x2F;&#x2F;关闭</span><br></pre></td></tr></table></figure>
-
-<p>设置最大传输单元</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ifconfig eth0 mtu 1500 </span><br><span class="line">&#x2F;&#x2F;设置能通过的最大数据包大小为 1500 bytes</span><br></pre></td></tr></table></figure>
-
-<h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>ping ip地址：检查目标主机连接是否正常</p>
-<p>ping 本地ip：检查本地ip是否正常。（一般127.0.0.1是本地回环地址，用了检查本机网卡是否正常，localhost）</p>
-<p>ping用来检查计算机间网络是否通畅，数值越大，速度越慢，ping一下计算机看是否开着</p>
-<p>Linux ping命令用于检测主机。</p>
-<p>执行ping指令会使用ICMP传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping [-dfnqrRv][-c&lt;完成次数&gt;][-i&lt;间隔秒数&gt;][-I&lt;网络界面&gt;][-l&lt;前置载入&gt;][-p&lt;范本样式&gt;][-s&lt;数据包大小&gt;][-t&lt;存活数值&gt;][主机名称或IP地址]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-d 使用Socket的SO_DEBUG功能。</li>
-<li>-c&lt;完成次数&gt; 设置完成要求回应的次数。</li>
-<li>-f 极限检测。</li>
-<li>-i&lt;间隔秒数&gt; 指定收发信息的间隔时间。</li>
-<li>-I&lt;网络界面&gt; 使用指定的网络接口送出数据包。</li>
-<li>-l&lt;前置载入&gt; 设置在送出要求信息之前，先行发出的数据包。</li>
-<li>-n 只输出数值。</li>
-<li>-p&lt;范本样式&gt; 设置填满数据包的范本样式。</li>
-<li>-q 不显示指令执行过程，开头和结尾的相关信息除外。</li>
-<li>-r 忽略普通的Routing Table，直接将数据包送到远端主机上。</li>
-<li>-R 记录路由过程。</li>
-<li>-s&lt;数据包大小&gt; 设置数据包的大小。</li>
-<li>-t&lt;存活数值&gt; 设置存活数值TTL的大小。</li>
-<li>-v 详细显示指令的执行过程。</li>
-</ul>
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>检测是否与主机连通</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># ping www.w3cschool.cc &#x2F;&#x2F;ping主机</span><br><span class="line">PING aries.m.alikunlun.com (114.80.174.110) 56(84) bytes of data.</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;1 ttl&#x3D;64 time&#x3D;0.025 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;2 ttl&#x3D;64 time&#x3D;0.036 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;3 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;4 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;5 ttl&#x3D;64 time&#x3D;0.028 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;6 ttl&#x3D;64 time&#x3D;0.028 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;7 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;8 ttl&#x3D;64 time&#x3D;0.034 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;9 ttl&#x3D;64 time&#x3D;0.036 ms</span><br><span class="line">64 bytes from 114.80.174.110: icmp_seq&#x3D;10 ttl&#x3D;64 time&#x3D;0.041 ms</span><br><span class="line"></span><br><span class="line">--- aries.m.alikunlun.com ping statistics ---</span><br><span class="line">10 packets transmitted, 30 received, 0% packet loss, time 29246ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 0.021&#x2F;0.035&#x2F;0.078&#x2F;0.011 ms</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;需要手动终止Ctrl+C</span><br></pre></td></tr></table></figure>
-
-<p>指定接收包的次数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># ping -c 2 www.w3cschool.cc</span><br><span class="line">PING aries.m.alikunlun.com (114.80.174.120) 56(84) bytes of data.</span><br><span class="line">64 bytes from 114.80.174.120: icmp_seq&#x3D;1 ttl&#x3D;54 time&#x3D;6.18 ms</span><br><span class="line">64 bytes from 114.80.174.120: icmp_seq&#x3D;2 ttl&#x3D;54 time&#x3D;15.4 ms</span><br><span class="line"></span><br><span class="line">--- aries.m.alikunlun.com ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1016ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 6.185&#x2F;10.824&#x2F;15.464&#x2F;4.640 ms</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;收到两次包后，自动退出</span><br></pre></td></tr></table></figure>
-
-<p>多参数使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ping -i 3 -s 1024 -t 255 g.cn &#x2F;&#x2F;ping主机</span><br><span class="line">PING g.cn (203.208.37.104) 1024(1052) bytes of data.</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;0 ttl&#x3D;243 time&#x3D;62.5 ms</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;1 ttl&#x3D;243 time&#x3D;63.9 ms</span><br><span class="line">1032 bytes from bg-in-f104.1e100.net (203.208.37.104): icmp_seq&#x3D;2 ttl&#x3D;243 time&#x3D;61.9 ms</span><br><span class="line"></span><br><span class="line">--- g.cn ping statistics ---</span><br><span class="line">3 packets transmitted, 3 received, 0% packet loss, time 6001ms</span><br><span class="line">rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 61.959&#x2F;62.843&#x2F;63.984&#x2F;0.894 ms, pipe 2</span><br><span class="line">[root@linux ~]# </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;-i 3 发送周期为 3秒 -s 设置发送包的大小 -t 设置TTL值为 255</span><br></pre></td></tr></table></figure>
-
-<h2 id="P47-52远程登录和复制文件（ssh）"><a href="#P47-52远程登录和复制文件（ssh）" class="headerlink" title="P47-52远程登录和复制文件（ssh）"></a>P47-52远程登录和复制文件（ssh）</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh:"></a>ssh:</h3><p>Security shell, 数据传输加密，压缩</p>
-<p>ssh [-p port] user@remote</p>
-<p>user是远程机器上的用户名，如果不指定的话默认当前用户。</p>
-<p>remote是远程机器的地址，可以是ip/域名，或者是后面会提到的别名。</p>
-<p>port是ssh server的监听端口， 如果不指定，默认22.</p>
-<p>windows下载：putty和xshell</p>
-<p>使用exit退出用户登录</p>
-<p><strong>ip：ip是是分配给网络上使用IP协议的设备的数字标签。</strong>我们现在经常使用的是 ipv4， 由32位二进制数字组成，常以XXX.XXX.XXX.XXX形式表现。</p>
-<p><strong>域名：是由一串用“点”分隔的字符组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。</strong>如 i.cnblogs.com。</p>
-<p>域名按域名系统（DNS）的规则流程组成。在DNS中注册的任何名称都是域名。域名用于各种网络环境和应用程序特定的命名和寻址目的。</p>
-<p>域名和ip有区别也有联系，域名通常都会和IP绑定起来，通过访问域名来访问网络主机上的服务。ip地址通常是指主机，而域名通常表示一个网站。一个域名可以绑定到多个ip，多个域名也可以绑定到一个ip。</p>
-<p><strong>域名系统（DNS）：因特网上作为域名和ip地址相互映射的分布式数据库，能使用户更方便地访问互联网，而不用去记住能够被机器直接读取的IP地址。通过主机名，最终得到该主机名对应的ip地址的过程叫做域名解析。 DNS协议运行在UDP协议之上，端口号53。</strong></p>
-<p><strong>端口号：端口，（英语：port），主要分为物理端口和逻辑端口。</strong>我们一般说的都是逻辑端口，用于区分不同的服务。因为网络中一台主机只有一个IP，但是一个主机可以提供多个服务，端口号就用于区分一个主机上的不同服务。一个IP地址的端口通过16bit进行编号，最多可以有65536个端口，标识是从0<del>65535。**端口号分为公认端口（0</del>1023）、注册端口（1024<del>49151）和动态端口（49152</del>65535）。**我们自己的服务一般都绑定在注册端口上。</p>
-<p><strong>跨域：</strong>在 HTML 中，<code>,</code>, <code>,</code>, <code>,</code> 等标签以及 Ajax 都可以指向一个资源地址，<strong>而所谓的跨域请求就是指</strong>：当前发起请求的域与该请求指向的资源所在的域不一样。<strong>这里的域指的是这样的一个概念：我们认为若协议 + 域名 + 端口号均相同，那么就是同域。</strong></p>
-<h3 id="常见的端口号及其用途"><a href="#常见的端口号及其用途" class="headerlink" title="常见的端口号及其用途"></a><a href="https://www.cnblogs.com/innershare/p/10749981.html" target="_blank" rel="noopener">常见的端口号及其用途</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">一些常见的端口号及其用途如下：</span><br><span class="line">21端口：FTP 文件传输服务（常用）</span><br><span class="line">22端口：SSH 端口（常用）</span><br><span class="line">23端口：TELNET 终端仿真服务</span><br><span class="line">25端口：SMTP 简单邮件传输服务</span><br><span class="line">53端口：DNS 域名解析服务</span><br><span class="line">80端口：HTTP 超文本传输服务，web端口（常用）</span><br><span class="line">110端口：POP3 “邮局协议版本3”使用的端口</span><br><span class="line">443端口：HTTPS 加密的超文本传输服务（常用）</span><br><span class="line">1433端口：MS SQL*SERVER数据库 默认端口号</span><br><span class="line">1521端口：Oracle数据库服务</span><br><span class="line">1863端口：MSN Messenger的文件传输功能所使用的端口</span><br><span class="line">3306端口：MYSQL 默认端口号（常用）</span><br><span class="line">3389端口：Microsoft RDP 微软远程桌面使用的端口</span><br><span class="line">5631端口：Symantec pcAnywhere 远程控制数据传输时使用的端口</span><br><span class="line">5632端口：Symantec pcAnywhere 主控端扫描被控端时使用的端口</span><br><span class="line">5000端口：MS SQL Server使用的端口</span><br><span class="line">8000端口：腾讯QQ</span><br></pre></td></tr></table></figure>
-
-<p>   SSH(远程连接工具)连接原理：ssh服务是一个守护进程(demon)，系统后台监听客户端的连接，ssh服务端的进程名为sshd,负责实时监听客户端的请求(IP 22端口)，包括公共秘钥等交换等信息。</p>
-<p>ssh服务端由2部分组成： openssh(提供ssh服务)  openssl(提供加密的程序)</p>
-<p>ssh的客户端可以用 XSHELL，Securecrt, Mobaxterm等工具进行连接</p>
-<h3 id="SSH的工作机制"><a href="#SSH的工作机制" class="headerlink" title="SSH的工作机制"></a>SSH的工作机制</h3><p>   服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit),发回给服务器端，建立连接通过key-pair数据传输。    </p>
-<h3 id="SSH的加密技术"><a href="#SSH的加密技术" class="headerlink" title="SSH的加密技术"></a>SSH的加密技术</h3><p>加密技术：传输过程，数据加密。<br>1.SSH1没有对客户端的秘钥进行校验，很容易被植入恶意代码<br>2.SSH2增加了一个确认联机正确性的Diffe_Hellman机制，每次数据的传输，Server都会检查数据来源的正确性，避免黑客入侵。<br> SSH2支持RSA和DSA密钥<br>    DSA:digital signature Algorithm 数字签名<br>    RSA:既可以数字签名又可以加密    </p>
-<h3 id="SSH知识小结"><a href="#SSH知识小结" class="headerlink" title="SSH知识小结"></a>SSH知识小结</h3><p>  1.SSH是安全的加密协议，用于远程连接Linux服务器<br>  2.SSH的默认端口是22，安全协议版本是SSH2<br>  3.SSH服务器端主要包含2个服务功能SSH连接和SFTP服务器<br>  4.SSH客户端包含ssh连接命令和远程拷贝scp命令等 </p>
-<h3 id="如何防止SSH登录入侵"><a href="#如何防止SSH登录入侵" class="headerlink" title="如何防止SSH登录入侵"></a>如何防止SSH登录入侵</h3><p>  1.密钥登录,更改端口<br>  2.牤牛阵法<br>  3.监听本地内网IP(ListenAddress 192.168.25.*)</p>
-<h3 id="SSH功能大全"><a href="#SSH功能大全" class="headerlink" title="SSH功能大全"></a>SSH功能大全</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.登录          &#96;&#96;    &#96;&#96;ssh&#96; &#96;-p22 omd@192.168.25.137        &#96;&#96;  &#96;&#96;2.直接执行命令 --&gt;最好全路径          &#96;&#96;    &#96;&#96;ssh&#96; &#96;root@192.168.25.137 &#96;&#96;ls&#96; &#96;-ltr &#96;&#96;&#x2F;backup&#x2F;data&#96;            &#96;      &#96;&#96;&#x3D;&#x3D;&gt;&#96;&#96;ssh&#96; &#96;root@192.168.25.137 &#96;&#96;&#x2F;bin&#x2F;ls&#96; &#96;-ltr &#96;&#96;&#x2F;backup&#x2F;data&#96;        &#96;  &#96;&#96;3.查看已知主机           &#96;&#96;    &#96;&#96;cat&#96; &#96;&#x2F;root&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;known_hosts&#96;&#96;  &#96;&#96;4.&#96;&#96;ssh&#96;&#96;远程执行&#96;&#96;sudo&#96;&#96;命令&#96;&#96;    &#96;&#96;ssh&#96; &#96;-t omd@192.168.25.137 &#96;&#96;sudo&#96; &#96;rsync&#96; &#96;hosts &#96;&#96;&#x2F;etc&#x2F;&#96; &#96;  &#96;&#96;5.&#96;&#96;scp&#96;        &#96;       &#96;&#96;1.功能  --&gt;远程文件的安全(加密)拷贝          &#96;&#96;         &#96;&#96;scp&#96; &#96;-P22 -r -p &#96;&#96;&#x2F;home&#x2F;omd&#x2F;h&#96;&#96;.txt omd@192.168.25.137:&#96;&#96;&#x2F;home&#x2F;omd&#x2F;&#96;        &#96;       &#96;&#96;2.&#96;&#96;scp&#96;&#96;知识小结          &#96;&#96;         &#96;&#96;scp&#96;&#96;是加密远程拷贝，&#96;&#96;cp&#96;&#96;为本地拷贝          &#96;&#96;         &#96;&#96;可以推送过去，也可以拉过来          &#96;&#96;         &#96;&#96;每次都是全量拷贝(效率不高，适合第一次)，增量拷贝用&#96;&#96;rsync&#96; &#96;  &#96;&#96;6.&#96;&#96;ssh&#96;&#96;自带的&#96;&#96;sftp&#96;&#96;功能        &#96;&#96;       &#96;&#96;1.Window和Linux的传输工具          &#96;&#96;         &#96;&#96;wincp  filezip          &#96;&#96;        &#96;&#96;sftp&#96; &#96;--&gt;基于&#96;&#96;ssh&#96;&#96;的安全加密传输          &#96;&#96;        &#96;&#96;samba  &#96;&#96;       &#96;&#96;2.&#96;&#96;sftp&#96;&#96;客户端连接          &#96;&#96;        &#96;&#96;sftp&#96; &#96;-oPort&#x3D;22 root@192.168.25.137          &#96;&#96;        &#96;&#96;put &#96;&#96;&#x2F;etc&#x2F;hosts&#96; &#96;&#x2F;tmp&#96;          &#96;        &#96;&#96;get &#96;&#96;&#x2F;etc&#x2F;hosts&#96; &#96;&#x2F;home&#x2F;omd&#96;  &#96;      &#96;&#96;3.&#96;&#96;sftp&#96;&#96;小结：          &#96;&#96;        &#96;&#96;1.linux下使用命令： &#96;&#96;sftp&#96; &#96;-oPort&#x3D;22 root@x.x.x.x          &#96;&#96;        &#96;&#96;2.put加客户端本地路径上传          &#96;&#96;        &#96;&#96;3.get下载服务器端内容到本地          &#96;&#96;        &#96;&#96;4.远程连接默认连接用户的家目录</span><br></pre></td></tr></table></figure>
-
-<h3 id="ssh常见命令参数"><a href="#ssh常见命令参数" class="headerlink" title="ssh常见命令参数"></a>ssh常见命令参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usage: &#96;&#96;ssh&#96; &#96;[-1246AaCfgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]&#96;&#96;      &#96;&#96;[-D [bind_address:]port] [-e escape_char] [-F configfile]&#96;&#96;      &#96;&#96;[-i identity_file] [-L [bind_address:]port:host:hostport]&#96;&#96;      &#96;&#96;[-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]&#96;&#96;      &#96;&#96;[-R [bind_address:]port:host:hostport] [-S ctl_path]&#96;&#96;      &#96;&#96;[-W host:port] [-w local_tun[:remote_tun]]&#96;&#96;      &#96;&#96;[user@]&#96;&#96;hostname&#96; &#96;[&#96;&#96;command&#96;&#96;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="关于后台ssh服务的相关"><a href="#关于后台ssh服务的相关" class="headerlink" title="关于后台ssh服务的相关"></a>关于后台ssh服务的相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 查询openssl软件&#96;&#96;  &#96;&#96;rpm -qa openssh openssl&#96;&#96;# 查询sshd进程&#96;&#96;  &#96;&#96;ps&#96; &#96;-ef | &#96;&#96;grep&#96; &#96;ssh&#96;&#96;    &#96;&#96;--&gt; &#96;&#96;&#x2F;usr&#x2F;sbin&#x2F;sshd&#96;&#96;# 查看ssh端口&#96;&#96;  &#96;&#96;netstat&#96; &#96;-lntup | &#96;&#96;grep&#96; &#96;ssh&#96; &#96;  &#96;&#96;ss | &#96;&#96;grep&#96; &#96;ssh&#96;        &#96;(效果同上，同下，好用)&#96;&#96;  &#96;&#96;netstat&#96; &#96;-a | &#96;&#96;grep&#96; &#96;ssh&#96;&#96;(记住这个)&#96;&#96;  &#96;&#96;netstat&#96; &#96;-lnt | &#96;&#96;grep&#96; &#96;22  &#x3D;&#x3D;&gt; 查看22端口有没有开&#96;&#96;&#x2F;ssh&#96;&#96;服务有没有开启&#96;&#96;  &#96;&#96;技巧： &#96;&#96;netstat&#96; &#96;-lnt | &#96;&#96;grep&#96; &#96;ssh&#96; &#96;| &#96;&#96;wc&#96; &#96;-l --&gt;只要大于2个就是&#96;&#96;ssh&#96;&#96;服务就是好的&#96;&#96;# 查看ssh的秘钥目录&#96;&#96;  &#96;&#96;ll &#96;&#96;&#x2F;root&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;known_hosts&#96; &#96;# 当前用户家目录的.ssh目录下&#96;&#96;# ssh的配置文件&#96;&#96;  &#96;&#96;cat&#96; &#96;&#x2F;etc&#x2F;ssh&#x2F;sshd_config&#96;  &#96;# ssh服务的关闭&#96;&#96;  &#96;&#96;service sshd stop&#96;&#96;# ssh服务的开启：&#96;&#96;  &#96;&#96;service sshd start&#96;&#96;# ssh服务的重启&#96;&#96;  &#96;&#96;service sshd reload  [停止进程后重启] &#x3D;&#x3D;&gt; 推荐&#96;&#96;  &#96;&#96;service sshd restart  [干掉进程后重启] &#x3D;&#x3D;&gt; 不推荐&#96;&#96;# ssh远程登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;192.168.1.100   &#96;&#96;# 默认利用当前宿主用户的用户名登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 &#96;&#96;# 利用远程机的用户登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 -o stricthostkeychecking&#x3D;no &#96;&#96;# 首次登陆免输yes登录&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 &#96;&#96;&quot;ls &#x2F;home&#x2F;omd&quot;&#96; &#96;# 当前服务器A远程登录服务器B后执行某个命令&#96;&#96;  &#96;&#96;ssh&#96; &#96;omd@192.168.1.100 -t &#96;&#96;&quot;sh &#x2F;home&#x2F;omd&#x2F;ftl.sh&quot;&#96; &#96;# 当前服务器A远程登录服务器B后执行某个脚本</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235424314-1763487959.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425105-243399260.png" alt="image"></a></p>
-<h3 id="ssh免密设置"><a href="#ssh免密设置" class="headerlink" title="ssh免密设置"></a>ssh免密设置</h3><p>1、进入用户的家目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]&#96;&#96;# cd &#x2F;root&#x2F;.ssh&#x2F;       【root用户就在root目录下的.ssh目录】&#96;&#96;[root@localhost ~]&#96;&#96;# cd &#x2F;home&#x2F;omd&#x2F;.ssh&#x2F;  【普通用户就是在家目录下的.ssh目录】</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425480-983102625.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235425878-2009080640.png" alt="image"></a></p>
-<p>2、根据DSA算法生成私钥和公钥【默认建立在当前用户的家目录】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-keygen -t dsa   # 一路回车即可&#96;&#96;        &#96;&#96;id_dsa     --&gt;私钥(钥匙) &#96;&#96;        &#96;&#96;id_dsa.pub   --&gt;公钥(锁)</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235426240-141091905.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235426686-779103595.png" alt="image"></a></p>
-<p>3.拷贝公钥给目标服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-copy-id -i id_dsa.pub omd@192.168.25.110       【 使用ssh登录的默认端口22】&#96;&#96;[root@localhost .&#96;&#96;ssh&#96;&#96;]&#96;&#96;# ssh-copy-id -i id_dsa.pub –p 666 omd@192.168.25.120  【使用ssh登录设置的端口666】</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180812120135470-239324972.png" alt="img"></p>
-<p>\4. 查看目标服务器生成的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[omd@localhost .&#96;&#96;ssh&#96;&#96;]$ ll &#96;&#96;&#x2F;home&#x2F;omd&#x2F;&#96;&#96;.&#96;&#96;ssh&#96;&#96;&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235427845-1655006958.png" target="_blank" rel="noopener"><img src="https://images2018.cnblogs.com/blog/519608/201807/519608-20180705235428167-614741798.png" alt="image"></a></p>
-<p>\5. 免密码登录目标服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh&#96; &#96;omd@192.168.25.110</span><br></pre></td></tr></table></figure>
-
-<p>\6. 总结一下钥匙和锁的关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.多个钥匙开一把锁&#96;&#96;   &#96;&#96;把id_dsa.pub 复制给各个服务器&#96; &#96;2.一个钥匙开duobasuo&#96;&#96;   &#96;&#96;把id_dsa 传给各个服务器&#96;&#96;   &#96;&#96;把id_dsa 传给自己</span><br></pre></td></tr></table></figure>
-
-<h3 id="ssh排查问题"><a href="#ssh排查问题" class="headerlink" title="ssh排查问题"></a>ssh排查问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.判断物理链路是否通 &#96;&#96;ping&#96; &#96;192.168.25.130   线路 | 防火墙 | 是否同一个网的&#96;&#96;      &#96;&#96;ping&#96;  &#96;本身是icmp协议&#96;&#96;2.判断服务是否正常</span><br><span class="line">telnet 192.168.25.130 22</span><br><span class="line">3.Linux防火墙</span><br><span class="line">service iptables status &#x3D;&#x3D;&gt; &#96;&#96;&#x2F;etc&#x2F;init&#96;&#96;.d&#96;&#96;&#x2F;iptables&#96; &#96;status　　</span><br><span class="line">4.打开&#96;&#96;ssh&#96;&#96;的调测进行观察</span><br><span class="line">ssh&#96; &#96;-vvv omd@192.168.1.100</span><br></pre></td></tr></table></figure>
-
-<h3 id="SSH批量分发与管理方案小结"><a href="#SSH批量分发与管理方案小结" class="headerlink" title="SSH批量分发与管理方案小结"></a>SSH批量分发与管理方案小结</h3><p>1.利用root做ssh key验证</p>
-<blockquote>
-<p>优点：简单，易用<br>  缺点：安全性能差，无法禁止root远程连接</p>
-</blockquote>
-<p>2.利用普通用户omd        –&gt;推荐</p>
-<blockquote>
-<p>  思路：把要分发的文件拷贝到服务器用户的家目录，然后利用sudo提权拷贝分发的文件和对应目录<br>  优点：安全<br>  缺点：复杂，配置麻烦<br>  1.sudo提权<br>    echo ‘omd   All=(All)   NOPASSWD:/usr/bin/rsync’ &gt;&gt; /etc/sudoers<br>    visudo -c<br>    grep omd /etc/sudoers<br>  2.ssh分发到服务器的家目录<br>    ssh -p22 -r /etc/hosts <a href="mailto:omd@192.168.25.137">omd@192.168.25.137</a>:~<br>  3.ssh使用sudo复制到目标服务器的/etc<br>    ssh -t <a href="mailto:omd@192.168.25.137">omd@192.168.25.137</a> sudo rsync hosts /etc/</p>
-</blockquote>
-<p>3.拓展方案2，不用sudo，而是设置suid对固定命令提权</p>
-<blockquote>
-<p> 优点：相当安全<br>    缺点：复杂，安全性较差，任何人都可以处理带有suid权限的命令<br>    1.which rsync<br>    2.chmod 4755 /usr/bin/rsync    </p>
-</blockquote>
-<h3 id="ssh章节小结"><a href="#ssh章节小结" class="headerlink" title="ssh章节小结"></a>ssh章节小结</h3><p>  1.ssh远程的加密连接协议，相关软件openssh,openssl<br>  2.默认端口22<br>  3.ssh版本协议<br>  4.服务器ssh连接，ftp连接，sshd守护进程，开机启动<br>  5.ssh客户端重要命令：ssh(用户登录&amp;&amp;远程命令),scp,sftp,<br>  6.安全验证方式：口令，密钥 学习原理<br>  7.ssh服务优化：改端口，改监听，no root,no empty,no DNS,<br>  8.ssh密钥对，公钥在服务器端，私钥在客户端</p>
-<h3 id="修改ssh服务的启动文件sshd的几个点"><a href="#修改ssh服务的启动文件sshd的几个点" class="headerlink" title="修改ssh服务的启动文件sshd的几个点"></a>修改ssh服务的启动文件sshd的几个点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-1修改 &#96;&#96;&#x2F;etc&#x2F;ssh&#x2F;sshd_config&#96;&#96;     GSSAPIAuthentication &#96;&#96;yes&#96;  &#96;解决一台服务器管理多个&#96;&#96;ssh&#96;&#96;服务&#96;&#96;  &#96;&#96;UseDNS no 加快响应速度因为在内网环境下&#96;&#96;  &#96;&#96;PermitRootLogin no 不运行root用户直接登录&#96;&#96;  &#96;&#96;Port 11544 更改访问端口号&#96;&#96;  &#96;&#96;ListenAddress 192.168.25.130 只监听内网的IP&#96;&#96;  &#96;&#96;Match User anoncvs   当前环境允许登录的用户&#96;&#96;  &#96;&#96;PermitRootLogin no   是否允许root用户登录，一般不允许开&#96;&#96;1-2重启服务&#96;&#96;  &#96;&#96;service sshd restart    写入命令进内存&#96;&#96;  &#96;&#96;service sshd reload(优先) reload是一个平滑的访问，不影响用户使用&#96;&#96;1-3查看连接端口&#96;&#96;  &#96;&#96;netstat&#96; &#96;-an | &#96;&#96;grep&#96; &#96;EST</span><br></pre></td></tr></table></figure>
-
-<h3 id="SSH跳过HostKeyChecking，不用输入yes"><a href="#SSH跳过HostKeyChecking，不用输入yes" class="headerlink" title="SSH跳过HostKeyChecking，不用输入yes"></a><strong>SSH跳过</strong>HostKeyChecking，不用输入yes</h3><p>SSH跳过输入ssh跳过RSA key fingerprint输入yes/no</p>
-<p>在配置大量的节点之间需要ssh连通的时候，如果自动复制很多节点，都需要输入yes，两两节点之间都要互通一次，这样会造成很大的麻烦</p>
-<p><strong>解决1；</strong>修改配置文件/etc/ssh/ssh_config</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找 到 # StrictHostKeyChecking ask &#96;&#96;修改为：StrictHostKeyChecking &#96;&#96;no</span><br></pre></td></tr></table></figure>
-
-<p><strong>解决2：</strong> 添加参数 –o 【o=option】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.25.133 -o &#96;&#96;&quot;StrictHostKeyChecking no&quot;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164712431-1409487808.png" alt="img"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o &#96;&#96;&quot;StrictHostKeyChecking no&quot;&#96; &#96;newfile.txt &#96;&quot;mailto:root@192.168.25.133:&#x2F;root&quot;&#96;&#96;&gt;root@192.168.25.133:&#x2F;root</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://images2018.cnblogs.com/blog/519608/201808/519608-20180811164724290-117606623.png" alt="img"></p>
-<h2 id="P53-55远程登录和复制文件（scp）"><a href="#P53-55远程登录和复制文件（scp）" class="headerlink" title="P53-55远程登录和复制文件（scp）"></a>P53-55远程登录和复制文件（scp）</h2><p>scp：secure copy </p>
-<p>指定端口-P port：注意是大写的P, port是指定数据传输用到的端口号（常用）</p>
-<p>Linux scp 命令用于 Linux 之间复制文件和目录。</p>
-<p>scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令。</p>
-<p>scp 是加密的，<a href="https://www.runoob.com/linux/linux-comm-rcp.html" target="_blank" rel="noopener">rcp</a> 是不加密的，scp 是 rcp 的加强版。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]</span><br><span class="line">[-l limit] [-o ssh_option] [-P port] [-S program]</span><br><span class="line">[[user@]host1:]file1 [...] [[user@]host2:]file2</span><br></pre></td></tr></table></figure>
-
-<p>简易写法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [可选参数] file_source file_target</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明：</strong></p>
-<ul>
-<li>-1： 强制scp命令使用协议ssh1</li>
-<li>-2： 强制scp命令使用协议ssh2</li>
-<li>-4： 强制scp命令只使用IPv4寻址</li>
-<li>-6： 强制scp命令只使用IPv6寻址</li>
-<li>-B： 使用批处理模式（传输过程中不询问传输口令或短语）</li>
-<li>-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</li>
-<li>-p：保留原文件的修改时间，访问时间和访问权限。</li>
-<li>-q： 不显示传输进度条。</li>
-<li>-r： 递归复制整个目录。(常用)</li>
-<li>-v：详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</li>
-<li>-c cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</li>
-<li>-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</li>
-<li>-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</li>
-<li>-l limit： 限定用户所能使用的带宽，以Kbit/s为单位。</li>
-<li>-o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</li>
-<li>-P port：注意是大写的P, port是指定数据传输用到的端口号（常用）</li>
-<li>-S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</li>
-</ul>
-<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><h4 id="1、从本地复制到远程"><a href="#1、从本地复制到远程" class="headerlink" title="1、从本地复制到远程"></a>1、从本地复制到远程</h4><p>命令格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scp local_file remote_username@remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_username@remote_ip:remote_file </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp local_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>第1,2个指定了用户名，命令执行后需要再输入密码，第1个仅指定了远程的目录，文件名字不变，第2个指定了文件名； </li>
-<li>第3,4个没有指定用户名，命令执行后需要输入用户名和密码，第3个仅指定了远程的目录，文件名字不变，第4个指定了文件名；</li>
-</ul>
-<p>应用实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music&#x2F;001.mp3 </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music </span><br><span class="line">scp &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music&#x2F;001.mp3</span><br></pre></td></tr></table></figure>
-
-<p>复制目录命令格式： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -r local_folder remote_username@remote_ip:remote_folder </span><br><span class="line">或者 </span><br><span class="line">scp -r local_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第1个指定了用户名，命令执行后需要再输入密码；</li>
-<li>第2个没有指定用户名，命令执行后需要输入用户名和密码；</li>
-</ul>
-<p>应用实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r &#x2F;home&#x2F;space&#x2F;music&#x2F; root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F; </span><br><span class="line">scp -r &#x2F;home&#x2F;space&#x2F;music&#x2F; www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>上面命令将本地 music 目录复制到远程 others 目录下。</p>
-<h4 id="2、从远程复制到本地"><a href="#2、从远程复制到本地" class="headerlink" title="2、从远程复制到本地"></a>2、从远程复制到本地</h4><p>从远程复制到本地，只要将从本地复制到远程的命令的后2个参数调换顺序即可，如下实例 </p>
-<p>应用实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp root@www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F;music &#x2F;home&#x2F;space&#x2F;music&#x2F;1.mp3 </span><br><span class="line">scp -r www.runoob.com:&#x2F;home&#x2F;root&#x2F;others&#x2F; &#x2F;home&#x2F;space&#x2F;music&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>1.如果远程服务器防火墙有为scp命令设置了指定的端口，我们需要使用 -P 参数来设置命令的端口号，命令格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#scp 命令使用端口号 4588</span><br><span class="line">scp -P 4588 remote@www.runoob.com:&#x2F;usr&#x2F;local&#x2F;sin.sh &#x2F;home&#x2F;administrator</span><br></pre></td></tr></table></figure>
-
-<p>2.使用scp命令要确保使用的用户具有可读取远程服务器相应文件的权限，否则scp命令是无法起作用的。</p>
-<h2 id="（scp-remote-to-local）："><a href="#（scp-remote-to-local）：" class="headerlink" title="（scp remote to local）："></a>（scp remote to local）：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r XXX@atlas.cselabs.umn.edu:~&#x2F;Desktop&#x2F;p3-code ~&#x2F;Desktop：</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="（scp-local-to-remote）"><a href="#（scp-local-to-remote）" class="headerlink" title="（scp local to remote）:"></a>（scp local to remote）:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r  ~&#x2F;Desktop&#x2F;C++CODE xxx@ipaddress: ~&#x2F;Desktop</span><br></pre></td></tr></table></figure>
-
-<p>df -h:查看磁盘容量</p>
-<p>Windows没有scp命令，需要安装PuTTy，用pscp命令或者安装FileZilla使用FTP进行文件传输。</p>
-<h2 id="P56-59（ssh高级）"><a href="#P56-59（ssh高级）" class="headerlink" title="P56-59（ssh高级）"></a>P56-59（ssh高级）</h2><h3 id="免密码登录和配置别名"><a href="#免密码登录和配置别名" class="headerlink" title="免密码登录和配置别名"></a>免密码登录和配置别名</h3><p>ssh配置都在用户家目录下的.ssh目录下</p>
-<p>ls -alh, 找到.ssh隐藏文件，如何cd进入，然后ls -alh看known_hosts，可以看到已经有的连接。</p>
-<h3 id="免密码登录："><a href="#免密码登录：" class="headerlink" title="免密码登录："></a>免密码登录：</h3><p>步骤：1. 配置公钥: ssh-keygen即可生成ssh钥匙，一路回车即可</p>
-<p>​            2.上传公钥到服务器：ssh-copy-id -p port user@remote, 可以让服务器记住公钥。</p>
-<p>ssh是什么？ssh (SSH client) is a program for logging into a remote machine and for executing commands on a remote machine. （自己翻译哈）</p>
-<p>讲ssh服务的用法之前得需要知道这个服务是否已经开启</p>
-<p>查看ssh服务是否开启的命令:systemctl status sshd。输入这个命令之后，会得到如下的一个提示</p>
-<p><img src="https://img-blog.csdn.net/20150118231938468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>第二行最后一个单词disabled表示sshd服务开机不自动启动</p>
-<p>第三行inactive（dead）表示sshd服务当前是关闭的</p>
-<p>现在我们来开启sshd服务，输入systemctl start sshd，然后再输入systemctl status sshd查看结果</p>
-<p><img src="https://img-blog.csdn.net/20150118232419468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>现在我们可以看到第三行是active（running），这表示sshd服务当前是开启的，但仍然是开机不启动。不过，这并不影响我们使用sshd，至于如何管理这些服务，并不在我们本节讨论范围内。</p>
-<p>ssh可以干什么，举个例子，我现在有个朋友电脑出了点问题，但是现在他在北京，我在西安 ，为给他修个电脑，我不划算去北京吧，怎么办？用ssh。</p>
-<p>首先得知道他的ip地址，然后登录他的root用户，用命令：ssh root@<strong><em>.</em></strong>.<em>.**</em>  星号代表ip</p>
-<p><img src="https://img-blog.csdn.net/20150118234218989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>输入完命令后，会有一个提示，问你是否确信连接？输入yes，再然后输入他root的密码，就进入他的电脑了。但这样有个不好的地方，我知道了他root的密码，那以后岂不是可以在他的电脑上为所欲为了，这样他肯定是不愿意的，我要是不小心删掉了他珍藏多年的种子，他肯定会杀了我。</p>
-<p>######我现在是他的身份#####</p>
-<p>  那在这种情况下，他应该怎么办？（ps：我现在以他的身份来做）可以先给自己的电脑上一把锁，然后需要进入你电脑的人一把钥匙，你不想让别人进的时候把锁删掉就行了。那具体怎么做呢？</p>
-<p>第一步：删除/root/.ssh/下的所有东西，如果没有.shh文件夹，建立一个。</p>
-<p>第二步：在.ssh文件夹下，建立钥匙，使用命令ssh-keygen</p>
-<p><img src="https://img-blog.csdn.net/20150119000500906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>输入命令后，第一个提示问你存在哪里，默认就好，直接回车。第二个问题让你输入一个密码，这个密码就是以后别人在拥有私钥的情况下，进入你主机需要的密码。输入完再输入一次，就会生成一个钥匙跟一把锁。</p>
-<p><img src="https://img-blog.csdn.net/20150119000931595?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHh1cWlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
-<p>id_rsa叫私钥，也就是钥匙，id_rsa.pub叫公钥。</p>
-<p>第三步：用锁来锁定本机的哪个用户，以root为例，命令是ssh-copy-id root@<strong><em>.</em></strong>.<em>.**</em>  id为本机的id。回车之后会提示你是否连接？回答yes就行，然后会提示你输入要锁定用户的密码，现在要锁定root ，那就输入root密码就行。</p>
-<p>第四步：谁想连本机，把私钥发给谁就行，比如说，我发给一个叫playsand的用户。命令是：</p>
-<p> scp id_rsa playsand@<strong><em>.</em></strong>.<em>.**</em>:/home/playsand/.ssh 这个星号代表的是playsand用户的id，后面代表的是存储路径，一定要在playsand下建立一个.ssh目录，如果有，则将里面内容清空。</p>
-<p>#####现在我是playsand用户#####</p>
-<p>在自己的.ssh目录下，输入ssh root@<strong><em>.</em></strong>.<em>.**</em> id是root的id，回车之后会提示你是否连接？回答yes，然后会提示输入密码，这个密码就是上面第二步设定的密码，输入之后，就进入了。如果输入错了，系统会提示你输入root的密码，同样，输入root密码也可以进入，这就跟刚开始一样。</p>
-<p>#####现在我是root用户####</p>
-<p>在这里有几个小小的设置：</p>
-<p>1.让别人登录自己的root用户是件很危险的事，怎么能让别人怎么都登录不了自己的root用户呢；</p>
-<p>编辑ssh_config文件(vim /etc/ssh/ssh_config),将#PermitRootLogin yes改成PermitRootLogin no(大约在48行)，推出保存之后，重启以下ssh服务（systemctl reload sshd）</p>
-<p>2.要是不认识的人或者有恶意的人不小心得到了私钥和密码，对于本机来说很危险，可以设置白名单，让指定的人可以登录；</p>
-<p>同样vim /etc/ssh/ssh_config,找一个空行写下：allowusers 指定用户名，这样只有指定的用户可以登录本机。e.g：allowusers playsand  就是允许playsand用户登录，其他用户都登录不了，同理，重启下ssh服务。</p>
-<p>3.让别人知道登录自己的root密码或者用户密码总是不安全的，怎样让别人只能通过私钥密码登录？</p>
-<p>同样vim /etc/ssh/ssh_config,将passwordAuthentication yes 改成passwordAuthentication no ，这样，别人只能通过私钥密码登录本机。修改完重启ssh服务。</p>
-<p>使用ssh登录服务器的时候，需要输入ip地址、端口、用户名、密码等信息，比较麻烦，容易输错。还好，通过客户端和服务器的配置参数，可实现免密码快速登录。服务器可通过保存客户端的公钥，用于验证客户端的身份，从而省去输入密码的步骤。客户端也可通过配置服务器参数来简化登录命令。<br>本文主要是记录了ssh面密码快速登录的配置过程，主要分为以下几个步骤。</p>
-<ol>
-<li>客户端生成密钥，包括私钥和公钥。</li>
-<li>在服务器中配置客户端的公钥。</li>
-<li>在客户端配置服务器登录相关参数。</li>
-</ol>
-<p>本文示例中的服务器ip地址为192.168.1.1，ssh端口为22。</p>
-<h2 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h2><p>客户端生成密钥的方法很简单，只需要使用ssh-keygen命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
-<p>生成密钥过程中，建议采用默认值，只需要按三次回车之后，就会再～/.ssh目录下生成密钥文件，其中，id_rsa为私钥，id_rsa.pub为公钥。 </p>
-<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>服务器的~/.ssh/authorized_keys文件保存可快速连接的客户端的公钥。只需把客户端生成的id_rsa.pub文件的内容拷贝到authorized_keys文件的末尾。拷贝的方法有：</p>
-<ol>
-<li>直接拷贝。由于id_rsa.pub和authorized_keys都是文本文件，可通过拷贝命令直接拷贝。</li>
-<li>把id_rsa.pub上传到服务器，然后再把内容添加到authorized_keys文件中。<br>在客户端把文件上传到服务器的用户目录的操作命令如下：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~&#x2F;.ssh&#x2F;id_rsa.pub root@192.168.1.1:</span><br></pre></td></tr></table></figure>
-
-<p>在服务器操作的命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
-
-
-<p>配置好之后，登录服务器就不再需要密码了。 </p>
-<h2 id="在客户端配置服务器登录相关参数"><a href="#在客户端配置服务器登录相关参数" class="headerlink" title="在客户端配置服务器登录相关参数"></a>在客户端配置服务器登录相关参数</h2><p>除了密码之外，登录时，还需要配置ip地址、端口、用户等信息，也比较繁琐。可通过客户端的~/.ssh/config配置服务器的相关参数简化登录命令。<br>config文件的配置内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host server</span><br><span class="line">Hostname 192.168.1.1</span><br><span class="line">Port 22</span><br><span class="line">User bingoli</span><br></pre></td></tr></table></figure>
-
-
-<p>其中，Host为服务器的名称，输入登录命令时使用，后续登录只需要记住这个名字就可以；Hostname为服务器的ip地址；Port为ssh的端口；User为服务器的用户名。配置好相关参数之后，就可以使用简化的命令登录服务器了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh server</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><p>在本地.ssh文件夹下vi config，然后</p>
-<p>Host school</p>
-<p>​    HostName ip地址</p>
-<p>​    User xxxx</p>
-<p>​    Port 22</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -4063,7 +3225,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

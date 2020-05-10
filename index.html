@@ -145,6 +145,496 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/github1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/09/github1/" class="post-title-link" itemprop="url">git命令大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-09 22:33:20 / Modified: 22:33:44" itemprop="dateCreated datePublished" datetime="2020-05-09T22:33:20-05:00">2020-05-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<blockquote>
+<p>注: 文章摘自: IT大飞说 - 掘金</p>
+</blockquote>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3243cbd5978fa871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/980" alt="img"></p>
+<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> user.name <span class="string">"Your Name"</span> <span class="comment">// Git 姓名</span></span><br><span class="line">git config --<span class="keyword">global</span> user.email <span class="string">"email@example.com"</span> <span class="comment">// Git 邮箱</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><p>提交至本地 “暂存区” (.git/index)</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个文件添加至仓库</span></span><br><span class="line">git <span class="keyword">add</span> README.md</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会忽略 .gitignore 把任何文件都加入</span></span><br><span class="line">git <span class="keyword">add</span> *</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会根据 .gitignore 做过滤</span></span><br><span class="line">git <span class="keyword">add</span> .</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交暂存区的文件至本地仓库"><a href="#提交暂存区的文件至本地仓库" class="headerlink" title="提交暂存区的文件至本地仓库"></a>提交暂存区的文件至本地仓库</h2><p>将已添加的文件提交至本地 Git 仓库 (默认 master 分支)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 会弹出一个 Vim 编辑器输入内容后再提交</span></span><br><span class="line">git commit</span><br><span class="line"><span class="comment">// 直接输入内容并提交</span></span><br><span class="line">git commit -m <span class="string">"feat: 修改 xx 文件"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="比较当前文件的修改"><a href="#比较当前文件的修改" class="headerlink" title="比较当前文件的修改"></a>比较当前文件的修改</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>在 Git 中, 用 <code>HEAD</code> 表示当前版本. 上一个版本就是 <code>HEAD^</code>, 上上一个版本就是 <code>HEAD^^</code>, 以此类推…</p>
+<p>如果需要回退几十个版本的话可以这样写：<code>HEAD~50</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<p>如果你回退完版本又后悔了, 一般情况下是回不来的.</p>
+<p>但如果你可以找到之前 <code>commit id</code> 的话，也是可以的</p>
+<p><code>commit id</code> (版本号) 就是一个使用 SHA1 计算出来的一个非常大的十六进制数字, 提交时看到的一大串类似 <code>3628164...882e1e0</code> 的就是了</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard + commit <span class="keyword">id</span></span><br></pre></td></tr></table></figure>
+
+<p>如果忘记 <code>commit id</code> 的话可以执行下一步命令找回</p>
+<h2 id="查看历史命令记录"><a href="#查看历史命令记录" class="headerlink" title="查看历史命令记录"></a>查看历史命令记录</h2><p>会将你之前所有的操作类型及相关信息打印出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件提交前后的区别"><a href="#查看文件提交前后的区别" class="headerlink" title="查看文件提交前后的区别"></a>查看文件提交前后的区别</h2><p>查看工作区和版本库里面最新版本文件的区别，也可以不加 <code>HEAD</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+
+<h2 id="丢弃工作区的修改"><a href="#丢弃工作区的修改" class="headerlink" title="丢弃工作区的修改"></a>丢弃工作区的修改</h2><p>适用于工作区修改没有 <code>add</code> 的文件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="丢弃暂存区的文件"><a href="#丢弃暂存区的文件" class="headerlink" title="丢弃暂存区的文件"></a>丢弃暂存区的文件</h2><p>适用于暂存区已经 <code>add</code> 的文件</p>
+<p>他会将暂存区的修改放回到工作区中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后提交即可</p>
+<p>如果不小心删错了, 且还没有提交的话使用下面命令即可恢复删除</p>
+<p>注意它只能恢复最近版本提交的修改, 你工作区的修改是不能被恢复的</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建SSH-key"><a href="#创建SSH-key" class="headerlink" title="创建SSH key"></a>创建SSH key</h2><p>一般本地 Git 仓库和远程 Git 仓库之间的传输是通过 SSH 加密的, 所以我们可以将其生成的公钥添加到 Git 服务端的设置中即可, 这样 Git 就可以知道是你提交的了</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh-keygen</span> <span class="selector-tag">-t</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-C</span> "<span class="selector-tag">youremail</span><span class="keyword">@example</span>.com"</span><br></pre></td></tr></table></figure>
+
+<h2 id="与远程仓库协作"><a href="#与远程仓库协作" class="headerlink" title="与远程仓库协作"></a>与远程仓库协作</h2><h5 id="与远程库关联"><a href="#与远程库关联" class="headerlink" title="与远程库关联"></a>与远程库关联</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> origin git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除本地库与远程库的关联"><a href="#删除本地库与远程库的关联" class="headerlink" title="删除本地库与远程库的关联"></a>删除本地库与远程库的关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+
+<p>作用：有时候我们需要关联其他远程库，需要先删除旧的关联，再添加新的关联，因为如果你已经关联过了就不能在关联了，不过想关联多个远程库也是可以的，前提是你的本地库没有关联任何远程库，操作如下：</p>
+<ul>
+<li>先关联Github远程库：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> github git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再关联码云远程库：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> gitee git@gitee.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们用 <code>git remote -v</code> 查看远程库的关联信息，如果看到两组关联信息就说明关联成功了</p>
+<p>如果要推送到GitHub，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push github master</span><br></pre></td></tr></table></figure>
+
+<p>如果要推送到码云，使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push gitee master</span><br></pre></td></tr></table></figure>
+
+<h2 id="将远程库中的更改合并到当前分支中"><a href="#将远程库中的更改合并到当前分支中" class="headerlink" title="将远程库中的更改合并到当前分支中"></a>将远程库中的更改合并到当前分支中</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull <span class="tag">&lt;<span class="name">远程主机名</span>&gt;</span> <span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>比如，要取回 <code>origin</code> 主机的 <code>next</code> 分支，与本地的 <code>master</code> 分支合并</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">pull</span> <span class="selector-tag">origin</span> <span class="selector-tag">next</span><span class="selector-pseudo">:master</span></span><br></pre></td></tr></table></figure>
+
+<p>如果远程分支 <code>next</code> 要与当前分支合并，则冒号后面的部分可以省略</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
+
+<p>实质上，这等同于先做 <code>git fetch</code>，再执行 <code>git merge</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git merge origin/<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="从远程库获取分支-标签"><a href="#从远程库获取分支-标签" class="headerlink" title="从远程库获取分支 / 标签"></a>从远程库获取分支 / 标签</h2><p>更新远程所有分支到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><p><strong>注意：第一次提交需要加一个参数 <code>-u</code>, 以后不需要</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="克隆一个远程库"><a href="#克隆一个远程库" class="headerlink" title="克隆一个远程库"></a>克隆一个远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><ul>
+<li>创建一个分支 <code>branch1</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>切换到 <code>branch1</code> 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建并切换到 <code>branch1</code> 分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看分支</li>
+</ul>
+<p>提示：显示的结果中，其中有一个分支前有个*号，表示的是当前所在的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将 <code>branch1</code> 合并到当前分支</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除分支 <code>branch1</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看提交历史记录"><a href="#查看提交历史记录" class="headerlink" title="查看提交历史记录"></a>查看提交历史记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>命令可以看到分支合并图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>禁用 Fast forward 模式合并分支</p>
+<p>默认 Git 合并分支时使用的是 Fast forward 模式, 删除分支后会丢掉分支信息, 所以我们需要强制禁用此模式来合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m <span class="string">"merge"</span> branch1</span><br></pre></td></tr></table></figure>
+
+<p>补充内容：实际开发中分支管理的策略</p>
+<ul>
+<li><code>master</code> 分支应该是非常稳定的, 也就是仅用来发布新版本, 平时不能在上面提交</li>
+<li>我们可以新开一个 <code>dev</code> 分支, 也就是说 <code>dev</code> 分支是不稳定的. 到版本发布时, 再把 <code>dev</code> 分支合并到 <code>master</code>上，在 <code>master</code> 分支发布新版本</li>
+<li>你和你的协作者平时都在 <code>dev</code> 分支上提交, 每个人都有自己的分支, 时不时地往 <code>dev</code> 分支上合并就可以了</li>
+</ul>
+<h2 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a>保存工作现场</h2><p>作用：当你需要去修改其他内容时，这时候你的工作还没有做完，先临时保存起来，等干完其他事之后，再回来回复现场，再继续干活；为什么？因为暂存区是公用的，如果不通过 stash 命令隐藏，会带到其它分支去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+
+<p>查看已经保存的工作现场列表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+<p>恢复工作现场 (恢复并从 <code>stash list</code> 删除)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式1</span></span><br><span class="line">git stash pop</span><br><span class="line"><span class="comment">// 方式2</span></span><br><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
+
+<p>恢复工作现场，但 <code>stash</code> 内容并不删除，如果你需要删除执行如下命令</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">drop</span></span><br></pre></td></tr></table></figure>
+
+<p>恢复指定的 stash</p>
+<p>说明：其中 <code>stash@{0}</code> 为 <code>git stash list</code> 中的一种编号</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">stash</span> <span class="selector-tag">apply</span> <span class="selector-tag">stash</span>@&#123;0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除一个没有被合并过的分支"><a href="#删除一个没有被合并过的分支" class="headerlink" title="删除一个没有被合并过的分支"></a>删除一个没有被合并过的分支</h2><p>实际开发中，添加一个新 <code>feature</code>, 最好新建一个分支, 如果要丢弃这个没有被合并过的分支, 可以通过下面的命令强行删除</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D <span class="tag">&lt;<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看远程库的信息"><a href="#查看远程库的信息" class="headerlink" title="查看远程库的信息"></a>查看远程库的信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+
+<p>显示更详细的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment">// 推送 master 分支到远程库</span></span><br><span class="line">git push origin branch1 <span class="comment">// 推送branch1到远程库</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h2><p>如果远程库中有分支, <code>clone</code> 之后默认只有 <code>master</code> 分支的, 所以需要执行如上命令来创建本地分支才能与远程的分支关联起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1 origin&#x2F;branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地与远程分支关联"><a href="#本地与远程分支关联" class="headerlink" title="本地与远程分支关联"></a>本地与远程分支关联</h2><p>如果你本地新建的 <code>branch1</code> 分支，远程库中也有一个 <code>branch1</code> 分支 (别人创建的), 而刚好你也没有提交过到这个分支, 即没有关联过. 这时会报一个 “no tracking information” 信息，通过下面命令关联即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-upstream branch1 origin/branch1</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;name&gt; <span class="comment">// 例: git tag v1.0</span></span><br></pre></td></tr></table></figure>
+
+<p>查看所有标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+
+<p>对历史提交打 tag</p>
+<p>先使用 <code>$ git log --pretty=oneline --abbrev-commit</code> 命令找到历史提交的 <code>commit id</code></p>
+<p>例如对 <code>commit id</code> 为 “123456” 的提交打一个 tag</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">v0</span><span class="selector-class">.9</span> 123456</span><br></pre></td></tr></table></figure>
+
+<p>查看标签信息</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">show</span> &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建带有说明的标签，用 <code>-a</code> 指定标签名，<code>-m</code> 指定说明文字，”123456” 为 <code>commit id</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-a</span> <span class="selector-tag">v1</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">V1</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 123456</span><br></pre></td></tr></table></figure>
+
+<p>用私钥签名一个标签</p>
+<p>签名采用 PGP 签名，因此，必须先要安装 gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错，具体请参考GnuPG帮助文档配置Key；</p>
+<p>作用：用 PGP 签名的标签是不可伪造的，因为可以验证 PGP 签名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-s</span> <span class="selector-tag">v2</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">signed</span> <span class="selector-tag">V2</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 345678</span><br></pre></td></tr></table></figure>
+
+<p>删除标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>删除远程库中的标签</p>
+<p>比如要删除远程库中的 V1.0 标签，分两步</p>
+<ul>
+<li>先删除本地标签</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-d</span> <span class="selector-tag">V1</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再推送删除</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="symbol">:refs/tags/V1</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>推送标签到远程库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>推送所有标签到远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义Git设置"><a href="#自定义Git设置" class="headerlink" title="自定义Git设置"></a>自定义Git设置</h2><p>Git 显示颜色，会让命令输出看起来更清晰、醒目</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> color.ui <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>设置命令别名</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.st status</span><br></pre></td></tr></table></figure>
+
+<p>说明：<code>--global</code> 表示全局，即设置完之后全局生效，<code>st</code> 表示别名，<code>status</code> 表示原始名</p>
+<p>好了，现在敲 <code>git st</code> 就相当于是 <code>git status</code> 命令了，是不是方便？</p>
+<p>当然还有其他命令可以简写，这里举几个：很多人都用 <code>co</code> 表示 <code>checkout</code>，<code>ci</code> 表示 <code>commit</code>，<code>br</code> 表示 <code>branch</code>…根据自己的喜好可以设置即可，个人觉得不是很推荐使用别名的方式</p>
+<p>推荐一个比较丧心病狂的别名设置</p>
+<p>效果自己去体会…</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.lg <span class="string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span></span><br></pre></td></tr></table></figure>
+
+<p>其他说明：<br>配置的时候加上 <code>--global</code> 是针对当前用户起作用的，如果不加只对当前的仓库起作用<br>每个仓库的 Git 配置文件都放在 <code>.git/config</code> 文件中，我们可以打开对其中的配置作修改，可以删除设置的别名<br>而当前用户的 Git 配置文件放在用户主目录下的一个隐藏文件 <code>.gitconfig</code> 中，我们也可以对其进行配置和修改</p>
+<h2 id="忽略文件规则"><a href="#忽略文件规则" class="headerlink" title="忽略文件规则"></a>忽略文件规则</h2><p>在 Git 工作区的根目录下创建一个特殊的 <code>.gitignore</code> 文件，然后把要忽略的文件名或者相关规则填进去，Git就会自动忽略这些文件<br>如果你想添加一个被 <code>.gitignore</code> 忽略的文件到 Git 中，但发现是添加不了的，所以我们可以强制添加</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">add</span> -f &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者我们可以检查及修改 <code>.gitignore</code> 文件的忽略规则</p>
+<p>Git 会告诉我们具体的 <code>.gitignore</code> 文件中的第几行规则忽略了该文件，这样我们就知道应该修改哪个规则了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git check-ignore -v <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如何忽略已经提交到远程库中的文件？<br>如果你已经将一些文件提交到远程库中了，然后你想忽略掉此文件，然后在 <code>.gitignore</code> 文件中添加忽略，然而你会发现并没有生效，因为 Git 添加忽略时只有对没有跟踪的文件才生效，也就是说你没有 add 过和提交过的文件才生效</p>
+<p>比如说：我们要忽略 <code>.idea</code> 目录，先删除已经提交到本地库的文件目录</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示：<code>fatal: not removing &#39;.idea&#39; recursively without -r</code><br>加个参数 -r 即可强制删除</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">-r</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，执行 <code>git status</code> 会提示你已经删除 <code>.idea</code> 目录了，然后执行 <code>commit</code> 再 <code>push</code> 就可以了，此时的 <code>.idea</code> 目录是没有被跟踪的，将 <code>.idea</code> 目录添加到 <code>.gitignore</code> 文件中就可以忽略了</p>
+<p>作者：小贤笔记<br>链接：<a href="https://www.jianshu.com/p/dd7f18ed0bb1" target="_blank" rel="noopener">https://www.jianshu.com/p/dd7f18ed0bb1</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/09/github1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/09/github/" class="post-title-link" itemprop="url">github新手入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-09 22:32:08 / Modified: 22:33:12" itemprop="dateCreated datePublished" datetime="2020-05-09T22:32:08-05:00">2020-05-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-91f530111cfb1937.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="img"></p>
+<p>GitHub是基于git实现的代码托管。git是目前最好用的版本控制系统了，非常受欢迎，比之svn更好。</p>
+<p>GitHub可以免费使用，并且快速稳定。即使是付费帐户，每个月不超过10美刀的费用也非常便宜。</p>
+<p>利用GitHub，你可以将项目存档，与其他人分享交流，并让其他开发者帮助你一起完成这个项目。优点在于，他支持多人共同完成一个项目，因此你们可以在同一页面对话交流。</p>
+<p>创建自己的项目，并备份，代码不需要保存在本地或者服务器，GitHub做得非常理想。</p>
+<p>学习Git也有很多好处。他被视为一个预先维护过程，你可以按自己的需要恢复、提交出现问题,或者您需要恢复任何形式的代码，可以避免很多麻烦。Git最好的特性之一是能够跟踪错误，这让使用Github变得更加简单。Bugs可以公开，你可以通过Github评论，提交错误。</p>
+<p>在GitHub页面，你可以直接开始，而不需要设置主机或者DNS。</p>
+<p>对于我来说，我可以在公司和家编辑同样的一套代码了，用U盘或者网盘都好麻烦的说</p>
+<p>理论说太多容易忘，来实践实践吧。</p>
+<h2 id="一-创建-github-repository-仓库"><a href="#一-创建-github-repository-仓库" class="headerlink" title="一. 创建 github repository(仓库)"></a>一. 创建 github repository(仓库)</h2><h4 id="1-登录-github"><a href="#1-登录-github" class="headerlink" title="1. 登录 github"></a>1. 登录 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2F" target="_blank" rel="noopener">github</a></h4><h4 id="2-创建-repository-仓库"><a href="#2-创建-repository-仓库" class="headerlink" title="2. 创建 repository(仓库)"></a>2. 创建 repository(仓库)</h4><p>为啥要叫 repository(仓库)？我起初也纳闷，叫代码库不更简单明了么？ 但仔细一琢磨，仓库一般都是放粮食的吧，这是把代码当作饱腹之物，多有爱，瞬间觉得这冰冷冷的代码充满了查克拉。</p>
+<p>扯远了，来看怎么创建仓库</p>
+<p>看到右上角 “+” 没? 点击选择 “New repository”</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-a9214d983f3a748b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/301" alt="img"></p>
+<p>下面是创建仓库信息，只有名字是必填项</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6a9e89e7c89d2b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/789" alt="img"></p>
+<p>创建成功后，可以看到自己的仓库地址。它还介绍了github仓库的常用指令, 这个指令需要在本地安装 git 客户端</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　git init <span class="comment">// 把这个目录变成Git可以管理的仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> README.md <span class="comment">// 文件添加到仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> . <span class="comment">// 不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 </span></span><br><span class="line">　　git commit -m <span class="string">"first commit"</span> <span class="comment">// 把文件提交到仓库</span></span><br><span class="line">　　git remote <span class="keyword">add</span> origin git@github.com:wangjiax9/practice.git <span class="comment">// 关联远程仓库</span></span><br><span class="line">　　git push -u origin master <span class="comment">// 把本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-7106c26b6e83ecb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860" alt="img"></p>
+<h2 id="二-安装-git-客户端"><a href="#二-安装-git-客户端" class="headerlink" title="二. 安装 git 客户端"></a>二. 安装 git 客户端</h2><h4 id="1-下载-git"><a href="#1-下载-git" class="headerlink" title="1. 下载 git"></a>1. 下载 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgit-scm.com%2F" target="_blank" rel="noopener">git</a></h4><p><img src="https:////upload-images.jianshu.io/upload_images/4804567-42874577806d037f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/356" alt="img"></p>
+<h4 id="2-安装客户端"><a href="#2-安装客户端" class="headerlink" title="2. 安装客户端"></a>2. 安装客户端</h4><p><img src="https:////upload-images.jianshu.io/upload_images/4804567-9c365772c80c0308.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4ff227fa2d21f846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>选择安装路径，千万别选带中文的路径，有时候会引起不必要的误会</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-185e4ce580d41016.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>选择安装组件，按默认的来就好了</p>
+<p>1）图标组件(Addition icons) : 选择是否创建快速启动栏图标 或者 是否创建桌面快捷方式;<br>2）桌面浏览(Windows Explorer integration) : 浏览源码的方法, 单独的上下文浏览 只使用bash 或者 只用Git GUI工具; 高级的上下文浏览方法 使用git-cheetah plugin插件;<br>3）关联配置文件(Associate .git*) : 是否关联git配置文件, 该配置文件主要显示文本编辑器的样式;<br>4）关联shell脚本文件(Associate .sh) : 是否关联Bash命令行执行的脚本文件;<br>5）使用TrueType编码 : 在命令行中是否使用TruthType编码, 该编码是微软和苹果公司制定的通用编码;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3f09255ea4d9c116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>设置开始菜单中快捷方式的目录名称，默认就好，下一步吧</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-75155711e0c84f0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>设置环境变量 : 选择使用什么样的命令行工具, 一般情况下我们默认使用Git Bash即可, 默认选择;<br>1）Git自带 : 使用Git自带的Git Bash命令行工具;<br>2）系统自带CMD : 使用Windows系统的命令行工具;</p>
+<p>3） 二者都有 : 上面二者同时配置, 但是注意, 这样会将windows中的find.exe 和 sort.exe工具覆盖, 如果不懂这些尽量不要选择;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4f2bc47bad57fafb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>选择换行格式 ，依然是默认就好。<br>1）检查出windows格式转换为unix格式 : 将windows格式的换行转为unix格式的换行在进行提交;<br>2）检查出原来格式转为unix格式 : 不管什么格式的, 一律转为unix格式的换行在进行提交;<br>3）不进行格式转换 : 不进行转换, 检查出什么, 就提交什么;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6027491640922fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>选择终端模拟器，依然默认就好<br>1）使用MinTTY，就是在Windows开了一个简单模拟Linux命令环境的窗口Git Bash<br>2）使用windows的系统的命令行程序cmd.exe</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c8c82ac44f1078bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>选择默认就好，不用文件系统缓存</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c81762a8dcfabc2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>安装ing…</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-ba2f419011476815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<p>安装成功</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-e95635f037f910ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
+<h4 id="3-绑定用户"><a href="#3-绑定用户" class="headerlink" title="3. 绑定用户"></a>3. 绑定用户</h4><p>打开git-bash.exe，在桌面快捷方式/开始菜单/安装目录中<br>因为Git是分布式版本控制系统，所以需要填写用户名和邮箱作为一个标识，用户和邮箱为你github注册的账号和邮箱<br><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;your_email@example.com&quot;</code><br>注: <a href="https://links.jianshu.com/go?to=mailto%3Ayour_email%40example.com" target="_blank" rel="noopener">your_email@example.com</a> 的部分请改成你在创建账户时用的邮箱地址</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-365223d5e05e546e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/445" alt="img"></p>
+<p>这个命令会在 C:\Users\Administator （Administator为电脑用户名，每个人不同）目录下生成 .gitconfig 文件</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-ea24a13bbfa47d9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/491" alt="img"></p>
+<p>PS: 下面代码是为了记住用户名和密码, 不用每次都输入, 需要的直接添加保存即可</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">credential</span>]</span><br><span class="line">    helper = store</span><br></pre></td></tr></table></figure>
+
+<p>当然, 还有其他方法保存, 可以直接在git bash 中执行命令：</p>
+<ul>
+<li>记住密码十五分钟<br><code>git config --global credential.helper cache</code></li>
+<li>自定义记住的时间 (单位: 秒)<br><code>git config credential.helper &#39;cache --timeout=3600&#39;</code></li>
+<li>永久记住<br><code>git config --global credential.helper store</code></li>
+</ul>
+<p>最后再输入一次账号密码就可以保存了</p>
+<h2 id="三-为-Github-账户设置-SSH-key"><a href="#三-为-Github-账户设置-SSH-key" class="headerlink" title="三. 为 Github 账户设置 SSH key"></a>三. 为 Github 账户设置 SSH key</h2><p>众所周知 ssh key 是加密传输。</p>
+<p>加密传输的算法有好多，git 使用 rsa，rsa 要解决的一个核心问题是，如何使用一对特定的数字，使其中一个数字可以用来加密，而另外一个数字可以用来解密。这两个数字就是你在使用 git 和 github 的时候所遇到的 public key 也就是公钥以及 private key 私钥。</p>
+<p>其中，公钥就是那个用来加密的数字，这也就是为什么你在本机生成了公钥之后，要上传到 github 的原因。从 github 发回来的，用那公钥加密过的数据，可以用你本地的私钥来还原。</p>
+<p>如果你的 key 丢失了，不管是公钥还是私钥，丢失一个都不能用了，解决方法也很简单，重新再生成一次，然后在 github.com 里再设置一次就行</p>
+<h4 id="1-生成-SSH-Key"><a href="#1-生成-SSH-Key" class="headerlink" title="1. 生成 SSH Key"></a>1. 生成 SSH Key</h4><p>首先检查是否已生成密钥 <code>cd ~/.ssh</code><br><code>ls</code> 如果有3个文件，则密钥已经生成，id_rsa.pub 就是公钥</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-5498a20ffa73930e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246" alt="img"></p>
+<p>也可以打开我的电脑 <code>C:\Users\Administator\.ssh</code> （Administator为电脑用户名，每个人不同）里面找到</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-0e4b2a3011fbe48f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/310" alt="img"></p>
+<p>如果没有生成，那么通过 <code>$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code> 来生成<br>注: <a href="https://links.jianshu.com/go?to=mailto%3Ayour_email%40example.com" target="_blank" rel="noopener">your_email@example.com</a> 的部分请改成你在创建账户时用的邮箱地址</p>
+<p>1）是路径确认，直接按回车存默认路径即可<br>2）直接回车键，这里我们不使用密码进行登录, 用密码太麻烦;<br>3）直接回车键</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-d98a9822c8b3c1a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/563" alt="img"></p>
+<p>生成成功后，去对应目录 <code>C:\Users\Administator\.ssh</code> （Administator为电脑用户名，每个人不同）用记事本打开 id_rsa.pub，得到 ssh key公钥</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6a5385b8058460ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/572" alt="img"></p>
+<h4 id="2-为-github-账号配置-ssh-key"><a href="#2-为-github-账号配置-ssh-key" class="headerlink" title="2. 为 github 账号配置 ssh key"></a>2. 为 github 账号配置 ssh key</h4><p>切换到 github，展开个人头像的小三角，点击settings</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-fbb65dded578867c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/210" alt="img"></p>
+<p>然后打开 SSH and GPG keys 菜单， 点击 New SSH key 新增密钥</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-fbc32170d3eabe91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1071" alt="img"></p>
+<p>标题建议和仓库名一致, 便于区分. 接着将 id_rsa.pub 文件中 key 粘贴到此，最后 Add SSH key 生成密钥</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-f2ce071d1a7a83a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1137" alt="img"></p>
+<p>如此，github账号的SSH keys配置完成</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-acb564e011a085d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/755" alt="img"></p>
+<h2 id="四-上传本地项目到-github"><a href="#四-上传本地项目到-github" class="headerlink" title="四. 上传本地项目到 github"></a>四. 上传本地项目到 github</h2><ol>
+<li><p>创建一个本地项目</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-8d5e957b140acb96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/331" alt="img"></p>
+</li>
+<li><p>建立本地仓库<br>再来复习一下创建新仓库的指令：</p>
+</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　git init <span class="comment">// 把这个目录变成Git可以管理的仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> README.md <span class="comment">// 文件添加到仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> . <span class="comment">// 不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 </span></span><br><span class="line">　　git commit -m <span class="string">"first commit"</span> <span class="comment">// 把文件提交到仓库</span></span><br><span class="line">　　git remote <span class="keyword">add</span> origin git@github.com:wangjiax9/practice.git <span class="comment">// 关联远程仓库</span></span><br><span class="line">　　git push -u origin master <span class="comment">// 把本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure>
+
+<p>首先，进入到 beautifulDay 项目目录，还记得创建仓库成功后的那个页面吧，指令都在呢<br>然后执行指令：<code>git init</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-2cbb5b522bb54a59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/494" alt="img"></p>
+<p>初始化成功后你会发现项目里多了一个隐藏文件夹.git<br>这个目录是Git用来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-661c2653f4048f02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/372" alt="img"></p>
+<p>接着，将所有文件添加到仓库<br>执行指令：<code>git add .</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-14d44118fb8427ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/393" alt="img"></p>
+<p>然后把文件提交到仓库，双引号内是提交注释<br>执行指令：<code>git commit -m &quot;提交文件&quot;</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-039a8943ff8646dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/403" alt="img"></p>
+<p>如此本地仓库建立好了</p>
+<h4 id="3-关联-github-仓库"><a href="#3-关联-github-仓库" class="headerlink" title="3. 关联 github 仓库"></a>3. 关联 github 仓库</h4><p>到 github beautifulDay 仓库复制仓库地址</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c0791897b8f96123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/710" alt="img"></p>
+<p>然后执行指令：<code>git remote add origin git@github.com:wangjiax9/beautifulDay.git</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c2bb63381e149659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/477" alt="img"></p>
+<h4 id="4-上传本地代码"><a href="#4-上传本地代码" class="headerlink" title="4. 上传本地代码"></a>4. 上传本地代码</h4><p>执行指令：<code>git push -u origin master</code><br>敲一个：yes， 然后回车</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4c9a70c59144e803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/566" alt="img"></p>
+<p>到此，本地代码已经推送到github仓库了，我们现在去 github 仓库看看</p>
+<p>咦！奇怪了，我的目录呢？这个坑突然冒出来是不是印象很深刻呢~<br>注意咯：git是不能管理空的文件夹的，文件夹里必须有文件才能add</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-1d97e42bce22c48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1019" alt="img"></p>
+<p>好，我们来试一下，我在examples里新建了一个 test1.html 文件</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-de78eb46a358ab4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/184" alt="img"></p>
+<p>执行指令添加文件-&gt;提交文件-&gt;推送文件<br><code>git add .</code><br><code>git commit -m &quot;提交test1.html&quot;</code><br><code>git push -u origin master</code></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-dddf7ead2824152a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/571" alt="img"></p>
+<p>然后刷新一下 github，你会看到，examples 文件夹出来了</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3f94e660e0d7b5f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/994" alt="img"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>作者：小贤笔记<br>链接：<a href="https://www.jianshu.com/p/bf95d885978e" target="_blank" rel="noopener">https://www.jianshu.com/p/bf95d885978e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/09/github/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1715,214 +2205,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C3/" class="post-title-link" itemprop="url">计算机网络3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 20:13:03" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:03-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/" class="post-title-link" itemprop="url">计算机网络2（25-53）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 20:13:01" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:01-05:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-08 16:31:24" itemprop="dateModified" datetime="2020-05-08T16:31:24-05:00">2020-05-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><h3 id="数据链路层使用的信道主要有以下两种类型："><a href="#数据链路层使用的信道主要有以下两种类型：" class="headerlink" title="数据链路层使用的信道主要有以下两种类型："></a>数据链路层使用的信道主要有以下两种类型：</h3><p>点对点信道。这种信道使用一对一的点对点通信方式。</p>
-<p>广播信道。这种信道使用一对多的广播通信方式，因此过程比较复杂。广播信道上连接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发 </p>
-<h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="数据链路和帧"><a href="#数据链路和帧" class="headerlink" title="数据链路和帧"></a>数据链路和帧</h3><p>链路(link)是一条无源的点到点的物理线路段，中间没有任何其他的交换结点。</p>
-<p>一条链路只是一条通路的一个组成部分。</p>
-<p>数据链路(data link) 除了物理线路外，还必须有通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</p>
-<p>现在最常用的方法是使用适配器（即网卡）来实现这些协议的硬件和软件。</p>
-<p>一般的适配器都包括了数据链路层和物理层这两层的功能。  常常在两个对等的数据链路层之间画出一个数字管道，而在这条数字管道上传输的数据单位是帧。</p>
-<p><strong>数据链路层传送的是帧</strong></p>
-<h3 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h3><p>(1) 封装成帧：封装成帧(framing)就是在一段数据的前后分别添加首部和尾部，然后就构成了一个帧。确定帧的界限。</p>
-<p>首部和尾部的一个重要作用就是进行帧定界，头SOH，尾EOT</p>
-<p>(2) 透明传输：若数据部分有EOT，则后面会当成无效帧丢弃，</p>
-<p>解决办法：发送端的数据链路层在数据中出现控制字符“SOH”或“EOT”的前面插入一个转义字符“ESC”(其十六进制编码是 1B)。</p>
-<p>字节填充(byte stuffing)或字符填充(character stuffing)——接收端的数据链路层在将数据送往网络层之前删除插入的转义字符。</p>
-<p>如果转义字符也出现数据当中，那么应在转义字符前面插入一个转义字符。当接收端收到连续的两个转义字符时，就删除其中前面的一个。 </p>
-<p>(3) 差错控制 ：在传输过程中可能会产生比特差错：1 可能会变成 0 而 0 也可能变成 1。</p>
-<p>在一段时间内，传输错误的比特占所传输比特总数的比率称为误码率 BER (Bit Error Rate)。</p>
-<p>误码率与信噪比有很大的关系。</p>
-<p>为了保证数据传输的可靠性，在计算机网络传输数据时，必须采用各种差错检测措施。 </p>
-<h3 id="循环冗余检验的原理-（解决差错控制的）"><a href="#循环冗余检验的原理-（解决差错控制的）" class="headerlink" title="循环冗余检验的原理 （解决差错控制的）"></a>循环冗余检验的原理 （解决差错控制的）</h3><p>在数据链路层传送的帧中，广泛使用了循环冗余检验 CRC 的检错技术。</p>
-<p>在发送端，先把数据划分为组。假定每组 <em>k</em> 个比特。 </p>
-<p>假设待传送的一组数据 <em>M</em> = 101001（现在 <em>k</em> = 6）。我们在 <em>M</em> 的后面再添加供差错检测用的 <em>n</em> 位冗余码一起发送。 </p>
-<p><em>冗余码计算：（很重要）</em></p>
-<p>用二进制的模 2 运算进行 2<em>n</em> 乘 <em>M</em> 的运算，这相当于在 <em>M</em> 后面添加 <em>n</em> 个 0。</p>
-<p>得到的 (<em>k</em> + <em>n</em>) 位的数除以事先选定好的长度为 (<em>n</em> + 1) 位的除数 <em>P</em>，得出商是 <em>Q</em> 而余数是 <em>R</em>，余数 <em>R</em> 比除数 <em>P</em> 少1 位，即 <em>R</em> 是 <em>n</em> 位。 </p>
-<p>举例：现在 <em>k</em> = 6, <em>M</em> = 101001。</p>
-<p>设 <em>n</em> = 3, 除数 <em>P</em> = 1101，</p>
-<p>被除数是 2^n*M = 101001000。 </p>
-<p>模 2 运算的结果是：商 <em>Q</em> = 110101，</p>
-<p>​      余数 <em>R</em> = 001。</p>
-<p>把余数 <em>R</em> 作为冗余码添加在数据 <em>M</em> 的后面发送出去。发送的数据是：2^n<em>M + *R</em> </p>
-<p>  即：101001001，共 (<em>k</em> + <em>n</em>) 位。 </p>
-<p>接收端对收到的每一帧进行 CRC 检验 :(1) 若得出的余数 <em>R</em> = 0，则判定这个帧没有差错，就接受(accept)。</p>
-<p>(2) 若余数 <em>R</em> ¹ 0，则判定这个帧有差错，就丢弃。</p>
-<p>但这种检测方法并不能确定究竟是哪一个或哪几个比特出现了差错。</p>
-<p>只要经过严格的挑选，并使用位数足够多的除数 <em>P</em>，那么出现检测不到的差错的概率就很小很小。 </p>
-<h3 id="帧检验序列-FCS"><a href="#帧检验序列-FCS" class="headerlink" title="帧检验序列 FCS"></a>帧检验序列 FCS</h3><p>在数据后面添加上的冗余码称为帧检验序列 FCS (Frame Check Sequence)。</p>
-<p>循环冗余检验 CRC 和帧检验序列 FCS并不等同。</p>
-<p>CRC 是一种常用的检错方法，而 FCS 是添加在数据后面的冗余码。</p>
-<p>FCS 可以用 CRC 这种方法得出，但 CRC 并非用来获得 FCS 的唯一方法。 </p>
-<h4 id="注意：仅用循环冗余检验-CRC-差错检测技术只能做到无差错接受-accept-。"><a href="#注意：仅用循环冗余检验-CRC-差错检测技术只能做到无差错接受-accept-。" class="headerlink" title="注意：仅用循环冗余检验 CRC 差错检测技术只能做到无差错接受(accept)。"></a>注意：仅用循环冗余检验 CRC 差错检测技术只能做到无差错接受(accept)。</h4><p>“无差错接受”是指：“凡是接受的帧（即不包括丢弃的帧），我们都能以非常接近于 1 的概率认为这些帧在传输过程中没有产生差错”。也就是说：“凡是接收端数据链路层接受的帧都没有传输差错”（有差错的帧就丢弃而不接受）。要做到“可靠传输”（即发送什么就收到什么）就必须再加上确认和重传机制。 </p>
-<h2 id="点对点协议-PPP"><a href="#点对点协议-PPP" class="headerlink" title="点对点协议 PPP"></a>点对点协议 PPP</h2><h3 id="PPP-协议的特点-："><a href="#PPP-协议的特点-：" class="headerlink" title="PPP 协议的特点 ："></a>PPP 协议的特点 ：</h3><p>现在全世界使用得最多的数据链路层协议是点对点协议 PPP (Point-to-Point Protocol)。</p>
-<p>用户使用拨号电话线接入因特网时，一般都是使用 PPP 协议。 </p>
-<h3 id="PPP-协议应满足的需求"><a href="#PPP-协议应满足的需求" class="headerlink" title="PPP 协议应满足的需求"></a>PPP 协议应满足的需求</h3><p>简单——这是首要的要求</p>
-<p>封装成帧 </p>
-<p>透明性 </p>
-<p>多种网络层协议 </p>
-<p>多种类型链路 </p>
-<p>差错检测 </p>
-<p>检测连接状态 </p>
-<p>最大传送单元 </p>
-<p>网络层地址协商 </p>
-<p>数据压缩协商 </p>
-<h3 id="PPP-协议不需要的功能"><a href="#PPP-协议不需要的功能" class="headerlink" title="PPP 协议不需要的功能"></a>PPP 协议不需要的功能</h3><p>纠错 </p>
-<p>流量控制 </p>
-<p>序号 </p>
-<p>多点线路 </p>
-<p>半双工或单工链路 </p>
-<h3 id="PPP-协议有三个组成部分"><a href="#PPP-协议有三个组成部分" class="headerlink" title="PPP 协议有三个组成部分"></a>PPP 协议有三个组成部分</h3><p>一个将 IP 数据报封装到串行链路的方法。</p>
-<p>从底层到高层分为</p>
-<p>高级数据链路控制协议 HDLC</p>
-<p>链路控制协议 LCP (Link Control Protocol)。</p>
-<p>网络控制协议 NCP (Network Control Protocol)。  </p>
-<h3 id="PPP-协议的帧格式"><a href="#PPP-协议的帧格式" class="headerlink" title="PPP 协议的帧格式"></a>PPP 协议的帧格式</h3><p>标志字段 F = 0x7E （符号“0x”表示后面的字符是用十六进制表示。十六进制的 7E 的二进制表示是 01111110）。表示开始，和结束帧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">					首部                    ip数据报									  尾部</span><br><span class="line">	     F  A  C  协议					    信息部分									FCS  F</span><br><span class="line">字节数  1  1  1  2             不超过1500字节&lt;&#x3D;MTU           2    1</span><br><span class="line">字节    7E FF 03                                                7E</span><br><span class="line">&lt;--------------------------------PPP帧-----------------------------&gt;</span><br></pre></td></tr></table></figure>
-
-<p>PPP 有一个 2 个字节的协议字段。</p>
-<p>当协议字段为 0x0021 时，PPP 帧的信息字段就是IP 数据报。</p>
-<p>若为 0xC021, 则信息字段是 PPP 链路控制数据。</p>
-<p>若为 0x8021，则表示这是网络控制数据。 </p>
-<p>地址字段 A 只置为 0xFF。地址字段实际上并不起作用。</p>
-<p>控制字段 C 通常置为 0x03。</p>
-<p>PPP 是面向字节的，所有的 PPP 帧的长度都是整数字节。   </p>
-<h4 id="透明传输问题"><a href="#透明传输问题" class="headerlink" title="透明传输问题 :"></a>透明传输问题 :</h4><p>当 PPP 用在同步传输链路时，协议规定采用硬件来完成比特填充（和 HDLC 的做法一样）。 当 PPP 用在异步传输时，就使用一种特殊的字符填充法。 </p>
-<h4 id="字符填充"><a href="#字符填充" class="headerlink" title="字符填充 :"></a>字符填充 :</h4><p>将信息字段中出现的每一个 0x7E 字节转变成为 2 字节序列(0x7D, 0x5E)。 </p>
-<p>若信息字段中出现一个 0x7D 的字节, 则将其转变成为 2 字节序列(0x7D, 0x5D)。</p>
-<p>若信息字段中出现 ASCII 码的控制字符（即数值小于 0x20 的字符），则在该字符前面要加入一个 0x7D 字节，同时将该字符的编码加以改变。 </p>
-<h4 id="零比特填充"><a href="#零比特填充" class="headerlink" title="零比特填充"></a>零比特填充</h4><p>PPP 协议用在 SONET/SDH 链路时，是使用同步传输（一连串的比特连续传送）。这时 PPP 协议采用零比特填充方法来实现透明传输。</p>
-<p>在发送端，只要发现有 5 个连续 1，则立即填入一个 0。接收端对帧中的比特流进行扫描。每当发现 5 个连续1时，就把这 5 个连续 1 后的一个 0 删除，</p>
-<h4 id="不提供使用序号和确认-的可靠传输"><a href="#不提供使用序号和确认-的可靠传输" class="headerlink" title="不提供使用序号和确认 的可靠传输"></a>不提供使用序号和确认 的可靠传输</h4><p>PPP 协议之所以不使用序号和确认机制是出于以下的考虑：</p>
-<p>在数据链路层出现差错的概率不大时，使用比较简单的 PPP 协议较为合理。</p>
-<p>在因特网环境下，PPP 的信息字段放入的数据是 IP 数据报。数据链路层的可靠传输并不能够保证网络层的传输也是可靠的。</p>
-<p>帧检验序列 FCS 字段可保证无差错接受。  </p>
-<h3 id="PPP-协议的工作状态"><a href="#PPP-协议的工作状态" class="headerlink" title="PPP 协议的工作状态"></a>PPP 协议的工作状态</h3><p>当用户拨号接入 ISP 时，路由器的调制解调器对拨号做出确认，并建立一条物理连接。</p>
-<p>PC 机向路由器发送一系列的 LCP 分组（封装成多个 PPP 帧）。</p>
-<p>这些分组及其响应选择一些 PPP 参数，和进行网络层配置，NCP 给新接入的 PC机分配一个临时的 IP 地址，使 PC 机成为因特网上的一个主机。</p>
-<p>通信完毕时，NCP 释放网络层连接，收回原来分配出去的 IP 地址。接着，LCP 释放数据链路层连接。最后释放的是物理层的连接。  </p>
-<p>33集</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1992,7 +2274,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
