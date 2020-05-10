@@ -145,6 +145,485 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network5/" class="post-title-link" itemprop="url">数据链路层2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 16:28:49 / Modified: 16:31:01" itemprop="dateCreated datePublished" datetime="2020-05-10T16:28:49-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_label0" target="_blank" rel="noopener">一、局域网</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_0_0" target="_blank" rel="noopener">1.1、局域网和以太网的区别和联系</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_0_1" target="_blank" rel="noopener">1.2、以太网常用的拓扑结构</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_label1" target="_blank" rel="noopener">二、CSMA/CD协议（半双工通信）</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_1_0" target="_blank" rel="noopener">2.1、概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_1_1" target="_blank" rel="noopener">2.2、详细描述</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_label2" target="_blank" rel="noopener">二、以太网信道利用率问题</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_2_0" target="_blank" rel="noopener">2.1、最大信道利用率</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_2_1" target="_blank" rel="noopener">三、PC机与PC机怎么找到对方</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_label3" target="_blank" rel="noopener">三、扩展以太网</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_lab2_3_0" target="_blank" rel="noopener">3.1、集线器</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_label4" target="_blank" rel="noopener">四、高速以太网</a></p>
+</li>
+</ul>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、局域网"><a href="#一、局域网" class="headerlink" title="一、局域网"></a>一、局域网</h1><h2 id="1-1、局域网和以太网的区别和联系"><a href="#1-1、局域网和以太网的区别和联系" class="headerlink" title="1.1、局域网和以太网的区别和联系"></a>1.1、局域网和以太网的区别和联系</h2><p>局域网：前面已经介绍了，其实就是学校里面、各个大的公司里，自己组件的一个小型网络，这种就属于局域网。</p>
+<p>以太网：以太网(Ethernet)指的是由Xerox公司创建并由Xerox、Intel和DEC公司联合开发的基带局域网规范，是当今现有局域网采用的最通用的通信协议标准。</p>
+<p>　　　　以太网络使用CSMA/CD（载波监听多路访问及冲突检测）技术，并以10M/S的速率运行在多种类型的电缆上。</p>
+<p>联系：是以太网就一定是局域网，但是局域网不一定就是以太网。 因为以太网就是一个规范，而大多数局域网都使用这个规范，所以才有这个话。</p>
+<h2 id="1-2、以太网常用的拓扑结构"><a href="#1-2、以太网常用的拓扑结构" class="headerlink" title="1.2、以太网常用的拓扑结构"></a>1.2、以太网常用的拓扑结构</h2><p>　　1）星状</p>
+<p>　　　　这种结构的网络是各<a href="https://baike.baidu.com/item/工作站" target="_blank" rel="noopener">工作站</a>以星形方式连接起来的，网中的每一个节点设备都以中防节为中心，通过连接线与中心 节点相连，如果一个工作站需要传输数据，它首先必须通过中心节点。</p>
+<p>　　　　由于在这种结构的网络系统中，中心节点是控制中心，任意两个节点间的<a href="https://baike.baidu.com/item/通信" target="_blank" rel="noopener">通信</a>最多只需两步，所以，能够传输速度快，并且网络构形简单、建网容易、便于控制和管理。但这种网络系统，</p>
+<p>　　　　网络可靠性低，<a href="https://baike.baidu.com/item/网络共享" target="_blank" rel="noopener">网络共享</a>能力差，并且一旦中心节点出现故障则导致全网瘫痪。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928194915965-1222870584.png" alt="img"></p>
+<p>　　2）树形　　</p>
+<p>　　　　树形结构网络是天然的分级结构，又被称为分级的集中式网络。其特点<br>　　　　是网络成本低，结构比较简单。在网络中，任意两个节点之间不产生<a href="https://baike.baidu.com/item/回路" target="_blank" rel="noopener">回路</a>，每个链路都支持双向传输，并且，网络中节点扩充方便、灵活，寻查链路路径比较简单。</p>
+<p>　　　　但在这种结构网络系统中，除叶节点及其相连的链路外，任何一个工作站或链路产生故障会影响整个网络系统的正常运行。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928195247169-1502379173.png" alt="img"></p>
+<p>　　3）总线型</p>
+<p>　　　　总线形结构网络是将各个节点设备和一根总线相连。网络中所有的节点工作站都是通过总线进行<a href="https://baike.baidu.com/item/信息" target="_blank" rel="noopener">信息</a>传输的。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928195428559-235246537.png" alt="img"></p>
+<p>　　4）环形　</p>
+<p>　　　　环形结构是网络中各节点通过一条首尾相连的<a href="https://baike.baidu.com/item/通信链路" target="_blank" rel="noopener">通信链路</a>连接起来的一个闭合环形结构网。环形结构网络的结构也比较简单，系统中各工作站地位相等。</p>
+<p>　　　　系统中通信<a href="https://baike.baidu.com/item/设备" target="_blank" rel="noopener">设备</a>和线路比较节省。在网中信息设有固定方向单向流动，两个工作站节点之间仅有一条通路，系统中无信道选择问题；某个结点的故障将导致物理瘫痪。</p>
+<p>　　　　环网中，由于环路是封闭的，所以不便于扩充，系统响应延时长，且信息传输效率相对较低。</p>
+<p><img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928195600590-678351288.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、CSMA-CD协议（半双工通信）"><a href="#二、CSMA-CD协议（半双工通信）" class="headerlink" title="二、CSMA/CD协议（半双工通信）"></a>二、CSMA/CD协议（半双工通信）</h1><p>局域网是用广播信道的方式去传送数据，那么就会遇到问题，如果在局域网内有两个pc机同时在其中传播数据呢？就会发生碰撞，使两个数据都失效，那么如何解决这个问题呢，使用CSMA/CD协议来解决这类问题。</p>
+<h2 id="2-1、概述"><a href="#2-1、概述" class="headerlink" title="2.1、概述"></a>2.1、概述</h2><p>　　1）多址接入</p>
+<p>　　　　一种多址接入协议，许多站点以多址接入的方式链接在一根总线上，其实就是局域网中总线网这种形式。</p>
+<p>　　2）载波监听</p>
+<p>　　　　发送前监听，就是在发送数据前监听总线中是否有数据在传播，如果有就不发送。就是用电子技术检测总线上有没有其他计算机发送的数据信号。</p>
+<p>　　3）碰撞检测</p>
+<p>　　　　边发送边监听，在发送数据的中途也会监听总线中是否会有其它数据，当几个站同时在总线上发送数据时，总线上的信号电压摆动值将会增大（互相叠加）。</p>
+<p>　　　　当一个站检测到的信号电压摆动值超过一定的门限值时，就认为总线上至少有两个站同时在发送数据，表明产生了碰撞。 所谓“碰撞”就是发生了冲突。因此“碰撞检测”也称为“冲突检测”</p>
+<p>　　　　检测到碰撞之后：　　　　　</p>
+<p>　　　　　　在发生碰撞时，总线上传输的信号产生了严重的失真，无法从中恢复出有用的信息来。</p>
+<p>　　　　　　每一个正在发送数据的站，一旦发现总线上出现了碰撞，就要立即停止发送，免得继续浪费网络资源，然后等待一段随机时间后再次发送。</p>
+<p>　　　　　　通过例子也说明一下CSMA/CD协议会做哪些事情，借用下面这个图来说明问题</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928200359294-306129888.png" alt="img"></p>
+<p>　　　　　　分析：</p>
+<p>　　　　　　　　第一步：B向D发送数据，在发送数据前，由于采用的CSMA/CD协议，那么先会进行载波监听，看总线中是否有其他的数据传输(如果检测，通过物理层的一些电磁波等)。</p>
+<p>　　　　　　　　第二步：如果没有，那么B就可以开始发送数据，由于B到D之间存在一定距离，那么在总线中传输数据也要时间，虽然很快，可能只需要十几微秒，在发送的的途中，遇到C向A发送数据，</p>
+<p>　　　　　　　　　　　　由于B到D的数据还没传过来，那么C也就没监听到总线中有数据，所以也开始发，那么在途中两个数据就会相遇，这就形成了碰撞，在碰撞以后，两个电磁波叠加，在总线中传输，</p>
+<p>　　　　　　　　　　　　那么会到C或者B时，就会知道电磁波的不同，从而发生了碰撞。这就是碰撞检测。</p>
+<h2 id="2-2、详细描述"><a href="#2-2、详细描述" class="headerlink" title="2.2、详细描述"></a>2.2、详细描述</h2><p>　　1）解释名词</p>
+<p>　　传播延时：<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928201111794-1443030176.png" alt="img"></p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928201056044-1441169231.png" alt="img"></p>
+<p>　　争用期：发生碰撞所需要的最迟时间。在根据上面的大体分析，我们知道A到B之间的任意时刻都可能会发生碰撞，那么A确认发生碰撞要多久呢，那就是2t 了，传播时延是t，</p>
+<p>　　　　　　可能正好到B那里就发生了碰撞，然后返回到A，又需要t的时间，那就是2t了，我们把这个2t时间就叫做争用期。</p>
+<p>　　　　举例：在10Mb/s(传播速率)的以太网，争用期为51.2μs（微秒），那么在争用期内可发送64字节，及512bit的数据。怎么算来的呢？　　</p>
+<p>　　　　　　10Mb/s = 10 000 Kb/s = 10 000 000 b/s (这里的换算是1000，指的是计算机网络中传输的多少位多少位，也就是0101这样的位数)</p>
+<p>　　　　　　51.2μs = 0.0512 ms = 0.000 0512 s (1s = 1000ms = 1000 000 μs)</p>
+<p>　　　　　　51.2μs能传多少bit呢？ 上面两个相乘就为 512bit 了，换算为字节，字节的换算是 1byte(字节) = 8bit(位) 所以 512/8=64byte(字节) 就这样算过来的。</p>
+<p>　　最短有效帧：64字节，就是上面这样算的，发送了64个字节之后，肯定就不会发生碰撞，以太网规定了最短有效帧长为 64 字节，凡长度小于 64 字节的帧都是由于冲突而异常中止的无效帧。</p>
+<p>　　2）二进制指数类型退避算法</p>
+<p>　　　　这个算法就是在发生碰撞后，pc机该如何处理，在什么时间后再次发送数据。</p>
+<p>　　　　其实就是四部曲：　</p>
+<p>　　　　　　第一步：确定基本退避时间，一般就是争用期2t</p>
+<p>　　　　　　第二步：定义参数k K = Min[重传次数，10]</p>
+<p>　　　　　　第三步：从整数集合中<img src="https://images2015.cnblogs.com/blog/874710/201611/874710-20161118165109607-266731860.png" alt="img">[0,1,…,(2的k次方 -1)]随机取一个数，记为r，重传所需要等待的时延就是r倍的基本退避时间(2rt)</p>
+<p>　　　　　　第四步：当重传16次还不能成功则丢弃该帧，并向高层汇报</p>
+<p>　　　　解释：其实这四步很简单，我来分析一下就会了，首先第一次传数据，重传次数为0，那么k=0，从整数集合中只有0这个值，那么r=0，等待的时延就是2rt=0，所以第一次传数据需要等待的时延就是0，</p>
+<p>　　　　　　不需要等待，除非先检测到了有数据已经在传了，如果第一传数据发现碰撞，那么重传次数为1，那么k=1，整数集合中就有0，1两个值，随机取值，取到r=1，那么等待的时延就是2t，意思就是</p>
+<p>　　　　　　在第一次发生碰撞后，需要等待2t的时间，才能在重新发送数据，也可能不需要等就直接发，r=0时。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、以太网信道利用率问题"><a href="#二、以太网信道利用率问题" class="headerlink" title="二、以太网信道利用率问题"></a>二、以太网信道利用率问题</h1><p>　　分析图：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928202011122-609949332.png" alt="img"></p>
+<p>　　分析：一个帧从开始发送，经可能发生的碰撞后，将再重传数次，到发送成功(发送成功这段时间T0是指数据的发送时延，帧长为 L (bit)，数据发送速率为 C (b/s)，因而帧的发送时间为 L/C = T0 (s))，</p>
+<p>　　　　　帧发出去以后，还要经过端到端的传播时延t，所有在真正占用信道的时间是 TO+t ，前面发生的碰撞损耗的时间，数据并没有占用信道，我们指真正占用信道的时间是指数据发送成功即不发生</p>
+<p>　　　　  碰撞然后到达目的地的这段时间，而前面发生碰撞的时间，都市在浪费信道，每发送一帧需要的平均时间就是在信道中发生碰撞浪费的时间+上数据传输成功所用的占用期。不要理解错了。</p>
+<p>　　公式和参数a的理解：　<img src="https://images2015.cnblogs.com/blog/874710/201611/874710-20161118170730435-1688609334.png" alt="img"> 首先理解一下信道利用率，借用上面的图，就是占用期在其图中的比例变大，则信道利用率就高。但是不确定前面发生了多少次碰撞，</p>
+<p>　　　　　　　　　　　　只是一个平均的估算值，所以就定义了这个a的公式，用t/T0来代表信道利用率</p>
+<p>　　1）a→0 表示一发生碰撞就立即可以检测出来，并立即停止发送，因而信道利用率很高。</p>
+<p>　　　　a→0也就是t越小，而T0越大，发送时延尽可能大一点，而t传播时延尽可能小一点，现实意义就是数据在在信道中传播的时间如果很小很小，那么数据一发送，</p>
+<p>　　　　就能在很少的时间里面检测出碰撞来了，那么在前面那张图中，花费在争用期(发生碰撞)的时间就少了，就能快点成功发送数据占的时间就长了了，那信道的利用率不就很高吗，</p>
+<p>　　2）a 越大，表明争用期所占的比例增大，每发生一次碰撞就浪费许多信道资源，使得信道利用率明显降低</p>
+<p>　　　　就是T0越小，而r很大，那发生一次碰撞就浪费了很多信道资源，因为在信道中传输无用的波占的时间太长了。而成功发送的占用期自然就变小了，所以信道利用率就越低了。</p>
+<p>　　　　根据上面的分析信道利用率，就发现，影响信道利用率的就跟T0和t有关，也就是跟以太网的连线长度有关，所以才有在以太网中，有最远距离的限制，就是不能让t太大，</p>
+<p>　　　　以至于a很大，信道利用率太低，还有发送的帧长也有最小帧长的限制，因为怕发送的数据帧太短，而发送速率就一定，那么发送时延T0就太小了，会让a的值越大，信道利用率就太低了。</p>
+<h2 id="2-1、最大信道利用率"><a href="#2-1、最大信道利用率" class="headerlink" title="2.1、最大信道利用率"></a>2.1、最大信道利用率</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928211132075-384776676.png" alt="img"></p>
+<p>　　理想的情况下就是不发生碰撞，一发送完数据，另一个数据就又发送，也就是一有空闲时间，就发送数据。这个时候，信道中一直有数据在传输，一刻也不停歇，那此时的信道利用率就是100了？</p>
+<p>　　错误，这个想法是错的，举个例子就知道了。每帧用的时间就是下面图中这块，这块也就可以看成一段数据帧平均花费的时间，这里面所影响的因素就是发送时延T0和t传播时延了，一段数据帧平均花费的时间为1s，</p>
+<p>　　这是已经固定了，但是其中的两个部分并没有确定，如果T0占的比例大，说明发送时延大，发送速率已经确定了，那么就肯定是发送的数据变多了，在信道中传输的bit更过，信道利用率不就更到了吗，通俗一点讲，</p>
+<p>　　就是给了你1s的时间，你尽可能的多发些bit过去，那么你的传播时延就大了，那不就信道利用率的很高了吗，理想状态下考虑的因素跟那个现实考虑的因素不一样。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928211205356-324379293.png" alt="img"></p>
+<p>　　对CSMA/CD协议的讨论，大概就是这些内容了，刚才讨论的前提是已经知道谁发送给谁了，然后说的数据在传播过程中遇到的问题。</p>
+<h2 id="三、PC机与PC机怎么找到对方"><a href="#三、PC机与PC机怎么找到对方" class="headerlink" title="三、PC机与PC机怎么找到对方"></a>三、PC机与PC机怎么找到对方</h2><p>用的就是MAC地址，在以太网中是如果封装数据帧来达到能够准确传输数据到目的地的呢？</p>
+<p>MAC地址的格式：</p>
+<p>　　　　48bit，6个字节，前3个字节是由管理机构给各个厂家分配的。也就是说如果有厂家想生产网卡这类需要mac地址的东西，必须先像管理机构申请前三位字节，</p>
+<p>　　　　所以网卡上的前三个字节就代表着某个厂家，后三个字节就是由厂家自己来设定的。</p>
+<p>每个网卡都拥有识别数据帧中mac地址的功能</p>
+<p>数据帧格式：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928211520137-1273778841.png" alt="img"></p>
+<p>　　　　先不管前8个插入字节的意思，在以太网中，发送的数据帧最小要是64个字节，那这64个字节由哪些组成的呢，就是图中所示，6个目的MAC地址，6个源MAC地址，2个字节代表数据包的类型，</p>
+<p>　　还有4个字节是FCS，用来进行CRC算法检测的，剩下的46个字节就是数据包最少要发送的字节数了，如果数据包实际发的少于46，那么会给这个数据包自动补充0，来达到需要的字节数。</p>
+<p>　　　　然后说说插入的8个字节是什么意思？前7个字节用来使发送的数据帧的的比特同步，也叫作前同步码，最后一个字节，帧的开始定界符，也就是告诉接收方，从这个字节开始，后面是是MAC帧了。</p>
+<p>　　 有人这个时候会问，既然有了帧开始定界符，为什么还要同步码？原因是，在接受MAC帧后，并不能马上识别出帧开始定界符，没有那么快的反应分辨出来，所以需要在前面加同步码，使接收方有反应的时间，</p>
+<p>　　所以同步码都是1010101010101这样的bit。前7个字节的同步码跟最后一个字节中的前6个bit位相同。上面图中这里画的有点错误，圈错了，正确的是下面这样：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928212200809-68985957.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、扩展以太网"><a href="#三、扩展以太网" class="headerlink" title="三、扩展以太网"></a>三、扩展以太网</h1><p>集线器和网桥(多个接口的交换机)</p>
+<h2 id="3-1、集线器"><a href="#3-1、集线器" class="headerlink" title="3.1、集线器"></a>3.1、集线器</h2><p>　　1）概述　　</p>
+<p>　　集线器（HUB）属于数据通信系统中的基础设备，它和双绞线等传输介质一样，是一种不需任何软件支持或只需很少管理软件管理的硬件设备。它被广泛应用到各种场合。<strong>集线器工作在局域网(LAN)环境</strong>，</p>
+<p>　　应用于OSI参考模型第一层，因此又被称为物理层设备。集线器内部采用了电器互联，当维护LAN的环境是逻辑总线或环型结构时，完全可以用集线器建立一个物理上的星型或树型网络结构。在这方面，集线器</p>
+<p>　　所起的作用相当于多端口的中继器。其实，集线器实际上就是中继器的一种，其区别仅在于集线器能够提供更多的端口服务，所以集线器又叫多口中继器。<strong>HUB按照对输入信号的处理方式上，可以分为无源HUB、有源HUB、智能HUB。</strong></p>
+<p>　　2）工作过程</p>
+<p>　　集线器的工作过程是非常简单的，它可以这样的简单描述：首先是节点发信号到线路，集线器接收该信号，因信号在电缆传输中有衰减，<strong>集线器接收信号后将衰减的信号整形放大，最后集线器将放大的信号广播转发给其他所有端口。</strong></p>
+<p>　　</p>
+<p>　　就是只能够转发数据，来了就往接了集线器的PC机上发数据，其他什么差错校验呀，什么东西全都不做，</p>
+<p>　　集线器的用法首先是下面这样</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928212435465-1812340623.png" alt="img"></p>
+<p>　　然后想办法，改进成这样了</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928212456950-1568858435.png" alt="img">　</p>
+<p>　　改完是有好处也有坏处</p>
+<p>　　　　用集线器扩展局域网优点：</p>
+<p>　　　　　　使原来属于不同碰撞域的局域网上的计算机能够进行跨碰撞域的通信。</p>
+<p>　　　　　　扩大了局域网覆盖的地理范围。</p>
+<p>　　　　用集线器扩展局域网缺点：</p>
+<p>　　　　　　碰撞域增大了，但总的吞吐量并未提高。</p>
+<p>　　　　　　如果不同的碰撞域使用不同的数据率，那么就不能用集线器将它们互连起来。</p>
+<p>　　由于集线器总有这样的缺点，所以网桥这个设备就出来了</p>
+<h2 id="3-2、网桥"><a href="#3-2、网桥" class="headerlink" title="3.2、网桥"></a>3.2、网桥</h2><p>　　1）概述　　</p>
+<p>　　　　也有人把“网桥”比喻成一个聪明的中继器（Repeater）。因为中继器只是对所接收的信号进行放大，然后直接发送到另一个端口连接的电缆上，主要用于扩展网络的物理连接范围；</p>
+<p>　　而网桥除了可以扩展网络的物理连接范围外，还可以对MAC 地址进行分区，隔离不同物理网段之间的碰撞（也就是隔离“冲突域”）。集线器和中继器都是物理层设备，而网桥属于二层设备。<br>　　　　我们经常听到这样的说法，那就是“网桥”是一种可连接不同网段的二层网络设备（二层交换机也一样），一个端口可以连接一个网段。所以很多人总在纳闷，网桥怎么能连接不同网段呢？</p>
+<p>　　其实这是因为大家对这里所说的“网段”并不理解。其实这里“网段”更准确地讲应该是叫“物理网段”，是指IP 地址属于同一网络地址段（也就是IP 地址中的网络ID一样），位于不同地理位置的不同LAN 分段，</p>
+<p>　　是基于物理意义上的地理区域进行划分的。我们常说的网段是指IP 地址属于不同网络地址段的网络或子网，是一个三层概念，其实这应该叫做逻辑网段，是基于逻辑意义上的网络地址进行划分的。</p>
+<p>　　（hzhsan:就是说这里的网段是物理网段，并不是我们平时说的IP网段，不关心三层上的概念）<br>　　　　无论是网桥，还是二层交换机，虽然每个端口可以连接一个网段，但是它们所连接的主机都在同一网络，或者同一子网中。如连接的主机位于不同办公室或者不同办公楼中，则可采用同一网络地址的两个或多个小LAN，</p>
+<p>　　以组成一个可以统一管理的大LAN。但要注意的是，因为网桥只有两个端口，所以所连接的两个物理网段的主机通常就是由当时的集线器进行集中连接的（网桥端口通常不是直接连接主机的）。</p>
+<p>　　软件中通常所说的桥接（如VMware中的桥接工作模式）也就是网桥的作用，它连接的也是同一网络或子网中的两个网段。<br>　　　　网桥都是只有两个端口吗？应该可以有多个端口吧？<br>　　　　答案：基本网桥只有两个端口，还有一种网桥叫做多口网桥，多口网桥有多个端口　</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928214637606-1168539342.png" alt="img">图1</p>
+<p>　　2）优点</p>
+<p>　　有两个优点，能识别mac地址，遇到陌生的mac地址，会在内部mac表中记录下该mac地址，下次再使用，就认识了</p>
+<p>　　　　1.1）根据 MAC 帧的目的地址对收到的帧进行转发</p>
+<p>　　　　2.2）过滤帧的功能。当网桥收到一个帧时，并不是向所有的接口转发此帧，而是先检查此帧的目的 MAC 地址，然后再确定将该帧转发到哪一个接口</p>
+<p>　　3）网桥原理</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928212911622-459234442.png" alt="img">)<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928214748512-53992092.png" alt="img">图2</p>
+<p>　　　　前面说到了网桥具有两种主要特性：一是可基于物理网段的MAC 地址进行学习，二是可以隔离冲突域。下面通过一个示例来进行解析。<br>　　假设图1 中所示的物理网段1 和物理网段2 中的主机都是通过集线器集中连接的，则这样这两个物理网段各自形成一个冲突域，因为集线器是采用共享介质传输的，</p>
+<p>　　而网桥的背板信道不是共享的（每个端口的数据收发都有一条单独的信道），所以一个集线器就是一个冲突域。网桥的数据转发原理如图2所示。下面是具体的解析。<br>　　　　说明　MAC 地址表也就是通常所说的CAM（Content Addressable Memory，内容可寻址存储器）表，保存的是对应MAC 地址主机与所连接的交换机端口的映射。这个映射表项可以由管理员手动绑定创建，</p>
+<p>　　也可以由交换机自动学习得到。在交换机上可以通过一些命令（如Cisco 交换机是使用show mac-address-table 命令）查看。下面是一个在交换机上查看MAC 地址和端口映射表的示例，其中列出了交换机中</p>
+<p>　　为CPU 分配的静态（static）MAC 地址和通过学习功能自动学习得到的动态（dynamic）MAC 地址，其中的Ports 列显示的是对应MAC 地址主机所连接的端口，VLAN 列则为对应主机连接端口所属的VLAN。　　</p>
+<p><img src="https://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="img"> mac-address-table　</p>
+<p>　　现假设图5-34 所示网络中的一台PC 要向另一台PC 发送数据。因为集线器也是物理层设备，不能识别帧中的MAC 地址，所以无论是哪台主机要发送数据，在集线器上都是以广播方式进行的，</p>
+<p>　　连接该集线器上的所有节点都会收到这个广播帧，包括网桥连接到该集线器的端口。</p>
+<p>　　　　1）当网桥收到集线器的广播帧后，网桥会把帧中的源MAC 地址和目的MAC 地址与网桥缓存中保存的MAC 地址表进行比较。</p>
+<p>　　　　2）最初，网桥的缓存中是没有任何MAC 地址的，所以一开始它也不知道哪台主机在哪个物理网段上，收到的所有帧都直接以泛洪方式（也是复制原数据帧）转发到另一个端口上，</p>
+<p>　　　　　　同时会把数据帧中的源MAC 地址所对应的物理网段记录下来（其实就是与对应的网桥端口对应起来）。</p>
+<p>　　　　3）在数据帧被某个PC 机接收后，也会把对应目的MAC 地址所对应的物理网段记录在缓存中的MAC 表中。这样，经过多次这样的记录，就可以在MAC 地址表中把整个网络中各</p>
+<p>　　　　　　主机MAC 地址与对应的物理网段全部记录下来。因为网桥的端口通常是连接集线器的，所以一个网桥端口会与多个主机MAC 地址进行映射。</p>
+<p>　　　　4）当网桥收到的数据帧中源MAC 地址和目的MAC 地址都在网桥MAC 地址表中可以找到时，网桥会比较这两个MAC 地址是否属于同一个物理网段。如果是同一物理网段，</p>
+<p>　　　　　　则网桥不会把该帧转发到下一个端口，直接丢弃，起到冲突域隔离作用。相反，如果两个MAC 地址不在同一物理网段，则网桥会把从一个物理网段发来的帧转发到连接</p>
+<p>　　　　　　另一个物理网段上，然后再通过所连接的集线器进行复制方式的广播。</p>
+<p>　　3）透明网桥　</p>
+<p>　　　　局域网上的站点并不知道所发送的帧将经过哪几个网桥，因为网桥对各站来说是看不见的　　</p>
+<p>　　　　是一种即插即用设备，其标准是 IEEE 802.1D</p>
+<p>　　4）网桥的优点与缺点</p>
+<p>　　优点：　　　</p>
+<p>　　　　过滤通信量。</p>
+<p>　　　　扩大了物理范围。</p>
+<p>　　　　提高了可靠性。</p>
+<p>　　　　可互连不同物理层、不同 MAC 子层和不同速率（如10 Mb/s 和 100 Mb/s 以太网）的局域网。</p>
+<p>　　缺点：　　</p>
+<p>　　　　存储转发增加了时延。</p>
+<p>　　　　在MAC 子层并没有流量控制功能。</p>
+<p>　　　　具有不同 MAC 子层的网段桥接在一起时时延更大。</p>
+<p>　　　　网桥只适合于用户数不太多(不超过几百个)和通信量不太大的局域网，否则有时还会因传播过多的广播信息而产生网络拥塞。这就是所谓的广播风暴。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608818.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、高速以太网"><a href="#四、高速以太网" class="headerlink" title="四、高速以太网"></a>四、高速以太网</h1><p>从最早的使用集线器连接的以太网(CSMA/CD，半双工，10Mb/s)到使用网桥阶段的扩展以太网(CSMA/CD，半双工，10Mb/s或100Mb/s)到现在的高速以太网(半双工/全双工通信)。</p>
+<h2 id="4-1、高速以太网"><a href="#4-1、高速以太网" class="headerlink" title="4.1、高速以太网"></a>4.1、高速以太网</h2><p>　　速率达到或超过100Mb/s的以太网</p>
+<p>　　这个也没什么好讲的，就是在之前的基础上加强了很多东西，</p>
+<p>　　　　速率提高了很多</p>
+<p>　　　　从半双工通信到能使用全双工通信了(这个并不是说就抛弃了半双工，在星形拓扑结构中的局域网，也就使用CSMA/CD协议的半双工通信的方式，全双工就不使用该协议了)</p>
+<p>　　　　传输距离可以增长，因为有了光纤(传输过程的稳定性)，速率增强很大，不止局限于局域网，扩展到了有城域网，广域网。</p>
+<h2 id="4-2、10Gb-s以太网"><a href="#4-2、10Gb-s以太网" class="headerlink" title="4.2、10Gb/s以太网"></a>4.2、10Gb/s以太网</h2><p>　　1）概述</p>
+<p>　　与 10 Mb/s，100 Mb/s 和 1 Gb/s 以太网的帧格式完全相同。</p>
+<p>　　保留了 802.3 标准规定的以太网最小和最大帧长，便于升级。也就是最小64字节，最大是多少不知道。</p>
+<p>　　不再使用铜线而只使用光纤作为传输媒体。</p>
+<p>　　只工作在全双工方式，因此没有争用问题，也不使用 CSMA/CD 协议。</p>
+<p>　　2）优点　　</p>
+<p>　　　　成熟的技术</p>
+<p>　　　　互操作性很好</p>
+<p>　　　　在广域网中使用以太网时价格便宜。</p>
+<p>　　　　统一的帧格式简化了操作和管理</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network4/" class="post-title-link" itemprop="url">数据链路层1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 16:25:46 / Modified: 16:31:04" itemprop="dateCreated datePublished" datetime="2020-05-10T16:25:46-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p>阅读目录(Content)**</p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_label0" target="_blank" rel="noopener">一、数据链路层概述</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_label1" target="_blank" rel="noopener">二、数据链路层的三个问题</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_1_0" target="_blank" rel="noopener">2.1、封装成帧</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_1_1" target="_blank" rel="noopener">2.2、透明传输</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_1_2" target="_blank" rel="noopener">2.3、差错检测</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_label2" target="_blank" rel="noopener">三、可靠传输</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_2_0" target="_blank" rel="noopener">3.1、停止等待协议</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_label3" target="_blank" rel="noopener">四、两种信道下的数据链路层</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_3_0" target="_blank" rel="noopener">4.1、点对点协议</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_lab2_3_1" target="_blank" rel="noopener">4.2、广播信道的数据链路层</a></li>
+</ul>
+</li>
+</ul>
+<p>前言</p>
+<p>　　其实前面一堆讲的物理层的概念，会感觉特别的难理解，因为这是一个非常强大的计算机网络体系的底层知识，没有关系！我们大致了解一下就行了。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、数据链路层概述"><a href="#一、数据链路层概述" class="headerlink" title="一、数据链路层概述"></a>一、数据链路层概述</h1><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928193809950-1447379733.png" alt="img"></p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928194020294-559534854.png" alt="img"></p>
+<p>　　这是百度的简介　</p>
+<p>看图：理解一下，数据链路层之间的运输、数据链路层之间的信道</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928173627059-1905882554.png" alt="img"></p>
+<p>　　链路：一条点到点的物理线路段，中间没有任何其他的交换结点，通俗的将，就是一根线，其中不经过任何东西，这样的就是链路，一条链路只是一条通路的一个组成部分</p>
+<p>　　数据链路：除了物理线路外，还必须有通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。 通俗讲，就是经过了一些交换机呀，什么的。</p>
+<p>　　　　　　　最终到达目的地，所有路段就是数据链路，而数据链路中就包含了多段链路。</p>
+<p>　　适配器：也就是网卡，就是用来实现数据链路上一些协议。</p>
+<p>　　帧：数据链路层上传送的就是帧</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928173936137-1414746580.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、数据链路层的三个问题"><a href="#二、数据链路层的三个问题" class="headerlink" title="二、数据链路层的三个问题"></a>二、数据链路层的三个问题</h1><p>封装成帧、透明传输、差错控制</p>
+<p>讲解如何封装帧，封装完后帧的传输问题、传输到达目的地，如何检验该段帧是否完整</p>
+<h2 id="2-1、封装成帧"><a href="#2-1、封装成帧" class="headerlink" title="2.1、封装成帧"></a>2.1、封装成帧</h2><p>　　数据链路层就是在ip数据报的前面和末尾加了一个首部和尾部来代表ip数据包的开始和结束，首部和尾部都是由8位二进制数表示的，可以一样也可以不一样。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928182525856-1176225247.png" alt="img"></p>
+<h2 id="2-2、透明传输"><a href="#2-2、透明传输" class="headerlink" title="2.2、透明传输"></a>2.2、透明传输</h2><p>　　有一个这样的问题， 在ip数据包中如果有一个跟帧尾部一样的8位二进制数，则会提前结束接受数据包，这样数据就被破坏了。出现了如下图这样的问题：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928182708669-515435767.png" alt="img"></p>
+<p>　　解决：通过在特殊字符前面增加一个转义字符 ESC， 就可以解决上面所遇到的问题，在接收端，将数据包中所有ESC的字符删除，</p>
+<p>　　　　　　遇到两个ESC的，就删除第一个，这样一开始传输的时候有ESC转义字符，接受完就没了，所以说的是透明传输</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928182806122-734356031.png" alt="img"></p>
+<h2 id="2-3、差错检测"><a href="#2-3、差错检测" class="headerlink" title="2.3、差错检测"></a>2.3、差错检测</h2><p>　　问题：传输过程中可能会产生比特差错：1 可能会变成 0 而 0 也可能变成 1。在一段时间内，传输错误的比特占所传输比特总数的比率称为误码率 BER (Bit Error Rate)。</p>
+<p>　　为了检测传送的帧中ip数据包是否完整，是否没有被损坏，所以需要差错检测</p>
+<p>　　解决：循环冗余检测CRC，截个图，把概念性的文字截下来，看到这个人都晕了，其实很简单。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928183220450-1180825034.png" alt="img"></p>
+<p>　　按照下图中的7步走，理解一下，然后再看上面的文字，就理解了</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928183254325-749599223.png" alt="img">　　</p>
+<p>　　检测：</p>
+<p>　　　　若得出的余数 R = 0，则判定这个帧没有差错，就接受(accept)。</p>
+<p>　　　　若余数 R ≠ 0，则判定这个帧有差错，就丢弃</p>
+<p>　　生成多项式：也很简单，例如上面的除数1101 就用P(X)=X3+X2+1　(X3是x的三次方的意思) 最高位是2的三次方，就是x的三次方这样算，例如，101101 P(X)=X5+X3+X2+1</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、可靠传输"><a href="#三、可靠传输" class="headerlink" title="三、可靠传输"></a>三、可靠传输</h1><p>在有些情况下，我们需要数据链路层向上的网络层提供“可靠传输”的服务，就是发送端发送什么，在对应的接收端就收到什么， 前面的CRC只能检测出位数的差错，不能正确的检测出更精准的错误。</p>
+<h2 id="3-1、停止等待协议"><a href="#3-1、停止等待协议" class="headerlink" title="3.1、停止等待协议"></a>3.1、停止等待协议</h2><p>　　停止等待就是每发送完一个分组就停止发送，等待对方的确认。在收到确认后再发送下一个分组。　　　　　　　</p>
+<p>　　超时重传：解决上面如果数据分组或确认分组丢失时，发送方将会一直等待接收方的确认分组的问题，设置一个超时计时器，</p>
+<p>　　　　　　　　若到了超时计时器所设置的重传时间，而发送方仍收不到接收方的任何确认分组，则会重传原来的分组。</p>
+<p>　　重复分组：如果只使用超时重传来解决，不用发送确认分组，那么会出现重复分组的问题，就是当接收方收到分组后，发回确认分组时，确认分组丢失，</p>
+<p>　　　　　　　　那么会触发超时重传，则接收方会收到两个重复的分组，这里需要注意的是，是确认分组丢失。第一次发送的分组已经正确接收了。</p>
+<h2 id="3-2、停止等待算法"><a href="#3-2、停止等待算法" class="headerlink" title="3.2、停止等待算法"></a>3.2、停止等待算法</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928184101278-364914593.png" alt="img">)<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928184127169-796346714.png" alt="img"></p>
+<p>　　画图分析一下：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928184252825-1306293443.png" alt="img"></p>
+<h2 id="3-2、退回N步协议"><a href="#3-2、退回N步协议" class="headerlink" title="3.2、退回N步协议"></a>3.2、退回N步协议</h2><p>　　其实跟停止等待协议差不多，只是使用的是流水线传输方式，发送方不间断的发送分组，每次发送的分组大小有限制，如果不限制，可能会使接收方或网络来不及处理这些分组，</p>
+<p>　　导致分组的丢失，所以每次发送的分组大小可能是5，6或者更多。这种限制就是回退N步协议。</p>
+<p>　　回退N步协议：利用发送窗口来限制发送方连续发送分组的个数。要是发送窗口为1就是我们上面所讨论的停止等待协议。</p>
+<p>　　退回等待是怎么工作：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928184517450-117176301.png" alt="img"></p>
+<p>　　这个就是回退N步协议，根据这个原理图，也能看出，为什么叫回退N步协议了，在哪里出错了，就必须回退到哪里全部重传，为了解决这个，又有了选择重传协议</p>
+<h2 id="3-3、选择重传协议"><a href="#3-3、选择重传协议" class="headerlink" title="3.3、选择重传协议"></a>3.3、选择重传协议</h2><p>　　改进回退N布协议， 方式都是一样， 在接受方必须逐一确认， 但是出现错误，只需要重传出现错误的那一个分组，不用全部重传，这里的全部，指的是在出现错误的分组之后的所有分组，前提是在同一个发送窗口中。</p>
+<p>总结：不可靠的链路上，通过各种协议，就能达到可靠传输，来保证数据的准确性</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7608173.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、两种信道下的数据链路层"><a href="#四、两种信道下的数据链路层" class="headerlink" title="四、两种信道下的数据链路层"></a>四、两种信道下的数据链路层</h1><p>点对点信道的数据链路层、 广播信道的数据链路层</p>
+<h2 id="4-1、点对点协议"><a href="#4-1、点对点协议" class="headerlink" title="4.1、点对点协议"></a>4.1、点对点协议</h2><p>　　概述：现在全世界使用的最多的数据链路层协议就是点对点协议PPP(Point to Point Protocol)，我们大多数用户使用的拨号电话线接入因特网时，一般使用的就是PPP协议</p>
+<p>　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928185330294-867382243.png" alt="img"></p>
+<p>　　1）PPP协议的特点　</p>
+<p>·　　　　简单：接收方每接收一个帧，就进行CRC检验，检验正确，就收下，否则就丢弃，它是不可靠传输，所以这就是简单的原因</p>
+<p>　　　　封装成帧：前一章已经讲过</p>
+<p>　　　　多种网络层协议：数据链路层的上一层就是网络层，所以它同时支持多种网络层协议的运行</p>
+<p>　　　　多种类型链路：比如，串行的、并行的，（串行：一个比特一个比特发送，只需要一条线路，并行：一次性传输n个比特，所以需要n条线路，所以叫并行）同步的、异步的（同步：以稳定的比特流</p>
+<p>　　　　　　　　　　　　的形式传输 异步：以字节为独立的传输单位，字节跟字节之间的时间间隔不确定，但字节中的每个比特仍是同步的。），低速或高速、电或光，等不同类型的链路都能支持</p>
+<p>　　　　差错检测：就是用CRC来检验</p>
+<p>　　　　透明传输</p>
+<p>　　　　检测连接状态：检测点跟点之间的连接状态，也就是在PC机和ISP之间的线路。</p>
+<p>　　　　最大传送单位：PPP协议帧有最大的传送单元，发送的分组不能超过这个最大长度</p>
+<p>　　　　网络层地址协商：使通信的两个网络层实体能够通过协商知道或能够配置彼此的网络层地址，通俗的讲，就是在分配IP地址时，就现需要这个协商才能解决</p>
+<p>　　2）PPP协议的组成　</p>
+<p>　　　　2.1）数据链路层可以用于异步串行或同步串行介质，通俗讲也就是可以适应多种性质的链路，有这种介质存在</p>
+<p>　　　　2.2）使用LCP(链路控制协议)建立并维护数据链路连接， 也就是上面讲的一些维护链路连接、检测连接状态等功能，就是用它来实现的</p>
+<p>　　　　2.3）网络控制协议(NCP)允许点到点连接上使用多种网络层协议，也就是因为跟网络层连接在一起，所以需要支持上一层的多种协议，这样才能完成一系列的功能，比如，网络层地址协商。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928185904044-927531478.png" alt="img"></p>
+<p>　　3）PPP协议帧格式</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928190025231-1932719506.png" alt="img"></p>
+<p>　　4）PPP协议帧传输时透明输出问题</p>
+<p>　　4.1）字节填充：</p>
+<p>　　　　使用的是字节传输，也就是异步，所有的PPP帧的长度都是整数字节，所以会出现IP数据包中有字节跟开始结束标志字节相同的问题</p>
+<p>　　　　解决： 标志字段 F = 0x7E　　　</p>
+<p>　　　　　　IP数据包中出现0x7E字节 ： 转变为  0x7D、0x5E</p>
+<p>　　　　　　IP数据包中出现0x7D：0x7D、0x5D　</p>
+<p>　　　　IP数据包中出现ASCII码的控制字符，则在该控制字符前面加0x7D</p>
+<p>　　4.2）零比特填充方法</p>
+<p>　　　　使用的是比特流传输(一连串的比特连续传送)，也就是同步，PPP协议就采用零比特填充方法来实现透明传输。</p>
+<p>　　5）PPP协议的工作流程</p>
+<p>　　链路静止、链路建立、鉴别、网络层协议、链路打开、链路终止 大概流程图就是下面这个图这样：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928191400637-978859538.png" alt="img"></p>
+<p>　　　　六步的具体实现细节（验证了PPP协议的三个组成部分）：</p>
+<p>　　　　1）链路静止到链路建立：用户拨号接通ISP拨号服务器后，就创建了PC机到ISP服务器的物理连接，这里面的细节就归咎于物理层的功劳了，</p>
+<p>　　　　　　创建了一条怎么样的信道，通过什么传送数据，都是物理层需要做的事情。</p>
+<p>　　　　2）链路建立到鉴别：建立了物理连接后，PPP中LCP(链路控制协议)就需要做事了，LCP协商一些配置选项(链路上的最大帧长，所使用的鉴别协议，或者不使用PPP帧中的地址和控制字段)，</p>
+<p>　　　　　　如何跟ISP协商这些呢，就是通过发送LCP的配置请求帧，而ISP也可以发送几种响应，配置确认帧：所有选项都接受 配置否认帧：所有选项都理解但不能接受 配置拒绝帧：有的选项无法</p>
+<p>　　　　　　识别或不能接受，需要协商。 通过一系列的协商后，此过程就结束了，就到了鉴别状态，如果协商失败，就直接回到链路静止状态。</p>
+<p>　　　　3）鉴别到网络层协议：这里到达网络层协议之间做的事情就是鉴别身份，这里感觉还没学习到，大概就是鉴别一些用户的身份信息，比如交钱了没有等等吧，猜的。这一阶段可以去查查，估计之后</p>
+<p>　　　　　　会遇得到。给出参考答案：只允许传送LCP协议的分组、鉴别协议的分组以及检测链路质量的分组。若使用口令鉴别协议PAP(Password Authentication Protocol)，则需要发起通信的一方发送身份标识符和口令。</p>
+<p>　　　　　　系统可运行用户重试若干次。如果需要有更好的安全性，则可使用更加复杂的口令握手鉴别协议CHAP(Challenge-Handshake Authentication Protocol)。若鉴别身份失败，则转到链路终止状态(Link Dead)。</p>
+<p>　　　　　　若鉴别成功，则进入网络层协议状态(Network-Layer Protocol)。</p>
+<p>　　　　4）网络层协议到链路打开：前面已经经过了PPP协议的前两层，接下来就是NCP(网络控制协议)做事的时候了，这一阶段就是给PC机分配一个IP地址和对链路层进行网络层协议的设置，让链路层能支持网络层的工作</p>
+<p>　　　　5）链路打开到链路终止：进行传输数据，如果传输完成，就发送终止请求分组，收到终止确认分组后，就到了终止状态，</p>
+<p>　　　　6）链路终止到链路静止：当物理层没有载波时，就到静止状态</p>
+<h2 id="4-2、广播信道的数据链路层"><a href="#4-2、广播信道的数据链路层" class="headerlink" title="4.2、广播信道的数据链路层"></a>4.2、广播信道的数据链路层</h2><p>　　讲解广播信道的知识，就必须要提到以太网，但是现在大多数人已经把以太网就当成局域网了，现在来说清楚以太网和局域网的区别</p>
+<p>　　1）以太网和局域网的区别　</p>
+<p>　　　　以太网是通信协议标准，该标准定义了在局域网（LAN）中采用的电缆类型和信号处理方法，比如有CSMA/CD协议，这个协议后面会讲到。</p>
+<p>　　　　局域网：在较小范围内组建的网络，通过交换器什么的连接各个PC机，比如一个实验室，一栋楼，一个校园内，这都市局域网，拿网线将两台计算机连在一起，这也能算是局域网，</p>
+<p>　　　　所以：以太网是一种局域网，而局域网却不一定是以太网，大多数局域网就是采用了以太网的这个标准，所以很多人就将局域网默认为以太网，这种说法是有点偏差的。</p>
+<p>　　在局域网中，就采用的是广播信道</p>
+<p>　　广播信道：就是一台PC机发送数据给另一台PC机，在同一个局域网中的计算机都能接收到该数据，这就像广播一样，所以这种就叫做广播信道。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1173,136 +1652,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network6/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/network5/" class="post-title-link" itemprop="url">network5</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-10 16:08:29" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:29-05:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/10/network5/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/network4/" class="post-title-link" itemprop="url">network4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-10 16:08:27" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:27-05:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/10/network4/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
