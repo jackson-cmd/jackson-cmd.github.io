@@ -145,7 +145,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ccna/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/ccna/" class="post-title-link" itemprop="url">ccna思科课</a>
+            <a href="/2020/05/10/network10/" class="post-title-link" itemprop="url">network10</a>
         </h2>
 
         <div class="post-meta">
@@ -168,9 +168,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-10 12:51:27 / Modified: 13:27:18" itemprop="dateCreated datePublished" datetime="2020-05-10T12:51:27-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:43" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:43-05:00">2020-05-10</time>
             </span>
 
           
@@ -185,54 +184,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-<h2 id="1-计算机网络基础"><a href="#1-计算机网络基础" class="headerlink" title="1.计算机网络基础"></a>1.计算机网络基础</h2><h6 id="C-S架构的优缺点："><a href="#C-S架构的优缺点：" class="headerlink" title="C/S架构的优缺点："></a>C/S架构的优缺点：</h6><ul>
-<li>优点：<br>1.客户端因为是独立设计，所以可以实现个性化<br>2.因为客户端是需要进行安装的，可以不需要重复安装和加载<br>3.因为客户端是独立开发的，所以有能力对客户端进行安全设计<br>4.如果遇到不同的操作系统，需要为不同的操作系统各开发一套客户端</li>
-<li>缺点：<br>1.因为客户端是不需要重复安装，所以用户可以不更新与升级，增加了维护成本。<br>2.因为需要开发客户端和服务器两套程序，所以开发成本会增加</li>
-</ul>
-<h6 id="B-S架构的优缺点："><a href="#B-S架构的优缺点：" class="headerlink" title="B/S架构的优缺点："></a>B/S架构的优缺点：</h6><ul>
-<li>优点：<br>1.因为B/S架构具备通用性，所以开发成本较低。<br>2.因为不需要安装客户端，所以客户端不需要进行升级，只需要更新后台代码即可实现所有客户端的更新。<br>3.因为B/S架构多用WEB网页进行开发，所以增、删功能也非常容易，只需要修改网页即可完成</li>
-<li>缺点：<br>1.耗流量，每次都要加载全部的内容（不过有缓存可以降低流量损耗）<br>2.因为没有独立的客户端，所以无法实现个性化（通过账号体系可以实现）<br>3.因为没有独立设计客户端，所以客户端难以实现安全控制（HTTPS、控件）。<br>4.难以实现特殊的操作（删本地文件），所以所有的杀毒软件都是C/S架构的。<br>B/S架构更多的时候是使用了HTTP协议、而C/S架构更多的时候使用的WinSocke t协议（TCP、UDP）</li>
-</ul>
-<blockquote>
-<p>总结：CS响应速度快，安全性强，一般应用于局域网中，但是开发维护成本高；BS可以实现跨平台，客户端零维护，但是个性化能力低，响应速度较慢。所以有些单位日常办公应用BS，在实际生产中使用CS结构。</p>
-</blockquote>
-<p><strong>rs 路由器和交换机：router switch</strong></p>
-<p><strong><em>交换机可以实现局域网，而路由器是连接不同局域网，实现广域网。</em></strong></p>
-<p>1、LAN 局域网(Local Area Network)接口，通俗讲就是路由和用户之间网线口；一组终端设备和由共同的组织管理的用户。所有用户连接lan下。</p>
-<p>2、WAN 广域网(Wide Area Network)，通俗讲就是和光猫猫外部网连接的网线口；连接分布于不同地理位置的LAN.</p>
-<p>3、WLAN无线局域网(Wireless LAN)，数据通过电磁波传输；</p>
-<p>通俗点说，WAN口是对外的接口，和运营商、上级网络打交道。</p>
-<p>LAN和WLAN是对内的接口，内部的电脑、手机、PAD，都是接入到LAN或者WLAN。</p>
-<p><img src="https://img-blog.csdn.net/20180504090210322" alt="img"></p>
-<h3 id="互联网服务提供商（Internet-Service-Provider），简称ISP，作用："><a href="#互联网服务提供商（Internet-Service-Provider），简称ISP，作用：" class="headerlink" title="互联网服务提供商（Internet Service Provider），简称ISP，作用："></a>互联网服务提供商（<em>Internet Service Provider</em>），简称<em>ISP</em>，作用：</h3><p>一是接入服务，即帮助用户接入Internet；二是导航服务，即帮助用户在Internet上找到所需要的信息；三是信息服务，即建立数据服务系统，收集、加工、存储信息，定期维护更新，并通过网络向用户提供信息内容服务。</p>
-<h3 id="HUB-SWITCH-ROUTER-DIFFERENCES"><a href="#HUB-SWITCH-ROUTER-DIFFERENCES" class="headerlink" title="HUB, SWITCH, ROUTER DIFFERENCES:"></a>HUB, SWITCH, ROUTER DIFFERENCES:</h3><p>Hub: only detects that a device is physically connected to it.集线器</p>
-<p>Switch: can detect specific devices that are connected to it.</p>
-<p>keeps a record of the MAC addresses of those devices. </p>
-<p>Hubs and swtiches are used to exchange data within a local area network. Not used to exchange data outside their own network. To exchange data outside their ow network, a device needs to be able to read I.P. addresses.</p>
-<p>Router: routes data from one network to another based on their IP address.</p>
-<h3 id="端口port"><a href="#端口port" class="headerlink" title="端口port"></a>端口port</h3><h5 id="端口概念"><a href="#端口概念" class="headerlink" title="端口概念"></a>端口概念</h5><p>在网络技术中，端口（port）大致有两种意思：<br>一是物理上的端口，比如ADSL、Modem、集线器、交换机、路由器用于连接其他网络设备的接口，如RJ-45端口、SC端口等等。<br>二是逻辑意义上的端口，一般是指TCP/IP协议中的端口，端口号的范围从0到65535，比如用于浏览网页服务的80端口，用于FTP服务的21端口等等。<br>这里要说的是逻辑意义上的端口。</p>
-<h6 id="什么是端口"><a href="#什么是端口" class="headerlink" title="什么是端口"></a>什么是端口</h6><p>在Internet上，各主机间通过TCP/TP协议发送和接收数据报，各个数据报根据其目的主机的IP地址来进行互联网络中的路由选择。可见，把数据报顺利的传送到目的主机是没有问题的。我们知道大多数操作系统都支持多程序（进程）同时运行，那么目的主机应该把接收到的数据报传送给众多同时运行的进程中的哪一个？显然这个问题有待解决，端口机制便由此被引入了进来。</p>
-<p>本地操作系统会给那些有需求的进程分配协议端口（protocal port，即我们常说的端口），每个协议端口由一个正整数标识，如：80，139等等。当目的主机接收到数据报后，将根据报文首部的目的端口号，把数据发送到相应端口，而与此端口相对应的那个进程将会领取数据并等待下一组数据的到来。</p>
-<p>端口其实就是队，操作系统为各个进程分配了不同的队，数据报按照目的端口被推入相应的队中，等待被进程取用，在极特殊的情况下，这个队也是有可能溢出的，不过操作系统允许各进程指定和调整自己的队的大小。不光接受数据报的进程需要开启它自己的端口，发送数据报的进程也需要开启端口，这样，数据报中将会标识有源端口，以便接受方能顺利的回传数据报到这个端口。</p>
-<h5 id="端口的作用"><a href="#端口的作用" class="headerlink" title="端口的作用"></a>端口的作用</h5><p>我们知道，一台拥有IP地址的主机可以提供许多服务，比如Web服务，FTP服务、SMTP服务等，这些服务完全可以通过1个IP地址来实现。那么，主机是怎样区分不同的网络服务呢？显然不能只靠IP地址，因为IP地址与网络服务的关系是一对多的关系。实际上是通过”IP地址+端口号”来区分不同的服务的。<br>客户端通常对它所使用的端口号并不关心，只需保证该端口号在本机上是唯一的就可以了。客户端端口号又称作临时端口号（即存在时间很短）。这是因为它通常只是在用户运行该客户程序时才存在，而服务器则只要主机开着，其服务就运行。</p>
-<h6 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h6><p>可以使用Netstat命令：开始-&gt;运行，键入”cmd”并回车，打开命令提示符窗口。在命令提示符状态下键入”netstat -a -n”，按下回车键后就可以看到以数字形式显示的 TCP和UDP连接的端口号及状态。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/9113969-67c6d199315602ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" alt="img"></p>
-<h4 id="关闭-开启端口"><a href="#关闭-开启端口" class="headerlink" title="关闭/开启端口"></a>关闭/开启端口</h4><p>默认的情况下，有很多不安全的或者没有什么用的端口是开启的，比如Telent服务的23端口、FTP服务的21端口、SMTP服务的25端口、RPC服务的135端口等。为了保证系统的安全性，我们可以通过下面的方法来关闭/开启端口。</p>
-<h6 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h6><p>比如关闭Apache2.4服务端口，可以这样做：开始-&gt;运行-&gt;服务-&gt;在服务窗口找到Apache2.4并双击-&gt;单击”停止”按钮来停止该服务-&gt;然后在”启动类型”中选择”禁用”-&gt;最后单击”确定”按钮即可。关闭了Apache2.4服务就相当于关闭了对应的端口。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/9113969-f7b38d620a983ae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/602" alt="img"></p>
-<h6 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h6><p>如果要开启该端口只要先在”启动类型”选择”自动”，单击”确定”按钮，再打开该服务，在”服务状态中单击”启动”按钮即可启用该端口，最后，单击”确定”按钮即可。</p>
-<h4 id="端口分类"><a href="#端口分类" class="headerlink" title="端口分类"></a>端口分类</h4><p>逻辑意义上的端口有多种分类标准，下面是两种常见的分类：</p>
-<h5 id="1-按端口号分布划分"><a href="#1-按端口号分布划分" class="headerlink" title="1.按端口号分布划分"></a>1.按端口号分布划分</h5><h6 id="（1）知名端口（Well-Known-Ports）"><a href="#（1）知名端口（Well-Known-Ports）" class="headerlink" title="（1）知名端口（Well-Known Ports）"></a>（1）知名端口（Well-Known Ports）</h6><p>知名端口即众所周知的端口号，范围从0到1023，这些端口号一般固定分配给一些服务。比如25端口分配给SMTP（简单邮件传输协议）服务，80端口分配给HTTP服务，135端口分配给RPC（远程过程调用）服务等等。</p>
-<h6 id="（2）动态端口（Dynamic-Ports）"><a href="#（2）动态端口（Dynamic-Ports）" class="headerlink" title="（2）动态端口（Dynamic Ports）"></a>（2）动态端口（Dynamic Ports）</h6><p>动态端口的范围从1024到65535，这些端口号一般不固定分配给某个服务，也就是说许多服务都可以使用这些端口。只要运行的程序向系统提出访问网络的申请，那么系统就可以从这些端口号中分配一个供该程序使用。比如1024端口就是分配给第一个向系统发出申请的程序。在关闭程序进程后，就会释放所占用的端口号。<br>不过动态端口也常常被病毒木马程序所利用，如冰河默认连接端口是7626、WAY 2.4是8011、Netspy 3.0是7306、YAI病毒是1024等等。</p>
-<h6 id="2-按协议类型划分"><a href="#2-按协议类型划分" class="headerlink" title="2.按协议类型划分"></a>2.按协议类型划分</h6><p>按协议类型划分，可以分为TCP、UDP、IP和ICMP（Internet控制消息协议）等端口。</p>
-<h6 id="（1）TCP端口"><a href="#（1）TCP端口" class="headerlink" title="（1）TCP端口"></a>（1）TCP端口</h6><p>TCP端口，即传输控制协议端口，需要在客户端和服务器之间建立连接，这样可以提供可靠的数据传输。常见的包括FTP服务的21端口，Telent服务的23端口，SMTP服务的25端口，以及HTTP服务的80端口等。</p>
-<h6 id="（2）UDP端口"><a href="#（2）UDP端口" class="headerlink" title="（2）UDP端口"></a>（2）UDP端口</h6><p>UDP端口，即用户数据包协议端口，无需在客户端和服务器之间建立连接，安全性得不到保障。常见的有DNS服务的53端口，SNMP（简单网络管理协议）服务的161端口，QQ使用的8000和4000端口等等。</p>
-<h5 id="端口在入侵中的作用"><a href="#端口在入侵中的作用" class="headerlink" title="端口在入侵中的作用"></a>端口在入侵中的作用</h5><p>有人曾经把服务器比作房子，而把端口比作通向不同房间（服务）的门。入侵者要占领这间房子，势必要破门而入（物理入侵另说），那么对于入侵者来说，了解房子开了几扇门，都是什么样的门，门后面有什么东西就显得至关重要。<br>入侵者通常会用扫描器对目标主机的端口进行扫描，以确定哪些端口是开放的，从开放的端口，入侵者可以知道目标主机大致提供了哪些服务，进而猜测可能存在的漏洞，因此对端口的扫描可以帮助我们更好的了解目标主机，而对于管理员，扫描本机的开放端口也是做好安全防范的第一步。</p>
-<h6 id="常见端口表汇总"><a href="#常见端口表汇总" class="headerlink" title="常见端口表汇总"></a>常见端口表汇总</h6><p>1　tcpmux　TCP Port Service Multiplexer 传输控制协议端口服务多路开关选择器<br>2　compressnet　Management Utility　　　　 compressnet 管理实用程序<br>3　compressnet　Compression Process　　　　压缩进程<br>5　rje　Remote Job Entry　　　　　　　　　 远程作业登录<br>7　echo　Echo　　　　　　　　　　　　　　　回显<br>9　discard　Discard　　　　　　　　　　　　丢弃<br>11　systat　Active Users　　　　　　　　　 在线用户<br>13　daytime　Daytime　　　　　　　　　　　 时间<br>17　qotd　Quote of the Day　　　　　　　　 每日引用<br>18　msp　Message Send Protocol　　　　　　 消息发送协议<br>19　chargen　Character Generator　　　　　 字符发生器<br>20　ftp-data　File Transfer [Default Data]　文件传输协议(默认数据口)　<br>21　ftp　File Transfer [Control]　　　　　　文件传输协议(控制)<br>22　ssh　SSH Remote Login Protocol　　　　 SSH远程登录协议<br>23　telnet　Telnet　　　　　　　　　　　　 终端仿真协议<br>24　?　any private mail system　　　　　　 预留给个人用邮件系统<br>25　smtp　Simple Mail Transfer　　　　　　 简单邮件发送协议<br>27　nsw-fe　NSW User System FE　　　　　　 NSW 用户系统现场工程师<br>29　msg-icp　MSG ICP　　　　　　　　　　　 MSG　ICP<br>31　msg-auth　MSG Authentication　　　　　 MSG验证<br>33　dsp　Display Support Protocol　　　　　显示支持协议<br>35　?　any private printer server　　　　　预留给个人打印机服务<br>37　time　Time　　　　　　　　　　　　　　 时间<br>38　rap　Route Access Protocol　　　　　　 路由访问协议<br>39　rlp　Resource Location Protocol　　　　资源定位协议<br>41　graphics　Graphics　　　　　　　　　　 图形<br>42　nameserver　WINS Host Name Server　　　WINS 主机名服务<br>43　nicname　Who Is　　　　　　　　　　　　“绰号” who is服务<br>44　mpm-flags　MPM FLAGS Protocol　　　　　MPM(消息处理模块)标志协议<br>45　mpm　Message Processing Module [recv]　消息处理模块　<br>46　mpm-snd　MPM [default send]　　　　　　消息处理模块(默认发送口)<br>47　ni-ftp　NI FTP　　　　　　　　　　　　 NI FTP<br>48　auditd　Digital Audit Daemon　　　　　 数码音频后台服务　<br>49　tacacs　Login Host Protocol (TACACS)　 TACACS登录主机协议<br>50　re-mail-ck　Remote Mail Checking Protocol　远程邮件检查协议<br>51　la-maint　IMP Logical Address Maintenance　IMP(接口信息处理机)逻辑地址维<br>护<br>52　xns-time　XNS Time Protocol　　　　　　施乐网络服务系统时间协议　　<br>53　domain　Domain Name Server　　　　　　 域名服务器<br>54　xns-ch　XNS Clearinghouse　　　　　　　施乐网络服务系统票据交换<br>55　isi-gl　ISI Graphics Language　　　　　ISI图形语言<br>56　xns-auth　XNS Authentication　　　　　 施乐网络服务系统验证<br>57　?　any private terminal access　　　　 预留个人用终端访问<br>58　xns-mail　XNS Mail　　　　　　　　　　 施乐网络服务系统邮件<br>59　?　any private file service　　　　　　预留个人文件服务<br>60　?　Unassigned　　　　　　　　　　　　　未定义<br>61　ni-mail　NI MAIL　　　　　　　　　　　 NI邮件?<br>62　acas　ACA Services　　　　　　　　　　 异步通讯适配器服务<br>63　whois+ whois+　　　　　　　　　　　　　 WHOIS+<br>64　covia　Communications Integrator (CI)　通讯接口　<br>65　tacacs-ds　TACACS-Database Service　　 TACACS数据库服务<br>66　sql<em>net　Oracle SQL</em>NET　　　　　　　　Oracle SQL*NET<br>67　bootps　Bootstrap Protocol Server　　　引导程序协议服务端<br>68　bootpc　Bootstrap Protocol Client　　　引导程序协议客户端<br>69　tftp　Trivial File Transfer　　　　　　小型文件传输协议<br>70　gopher　Gopher　　　　　　　　　　　　 信息检索协议<br>71　netrjs-1　Remote Job Service　　　　　 远程作业服务<br>72　netrjs-2　Remote Job Service　　　　　 远程作业服务<br>73　netrjs-3　Remote Job Service　　　　　 远程作业服务<br>74　netrjs-4　Remote Job Service　　　　　 远程作业服务<br>75　?　any private dial out service　　　　预留给个人拨出服务<br>76　deos　Distributed External Object Store 分布式外部对象存储　<br>77　?　any private RJE service　　　　　　预留给个人远程作业输入服务<br>78　vettcp　vettcp　　　　　　　　　　　　 修正TCP?<br>79　finger　Finger　　　　　　　　　　　　 FINGER(查询远程主机在线用户等信<br>息)<br>80　http　World Wide Web HTTP　　　　　　　全球信息网超文本传输协议<br>81　hosts2-ns　HOSTS2 Name Server　　　　　HOST2名称服务<br>82　xfer　XFER Utility　　　　　　　　　　 传输实用程序<br>83　mit-ml-dev　MIT ML Device　　　　　　　模块化智能终端ML设备<br>84　ctf　Common Trace Facility　　　　　　 公用追踪设备<br>85　mit-ml-dev　MIT ML Device　　　　　　　模块化智能终端ML设备<br>86　mfcobol　Micro Focus Cobol　　　　　　 Micro Focus Cobol编程语言<br>87　?　any private terminal link　　　　　 预留给个人终端连接<br>88　kerberos　Kerberos　　　　　　　　　　 Kerberros安全认证系统<br>89　su-mit-tg　SU/MIT Telnet Gateway　　　 SU/MIT终端仿真网关<br>90　dnsix　DNSIX Securit Attribute Token Map　DNSIX 安全属性标记图　<br>91　mit-dov　MIT Dover Spooler　　　　　　 MIT Dover假脱机<br>92　npp　Network Printing Protocol　　　　 网络打印协议<br>93　dcp　Device Control Protocol　　　　　 设备控制协议<br>94　objcall　Tivoli Object Dispatcher　　　Tivoli对象调度<br>95　supdup　SUPDUP　　　　　　　　　　　　<br>96　dixie　DIXIE Protocol Specification　　DIXIE协议规范<br>97　swift-rvf　Swift Remote Virtural File Protocol　快速远程虚拟文件协议　<br>98　tacnews　TAC News　　　　　　　　　　　TAC(东京大学自动计算机?)新闻协议</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/10/ccna/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network10/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -256,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/website1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -270,7 +224,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/website1/" class="post-title-link" itemprop="url">有用网站大全</a>
+            <a href="/2020/05/10/network9/" class="post-title-link" itemprop="url">network9</a>
         </h2>
 
         <div class="post-meta">
@@ -279,9 +233,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-10 00:02:36 / Modified: 00:03:03" itemprop="dateCreated datePublished" datetime="2020-05-10T00:02:36-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:39" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:39-05:00">2020-05-10</time>
             </span>
 
           
@@ -296,22 +249,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-<p>搞学习</p>
-<p>猿学：<a href="http://yuanxue365.com/" target="_blank" rel="noopener">http://yuanxue365.com/</a><br>简书：<a href="https://www.jianshu.com/" target="_blank" rel="noopener">https://www.jianshu.com/</a><br>doyoudo：<a href="http://www.doyoudo.com/" target="_blank" rel="noopener">http://www.doyoudo.com/</a><br>好知网：<a href="http://www.howzhi.com/" target="_blank" rel="noopener">http://www.howzhi.com/</a><br>找书籍</p>
-<p>ePuBw（优质电子书下载网站）：<a href="https://epubw.com/" target="_blank" rel="noopener">https://epubw.com/</a><br>鸠摩搜书：<a href="https://www.jiumodiary.com/" target="_blank" rel="noopener">https://www.jiumodiary.com/</a><br>书伴：<a href="https://bookfere.com/" target="_blank" rel="noopener">https://bookfere.com/</a><br>ePUBee电子书库：<a href="http://cn.epubee.com/books/" target="_blank" rel="noopener">http://cn.epubee.com/books/</a><br>超星读书：<a href="http://book.chaoxing.com/" target="_blank" rel="noopener">http://book.chaoxing.com/</a><br>Owllook：<a href="https://www.owllook.net/" target="_blank" rel="noopener">https://www.owllook.net/</a><br>书格：<a href="https://new.shuge.org/" target="_blank" rel="noopener">https://new.shuge.org/</a><br>相识电子书：<a href="http://m.xiangshi123.com/" target="_blank" rel="noopener">http://m.xiangshi123.com/</a><br>冷知识 / 黑科技</p>
-<p>全球网络攻击实时地图：<a href="https://cybermap.kaspersky.com/" target="_blank" rel="noopener">https://cybermap.kaspersky.com/</a><br>毒鸡汤：<a href="http://www.nows.fun/" target="_blank" rel="noopener">http://www.nows.fun/</a><br>微景天下：<a href="http://www.vizen.cn/" target="_blank" rel="noopener">http://www.vizen.cn/</a><br>果汁排行榜（生活中各种各样的排行榜）：<a href="http://guozhivip.com/rank/" target="_blank" rel="noopener">http://guozhivip.com/rank/</a><br>小鸡词典（查网络流行语）：<a href="https://jikipedia.com/" target="_blank" rel="noopener">https://jikipedia.com/</a><br>中国妖怪百集：<a href="http://www.cbaigui.com/" target="_blank" rel="noopener">http://www.cbaigui.com/</a><br>全球电视直播：<a href="http://tvvtvv.com/" target="_blank" rel="noopener">http://tvvtvv.com/</a><br>百度企业信用：<a href="https://xin.baidu.com/" target="_blank" rel="noopener">https://xin.baidu.com/</a><br>爱航天网：<a href="http://www.aihangtian.com/" target="_blank" rel="noopener">http://www.aihangtian.com/</a><br>写代码</p>
-<p>源码之家_站长下载：<a href="http://down.chinaz.com/" target="_blank" rel="noopener">http://down.chinaz.com/</a><br>找图片</p>
-<p>高清壁纸网站：<a href="https://wall.alphacoders.com/?lang=Chinese" target="_blank" rel="noopener">https://wall.alphacoders.com/?lang=Chinese</a><br>资源搜索</p>
-<p>大力盘搜索：<a href="https://dalipan.com/" target="_blank" rel="noopener">https://dalipan.com/</a><br>写代码</p>
-<p>程序员在线工具：<a href="https://tool.lu/" target="_blank" rel="noopener">https://tool.lu/</a><br>菜鸟工具：<a href="https://c.runoob.com/" target="_blank" rel="noopener">https://c.runoob.com/</a><br>toolfk：<a href="https://www.toolfk.com/" target="_blank" rel="noopener">https://www.toolfk.com/</a><br>小工具</p>
-<p>Softonic（软件下载）：<a href="https://en.softonic.com/" target="_blank" rel="noopener">https://en.softonic.com/</a><br>PC下载网（软件下载）<a href="https://www.pcsoft.com.cn/" target="_blank" rel="noopener">https://www.pcsoft.com.cn/</a><br>GitMind（在线思维导图）：<a href="https://gitmind.cn/" target="_blank" rel="noopener">https://gitmind.cn/</a><br>MindLine思维导图：<a href="https://www.mindline.cn/" target="_blank" rel="noopener">https://www.mindline.cn/</a><br>draw.io（在线流程图制作）：<a href="https://app.diagrams.net/" target="_blank" rel="noopener">https://app.diagrams.net/</a><br>站长素材：<a href="http://sc.chinaz.com/" target="_blank" rel="noopener">http://sc.chinaz.com/</a><br>第一PPT：<a href="http://www.1ppt.com/" target="_blank" rel="noopener">http://www.1ppt.com/</a><br>waifu2x（图片拉伸提升画质）：<a href="http://waifu2x.udp.jp" target="_blank" rel="noopener">http://waifu2x.udp.jp</a><br>文字云：<a href="https://wordart.com/" target="_blank" rel="noopener">https://wordart.com/</a><br>Akuziti （汉字转换艺术字体效果）：<a href="http://www.akuziti.com/" target="_blank" rel="noopener">http://www.akuziti.com/</a><br>Ezgif（GIF动画编辑工具，视频转GIF）：<a href="https://ezgif.com/" target="_blank" rel="noopener">https://ezgif.com/</a><br>ProcessOn（在线作图工具）：<a href="https://www.processon.com/mindmap" target="_blank" rel="noopener">https://www.processon.com/mindmap</a><br>导航页（工具集）</p>
-<p>炫猿：<a href="https://xydh.fun/" target="_blank" rel="noopener">https://xydh.fun/</a><br>国内外网站的导航站：<a href="https://www.egouz.com/" target="_blank" rel="noopener">https://www.egouz.com/</a><br>AnywhereAnything：<a href="http://lackar.com/aa/" target="_blank" rel="noopener">http://lackar.com/aa/</a><br>兔二工具：<a href="https://www.tool2.cn/" target="_blank" rel="noopener">https://www.tool2.cn/</a><br>现实君工具箱：<a href="http://tool.uixsj.cn/" target="_blank" rel="noopener">http://tool.uixsj.cn/</a><br>工具123：<a href="http://www.gjw123.com/" target="_blank" rel="noopener">http://www.gjw123.com/</a><br>nicetool：<a href="http://www.nicetool.net/" target="_blank" rel="noopener">http://www.nicetool.net/</a><br>一个工具箱：<a href="http://www.atoolbox.net/" target="_blank" rel="noopener">http://www.atoolbox.net/</a><br>孟坤工具箱：<a href="http://tool.mkblog.cn/" target="_blank" rel="noopener">http://tool.mkblog.cn/</a><br>网站直通车：<a href="http://www.wangzhanztc.com/" target="_blank" rel="noopener">http://www.wangzhanztc.com/</a><br>实用工具大全：<a href="https://tool.520101.com/" target="_blank" rel="noopener">https://tool.520101.com/</a><br>听音乐</p>
-<p>墨灵音乐：<a href="https://music.qugeek.com/" target="_blank" rel="noopener">https://music.qugeek.com/</a><br>音乐搜索器：<a href="http://www.xieqian.vip/music/" target="_blank" rel="noopener">http://www.xieqian.vip/music/</a><br>51APE无损乐下载：<a href="http://www.51ape.com/" target="_blank" rel="noopener">http://www.51ape.com/</a><br>超高无损音乐下载：<a href="https://www.sq688.com/" target="_blank" rel="noopener">https://www.sq688.com/</a><br>看视频</p>
-<p>美剧星球：<a href="http://www.meijuxingqiu.com/" target="_blank" rel="noopener">http://www.meijuxingqiu.com/</a><br>zzzfun动漫网<br>麻辣黑科技影视：<a href="http://dy.27234.cn/" target="_blank" rel="noopener">http://dy.27234.cn/</a><br>美剧17：<a href="http://meiju17.com/index.php/vod/show/by/time/" target="_blank" rel="noopener">http://meiju17.com/index.php/vod/show/by/time/</a><br>二次元宅男腐女（F站）：<a href="http://fuliqu.com/" target="_blank" rel="noopener">http://fuliqu.com/</a><br>原博客再更新，可能就没了，之后将持续更新本篇博客<br>————————————————<br>版权声明：本文为CSDN博主「爪白白」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_43901693/java/article/details/104750730" target="_blank" rel="noopener">https://blog.csdn.net/qq_43901693/java/article/details/104750730</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/10/website1/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network9/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -335,7 +275,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/github1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -349,7 +289,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/09/github1/" class="post-title-link" itemprop="url">git命令大全</a>
+            <a href="/2020/05/10/network8/" class="post-title-link" itemprop="url">network8</a>
         </h2>
 
         <div class="post-meta">
@@ -358,9 +298,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-09 22:33:20 / Modified: 22:33:44" itemprop="dateCreated datePublished" datetime="2020-05-09T22:33:20-05:00">2020-05-09</time>
+              <time title="Created: 2020-05-10 16:08:37" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:37-05:00">2020-05-10</time>
             </span>
 
           
@@ -375,254 +314,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-<blockquote>
-<p>注: 文章摘自: IT大飞说 - 掘金</p>
-</blockquote>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3243cbd5978fa871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/980" alt="img"></p>
-<h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> user.name <span class="string">"Your Name"</span> <span class="comment">// Git 姓名</span></span><br><span class="line">git config --<span class="keyword">global</span> user.email <span class="string">"email@example.com"</span> <span class="comment">// Git 邮箱</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><p>提交至本地 “暂存区” (.git/index)</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个文件添加至仓库</span></span><br><span class="line">git <span class="keyword">add</span> README.md</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会忽略 .gitignore 把任何文件都加入</span></span><br><span class="line">git <span class="keyword">add</span> *</span><br><span class="line"><span class="comment">// 整个目录添加至仓库, 会根据 .gitignore 做过滤</span></span><br><span class="line">git <span class="keyword">add</span> .</span><br></pre></td></tr></table></figure>
-
-<h2 id="提交暂存区的文件至本地仓库"><a href="#提交暂存区的文件至本地仓库" class="headerlink" title="提交暂存区的文件至本地仓库"></a>提交暂存区的文件至本地仓库</h2><p>将已添加的文件提交至本地 Git 仓库 (默认 master 分支)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 会弹出一个 Vim 编辑器输入内容后再提交</span></span><br><span class="line">git commit</span><br><span class="line"><span class="comment">// 直接输入内容并提交</span></span><br><span class="line">git commit -m <span class="string">"feat: 修改 xx 文件"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<h2 id="比较当前文件的修改"><a href="#比较当前文件的修改" class="headerlink" title="比较当前文件的修改"></a>比较当前文件的修改</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>在 Git 中, 用 <code>HEAD</code> 表示当前版本. 上一个版本就是 <code>HEAD^</code>, 上上一个版本就是 <code>HEAD^^</code>, 以此类推…</p>
-<p>如果需要回退几十个版本的话可以这样写：<code>HEAD~50</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
-
-<p>如果你回退完版本又后悔了, 一般情况下是回不来的.</p>
-<p>但如果你可以找到之前 <code>commit id</code> 的话，也是可以的</p>
-<p><code>commit id</code> (版本号) 就是一个使用 SHA1 计算出来的一个非常大的十六进制数字, 提交时看到的一大串类似 <code>3628164...882e1e0</code> 的就是了</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard + commit <span class="keyword">id</span></span><br></pre></td></tr></table></figure>
-
-<p>如果忘记 <code>commit id</code> 的话可以执行下一步命令找回</p>
-<h2 id="查看历史命令记录"><a href="#查看历史命令记录" class="headerlink" title="查看历史命令记录"></a>查看历史命令记录</h2><p>会将你之前所有的操作类型及相关信息打印出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件提交前后的区别"><a href="#查看文件提交前后的区别" class="headerlink" title="查看文件提交前后的区别"></a>查看文件提交前后的区别</h2><p>查看工作区和版本库里面最新版本文件的区别，也可以不加 <code>HEAD</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-
-<h2 id="丢弃工作区的修改"><a href="#丢弃工作区的修改" class="headerlink" title="丢弃工作区的修改"></a>丢弃工作区的修改</h2><p>适用于工作区修改没有 <code>add</code> 的文件</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="丢弃暂存区的文件"><a href="#丢弃暂存区的文件" class="headerlink" title="丢弃暂存区的文件"></a>丢弃暂存区的文件</h2><p>适用于暂存区已经 <code>add</code> 的文件</p>
-<p>他会将暂存区的修改放回到工作区中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后提交即可</p>
-<p>如果不小心删错了, 且还没有提交的话使用下面命令即可恢复删除</p>
-<p>注意它只能恢复最近版本提交的修改, 你工作区的修改是不能被恢复的</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="xml"><span class="tag">&lt;<span class="name">file</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建SSH-key"><a href="#创建SSH-key" class="headerlink" title="创建SSH key"></a>创建SSH key</h2><p>一般本地 Git 仓库和远程 Git 仓库之间的传输是通过 SSH 加密的, 所以我们可以将其生成的公钥添加到 Git 服务端的设置中即可, 这样 Git 就可以知道是你提交的了</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh-keygen</span> <span class="selector-tag">-t</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-C</span> "<span class="selector-tag">youremail</span><span class="keyword">@example</span>.com"</span><br></pre></td></tr></table></figure>
-
-<h2 id="与远程仓库协作"><a href="#与远程仓库协作" class="headerlink" title="与远程仓库协作"></a>与远程仓库协作</h2><h5 id="与远程库关联"><a href="#与远程库关联" class="headerlink" title="与远程库关联"></a>与远程库关联</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> origin git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
-
-<h5 id="删除本地库与远程库的关联"><a href="#删除本地库与远程库的关联" class="headerlink" title="删除本地库与远程库的关联"></a>删除本地库与远程库的关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
-
-<p>作用：有时候我们需要关联其他远程库，需要先删除旧的关联，再添加新的关联，因为如果你已经关联过了就不能在关联了，不过想关联多个远程库也是可以的，前提是你的本地库没有关联任何远程库，操作如下：</p>
-<ul>
-<li>先关联Github远程库：</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> github git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>再关联码云远程库：</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span> gitee git@gitee.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
-
-<p>现在，我们用 <code>git remote -v</code> 查看远程库的关联信息，如果看到两组关联信息就说明关联成功了</p>
-<p>如果要推送到GitHub，使用命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push github master</span><br></pre></td></tr></table></figure>
-
-<p>如果要推送到码云，使用命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push gitee master</span><br></pre></td></tr></table></figure>
-
-<h2 id="将远程库中的更改合并到当前分支中"><a href="#将远程库中的更改合并到当前分支中" class="headerlink" title="将远程库中的更改合并到当前分支中"></a>将远程库中的更改合并到当前分支中</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull <span class="tag">&lt;<span class="name">远程主机名</span>&gt;</span> <span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>比如，要取回 <code>origin</code> 主机的 <code>next</code> 分支，与本地的 <code>master</code> 分支合并</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">pull</span> <span class="selector-tag">origin</span> <span class="selector-tag">next</span><span class="selector-pseudo">:master</span></span><br></pre></td></tr></table></figure>
-
-<p>如果远程分支 <code>next</code> 要与当前分支合并，则冒号后面的部分可以省略</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
-
-<p>实质上，这等同于先做 <code>git fetch</code>，再执行 <code>git merge</code></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git merge origin/<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="从远程库获取分支-标签"><a href="#从远程库获取分支-标签" class="headerlink" title="从远程库获取分支 / 标签"></a>从远程库获取分支 / 标签</h2><p>更新远程所有分支到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
-
-<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><p><strong>注意：第一次提交需要加一个参数 <code>-u</code>, 以后不需要</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<h2 id="克隆一个远程库"><a href="#克隆一个远程库" class="headerlink" title="克隆一个远程库"></a>克隆一个远程库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:shenxianhui/vue-test.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><ul>
-<li>创建一个分支 <code>branch1</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branch1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>切换到 <code>branch1</code> 分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建并切换到 <code>branch1</code> 分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看分支</li>
-</ul>
-<p>提示：显示的结果中，其中有一个分支前有个*号，表示的是当前所在的分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将 <code>branch1</code> 合并到当前分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除分支 <code>branch1</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch1</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看提交历史记录"><a href="#查看提交历史记录" class="headerlink" title="查看提交历史记录"></a>查看提交历史记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<p>命令可以看到分支合并图</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --graph</span><br></pre></td></tr></table></figure>
-
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>禁用 Fast forward 模式合并分支</p>
-<p>默认 Git 合并分支时使用的是 Fast forward 模式, 删除分支后会丢掉分支信息, 所以我们需要强制禁用此模式来合并</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m <span class="string">"merge"</span> branch1</span><br></pre></td></tr></table></figure>
-
-<p>补充内容：实际开发中分支管理的策略</p>
-<ul>
-<li><code>master</code> 分支应该是非常稳定的, 也就是仅用来发布新版本, 平时不能在上面提交</li>
-<li>我们可以新开一个 <code>dev</code> 分支, 也就是说 <code>dev</code> 分支是不稳定的. 到版本发布时, 再把 <code>dev</code> 分支合并到 <code>master</code>上，在 <code>master</code> 分支发布新版本</li>
-<li>你和你的协作者平时都在 <code>dev</code> 分支上提交, 每个人都有自己的分支, 时不时地往 <code>dev</code> 分支上合并就可以了</li>
-</ul>
-<h2 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a>保存工作现场</h2><p>作用：当你需要去修改其他内容时，这时候你的工作还没有做完，先临时保存起来，等干完其他事之后，再回来回复现场，再继续干活；为什么？因为暂存区是公用的，如果不通过 stash 命令隐藏，会带到其它分支去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
-
-<p>查看已经保存的工作现场列表</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-
-<p>恢复工作现场 (恢复并从 <code>stash list</code> 删除)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式1</span></span><br><span class="line">git stash pop</span><br><span class="line"><span class="comment">// 方式2</span></span><br><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
-
-<p>恢复工作现场，但 <code>stash</code> 内容并不删除，如果你需要删除执行如下命令</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="built_in">drop</span></span><br></pre></td></tr></table></figure>
-
-<p>恢复指定的 stash</p>
-<p>说明：其中 <code>stash@{0}</code> 为 <code>git stash list</code> 中的一种编号</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">stash</span> <span class="selector-tag">apply</span> <span class="selector-tag">stash</span>@&#123;0&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除一个没有被合并过的分支"><a href="#删除一个没有被合并过的分支" class="headerlink" title="删除一个没有被合并过的分支"></a>删除一个没有被合并过的分支</h2><p>实际开发中，添加一个新 <code>feature</code>, 最好新建一个分支, 如果要丢弃这个没有被合并过的分支, 可以通过下面的命令强行删除</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D <span class="tag">&lt;<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看远程库的信息"><a href="#查看远程库的信息" class="headerlink" title="查看远程库的信息"></a>查看远程库的信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
-
-<p>显示更详细的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-<h2 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master <span class="comment">// 推送 master 分支到远程库</span></span><br><span class="line">git push origin branch1 <span class="comment">// 推送branch1到远程库</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h2><p>如果远程库中有分支, <code>clone</code> 之后默认只有 <code>master</code> 分支的, 所以需要执行如上命令来创建本地分支才能与远程的分支关联起来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch1 origin&#x2F;branch1</span><br></pre></td></tr></table></figure>
-
-<h2 id="本地与远程分支关联"><a href="#本地与远程分支关联" class="headerlink" title="本地与远程分支关联"></a>本地与远程分支关联</h2><p>如果你本地新建的 <code>branch1</code> 分支，远程库中也有一个 <code>branch1</code> 分支 (别人创建的), 而刚好你也没有提交过到这个分支, 即没有关联过. 这时会报一个 “no tracking information” 信息，通过下面命令关联即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-upstream branch1 origin/branch1</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;name&gt; <span class="comment">// 例: git tag v1.0</span></span><br></pre></td></tr></table></figure>
-
-<p>查看所有标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
-
-<p>对历史提交打 tag</p>
-<p>先使用 <code>$ git log --pretty=oneline --abbrev-commit</code> 命令找到历史提交的 <code>commit id</code></p>
-<p>例如对 <code>commit id</code> 为 “123456” 的提交打一个 tag</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">v0</span><span class="selector-class">.9</span> 123456</span><br></pre></td></tr></table></figure>
-
-<p>查看标签信息</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">show</span> &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
-
-<p>创建带有说明的标签，用 <code>-a</code> 指定标签名，<code>-m</code> 指定说明文字，”123456” 为 <code>commit id</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-a</span> <span class="selector-tag">v1</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">V1</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 123456</span><br></pre></td></tr></table></figure>
-
-<p>用私钥签名一个标签</p>
-<p>签名采用 PGP 签名，因此，必须先要安装 gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错，具体请参考GnuPG帮助文档配置Key；</p>
-<p>作用：用 PGP 签名的标签是不可伪造的，因为可以验证 PGP 签名</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-s</span> <span class="selector-tag">v2</span><span class="selector-class">.0</span> <span class="selector-tag">-m</span> "<span class="selector-tag">signed</span> <span class="selector-tag">V2</span><span class="selector-class">.0</span> <span class="selector-tag">released</span>" 345678</span><br></pre></td></tr></table></figure>
-
-<p>删除标签</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>删除远程库中的标签</p>
-<p>比如要删除远程库中的 V1.0 标签，分两步</p>
-<ul>
-<li>先删除本地标签</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">tag</span> <span class="selector-tag">-d</span> <span class="selector-tag">V1</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>再推送删除</li>
-</ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="symbol">:refs/tags/V1</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>推送标签到远程库</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="tag">&lt;<span class="name">tagname</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>推送所有标签到远程库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义Git设置"><a href="#自定义Git设置" class="headerlink" title="自定义Git设置"></a>自定义Git设置</h2><p>Git 显示颜色，会让命令输出看起来更清晰、醒目</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> color.ui <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>设置命令别名</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.st status</span><br></pre></td></tr></table></figure>
-
-<p>说明：<code>--global</code> 表示全局，即设置完之后全局生效，<code>st</code> 表示别名，<code>status</code> 表示原始名</p>
-<p>好了，现在敲 <code>git st</code> 就相当于是 <code>git status</code> 命令了，是不是方便？</p>
-<p>当然还有其他命令可以简写，这里举几个：很多人都用 <code>co</code> 表示 <code>checkout</code>，<code>ci</code> 表示 <code>commit</code>，<code>br</code> 表示 <code>branch</code>…根据自己的喜好可以设置即可，个人觉得不是很推荐使用别名的方式</p>
-<p>推荐一个比较丧心病狂的别名设置</p>
-<p>效果自己去体会…</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> <span class="keyword">alias</span>.lg <span class="string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span></span><br></pre></td></tr></table></figure>
-
-<p>其他说明：<br>配置的时候加上 <code>--global</code> 是针对当前用户起作用的，如果不加只对当前的仓库起作用<br>每个仓库的 Git 配置文件都放在 <code>.git/config</code> 文件中，我们可以打开对其中的配置作修改，可以删除设置的别名<br>而当前用户的 Git 配置文件放在用户主目录下的一个隐藏文件 <code>.gitconfig</code> 中，我们也可以对其进行配置和修改</p>
-<h2 id="忽略文件规则"><a href="#忽略文件规则" class="headerlink" title="忽略文件规则"></a>忽略文件规则</h2><p>在 Git 工作区的根目录下创建一个特殊的 <code>.gitignore</code> 文件，然后把要忽略的文件名或者相关规则填进去，Git就会自动忽略这些文件<br>如果你想添加一个被 <code>.gitignore</code> 忽略的文件到 Git 中，但发现是添加不了的，所以我们可以强制添加</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">add</span> -f &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-<p>或者我们可以检查及修改 <code>.gitignore</code> 文件的忽略规则</p>
-<p>Git 会告诉我们具体的 <code>.gitignore</code> 文件中的第几行规则忽略了该文件，这样我们就知道应该修改哪个规则了</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git check-ignore -v <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如何忽略已经提交到远程库中的文件？<br>如果你已经将一些文件提交到远程库中了，然后你想忽略掉此文件，然后在 <code>.gitignore</code> 文件中添加忽略，然而你会发现并没有生效，因为 Git 添加忽略时只有对没有跟踪的文件才生效，也就是说你没有 add 过和提交过的文件才生效</p>
-<p>比如说：我们要忽略 <code>.idea</code> 目录，先删除已经提交到本地库的文件目录</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
-
-<p>如果提示：<code>fatal: not removing &#39;.idea&#39; recursively without -r</code><br>加个参数 -r 即可强制删除</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">rm</span> <span class="selector-tag">-r</span> <span class="selector-tag">--cached</span> <span class="selector-class">.idea</span></span><br></pre></td></tr></table></figure>
-
-<p>然后，执行 <code>git status</code> 会提示你已经删除 <code>.idea</code> 目录了，然后执行 <code>commit</code> 再 <code>push</code> 就可以了，此时的 <code>.idea</code> 目录是没有被跟踪的，将 <code>.idea</code> 目录添加到 <code>.gitignore</code> 文件中就可以忽略了</p>
-<p>作者：小贤笔记<br>链接：<a href="https://www.jianshu.com/p/dd7f18ed0bb1" target="_blank" rel="noopener">https://www.jianshu.com/p/dd7f18ed0bb1</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/09/github1/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network8/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -646,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/github/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -660,7 +354,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/09/github/" class="post-title-link" itemprop="url">github新手入门</a>
+            <a href="/2020/05/10/network7/" class="post-title-link" itemprop="url">network7</a>
         </h2>
 
         <div class="post-meta">
@@ -669,9 +363,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-09 22:32:08 / Modified: 22:33:12" itemprop="dateCreated datePublished" datetime="2020-05-09T22:32:08-05:00">2020-05-09</time>
+              <time title="Created: 2020-05-10 16:08:34" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:34-05:00">2020-05-10</time>
             </span>
 
           
@@ -686,122 +379,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-91f530111cfb1937.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="img"></p>
-<p>GitHub是基于git实现的代码托管。git是目前最好用的版本控制系统了，非常受欢迎，比之svn更好。</p>
-<p>GitHub可以免费使用，并且快速稳定。即使是付费帐户，每个月不超过10美刀的费用也非常便宜。</p>
-<p>利用GitHub，你可以将项目存档，与其他人分享交流，并让其他开发者帮助你一起完成这个项目。优点在于，他支持多人共同完成一个项目，因此你们可以在同一页面对话交流。</p>
-<p>创建自己的项目，并备份，代码不需要保存在本地或者服务器，GitHub做得非常理想。</p>
-<p>学习Git也有很多好处。他被视为一个预先维护过程，你可以按自己的需要恢复、提交出现问题,或者您需要恢复任何形式的代码，可以避免很多麻烦。Git最好的特性之一是能够跟踪错误，这让使用Github变得更加简单。Bugs可以公开，你可以通过Github评论，提交错误。</p>
-<p>在GitHub页面，你可以直接开始，而不需要设置主机或者DNS。</p>
-<p>对于我来说，我可以在公司和家编辑同样的一套代码了，用U盘或者网盘都好麻烦的说</p>
-<p>理论说太多容易忘，来实践实践吧。</p>
-<h2 id="一-创建-github-repository-仓库"><a href="#一-创建-github-repository-仓库" class="headerlink" title="一. 创建 github repository(仓库)"></a>一. 创建 github repository(仓库)</h2><h4 id="1-登录-github"><a href="#1-登录-github" class="headerlink" title="1. 登录 github"></a>1. 登录 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2F" target="_blank" rel="noopener">github</a></h4><h4 id="2-创建-repository-仓库"><a href="#2-创建-repository-仓库" class="headerlink" title="2. 创建 repository(仓库)"></a>2. 创建 repository(仓库)</h4><p>为啥要叫 repository(仓库)？我起初也纳闷，叫代码库不更简单明了么？ 但仔细一琢磨，仓库一般都是放粮食的吧，这是把代码当作饱腹之物，多有爱，瞬间觉得这冰冷冷的代码充满了查克拉。</p>
-<p>扯远了，来看怎么创建仓库</p>
-<p>看到右上角 “+” 没? 点击选择 “New repository”</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-a9214d983f3a748b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/301" alt="img"></p>
-<p>下面是创建仓库信息，只有名字是必填项</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6a9e89e7c89d2b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/789" alt="img"></p>
-<p>创建成功后，可以看到自己的仓库地址。它还介绍了github仓库的常用指令, 这个指令需要在本地安装 git 客户端</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　git init <span class="comment">// 把这个目录变成Git可以管理的仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> README.md <span class="comment">// 文件添加到仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> . <span class="comment">// 不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 </span></span><br><span class="line">　　git commit -m <span class="string">"first commit"</span> <span class="comment">// 把文件提交到仓库</span></span><br><span class="line">　　git remote <span class="keyword">add</span> origin git@github.com:wangjiax9/practice.git <span class="comment">// 关联远程仓库</span></span><br><span class="line">　　git push -u origin master <span class="comment">// 把本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-7106c26b6e83ecb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860" alt="img"></p>
-<h2 id="二-安装-git-客户端"><a href="#二-安装-git-客户端" class="headerlink" title="二. 安装 git 客户端"></a>二. 安装 git 客户端</h2><h4 id="1-下载-git"><a href="#1-下载-git" class="headerlink" title="1. 下载 git"></a>1. 下载 <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgit-scm.com%2F" target="_blank" rel="noopener">git</a></h4><p><img src="https:////upload-images.jianshu.io/upload_images/4804567-42874577806d037f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/356" alt="img"></p>
-<h4 id="2-安装客户端"><a href="#2-安装客户端" class="headerlink" title="2. 安装客户端"></a>2. 安装客户端</h4><p><img src="https:////upload-images.jianshu.io/upload_images/4804567-9c365772c80c0308.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4ff227fa2d21f846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>选择安装路径，千万别选带中文的路径，有时候会引起不必要的误会</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-185e4ce580d41016.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>选择安装组件，按默认的来就好了</p>
-<p>1）图标组件(Addition icons) : 选择是否创建快速启动栏图标 或者 是否创建桌面快捷方式;<br>2）桌面浏览(Windows Explorer integration) : 浏览源码的方法, 单独的上下文浏览 只使用bash 或者 只用Git GUI工具; 高级的上下文浏览方法 使用git-cheetah plugin插件;<br>3）关联配置文件(Associate .git*) : 是否关联git配置文件, 该配置文件主要显示文本编辑器的样式;<br>4）关联shell脚本文件(Associate .sh) : 是否关联Bash命令行执行的脚本文件;<br>5）使用TrueType编码 : 在命令行中是否使用TruthType编码, 该编码是微软和苹果公司制定的通用编码;</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3f09255ea4d9c116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>设置开始菜单中快捷方式的目录名称，默认就好，下一步吧</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-75155711e0c84f0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>设置环境变量 : 选择使用什么样的命令行工具, 一般情况下我们默认使用Git Bash即可, 默认选择;<br>1）Git自带 : 使用Git自带的Git Bash命令行工具;<br>2）系统自带CMD : 使用Windows系统的命令行工具;</p>
-<p>3） 二者都有 : 上面二者同时配置, 但是注意, 这样会将windows中的find.exe 和 sort.exe工具覆盖, 如果不懂这些尽量不要选择;</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4f2bc47bad57fafb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>选择换行格式 ，依然是默认就好。<br>1）检查出windows格式转换为unix格式 : 将windows格式的换行转为unix格式的换行在进行提交;<br>2）检查出原来格式转为unix格式 : 不管什么格式的, 一律转为unix格式的换行在进行提交;<br>3）不进行格式转换 : 不进行转换, 检查出什么, 就提交什么;</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6027491640922fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>选择终端模拟器，依然默认就好<br>1）使用MinTTY，就是在Windows开了一个简单模拟Linux命令环境的窗口Git Bash<br>2）使用windows的系统的命令行程序cmd.exe</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c8c82ac44f1078bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>选择默认就好，不用文件系统缓存</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c81762a8dcfabc2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>安装ing…</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-ba2f419011476815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<p>安装成功</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-e95635f037f910ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/503" alt="img"></p>
-<h4 id="3-绑定用户"><a href="#3-绑定用户" class="headerlink" title="3. 绑定用户"></a>3. 绑定用户</h4><p>打开git-bash.exe，在桌面快捷方式/开始菜单/安装目录中<br>因为Git是分布式版本控制系统，所以需要填写用户名和邮箱作为一个标识，用户和邮箱为你github注册的账号和邮箱<br><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;your_email@example.com&quot;</code><br>注: <a href="https://links.jianshu.com/go?to=mailto%3Ayour_email%40example.com" target="_blank" rel="noopener">your_email@example.com</a> 的部分请改成你在创建账户时用的邮箱地址</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-365223d5e05e546e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/445" alt="img"></p>
-<p>这个命令会在 C:\Users\Administator （Administator为电脑用户名，每个人不同）目录下生成 .gitconfig 文件</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-ea24a13bbfa47d9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/491" alt="img"></p>
-<p>PS: 下面代码是为了记住用户名和密码, 不用每次都输入, 需要的直接添加保存即可</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">credential</span>]</span><br><span class="line">    helper = store</span><br></pre></td></tr></table></figure>
-
-<p>当然, 还有其他方法保存, 可以直接在git bash 中执行命令：</p>
-<ul>
-<li>记住密码十五分钟<br><code>git config --global credential.helper cache</code></li>
-<li>自定义记住的时间 (单位: 秒)<br><code>git config credential.helper &#39;cache --timeout=3600&#39;</code></li>
-<li>永久记住<br><code>git config --global credential.helper store</code></li>
-</ul>
-<p>最后再输入一次账号密码就可以保存了</p>
-<h2 id="三-为-Github-账户设置-SSH-key"><a href="#三-为-Github-账户设置-SSH-key" class="headerlink" title="三. 为 Github 账户设置 SSH key"></a>三. 为 Github 账户设置 SSH key</h2><p>众所周知 ssh key 是加密传输。</p>
-<p>加密传输的算法有好多，git 使用 rsa，rsa 要解决的一个核心问题是，如何使用一对特定的数字，使其中一个数字可以用来加密，而另外一个数字可以用来解密。这两个数字就是你在使用 git 和 github 的时候所遇到的 public key 也就是公钥以及 private key 私钥。</p>
-<p>其中，公钥就是那个用来加密的数字，这也就是为什么你在本机生成了公钥之后，要上传到 github 的原因。从 github 发回来的，用那公钥加密过的数据，可以用你本地的私钥来还原。</p>
-<p>如果你的 key 丢失了，不管是公钥还是私钥，丢失一个都不能用了，解决方法也很简单，重新再生成一次，然后在 github.com 里再设置一次就行</p>
-<h4 id="1-生成-SSH-Key"><a href="#1-生成-SSH-Key" class="headerlink" title="1. 生成 SSH Key"></a>1. 生成 SSH Key</h4><p>首先检查是否已生成密钥 <code>cd ~/.ssh</code><br><code>ls</code> 如果有3个文件，则密钥已经生成，id_rsa.pub 就是公钥</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-5498a20ffa73930e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246" alt="img"></p>
-<p>也可以打开我的电脑 <code>C:\Users\Administator\.ssh</code> （Administator为电脑用户名，每个人不同）里面找到</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-0e4b2a3011fbe48f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/310" alt="img"></p>
-<p>如果没有生成，那么通过 <code>$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code> 来生成<br>注: <a href="https://links.jianshu.com/go?to=mailto%3Ayour_email%40example.com" target="_blank" rel="noopener">your_email@example.com</a> 的部分请改成你在创建账户时用的邮箱地址</p>
-<p>1）是路径确认，直接按回车存默认路径即可<br>2）直接回车键，这里我们不使用密码进行登录, 用密码太麻烦;<br>3）直接回车键</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-d98a9822c8b3c1a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/563" alt="img"></p>
-<p>生成成功后，去对应目录 <code>C:\Users\Administator\.ssh</code> （Administator为电脑用户名，每个人不同）用记事本打开 id_rsa.pub，得到 ssh key公钥</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-6a5385b8058460ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/572" alt="img"></p>
-<h4 id="2-为-github-账号配置-ssh-key"><a href="#2-为-github-账号配置-ssh-key" class="headerlink" title="2. 为 github 账号配置 ssh key"></a>2. 为 github 账号配置 ssh key</h4><p>切换到 github，展开个人头像的小三角，点击settings</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-fbb65dded578867c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/210" alt="img"></p>
-<p>然后打开 SSH and GPG keys 菜单， 点击 New SSH key 新增密钥</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-fbc32170d3eabe91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1071" alt="img"></p>
-<p>标题建议和仓库名一致, 便于区分. 接着将 id_rsa.pub 文件中 key 粘贴到此，最后 Add SSH key 生成密钥</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-f2ce071d1a7a83a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1137" alt="img"></p>
-<p>如此，github账号的SSH keys配置完成</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-acb564e011a085d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/755" alt="img"></p>
-<h2 id="四-上传本地项目到-github"><a href="#四-上传本地项目到-github" class="headerlink" title="四. 上传本地项目到 github"></a>四. 上传本地项目到 github</h2><ol>
-<li><p>创建一个本地项目</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-8d5e957b140acb96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/331" alt="img"></p>
-</li>
-<li><p>建立本地仓库<br>再来复习一下创建新仓库的指令：</p>
-</li>
-</ol>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　git init <span class="comment">// 把这个目录变成Git可以管理的仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> README.md <span class="comment">// 文件添加到仓库</span></span><br><span class="line">　　git <span class="keyword">add</span> . <span class="comment">// 不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 </span></span><br><span class="line">　　git commit -m <span class="string">"first commit"</span> <span class="comment">// 把文件提交到仓库</span></span><br><span class="line">　　git remote <span class="keyword">add</span> origin git@github.com:wangjiax9/practice.git <span class="comment">// 关联远程仓库</span></span><br><span class="line">　　git push -u origin master <span class="comment">// 把本地库的所有内容推送到远程库上</span></span><br></pre></td></tr></table></figure>
-
-<p>首先，进入到 beautifulDay 项目目录，还记得创建仓库成功后的那个页面吧，指令都在呢<br>然后执行指令：<code>git init</code></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-2cbb5b522bb54a59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/494" alt="img"></p>
-<p>初始化成功后你会发现项目里多了一个隐藏文件夹.git<br>这个目录是Git用来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-661c2653f4048f02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/372" alt="img"></p>
-<p>接着，将所有文件添加到仓库<br>执行指令：<code>git add .</code></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-14d44118fb8427ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/393" alt="img"></p>
-<p>然后把文件提交到仓库，双引号内是提交注释<br>执行指令：<code>git commit -m &quot;提交文件&quot;</code></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-039a8943ff8646dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/403" alt="img"></p>
-<p>如此本地仓库建立好了</p>
-<h4 id="3-关联-github-仓库"><a href="#3-关联-github-仓库" class="headerlink" title="3. 关联 github 仓库"></a>3. 关联 github 仓库</h4><p>到 github beautifulDay 仓库复制仓库地址</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c0791897b8f96123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/710" alt="img"></p>
-<p>然后执行指令：<code>git remote add origin git@github.com:wangjiax9/beautifulDay.git</code></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-c2bb63381e149659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/477" alt="img"></p>
-<h4 id="4-上传本地代码"><a href="#4-上传本地代码" class="headerlink" title="4. 上传本地代码"></a>4. 上传本地代码</h4><p>执行指令：<code>git push -u origin master</code><br>敲一个：yes， 然后回车</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-4c9a70c59144e803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/566" alt="img"></p>
-<p>到此，本地代码已经推送到github仓库了，我们现在去 github 仓库看看</p>
-<p>咦！奇怪了，我的目录呢？这个坑突然冒出来是不是印象很深刻呢~<br>注意咯：git是不能管理空的文件夹的，文件夹里必须有文件才能add</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-1d97e42bce22c48c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1019" alt="img"></p>
-<p>好，我们来试一下，我在examples里新建了一个 test1.html 文件</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-de78eb46a358ab4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/184" alt="img"></p>
-<p>执行指令添加文件-&gt;提交文件-&gt;推送文件<br><code>git add .</code><br><code>git commit -m &quot;提交test1.html&quot;</code><br><code>git push -u origin master</code></p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-dddf7ead2824152a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/571" alt="img"></p>
-<p>然后刷新一下 github，你会看到，examples 文件夹出来了</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/4804567-3f94e660e0d7b5f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/994" alt="img"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>作者：小贤笔记<br>链接：<a href="https://www.jianshu.com/p/bf95d885978e" target="_blank" rel="noopener">https://www.jianshu.com/p/bf95d885978e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/09/github/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network7/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -825,7 +405,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -839,7 +419,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/09/hexo/" class="post-title-link" itemprop="url">hexo搭建博客</a>
+            <a href="/2020/05/10/network6/" class="post-title-link" itemprop="url">network6</a>
         </h2>
 
         <div class="post-meta">
@@ -848,9 +428,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-09 06:28:34 / Modified: 06:29:04" itemprop="dateCreated datePublished" datetime="2020-05-09T06:28:34-05:00">2020-05-09</time>
+              <time title="Created: 2020-05-10 16:08:31" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:31-05:00">2020-05-10</time>
             </span>
 
           
@@ -865,168 +444,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>体验更加排版请访问原文链接：<a href="http://blog.liuxianan.com/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">http://blog.liuxianan.com/build-blog-website-by-hexo-github.html</a></p>
-<p>使用github pages服务搭建博客的好处有：</p>
-<ol>
-<li>全是静态文件，访问速度快；</li>
-<li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li>
-<li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li>
-<li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li>
-<li>博客内容可以轻松打包、转移、发布到其它平台；</li>
-<li>等等；</li>
-</ol>
-<h2 id="1-1-准备工作"><a href="#1-1-准备工作" class="headerlink" title="1.1. 准备工作"></a>1.1. 准备工作</h2><p>在开始一切之前，你必须已经：</p>
-<ul>
-<li>有一个github账号，没有的话去注册一个；</li>
-<li>安装了node.js、npm，并了解相关基础知识；</li>
-<li>安装了git for windows（或者其它git客户端）</li>
-</ul>
-<p>本文所使用的环境：</p>
-<ul>
-<li>Windows8.1</li>
-<li><a href="mailto:node.js@5.5.0">node.js@5.5.0</a></li>
-<li><a href="mailto:git@1.9.2">git@1.9.2</a></li>
-<li><a href="mailto:hexo@3.2.2">hexo@3.2.2</a></li>
-</ul>
-<h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="2-1-创建仓库"><a href="#2-1-创建仓库" class="headerlink" title="2.1. 创建仓库"></a>2.1. 创建仓库</h2><p>新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是test，那么你就新建<code>test.github.io</code>的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io/" target="_blank" rel="noopener">http://test.github.io</a> 了，是不是很方便？</p>
-<p>由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p>
-<p>几个注意的地方：</p>
-<ol>
-<li>注册的邮箱一定要验证，否则不会成功；</li>
-<li>仓库名字必须是：<code>username.github.io</code>，其中<code>username</code>是你的用户名；</li>
-<li>仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久，我的等了半个小时才生效；</li>
-</ol>
-<p>创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。</p>
-<h2 id="2-2-绑定域名"><a href="#2-2-绑定域名" class="headerlink" title="2.2. 绑定域名"></a>2.2. 绑定域名</h2><p>当然，你不绑定域名肯定也是可以的，就用默认的 <code>xxx.github.io</code> 来访问，如果你想更个性一点，想拥有一个属于自己的域名，那也是OK的。</p>
-<p>首先你要注册一个域名，域名注册以前总是推荐去<code>godaddy</code>，现在觉得其实国内的阿里云也挺不错的，价格也不贵，毕竟是大公司，放心！</p>
-<p>绑定域名分2种情况：带www和不带www的。</p>
-<p>域名配置最常见有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP，由于不带www方式只能采用A记录，所以必须先ping一下<code>你的用户名.github.io</code>的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的IP，将CNAME指向<code>你的用户名.github.io</code>，这样可以保证无论是否添加www都可以访问，如下：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_191336_238_8683.png" alt="img"></p>
-<p>然后到你的github项目根目录新建一个名为CNAME的文件（无后缀），里面填写你的域名，加不加www看你自己喜好，因为经测试：</p>
-<ul>
-<li>如果你填写的是没有www的，比如 mygit.me，那么无论是访问 <a href="http://www.mygit.me/" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me/" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://mygit.me/" target="_blank" rel="noopener">http://mygit.me</a></li>
-<li>如果你填写的是带www的，比如 <a href="http://www.mygit.me" target="_blank" rel="noopener">www.mygit.me</a> ，那么无论是访问 <a href="http://www.mygit.me/" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me/" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://www.mygit.me/" target="_blank" rel="noopener">http://www.mygit.me</a></li>
-<li>如果你填写的是其它子域名，比如 abc.mygit.me，那么访问 <a href="http://abc.mygit.me/" target="_blank" rel="noopener">http://abc.mygit.me</a> 没问题，但是访问 <a href="http://mygit.me/" target="_blank" rel="noopener">http://mygit.me</a> ，不会自动跳转到 <a href="http://abc.mygit.me/" target="_blank" rel="noopener">http://abc.mygit.me</a></li>
-</ul>
-<p>另外说一句，在你绑定了新域名之后，原来的<code>你的用户名.github.io</code>并没有失效，而是会自动跳转到你的新域名。</p>
-<h1 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h1><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/. ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br></pre></td></tr></table></figure>
-
-<p>如果提示：No such file or directory 说明你是第一次使用git。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
-
-<p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_143914_495_9084.png" alt="img"></p>
-<p>将刚复制的内容粘贴到key那里，title随便填，保存。</p>
-<h2 id="3-1-测试是否成功"><a href="#3-1-测试是否成功" class="headerlink" title="3.1. 测试是否成功"></a>3.1. 测试是否成功</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com # 注意邮箱地址不用改</span><br></pre></td></tr></table></figure>
-
-<p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到：</p>
-<blockquote>
-<p>Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<p>看到这个信息说明SSH已配置成功！</p>
-<p>此时你还需要配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;liuxianan&quot;&#x2F;&#x2F; 你的github用户名，非昵称</span><br><span class="line">$ git config --global user.email  &quot;xxx@qq.com&quot;&#x2F;&#x2F; 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<p>具体这个配置是干嘛的我没仔细深究。</p>
-<h1 id="使用hexo写博客"><a href="#使用hexo写博客" class="headerlink" title="使用hexo写博客"></a>使用hexo写博客</h1><h2 id="4-1-hexo简介"><a href="#4-1-hexo简介" class="headerlink" title="4.1. hexo简介"></a>4.1. hexo简介</h2><p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。</p>
-<p>官网： <a href="http://hexo.io/" target="_blank" rel="noopener">http://hexo.io</a><br>github: <a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a></p>
-<h2 id="4-2-原理"><a href="#4-2-原理" class="headerlink" title="4.2. 原理"></a>4.2. 原理</h2><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
-<h2 id="4-3-注意事项"><a href="#4-3-注意事项" class="headerlink" title="4.3. 注意事项"></a>4.3. 注意事项</h2><p>安装之前先来说几个注意事项：</p>
-<ol>
-<li>很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；</li>
-<li>hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；</li>
-<li>hexo有2种<code>_config.yml</code>文件，一个是根目录下的全局的<code>_config.yml</code>，一个是各个<code>theme</code>下的；</li>
-</ol>
-<h2 id="4-4-安装"><a href="#4-4-安装" class="headerlink" title="4.4. 安装"></a>4.4. 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-5-初始化"><a href="#4-5-初始化" class="headerlink" title="4.5. 初始化"></a>4.5. 初始化</h2><p>在电脑的某个地方新建一个名为hexo的文件夹（名字可以随便取），比如我的是<code>F:\Workspaces\hexo</code>，由于这个文件夹将来就作为你存放代码的地方，所以最好不要随便放。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /f/Workspaces/hexo/</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-
-<p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_115922_773_1148.png" alt="img"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g <span class="comment"># 生成</span></span><br><span class="line">$ hexo s <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure>
-
-<p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_120700_028_2426.png" alt="img"></p>
-<p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考这篇文章：</p>
-<p><a href="http://blog.liuxianan.com/windows-port-bind.html" target="_blank" rel="noopener">http://blog.liuxianan.com/windows-port-bind.html</a></p>
-<p>第一次初始化的时候hexo已经帮我们写了一篇名为 Hello World 的文章，默认的主题比较丑，打开时就是这个样子：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_132443_202_6848.png" alt="img"></p>
-<h2 id="4-6-修改主题"><a href="#4-6-修改主题" class="headerlink" title="4.6. 修改主题"></a>4.6. 修改主题</h2><p>既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">官方主题</a>。</p>
-<p>个人比较喜欢的2个主题：<a href="https://github.com/pinggod/hexo-theme-jekyll" target="_blank" rel="noopener">hexo-theme-jekyll</a> 和 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">hexo-theme-yilia</a>。</p>
-<p>首先下载这个主题：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /f/Workspaces/hexo/</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-
-<p>下载后的主题都在这里：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_134500_245_0912.png" alt="img"></p>
-<p>修改<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: yilia</code>，然后重新执行<code>hexo g</code>来重新生成。</p>
-<p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p>
-<h2 id="4-7-上传之前"><a href="#4-7-上传之前" class="headerlink" title="4.7. 上传之前"></a>4.7. 上传之前</h2><p>在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。</p>
-<h2 id="4-8-上传到github"><a href="#4-8-上传到github" class="headerlink" title="4.8. 上传到github"></a>4.8. 上传到github</h2><p>如果你一切都配置好了，发布上传很容易，一句<code>hexo d</code>就搞定，当然关键还是你要把所有东西配置好。</p>
-<p>首先，<code>ssh key</code>肯定要配置好。</p>
-<p>其次，配置<code>_config.yml</code>中有关deploy的部分：</p>
-<p>正确写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>错误写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: github</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>后面一种写法是hexo2.x的写法，现在已经不行了，无论是哪种写法，此时直接执行<code>hexo d</code>的话一般会报如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Deployer not found: github 或者 Deployer not found: git</span><br></pre></td></tr></table></figure>
-
-<p>原因是还需要安装一个插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>其它命令不确定，部署这个命令一定要用git bash，否则会提示<code>Permission denied (publickey).</code></p>
-<p>打开你的git bash，输入<code>hexo d</code>就会将本次有改动的代码全部提交，没有改动的不会：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_140441_769_5024.png" alt="img"></p>
-<h2 id="4-9-保留CNAME、README-md等文件"><a href="#4-9-保留CNAME、README-md等文件" class="headerlink" title="4.9. 保留CNAME、README.md等文件"></a>4.9. 保留CNAME、README.md等文件</h2><p>提交之后网页上一看，发现以前其它代码都没了，此时不要慌，一些非md文件可以把他们放到source文件夹下，这里的所有文件都会原样复制（除了md文件）到public目录的：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_141037_580_8035.png" alt="img"></p>
-<p>由于hexo默认会把所有md文件都转换成html，包括README.md，所有需要每次生成之后、上传之前，手动将README.md复制到public目录，并删除README.html。</p>
-<h2 id="4-10-常用hexo命令"><a href="#4-10-常用hexo命令" class="headerlink" title="4.10. 常用hexo命令"></a>4.10. 常用hexo命令</h2><p>常见命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&#39;ctrl + c&#39;关闭server）</span><br><span class="line">hexo deploy #部署到GitHub</span><br><span class="line">hexo help  # 查看帮助</span><br><span class="line">hexo version  #查看Hexo的版本</span><br></pre></td></tr></table></figure>
-
-<p>缩写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n &#x3D;&#x3D; hexo new</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>组合命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g #生成并本地预览</span><br><span class="line">hexo d -g #生成并上传</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-11-config-yml"><a href="#4-11-config-yml" class="headerlink" title="4.11. _config.yml"></a>4.11. _config.yml</h2><p>这里面都是一些全局配置，每个参数的意思都比较简单明了，所以就不作详细介绍了。</p>
-<p>需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。</p>
-<h2 id="4-12-写博客"><a href="#4-12-写博客" class="headerlink" title="4.12. 写博客"></a>4.12. 写博客</h2><p>定位到我们的hexo根目录，执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#39;my-first-blog&#39;</span><br></pre></td></tr></table></figure>
-
-<p>hexo会帮我们在<code>_posts</code>下生成相关md文件：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_183047_352_1475.png" alt="img"></p>
-<p>我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_183325_470_9306.png" alt="img"></p>
-<p>当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</p>
-<p>一般完整格式如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories: 默认分类 #分类</span><br><span class="line">tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格</span><br><span class="line">description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">以下是正文</span><br></pre></td></tr></table></figure>
-
-<p>那么<code>hexo new page &#39;postName&#39;</code>命令和<code>hexo new &#39;postName&#39;</code>有什么区别呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;my-second-blog&quot;</span><br></pre></td></tr></table></figure>
-
-<p>生成如下：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_184852_854_6502.png" alt="img"></p>
-<p>最终部署时生成：<code>hexo\public\my-second-blog\index.html</code>，但是它不会作为文章出现在博文目录。</p>
-<h3 id="4-12-1-写博客工具"><a href="#4-12-1-写博客工具" class="headerlink" title="4.12.1. 写博客工具"></a>4.12.1. 写博客工具</h3><p>那么用什么工具写博客呢？这个我还没去找，以前自己使用editor.md简单弄了个，大家有好用的hexo写博客工具可以推荐个。</p>
-<h3 id="4-12-2-如何让博文列表不显示全部内容"><a href="#4-12-2-如何让博文列表不显示全部内容" class="headerlink" title="4.12.2. 如何让博文列表不显示全部内容"></a>4.12.2. 如何让博文列表不显示全部内容</h3><p>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p>
-<p>答案是在合适的位置加上``即可，例如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 前言</span></span><br><span class="line"></span><br><span class="line">使用github pages服务搭建博客的好处有：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>全是静态文件，访问速度快；</span><br><span class="line"><span class="bullet">2. </span>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</span><br><span class="line"><span class="bullet">3. </span>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--more--&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="bullet">4. </span>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</span><br><span class="line"><span class="bullet">5. </span>博客内容可以轻松打包、转移、发布到其它平台；</span><br><span class="line"><span class="bullet">6. </span>等等；</span><br></pre></td></tr></table></figure>
-
-<p>最终效果：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_184633_653_1893.png" alt="img"></p>
-<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p>可以访问我的git博客来查看效果： <a href="http://mygit.me/" target="_blank" rel="noopener">http://mygit.me</a></p>
-<p>不过呢，其实这个博客我只是拿来玩一玩的，没打算真的把它当博客，因为我已经有一个自己的博客了，哈哈！正因如此，本文仅限入门学习，关于hexo搭建个人博客的更高级玩法大家可以另找教程。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhcncn/p/4097881.html</a></p>
-<p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">http://www.jianshu.com/p/05289a4bc8b2</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/09/hexo/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1050,7 +470,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/vim/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1064,7 +484,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/09/vim/" class="post-title-link" itemprop="url">vim</a>
+            <a href="/2020/05/10/network5/" class="post-title-link" itemprop="url">network5</a>
         </h2>
 
         <div class="post-meta">
@@ -1073,9 +493,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-09 06:23:35 / Modified: 06:24:26" itemprop="dateCreated datePublished" datetime="2020-05-09T06:23:35-05:00">2020-05-09</time>
+              <time title="Created: 2020-05-10 16:08:29" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:29-05:00">2020-05-10</time>
             </span>
 
           
@@ -1090,578 +509,9 @@
 
       
           <meta name="referrer" content="no-referrer"/>
-
-<h1 id="vim操作大全"><a href="#vim操作大全" class="headerlink" title="vim操作大全"></a><a href="https://www.cnblogs.com/chichung/p/9497784.html" target="_blank" rel="noopener">vim操作大全</a></h1><p># 转自 <a href="https://blog.csdn.net/weixin_37657720/article/details/80645991" target="_blank" rel="noopener">https://blog.csdn.net/weixin_37657720/article/details/80645991</a></p>
-<p>曾经使用了两年多的Vim，手册也翻过一遍。虽然现在不怎么用vim了，曾经的笔记还是贴出来，与喜欢vim的朋友分享。</p>
-<h1 id="1-关于Vim"><a href="#1-关于Vim" class="headerlink" title="1. 关于Vim"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id59" target="_blank" rel="noopener">1. 关于Vim</a></h1><p>vim是我最喜欢的编辑器，也是<a href="http://lib.csdn.net/base/linux" target="_blank" rel="noopener">Linux</a>下第二强大的编辑器。 虽然emacs是公认的世界第一，我认为使用emacs并没有使用vi进行编辑来得高效。 如果是初学vi，运行一下vimtutor是个聪明的决定。 （如果你的系统环境不是中文，而你想使用中文的vimtutor，就运行vimtutor zh）</p>
-<h2 id="1-1-Vim的几种模式"><a href="#1-1-Vim的几种模式" class="headerlink" title="1.1 Vim的几种模式"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id60" target="_blank" rel="noopener">1.1 Vim的几种模式</a></h2><ul>
-<li>正常模式：可以使用快捷键命令，或按:输入命令行。</li>
-<li>插入模式：可以输入文本，在正常模式下，按i、a、o等都可以进入插入模式。</li>
-<li>可视模式：正常模式下按v可以进入可视模式， 在可视模式下，移动光标可以选择文本。按V进入可视行模式， 总是整行整行的选中。ctrl+v进入可视块模式。</li>
-<li>替换模式：正常模式下，按R进入。</li>
-</ul>
-<h1 id="2-启动Vim"><a href="#2-启动Vim" class="headerlink" title="2. 启动Vim"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id61" target="_blank" rel="noopener">2. 启动Vim</a></h1><ul>
-<li>vim -c cmd file: 在打开文件前，先执行指定的命令；</li>
-<li>vim -r file: 恢复上次异常退出的文件；</li>
-<li>vim -R file: 以只读的方式打开文件，但可以强制保存；</li>
-<li>vim -M file: 以只读的方式打开文件，不可以强制保存；</li>
-<li>vim -y num file: 将编辑窗口的大小设为num行；</li>
-<li>vim + file: 从文件的末尾开始；</li>
-<li>vim +num file: 从第num行开始；</li>
-<li>vim +/string file: 打开file，并将光标停留在第一个找到的string上。</li>
-<li>vim –remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim –remote file在已有的gvim中打开文件。</li>
-</ul>
-<h1 id="3-文档操作"><a href="#3-文档操作" class="headerlink" title="3. 文档操作"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id62" target="_blank" rel="noopener">3. 文档操作</a></h1><ul>
-<li>:e file –关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。</li>
-<li>:e! file –放弃对当前文件的修改，编辑新的文件。</li>
-<li>:e+file – 开始新的文件，并从文件尾开始编辑。</li>
-<li>:e+n file – 开始新的文件，并从第n行开始编辑。</li>
-<li>:enew –编译一个未命名的新文档。(CTRL-W n)</li>
-<li>:e – 重新加载当前文档。</li>
-<li>:e! – 重新加载当前文档，并丢弃已做的改动。</li>
-<li>:e#或ctrl+^ – 回到刚才编辑的文件，很实用。</li>
-<li>:f或ctrl+g – 显示文档名，是否修改，和光标位置。</li>
-<li>:f filename – 改变编辑的文件名，这时再保存相当于另存为。</li>
-<li>gf – 打开以光标所在字符串为文件名的文件。</li>
-<li>:w – 保存修改。</li>
-<li>:n1,n2w filename – 选择性保存从某n1行到另n2行的内容。</li>
-<li>:wq – 保存并退出。</li>
-<li>ZZ – 保存并退出。</li>
-<li>:x – 保存并退出。</li>
-<li>:q[uit] ——退出当前窗口。(CTRL-W q或CTRL-W CTRL-Q)</li>
-<li>:saveas newfilename – 另存为</li>
-<li>:browse e – 会打开一个文件浏览器让你选择要编辑的文件。 如果是终端中，则会打开netrw的文件浏览窗口； 如果是gvim，则会打开一个图形界面的浏览窗口。 实际上:browse后可以跟任何编辑文档的命令，如sp等。 用browse打开的起始目录可以由browsedir来设置：<ul>
-<li>:set browsedir=last – 用上次访问过的目录（默认）；</li>
-<li>:set browsedir=buffer – 用当前文件所在目录；</li>
-<li>:set browsedir=current – 用当前工作目录；</li>
-</ul>
-</li>
-<li>:Sex – 水平分割一个窗口，浏览文件系统；</li>
-<li>:Vex – 垂直分割一个窗口，浏览文件系统；</li>
-</ul>
-<h1 id="4-光标的移动"><a href="#4-光标的移动" class="headerlink" title="4. 光标的移动"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id63" target="_blank" rel="noopener">4. 光标的移动</a></h1><h2 id="4-1-基本移动"><a href="#4-1-基本移动" class="headerlink" title="4.1 基本移动"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id64" target="_blank" rel="noopener">4.1 基本移动</a></h2><p>以下移动都是在normal模式下。</p>
-<ul>
-<li>h或退格: 左移一个字符；</li>
-<li>l或空格: 右移一个字符；</li>
-<li>j: 下移一行；</li>
-<li>k: 上移一行；</li>
-<li>gj: 移动到一段内的下一行；</li>
-<li>gk: 移动到一段内的上一行；</li>
-<li>+或Enter: 把光标移至下一行第一个非空白字符。</li>
-<li>-: 把光标移至上一行第一个非空白字符。</li>
-<li>w: 前移一个单词，光标停在下一个单词开头；</li>
-<li>W: 移动下一个单词开头，但忽略一些标点；</li>
-<li>e: 前移一个单词，光标停在下一个单词末尾；</li>
-<li>E: 移动到下一个单词末尾，如果词尾有标点，则移动到标点；</li>
-<li>b: 后移一个单词，光标停在上一个单词开头；</li>
-<li>B: 移动到上一个单词开头，忽略一些标点；</li>
-<li>ge: 后移一个单词，光标停在上一个单词末尾；</li>
-<li>gE: 同 ge ，不过‘单词’包含单词相邻的标点。</li>
-<li>(: 前移1句。</li>
-<li>): 后移1句。</li>
-<li>{: 前移1段。</li>
-<li>}: 后移1段。</li>
-<li>fc: 把光标移到同一行的下一个c字符处</li>
-<li>Fc: 把光标移到同一行的上一个c字符处</li>
-<li>tc: 把光标移到同一行的下一个c字符前</li>
-<li>Tc: 把光标移到同一行的上一个c字符后</li>
-<li>;: 配合f &amp; t使用，重复一次</li>
-<li>,: 配合f &amp; t使用，反向重复一次</li>
-</ul>
-<p>上面的操作都可以配合n使用，比如在正常模式(下面会讲到)下输入3h， 则光标向左移动3个字符。</p>
-<ul>
-<li>0: 移动到行首。</li>
-<li>g0: 移到光标所在屏幕行行首。</li>
-<li>^: 移动到本行第一个非空白字符。</li>
-<li>g^: 同 ^ ，但是移动到当前屏幕行第一个非空字符处。</li>
-<li>: 移动光标所在屏幕行行尾。</li>
-<li>n|: 把光标移到递n列上。</li>
-<li>nG: 到文件第n行。</li>
-<li>:n<cr> 移动到第n行。</li>
-<li>:$<cr> 移动到最后一行。</li>
-<li>H: 把光标移到屏幕最顶端一行。</li>
-<li>M: 把光标移到屏幕中间一行。</li>
-<li>L: 把光标移到屏幕最底端一行。</li>
-<li>gg: 到文件头部。</li>
-<li>G: 到文件尾部。</li>
-</ul>
-<h2 id="4-2-翻屏"><a href="#4-2-翻屏" class="headerlink" title="4.2 翻屏"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id65" target="_blank" rel="noopener">4.2 翻屏</a></h2><ul>
-<li>ctrl+f: 下翻一屏。</li>
-<li>ctrl+b: 上翻一屏。</li>
-<li>ctrl+d: 下翻半屏。</li>
-<li>ctrl+u: 上翻半屏。</li>
-<li>ctrl+e: 向下滚动一行。</li>
-<li>ctrl+y: 向上滚动一行。</li>
-<li>n%: 到文件n%的位置。</li>
-<li>zz: 将当前行移动到屏幕中央。</li>
-<li>zt: 将当前行移动到屏幕顶端。</li>
-<li>zb: 将当前行移动到屏幕底端。</li>
-</ul>
-<h2 id="4-3-标记"><a href="#4-3-标记" class="headerlink" title="4.3 标记"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id66" target="_blank" rel="noopener">4.3 标记</a></h2><p>使用标记可以快速移动。到达标记后，可以用Ctrl+o返回原来的位置。 Ctrl+o和Ctrl+i 很像浏览器上的 后退 和 前进 。</p>
-<ul>
-<li>m{a-z}: 标记光标所在位置，局部标记，只用于当前文件。</li>
-<li>m{A-Z}: 标记光标所在位置，全局标记。标记之后，退出Vim， 重新启动，标记仍然有效。</li>
-<li>`{a-z}: 移动到标记位置。</li>
-<li>‘{a-z}: 移动到标记行的行首。</li>
-<li>`{0-9}：回到上[2-10]次关闭vim时最后离开的位置。</li>
-<li>“: 移动到上次编辑的位置。”也可以，不过“精确到列，而”精确到行 。如果想跳转到更老的位置，可以按C-o，跳转到更新的位置用C-i。</li>
-<li>`”: 移动到上次离开的地方。</li>
-<li>`.: 移动到最后改动的地方。</li>
-<li>:marks 显示所有标记。</li>
-<li>:delmarks a b – 删除标记a和b。</li>
-<li>:delmarks a-c – 删除标记a、b和c。</li>
-<li>:delmarks a c-f – 删除标记a、c、d、e、f。</li>
-<li>:delmarks! – 删除当前缓冲区的所有标记。</li>
-<li>:help mark-motions 查看更多关于mark的知识。</li>
-</ul>
-<h1 id="5-插入文本"><a href="#5-插入文本" class="headerlink" title="5. 插入文本"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id67" target="_blank" rel="noopener">5. 插入文本</a></h1><h2 id="5-1-基本插入"><a href="#5-1-基本插入" class="headerlink" title="5.1 基本插入"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id68" target="_blank" rel="noopener">5.1 基本插入</a></h2><ul>
-<li>i: 在光标前插入；一个小技巧：按8，再按i，进入插入模式，输入=， 按esc进入命令模式，就会出现8个=。 这在插入分割线时非常有用，如30i+<esc>就插入了36个+组成的分割线。</li>
-<li>I: 在当前行第一个非空字符前插入；</li>
-<li>gI: 在当前行第一列插入；</li>
-<li>a: 在光标后插入；</li>
-<li>A: 在当前行最后插入；</li>
-<li>o: 在下面新建一行插入；</li>
-<li>O: 在上面新建一行插入；</li>
-<li>:r filename在当前位置插入另一个文件的内容。</li>
-<li>:[n]r filename在第n行插入另一个文件的内容。</li>
-<li>:r !date 在光标处插入当前日期与时间。同理，:r !command可以将其它shell命令的输出插入当前文档。</li>
-</ul>
-<h2 id="5-2-改写插入"><a href="#5-2-改写插入" class="headerlink" title="5.2 改写插入"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id69" target="_blank" rel="noopener">5.2 改写插入</a></h2><ul>
-<li>c[n]w: 改写光标后1(n)个词。</li>
-<li>c[n]l: 改写光标后n个字母。</li>
-<li>c[n]h: 改写光标前n个字母。</li>
-<li>[n]cc: 修改当前[n]行。</li>
-<li>[n]s: 以输入的文本替代光标之后1(n)个字符，相当于c[n]l。</li>
-<li>[n]S: 删除指定数目的行，并以所输入文本代替之。</li>
-</ul>
-<p>注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。</p>
-<h1 id="6-剪切复制和寄存器"><a href="#6-剪切复制和寄存器" class="headerlink" title="6. 剪切复制和寄存器"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id70" target="_blank" rel="noopener">6. 剪切复制和寄存器</a></h1><h2 id="6-1-剪切和复制、粘贴"><a href="#6-1-剪切和复制、粘贴" class="headerlink" title="6.1 剪切和复制、粘贴"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id71" target="_blank" rel="noopener">6.1 剪切和复制、粘贴</a></h2><ul>
-<li>[n]x: 剪切光标右边n个字符，相当于d[n]l。</li>
-<li>[n]X: 剪切光标左边n个字符，相当于d[n]h。</li>
-<li>y: 复制在可视模式下选中的文本。</li>
-<li>yy or Y: 复制整行文本。</li>
-<li>y[n]w: 复制一(n)个词。</li>
-<li>y[n]l: 复制光标右边1(n)个字符。</li>
-<li>y[n]h: 复制光标左边1(n)个字符。</li>
-<li>yor D: 删除（剪切）当前位置到行尾的内容。</li>
-<li>d[n]w: 删除（剪切）1(n)个单词</li>
-<li>d[n]l: 删除（剪切）光标右边1(n)个字符。</li>
-<li>d[n]h: 删除（剪切）光标左边1(n)个字符。</li>
-<li>d0: 删除（剪切）当前位置到行首的内容</li>
-<li>[n] dd: 删除（剪切）1(n)行。</li>
-<li>:m,nd<cr> 剪切m行到n行的内容。</li>
-<li>d1G或dgg: 剪切光标以上的所有行。</li>
-<li>dG: 剪切光标以下的所有行。</li>
-<li>daw和das：剪切一个词和剪切一个句子，即使光标不在词首和句首也没关系。</li>
-<li>d/f<cr>：这是一个比较高级的组合命令，它将删除当前位置 到下一个f之间的内容。</li>
-<li>p: 在光标之后粘贴。</li>
-<li>P: 在光标之前粘贴。</li>
-</ul>
-<h2 id="6-2-文本对象"><a href="#6-2-文本对象" class="headerlink" title="6.2 文本对象"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id72" target="_blank" rel="noopener">6.2 文本对象</a></h2><ul>
-<li>aw：一个词</li>
-<li>as：一句。</li>
-<li>ap：一段。</li>
-<li>ab：一块（包含在圆括号中的）。</li>
-</ul>
-<p>y, d, c, v都可以跟文本对象。</p>
-<h2 id="6-3-寄存器"><a href="#6-3-寄存器" class="headerlink" title="6.3 寄存器"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id73" target="_blank" rel="noopener">6.3 寄存器</a></h2><ul>
-<li>a-z：都可以用作寄存器名。”ayy把当前行的内容放入a寄存器。</li>
-<li>A-Z：用大写字母索引寄存器，可以在寄存器中追加内容。 如”Ayy把当前行的内容追加到a寄存器中。</li>
-<li>:reg 显示所有寄存器的内容。</li>
-<li>“”：不加寄存器索引时，默认使用的寄存器。</li>
-<li>“<em>：当前选择缓冲区，”</em>yy把当前行的内容放入当前选择缓冲区。</li>
-<li>“+：系统剪贴板。”+yy把当前行的内容放入系统剪贴板。</li>
-</ul>
-<h1 id="7-查找与替换"><a href="#7-查找与替换" class="headerlink" title="7. 查找与替换"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id74" target="_blank" rel="noopener">7. 查找与替换</a></h1><h2 id="7-1-查找"><a href="#7-1-查找" class="headerlink" title="7.1 查找"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id75" target="_blank" rel="noopener">7.1 查找</a></h2><ul>
-<li>/something: 在后面的文本中查找something。</li>
-<li>?something: 在前面的文本中查找something。</li>
-<li>/pattern/+number: 将光标停在包含pattern的行后面第number行上。</li>
-<li>/pattern/-number: 将光标停在包含pattern的行前面第number行上。</li>
-<li>n: 向后查找下一个。</li>
-<li>N: 向前查找下一个。</li>
-</ul>
-<p>可以用grep或vimgrep查找一个模式都在哪些地方出现过，</p>
-<p>其中:grep是调用外部的grep程序，而:vimgrep是vim自己的查找算法。</p>
-<p>用法为： :vim[grep]/pattern/[g] [j] files</p>
-<p>g的含义是如果一个模式在一行中多次出现，则这一行也在结果中多次出现。</p>
-<p>j的含义是grep结束后，结果停在第j项，默认是停在第一项。</p>
-<p>vimgrep前面可以加数字限定搜索结果的上限，如</p>
-<p>:1vim/pattern/ % 只查找那个模式在本文件中的第一个出现。</p>
-<p>其实vimgrep在读纯文本电子书时特别有用，可以生成导航的目录。</p>
-<p>比如电子书中每一节的标题形式为：n. xxxx。你就可以这样：</p>
-<p>:vim/^d{1,}./ %</p>
-<p>然后用:cw或:copen查看结果，可以用C-w H把quickfix窗口移到左侧，</p>
-<p>就更像个目录了。</p>
-<h2 id="7-2-替换"><a href="#7-2-替换" class="headerlink" title="7.2 替换"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id76" target="_blank" rel="noopener">7.2 替换</a></h2><ul>
-<li>:s/old/new - 用new替换当前行第一个old。</li>
-<li>:s/old/new/g - 用new替换当前行所有的old。</li>
-<li>:n1,n2s/old/new/g - 用new替换文件n1行到n2行所有的old。</li>
-<li>:%s/old/new/g - 用new替换文件中所有的old。</li>
-<li>:%s/^/xxx/g - 在每一行的行首插入xxx，^表示行首。</li>
-<li>:%s/表示行尾。</li>
-<li>所有替换命令末尾加上c，每个替换都将需要用户确认。 如：%s/old/new/gc，加上i则忽略大小写(ignore)。</li>
-</ul>
-<p>还有一种比替换更灵活的方式，它是匹配到某个模式后执行某种命令，</p>
-<p>语法为 :[range]g/pattern/command</p>
-<p>例如 :%g/^ xyz/normal dd。</p>
-<p>表示对于以一个空格和xyz开头的行执行normal模式下的dd命令。</p>
-<p>关于range的规定为：</p>
-<ul>
-<li>如果不指定range，则表示当前行。</li>
-<li>m,n: 从m行到n行。</li>
-<li>0: 最开始一行（可能是这样）。</li>
-<li>$: 最后一行</li>
-<li>.: 当前行</li>
-<li>%: 所有行</li>
-</ul>
-<h2 id="7-3-正则表达式"><a href="#7-3-正则表达式" class="headerlink" title="7.3 正则表达式"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id77" target="_blank" rel="noopener">7.3 正则表达式</a></h2><p>高级的查找替换就要用到正则表达式。</p>
-<ul>
-<li>\d: 表示十进制数（我猜的）</li>
-<li>\s: 表示空格</li>
-<li>\S: 非空字符</li>
-<li>\a: 英文字母</li>
-<li>|: 表示 或</li>
-<li>.: 表示.</li>
-<li>{m,n}: 表示m到n个字符。这要和 \s与\a等连用，如 \a{m,n} 表示m 到n个英文字母。</li>
-<li>{m,}: 表示m到无限多个字符。</li>
-<li>**: 当前目录下的所有子目录。</li>
-</ul>
-<p>:help pattern得到更多帮助。</p>
-<hr>
-<h1 id="8-排版"><a href="#8-排版" class="headerlink" title="8. 排版"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id78" target="_blank" rel="noopener">8. 排版</a></h1><h2 id="8-1-基本排版"><a href="#8-1-基本排版" class="headerlink" title="8.1 基本排版"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id79" target="_blank" rel="noopener">8.1 基本排版</a></h2><ul>
-<li>&lt;&lt; 向左缩进一个shiftwidth</li>
-<li>&gt;&gt; 向右缩进一个shiftwidth</li>
-<li>:ce(nter) 本行文字居中</li>
-<li>:le(ft) 本行文字靠左</li>
-<li>:ri(ght) 本行文字靠右</li>
-<li>gq 对选中的文字重排，即对过长的文字进行断行</li>
-<li>gqq 重排当前行</li>
-<li>gqnq 重排n行</li>
-<li>gqap 重排当前段</li>
-<li>gqnap 重排n段</li>
-<li>gqnj 重排当前行和下面n行</li>
-<li>gqQ 重排当前段对文章末尾</li>
-<li>J 拼接当前行和下一行</li>
-<li>gJ 同 J ，不过合并后不留空格。</li>
-</ul>
-<h2 id="8-2-拼写检查"><a href="#8-2-拼写检查" class="headerlink" title="8.2 拼写检查"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id80" target="_blank" rel="noopener">8.2 拼写检查</a></h2><ul>
-<li>:set spell－开启拼写检查功能</li>
-<li>:set nospell－关闭拼写检查功能</li>
-<li>]s－移到下一个拼写错误的单词</li>
-<li>[s－作用与上一命令类似，但它是从相反方向进行搜索</li>
-<li>z=－显示一个有关拼写错误单词的列表，可从中选择</li>
-<li>zg－告诉拼写检查器该单词是拼写正确的</li>
-<li>zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的</li>
-</ul>
-<h2 id="8-3-统计字数"><a href="#8-3-统计字数" class="headerlink" title="8.3 统计字数"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id81" target="_blank" rel="noopener">8.3 统计字数</a></h2><p>g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 以上对 Mac 或 Unix 的文件格式适用。 如果是 Windows 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。</p>
-<hr>
-<h1 id="9-编辑多个文件"><a href="#9-编辑多个文件" class="headerlink" title="9. 编辑多个文件"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id82" target="_blank" rel="noopener">9. 编辑多个文件</a></h1><h2 id="9-1-一次编辑多个文件"><a href="#9-1-一次编辑多个文件" class="headerlink" title="9.1 一次编辑多个文件"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id83" target="_blank" rel="noopener">9.1 一次编辑多个文件</a></h2><p>我们可以一次打开多个文件，如</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi a.txt b.txt c.txt</span><br></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li>使用:next(:n)编辑下一个文件。</li>
-<li>:2n 编辑下2个文件。</li>
-<li>使用:previous或:N编辑上一个文件。</li>
-<li>使用:wnext，保存当前文件，并编辑下一个文件。</li>
-<li>使用:wprevious，保存当前文件，并编辑上一个文件。</li>
-<li>使用:args 显示文件列表。</li>
-<li>:n filenames或:args filenames 指定新的文件列表。</li>
-<li>vi -o filenames 在水平分割的多个窗口中编辑多个文件。</li>
-<li>vi -O filenames 在垂直分割的多个窗口中编辑多个文件。</li>
-</ul>
-<h2 id="9-2-多标签编辑"><a href="#9-2-多标签编辑" class="headerlink" title="9.2 多标签编辑"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id84" target="_blank" rel="noopener">9.2 多标签编辑</a></h2><ul>
-<li>vim -p files: 打开多个文件，每个文件占用一个标签页。</li>
-<li>:tabe, tabnew – 如果加文件名，就在新的标签中打开这个文件， 否则打开一个空缓冲区。</li>
-<li>^w gf – 在新的标签页里打开光标下路径指定的文件。</li>
-<li>:tabn – 切换到下一个标签。Control + PageDown，也可以。</li>
-<li>:tabp – 切换到上一个标签。Control + PageUp，也可以。</li>
-<li>[n] gt – 切换到下一个标签。如果前面加了 n ， 就切换到第n个标签。第一个标签的序号就是1。</li>
-<li>:tab split – 将当前缓冲区的内容在新页签中打开。</li>
-<li>:tabc[lose] – 关闭当前的标签页。</li>
-<li>:tabo[nly] – 关闭其它的标签页。</li>
-<li>:tabs – 列出所有的标签页和它们包含的窗口。</li>
-<li>:tabm[ove] [N] – 移动标签页，移动到第N个标签页之后。 如 tabm 0 当前标签页，就会变成第一个标签页。</li>
-</ul>
-<h2 id="9-3-缓冲区"><a href="#9-3-缓冲区" class="headerlink" title="9.3 缓冲区"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id85" target="_blank" rel="noopener">9.3 缓冲区</a></h2><ul>
-<li>:buffers或:ls或:files 显示缓冲区列表。</li>
-<li>ctrl+^：在最近两个缓冲区间切换。</li>
-<li>:bn – 下一个缓冲区。</li>
-<li>:bp – 上一个缓冲区。</li>
-<li>:bl – 最后一个缓冲区。</li>
-<li>:b[n]或:[n]b – 切换到第n个缓冲区。</li>
-<li>:nbw(ipeout) – 彻底删除第n个缓冲区。</li>
-<li>:nbd(elete) – 删除第n个缓冲区，并未真正删除，还在unlisted列表中。</li>
-<li>:ba[ll] – 把所有的缓冲区在当前页中打开，每个缓冲区占一个窗口。</li>
-</ul>
-<h1 id="10-分屏编辑"><a href="#10-分屏编辑" class="headerlink" title="10. 分屏编辑"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id86" target="_blank" rel="noopener">10. 分屏编辑</a></h1><ul>
-<li>vim -o file1 file2:水平分割窗口，同时打开file1和file2</li>
-<li>vim -O file1 file2:垂直分割窗口，同时打开file1和file2</li>
-</ul>
-<h2 id="10-1-水平分割"><a href="#10-1-水平分割" class="headerlink" title="10.1 水平分割"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id87" target="_blank" rel="noopener">10.1 水平分割</a></h2><ul>
-<li>:split(:sp) – 把当前窗水平分割成两个窗口。(CTRL-W s 或 CTRL-W CTRL-S) 注意如果在终端下，CTRL-S可能会冻结终端，请按CTRL-Q继续。</li>
-<li>:split filename – 水平分割窗口，并在新窗口中显示另一个文件。</li>
-<li>:nsplit(:nsp) – 水平分割出一个n行高的窗口。</li>
-<li>:[N]new – 水平分割出一个N行高的窗口，并编辑一个新文件。 (CTRL-W n或 CTRL-W CTRL-N)</li>
-<li>ctrl+w f –水平分割出一个窗口，并在新窗口打开名称为光标所在词的文件 。</li>
-<li>C-w C-^ – 水平分割一个窗口，打开刚才编辑的文件。</li>
-</ul>
-<h2 id="10-2-垂直分割"><a href="#10-2-垂直分割" class="headerlink" title="10.2 垂直分割"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id88" target="_blank" rel="noopener">10.2 垂直分割</a></h2><ul>
-<li>:vsplit(:vsp) – 把当前窗口分割成水平分布的两个窗口。 (CTRL-W v或CTRL CTRL-V)</li>
-<li>:[N]vne[w] – 垂直分割出一个新窗口。</li>
-<li>:vertical 水平分割的命令： 相应的垂直分割。</li>
-</ul>
-<h2 id="10-3-关闭子窗口"><a href="#10-3-关闭子窗口" class="headerlink" title="10.3 关闭子窗口"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id89" target="_blank" rel="noopener">10.3 关闭子窗口</a></h2><ul>
-<li>:qall – 关闭所有窗口，退出vim。</li>
-<li>:wall – 保存所有修改过的窗口。</li>
-<li>:only – 只保留当前窗口，关闭其它窗口。(CTRL-W o)</li>
-<li>:close – 关闭当前窗口，CTRL-W c能实现同样的功能。 (象 :q :x同样工作 )</li>
-</ul>
-<h2 id="10-4-调整窗口大小"><a href="#10-4-调整窗口大小" class="headerlink" title="10.4 调整窗口大小"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id90" target="_blank" rel="noopener">10.4 调整窗口大小</a></h2><ul>
-<li>ctrl+w + –当前窗口增高一行。也可以用n增高n行。</li>
-<li>ctrl+w - –当前窗口减小一行。也可以用n减小n行。</li>
-<li>ctrl+w _ –当前窗口扩展到尽可能的大。也可以用n设定行数。</li>
-<li>:resize n – 当前窗口n行高。</li>
-<li>ctrl+w = – 所有窗口同样高度。</li>
-<li>n ctrl+w _ – 当前窗口的高度设定为n行。</li>
-<li>ctrl+w &lt; –当前窗口减少一列。也可以用n减少n列。</li>
-<li>ctrl+w &gt; –当前窗口增宽一列。也可以用n增宽n列。</li>
-<li>ctrl+w | –当前窗口尽可能的宽。也可以用n设定列数。</li>
-</ul>
-<h2 id="10-5-切换和移动窗口"><a href="#10-5-切换和移动窗口" class="headerlink" title="10.5 切换和移动窗口"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id91" target="_blank" rel="noopener">10.5 切换和移动窗口</a></h2><p>如果支持鼠标，切换和调整子窗口的大小就简单了。</p>
-<ul>
-<li>ctrl+w ctrl+w: 切换到下一个窗口。或者是ctrl+w w。</li>
-<li>ctrl+w p: 切换到前一个窗口。</li>
-<li>ctrl+w h(l,j,k):切换到左（右，下，上）的窗口。</li>
-<li>ctrl+w t(b):切换到最上（下）面的窗口。<BR></li>
-<li>ctrl+w H(L,K,J): 将当前窗口移动到最左（右、上、下）面。</li>
-<li>ctrl+w r：旋转窗口的位置。</li>
-<li>ctrl+w T: 将当前的窗口移动到新的标签页上。</li>
-</ul>
-<h1 id="11-快速编辑"><a href="#11-快速编辑" class="headerlink" title="11. 快速编辑"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id92" target="_blank" rel="noopener">11. 快速编辑</a></h1><h2 id="11-1-改变大小写"><a href="#11-1-改变大小写" class="headerlink" title="11.1 改变大小写"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id93" target="_blank" rel="noopener">11.1 改变大小写</a></h2><ul>
-<li>~: 反转光标所在字符的大小写。</li>
-<li>可视模式下的U或u：把选中的文本变为大写或小写。</li>
-<li>gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。</li>
-</ul>
-<h2 id="11-2-替换（normal模式）"><a href="#11-2-替换（normal模式）" class="headerlink" title="11.2 替换（normal模式）"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id94" target="_blank" rel="noopener">11.2 替换（normal模式）</a></h2><ul>
-<li>r: 替换光标处的字符，同样支持汉字。</li>
-<li>R: 进入替换模式，按esc回到正常模式。</li>
-</ul>
-<h2 id="11-3-撤消与重做（normal模式）"><a href="#11-3-撤消与重做（normal模式）" class="headerlink" title="11.3 撤消与重做（normal模式）"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id95" target="_blank" rel="noopener">11.3 撤消与重做（normal模式）</a></h2><ul>
-<li>[n] u: 取消一(n)个改动。</li>
-<li>:undo 5 – 撤销5个改变。</li>
-<li>:undolist – 你的撤销历史。</li>
-<li>ctrl + r: 重做最后的改动。</li>
-<li>U: 取消当前行中所有的改动。</li>
-<li>:earlier 4m – 回到4分钟前</li>
-<li>:later 55s – 前进55秒</li>
-</ul>
-<h2 id="11-4-宏"><a href="#11-4-宏" class="headerlink" title="11.4 宏"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id96" target="_blank" rel="noopener">11.4 宏</a></h2><ul>
-<li>. –重复上一个编辑动作</li>
-<li>qa：开始录制宏a（键盘操作记录）</li>
-<li>q：停止录制</li>
-<li>@a：播放宏a</li>
-</ul>
-<h1 id="12-编辑特殊文件"><a href="#12-编辑特殊文件" class="headerlink" title="12. 编辑特殊文件"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id97" target="_blank" rel="noopener">12. 编辑特殊文件</a></h1><h2 id="12-1-文件加解密"><a href="#12-1-文件加解密" class="headerlink" title="12.1 文件加解密"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id98" target="_blank" rel="noopener">12.1 文件加解密</a></h2><ul>
-<li>vim -x file: 开始编辑一个加密的文件。</li>
-<li>:X – 为当前文件设置密码。</li>
-<li>:set key= – 去除文件的密码。</li>
-</ul>
-<p><a href="http://www.cnblogs.com/jiqingwu/admin/vim-quick-edit.html" target="_blank" rel="noopener">这里是</a> 滇狐总结的比较高级的vi技巧。</p>
-<h2 id="12-2-文件的编码"><a href="#12-2-文件的编码" class="headerlink" title="12.2 文件的编码"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id99" target="_blank" rel="noopener">12.2 文件的编码</a></h2><ul>
-<li>:e ++enc=utf8 filename, 让vim用utf-8的编码打开这个文件。</li>
-<li>:w ++enc=gbk，不管当前文件什么编码，把它转存成gbk编码。</li>
-<li>:set fenc或:set fileencoding，查看当前文件的编码。</li>
-<li>在vimrc中添加set fileencoding=ucs-bom,utf-8,cp936，vim会根据要打开的文件选择合适的编码。 注意：编码之间不要留空格。 cp936对应于gbk编码。 ucs-bom对应于windows下的文件格式。</li>
-</ul>
-<p>让vim 正确处理文件格式和文件编码，有赖于 <a href="http://www.cnblogs.com/jiqingwu/admin/vimrc.html" target="_blank" rel="noopener">~/.vimrc的正确配置</a></p>
-<h2 id="12-3-文件格式"><a href="#12-3-文件格式" class="headerlink" title="12.3 文件格式"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id100" target="_blank" rel="noopener">12.3 文件格式</a></h2><p>大致有三种文件格式：unix, dos, mac. 三种格式的区别主要在于回车键的编码：dos 下是回车加换行，unix 下只有 换行符，mac 下只有回车符。</p>
-<ul>
-<li>:e ++ff=dos filename, 让vim用dos格式打开这个文件。</li>
-<li>:w ++ff=mac filename, 以mac格式存储这个文件。</li>
-<li>:set ff，显示当前文件的格式。</li>
-<li>在vimrc中添加set fileformats=unix,dos,mac，让vim自动识别文件格式。</li>
-</ul>
-<h1 id="13-编程辅助"><a href="#13-编程辅助" class="headerlink" title="13. 编程辅助"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id101" target="_blank" rel="noopener">13. 编程辅助</a></h1><h2 id="13-1-一些按键"><a href="#13-1-一些按键" class="headerlink" title="13.1 一些按键"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id102" target="_blank" rel="noopener">13.1 一些按键</a></h2><ul>
-<li>gd: 跳转到局部变量的定义处；</li>
-<li>gD: 跳转到全局变量的定义处，从当前文件开头开始搜索；</li>
-<li>g;: 上一个修改过的地方；</li>
-<li>g,: 下一个修改过的地方；</li>
-<li>[[: 跳转到上一个函数块开始，需要有单独一行的{。</li>
-<li>]]: 跳转到下一个函数块开始，需要有单独一行的{。</li>
-<li>[]: 跳转到上一个函数块结束，需要有单独一行的}。</li>
-<li>][: 跳转到下一个函数块结束，需要有单独一行的}。</li>
-<li>[{: 跳转到当前块开始处；</li>
-<li>]}: 跳转到当前块结束处；</li>
-<li>[/: 跳转到当前注释块开始处；</li>
-<li>]/: 跳转到当前注释块结束处；</li>
-<li>%: 不仅能移动到匹配的(),{}或[]上，而且能在#if，#else， #endif之间跳跃。</li>
-</ul>
-<p>下面的括号匹配对编程很实用的。</p>
-<ul>
-<li>ci’, di’, yi’：修改、剪切或复制’之间的内容。</li>
-<li>ca’, da’, ya’：修改、剪切或复制’之间的内容，包含’。</li>
-<li>ci”, di”, yi”：修改、剪切或复制”之间的内容。</li>
-<li>ca”, da”, ya”：修改、剪切或复制”之间的内容，包含”。</li>
-<li>ci(, di(, yi(：修改、剪切或复制()之间的内容。</li>
-<li>ca(, da(, ya(：修改、剪切或复制()之间的内容，包含()。</li>
-<li>ci[, di[, yi[：修改、剪切或复制[]之间的内容。</li>
-<li>ca[, da[, ya[：修改、剪切或复制[]之间的内容，包含[]。</li>
-<li>ci{, di{, yi{：修改、剪切或复制{}之间的内容。</li>
-<li>ca{, da{, ya{：修改、剪切或复制{}之间的内容，包含{}。</li>
-<li>ci&lt;, di&lt;, yi&lt;：修改、剪切或复制&lt;&gt;之间的内容。</li>
-<li>ca&lt;, da&lt;, ya&lt;：修改、剪切或复制&lt;&gt;之间的内容，包含&lt;&gt;。</li>
-</ul>
-<h2 id="13-2-ctags"><a href="#13-2-ctags" class="headerlink" title="13.2 ctags"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id103" target="_blank" rel="noopener">13.2 ctags</a></h2><ul>
-<li>ctags -R: 生成tag文件，-R表示也为子目录中的文件生成tags</li>
-<li>:set tags=path/tags – 告诉ctags使用哪个tag文件</li>
-<li>:tag xyz – 跳到xyz的定义处，或者将光标放在xyz上按C-]，返回用C-t</li>
-<li>:stag xyz – 用分割的窗口显示xyz的定义，或者C-w ]， 如果用C-w n ]，就会打开一个n行高的窗口</li>
-<li>:ptag xyz – 在预览窗口中打开xyz的定义，热键是C-w }。</li>
-<li>:pclose – 关闭预览窗口。热键是C-w z。</li>
-<li>:pedit abc.h – 在预览窗口中编辑abc.h</li>
-<li>:psearch abc – 搜索当前文件和当前文件include的文件，显示包含abc的行。</li>
-</ul>
-<p>有时一个tag可能有多个匹配，如函数重载，一个函数名就会有多个匹配。 这种情况会先跳转到第一个匹配处。</p>
-<ul>
-<li>:[n]tnext – 下一[n]个匹配。</li>
-<li>:[n]tprev – 上一[n]个匹配。</li>
-<li>:tfirst – 第一个匹配</li>
-<li>:tlast – 最后一个匹配</li>
-<li>:tselect tagname – 打开选择列表</li>
-</ul>
-<p>tab键补齐</p>
-<ul>
-<li>:tag xyz<tab> – 补齐以xyz开头的tag名，继续按tab键，会显示其他的。</li>
-<li>:tag /xyz<tab> – 会用名字中含有xyz的tag名补全。</li>
-</ul>
-<h2 id="13-3-cscope"><a href="#13-3-cscope" class="headerlink" title="13.3 cscope"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id104" target="_blank" rel="noopener">13.3 cscope</a></h2><ul>
-<li>cscope -Rbq: 生成cscope.out文件</li>
-<li>:cs add /path/to/cscope.out /your/work/dir</li>
-<li>:cs find c func – 查找func在哪些地方被调用</li>
-<li>:cw – 打开quickfix窗口查看结果</li>
-</ul>
-<h2 id="13-4-gtags"><a href="#13-4-gtags" class="headerlink" title="13.4 gtags"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id105" target="_blank" rel="noopener">13.4 gtags</a></h2><p>Gtags综合了ctags和cscope的功能。 使用Gtags之前，你需要安装GNU Gtags。 然后在工程目录运行 gtags 。</p>
-<ul>
-<li>:Gtags funcname 定位到 funcname 的定义处。</li>
-<li>:Gtags -r funcname 查询 funcname被引用的地方。</li>
-<li>:Gtags -s symbol 定位 symbol 出现的地方。</li>
-<li>:Gtags -g string Goto string 出现的地方。 :Gtags -gi string 忽略大小写。</li>
-<li>:Gtags -f filename 显示 filename 中的函数列表。 你可以用 :Gtags -f % 显示当前文件。</li>
-<li>:Gtags -P pattern 显示路径中包含特定模式的文件。 如 :Gtags -P .h$ 显示所有头文件， :Gtags -P /vm/ 显示vm目录下的文件。</li>
-</ul>
-<h2 id="13-5-编译"><a href="#13-5-编译" class="headerlink" title="13.5 编译"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id106" target="_blank" rel="noopener">13.5 编译</a></h2><p>vim提供了:make来编译程序，默认调用的是make， 如果你当前目录下有makefile，简单地:make即可。</p>
-<p>如果你没有make程序，你可以通过配置makeprg选项来更改make调用的程序。 如果你只有一个abc.<a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener">Java</a>文件，你可以这样设置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set makeprg&#x3D;javac\ abc.java</span><br></pre></td></tr></table></figure>
-
-<p>然后:make即可。如果程序有错，可以通过quickfix窗口查看错误。 不过如果要正确定位错误，需要设置好errorformat，让vim识别错误信息。 如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:setl efm&#x3D;%A%f:%l:\ %m,%-Z%p^,%-C%.%#</span><br></pre></td></tr></table></figure>
-
-<p>%f表示文件名，%l表示行号， %m表示错误信息，其它的还不能理解。 请参考 :help errorformat。</p>
-<h2 id="13-6-快速修改窗口"><a href="#13-6-快速修改窗口" class="headerlink" title="13.6 快速修改窗口"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id107" target="_blank" rel="noopener">13.6 快速修改窗口</a></h2><p>其实是quickfix插件提供的功能， 对编译调试程序非常有用 :)</p>
-<ul>
-<li>:copen – 打开快速修改窗口。</li>
-<li>:cclose – 关闭快速修改窗口。</li>
-</ul>
-<p>快速修改窗口在make程序时非常有用，当make之后：</p>
-<ul>
-<li>:cl – 在快速修改窗口中列出错误。</li>
-<li>:cn – 定位到下一个错误。</li>
-<li>:cp – 定位到上一个错误。</li>
-<li>:cr – 定位到第一个错误。</li>
-</ul>
-<h2 id="13-7-自动补全"><a href="#13-7-自动补全" class="headerlink" title="13.7 自动补全"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id108" target="_blank" rel="noopener">13.7 自动补全</a></h2><ul>
-<li>C-x C-s – 拼写建议。</li>
-<li>C-x C-v – 补全vim选项和命令。</li>
-<li>C-x C-l – 整行补全。</li>
-<li>C-x C-f – 自动补全文件路径。弹出菜单后，按C-f循环选择，当然也可以按 C-n和C-p。</li>
-<li>C-x C-p 和C-x C-n – 用文档中出现过的单词补全当前的词。 直接按C-p和C-n也可以。</li>
-<li>C-x C-o – 编程时可以补全关键字和函数名啊。</li>
-<li>C-x C-i – 根据头文件内关键字补全。</li>
-<li>C-x C-d – 补全宏定义。</li>
-<li>C-x C-n – 按缓冲区中出现过的关键字补全。 直接按C-n或C-p即可。</li>
-</ul>
-<p>当弹出补全菜单后：</p>
-<ul>
-<li>C-p 向前切换成员；</li>
-<li>C-n 向后切换成员；</li>
-<li>C-e 退出下拉菜单，并退回到原来录入的文字；</li>
-<li>C-y 退出下拉菜单，并接受当前选项。</li>
-</ul>
-<h2 id="13-8-多行缩进缩出"><a href="#13-8-多行缩进缩出" class="headerlink" title="13.8 多行缩进缩出"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id109" target="_blank" rel="noopener">13.8 多行缩进缩出</a></h2><ul>
-<li>正常模式下，按两下&gt;;光标所在行会缩进。</li>
-<li>如果先按了n，再按两下&gt;;，光标以下的n行会缩进。</li>
-<li>对应的，按两下&lt;;，光标所在行会缩出。</li>
-<li>如果在编辑代码文件，可以用=进行调整。</li>
-<li>在可视模式下，选择要调整的代码块，按=，代码会按书写规则缩排好。</li>
-<li>或者n =，调整n行代码的缩排。</li>
-</ul>
-<h2 id="13-9-折叠"><a href="#13-9-折叠" class="headerlink" title="13.9 折叠"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id110" target="_blank" rel="noopener">13.9 折叠</a></h2><ul>
-<li>zf – 创建折叠的命令，可以在一个可视区域上使用该命令；</li>
-<li>zd – 删除当前行的折叠；</li>
-<li>zD – 删除当前行的折叠；</li>
-<li>zfap – 折叠光标所在的段；</li>
-<li>zo – 打开折叠的文本；</li>
-<li>zc – 收起折叠；</li>
-<li>za – 打开/关闭当前折叠；</li>
-<li>zr – 打开嵌套的折行；</li>
-<li>zm – 收起嵌套的折行；</li>
-<li>zR (zO) – 打开所有折行；</li>
-<li>zM (zC) – 收起所有折行；</li>
-<li>zj – 跳到下一个折叠处；</li>
-<li>zk – 跳到上一个折叠处；</li>
-<li>zi – enable/disable fold;</li>
-</ul>
-<h1 id="14-命令行"><a href="#14-命令行" class="headerlink" title="14. 命令行"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id111" target="_blank" rel="noopener">14. 命令行</a></h1><p>normal模式下按:进入命令行模式</p>
-<h2 id="14-1-命令行模式下的快捷键："><a href="#14-1-命令行模式下的快捷键：" class="headerlink" title="14.1 命令行模式下的快捷键："></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id112" target="_blank" rel="noopener">14.1 命令行模式下的快捷键：</a></h2><ul>
-<li>上下方向键：上一条或者下一条命令。如果已经输入了部分命令，则找上一 条或者下一条匹配的命令。</li>
-<li>左右方向键：左/右移一个字符。</li>
-<li>C-w： 向前删除一个单词。</li>
-<li>C-h： 向前删除一个字符，等同于Backspace。</li>
-<li>C-u： 从当前位置移动到命令行开头。</li>
-<li>C-b： 移动到命令行开头。</li>
-<li>C-e： 移动到命令行末尾。</li>
-<li>Shift-Left： 左移一个单词。</li>
-<li>Shift-Right： 右移一个单词。</li>
-<li>@： 重复上一次的冒号命令。</li>
-<li>q： 正常模式下，q然后按’:’，打开命令行历史缓冲区， 可以像编辑文件一样编辑命令。</li>
-<li>q/和q? 可以打开查找历史记录。</li>
-</ul>
-<h2 id="14-2-执行外部命令"><a href="#14-2-执行外部命令" class="headerlink" title="14.2 执行外部命令"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id113" target="_blank" rel="noopener">14.2 执行外部命令</a></h2><ul>
-<li>:! cmd 执行外部命令。</li>
-<li>:!! 执行上一次的外部命令。</li>
-<li>:sh 调用shell，用exit返回vim。</li>
-<li>:r !cmd 将命令的返回结果插入文件当前位置。</li>
-<li>:m,nw !cmd 将文件的m行到n行之间的内容做为命令输入执行命令。</li>
-</ul>
-<h1 id="15-其它"><a href="#15-其它" class="headerlink" title="15. 其它"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id114" target="_blank" rel="noopener">15. 其它</a></h1><h2 id="15-1-工作目录"><a href="#15-1-工作目录" class="headerlink" title="15.1 工作目录"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id115" target="_blank" rel="noopener">15.1 工作目录</a></h2><ul>
-<li>:pwd 显示vim的工作目录。</li>
-<li>:cd path 改变vim的工作目录。</li>
-<li>:set autochdir 可以让vim 根据编辑的文件自动切换工作目录。</li>
-</ul>
-<h2 id="15-2-一些快捷键（收集中）"><a href="#15-2-一些快捷键（收集中）" class="headerlink" title="15.2 一些快捷键（收集中）"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id116" target="_blank" rel="noopener">15.2 一些快捷键（收集中）</a></h2><ul>
-<li>K: 打开光标所在词的manpage。</li>
-<li>*: 向下搜索光标所在词。</li>
-<li>g*: 同上，但部分符合即可。</li>
-<li>#: 向上搜索光标所在词。</li>
-<li>g#: 同上，但部分符合即可。</li>
-<li>g C-g: 统计全文或统计部分的字数。</li>
-</ul>
-<h2 id="15-3-在线帮助"><a href="#15-3-在线帮助" class="headerlink" title="15.3 在线帮助"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id117" target="_blank" rel="noopener">15.3 在线帮助</a></h2><ul>
-<li>:h(elp)或F1 打开总的帮助。</li>
-<li>:help user-manual 打开用户手册。</li>
-<li>命令帮助的格式为：第一行指明怎么使用那个命令； 然后是缩进的一段解释这个命令的作用，然后是进一步的信息。</li>
-<li>:helptags somepath 为somepath中的文档生成索引。</li>
-<li>:helpgrep 可以搜索整个帮助文档，匹配的列表显示在quickfix窗口中。</li>
-<li>Ctrl+] 跳转到tag主题，Ctrl+t 跳回。</li>
-<li>:ver 显示版本信息。</li>
-</ul>
-<h2 id="15-4-一些小功能"><a href="#15-4-一些小功能" class="headerlink" title="15.4 一些小功能"></a><a href="http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id118" target="_blank" rel="noopener">15.4 一些小功能</a></h2><ul>
-<li>简单计算器: 在插入模式下，输入C-r =，然后输入表达式，就能在 光标处得到计算结果。</li>
-</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/09/vim/#more" rel="contents">
+              <a class="btn" href="/2020/05/10/network5/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1685,7 +535,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/c-all/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1699,7 +549,202 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/08/c-all/" class="post-title-link" itemprop="url">C++入门</a>
+            <a href="/2020/05/10/network4/" class="post-title-link" itemprop="url">network4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-10 16:08:27" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:27-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network3/" class="post-title-link" itemprop="url">network3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-10 16:08:25" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:25-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network2/" class="post-title-link" itemprop="url">network2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-10 16:08:22" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:22-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network1/" class="post-title-link" itemprop="url">TCP/IP的十大密码</a>
         </h2>
 
         <div class="post-meta">
@@ -1710,7 +755,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-08 18:11:18 / Modified: 22:31:51" itemprop="dateCreated datePublished" datetime="2020-05-08T18:11:18-05:00">2020-05-08</time>
+              <time title="Created: 2020-05-10 16:06:17 / Modified: 16:11:23" itemprop="dateCreated datePublished" datetime="2020-05-10T16:06:17-05:00">2020-05-10</time>
             </span>
 
           
@@ -1724,549 +769,159 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C-如何运行"><a href="#C-如何运行" class="headerlink" title="C++如何运行"></a>C++如何运行</h1><h2 id="g-应用说明"><a href="#g-应用说明" class="headerlink" title="g++ 应用说明"></a>g++ 应用说明</h2><p>程序 g++ 是将 gcc 默认语言设为 C++ 的一个特殊的版本，链接时它自动使用 C++ 标准库而不用 C 标准库。通过遵循源码的命名规范并指定对应库的名字，用 gcc 来编译链接 C++ 程序是可行的，如下例所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gcc main.cpp -lstdc++ -o main</span><br><span class="line">#意思是-l std c++</span><br></pre></td></tr></table></figure>
+          <meta name="referrer" content="no-referrer"/>
 
-<p>下面是一个保存在文件 helloworld.cpp 中一个简单的 C++ 程序的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; &quot;Hello, world!&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最简单的编译方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp</span><br></pre></td></tr></table></figure>
-
-<p>由于命令行中未指定可执行程序的文件名，编译器采用默认的 a.out。程序可以这样来运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;a.out</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
-
-<p>通常我们使用 <strong>-o</strong> 选项指定可执行程序的文件名，以下实例生成一个 helloworld 的可执行文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp -o helloworld</span><br></pre></td></tr></table></figure>
-
-<p>执行 helloworld:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;helloworld</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
-
-<p>如果是多个 C++ 代码文件，如 runoob1.cpp、runoob2.cpp，编译命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ runoob1.cpp runoob2.cpp -o runoob</span><br></pre></td></tr></table></figure>
-
-<p>生成一个 runoob 可执行文件。</p>
-<p>g++ 有些系统默认是使用 C++98，我们可以指定使用 C++11 来编译 main.cpp 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -g -Wall -std&#x3D;c++11 main.cpp</span><br></pre></td></tr></table></figure>
-
-<h3 id="g-常用命令选项"><a href="#g-常用命令选项" class="headerlink" title="g++ 常用命令选项"></a>g++ 常用命令选项</h3><table>
-<thead>
-<tr>
-<th align="left">选项</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-ansi</td>
-<td align="left">只支持 ANSI 标准的 C 语法。这一选项将禁止 GNU C 的某些特色， 例如 asm 或 typeof 关键词。</td>
-</tr>
-<tr>
-<td align="left">-c</td>
-<td align="left">只编译并生成目标文件。</td>
-</tr>
-<tr>
-<td align="left">-DMACRO</td>
-<td align="left">以字符串”1”定义 MACRO 宏。</td>
-</tr>
-<tr>
-<td align="left">-DMACRO=DEFN</td>
-<td align="left">以字符串”DEFN”定义 MACRO 宏。</td>
-</tr>
-<tr>
-<td align="left">-E</td>
-<td align="left">只运行 C 预编译器。</td>
-</tr>
-<tr>
-<td align="left">-g</td>
-<td align="left">生成调试信息。GNU 调试器可利用该信息。</td>
-</tr>
-<tr>
-<td align="left">-IDIRECTORY</td>
-<td align="left">指定额外的头文件搜索路径DIRECTORY。</td>
-</tr>
-<tr>
-<td align="left">-LDIRECTORY</td>
-<td align="left">指定额外的函数库搜索路径DIRECTORY。</td>
-</tr>
-<tr>
-<td align="left">-lLIBRARY</td>
-<td align="left">连接时搜索指定的函数库LIBRARY。</td>
-</tr>
-<tr>
-<td align="left">-m486</td>
-<td align="left">针对 486 进行代码优化。</td>
-</tr>
-<tr>
-<td align="left">-o</td>
-<td align="left">FILE 生成指定的输出文件。用在生成可执行文件时。</td>
-</tr>
-<tr>
-<td align="left">-O0</td>
-<td align="left">不进行优化处理。</td>
-</tr>
-<tr>
-<td align="left">-O</td>
-<td align="left">或 -O1 优化生成代码。</td>
-</tr>
-<tr>
-<td align="left">-O2</td>
-<td align="left">进一步优化。</td>
-</tr>
-<tr>
-<td align="left">-O3</td>
-<td align="left">比 -O2 更进一步优化，包括 inline 函数。</td>
-</tr>
-<tr>
-<td align="left">-shared</td>
-<td align="left">生成共享目标文件。通常用在建立共享库时。</td>
-</tr>
-<tr>
-<td align="left">-static</td>
-<td align="left">禁止使用共享连接。</td>
-</tr>
-<tr>
-<td align="left">-UMACRO</td>
-<td align="left">取消对 MACRO 宏的定义。</td>
-</tr>
-<tr>
-<td align="left">-w</td>
-<td align="left">不生成任何警告信息。</td>
-</tr>
-<tr>
-<td align="left">-Wall</td>
-<td align="left">生成所有警告信息。</td>
-</tr>
-</tbody></table>
-<h1 id="C-注释"><a href="#C-注释" class="headerlink" title="C++ 注释"></a>C++ 注释</h1><p>程序的注释是解释性语句，您可以在 C++ 代码中包含注释，这将提高源代码的可读性。所有的编程语言都允许某种形式的注释。</p>
-<p>C++ 支持单行注释和多行注释。注释中的所有字符会被 C++ 编译器忽略。</p>
-<p>C++ 注释以 /* 开始，以 */ 终止。例如：</p>
-<p>/* 这是注释 <em>/  /</em> C++ 注释也可以 * 跨行 */</p>
-<p>注释也能以 // 开始，直到行末为止。</p>
-<p> 块注释符（/<em>…</em>/）是不可以嵌套使用的。</p>
-<p>此外，我们还可以使用 <strong>#if 0 … #endif</strong> 来实现注释，且可以实现嵌套，格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#if 0</span><br><span class="line">   code</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<p>你可以把 <strong>#if 0</strong> 改成 <strong>#if 1</strong> 来执行 <strong>code</strong> 的代码。</p>
-<p>这种形式对程序调试也可以帮助，测试时使用 <strong>#if 1</strong> 来执行测试代码，发布后使用 <strong>#if 0</strong> 来屏蔽测试代码。</p>
-<p><strong>#if</strong> 后可以是任意的条件语句。</p>
-<p>下面的代码如果 condition 条件为 true 执行 code1 ，否则执行 code2。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#if condition</span><br><span class="line">  code1</span><br><span class="line">#else</span><br><span class="line">  code2</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<h1 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C++ 数据类型"></a>C++ 数据类型</h1><h2 id="基本的内置类型"><a href="#基本的内置类型" class="headerlink" title="基本的内置类型"></a>基本的内置类型</h2><p>C++ 为程序员提供了种类丰富的内置数据类型和用户自定义的数据类型。下表列出了七种基本的 C++ 数据类型：</p>
-<table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">关键字</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">布尔型</td>
-<td align="left">bool</td>
-</tr>
-<tr>
-<td align="left">字符型</td>
-<td align="left">char</td>
-</tr>
-<tr>
-<td align="left">整型</td>
-<td align="left">int</td>
-</tr>
-<tr>
-<td align="left">浮点型</td>
-<td align="left">float</td>
-</tr>
-<tr>
-<td align="left">双浮点型</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">无类型</td>
-<td align="left">void</td>
-</tr>
-<tr>
-<td align="left">宽字符型</td>
-<td align="left">wchar_t</td>
-</tr>
-</tbody></table>
-<p>其实 wchar_t 是这样来的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef short int wchar_t;&#x2F;&#x2F;占2或4字节</span><br></pre></td></tr></table></figure>
-
-<p>所以 wchar_t 实际上的空间是和 short int 一样。</p>
-<p>一些基本类型可以使用一个或多个类型修饰符进行修饰：</p>
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua/" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua/</a></p>
+<p><strong>阅读目录(Content)</strong></p>
 <ul>
-<li><p>signed</p>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label0" target="_blank" rel="noopener">一、TCP/IP模型</a></p>
 </li>
-<li><p>unsigned</p>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label1" target="_blank" rel="noopener">二、数据链路层</a></p>
 </li>
-<li><p>short：带short都是2字节</p>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label2" target="_blank" rel="noopener">三、网络层</a></p>
 </li>
-<li><p>long</p>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_lab2_2_0" target="_blank" rel="noopener">3.1、IP协议</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_lab2_2_1" target="_blank" rel="noopener">3.2.ARP及RARP协议</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_lab2_2_2" target="_blank" rel="noopener">3.3、 ICMP协议</a></li>
+</ul>
 </li>
-<li><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">位</th>
-<th align="left">范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">char</td>
-<td align="left">1 个字节</td>
-<td align="left">-128 到 127 或者 0 到 255</td>
-</tr>
-<tr>
-<td align="left">unsigned char</td>
-<td align="left">1 个字节</td>
-<td align="left">0 到 255</td>
-</tr>
-<tr>
-<td align="left">signed char</td>
-<td align="left">1 个字节</td>
-<td align="left">-128 到 127</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">4 个字节</td>
-<td align="left">-2147483648 到 2147483647</td>
-</tr>
-<tr>
-<td align="left">unsigned int</td>
-<td align="left">4 个字节</td>
-<td align="left">0 到 4294967295</td>
-</tr>
-<tr>
-<td align="left">signed int</td>
-<td align="left">4 个字节</td>
-<td align="left">-2147483648 到 2147483647</td>
-</tr>
-<tr>
-<td align="left">short int</td>
-<td align="left">2 个字节</td>
-<td align="left">-32768 到 32767</td>
-</tr>
-<tr>
-<td align="left">unsigned short int</td>
-<td align="left">2 个字节</td>
-<td align="left">0 到 65,535</td>
-</tr>
-<tr>
-<td align="left">signed short int</td>
-<td align="left">2 个字节</td>
-<td align="left">-32768 到 32767</td>
-</tr>
-<tr>
-<td align="left">long int</td>
-<td align="left">4 个字节</td>
-<td align="left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
-</tr>
-<tr>
-<td align="left">signed long int</td>
-<td align="left">8 个字节</td>
-<td align="left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
-</tr>
-<tr>
-<td align="left">unsigned long int</td>
-<td align="left">8 个字节</td>
-<td align="left">0 到 18,446,744,073,709,551,615</td>
-</tr>
-<tr>
-<td align="left">float</td>
-<td align="left">4 个字节</td>
-<td align="left">精度型占4个字节（32位）内存空间，+/- 3.4e +/- 38 (~7 个数字)</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">8 个字节</td>
-<td align="left">双精度型占8 个字节（64位）内存空间，+/- 1.7e +/- 308 (~15 个数字)</td>
-</tr>
-<tr>
-<td align="left">long double</td>
-<td align="left">16 个字节</td>
-<td align="left">长双精度型 16 个字节（128位）内存空间，可提供18-19位有效数字。</td>
-</tr>
-<tr>
-<td align="left">wchar_t</td>
-<td align="left">2 或 4 个字节</td>
-<td align="left">1 个宽字符</td>
-</tr>
-</tbody></table>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label3" target="_blank" rel="noopener">四、ping</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label4" target="_blank" rel="noopener">五、Traceroute</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label5" target="_blank" rel="noopener">六、TCP/UDP</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label6" target="_blank" rel="noopener">七、DNS</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label7" target="_blank" rel="noopener">八、TCP连接的建立与终止</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label8" target="_blank" rel="noopener">九、TCP流量控制</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_label9" target="_blank" rel="noopener">十、TCP拥塞控制</a></p>
 </li>
 </ul>
-<h2 id="typedef-声明"><a href="#typedef-声明" class="headerlink" title="typedef 声明"></a>typedef 声明</h2><p>您可以使用 <strong>typedef</strong> 为一个已有的类型取一个新的名字。下面是使用 typedef 定义一个新类型的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef type newname;</span><br></pre></td></tr></table></figure>
-
-<p>例如，下面的语句会告诉编译器，feet 是 int 的另一个名称：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef int feet;</span><br></pre></td></tr></table></figure>
-
-<p>现在，下面的声明是完全合法的，它创建了一个整型变量 distance：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feet distance;</span><br></pre></td></tr></table></figure>
-
-<h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p>
-<p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p>
-<p>创建枚举，需要使用关键字 <strong>enum</strong>。枚举类型的一般形式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum 枚举名&#123; </span><br><span class="line">     标识符[&#x3D;整型常数], </span><br><span class="line">     标识符[&#x3D;整型常数], </span><br><span class="line">... </span><br><span class="line">    标识符[&#x3D;整型常数]</span><br><span class="line">&#125; 枚举变量;</span><br></pre></td></tr></table></figure>
-
-<p>如果枚举没有初始化, 即省掉”=整型常数”时, 则从第一个标识符开始。</p>
-<p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green, blue &#125; c;</span><br><span class="line">c &#x3D; blue;</span><br></pre></td></tr></table></figure>
-
-<p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，<strong>green</strong> 的值为 5。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green&#x3D;5, blue &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在这里，<strong>blue</strong> 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p>
-<h1 id="C-变量类型"><a href="#C-变量类型" class="headerlink" title="C++ 变量类型"></a>C++ 变量类型</h1><p>变量的名称可以由字母、数字和下划线字符组成。它必须以字母或下划线开头。大写字母和小写字母是不同的，因为 C++ 是大小写敏感的。</p>
-<p>基于前一章讲解的基本类型，有以下几种基本的变量类型，将在下一章中进行讲解：</p>
-<table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">bool</td>
-<td align="left">存储值 true 或 false。</td>
-</tr>
-<tr>
-<td align="left">char</td>
-<td align="left">通常是一个字符（八位）。这是一个整数类型。</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">对机器而言，整数的最自然的大小。</td>
-</tr>
-<tr>
-<td align="left">float</td>
-<td align="left">单精度浮点值。单精度是这样的格式，1位符号，8位指数，23位小数。<img src="https://www.runoob.com/wp-content/uploads/2014/09/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png" alt="img"></td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">双精度浮点值。双精度是1位符号，11位指数，52位小数。<img src="https://www.runoob.com/wp-content/uploads/2014/09/v2-48240f0e1e0dd33ec89100cbe2d30707_hd.png" alt="img"></td>
-</tr>
-<tr>
-<td align="left">void</td>
-<td align="left">表示类型的缺失。</td>
-</tr>
-<tr>
-<td align="left">wchar_t</td>
-<td align="left">宽字符类型。</td>
-</tr>
-</tbody></table>
-<p>C++ 也允许定义各种其他类型的变量，比如<strong>枚举、指针、数组、引用、数据结构、类</strong>等等，这将会在后续的章节中进行讲解。</p>
-<h2 id="C-中的变量定义"><a href="#C-中的变量定义" class="headerlink" title="C++ 中的变量定义"></a>C++ 中的变量定义</h2><p>变量定义就是告诉编译器在何处创建变量的存储，以及如何创建变量的存储。变量定义指定一个数据类型，并包含了该类型的一个或多个变量的列表，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type variable_list;</span><br></pre></td></tr></table></figure>
-
-<p>在这里，<strong>type</strong> 必须是一个有效的 C++ 数据类型，可以是 char、wchar_t、int、float、double、bool 或任何用户自定义的对象，<strong>variable_list</strong> 可以由一个或多个标识符名称组成，多个标识符之间用逗号分隔。</p>
-<p>不带初始化的定义：带有静态存储持续时间的变量会被隐式初始化为 NULL（所有字节的值都是 0），其他所有变量的初始值是未定义的。</p>
-<h2 id="C-中的变量声明"><a href="#C-中的变量声明" class="headerlink" title="C++ 中的变量声明"></a>C++ 中的变量声明</h2><p>变量声明向编译器保证变量以给定的类型和名称存在，这样编译器在不需要知道变量完整细节的情况下也能继续进一步的编译。变量声明只在编译时有它的意义，在程序连接时编译器需要实际的变量声明。</p>
-<p>当您使用多个文件且只在其中一个文件中定义变量时（定义变量的文件在程序连接时是可用的），变量声明就显得非常有用。您可以使用 <strong>extern</strong> 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>尝试下面的实例，其中，变量在头部就已经被声明，但它们是在主函数内被定义和初始化的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 变量声明</span><br><span class="line">extern int a, b;</span><br><span class="line">extern int c;</span><br><span class="line">extern float f;</span><br><span class="line">  </span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F; 变量定义</span><br><span class="line">  int a, b;</span><br><span class="line">  int c;</span><br><span class="line">  float f;</span><br><span class="line"> </span><br><span class="line">  &#x2F;&#x2F; 实际初始化</span><br><span class="line">  a &#x3D; 10;</span><br><span class="line">  b &#x3D; 20;</span><br><span class="line">  c &#x3D; a + b;</span><br><span class="line"> </span><br><span class="line">  cout &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line"> </span><br><span class="line">  f &#x3D; 70.0&#x2F;3.0;</span><br><span class="line">  cout &lt;&lt; f &lt;&lt; endl ;</span><br><span class="line"> </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">30</span><br><span class="line">23.3333</span><br></pre></td></tr></table></figure>
-
-<p>同样的，在函数声明时，提供一个函数名，而函数的实际定义则可以在任何地方进行。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 函数声明</span><br><span class="line">int func();</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 函数调用</span><br><span class="line">    int i &#x3D; func();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 函数定义</span><br><span class="line">int func()</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>现在才算理解声明和定义的区别了：</strong></p>
-<p>定义包含了声明，但是声明不包含定义，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 0;     &#x2F;&#x2F;定义并声明了变量 a</span><br><span class="line">extern int a;  &#x2F;&#x2F;只是声明了有一个变量 a 存在，具体 a 在哪定义的，需要编译器编译的时候去找。</span><br></pre></td></tr></table></figure>
-
-<p>函数也是类似，定义的时候同时声明。但如果只是声明，编译器只知道有这么个函数，具体函数怎么定义的要编译器去找。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void fun1();  &#x2F;&#x2F;函数声明</span><br><span class="line"></span><br><span class="line">void fun1()&#123;  &#x2F;&#x2F;函数定义</span><br><span class="line">    cout&lt;&lt;&quot;fun1&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>C/C++ 编译 cpp 文件是从上往下编译，所以 main 函数里面调用其他函数时，如果其他函数在 main 函数的下面，则要在 main 函数上面先声明这个函数。</p>
-<p>或者把 main 函数放在最下面，这个不仅限于 main 函数，其他函数的调用都是如此。被调用的函数要在调用的函数之前声明。</p>
-<p>用 extern 声明外部变量是不能进行初始化：</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/20180617101214118.png" alt="img"></p>
-<p>为什么会这样呢？因为 <strong>extern int a;</strong> 只是声明而不是定义，声明是不会为变量开辟内存空间的，自然无法对其进行初始化的操作</p>
-<h2 id="C-中的左值（Lvalues）和右值（Rvalues"><a href="#C-中的左值（Lvalues）和右值（Rvalues" class="headerlink" title="C++ 中的左值（Lvalues）和右值（Rvalues)"></a>C++ 中的左值（Lvalues）和右值（Rvalues)</h2><p>C++ 中有两种类型的表达式：</p>
+<p>这段时间 有一点心很浮躁，不过希望自己马上要矫正过来。好好学习编程！这段时间我想好好地研究一下TCP/IP协议和网络传输这块！加油</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、TCP-IP模型"><a href="#一、TCP-IP模型" class="headerlink" title="一、TCP/IP模型"></a>一、TCP/IP模型</h1><p>TCP/IP协议模型（Transmission Control Protocol/Internet Protocol），包含了一系列构成互联网基础的网络协议，是Internet的核心协议。</p>
+<p>基于TCP/IP的参考模型将协议分成四个层次，它们分别是链路层、网络层、传输层和应用层。下图表示TCP/IP模型与OSI模型各层的对照关系。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/0b66939f772a466814a408df10587d52?imageView2/0/w/1280/h/960" alt="img"><br>TCP/IP协议族按照层次由上到下，层层包装。最上面的是应用层，这里面有http，ftp,等等我们熟悉的协议。而第二层则是传输层，著名的TCP和UDP协议就在这个层次。</p>
+<p>第三层是网络层，IP协议就在这里，它负责对数据加上IP地址和其他的数据以确定传输的目标。第四层是数据链路层，这个层次为待传送的数据加入一个以太网协议头，并进行CRC编码，为最后的数据传输做准备。<br><img src="https://user-gold-cdn.xitu.io/2017/8/10/32269df6363944b0df8fe99204e92c91?imageView2/0/w/1280/h/960" alt="img"><br>上图清楚地表示了TCP/IP协议中每个层的作用，而TCP/IP协议通信的过程其实就对应着数据入栈与出栈的过程。入栈的过程，数据发送方每层不断地封装首部与尾部，添加一些传输的信息，确保能传输到目的地。</p>
+<p>出栈的过程，数据接收方每层不断地拆除首部与尾部，得到最终传输的数据。<br><img src="https://user-gold-cdn.xitu.io/2017/8/10/7f693d4add34644a6268e0e11bec2cb7?imageView2/0/w/1280/h/960" alt="img"><br>上图以HTTP协议为例，具体说明。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、数据链路层"><a href="#二、数据链路层" class="headerlink" title="二、数据链路层"></a>二、数据链路层</h1><p>物理层负责0、1比特流与物理设备电压高低、光的闪灭之间的互换。 数据链路层负责将0、1序列划分为数据帧从一个节点传输到临近的另一个节点,这些节点是通过MAC来唯一标识的(MAC,物理地址，一个主机会有一个MAC地址)。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/65691336b87c5ed17079deb7618ca6a8?imageView2/0/w/1280/h/960" alt="img"></p>
 <ul>
-<li><strong>左值（lvalue）：</strong>指向内存位置的表达式被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
-<li><strong>右值（rvalue）：</strong>术语右值（rvalue）指的是存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
+<li>封装成帧: 把网络层数据报加头和尾，封装成帧,帧头中包括源MAC地址和目的MAC地址。</li>
+<li>透明传输:零比特填充、转义字符。</li>
+<li>可靠传输: 在出错率很低的链路上很少用，但是无线链路WLAN会保证可靠传输。</li>
+<li>差错检测(CRC):接收者检测错误,如果发现差错，丢弃该帧。</li>
 </ul>
-<p>变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。下面是一个有效的语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int g &#x3D; 20;</span><br></pre></td></tr></table></figure>
-
-<p>但是下面这个就不是一个有效的语句，会生成编译时错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 &#x3D; 20;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C8/" class="post-title-link" itemprop="url">计算机网络8</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 20:13:27" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:27-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C7/" class="post-title-link" itemprop="url">计算机网络7</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 20:13:19" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:19-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C6/" class="post-title-link" itemprop="url">计算机网络6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-05-07 20:13:16 / Modified: 20:13:17" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:16-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、网络层"><a href="#三、网络层" class="headerlink" title="三、网络层"></a>三、网络层</h1><h2 id="3-1、IP协议"><a href="#3-1、IP协议" class="headerlink" title="3.1、IP协议"></a>3.1、IP协议</h2><p>IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协议：TCP或UDP要做的事情。</p>
+<h5 id="1）IP地址"><a href="#1）IP地址" class="headerlink" title="1）IP地址"></a>1）IP地址</h5><p>在数据链路层中我们一般通过MAC地址来识别不同的节点，而在IP层我们也要有一个类似的地址标识，这就是IP地址。</p>
+<p>32位IP地址分为网络位和地址位，这样做可以减少路由器中路由表记录的数目，有了网络地址，就可以限定拥有相同网络地址的终端都在同一个范围内，那么路由表只需要维护一条这个网络地址的方向，就可以找到相应的这些终端了。</p>
+<p>A类IP地址: 0.0.0.0<del>127.0.0.0<br>B类IP地址:128.0.0.1</del>191.255.0.0<br>C类IP地址:192.168.0.0~239.255.255.0</p>
+<h5 id="2）-IP协议头"><a href="#2）-IP协议头" class="headerlink" title="2） IP协议头"></a>2） IP协议头</h5><p><img src="https://user-gold-cdn.xitu.io/2017/8/10/dbb082d9806de01f5653423917a1f71b?imageView2/0/w/1280/h/960" alt="img"><br>这里只介绍:八位的TTL字段。这个字段规定该数据包在穿过多少个路由之后才会被抛弃。某个IP数据包每穿过一个路由器，该数据包的TTL数值就会减少1，当该数据包的TTL成为零，它就会被自动抛弃。<br>这个字段的最大值也就是255，也就是说一个协议包也就在路由器里面穿行255次就会被抛弃了，根据系统的不同，这个数字也不一样，一般是32或者是64。</p>
+<h2 id="3-2-ARP及RARP协议"><a href="#3-2-ARP及RARP协议" class="headerlink" title="3.2.ARP及RARP协议"></a>3.2.ARP及RARP协议</h2><p>ARP 是根据IP地址获取MAC地址的一种协议。</p>
+<p>ARP（地址解析）协议是一种解析协议，本来主机是完全不知道这个IP对应的是哪个主机的哪个接口，当主机要发送一个IP包的时候，会首先查一下自己的ARP高速缓存（就是一个IP-MAC地址对应表缓存）。</p>
+<p>如果查询的IP－MAC值对不存在，那么主机就向网络发送一个ARP协议广播包，这个广播包里面就有待查询的IP地址，而直接收到这份广播的包的所有主机都会查询自己的IP地址，</p>
+<p>如果收到广播包的某一个主机发现自己符合条件，那么就准备好一个包含自己的MAC地址的ARP包传送给发送ARP广播的主机。</p>
+<p>而广播主机拿到ARP包后会更新自己的ARP缓存（就是存放IP-MAC对应表的地方）。发送广播的主机就会用新的ARP缓存数据准备好数据链路层的的数据包发送工作。</p>
+<p>RARP协议的工作与此相反，不做赘述。</p>
+<h2 id="3-3、-ICMP协议"><a href="#3-3、-ICMP协议" class="headerlink" title="3.3、 ICMP协议"></a>3.3、 ICMP协议</h2><p>IP协议并不是一个可靠的协议，它不保证数据被送达，那么，自然的，保证数据送达的工作应该由其他的模块来完成。其中一个重要的模块就是ICMP(网络控制报文)协议。ICMP不是高层协议，而是IP层的协议。</p>
+<p>当传送IP数据包发生错误。比如主机不可达，路由不可达等等，ICMP协议将会把错误信息封包，然后传送回给主机。给主机一个处理错误的机会，这 也就是为什么说建立在IP层以上的协议是可能做到安全的原因。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、ping"><a href="#四、ping" class="headerlink" title="四、ping"></a>四、ping</h1><p>ping可以说是ICMP的最著名的应用，是TCP/IP协议的一部分。利用“ping”命令可以检查网络是否连通，可以很好地帮助我们分析和判定网络故障。</p>
+<p>例如：当我们某一个网站上不去的时候。通常会ping一下这个网站。ping会回显出一些有用的信息。一般的信息如下:</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/7491c4c023725cf51a3992ad52dabed2?imageView2/0/w/1280/h/960" alt="img"><br>ping这个单词源自声纳定位，而这个程序的作用也确实如此，它利用ICMP协议包来侦测另一个主机是否可达。原理是用类型码为0的ICMP发请 求，受到请求的主机则用类型码为8的ICMP回应。</p>
+<p>ping程序来计算间隔时间，并计算有多少个包被送达。用户就可以判断网络大致的情况。我们可以看到， ping给出来了传送的时间和TTL的数据。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、Traceroute"><a href="#五、Traceroute" class="headerlink" title="五、Traceroute"></a>五、Traceroute</h1><p>Traceroute是用来侦测主机到目的主机之间所经路由情况的重要工具，也是最便利的工具。</p>
+<p>Traceroute的原理是非常非常的有意思，它收到到目的主机的IP后，首先给目的主机发送一个TTL=1的UDP数据包，而经过的第一个路由器收到这个数据包以后，就自动把TTL减1，而TTL变为0以后，路由器就把这个包给抛弃了，并同时产生 一个主机不可达的ICMP数据报给主机。主机收到这个数据报以后再发一个TTL=2的UDP数据报给目的主机，然后刺激第二个路由器给主机发ICMP数据 报。如此往复直到到达目的主机。这样，traceroute就拿到了所有的路由器IP。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/7c83af15e316ea6a54c255c01bbabcd6?imageView2/0/w/1280/h/960" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、TCP-UDP"><a href="#六、TCP-UDP" class="headerlink" title="六、TCP/UDP"></a>六、TCP/UDP</h1><p>TCP/UDP都是是传输层协议，但是两者具有不同的特性，同时也具有不同的应用场景，下面以图表的形式对比分析。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/ec2e805a6ad5eedb10ad44d1f50a85d5?imageView2/0/w/1280/h/960" alt="img"></p>
+<h5 id="面向报文"><a href="#面向报文" class="headerlink" title="面向报文"></a>面向报文</h5><p>面向报文的传输方式是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。</p>
+<h5 id="面向字节流"><a href="#面向字节流" class="headerlink" title="面向字节流"></a>面向字节流</h5><p>面向字节流的话，虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。</p>
+<p>关于拥塞控制，流量控制，是TCP的重点，后面讲解。</p>
+<p>TCP和UDP协议的一些应用</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/c857965c70a17d8d0cd8819b59e989c9?imageView2/0/w/1280/h/960" alt="img"></p>
+<h4 id="什么时候应该使用TCP？"><a href="#什么时候应该使用TCP？" class="headerlink" title="什么时候应该使用TCP？"></a>什么时候应该使用TCP？</h4><p>当对网络通讯质量有要求的时候，比如：整个数据要准确无误的传递给对方，这往往用于一些要求可靠的应用，比如HTTP、HTTPS、FTP等传输文件的协议，POP、SMTP等邮件传输的协议。</p>
+<h4 id="什么时候应该使用UDP？"><a href="#什么时候应该使用UDP？" class="headerlink" title="什么时候应该使用UDP？"></a>什么时候应该使用UDP？</h4><p>当对网络通讯质量要求不高的时候，要求网络通讯速度能尽量的快，这时就可以使用UDP。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、DNS"><a href="#七、DNS" class="headerlink" title="七、DNS"></a>七、DNS</h1><p>DNS（Domain Name System，域名系统），因特网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过主机名，最终得到该主机名对应的IP地址的过程叫做域名解析（或主机名解析）。DNS协议运行在UDP协议之上，使用端口号53。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="八、TCP连接的建立与终止"><a href="#八、TCP连接的建立与终止" class="headerlink" title="八、TCP连接的建立与终止"></a>八、TCP连接的建立与终止</h1><h4 id="1-三次握手"><a href="#1-三次握手" class="headerlink" title="1.三次握手"></a>1.三次握手</h4><p>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/6023cb46caf6ef8cdcc253cc9c827e40?imageView2/0/w/1280/h/960" alt="img"></p>
+<p>第一次握手： 建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</p>
+<p>第二次握手： 服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
+<p>第三次握手： 客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
+<h5 id="为什么要三次握手？"><a href="#为什么要三次握手？" class="headerlink" title="为什么要三次握手？"></a>为什么要三次握手？</h5><p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</p>
+<p>具体例子：“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
+<h4 id="2-四次挥手"><a href="#2-四次挥手" class="headerlink" title="2.四次挥手"></a>2.四次挥手</h4><p>当客户端和服务器通过三次握手建立了TCP连接以后，当数据传送完毕，肯定是要断开TCP连接的啊。那对于TCP的断开连接，这里就有了神秘的“四次分手”。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/1fd63f511dd955e462bcdd3946e880bf?imageView2/0/w/1280/h/960" alt="img"><br>第一次分手： 主机1（可以使客户端，也可以是服务器端），设置Sequence Number，向主机2发送一个FIN报文段；此时，主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；</p>
+<p>第二次分手： 主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；</p>
+<p>第三次分手： 主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；</p>
+<p>第四次分手： 主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</p>
+<h5 id="为什么要四次分手？"><a href="#为什么要四次分手？" class="headerlink" title="为什么要四次分手？"></a>为什么要四次分手？</h5><p>TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<h5 id="为什么要等待2MSL？"><a href="#为什么要等待2MSL？" class="headerlink" title="为什么要等待2MSL？"></a>为什么要等待2MSL？</h5><p>MSL：报文段最大生存时间，它是任何报文段被丢弃前在网络内的最长时间。<br>原因有二：</p>
+<ul>
+<li>保证TCP协议的全双工连接能够可靠关闭</li>
+<li>保证这次连接的重复数据段从网络中消失</li>
+</ul>
+<p>第一点：如果主机1直接CLOSED了，那么由于IP协议的不可靠性或者是其它网络原因，导致主机2没有收到主机1最后回复的ACK。那么主机2就会在超时之后继续发送FIN，此时由于主机1已经CLOSED了，就找不到与重发的FIN对应的连接。所以，主机1不是直接进入CLOSED，而是要保持TIME_WAIT，当再次收到FIN的时候，能够保证对方收到ACK，最后正确的关闭连接。</p>
+<p>第二点：如果主机1直接CLOSED，然后又再向主机2发起一个新连接，我们不能保证这个新连接与刚关闭的连接的端口号是不同的。也就是说有可能新连接和老连接的端口号是相同的。一般来说不会发生什么问题，但是还是有特殊情况出现：假设新连接和已经关闭的老连接端口号是一样的，如果前一次连接的某些数据仍然滞留在网络中，这些延迟数据在建立新连接之后才到达主机2，由于新连接和老连接的端口号是一样的，TCP协议就认为那个延迟的数据是属于新连接的，这样就和真正的新连接的数据包发生混淆了。所以TCP连接还要在TIME_WAIT状态等待2倍MSL，这样可以保证本次连接的所有数据都从网络中消失。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="九、TCP流量控制"><a href="#九、TCP流量控制" class="headerlink" title="九、TCP流量控制"></a>九、TCP流量控制</h1><p>如果发送方把数据发送得过快，接收方可能会来不及接收，这就会造成数据的丢失。所谓流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收。</p>
+<p>利用滑动窗口机制可以很方便地在TCP连接上实现对发送方的流量控制。</p>
+<p>设A向B发送数据。在连接建立时，B告诉了A：“我的接收窗口是 rwnd = 400 ”(这里的 rwnd 表示 receiver window) 。因此，发送方的发送窗口不能超过接收方给出的接收窗口的数值。请注意，TCP的窗口单位是字节，不是报文段。假设每一个报文段为100字节长，而数据报文段序号的初始值设为1。大写ACK表示首部中的确认位ACK，小写ack表示确认字段的值ack。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/550bceefdb7fdae79e66be6344823aed?imageView2/0/w/1280/h/960" alt="img"><br>从图中可以看出，B进行了三次流量控制。第一次把窗口减少到 rwnd = 300 ，第二次又减到了 rwnd = 100 ，最后减到 rwnd = 0 ，即不允许发送方再发送数据了。这种使发送方暂停发送的状态将持续到主机B重新发出一个新的窗口值为止。B向A发送的三个报文段都设置了 ACK = 1 ，只有在ACK=1时确认号字段才有意义。</p>
+<p>TCP为每一个连接设有一个持续计时器(persistence timer)。只要TCP连接的一方收到对方的零窗口通知，就启动持续计时器。若持续计时器设置的时间到期，就发送一个零窗口控测报文段（携1字节的数据），那么收到这个报文段的一方就重新设置持续计时器。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7594365.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="十、TCP拥塞控制"><a href="#十、TCP拥塞控制" class="headerlink" title="十、TCP拥塞控制"></a>十、TCP拥塞控制</h1><h4 id="1-慢开始和拥塞避免"><a href="#1-慢开始和拥塞避免" class="headerlink" title="1.慢开始和拥塞避免"></a>1.慢开始和拥塞避免</h4><p>发送方维持一个拥塞窗口 cwnd ( congestion window )的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口。</p>
+<p>发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就再增大一些，以便把更多的分组发送出去。但只要网络出现拥塞，拥塞窗口就减小一些，以减少注入到网络中的分组数。</p>
+<h5 id="慢开始算法："><a href="#慢开始算法：" class="headerlink" title="慢开始算法："></a>慢开始算法：</h5><p>当主机开始发送数据时，如果立即所大量数据字节注入到网络，那么就有可能引起网络拥塞，因为现在并不清楚网络的负荷情况。<br>因此，较好的方法是 先探测一下，即由小到大逐渐增大发送窗口，也就是说，由小到大逐渐增大拥塞窗口数值。</p>
+<p>通常在刚刚开始发送报文段时，先把拥塞窗口 cwnd 设置为一个最大报文段MSS的数值。而在每收到一个对新的报文段的确认后，把拥塞窗口增加至多一个MSS的数值。用这样的方法逐步增大发送方的拥塞窗口 cwnd ，可以使分组注入到网络的速率更加合理。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/36b302f09a560f622a3309dce5b7fd06?imageView2/0/w/1280/h/960" alt="img"><br>每经过一个传输轮次，拥塞窗口 cwnd 就加倍。一个传输轮次所经历的时间其实就是往返时间RTT。不过“传输轮次”更加强调：把拥塞窗口cwnd所允许发送的报文段都连续发送出去，并收到了对已发送的最后一个字节的确认。</p>
+<p>另，慢开始的“慢”并不是指cwnd的增长速率慢，而是指在TCP开始发送报文段时先设置cwnd=1，使得发送方在开始时只发送一个报文段（目的是试探一下网络的拥塞情况），然后再逐渐增大cwnd。</p>
+<p>为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限ssthresh状态变量。慢开始门限ssthresh的用法如下：</p>
+<ul>
+<li><p>当 cwnd &lt; ssthresh 时，使用上述的慢开始算法。</p>
+</li>
+<li><p>当 cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。</p>
+</li>
+<li><p>当 cwnd = ssthresh 时，既可使用慢开始算法，也可使用拥塞控制避免算法。</p>
+<h5 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h5><p>让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是加倍。这样拥塞窗口cwnd按线性规律缓慢增长，比慢开始算法的拥塞窗口增长速率缓慢得多。</p>
+</li>
+</ul>
+<p>无论在慢开始阶段还是在拥塞避免阶段，只要发送方判断网络出现拥塞（其根据就是没有收到确认），就要把慢开始门限ssthresh设置为出现拥塞时的发送 方窗口值的一半（但不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。</p>
+<p>这样做的目的就是要迅速减少主机发送到网络中的分组数，使得发生 拥塞的路由器有足够时间把队列中积压的分组处理完毕。</p>
+<p>如下图，用具体数值说明了上述拥塞控制的过程。现在发送窗口的大小和拥塞窗口一样大。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/2c82284519ea113f72892100ce419ec4?imageView2/0/w/1280/h/960" alt="img"></p>
+<h4 id="2-快重传和快恢复"><a href="#2-快重传和快恢复" class="headerlink" title="2.快重传和快恢复"></a>2.快重传和快恢复</h4><h5 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h5><p>快重传算法首先要求接收方每收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/8/10/d425c45f8fa29c2512b598d80532495c?imageView2/0/w/1280/h/960" alt="img"><br>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。</p>
+<p>显然，接收方不能确认M4，因为M4是收到的失序报文段。根据 可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。</p>
+<p>但按照快重传算法的规定，接收方应及时发送对M2的重复确认，这样做可以让 发送方及早知道报文段M3没有到达接收方。发送方接着发送了M5和M6。接收方收到这两个报文后，也还要再次发出对M2的重复确认。这样，发送方共收到了 接收方的四个对M2的确认，其中后三个都是重复确认。</p>
+<p>快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段M3，而不必 继续等待M3设置的重传计时器到期。</p>
+<p>由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
+<h5 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h5><p>与快重传配合使用的还有快恢复算法，其过程有以下两个要点：</p>
+<ul>
+<li><ul>
+<li>当发送方连续收到三个重复确认，就执行“乘法减小”算法，把慢开始门限ssthresh减半。</li>
+<li>与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为 慢开始门限ssthresh减半后的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。<br><img src="https://user-gold-cdn.xitu.io/2017/8/10/3433ebaf7ed0550bf33cb9a10b34e2f7?imageView2/0/w/1280/h/960" alt="img"></li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -2284,7 +939,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2350,7 +1005,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

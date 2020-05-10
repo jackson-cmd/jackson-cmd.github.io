@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="OSI-TCP分层1、ISO：国际标准化组织，是一个全球性的非政府组织。 2、OSI：开放原始码组织，是一个致力于推动开源软件发展的非盈利组织。 ISO 创建 OSI模型 OSI参考模型 TCP&#x2F;IP协议四层：应用层，传输层，网络互联层，网络接口层。 TCP&#x2F;IP 和 ISO&#x2F;OSI　　 　　ISO&#x2F;OSI模型，即开放式通信系统互联参考模型（Open System Interconnectio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ccna1">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/ccna1/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="OSI-TCP分层1、ISO：国际标准化组织，是一个全球性的非政府组织。 2、OSI：开放原始码组织，是一个致力于推动开源软件发展的非盈利组织。 ISO 创建 OSI模型 OSI参考模型 TCP&#x2F;IP协议四层：应用层，传输层，网络互联层，网络接口层。 TCP&#x2F;IP 和 ISO&#x2F;OSI　　 　　ISO&#x2F;OSI模型，即开放式通信系统互联参考模型（Open System Interconnectio">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdn.net/20180812081221499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHJld2dpdGh1Yg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111094255969-906399626.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111094517799-658969358.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100150782-1142480745.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100506569-1755504964.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100625410-1390955722.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113084120716-1173123907.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113084255642-1746116334.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113085614769-669036395.png">
+<meta property="article:published_time" content="2020-05-10T18:28:40.000Z">
+<meta property="article:modified_time" content="2020-05-10T21:05:40.947Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180812081221499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHJld2dpdGh1Yg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/10/ccna1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>ccna1 | Jackson Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ccna1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ccna1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 13:28:40 / Modified: 16:05:40" itemprop="dateCreated datePublished" datetime="2020-05-10T13:28:40-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"/>
+
+<h1 id="OSI-TCP分层"><a href="#OSI-TCP分层" class="headerlink" title="OSI-TCP分层"></a>OSI-TCP分层</h1><p>1、ISO：国际标准化组织，是一个全球性的非政府组织。</p>
+<p>2、OSI：开放原始码组织，是一个致力于推动开源软件发展的非盈利组织。</p>
+<p>ISO 创建 OSI模型</p>
+<p>OSI参考模型<br><img src="https://img-blog.csdn.net/20180812081221499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHJld2dpdGh1Yg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述" style="zoom:150%;" /></p>
+<p>TCP/IP协议四层：应用层，传输层，网络互联层，网络接口层。</p>
+<h2 id="TCP-IP-和-ISO-OSI"><a href="#TCP-IP-和-ISO-OSI" class="headerlink" title="TCP/IP 和 ISO/OSI"></a>TCP/IP 和 ISO/OSI</h2><p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111094255969-906399626.png" alt="img"></p>
+<p>　　ISO/OSI模型，即开放式通信系统互联参考模型（Open System Interconnection Reference Model），是国际标准化组织（ISO）提出的一个试图使各种计算机在世界范围内互连为网络的标准框架，简称OSI。<br>　　TCP/IP协议模型（Transmission Control Protocol/Internet Protocol），包含了一系列构成互联网基础的网络协议，是Internet的核心协议，通过20多年的发展已日渐成熟，并被广泛应用于局域网和广域网中，目前已成为事实上的国际标准。TCP/IP协议簇是一组不同层次上的多个协议的组合，通常被认为是一个四层协议系统，与OSI的七层模型相对应。</p>
+<p><a href="https://www.cnblogs.com/duanwandao/p/9941411.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h2 id="TCP-IP分层模型"><a href="#TCP-IP分层模型" class="headerlink" title="TCP/IP分层模型"></a>TCP/IP分层模型</h2><p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111094517799-658969358.png" alt="img"></p>
+<ul>
+<li>应用层</li>
+</ul>
+<p>　　应用层决定了向用户提供应用服务时通信的活动。||  应用层负责处理特定的应用程序细节。 </p>
+<p>　　TCP/IP 协议族内预存了各类通用的应用服务。比如，FTP（File Transfer Protocol，文件传输协议）和 DNS（Domain Name System，域 名系统）服务就是其中两类。 HTTP 协议也处于该层。</p>
+<ul>
+<li>传输层</li>
+</ul>
+<p>　　传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据 传输。 </p>
+<p>　　在传输层有两个性质不同的协议：TCP（Transmission Control Protocol，传输控制协议）和 UDP（User Data Protocol，用户数据报 协议）。</p>
+<hr>
+<p>　　主要为两台主机上的应用程序提供端到端的通信。在TCP/IP协议族中，有两个互不相同的传输协议：TCP（传输控制协议）和UDP（用户数据报协议）。</p>
+<p> 　TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等。由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。为了提供可靠的服务，TCP采用了超时重传、发送和接收端到端的确认分组等机制。</p>
+<p>　　UDP则为应用层提供一种非常简单的服务。它只是把称作数据报的分组从一台主机发送到另一台主机，但并不保证该数据报能到达另一端。一个数据报是指从发送方传输到接收方的一个信息单元（例如，发送方指定的一定字节数的信息）。UDP协议任何必需的可靠性必须由应用层来提供。</p>
+<ul>
+<li>网络层</li>
+</ul>
+<p>　　网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数 据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计 算机，并把数据包传送给对方。</p>
+<p>　　与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所 起的作用就是在众多的选项内选择一条传输路线。</p>
+<hr>
+<p>　　也称作互联网层（在第一个图中为网际层），处理分组在网络中的活动，例如分组的选路。在TCP/IP协议族中，网络层协议包括IP协议（网际协议），ICMP协议（Internet互联网控制报文协议），以及IGMP协议（Internet组管理协议）。</p>
+<p>　　IP是一种网络层协议，提供的是一种不可靠的服务，它只是尽可能快地把分组从源结点送到目的结点，但是并不提供任何可靠性保证。同时被TCP和UDP使用。TCP和UDP的每组数据都通过端系统和每个中间路由器中的IP层在互联网中进行传输。</p>
+<p>　　ICMP是IP协议的附属协议。IP层用它来与其他主机或路由器交换错误报文和其他重要信息。</p>
+<p>　　IGMP是Internet组管理协议。它用来把一个UDP数据报多播到多个主机。</p>
+<ul>
+<li>链路层</li>
+</ul>
+<p>　　用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱 动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等 物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在 链路层的作用范围之内。</p>
+<hr>
+<p>　　也称作数据链路层或网络接口层（在第一个图中为网络接口层和硬件层），通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。它们一起处理与电缆（或其他任何传输媒介）的物理接口细节。ARP（地址解析协议）和RARP（逆地址解析协议）是某些网络接口（如以太网和令牌环网）使用的特殊协议，用来转换IP层和网络接口层使用的地址。</p>
+<p><a href="https://www.cnblogs.com/duanwandao/p/9941411.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h2 id="数据的封装与分用"><a href="#数据的封装与分用" class="headerlink" title="数据的封装与分用"></a>数据的封装与分用</h2><p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100150782-1142480745.png" alt="img"></p>
+<p>　　</p>
+<p>　　当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层直到被当作一串比特流送入网络。其中每一层对收到的数据都要增加一些首部信息（有时还要增加尾部信息），该过程如图所示。</p>
+<p>　　TCP传给IP的数据单元称作TCP报文段或简称为TCP段（TCP segment）；UDP数据与TCP数据基本一致。唯一的不同是UDP传给IP的信息单元称作U D P数据报（UDP datagram），而且UDP的首部长为8字节。IP传给网络接口层的数据单元称作IP数据报(IP datagram)。通过以太网传输的比特流称作帧(Frame )。 </p>
+<p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100506569-1755504964.png" alt="img"></p>
+<p>　　当目的主机收到一个以太网数据帧时，数据就开始从协议栈中由底向上升，同时去掉各层协议加上的报文首部。每层协议盒都要去检查报文首部中的协议标识，以确定接收数据的上层协议。这个过程称作分用（Demultiplexing）。协议是通过目的端口号、源I P地址和源端口号进行解包的。</p>
+<p><a href="https://www.cnblogs.com/duanwandao/p/9941411.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h2 id="其他相关概念"><a href="#其他相关概念" class="headerlink" title="其他相关概念"></a>其他相关概念</h2><p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181111100625410-1390955722.png" alt="img"></p>
+<ul>
+<li>端口号</li>
+</ul>
+<p>　　服务器一般都是通过知名端口号来识别的。例如，对于每个TCP/IP实现来说，FTP服务器的TCP端口号都是21，每个Telnet服务器的TCP端口号都是23，每个TFTP (简单文件传送协议)服务器的UDP端口号都是69。任何TCP/IP实现所提供的服务都用知名的1～1023之间的端口号。这些知名端口号由Internet号分配机构（Internet Assigned Numbers Authority, IANA）来管理。知名端口号介于1～255之间；256～1023之间的端口号通常都是由Unix系统占用，以提供一些特定的Unix服务；1024~5000端口号用于客户端分配临时端口号；大于5000的端口号是为其他服务器预留的。</p>
+<ul>
+<li>DNS</li>
+</ul>
+<p>　　DNS 是计算机域名系统 (Domain Name System 或Domain Name Service) 的缩写，它是由解析器以及域名服务器组成的。域名服务器是指保存有该网络中所有主机的域名和对应IP地址，并具有将域名转换为IP地址功能的服务器。</p>
+<p><a href="https://www.cnblogs.com/duanwandao/p/9941411.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h2 id="TCP-IP-通信传输流"><a href="#TCP-IP-通信传输流" class="headerlink" title="TCP/IP 通信传输流"></a>TCP/IP 通信传输流</h2><p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113084120716-1173123907.png" alt="img"></p>
+<p>　　利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通 信。发送端从应用层往下走，接收端则往应用层往上走。 </p>
+<p>　　我们用 HTTP 举例来说明，首先作为发送端的客户端在应用层 （HTTP 协议）发出一个想看某个 Web 页面的 HTTP 请求。 </p>
+<p>　　接着，为了传输方便，在传输层（TCP 协议）把从应用层处收到的数 据（HTTP 请求报文）进行分割，并在各个报文上打上标记序号及端 口号后转发给网络层。</p>
+<p>　　在网络层（IP 协议），增加作为通信目的地的 MAC 地址后转发给链 路层。这样一来，发往网络的通信请求就准备齐全了。</p>
+<p>　　接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用 层。当传输到应用层，才能算真正接收到由客户端发送过来的 HTTP 请求。</p>
+<p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113084255642-1746116334.png" alt="img"></p>
+<p>　　发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该 层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层 时会把对应的首部消去。</p>
+<p>　　这种把数据信息包装起来的做法称为封装（encapsulate）。</p>
+<h2 id="负责传输的-IP-协议"><a href="#负责传输的-IP-协议" class="headerlink" title="负责传输的 IP 协议"></a>负责传输的 IP 协议</h2><p>　　按层次分，IP（Internet Protocol）网际协议位于网络层。Internet Protocol 这个名称可能听起来有点夸张，但事实正是如此，因为几乎 所有使用网络的系统都会用到 IP 协议。TCP/IP 协议族中的 IP 指的就 是网际协议，协议名称中占据了一半位置，其重要性可见一斑。可能 有人会把“IP”和“IP 地址”搞混，“IP”其实是一种协议的名称。</p>
+<p>　　IP 协议的作用是把各种数据包传送给对方。而要保证确实传送到对方 那里，则需要满足各类条件。其中两个重要的条件是 IP 地址和 MAC 地址（Media Access Control Address）。</p>
+<p>　　IP 地址指明了节点被分配到的地址，MAC 地址是指网卡所属的固定 地址。IP 地址可以和 MAC 地址进行配对。IP 地址可变换，但 MAC 地址基本上不会更改。</p>
+<p>　　使用 ARP 协议凭借 MAC 地址进行通信</p>
+<p>　　IP 间的通信依赖 MAC 地址。在网络上，通信的双方在同一局域网 （LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转 才能连接到对方。而在进行中转时，会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议（Address Resolution Protocol）。ARP 是一种用以解析地址的协议，根据通信方 的 IP 地址就可以反查出对应的 MAC 地址。</p>
+<p>　　<img src="https://img2018.cnblogs.com/blog/1330623/201811/1330623-20181113085614769-669036395.png" alt="img"></p>
+<a id="more"></a>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/10/ccna/" rel="prev" title="ccna思科课">
+      <i class="fa fa-chevron-left"></i> ccna思科课
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/ccna2/" rel="next" title="ccna2">
+      ccna2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OSI-TCP分层"><span class="nav-number">1.</span> <span class="nav-text">OSI-TCP分层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-和-ISO-OSI"><span class="nav-number">1.1.</span> <span class="nav-text">TCP&#x2F;IP 和 ISO&#x2F;OSI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP分层模型"><span class="nav-number">1.2.</span> <span class="nav-text">TCP&#x2F;IP分层模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据的封装与分用"><span class="nav-number">1.3.</span> <span class="nav-text">数据的封装与分用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相关概念"><span class="nav-number">1.4.</span> <span class="nav-text">其他相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-通信传输流"><span class="nav-number">1.5.</span> <span class="nav-text">TCP&#x2F;IP 通信传输流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负责传输的-IP-协议"><span class="nav-number">1.6.</span> <span class="nav-text">负责传输的 IP 协议</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
