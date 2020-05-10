@@ -145,6 +145,117 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ccna/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/ccna/" class="post-title-link" itemprop="url">ccna思科课</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 12:51:27 / Modified: 13:27:18" itemprop="dateCreated datePublished" datetime="2020-05-10T12:51:27-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="1-计算机网络基础"><a href="#1-计算机网络基础" class="headerlink" title="1.计算机网络基础"></a>1.计算机网络基础</h2><h6 id="C-S架构的优缺点："><a href="#C-S架构的优缺点：" class="headerlink" title="C/S架构的优缺点："></a>C/S架构的优缺点：</h6><ul>
+<li>优点：<br>1.客户端因为是独立设计，所以可以实现个性化<br>2.因为客户端是需要进行安装的，可以不需要重复安装和加载<br>3.因为客户端是独立开发的，所以有能力对客户端进行安全设计<br>4.如果遇到不同的操作系统，需要为不同的操作系统各开发一套客户端</li>
+<li>缺点：<br>1.因为客户端是不需要重复安装，所以用户可以不更新与升级，增加了维护成本。<br>2.因为需要开发客户端和服务器两套程序，所以开发成本会增加</li>
+</ul>
+<h6 id="B-S架构的优缺点："><a href="#B-S架构的优缺点：" class="headerlink" title="B/S架构的优缺点："></a>B/S架构的优缺点：</h6><ul>
+<li>优点：<br>1.因为B/S架构具备通用性，所以开发成本较低。<br>2.因为不需要安装客户端，所以客户端不需要进行升级，只需要更新后台代码即可实现所有客户端的更新。<br>3.因为B/S架构多用WEB网页进行开发，所以增、删功能也非常容易，只需要修改网页即可完成</li>
+<li>缺点：<br>1.耗流量，每次都要加载全部的内容（不过有缓存可以降低流量损耗）<br>2.因为没有独立的客户端，所以无法实现个性化（通过账号体系可以实现）<br>3.因为没有独立设计客户端，所以客户端难以实现安全控制（HTTPS、控件）。<br>4.难以实现特殊的操作（删本地文件），所以所有的杀毒软件都是C/S架构的。<br>B/S架构更多的时候是使用了HTTP协议、而C/S架构更多的时候使用的WinSocke t协议（TCP、UDP）</li>
+</ul>
+<blockquote>
+<p>总结：CS响应速度快，安全性强，一般应用于局域网中，但是开发维护成本高；BS可以实现跨平台，客户端零维护，但是个性化能力低，响应速度较慢。所以有些单位日常办公应用BS，在实际生产中使用CS结构。</p>
+</blockquote>
+<p><strong>rs 路由器和交换机：router switch</strong></p>
+<p><strong><em>交换机可以实现局域网，而路由器是连接不同局域网，实现广域网。</em></strong></p>
+<p>1、LAN 局域网(Local Area Network)接口，通俗讲就是路由和用户之间网线口；一组终端设备和由共同的组织管理的用户。所有用户连接lan下。</p>
+<p>2、WAN 广域网(Wide Area Network)，通俗讲就是和光猫猫外部网连接的网线口；连接分布于不同地理位置的LAN.</p>
+<p>3、WLAN无线局域网(Wireless LAN)，数据通过电磁波传输；</p>
+<p>通俗点说，WAN口是对外的接口，和运营商、上级网络打交道。</p>
+<p>LAN和WLAN是对内的接口，内部的电脑、手机、PAD，都是接入到LAN或者WLAN。</p>
+<p><img src="https://img-blog.csdn.net/20180504090210322" alt="img"></p>
+<h3 id="互联网服务提供商（Internet-Service-Provider），简称ISP，作用："><a href="#互联网服务提供商（Internet-Service-Provider），简称ISP，作用：" class="headerlink" title="互联网服务提供商（Internet Service Provider），简称ISP，作用："></a>互联网服务提供商（<em>Internet Service Provider</em>），简称<em>ISP</em>，作用：</h3><p>一是接入服务，即帮助用户接入Internet；二是导航服务，即帮助用户在Internet上找到所需要的信息；三是信息服务，即建立数据服务系统，收集、加工、存储信息，定期维护更新，并通过网络向用户提供信息内容服务。</p>
+<h3 id="HUB-SWITCH-ROUTER-DIFFERENCES"><a href="#HUB-SWITCH-ROUTER-DIFFERENCES" class="headerlink" title="HUB, SWITCH, ROUTER DIFFERENCES:"></a>HUB, SWITCH, ROUTER DIFFERENCES:</h3><p>Hub: only detects that a device is physically connected to it.集线器</p>
+<p>Switch: can detect specific devices that are connected to it.</p>
+<p>keeps a record of the MAC addresses of those devices. </p>
+<p>Hubs and swtiches are used to exchange data within a local area network. Not used to exchange data outside their own network. To exchange data outside their ow network, a device needs to be able to read I.P. addresses.</p>
+<p>Router: routes data from one network to another based on their IP address.</p>
+<h3 id="端口port"><a href="#端口port" class="headerlink" title="端口port"></a>端口port</h3><h5 id="端口概念"><a href="#端口概念" class="headerlink" title="端口概念"></a>端口概念</h5><p>在网络技术中，端口（port）大致有两种意思：<br>一是物理上的端口，比如ADSL、Modem、集线器、交换机、路由器用于连接其他网络设备的接口，如RJ-45端口、SC端口等等。<br>二是逻辑意义上的端口，一般是指TCP/IP协议中的端口，端口号的范围从0到65535，比如用于浏览网页服务的80端口，用于FTP服务的21端口等等。<br>这里要说的是逻辑意义上的端口。</p>
+<h6 id="什么是端口"><a href="#什么是端口" class="headerlink" title="什么是端口"></a>什么是端口</h6><p>在Internet上，各主机间通过TCP/TP协议发送和接收数据报，各个数据报根据其目的主机的IP地址来进行互联网络中的路由选择。可见，把数据报顺利的传送到目的主机是没有问题的。我们知道大多数操作系统都支持多程序（进程）同时运行，那么目的主机应该把接收到的数据报传送给众多同时运行的进程中的哪一个？显然这个问题有待解决，端口机制便由此被引入了进来。</p>
+<p>本地操作系统会给那些有需求的进程分配协议端口（protocal port，即我们常说的端口），每个协议端口由一个正整数标识，如：80，139等等。当目的主机接收到数据报后，将根据报文首部的目的端口号，把数据发送到相应端口，而与此端口相对应的那个进程将会领取数据并等待下一组数据的到来。</p>
+<p>端口其实就是队，操作系统为各个进程分配了不同的队，数据报按照目的端口被推入相应的队中，等待被进程取用，在极特殊的情况下，这个队也是有可能溢出的，不过操作系统允许各进程指定和调整自己的队的大小。不光接受数据报的进程需要开启它自己的端口，发送数据报的进程也需要开启端口，这样，数据报中将会标识有源端口，以便接受方能顺利的回传数据报到这个端口。</p>
+<h5 id="端口的作用"><a href="#端口的作用" class="headerlink" title="端口的作用"></a>端口的作用</h5><p>我们知道，一台拥有IP地址的主机可以提供许多服务，比如Web服务，FTP服务、SMTP服务等，这些服务完全可以通过1个IP地址来实现。那么，主机是怎样区分不同的网络服务呢？显然不能只靠IP地址，因为IP地址与网络服务的关系是一对多的关系。实际上是通过”IP地址+端口号”来区分不同的服务的。<br>客户端通常对它所使用的端口号并不关心，只需保证该端口号在本机上是唯一的就可以了。客户端端口号又称作临时端口号（即存在时间很短）。这是因为它通常只是在用户运行该客户程序时才存在，而服务器则只要主机开着，其服务就运行。</p>
+<h6 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h6><p>可以使用Netstat命令：开始-&gt;运行，键入”cmd”并回车，打开命令提示符窗口。在命令提示符状态下键入”netstat -a -n”，按下回车键后就可以看到以数字形式显示的 TCP和UDP连接的端口号及状态。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/9113969-67c6d199315602ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" alt="img"></p>
+<h4 id="关闭-开启端口"><a href="#关闭-开启端口" class="headerlink" title="关闭/开启端口"></a>关闭/开启端口</h4><p>默认的情况下，有很多不安全的或者没有什么用的端口是开启的，比如Telent服务的23端口、FTP服务的21端口、SMTP服务的25端口、RPC服务的135端口等。为了保证系统的安全性，我们可以通过下面的方法来关闭/开启端口。</p>
+<h6 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h6><p>比如关闭Apache2.4服务端口，可以这样做：开始-&gt;运行-&gt;服务-&gt;在服务窗口找到Apache2.4并双击-&gt;单击”停止”按钮来停止该服务-&gt;然后在”启动类型”中选择”禁用”-&gt;最后单击”确定”按钮即可。关闭了Apache2.4服务就相当于关闭了对应的端口。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/9113969-f7b38d620a983ae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/602" alt="img"></p>
+<h6 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h6><p>如果要开启该端口只要先在”启动类型”选择”自动”，单击”确定”按钮，再打开该服务，在”服务状态中单击”启动”按钮即可启用该端口，最后，单击”确定”按钮即可。</p>
+<h4 id="端口分类"><a href="#端口分类" class="headerlink" title="端口分类"></a>端口分类</h4><p>逻辑意义上的端口有多种分类标准，下面是两种常见的分类：</p>
+<h5 id="1-按端口号分布划分"><a href="#1-按端口号分布划分" class="headerlink" title="1.按端口号分布划分"></a>1.按端口号分布划分</h5><h6 id="（1）知名端口（Well-Known-Ports）"><a href="#（1）知名端口（Well-Known-Ports）" class="headerlink" title="（1）知名端口（Well-Known Ports）"></a>（1）知名端口（Well-Known Ports）</h6><p>知名端口即众所周知的端口号，范围从0到1023，这些端口号一般固定分配给一些服务。比如25端口分配给SMTP（简单邮件传输协议）服务，80端口分配给HTTP服务，135端口分配给RPC（远程过程调用）服务等等。</p>
+<h6 id="（2）动态端口（Dynamic-Ports）"><a href="#（2）动态端口（Dynamic-Ports）" class="headerlink" title="（2）动态端口（Dynamic Ports）"></a>（2）动态端口（Dynamic Ports）</h6><p>动态端口的范围从1024到65535，这些端口号一般不固定分配给某个服务，也就是说许多服务都可以使用这些端口。只要运行的程序向系统提出访问网络的申请，那么系统就可以从这些端口号中分配一个供该程序使用。比如1024端口就是分配给第一个向系统发出申请的程序。在关闭程序进程后，就会释放所占用的端口号。<br>不过动态端口也常常被病毒木马程序所利用，如冰河默认连接端口是7626、WAY 2.4是8011、Netspy 3.0是7306、YAI病毒是1024等等。</p>
+<h6 id="2-按协议类型划分"><a href="#2-按协议类型划分" class="headerlink" title="2.按协议类型划分"></a>2.按协议类型划分</h6><p>按协议类型划分，可以分为TCP、UDP、IP和ICMP（Internet控制消息协议）等端口。</p>
+<h6 id="（1）TCP端口"><a href="#（1）TCP端口" class="headerlink" title="（1）TCP端口"></a>（1）TCP端口</h6><p>TCP端口，即传输控制协议端口，需要在客户端和服务器之间建立连接，这样可以提供可靠的数据传输。常见的包括FTP服务的21端口，Telent服务的23端口，SMTP服务的25端口，以及HTTP服务的80端口等。</p>
+<h6 id="（2）UDP端口"><a href="#（2）UDP端口" class="headerlink" title="（2）UDP端口"></a>（2）UDP端口</h6><p>UDP端口，即用户数据包协议端口，无需在客户端和服务器之间建立连接，安全性得不到保障。常见的有DNS服务的53端口，SNMP（简单网络管理协议）服务的161端口，QQ使用的8000和4000端口等等。</p>
+<h5 id="端口在入侵中的作用"><a href="#端口在入侵中的作用" class="headerlink" title="端口在入侵中的作用"></a>端口在入侵中的作用</h5><p>有人曾经把服务器比作房子，而把端口比作通向不同房间（服务）的门。入侵者要占领这间房子，势必要破门而入（物理入侵另说），那么对于入侵者来说，了解房子开了几扇门，都是什么样的门，门后面有什么东西就显得至关重要。<br>入侵者通常会用扫描器对目标主机的端口进行扫描，以确定哪些端口是开放的，从开放的端口，入侵者可以知道目标主机大致提供了哪些服务，进而猜测可能存在的漏洞，因此对端口的扫描可以帮助我们更好的了解目标主机，而对于管理员，扫描本机的开放端口也是做好安全防范的第一步。</p>
+<h6 id="常见端口表汇总"><a href="#常见端口表汇总" class="headerlink" title="常见端口表汇总"></a>常见端口表汇总</h6><p>1　tcpmux　TCP Port Service Multiplexer 传输控制协议端口服务多路开关选择器<br>2　compressnet　Management Utility　　　　 compressnet 管理实用程序<br>3　compressnet　Compression Process　　　　压缩进程<br>5　rje　Remote Job Entry　　　　　　　　　 远程作业登录<br>7　echo　Echo　　　　　　　　　　　　　　　回显<br>9　discard　Discard　　　　　　　　　　　　丢弃<br>11　systat　Active Users　　　　　　　　　 在线用户<br>13　daytime　Daytime　　　　　　　　　　　 时间<br>17　qotd　Quote of the Day　　　　　　　　 每日引用<br>18　msp　Message Send Protocol　　　　　　 消息发送协议<br>19　chargen　Character Generator　　　　　 字符发生器<br>20　ftp-data　File Transfer [Default Data]　文件传输协议(默认数据口)　<br>21　ftp　File Transfer [Control]　　　　　　文件传输协议(控制)<br>22　ssh　SSH Remote Login Protocol　　　　 SSH远程登录协议<br>23　telnet　Telnet　　　　　　　　　　　　 终端仿真协议<br>24　?　any private mail system　　　　　　 预留给个人用邮件系统<br>25　smtp　Simple Mail Transfer　　　　　　 简单邮件发送协议<br>27　nsw-fe　NSW User System FE　　　　　　 NSW 用户系统现场工程师<br>29　msg-icp　MSG ICP　　　　　　　　　　　 MSG　ICP<br>31　msg-auth　MSG Authentication　　　　　 MSG验证<br>33　dsp　Display Support Protocol　　　　　显示支持协议<br>35　?　any private printer server　　　　　预留给个人打印机服务<br>37　time　Time　　　　　　　　　　　　　　 时间<br>38　rap　Route Access Protocol　　　　　　 路由访问协议<br>39　rlp　Resource Location Protocol　　　　资源定位协议<br>41　graphics　Graphics　　　　　　　　　　 图形<br>42　nameserver　WINS Host Name Server　　　WINS 主机名服务<br>43　nicname　Who Is　　　　　　　　　　　　“绰号” who is服务<br>44　mpm-flags　MPM FLAGS Protocol　　　　　MPM(消息处理模块)标志协议<br>45　mpm　Message Processing Module [recv]　消息处理模块　<br>46　mpm-snd　MPM [default send]　　　　　　消息处理模块(默认发送口)<br>47　ni-ftp　NI FTP　　　　　　　　　　　　 NI FTP<br>48　auditd　Digital Audit Daemon　　　　　 数码音频后台服务　<br>49　tacacs　Login Host Protocol (TACACS)　 TACACS登录主机协议<br>50　re-mail-ck　Remote Mail Checking Protocol　远程邮件检查协议<br>51　la-maint　IMP Logical Address Maintenance　IMP(接口信息处理机)逻辑地址维<br>护<br>52　xns-time　XNS Time Protocol　　　　　　施乐网络服务系统时间协议　　<br>53　domain　Domain Name Server　　　　　　 域名服务器<br>54　xns-ch　XNS Clearinghouse　　　　　　　施乐网络服务系统票据交换<br>55　isi-gl　ISI Graphics Language　　　　　ISI图形语言<br>56　xns-auth　XNS Authentication　　　　　 施乐网络服务系统验证<br>57　?　any private terminal access　　　　 预留个人用终端访问<br>58　xns-mail　XNS Mail　　　　　　　　　　 施乐网络服务系统邮件<br>59　?　any private file service　　　　　　预留个人文件服务<br>60　?　Unassigned　　　　　　　　　　　　　未定义<br>61　ni-mail　NI MAIL　　　　　　　　　　　 NI邮件?<br>62　acas　ACA Services　　　　　　　　　　 异步通讯适配器服务<br>63　whois+ whois+　　　　　　　　　　　　　 WHOIS+<br>64　covia　Communications Integrator (CI)　通讯接口　<br>65　tacacs-ds　TACACS-Database Service　　 TACACS数据库服务<br>66　sql<em>net　Oracle SQL</em>NET　　　　　　　　Oracle SQL*NET<br>67　bootps　Bootstrap Protocol Server　　　引导程序协议服务端<br>68　bootpc　Bootstrap Protocol Client　　　引导程序协议客户端<br>69　tftp　Trivial File Transfer　　　　　　小型文件传输协议<br>70　gopher　Gopher　　　　　　　　　　　　 信息检索协议<br>71　netrjs-1　Remote Job Service　　　　　 远程作业服务<br>72　netrjs-2　Remote Job Service　　　　　 远程作业服务<br>73　netrjs-3　Remote Job Service　　　　　 远程作业服务<br>74　netrjs-4　Remote Job Service　　　　　 远程作业服务<br>75　?　any private dial out service　　　　预留给个人拨出服务<br>76　deos　Distributed External Object Store 分布式外部对象存储　<br>77　?　any private RJE service　　　　　　预留给个人远程作业输入服务<br>78　vettcp　vettcp　　　　　　　　　　　　 修正TCP?<br>79　finger　Finger　　　　　　　　　　　　 FINGER(查询远程主机在线用户等信<br>息)<br>80　http　World Wide Web HTTP　　　　　　　全球信息网超文本传输协议<br>81　hosts2-ns　HOSTS2 Name Server　　　　　HOST2名称服务<br>82　xfer　XFER Utility　　　　　　　　　　 传输实用程序<br>83　mit-ml-dev　MIT ML Device　　　　　　　模块化智能终端ML设备<br>84　ctf　Common Trace Facility　　　　　　 公用追踪设备<br>85　mit-ml-dev　MIT ML Device　　　　　　　模块化智能终端ML设备<br>86　mfcobol　Micro Focus Cobol　　　　　　 Micro Focus Cobol编程语言<br>87　?　any private terminal link　　　　　 预留给个人终端连接<br>88　kerberos　Kerberos　　　　　　　　　　 Kerberros安全认证系统<br>89　su-mit-tg　SU/MIT Telnet Gateway　　　 SU/MIT终端仿真网关<br>90　dnsix　DNSIX Securit Attribute Token Map　DNSIX 安全属性标记图　<br>91　mit-dov　MIT Dover Spooler　　　　　　 MIT Dover假脱机<br>92　npp　Network Printing Protocol　　　　 网络打印协议<br>93　dcp　Device Control Protocol　　　　　 设备控制协议<br>94　objcall　Tivoli Object Dispatcher　　　Tivoli对象调度<br>95　supdup　SUPDUP　　　　　　　　　　　　<br>96　dixie　DIXIE Protocol Specification　　DIXIE协议规范<br>97　swift-rvf　Swift Remote Virtural File Protocol　快速远程虚拟文件协议　<br>98　tacnews　TAC News　　　　　　　　　　　TAC(东京大学自动计算机?)新闻协议</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/ccna/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/website1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2170,63 +2281,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C5/" class="post-title-link" itemprop="url">计算机网络5</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 20:13:14" itemprop="dateCreated datePublished" datetime="2020-05-07T20:13:14-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2296,7 +2350,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
