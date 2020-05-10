@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network10/" class="post-title-link" itemprop="url">network10</a>
+            <a href="/2020/05/10/network10/" class="post-title-link" itemprop="url">TCP/IP四层</a>
         </h2>
 
         <div class="post-meta">
@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:43" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:43-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:43 / Modified: 16:24:06" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:43-05:00">2020-05-10</time>
             </span>
 
           
@@ -184,6 +185,78 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_label0" target="_blank" rel="noopener">一、TCP/IP参考模型概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_0_0" target="_blank" rel="noopener">1.1、TCP/IP参考模型的层次结构</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_label1" target="_blank" rel="noopener">二、TCP/IP四层功能概述 </a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_1_0" target="_blank" rel="noopener">2.1、主机到网络层　　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_1_1" target="_blank" rel="noopener">2.2、网络互连层　　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_1_2" target="_blank" rel="noopener">2.3、传输层　　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_1_3" target="_blank" rel="noopener">2.3、应用层　</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_label2" target="_blank" rel="noopener">三、TCP/IP报文格式</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_2_0" target="_blank" rel="noopener">3.1、IP报文格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_2_1" target="_blank" rel="noopener">3.2、TCP数据段格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_2_2" target="_blank" rel="noopener">3.3、UDP数据段格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_lab2_2_3" target="_blank" rel="noopener">3.4、套接字</a></li>
+</ul>
+</li>
+</ul>
+<p>前言</p>
+<p>　　在这里有一个问题，有的书上说TCP/IP是四层有的却说是五层。其实这个问题我也上网查了一下资料。</p>
+<p>　　tcp/ip是事实标准，分4层。osi模型是国际标准，分7层。讲课的时候，一般把他们综合起来讲，就说是5层。他把网络接口层分开为数据链路层和物理层了。</p>
+<p>　　我们探讨一下为什么ISO七层模型不适用而大部分都是使用的是TCP/IP四层模型呀？</p>
+<p>　　OSI的七层协议体系结构的概念清楚，理论也比较完整，但它既复杂又不实用，TCP/IP体系结构则不同，它现在已经得到了非常广泛的应用，TCP/IP是一个四层的体系结构，</p>
+<p>　　它包含应用层、运输层、网际层和网络接口层（用网际层这个名字是强调这一层是为了解决不同网络的互连问题 ），不过从实质来讲，TCP/IP只有最上面的三层，因为最下面的网络接口层基本上和一般的通信链路的功能上没有多大差别，</p>
+<p>　　对于计算机网络来说，这一层并没有什么特别新的具体的内容，因此在学习计算机网络原理是往往采用折中的办法，即综合OSI和TCP/IP的优点，采用一种只有五层协议的体系结构</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201710/999804-20171001114604465-1898375290.png" alt="img"> </p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、TCP-IP参考模型概述"><a href="#一、TCP-IP参考模型概述" class="headerlink" title="一、TCP/IP参考模型概述"></a>一、TCP/IP参考模型概述</h1><p>ISO制定的OSI参考模型的过于庞大、复杂招致了许多批评。与此对照，由技术人员自己开发的TCP/IP协议栈获得了更为广泛的应用。如下图，是TCP/IP参考模型和OSI参考模型的对比示意图。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201710/999804-20171001114823903-1286665985.png" alt="img"></p>
+<h2 id="1-1、TCP-IP参考模型的层次结构"><a href="#1-1、TCP-IP参考模型的层次结构" class="headerlink" title="1.1、TCP/IP参考模型的层次结构"></a>1.1、TCP/IP参考模型的层次结构</h2><p>　　TCP/IP协议栈是美国国防部高级研究计划局计算机网（Advanced Research Projects Agency Network，ARPANET）和其后继因特网使用的参考模型。ARPANET是由美国国防部（U.S．Department of Defense，DoD）赞助的研究网络。</p>
+<p>　　最初，它只连接了美国境内的四所大学。随后的几年中，它通过租用的电话线连接了数百所大学和政府部门。最终ARPANET发展成为全球规模最大的互连网络-因特网。最初的ARPANET于1990年永久性地关闭。　　<br>　　TCP/IP参考模型分为四个层次：应用层、传输层、网络互连层和主机到网络层。如下图所示。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201710/999804-20171001115004262-305600873.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、TCP-IP四层功能概述"><a href="#二、TCP-IP四层功能概述" class="headerlink" title="二、TCP/IP四层功能概述"></a>二、TCP/IP四层功能概述</h1><p>　　在TCP/IP参考模型中，去掉了OSI参考模型中的会话层和表示层（这两层的功能被合并到应用层实现）。同时将OSI参考模型中的数据链路层和物理层合并为主机到网络层。下面，分别介绍各层的主要功能。</p>
+<h2 id="2-1、主机到网络层"><a href="#2-1、主机到网络层" class="headerlink" title="2.1、主机到网络层　　"></a>2.1、主机到网络层　　</h2><p>　　网络接入层与OSI参考模型中的物理层和数据链路层相对应。它负责监视数据在主机和网络之间的交换。事实上，TCP/IP本身并未定义该层的协议，而由参与互连的各网络使用自己的物理层和数据链路层协议，</p>
+<p>　　然后与TCP/IP的网络接入层进行连接。地址解析协议（ARP）工作在此层，即OSI参考模型的数据链路层。<br>　　实际上TCP/IP参考模型没有真正描述这一层的实现，只是要求能够提供给其上层-网络互连层一个访问接口，以便在其上传递IP分组。由于这一层次未被定义，所以其具体的实现方法将随着网络类型的不同而不同。　</p>
+<h2 id="2-2、网络互连层"><a href="#2-2、网络互连层" class="headerlink" title="2.2、网络互连层　　"></a>2.2、网络互连层　　</h2><p>　　网络互连层是整个TCP/IP协议栈的核心。它的功能是把分组发往目标网络或主机。同时，为了尽快地发送分组，可能需要沿不同的路径同时进行分组传递。因此，分组到达的顺序和发送的顺序可能不同，这就需要上层必须对分组进行排序。　　<br>　　网络互连层定义了分组格式和协议，即IP协议（Internet Protocol）。　　<br>　　网络互连层除了需要完成路由的功能外，也可以完成将不同类型的网络（异构网）互连的任务。除此之外，网络互连层还需要完成拥塞控制的功能。</p>
+<h2 id="2-3、传输层"><a href="#2-3、传输层" class="headerlink" title="2.3、传输层　　"></a>2.3、传输层　　</h2><p>  在TCP/IP模型中，传输层的功能是使源端主机和目标端主机上的对等实体可以进行会话。在传输层定义了两种服务质量不同的协议。即：传输控制协议TCP（transmission control protocol）和用户数据报协议UDP（user datagram protocol）。　　<br>　　TCP协议是一个面向连接的、可靠的协议。它将一台主机发出的字节流无差错地发往互联网上的其他主机。在发送端，它负责把上层传送下来的字节流分成报文段并传递给下层。</p>
+<p>　　在接收端，它负责把收到的报文进行重组后递交给上层。TCP协议还要处理端到端的流量控制，以避免缓慢接收的接收方没有足够的缓冲区接收发送方发送的大量数据。　　<br>　　UDP协议是一个不可靠的、无连接协议，主要适用于不需要对报文进行排序和流量控制的场合。　　</p>
+<h2 id="2-3、应用层"><a href="#2-3、应用层" class="headerlink" title="2.3、应用层　"></a>2.3、应用层　</h2><p>　　　TCP/IP模型将OSI参考模型中的会话层和表示层的功能合并到应用层实现。　　<br>　　应用层面向不同的网络应用引入了不同的应用层协议。其中，有基于TCP协议的，如文件传输协议（File Transfer Protocol，FTP）、虚拟终端协议（TELNET）、超文本链接协议（Hyper Text Transfer Protocol，HTTP），也有基于UDP协议的。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7617027.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、TCP-IP报文格式"><a href="#三、TCP-IP报文格式" class="headerlink" title="三、TCP/IP报文格式"></a>三、TCP/IP报文格式</h1><h2 id="3-1、IP报文格式"><a href="#3-1、IP报文格式" class="headerlink" title="3.1、IP报文格式"></a>3.1、IP报文格式</h2><p>　　IP协议是TCP/IP协议族中最为核心的协议。它提供不可靠、无连接的服务，也即依赖其他层的协议进行差错控制。</p>
+<p>　　在局域网环境，IP协议往往被封装在以太网帧中传送。而所有的TCP、UDP、ICMP、IGMP数据都被封装在IP数据报中传送。如下图所示：<br>　　　　<img src="https://images.cnblogs.com/cnblogs_com/bluetzar/IPPackage.jpg" alt="img"><br>　　　　　　　　TCP/IP报文封装</p>
+<p>　　　　<img src="https://images.cnblogs.com/cnblogs_com/bluetzar/IPPackageHead.jpg" alt="img"></p>
+<p>　　　　　　　　　　IP头部（报头）格式：（RFC 791）</p>
+<p>　　分析：　　　</p>
+<p>　　　　1）版本（Version）字段：占4比特。用来表明IP协议实现的版本号，当前一般为IPv4，即0100。　　<br>　　　　2）报头长度（Internet Header Length，IHL）字段：占4比特。是头部占32比特的数字，包括可选项。普通IP数据报（没有任何选项），该字段的值是5，即160比特=20字节。此字段最大值为60字节。　　　　　　　　</p>
+<p>　　　　3）服务类型（Type of Service ，TOS）字段：占8比特。其中前3比特为优先权子字段（Precedence，现已被忽略）。第8比特保留未用。第4至第7比特分别代表延迟、吞吐量、可靠性和花费。<br>　　　　　　当它们取值为1时分别代表要求最小时延、最大吞吐量、最高可靠性和最小费用。这4比特的服务类型中只能置其中1比特为1。可以全为0，若全为0则表示一般服务。服务类型字段声明了数据报被网络系统传输时可以被怎样处理。<br>　　　　　　例如：TELNET协议可能要求有最小的延迟，FTP协议（数据）可能要求有最大吞吐量，SNMP协议可能要求有最高可靠性，NNTP（Network News Transfer Protocol，网络新闻传输协议）可能要求最小费用，而ICMP协议可能无特殊要求（4比特全为0）。<br>　　　　　　实际上，大部分主机会忽略这个字段，但一些动态路由协议如OSPF（Open Shortest Path First Protocol）、IS-IS（Intermediate System to Intermediate System Protocol）可以根据这些字段的值进行路由决策。</p>
+<p>　　　　4）总长度字段：占16比特。指明整个数据报的长度（以字节为单位）。最大长度为65535字节。　　<br>　　　　5）标志字段：占16比特。用来唯一地标识主机发送的每一份数据报。通常每发一份报文，它的值会加1。　　<br>　　　　6）标志位字段：占3比特。标志一份数据报是否要求分段。　　<br>　　　　7）段偏移字段：占13比特。如果一份数据报要求分段的话，此字段指明该段偏移距原始数据报开始的位置。　　<br>　　　　8）生存期（TTL：Time to Live）字段：占8比特。用来设置数据报最多可以经过的路由器数。由发送数据的源主机设置，通常为32、64、128等。每经过一个路由器，其值减1，直到0时该数据报被丢弃。　　<br>　　　　9）协议字段：占8比特。指明IP层所封装的上层协议类型，如ICMP（1）、IGMP（2） 、TCP（6）、UDP（17）等。　　<br>　　　　10）头部校验和字段：占16比特。内容是根据IP头部计算得到的校验和码。计算方法是：对头部中每个16比特进行二进制反码求和。（和ICMP、IGMP、TCP、UDP不同，IP不对头部后的数据进行校验）。　　<br>　　　　11）源IP地址、目标IP地址字段：各占32比特。用来标明发送IP数据报文的源主机地址和接收IP报文的目标主机地址。　　<br>　　　　12）可选项字段：占32比特。用来定义一些任选项：如记录路径、时间戳等。这些选项很少被使用，同时并不是所有主机和路由器都支持这些选项。可选项字段的长度必须是32比特的整数倍，如果不足，必须填充0以达到此长度要求。</p>
+<h2 id="3-2、TCP数据段格式"><a href="#3-2、TCP数据段格式" class="headerlink" title="3.2、TCP数据段格式"></a>3.2、TCP数据段格式</h2><p>　　TCP是一种可靠的、面向连接的字节流服务。源主机在传送数据前需要先和目标主机建立连接。然后，在此连接上，被编号的数据段按序收发。同时，要求对每个数据段进行确认，保证了可靠性。</p>
+<p>　　如果在指定的时间内没有收到目标主机对所发数据段的确认，源主机将再次发送该数据段。　　<br>　　　　<img src="https://images.cnblogs.com/cnblogs_com/bluetzar/TCPPackageHead.jpg" alt="img"></p>
+<p>　　　　　　　　　　　　TCP头部结构（RFC 793、1323）</p>
+<p>　　分析：</p>
+<p>　　　　1）源、目标端口号字段：占16比特。TCP协议通过使用”端口”来标识源端和目标端的应用进程。端口号可以使用0到65535之间的任何数字。在收到服务请求时，操作系统动态地为客户端的应用程序分配端口号。</p>
+<p>　　　　　　在服务器端，每种服务在”众所周知的端口”（Well-Know Port）为用户提供服务。<br>　　　　2）顺序号字段：占32比特。用来标识从TCP源端向TCP目标端发送的数据字节流，它表示在这个报文段中的第一个数据字节。　　<br>　　　　3）确认号字段：占32比特。只有ACK标志为1时，确认号字段才有效。它包含目标端所期望收到源端的下一个数据字节。　　<br>　　　　4）头部长度字段：占4比特。给出头部占32比特的数目。没有任何选项字段的TCP头部长度为20字节；最多可以有60字节的TCP头部。　　<br>　　　　5）标志位字段（U、A、P、R、S、F）：占6比特。各比特的含义如下：　　<br>　　　　　　URG：紧急指针（urgent pointer）有效。　　<br>　　　　　　ACK：确认序号有效。　　<br>　　　　　　PSH：接收方应该尽快将这个报文段交给应用层。　　<br>　　　　　　RST：重建连接。　　<br>　　　　　　SYN：发起一个连接。　　<br>　　　　　　FIN：释放一个连接。　　<br>　　　　6）窗口大小字段：占16比特。此字段用来进行流量控制。单位为字节数，这个值是本机期望一次接收的字节数。　　<br>　　　　7）TCP校验和字段：占16比特。对整个TCP报文段，即TCP头部和TCP数据进行校验和计算，并由目标端进行验证。　　<br>　　　　8）紧急指针字段：占16比特。它是一个偏移量，和序号字段中的值相加表示紧急数据最后一个字节的序号。　　<br>　　　　9）选项字段：占32比特。可能包括”窗口扩大因子”、”时间戳”等选项。</p>
+<h2 id="3-3、UDP数据段格式"><a href="#3-3、UDP数据段格式" class="headerlink" title="3.3、UDP数据段格式"></a>3.3、UDP数据段格式</h2><p>　　UDP是一种不可靠的、无连接的数据报服务。源主机在传送数据前不需要和目标主机建立连接。数据被冠以源、目标端口号等UDP报头字段后直接发往目的主机。这时，每个数据段的可靠性依靠上层协议来保证。在传送数据较少、较小的情况下，UDP比TCP更加高效。　　<br>　　　　<img src="https://images.cnblogs.com/cnblogs_com/bluetzar/UDPPackageHead.jpg" alt="img"></p>
+<p>　　　　　　　　UDP头部结构（RFC 793、1323）</p>
+<p>　　分析：<br>　　　　1）源、目标端口号字段：占16比特。作用与TCP数据段中的端口号字段相同，用来标识源端和目标端的应用进程。　　<br>　　　　2）长度字段：占16比特。标明UDP头部和UDP数据的总长度字节。　　<br>　　　　3）校验和字段：占16比特。用来对UDP头部和UDP数据进行校验。和TCP不同的是，对UDP来说，此字段是可选项，而TCP数据段中的校验和字段是必须有的。</p>
+<h2 id="3-4、套接字"><a href="#3-4、套接字" class="headerlink" title="3.4、套接字"></a>3.4、套接字</h2><p>　　在每个TCP、UDP数据段中都包含源端口和目标端口字段。有时，我们把一个IP地址和一个端口号合称为一个套接字（Socket），而一个套接字对（Socket pair）可以唯一地确定互连网络中每个TCP连接的双方（客户IP地址、客户端口号、服务器IP地址、服务器端口号）。<br>　　<br>　　　　<img src="https://images.cnblogs.com/cnblogs_com/bluetzar/Socket.jpg" alt="img"><br> 　　　　　　　　　常见协议和对应的服务端口号</p>
+<p>　　注意：不同的应用层协议可能基于不同的传输层协议，如FTP、TELNET、SMTP协议基于可靠的TCP协议。TFTP、SNMP、RIP基于不可靠的UDP协议。　　<br>　　同时，有些应用层协议占用了两个不同的端口号，如FTP的20、21端口，SNMP的161、162端口。这些应用层协议在不同的端口提供不同的功能。如FTP的21端口用来侦听用户的连接请求，而20端口用来传送用户的文件数据。</p>
+<p>　　再如，SNMP的161端口用于SNMP管理进程获取SNMP代理的数据，而162端口用于SNMP代理主动向SNMP管理进程发送数据。　　<br>　　还有一些协议使用了传输层的不同协议提供的服务。如DNS协议同时使用了TCP 53端口和UDP 53端口。DNS协议在UDP的53端口提供域名解析服务，在TCP的53端口提供DNS区域文件传输服务。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network10/#more" rel="contents">
@@ -224,7 +297,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network9/" class="post-title-link" itemprop="url">network9</a>
+            <a href="/2020/05/10/network9/" class="post-title-link" itemprop="url">HTTP详解</a>
         </h2>
 
         <div class="post-meta">
@@ -233,8 +306,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:39" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:39-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:39 / Modified: 16:23:17" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:39-05:00">2020-05-10</time>
             </span>
 
           
@@ -249,6 +323,196 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label0" target="_blank" rel="noopener">一、HTTP协议概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_0_0" target="_blank" rel="noopener">1.1、HTTP协议简介</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_0_1" target="_blank" rel="noopener">1.2、HTTP协议特点</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label1" target="_blank" rel="noopener">二、URL和URI</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_1_0" target="_blank" rel="noopener">2.1、URL</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_1_1" target="_blank" rel="noopener">2.2、URI和URI的区别</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label2" target="_blank" rel="noopener">三、工作流程</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label3" target="_blank" rel="noopener">四、HTTP中请求消息（request）</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_3_0" target="_blank" rel="noopener">4.1、请求消息格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_3_1" target="_blank" rel="noopener">4.2、用GET请求的请求报文</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_3_2" target="_blank" rel="noopener">4.3、用POST请求的请求报文</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label4" target="_blank" rel="noopener">五、HTTP请求详解</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_4_0" target="_blank" rel="noopener">5.1、HTTP请求方法</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_4_1" target="_blank" rel="noopener">5.2、GET和POST请求的区别</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label5" target="_blank" rel="noopener">六、HTTP中响应消息（response）</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_5_0" target="_blank" rel="noopener">6.1、响应消息格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_5_1" target="_blank" rel="noopener">6.2、响应消息</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_lab2_5_2" target="_blank" rel="noopener">6.3、响应状态码</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_label6" target="_blank" rel="noopener"> 七、HTTP工作原理</a></p>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>　　前面一篇的博文简单的介绍了一下属于应用层的HTTP协议，这一篇我将详细的学习HTTP协议，这也是做Web开发中一定要用到的协议。虽然我是做大数据的，但是多学习一点肯定是</p>
+<p>　　没有坏处的。国庆放假7天，很多人都是想着怎么玩，我也很想出去玩，但是没有办法，努力才能有出路，加油！</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、HTTP协议概述"><a href="#一、HTTP协议概述" class="headerlink" title="一、HTTP协议概述"></a>一、HTTP协议概述</h1><h2 id="1-1、HTTP协议简介"><a href="#1-1、HTTP协议简介" class="headerlink" title="1.1、HTTP协议简介"></a>1.1、HTTP协议简介</h2><p>　　1）协议：计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则，超文本传输协议(HTTP)是一种通信协议，它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器。</p>
+<p>　　2）HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p>
+<p>　　3）HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
+<p>　　4）HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。</p>
+<p>　　　　目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。</p>
+<p>　　5）HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930125740340-1045168955.png" alt="img"></p>
+<h2 id="1-2、HTTP协议特点"><a href="#1-2、HTTP协议特点" class="headerlink" title="1.2、HTTP协议特点"></a>1.2、HTTP协议特点</h2><p>　　1）简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
+<p>　　2）灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</p>
+<p>　　3）无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
+<p>　　4）无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。</p>
+<p>　　　　　　　　另一方面，在服务器不需要先前信息时它的应答就较快。<br>　　5）支持B/S及C/S模式。　</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、URL和URI"><a href="#二、URL和URI" class="headerlink" title="二、URL和URI"></a>二、URL和URI</h1><h2 id="2-1、URL"><a href="#2-1、URL" class="headerlink" title="2.1、URL"></a>2.1、URL</h2><p>　　其实前面已经简单的知道了什么是URL。</p>
+<p>　　HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）描述一个网络上的资源，来传输数据和建立连接。URL是一种特殊类型的URI，包含了用于查找某个资源的足够的信息。</p>
+<p>　　URL,全称是UniformResourceLocator, 中文叫统一资源定位符,是互联网上用来标识某一处资源的地址，它的组成部分是：</p>
+<p>　　　　<a href="http://www.zyh.com:8080/woss/index.html?username=10086&amp;password=123456#name" target="_blank" rel="noopener">http://www.zyh.com:8080/woss/index.html?username=10086&amp;password=123456#name</a>　</p>
+<p>　　从上面的URL可以看出，一个完整的URL包括以下几部分：<br>　　　　1）协议部分：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，FTP等等本例中使用的是HTTP协议。在”HTTP”后面的“//”为分隔符</p>
+<p>　　　　2）域名部分：该URL的域名部分为“<a href="http://www.zyh.com”。一个URL中，也可以使用IP地址作为域名使用" target="_blank" rel="noopener">www.zyh.com”。一个URL中，也可以使用IP地址作为域名使用</a></p>
+<p>　　　　3）端口部分：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口（80）</p>
+<p>　　　　4）虚拟目录部分：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。本例中的虚拟目录是“/woss/”</p>
+<p>　　　　5）文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，</p>
+<p>　　　　　　　　　　　　都是文件名部分。本例中的文件名是“index.html”。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名</p>
+<p>　　　　6）锚部分：从“#”开始到最后，都是锚部分。本例中的锚部分是“name”。锚部分也不是一个URL必须的部分</p>
+<p>　　　　7）参数部分：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。本例中的参数部分为“username=10086&amp;password=123456”。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</p>
+<h2 id="2-2、URI和URI的区别"><a href="#2-2、URI和URI的区别" class="headerlink" title="2.2、URI和URI的区别"></a>2.2、URI和URI的区别</h2><p>　　1）URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。<br>　　　　Web上可用的每种资源如HTML文档、图像、视频片段、程序等都是一个来URI来定位的<br>　　　　URI一般由三部组成：<br>　　　　　　访问资源的命名机制<br>　　　　　　存放资源的主机名<br>　　　　　　资源自身的名称，由路径表示，着重强调于资源。</p>
+<p>　　2）URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。<br>　　　　URL是Internet上用来描述信息资源的字符串，主要用在各种WWW客户程序和服务器程序上，特别是著名的Mosaic。<br>　　　　采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。URL一般由三部组成：<br>　　　　　　协议(或称为服务方式)<br>　　　　　　存有该资源的主机IP地址(有时也包括端口号)<br>　　　　　　主机资源的具体地址。如目录和文件名等</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、工作流程"><a href="#三、工作流程" class="headerlink" title="三、工作流程"></a>三、工作流程</h1><p>一次HTTP操作称为一个事务，其工作过程可分为四步：<br>1）首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。<br>2）建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。<br>3）服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。<br>4）客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。<br>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</p>
+<p>我们用图来理解一下：　　</p>
+<p>　　当我们打开浏览器，在地址栏中输入URL，然后我们就看到了网页。 </p>
+<p>　　实际上我们输入URL后，我们的浏览器给Web服务器发送了一个Request, Web服务器接到Request后进行处理，生成相应的Response，然后发送给浏览器， 浏览器解析Response中的HTML,这样我们就看到了网页，过程如下图所示：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930132020294-1539783244.png" alt="img"></p>
+<p>　　我们的Request 有可能是经过了代理服务器，最后才到达Web服务器的。过程如下图所示：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930132125137-685597381.png" alt="img">　</p>
+<p>　　代理服务器就是网络信息的中转站，它的功能是：</p>
+<p>　　　　 提高访问速度， 大多数的代理服务器都有缓存功能。</p>
+<p>　　　　 突破限制， 也就是FQ了</p>
+<p>　　　　隐藏身份。</p>
+<p>注意：</p>
+<p>　　HTTP是基于传输层的TCP协议，而TCP是一个端到端的面向连接的协议。所谓的端到端可以理解为进程到进程之间的通信。所以HTTP在开始传输之前，首先需要建立TCP连接，而TCP连接的过程需要所谓的“三次握手”。</p>
+<p>　　下图所示TCP连接的三次握手。<br>　　在TCP三次握手之后，建立了TCP连接，此时HTTP就可以进行传输了。一个重要的概念是面向连接，既HTTP在传输完成之间并不断开TCP连接。在HTTP1.1中(通过Connection头设置)这是默认行为。</p>
+<p> 　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930133829184-1642006770.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、HTTP中请求消息（request）"><a href="#四、HTTP中请求消息（request）" class="headerlink" title="四、HTTP中请求消息（request）"></a>四、HTTP中请求消息（request）</h1><h2 id="4-1、请求消息格式"><a href="#4-1、请求消息格式" class="headerlink" title="4.1、请求消息格式"></a>4.1、请求消息格式</h2><p> 　客户端发送一个HTTP请求到服务器的请求消息是有一定的格式：</p>
+<p>　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930210336403-1134722875.png" alt="img"></p>
+<p>　　从上面可以看出来，请求消息由四部分组成：</p>
+<p>　　请求行（request line）、请求头部（header）、空行和请求数据四个部分组成</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930210549184-1505946240.png" alt="img"></p>
+<p>　　第一行中的Method表示请求方法,比如”POST”,”GET”, Path-to-resoure表示请求的资源（url）， Http/version-number 表示HTTP协议的版本号</p>
+<p>　　当使用的是”GET” 方法的时候， body是为空的。</p>
+<h2 id="4-2、用GET请求的请求报文"><a href="#4-2、用GET请求的请求报文" class="headerlink" title="4.2、用GET请求的请求报文"></a>4.2、用GET请求的请求报文</h2><p>　　当我们访问搜狐的官网的时候，我使用的是Firebug抓取的请求消息</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930211630450-1434056493.png" alt="img"></p>
+<p>　　第一部分：请求行，用来说明请求类型,要访问的资源以及所使用的HTTP版本。</p>
+<p>　　　　GET　/<a href="http://www.sohu.com" target="_blank" rel="noopener">http://www.sohu.com</a> HTTP/1.1 请求行，只不过这里被分开了，请求的方式 URL　版本</p>
+<p>　　第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息。　</p>
+<p>　　　　1）Host：主机名 <a href="http://www.solu.com" target="_blank" rel="noopener">www.solu.com</a>　　　　　　</p>
+<p>　　　　2）User-Agent：使用什么代理服务器，这里就是FireFox，也就是火狐</p>
+<p>　　　　3）Accept：能接收的数据类型有哪些</p>
+<p>　　　　4）Accept-Language：表示用户希望优先想得到的版本，一次排列下去，先是中文，再是英文</p>
+<p>　　　　5）Accept-Encoding：通知服务端可以发送的数据压缩格式</p>
+<p>　　　　6）Cookie：浏览器端的一个技术，在服务器上记录用户信息，但是也会在浏览器中保存一份。</p>
+<p>　　　　7）Connection：连接的方式，有两种，非持续连接和持续连接，非持续连接，一次请求/响应就对应一个TCP连接，接到了响应该连接就关闭，然后在发送请求就在建立TCP连接，持续连接就相反，这里使用的是持续连接</p>
+<p>　　　　8）Upgrade-Insecure-Requests：该指令用于让浏览器自动升级请求从http到https,用于大量包含http资源的http网页直接升级到https而不会报错.简洁的来讲,就相当于在http和https之间起的一个过渡作用。</p>
+<p>　　第三部分：空行，请求头部后面的空行是必须的<br>　　　　即使第四部分的请求数据为空，也必须有空行。　</p>
+<p>　　第四部分：请求数据也叫主体，可以添加任意的其他数据。<br>　　　　使用GET方式请求时请求数据为空。</p>
+<p>　　由于一般请求报文都不会有请求数据的，所以在9后面就没有内容了，一般如果想要发送数据过去度会通过在域名后面加?然后将数据创送过去</p>
+<h2 id="4-3、用POST请求的请求报文"><a href="#4-3、用POST请求的请求报文" class="headerlink" title="4.3、用POST请求的请求报文"></a>4.3、用POST请求的请求报文</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930212852669-786954344.png" alt="img"></p>
+<p>　　第一部分：请求行，第一行明了是post请求，以及http1.1版本。<br>　　第二部分：请求头部，第二行至第六行。<br>　　第三部分：空行，第七行的空行。<br>　　第四部分：请求数据，第八行。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、HTTP请求详解"><a href="#五、HTTP请求详解" class="headerlink" title="五、HTTP请求详解"></a>五、HTTP请求详解</h1><h2 id="5-1、HTTP请求方法"><a href="#5-1、HTTP请求方法" class="headerlink" title="5.1、HTTP请求方法"></a>5.1、HTTP请求方法</h2><p>　　根据HTTP标准，HTTP请求可以使用多种请求方法。<br>　　HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。　</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET：请求指定的页面信息，并返回实体主体。</span><br><span class="line">POST： 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和&#x2F;或已有资源的修改。</span><br><span class="line">HEAD： 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</span><br></pre></td></tr></table></figure>
+
+<p>　　HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT：从客户端向服务器传送的数据取代指定的文档的内容。</span><br><span class="line">DELETE ：请求服务器删除指定的页面。</span><br><span class="line">CONNECT：HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器。</span><br><span class="line">OPTIONS： 允许客户端查看服务器的性能。</span><br><span class="line">TRACE：回显服务器收到的请求，主要用于测试或诊断。</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2、GET和POST请求的区别"><a href="#5-2、GET和POST请求的区别" class="headerlink" title="5.2、GET和POST请求的区别"></a>5.2、GET和POST请求的区别</h2><p>　　Http协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE.。一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作。</p>
+<p>　  我们最常见的就是GET和POST了。GET一般用于获取/查询资源信息，而POST一般用于更新资源信息。</p>
+<p>　　1）提交数据方式：GET提交，请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，多个参数用&amp;连接。</p>
+<p>　　　　例 如：login.action?name=hyddd&amp;password=idontknow&amp;verify=%E4%BD%A0 %E5%A5%BD。如果数据是英文字母/数字，原样发送，如果是空格，转换为+，</p>
+<p>　　　　　　  如果是中文/其他字符，则直接把字符串用BASE64加密，得出如： %E4%BD%A0%E5%A5%BD，其中％XX中的XX为该符号以16进制表示的ASCII。</p>
+<p>　　　　POST提交：把提交的数据放置在是HTTP包的包体中。在前面的例子中提交的数据就是在回车换行的下面。　</p>
+<p>　　2）传输数据的大小：首先声明：HTTP协议没有对传输的数据大小进行限制，HTTP协议规范也没有对URL长度进行限制。而在实际开发中存在的限制主要有：　　</p>
+<p>　　　　GET：特定浏览器和服务器对URL长度有限制，例如 IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系 统的支持。</p>
+<p>　　　　　　因此对于GET提交时，传输数据就会受到URL长度的 限制。</p>
+<p>　　　　POST：由于不是通过URL传值，理论上数据不受 限。但实际各个WEB服务器会规定对post提交数据大小进行限制，Apache、IIS6都有各自的配置。</p>
+<p>　　3）安全性：POST的安全性要比GET的安全性高。比如：通过GET提交数据，用户名和密码将明文出现在URL上，因为(1)登录页面有可能被浏览器缓存；(2)其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了，</p>
+<p>　　　　除此之外，使用GET提交数据还可能会造成Cross-site request forgery攻击。</p>
+<p>　　4）Http get,post,soap协议都是在http上运行的　</p>
+<p>　　　　get：请求参数是作为一个key/value对的序列（查询字符串）附加到URL上的<br>　　　　　　查询字符串的长度受到web浏览器和web服务器的限制（如IE最多支持2048个字符），不适合传输大型数据集同时，它很不安全</p>
+<p>　　　　post：请求参数是在http标题的一个不同部分（名为entity body）传输的，这一部分用来传输表单信息，因此必须将Content-type设置为:application/x-www-form- urlencoded。</p>
+<p>　　　　　　  post设计用来支持web窗体上的用户字段，其参数也是作为key/value对传输。但是：它不支持复杂数据类型，因为post没有定义传输数据结构的语义和规则。</p>
+<p>　　　　soap：是http post的一个专用版本，遵循一种特殊的xml消息格式，Content-type设置为: text/xml 任何数据都可以xml化。<br>　　总结上面所说的，GET和POST的区别：　　</p>
+<p>　　 GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如login.action?name=hyddd&amp;password=idontknow&amp;verify=%E4%BD%A0 %E5%A5%BD。POST方法是把提交的数据放在HTTP包的Body中.</p>
+<p>　　 GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制.</p>
+<p>　　 GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+<p>　　 GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码.</p>
+<h2 id="5-3、打开一个网页需要浏览器发送多次Request请求"><a href="#5-3、打开一个网页需要浏览器发送多次Request请求" class="headerlink" title="5.3、打开一个网页需要浏览器发送多次Request请求"></a>5.3、打开一个网页需要浏览器发送多次Request请求</h2><p>　　1） 当你在浏览器输入URL <a href="http://www.cnblogs.com" target="_blank" rel="noopener">http://www.cnblogs.com</a> 的时候，浏览器发送一个Request去获取 <a href="http://www.cnblogs.com" target="_blank" rel="noopener">http://www.cnblogs.com</a> 的html. 服务器把Response发送回给浏览器.<br>　　2） 浏览器分析Response中的 HTML，发现其中引用了很多其他文件，比如图片，CSS文件，JS文件。<br>　　3） 浏览器会自动再次发送Request去获取图片，CSS文件，或者JS文件。<br>　　4） 等所有的文件都下载成功后。 网页就被显示出来了。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、HTTP中响应消息（response）"><a href="#六、HTTP中响应消息（response）" class="headerlink" title="六、HTTP中响应消息（response）"></a>六、HTTP中响应消息（response）</h1><h2 id="6-1、响应消息格式"><a href="#6-1、响应消息格式" class="headerlink" title="6.1、响应消息格式"></a>6.1、响应消息格式</h2><p>　　一般情况下，服务器接收并处理客户端发过来的请求后会返回一个HTTP的响应消息。格式如下：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930213225653-1491450577.png" alt="img"></p>
+<p>　　HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。</p>
+<h2 id="6-2、响应消息"><a href="#6-2、响应消息" class="headerlink" title="6.2、响应消息"></a>6.2、响应消息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>　　第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。</p>
+<p>　　　　第一行为状态行，（HTTP/1.1）表明HTTP版本为1.1版本，状态码为200，状态消息为（ok）</p>
+<p>　　第二部分：消息报头，用来说明客户端要使用的一些附加信息</p>
+<p>　　　　第二行和第三行为消息报头。Date:生成响应的日期和时间；Content-Type:指定了MIME类型的HTML(text/html),编码类型是UTF-8</p>
+<p>　　第三部分：空行，消息报头后面的空行是必须的</p>
+<p>　　第四部分：响应正文，服务器返回给客户端的文本信息。</p>
+<p>　　　　空行后面的html部分为响应正文。</p>
+<h2 id="6-3、响应状态码"><a href="#6-3、响应状态码" class="headerlink" title="6.3、响应状态码"></a>6.3、响应状态码</h2><p>　　状态代码有三位数字组成，第一个数字定义了响应的类别，共分五种类别：<br>　　　　1xx：指示信息–表示请求已接收，继续处理<br>　　　　2xx：成功–表示请求已被成功接收、理解、接受<br>　　　　3xx：重定向–要完成请求必须进行更进一步的操作<br>　　　　4xx：客户端错误–请求有语法错误或请求无法实现<br>　　　　5xx：服务器端错误–服务器未能实现合法的请求</p>
+<p>　　常见的状态码有：　</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">200 OK                        &#x2F;&#x2F;客户端请求成功</span><br><span class="line">400 Bad Request               &#x2F;&#x2F;客户端请求有语法错误，不能被服务器所理解</span><br><span class="line">401 Unauthorized              &#x2F;&#x2F;请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 </span><br><span class="line">403 Forbidden                 &#x2F;&#x2F;服务器收到请求，但是拒绝提供服务</span><br><span class="line">404 Not Found                 &#x2F;&#x2F;请求资源不存在，eg：输入了错误的URL</span><br><span class="line">500 Internal Server Error     &#x2F;&#x2F;服务器发生不可预期的错误</span><br><span class="line">503 Server Unavailable        &#x2F;&#x2F;服务器当前不能处理客户端的请求，一段时间后可能恢复正常</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7614800.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、HTTP工作原理"><a href="#七、HTTP工作原理" class="headerlink" title="七、HTTP工作原理"></a>七、HTTP工作原理</h1><p>前面把HTTP的内容讲的非常的细致，那我们来总体的看一下它的工作原理吧！</p>
+<p>HTTP协议定义Web客户端如何从Web服务器请求Web页面，以及服务器如何把Web页面传送给客户端。HTTP协议采用了请求/响应模型。客户端向服务器发送一个请求报文，</p>
+<p>请求报文包含请求的方法、URL、协议版本、请求头部和请求数据。服务器以一个状态行作为响应，响应的内容包括协议的版本、成功或者错误代码、服务器信息、响应头部和响应数据。</p>
+<p> HTTP 请求/响应的步骤：</p>
+<p>　　1）客户端连接到Web服务器</p>
+<p>　　　　一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口（默认为80）建立一个TCP套接字连接。例如，<a href="http://www.oakcms.cn。" target="_blank" rel="noopener">http://www.oakcms.cn。</a></p>
+<p>　　2）发送HTTP请求</p>
+<p>　　　　通过TCP套接字，客户端向Web服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据4部分组成。</p>
+<p>　　3）服务器接受请求并返回HTTP响应</p>
+<p>　　　　Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据4部分组成。</p>
+<p>　　4）释放连接TCP连接</p>
+<p>　　　　若connection 模式为close，则服务器主动关闭TCP连接，客户端被动关闭连接，释放TCP连接;若connection 模式为keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;</p>
+<p>　　5）客户端浏览器解析HTML内容</p>
+<p>　　　　客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的HTML文档和文档的字符集。</p>
+<p>　　　　客户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。</p>
+<p>　　例如：在浏览器地址栏键入URL，按下回车之后会经历以下流程：</p>
+<p>　　　　浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;</p>
+<p>　　　　解析出 IP 地址后，根据该 IP 地址和默认端口 80，和服务器建立TCP连接;</p>
+<p>　　　　浏览器发出读取文件(URL 中域名后面部分对应的文件)的HTTP 请求，该请求报文作为 TCP 三次握手的第三个报文的数据发送给服务器;</p>
+<p>　　　　服务器对浏览器请求作出响应，并把对应的 html 文本发送给浏览器;</p>
+<p>　　　　释放 TCP连接;</p>
+<p>　　　　浏览器将该 html 文本并显示内容;</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network9/#more" rel="contents">
@@ -289,7 +553,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network8/" class="post-title-link" itemprop="url">network8</a>
+            <a href="/2020/05/10/network8/" class="post-title-link" itemprop="url">应用层（DNS和HTTP）</a>
         </h2>
 
         <div class="post-meta">
@@ -298,8 +562,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:37" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:37-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:37 / Modified: 16:22:41" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:37-05:00">2020-05-10</time>
             </span>
 
           
@@ -314,6 +579,104 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_label0" target="_blank" rel="noopener">一、应用层概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_0_0" target="_blank" rel="noopener">1.1、应用层简介</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_0_1" target="_blank" rel="noopener">1.2、应用层中的应用软件分两种：客户/服务器和P2P体系结构</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_label1" target="_blank" rel="noopener">二、应用层协议之DNS协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_1_0" target="_blank" rel="noopener">2.1、DNS协议概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_1_1" target="_blank" rel="noopener">2.2、DNS协议工作过程</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_label2" target="_blank" rel="noopener">三 、应用层协议之HTTP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_2_0" target="_blank" rel="noopener">3.1、HTTP协议简介</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_2_1" target="_blank" rel="noopener">3.2、统一资源定位符URL</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_2_2" target="_blank" rel="noopener">3.3、超文本传输协议</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_2_3" target="_blank" rel="noopener">3.4、请求和响应报文的格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_lab2_2_4" target="_blank" rel="noopener">3.5、HTTP协议功能</a></li>
+</ul>
+</li>
+</ul>
+<p>前言</p>
+<p>到这一篇我已经把TCP/IP五层模型详细的说明了一遍，大体的从物理层到最上层的应用层做了一个大概的了解，其实总体学下来东西非常的多，我们需要经常的去系统性的去学习它。不然过一段时间就忘记了！</p>
+<p>回顾一下前面的知识：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929150555778-1593038196.png" alt="img"></p>
+<p>　　OSI体系结构分为7层：物理层、链路层、网路层、传输层、会话层、表示层、应用层。</p>
+<p>　　TCP/IP5层参考模型：物理层、数据链路层、网络层、传输层、应用层</p>
+<p>　　TCP/IP的体系结构分为4层：网络接口层(物理层、链路层)、网际层(网络层IP)、传输层(UDP/TCP)、应用层(会话层、表示层、应用层)</p>
+<p>　　原理体系结构：物理层、链路层、网络层、传输层、应用层(会话层+表示层+应用层)　　</p>
+<p>　　　　OSI七层协议体系结构：优点：概念清楚，理论完整，缺点但是复杂而不实用</p>
+<p>　　　　TCP/IP协议族四层，缺点：太简单，但被广泛使用</p>
+<p>　　结合上面两个的优缺点，就有了5层协议的原理体系结构，即简洁又能把概念描述清楚。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、应用层概述"><a href="#一、应用层概述" class="headerlink" title="一、应用层概述"></a>一、应用层概述</h1><h2 id="1-1、应用层简介"><a href="#1-1、应用层简介" class="headerlink" title="1.1、应用层简介"></a>1.1、应用层简介</h2><p>　　在百度中的介绍：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929151612762-411546424.png" alt="img"></p>
+<p>　　位于计算机网络体系结构的最上层，前面四层做的所有事情就是为了他服务，他也是设计和建立计算机网络的最终目的，通俗的讲，就是我们开发的应用软件，就处于这一层，</p>
+<p>　　比如，QQ，浏览器访问网页，等等你看得到的应用软件都是在这一层，但是这些软件在运行的过程中，也需要依靠一些特定的协议才能完成相应的功能，</p>
+<p>　　比如浏览器通过网址访问网页，其中是如何做到的，这就是我们所要学习的东西。</p>
+<h2 id="1-2、应用层中的应用软件分两种：客户-服务器和P2P体系结构"><a href="#1-2、应用层中的应用软件分两种：客户-服务器和P2P体系结构" class="headerlink" title="1.2、应用层中的应用软件分两种：客户/服务器和P2P体系结构"></a>1.2、应用层中的应用软件分两种：客户/服务器和P2P体系结构</h2><p>　　1）客户/服务器(client/server)</p>
+<p>　　　　这种类型，就是我们很熟悉的客户端，服务器模型，客户端请求服务器，服务器响应客户端这样的一种方式进行“交流”</p>
+<p>　　2）P2P</p>
+<p>　　　　也称为对等体系结构。P2P相当于每个人的电脑度可以当服务器，也可以当客户端，不单单限制于只能客户端访问服务器，</p>
+<p>　　　　你自己的计算机可以去访问别人的计算机上的内容，别的同样可以访问你计算机上的内容，这样达到一种共享的状态。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、应用层协议之DNS协议"><a href="#二、应用层协议之DNS协议" class="headerlink" title="二、应用层协议之DNS协议"></a>二、应用层协议之DNS协议</h1><h2 id="2-1、DNS协议概述"><a href="#2-1、DNS协议概述" class="headerlink" title="2.1、DNS协议概述"></a>2.1、DNS协议概述</h2><p>　　Domain Name System 域名系统。也可以叫做域名解析协议。在我们在浏览器访问网页的时候，通常度是用我们所熟悉的一连串有意义的英文字符标识，比如<a href="http://www.baidu.com、www.sohu.com等。" target="_blank" rel="noopener">www.baidu.com、www.sohu.com等。</a></p>
+<p>　　但是我们学了前面的知识，计算机并不是通过这些字符串去找到对应的计算机，而是通过32位的二进制，也就是我们的IP地址来找。所以就有了DNS协议。他的作用就是将域名解析成对应的IP地址。</p>
+<p>　　因为让我们人去记那些IP地址，很难记得住，所以就想办法让IP地址转变为了现在的域名，在进行访问的时候，只需要将域名解析为对应的IP地址就行了，这个域名也很有讲究，其中分为好多层域名，</p>
+<p>　　是独一无二的。这里不细讲这个，只要我们知道，域名通过DNS能找到对应的IP地址就行了。</p>
+<h2 id="2-2、DNS协议工作过程"><a href="#2-2、DNS协议工作过程" class="headerlink" title="2.2、DNS协议工作过程"></a>2.2、DNS协议工作过程</h2><p>　　1）通过域名访问网页</p>
+<p>　　2）计算机会先将域名发送到一个解析域名的服务器上</p>
+<p>　　　　2.1）在其服务器上有很多服务器，能解析各种各样的域名，比如有专门解析.org的，解析.com的，解析.net的。等等，最主要的有一个根域名服务器</p>
+<p>　　　　2.2 ）域名解析(在服务器上查找IP地址)的过程有两种算法，迭代查询，递归查询。一般是两种查询的结合</p>
+<p>　　　　2.3 ）本机计算机找到其中一台解析域名的服务器(可能是.com)，如果没有找到对应的IP地址，那么就会去找根域名服务器，根域名服务器知道所有的子服务器，</p>
+<p>　　　　　　所以他肯定知道该域名所对应的IP地址在那个子服务器中，所以告诉第一次查询的服务器要他去另一台服务器上找，找到了，就将其返回给计算机，</p>
+<p>　　　　　　以后在有另一台计算机也通过这个域名访问，那么第一台服务器会有原来的域名IP地址的缓存，就不用去找根服务器了。</p>
+<p>　　3）找到了，就能找到我们要访问的服务器了。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929152545044-57881135.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7611420.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三-、应用层协议之HTTP协议"><a href="#三-、应用层协议之HTTP协议" class="headerlink" title="三 、应用层协议之HTTP协议"></a>三 、应用层协议之HTTP协议</h1><h2 id="3-1、HTTP协议简介"><a href="#3-1、HTTP协议简介" class="headerlink" title="3.1、HTTP协议简介"></a>3.1、HTTP协议简介</h2><p>　　1）超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。<br>　　2）HTTP是一个客户端和服务器端请求和应答的标准（TCP）。客户端是终端用户，服务器端是网站。通过使用Web浏览器、网络爬虫或者其它的工具，客户端发起一个到服务器上指定端口（默认端口为80）的HTTP请求。</p>
+<p>　　　（我们称这个客户端）叫用户代理（user agent）。应答的服务器上存储着（一些）资源，比如HTML文件和图像。（我们称）这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个中间层，</p>
+<p>　　　比如代理，网关，或者隧道（tunnels）。尽管TCP/IP协议是互联网上最流行的应用，HTTP协议并没有规定必须使用它和（基于）它支持的层。 事实上，HTTP可以在任何其他互联网协议上，或者在其他网络上实现。</p>
+<p>　　　HTTP只假定（其下层协议提供）可靠的传输，任何能够提供这种保证的协议都可以被其使用。<br>　　3）通常，由HTTP客户端发起一个请求，建立一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端发送过来的请求。一旦收到请求，服务器（向客户端）发回一个状态行，</p>
+<p>　　   比如”HTTP/1.1 200 OK”，和（响应的）消息，消息的消息体可能是请求的文件、错误消息、或者其它一些信息。</p>
+<p>　　　HTTP使用TCP而不是UDP的原因在于（打开）一个网页必须传送很多数据，而TCP协议提供传输控制，按顺序组织数据，和错误纠正。<br>　　4）通过HTTP或者HTTPS协议请求的资源由统一资源标示符（Uniform Resource Identifiers）（或者，更准确一些，URLs）来标识。</p>
+<h2 id="3-2、统一资源定位符URL"><a href="#3-2、统一资源定位符URL" class="headerlink" title="3.2、统一资源定位符URL"></a>3.2、统一资源定位符URL</h2><p>　　URL:统一资源定位符，通过下面格式，可以看出，就是用来定位我们所需要资源在服务器上的位置。</p>
+<p>　　格式：&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</p>
+<p>　　协议：http</p>
+<p>　　主机：域名/IP地址，原理度一样，到头来还是会转换为IP地址，通过这个才能找到目标服务器</p>
+<p>　　端口: 在传输层需要使用的，访问目的主机的哪个端口号。　</p>
+<p>　　路径：精准的定位我们所需要的资源位置、　　　　</p>
+<p>　　平常会省略协议和端口号，因为这些都是默认的，在访问主页时，路径也会省略。比如<a href="http://www.baidu.com这个默认进入百度的主页" target="_blank" rel="noopener">www.baidu.com这个默认进入百度的主页</a> 完整写法 <a href="http://www.baidu.com:80/index.html" target="_blank" rel="noopener">http://www.baidu.com:80/index.html</a> 。</p>
+<h2 id="3-3、超文本传输协议"><a href="#3-3、超文本传输协议" class="headerlink" title="3.3、超文本传输协议"></a>3.3、超文本传输协议</h2><p>　　1）作用</p>
+<p>　　　　怎样向服务器请求文档、服务器怎么把文档传送给浏览器，通俗点讲，就是我们想服务器访问网页资源时，服务器如何把网页上的东西传给我们。</p>
+<p>　　客户端向服务器：请求报文　　　　服务器向客户端：响应报文</p>
+<p>　　其实就是：在通过URL访问你服务器时，就会发送一个请求报文，告诉服务器需要哪些东西，服务器知道后，返回一个响应报文给客户端，其中就会带有一些网页信息。</p>
+<p>　　　　　　 就是通过这个来达到传送网页资源的目的，现在来具体看看，请求报文和响应报文的格式。</p>
+<h2 id="3-4、请求和响应报文的格式"><a href="#3-4、请求和响应报文的格式" class="headerlink" title="3.4、请求和响应报文的格式"></a>3.4、请求和响应报文的格式</h2><p>　　格式都一样，内容不一样。　</p>
+<p>　　　　请求行　　　　　　　　　　　　响应行</p>
+<p>　　　　请求头部　　　　　　　　　　　响应体</p>
+<p>　　　　请求数据　　　　　　　　　　　响应数据</p>
+<p>　　1）请求报文格式图</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930120911044-1161831966.png" alt="img"></p>
+<p>　　2）响应报文格式图</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170930120959903-1005309780.png" alt="img"></p>
+<p>这个后面我会详细的写一篇文章类学习HTTP协议。</p>
+<h2 id="3-5、HTTP协议功能"><a href="#3-5、HTTP协议功能" class="headerlink" title="3.5、HTTP协议功能"></a>3.5、HTTP协议功能</h2><p>　　　　HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，</p>
+<p>　　还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</p>
+<p>　　　　HTTP是客户端浏览器或其他程序与<a href="https://baike.baidu.com/item/Web服务" target="_blank" rel="noopener">Web服务</a>器之间的应用层通信协议。在Internet上的Web服务器上存放的都是超文本信息，客户机需要通过HTTP协议传输所要访问的超文本信息。HTTP包含命令和传输信息，</p>
+<p>　　仅可用于Web访问，也可以用于其他因特网/内联网应用系统之间的通信，从而实现各类应用资源超媒体访问的集成。</p>
+<p>　　　　我们在浏览器的地址栏里输入的网站地址叫做URL (Uniform Resource Locator，<a href="https://baike.baidu.com/item/统一资源定位符" target="_blank" rel="noopener">统一资源定位符</a>)。就像每家每户都有一个门牌地址一样，每个网页也都有一个Internet地址。当你在<br>　　浏览器的地址框中输入一个URL或是单击一个<a href="https://baike.baidu.com/item/超级链接" target="_blank" rel="noopener">超级链接</a>时，URL就确定了要浏览的地址。浏览器通过超文本传输协议(HTTP)，将Web服务器上站点的网页代码提取出来，并翻译成漂亮的网页。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network8/#more" rel="contents">
@@ -354,7 +717,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network7/" class="post-title-link" itemprop="url">network7</a>
+            <a href="/2020/05/10/network7/" class="post-title-link" itemprop="url">传输层之细说TCP的三次握手和四次挥手</a>
         </h2>
 
         <div class="post-meta">
@@ -363,8 +726,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:34" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:34-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:34 / Modified: 16:21:44" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:34-05:00">2020-05-10</time>
             </span>
 
           
@@ -379,6 +743,159 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_label0" target="_blank" rel="noopener">一、运输层概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_0_0" target="_blank" rel="noopener">1.1、运输层简介</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_0_1" target="_blank" rel="noopener">1.2、端口</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_0_2" target="_blank" rel="noopener">1.3、熟知端口、登记端口、客户端端口</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_label1" target="_blank" rel="noopener">二、UDP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_1_0" target="_blank" rel="noopener">　　2.1、UDP概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_1_1" target="_blank" rel="noopener">　　2.2、特点　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_1_2" target="_blank" rel="noopener">　　2.3、UDP报文格式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_1_3" target="_blank" rel="noopener">　　2.4、使用UDP协议的例子</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_label2" target="_blank" rel="noopener">三、TCP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_0" target="_blank" rel="noopener">3.1、TCP协议概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_1" target="_blank" rel="noopener">3.2、TCP协议功能　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_2" target="_blank" rel="noopener">3.3、TCP报文结构</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_3" target="_blank" rel="noopener">3.4、面向连接（三次握手）</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_4" target="_blank" rel="noopener"> 3.5、同时打开连接请求</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_5" target="_blank" rel="noopener">3.6、可靠传输</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_6" target="_blank" rel="noopener">3.7、流量控制</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_7" target="_blank" rel="noopener">3.8、堵塞控制</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_8" target="_blank" rel="noopener">3.9、TCP释放连接（四次挥手）</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_lab2_2_9" target="_blank" rel="noopener">3.10、同时关闭连接</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>　　这一篇我将介绍的是大家面试经常被会问到的，三次握手四次挥手的过程。以前我听到这个是什么意思呀？听的我一脸蒙逼，但是学习之后就原来就那么回事！</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、运输层概述"><a href="#一、运输层概述" class="headerlink" title="一、运输层概述"></a>一、运输层概述</h1><h2 id="1-1、运输层简介"><a href="#1-1、运输层简介" class="headerlink" title="1.1、运输层简介"></a>1.1、运输层简介</h2><p>　　这一层的功能也挺简单的，运输层提供应用层提供端到端通信服务，通俗的讲，两个主机通讯，也就是应用层上的进程之间的通信，也就是转换为进程和进程之间的通信了，我们之前学到网络层，</p>
+<p>　　IP协议能将分组准确的发送到目的主机，但是停留在网络层，并不知道要怎么交给我们的主机应用进程，通过前面的学习，我们学习有mac地址，通过mac地址能找到同一个网络下主机，有IP地址，</p>
+<p>　　通过ip地址能找到不同网络下的网络，结合mac地址就能找到对应主机，那么怎么找到主机应用进程呢，肯定也有一个东西来标识它，那就是我们常说的端口了。</p>
+<h2 id="1-2、端口"><a href="#1-2、端口" class="headerlink" title="1.2、端口"></a>1.2、端口</h2><p>　　端口，占有16位，其大小也就有65536个，是从0~65535.也就是一台计算机有65535个端口，主机之间的通讯，也就是应用进程之间的通讯，都要依靠端口，一个进程对应一个端口，</p>
+<p>　　进程A和进程B通信，进程A分到的端口为60000，进程B分到的端口为60001，进程A通过端口60000发送数据给进程B，就知道要交给60001端口，也就到了进程B中 ，这样就达到了通信的目的。</p>
+<h2 id="1-3、熟知端口、登记端口、客户端端口"><a href="#1-3、熟知端口、登记端口、客户端端口" class="headerlink" title="1.3、熟知端口、登记端口、客户端端口"></a>1.3、熟知端口、登记端口、客户端端口</h2><p>　　1）熟知端口：0-1023， 也就是一些固定的端口号，比如http使用的80端口，意思就是在访问网址时，我们访问服务器的端口就是80，然后服务器那边传网页的数据给我们。</p>
+<p>　　2）登记端口：1024-49151，比如微软开发了一个系统应用，该应用在通讯或使用时，需要使用到xxx端口，那么就要去登记一下这个端口，以免有别人公司的应用使用同一个端口号，</p>
+<p>　　　　　　　　例如，windows系统中的3389端口，就是用来实现远程连接的，就固定了这台计算机如果要使用远程连接服务，就打开3389端口，别人就能使用远程连接连你了，默认是不打开的。</p>
+<p>　　3）客户端端口：49152-65535，一般我们使用某个软件，比如QQ，等其他服务，随机拿这个范围内的端口，而不是去拿前面哪些固定的，拿到等通讯结束后，就会释放该端口。</p>
+<p>知道了端口是什么？运输层具体做了什么事情呢？运输层就是将两个端口连起来通信的介质，不然光知道两个端口有什么用，怎么通信的，还是要靠运输层来做这个事情，其中重要的就是靠两个协议，UDP和TCP协议。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、UDP协议"><a href="#二、UDP协议" class="headerlink" title="二、UDP协议"></a>二、UDP协议</h1><h2 id="2-1、UDP概述"><a href="#2-1、UDP概述" class="headerlink" title="　　2.1、UDP概述"></a>　　2.1、UDP概述</h2><p>　　　　UDP:User Datagram Protocol 用户数据报协议</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929104015872-2047532795.png" alt="img"></p>
+<h2 id="2-2、特点"><a href="#2-2、特点" class="headerlink" title="　　2.2、特点　"></a>　　2.2、特点　</h2><p>　　　　无连接、不可靠</p>
+<p>　　　　无连接：意思就是在通讯之前不需要建立连接，直接传输数据。</p>
+<p>　　　　不可靠：是将数据报的分组从一台主机发送到另一台主机，但并不保证数据报能够到达另一端，任何必须的可靠性都由应用程序提供。在 UDP 情况下，虽然可以确保发送消息的大小，</p>
+<p>　　　　　　　　却不能保证消息一定会达到目的端。没有超时和重传功能，当 UDP 数据封装到 IP 数据报传输时，如果丢失，会发送一个 ICMP 差错报文给源主机。即使出现网络阻塞情况，</p>
+<p>　　　　　　　　UDP 也无法进行流量控制。此外，传输途中即使出现丢包，UDP 也不负责重发，甚至当出现包的到达顺序杂乱也没有纠正的功能。</p>
+<h2 id="2-3、UDP报文格式"><a href="#2-3、UDP报文格式" class="headerlink" title="　　2.3、UDP报文格式"></a>　　2.3、UDP报文格式</h2><p>　　　　UDP在IP报文中的位置如图所示：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929110726372-1065135917.png" alt="img"></p>
+<p>　　　　UDP报文格式如图所示：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929104712294-151752902.png" alt="img"></p>
+<p>　　　　1）UDP首部　　</p>
+<p>　　　　　　源端口号：占16位，源主机的应用进程所使用的端口号</p>
+<p>　　　　　　目标端口号：占16位，目标主机的应用进程所使用的端口号，也就是我们需要通信的目标进程</p>
+<p>　　　　　　UDP（包）报长度：UDP用户数据报的长度，数据部分+UDP首部之和为UDP报长度。</p>
+<p>　　　　　　检验和：检验和是为了提供可靠的 UDP 首部和数据而设计，这里不要和上面的不可靠传输搞混淆了，这里提供可靠的UDP首部，是因为一个进程可能接受多个进程过来的报文，那么如何区分他们呢，</p>
+<p>　　　　　　　　　　就是通过5个东西来进行区分的， “源 IP 地址”、“目的 IP 地址”、“协议号”、“源端口号”、“目标端口号”的，这个检测可靠，是检测接受哪个正确的报文，也就是说是哪个报文要进这个端口。那个不可靠，</p>
+<p>　　　　　　　　　　说的是这个报文可能丢失，可能其中数据损坏了我们不关心，但是这些的前提是，你得传输到正确的目的地去，不然乱出乱发数据报，岂不是乱套了。</p>
+<p>　　　　2）UDP伪首部</p>
+<p>　　　　　　就是拿到IP层的一些数据，因为要进行检验和，就必须要有这些数据。其中检验的算法跟IP层中检验首部的办法是一样的。</p>
+<p>　　　　　　分析：</p>
+<p>　　　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929105335903-1914988627.png" alt="img"></p>
+<p>　　　　　一个目标进程中，其中的报文，目标端口，目标ip地址肯定都是一样的，但是源IP地址和源端口就可能不一样，这就说明了不同源而同一目的地的报文会定位到同一队列。</p>
+<p>　　　　　　这跟接下来我们要讨论的TCP不一样，因为UDP是无连接的，大家都是用这一条通道，所以其队列中就会出现上面所说的这样的情况。</p>
+<h2 id="2-4、使用UDP协议的例子"><a href="#2-4、使用UDP协议的例子" class="headerlink" title="　　2.4、使用UDP协议的例子"></a>　　2.4、使用UDP协议的例子</h2><p>　　　　　　在选择使用协议的时候，选择UDP必须要谨慎。在<a href="https://baike.baidu.com/item/网络" target="_blank" rel="noopener">网络</a>质量令人十分不满意的环境下，UDP协议数据包丢失会比较严重。但是由于UDP的特性：它不属于连接型协议，因而具有资源消耗小，</p>
+<p>　　　　处理速度快的优点，所以通常音频、视频和普通数据在传送时使用UDP较多，因为它们即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。比如我们聊天用的ICQ和<a href="https://baike.baidu.com/item/QQ" target="_blank" rel="noopener">QQ</a>就是使用的UDP协议。</p>
+<p>　　　　1）应用层协议中DNS，也就是根据域名解析ip地址的一个协议，他使用的就是UDP</p>
+<p>　　　　2）DHCP,这个是给各电脑分配ip地址的协议，其中用的也是UDP协议</p>
+<p>　　　　3）IGMP，我们说的多播，也就是使用的UDP，在多媒体教师，老师拿笔记本讲课，我们在下面通过各自的电脑看到老师的画面，这就是通过UDP传输数据，所以会出现有的同学卡，</p>
+<p>　　　　　　有的同学很流畅，就是因为其不可靠传输，但是卡一下，对接下来的观看并没有什么映像。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7610922.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、TCP协议"><a href="#三、TCP协议" class="headerlink" title="三、TCP协议"></a>三、TCP协议</h1><h2 id="3-1、TCP协议概述"><a href="#3-1、TCP协议概述" class="headerlink" title="3.1、TCP协议概述"></a>3.1、TCP协议概述</h2><p>　　百度上说：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929111206278-1051951614.png" alt="img"></p>
+<p>　　TCP协议是面向连接的、可靠传输、有流量控制，拥塞控制，面向字节流传输等很多优点的协议。其最终功能和UDP一样，在端和端之间进行通信，但是和UDP的区别还是很大的。</p>
+<h2 id="3-2、TCP协议功能"><a href="#3-2、TCP协议功能" class="headerlink" title="3.2、TCP协议功能　"></a>3.2、TCP协议功能　</h2><p>　　1）当应用层向TCP层发送用于网间传输的、用8位字节表示的数据流，TCP则把数据流分割成适当长度的报文段，最大传输段大小（MSS）通常受该计算机连接的网络的数据链路层的最大传送单元（MTU）限制。</p>
+<p>　　　　之后TCP把数据包传给IP层，由它来通过网络将包传送给接收端实体的TCP层。<br>　　2）TCP为了保证报文传输的可靠，就给每个包一个序号，同时序号也保证了传送到接收端实体的包的按序接收。然后接收端实体对已成功收到的字节发回一个相应的确认(ACK)；</p>
+<p>　　　　如果发送端实体在合理的往返时延(RTT)内未收到确认，那么对应的数据（假设丢失了）将会被重传。<br>　　　　　　在数据正确性与合法性上，TCP用一个校验和函数来检验数据是否有错误，在发送和接收时都要计算校验和；同时可以使用md5认证对数据进行加密。<br>　　　　　　在保证可靠性上，采用超时重传和捎带确认机制。<br>　　　　　　在流量控制上，采用滑动窗口[1] 协议，协议中规定，对于窗口内未经确认的分组需要重传。<br>　　3）在拥塞控制上，采用广受好评的TCP拥塞控制算法（也称AIMD算法）。该算法主要包括三个主要部分：1）加性增、乘性减；2）慢启动；3）对超时事件做出反应。</p>
+<h2 id="3-3、TCP报文结构"><a href="#3-3、TCP报文结构" class="headerlink" title="3.3、TCP报文结构"></a>3.3、TCP报文结构</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929111828700-1117064463.png" alt="img"></p>
+<p>　　1）源端口号</p>
+<p>　　2）目标端口号</p>
+<p>　　3）序列号：因为在TCP是面向字节流的，他会将报文都分成一个个字节，给每个字节进行序号编写，比如一个报文有900个字节组成，那么就会编成1-900个序号，然后分几部分来进行传输，</p>
+<p>　　　　　　　　比如第一次传，序列号就是1，传了50个字节， 那么第二次传，序列号就为51，所以序列号就是传输的数据的第一个字节相对所有的字节的位置。</p>
+<p>　　4）确认应答：如刚说的例子，第一次传了50个字节给对方，对方也会回应你，其中带有确认应答，就是告诉你下一次要传第51个字节来了，所以这个确认应答就是告诉对方要传第多少个字节了</p>
+<p>　　5）首部长度：就是首部的长度，</p>
+<p>　　6）保留：给以后有需要在用，这个保留的位置放的东西是跟控制位类似的</p>
+<p>　　7）控制位：目前有的控制位为6个</p>
+<p>　　　　URG:紧急，当URG为1时，表名紧急指针字段有效，标识该报文是一个紧急报文，传送到目标主机后，不用排队，应该让该报文尽量往下排，让其早点让应用程序给接受。</p>
+<p>　　　　ACK:确认，当ACK为1时，确认序号才有效。当ACK为0时，　　　　确认序号没用</p>
+<p>　　　　PSH：推送，当为1时，当遇到此报文时，会减少数据向上交付，本来想应用进程交付数据是要等到一定的缓存大小才发送的，但是遇到它，就不用在等足够多的数据才向上交付，</p>
+<p>　　　　　　　　而是让应用进程早点拿到此报文，这个要和紧急分清楚，紧急是插队，但是提交缓存大小的数据不变，这个推送就要排队，但是遇到他的时候，会减少交付的缓存数据，提前交付。</p>
+<p>　　　　RST:复位，报文遇到很严重的差错时，比如TCP连接出错等，会将RST置为1，然后释放连接，全部重新来过。</p>
+<p>　　　　SYN：同步，在进行连接的时候，也就是三次握手时用得到，下面会具体讲到，配合ACK一起使用</p>
+<p>　　　　FIN：终止，在释放连接时，也就是四次挥手时用的。</p>
+<p>　　8）窗口：指发送报文段一方的接受窗口大小，用来控制对方发送的数据量(从确认号开始，允许对方发送的数据量)。也就是后面需要讲的滑动窗口的窗口大小</p>
+<p>　　9）检验和：检验首部和数据这两部分，和UDP一样，需要拿到伪首部中的数据来帮助检测</p>
+<p>　　10）选项：长度可变，介绍一种选项，最大报文段长度，MSS。 能够告诉对方TCP，我的缓存能接受报文段的数据字段的最大长度是MSS个字节。如果没有使用选项，那么首部固定是20个字节。</p>
+<p>　　11）填充：就是为了让其成为整数个字节</p>
+<h2 id="3-4、面向连接（三次握手）"><a href="#3-4、面向连接（三次握手）" class="headerlink" title="3.4、面向连接（三次握手）"></a>3.4、面向连接（三次握手）</h2><p>　　面向连接(三次握手)：在通信之前，会先通过三次握手的机制来确认两端口之间的连接是否可用。而UDP不需要确认是否可用，直接传。</p>
+<p>　　三次握手机制：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929140236606-834864575.png" alt="img">　　　　　<strong><img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929140445825-702107298.png" alt="img"></strong></p>
+<p>　　一开始客户端和服务端都是关闭状态，但是在某个时刻，客户端需要和服务端进行通信，此时双方都会各自准备好端口，服务器段的端口会处于监听状态，等待客户端的连接。</p>
+<p>　　客户端可会知道自己的端口号，和目的进程的端口号，这样才能发起请求。</p>
+<p>　　第一次握手：客户端想与服务器进行连接了，所以状态变为主动打开，同时发送一个连接请求报文给服务器段SYN=1，并且会携带x个字节过去。</p>
+<p>　　　　　　　　发送完请求连接报文后，客户端的状态就变为了SYN_SENT，可以说这个状态是等待发送确认(为了发送第三次握手时的确认包)</p>
+<p>　　第二次握手：服务端接收到连接请求报文后，从LSTTEN状态变为被动打开状态，然后给客户端返回一个报文。这个报文有两层意思，一是确认报文，而可以达到告诉客户端，我也打开连接了。</p>
+<p>　　　　　　　　发完后，变为SYN_RCVD状态(也可以说是等待接受确认状态，接受客户端发过来的确认包)</p>
+<p>　　第三次握手：客户端得到服务器端的确认和知道服务器端也已经准备好了连接后，还会发一个确认报文到服务器端，告诉服务器端，我接到了你发送的报文，接下来就让我们两个进行连接了。</p>
+<p>　　　　　　　　客户端发送完确认报文后，进入ESTABLISHED，而服务器接到了，也变为ESTABLISHED。</p>
+<h2 id="3-5、同时打开连接请求"><a href="#3-5、同时打开连接请求" class="headerlink" title="3.5、同时打开连接请求"></a>3.5、同时打开连接请求</h2><p>　　正常情况下，通信一方请求建立连接，另一方响应该请求，但是如果出现，通信双方同时请求建立连接时，则连接建立过程并不是三次握手过程，而且这种情况的连接也只有一条，并不会建立两条连接。</p>
+<p>　　同时打开连接时，两边几乎同时发送 SYN，并进入 SYN_SENT 状态，当每一端收到 SYN 时，状态变为 SYN_RCVD，同时双方都再发 SYN 和 ACK 作为对收到的 SYN 进行确认应答。</p>
+<p>　　当双方都收到 SYN 及相应的 ACK 时，状态变为 ESTABLISHED </p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929142218825-490369738.png" alt="img"></p>
+<h2 id="3-6、可靠传输"><a href="#3-6、可靠传输" class="headerlink" title="3.6、可靠传输"></a>3.6、可靠传输</h2><p>　通过1）数据编号和积累确认 2）以字节为单位的滑动窗口 3）超时重传时间 4）快速重传 这四个方面来达到可靠传输的目的。</p>
+<p>　　1）、数据编号：将每个字节进行编号，有900个字节，就从1到900进行编号</p>
+<p>　　　　 积累确认：服务器端不是接收到一个字节就发一个确认，那样效率太低，而是当接收到4，5个时，在发送一个确认，那么在之前的确认之前的数据就算发送成功了的。</p>
+<p>　　2）滑动窗口：这个跟在数据链路层讲个滑动窗口一样。每次能发送的数据是在此窗口中的，接到了多少数据，就往后滑多少数据</p>
+<p>　　3）超时重传时间：这个也在链路层讲过，如果等待一段时间后，还没接收到确认报文，那么就重新传</p>
+<p>　　4）快速重传：在滑动窗口中的应用，比如传了1234 6到服务器端，老办法是在4之后的所有数据度要重新传，而这个快速重传就只需要等待传了5这个序号，就可以继续往下接收数据了。</p>
+<h2 id="3-7、流量控制"><a href="#3-7、流量控制" class="headerlink" title="3.7、流量控制"></a>3.7、流量控制</h2><p>　　在传输层中，有接受缓存和发送缓存这两个东西的存在，所以每次发送数据过去另一端时，都会把这些数据给带过去，让对方知道自己的这两个缓存的大小，然后来合理的设置自己的发送窗口的大小，</p>
+<p>　　如果对方的缓存快满了，对方在传送数据过来的时候，就会告诉自己，少发一点数据过来，自己就设置滑动窗口小一点，让对方有缓冲的机会，而不会导致缓存溢出，不让自己的报文被丢弃。</p>
+<h2 id="3-8、堵塞控制"><a href="#3-8、堵塞控制" class="headerlink" title="3.8、堵塞控制"></a>3.8、堵塞控制</h2><p>　　其实跟流量控制差不多，但是站的角度更大，此时既考虑了对方接收不过来，缓存太多溢出导致，又考虑在线路中，线路上的传输速率就那么大，但是有很多人同时用，发送的数据太多，就会使线路发现拥塞，</p>
+<p>　　也就是路由器可能转发不过来，导致大量数据丢失，这两个问题。所以拥塞控制这个解决方案，大概意思就是当检测到有网络拥塞时，就会让自己的滑动窗口变小，但具体是怎么变化的，就是根据算法来算了，</p>
+<p>　　　　发送窗口的上限值 = Min[rwnd，cwnd]   </p>
+<p>　　　　rwnd：接受窗口，根据接受缓存，而定的接受窗口，接收缓存还有很多，那么接收窗口就大</p>
+<p>　　　　cwnd：拥塞窗口，根据线路中的拥塞状况来决定，线路中不拥塞，那么此窗口就大，</p>
+<p>　　　　发送窗口是取两个中较小值。这个还是可以理解的。</p>
+<p>　　慢启动算法、快速恢复算法、结合来达到对拥塞进行控制的。</p>
+<h2 id="3-9、TCP释放连接（四次挥手）"><a href="#3-9、TCP释放连接（四次挥手）" class="headerlink" title="3.9、TCP释放连接（四次挥手）"></a>3.9、TCP释放连接（四次挥手）</h2><p>　　通信完成后，连接就会被释放，通过四次挥手机制来完成这个事情。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929142848090-1019184299.png" alt="img"></p>
+<p>　　</p>
+<p>　　第一次挥手：从ESTABLISHED变为主动关闭状态，客户端主动发送释放连接请求给服务器端，FIN=1。发送完之后就变为FIN_WAIT_1状态，这个状态可以说是等待确认状态。</p>
+<p>　　第二次挥手：服务器接收到客户端发来的释放连接请求后，状态变为CLOSE_WAIT，然后发送确认报文给客户端，告诉他我接收到了你的请求。为什么变为CLOSE_WAIT，原因是是客户端发送的释放连接请求，</p>
+<p>　　　　　　　　可能自己这端还有数据没有发送完呢，所以这个时候整个TCP连接的状态就变为了半关闭状态。服务器端还能发送数据，并且客户端也能接收数据，但是客户端不能在发送数据了，只能够发送确认报文。</p>
+<p>　　　　　　　　客户端接到服务器的确认报文后，就进入了FIN_WAIT_2状态。也可以说这是等待服务器释放连接状态。</p>
+<p>　　第三次挥手：服务器端所有的数据度发送完了，认为可以关闭连接了，状态变为被动关闭，所以向客户端发送释放连接报文，发完之后自己变为LAST_WAIT状态，也就是等待客户端确认状态</p>
+<p>　　第四次挥手：客户端接到释放连接报文后，发送一个确认报文，然后自己变为TIME_WAIT,而不是立马关闭，因为客户端发送的确认报文可能会丢失，丢失的话服务器就会重传一个FIN，也就是释放连接报文，</p>
+<p>　　　　　　　　这个时候客户端必须还没关闭。 当服务器接受到确认报文后，服务器就进入CLOSE状态，也就是关闭了。但是由于上面说的这个原因，客户端必须等待一定的时间才能够进入CLOSE状态。</p>
+<h2 id="3-10、同时关闭连接"><a href="#3-10、同时关闭连接" class="headerlink" title="3.10、同时关闭连接"></a>3.10、同时关闭连接</h2><p>　　正常情况下，通信一方请求连接关闭，另一方响应连接关闭请求，并且被动关闭连接。但是若出现同时关闭连接请求时，通信双方均从 ESTABLISHED 状态转换为 FIN_WAIT_1 状态。</p>
+<p>　　任意一方收到对方发来的 FIN 报文段后，其状态均由 FIN_WAIT_1转变到 CLOSING 状态，并发送最后的 ACK 数据段。当收到最后的 ACK 数据段后，状态转变化 TIME_WAIT，</p>
+<p>　　在等待 2MSL 时间后进入到 CLOSED 状态，最终释放整个 TCP 传输连接。其过程入下：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929143138919-200620568.png" alt="img"></p>
+<p>总结：一般需要保证数据可靠时，都会使用tcp协议：http协议进行网站的访问时，使用的就是tcp。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network7/#more" rel="contents">
@@ -419,7 +936,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network6/" class="post-title-link" itemprop="url">network6</a>
+            <a href="/2020/05/10/network6/" class="post-title-link" itemprop="url">网络层</a>
         </h2>
 
         <div class="post-meta">
@@ -428,8 +945,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:31" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:31-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:31 / Modified: 16:20:59" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:31-05:00">2020-05-10</time>
             </span>
 
           
@@ -444,6 +962,214 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label0" target="_blank" rel="noopener">一、网络层概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_0_0" target="_blank" rel="noopener">1.1、网络层简介</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label1" target="_blank" rel="noopener">二、网络层的基础知识</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_0" target="_blank" rel="noopener">2.1、ip地址</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_1" target="_blank" rel="noopener">2.2、ip地址的分类</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_2" target="_blank" rel="noopener">2.3、mac地址和ip地址的区别与联系</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label2" target="_blank" rel="noopener">三、ARP协议</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label3" target="_blank" rel="noopener">四、IP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_3_0" target="_blank" rel="noopener">4.1、IP协议概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_3_1" target="_blank" rel="noopener">4.2、通过IP数据包格式认识IP协议</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label4" target="_blank" rel="noopener">五、ICMP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_4_0" target="_blank" rel="noopener">5.1、ICMP差错报告报文</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_4_1" target="_blank" rel="noopener">5.2、ICMP询问报文</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label5" target="_blank" rel="noopener">六、IGMP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_0" target="_blank" rel="noopener">6.1、概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_1" target="_blank" rel="noopener">6.2、多播　　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_2" target="_blank" rel="noopener">6.3、IGMP协议工作流程</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label6" target="_blank" rel="noopener">七、总结</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_0" target="_blank" rel="noopener">7.1、分析从主机A找到主机B的过程</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_1" target="_blank" rel="noopener">7.2、分析从主机A找到主机E的过程</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_2" target="_blank" rel="noopener">7.3、分析从主机A到主机E数据的形式</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>前面给大家介绍了计算机网络的基本概述，物理层和数据链路层。这一篇给大家介绍面试中经常会被问到的网络层。在介绍之前我们回顾一下之前学习的知识！</p>
+<p>　　CP/IP协议栈：物理层、链路层、网络层、传输层、应用层（会话层+表示层+应用层）</p>
+<p>　　物理层：通过比特流在线路中传输来完成我们传输数据的目的，传输的方式很多种，传输的介质也很多中，光纤等</p>
+<p>　　链路层：数据帧，在数据包(报)上加mac地址形成数据帧，其中的CRC检测原理用来检测数据的完整性，这一层用到的协议有PPP（点到点协议）、例如家中的拨号上网，</p>
+<p>　　　　　　 CSMA/CD协议(广播协议)，在局域网中用的很多。其中会发生一系列的问题，和解决问题的办法。</p>
+<p>　　网络层：数据包(报)，加上源ip地址和目标ip地址了。这一层的协议有四种，ARP（地址解析协议）、RARP(逆地址解析协议)、ICMP(网际控制报文协议)、IGMP(网际组管理协议)。</p>
+<p>　　　　　　 这四种协议只是和IP协议配套使用，。在一章还能学到的是数据包的结构是怎么样的。什么是ip地址，为什么需要ip地址，怎么分配和区分ip地址的，这这一节我们度会讲解到。</p>
+<p>　　传输层：这里会讲解到端口。常见的80端口，我们学习javaWeb时，使用Tomcat中，看到的是8080端口，浏览器使用的是80端口，这一节就会讲到端口是干嘛用的。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、网络层概述"><a href="#一、网络层概述" class="headerlink" title="一、网络层概述"></a>一、网络层概述</h1><h2 id="1-1、网络层简介"><a href="#1-1、网络层简介" class="headerlink" title="1.1、网络层简介"></a>1.1、网络层简介</h2><p>　　百度定义：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233007340-2050092694.png" alt="img"></p>
+<p>　　功能目的：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233359669-2035398138.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、网络层的基础知识"><a href="#二、网络层的基础知识" class="headerlink" title="二、网络层的基础知识"></a>二、网络层的基础知识</h1><h2 id="2-1、ip地址"><a href="#2-1、ip地址" class="headerlink" title="2.1、ip地址"></a>2.1、ip地址</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233739450-1743368147.png" alt="img"></p>
+<p>　　不就是一连串数组加.组成的吗，比如我们常常设置路由器时登录192.168.1.1。这个就是ip地址。那到底是什么样的呢？</p>
+<p>　　ip地址就是32位，也就是4个字节组成，因为32位太长了，我们不好识别，所以每次将其分为8位一组，分成4组，然后在根据每组换算成10进制数组，组与组之间用.分隔开来。</p>
+<p>　　举个例子：11111111，11111111，11111111，11111111就可以用255，255，255，255来表示了，所以每一组都是从0到255之间。现在在来看192.168.1.1这个ip地址，</p>
+<p>　　　　　　　也能将其换成2进制来表示，只不过那样太麻烦，让人不易于看懂，所以就将其用10进制来表示。</p>
+<p>　　ip地址的意义在哪里呢？</p>
+<p>　　要上网就需要一个ip地址，这个ip地址不能和别人一样，独一无二，因为在网络上通信就是通过ip地址来找到你这台主机的，但是这个ip地址不是固定的，比如你在家拨号上网，</p>
+<p>　　是A这个ip地址，下一次拨号，可能就不是A，变成B了，这要看你所在的网络给你分配了什么ip地址。如何通过ip查找到你，这个问题后面来讨论。</p>
+<h2 id="2-2、ip地址的分类"><a href="#2-2、ip地址的分类" class="headerlink" title="2.2、ip地址的分类"></a>2.2、ip地址的分类</h2><p>　　既然每个人的ip地址都不一样，那一台主机怎么通过ip地址找到另一台主机的呢，茫茫人海，不可能一个个查找把，所以就有专门的人来管理和分配这个ip地址，看看以前怎么分的地址(了解)</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928234128122-1717449504.png" alt="img">　</p>
+<p>　　网络号由你所连的网决定，学校的局域网，公司的局域网，城市的广域网等，就是相当于先市、在区、在到村这样的。跟快递一样，你ip地址肯定也得这样分，先找到大的，然后慢慢一层层找下去。</p>
+<p>　　A类地址：网络号有8位，第一位固定为0，127种，主机号有24位，那么就能给该类地址划分16777215个ip地址，也就1千多万个地址，意思就是比如你需要组建一个有1千多万台主机的网络，</p>
+<p>　　　　　　 那么你就要去分配一个A类地址，要求给你一个网络号，然后其中1千多万的ip地址就由你自己分配了，最多也就只能分配127个这样的网络</p>
+<p>　　B类：网络号、主机号16位，就能有65535个网络号和65535个主机号了。</p>
+<p>　　C类：网络号有24位，也就能够分配1000多万个网络，但是主机号只有8位，也就是只能够自己分配254台主机最多</p>
+<p>　　D类：用于多播，多播后面讲</p>
+<p>　　E类：留着以后用</p>
+<p>　　这就是我们老早以前所使用的ip地址，就是这样分的，这样看起来很合理啊，你看B类中，有那么多种，肯定够分了把，但是会暴露出一个问题就是，C类地址只能分配254台主机，</p>
+<p>　　现在中小型网络那么多，都超过了254台电脑，如果A公司有1000台电脑，那他肯定要去分配B类地址，就造成了几万个的ip地址浪费了。这显然不是很合理。</p>
+<p>　　</p>
+<p>　　划分子网 = &lt;网络号&gt;+&lt;子网号&gt;+&lt;主机号&gt;</p>
+<p>　　这是ip地址分类的第二大步，中间加了一个子网号，这样就加大了对上面的A类和B类地址的使用率。也就减少了A类和B类地址的浪费，但是也有问题就是C类地址不管怎么划分，</p>
+<p>　　他所容纳的主机太小了，随着网路的扩增，人人度使用电脑，那么A类和B类迟早度会用光，所以就用到了我们现在的IP地址。</p>
+<p>　　无分类编址 = &lt;网路前缀&gt;+&lt;主机号&gt;  这个就是我们现在用的ip地址的算法。</p>
+<p>　　这个一看，跟第一种分类编址一样呀，其实很大的不同就在于分类编址的网络号不能变，是固定长度，而无分类编址通过网络前缀可变化，就能根据你需要多少个主机号来自由给你分配网络前缀了。</p>
+<p>　　网络前缀：也就是用不定长的一连串1来表示ip地址的网络号。什么意思呢？</p>
+<p>　　　　网络前缀：255.0.0.0 ip地址：192.168.1.1 那么该ip地址的前8位就属于网络号。</p>
+<p>　　　　网络前缀：255.224.0.0 ip地址：192.255.1.1 因为255是8个1，224是111 00000 ，所以前11位表示网络号，也就是这个ip地址是处于192.224.0.0这个网络中，在这个网络中，能包含21个1转换为10进制这么多的主机。</p>
+<p>　　这个网络前缀我们也称子网掩码，所以现在知道ip地址和我们的子网掩码什么意思了吗。</p>
+<p>　　例如：已知ip地址141.14.72.24，所在网络的子网掩码是255.255.192.0，试求其网络地址？</p>
+<p>　　　　子网掩码：255.255.192.0   11111111，11111111，11000000，00000000</p>
+<p>　　　　ip地址：141.14.72.24      10001101，00001110，01001000，00011000</p>
+<p>　　　　所以根据子网掩码知道ip地址的前18位为网络号，网络地址就为：10001101.00001110.01</p>
+<p>　　所以根据子网掩码知道ip地址的前18位为网络号，网络地址就为：10001101.00001110.01000000.00000000 转换为10进制就是141.14.64.0， 能够存纳14位1也就是16383台主机。</p>
+<p>　　(别问我怎么算的，肯定拿二进制转换器啊，不可能自己手算把，哈哈，二进制转10进制这么多怎么手算呢，记住特殊的，8个1就是255)</p>
+<h2 id="2-3、mac地址和ip地址的区别与联系"><a href="#2-3、mac地址和ip地址的区别与联系" class="headerlink" title="2.3、mac地址和ip地址的区别与联系"></a>2.3、mac地址和ip地址的区别与联系</h2><p>　　1）mac地址概述</p>
+<p>　　　　百度中定义：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929000551575-1238725768.png" alt="img"></p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929000719575-1844362601.png" alt="img"></p>
+<p>　　2）mac地址的作用　</p>
+<p>　　　　谈起MAC地址，不得不说一下IP地址。IP地址工作在OSI参考模型的第三层网络层。两者之间分工明确，默契合作，完成通信过程。IP地址专注于网络层，</p>
+<p>　　将数据包从一个网络转发到另外一个网络；而MAC地址专注于数据链路层，将一个数据帧从一个节点传送到相同链路的另一个节点。</p>
+<p>　　　　在一个稳定的网络中，IP地址和MAC地址是成对出现的。如果一台计算机要和网络中另一外计算机通信，那么要配置这两台计算机的IP地址，MAC地址是网卡出厂时设定的，</p>
+<p>　　这样配置的IP地址就和MAC地址形成了一种对应关系。在数据通信时，IP地址负责表示计算机的网络层地址，网络层设备（如路由器）根据IP地址来进行操作；MAC地址负责表示计算机的数据链路层地址，</p>
+<p>　　数据链路层设备（如交换机）根据MAC地址来进行操作。IP和MAC地址映射关系是由这种ARP（Address Resolution Protocol，<a href="https://baike.baidu.com/item/地址解析协议" target="_blank" rel="noopener">地址解析协议</a>）协议完成。</p>
+<p>　　　　IP地址就如同一个<a href="https://baike.baidu.com/item/职位" target="_blank" rel="noopener">职位</a>，而MAC地址则好像是去应聘这个职位的人才，职位既可以让甲坐，也可以让乙坐，同样的道理一个结点的IP地址对于<a href="https://baike.baidu.com/item/网卡" target="_blank" rel="noopener">网卡</a>是不做要求，基本上什么样的厂家都可以用，</p>
+<p>　　也就是说IP地址与MAC地址并不存在着绑定关系。本身有的计算机流动性就比较强，正如同人才可以给不同的单位干活的道理一样的，人才的流动性是比较强的。职位和人才的对应关系就有点像是IP地址与MAC地址的对应关系。</p>
+<p>　　比如，如果一个网卡坏了，可以被更换，而无须取得一个新的IP地址。如果一个IP<a href="https://baike.baidu.com/item/主机" target="_blank" rel="noopener">主机</a>从一个网络移到另一个网络，可以给它一个新的IP地址，而无须换一个新的网卡。当然MAC地址除了仅仅只有这个功能还是不够的，</p>
+<p>　　就拿人类社会与网络进行类比，通过类比，我们就可以发现其中的类似之处，更好地理解MAC地址的作用。无论是局域网，还是<a href="https://baike.baidu.com/item/广域网" target="_blank" rel="noopener">广域网</a>中的计算机之间的通信，最终都表现为将<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>从某种形式的链路上的初始<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>出发，</p>
+<p>　　从一个结点传递到另一个<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>，最终传送到目的<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>。<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>在这些<a href="https://baike.baidu.com/item/节点" target="_blank" rel="noopener">节点</a>之间的移动都是由ARP负责将IP地址映射到MAC地址上来完成的。其实人类社会和<a href="https://baike.baidu.com/item/网络" target="_blank" rel="noopener">网络</a>也是类似的，试想在人际关系网络中，甲要捎个口信给丁，</p>
+<p>　　就会通过乙和丙中转一下，最后由丙 转告给丁。在网络中，这个口信就好比是一个网络中的一个<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>。<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>在传送过程中会不断询问相邻<a href="https://baike.baidu.com/item/节点" target="_blank" rel="noopener">节点</a>的MAC地址，这个过程就好比是人类社会的口信传送过程。</p>
+<p>　　相信通过这两个例子，我们就可以进一步理解MAC地址的作用。</p>
+<p>　　3）mac地址和ip地址的区别　</p>
+<p>　　IP地址和MAC地址相同点是它们都唯一，不同的特点主要有：<br>　　　　一是：对于网络上的某一设备，如一台计算机或一台路由器，其IP地址是基于网络拓扑设计出的，同一台设备或计算机上，改动IP地址是很容易的（但必须唯一），而MAC则是生产厂商烧录好的，</p>
+<p>　　　　　　  一般不能改动。我们可以根据需要给一台主机指定任意的IP地址，如我们可以给局域网上的某台计算机分配IP地址为192.168.0.112 ，也可以将它改成192.168.0.200。</p>
+<p>　　　　　　而任一网络设备（如网卡，路由器）一旦生产出来以后，其MAC地址不可由本地连接内的配置进行修改。如果一个计算机的网卡坏了，在更换网卡之后，该计算机的MAC地址就变了。<br>　　　　二是：长度不同。IP地址为32位，MAC地址为48位。<br>　　　　三是：分配依据不同。IP地址的分配是基于网络拓扑，MAC地址的分配是基于制造商。<br>　　　　四是：寻址协议层不同。IP地址应用于OSI第三层，即网络层，而MAC地址应用在OSI第二层，即数据链路层。 数据链路层协议可以使数据从一个节点传递到相同链路的另一个节点上（通过MAC地址），</p>
+<p>　　　　　　  而网络层协议使数据可以从一个网络传递到另一个网络上（ARP根据目的IP地址，找到中间节点的MAC地址，通过中间节点传送，从而最终到达目的网络）。</p>
+<p>　　4）两者关系</p>
+<p>　　　　这两者的关系是什么呢？在网络中我们通过主机的ip地址，先找到他的网络地址，到达了网络地址后，然后通过该网络中的老大(路由器)来分析一下这个ip地址是你网路中的哪个主机，</p>
+<p>　　　　这时，老大(路由器)就通过该目标ip地址改到对应主机的mac地址，既然知道了mac地址，就能找到该计算机了。就好比什么呢。路由器是每次分配给你的ip地址不一样，但是你的mac地址肯定不会变，</p>
+<p>　　　　所以就根据ip地址找到你的mac地址。但是怎么找到的呢？就要通过网络层中的ARP(地址解析协议)协议了。</p>
+<p>　　知道了基础的知识后，现在来讲解网络层的几个协议：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929002500122-2057977063.png" alt="img"></p>
+<p>　　RARP:逆地址解析协议(现在不单独讲这个了，所以我在图中画在红色圆圈内部，因为RARP已经被DHCP协议给包含了，DHCP协议在后面会讲解到)，所以我们下面讲的就4个协议。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、ARP协议"><a href="#三、ARP协议" class="headerlink" title="三、ARP协议"></a>三、ARP协议</h1><p>　　百度介绍：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929100309731-515973451.png" alt="img"></p>
+<p>　　地址解析协议：通过ip地址来解析主机的mac地址，是怎么个过程呢，拿局域网来说，一个局域网中有很多主机，主机A想和局域网中的主机B通话，但是只知道对方的ip地址，所以他就通过发广播，</p>
+<p>给局域网中所有的主机，问这个ip地址是谁，主机B收到了这个信息，通过网络适配器(网卡)就发现自己是这个ip地址，然后就把自己的mac地址发给源主机，这样就知道了mac地址，就能够通信了。</p>
+<p>　　类似的，在跨网络中就不是直接发广播了，先通过ip地址找到对应的网络地址，如何找到的对应的网络地址呢，通过路由器，每个路由器都有三层。网络层、链路层、物理层，也就是说最高能够识别网络层中的东西来，</p>
+<p>那么路由器也就有ARP协议了，每个路由器都能识别出目标ip地址在哪个路由器上，这其中涉及到了很多算法，我们这里不做更多的解释，简单来说，路由器能根据目标ip地址找到下一跳路由器的mac地址，然后一步一步跳下去，</p>
+<p>直到找到目标ip地址的网络地址的路由器，然后通过该路由器来找到目标ip地址的mac地址，这样就能够找到目标主机了。这就是ARP协议。</p>
+<p>　　　　　　发送方是主机，要把IP数据报发送到本网络上的另一个主机。这时用 ARP 找到目的主机的硬件地址。<br>　　　　　　发送方是主机，要把 IP 数据报发送到另一个网络上的一个主机。这时用 ARP 找到本网络上的一个路由器的硬件地址。剩下的工作由这个路由器来完成。<br>　　　　　　发送方是路由器，要把 IP 数据报转发到本网络上的一个主机。这时用 ARP 找到目的主机的硬件地址。<br>　　　　　　发送方是路由器，要把 IP 数据报转发到另一个网络上的一个主机。这时用 ARP 找到本网络上的一个路由器的硬件地址。剩下的工作由这个路由器来完成。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、IP协议"><a href="#四、IP协议" class="headerlink" title="四、IP协议"></a>四、IP协议</h1><h2 id="4-1、IP协议概述"><a href="#4-1、IP协议概述" class="headerlink" title="4.1、IP协议概述"></a>4.1、IP协议概述</h2><p>　　百度定义：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929003508153-1142284506.png" alt="img"></p>
+<p>　　其实IP的责任就是把数据从源地址传送到目的地。它不负责保证传送可靠性，流控制，包顺序和其它对于主机到主机协议来说很普通的服务。</p>
+<h2 id="4-2、通过IP数据包格式认识IP协议"><a href="#4-2、通过IP数据包格式认识IP协议" class="headerlink" title="4.2、通过IP数据包格式认识IP协议"></a>4.2、通过IP数据包格式认识IP协议</h2><p>　　IP协议通过看一下IP数据包(报)的格式就知道IP协议是干嘛的了，就是来规定数据报的格式，以及定义的功能</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929003804434-2101323158.png" alt="img"></p>
+<p>　　1）固定部分：20个字节，一行是4个字节，有5行，自己看清楚</p>
+<p>　　　　1.1）第一行　　</p>
+<p>　　　　　　版本：占4位，IP协议的版本，通信双方的IP协议版本要一致，普遍用IPv4，以后可能会用IPv6.</p>
+<p>　　　　　　首部长度：占4位，可表示的最大十进制为15，单位是32位字(4个字节)，表示首部最长为60个字节，也就是说除去固定部分的20个字节，可选字段和填充最多能是40个字节。</p>
+<p>　　　　　　区分服务：占8位，1个字节。有些要传输的数据要立马传达到对面，比如视频，语音这样的，不能跟邮件慢慢吞吞的达到对方一样，需要立马送达，这就是为什么需要这个区分服务了</p>
+<p>　　　　　　总长度：占16位，2个字节。占首部+数据部分 的总长度是多少。数据帧最长不能超过1500个字节，数据包就不能一次性发太大，如果发的太大就要选择分片处理了。</p>
+<p>　　　　1.2）第二行　　</p>
+<p>　　　　　　标识：占16位，2个字节，一个计数器，每产生一个数据包，计数器就加1，当数据包被分片时，下面将会说到分片问题，所有分片后的数据包的标识度一样。这样相同的标识的数据包片就能够重新组合到一起</p>
+<p>　　　　　　标志：占3位，第一位暂时没意义，第二位DF：不能分片的意思，为1时，不能分片，为0就可以分片 第三位MF 还有分片的意思，为0代表这是若干数据包中的最后一片</p>
+<p>　　　　　　片偏移：占13位，在较长的分组在分片后，某片在原分组中的相对位置，几个例子，1111，1111，1111，1111 这16位，分成4个数据包分片来发，第一个数据包分片的片偏移为1，第二个为5，第三个为9，</p>
+<p>　　　　　　　　　　第四个为13，就是这个意思，片偏移以8个字节为偏移单位，也就是说，每个分片的长度一定是8字节的整数倍，上面是以位来举例说明问题，实际上单位是8个字节为单位。</p>
+<p>　　　　1.3）第三行　　</p>
+<p>　　　　　　生存时间：也就是ping命令中显示的TTL字段，跳数限制，每经过一个路由器，就减1，当跳到0后，就丢弃该数据包。window系统的起始TTL为32、Linux64、xp：128</p>
+<p>　　　　　　协议：占8位，数据包中数据部分使用的是什么协议，方便目的主机的IP层知道讲数据部分上交给哪个处理。(也就是下一章要将的TCP还是UDP协议)</p>
+<p>　　　　　　首部检验和：占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，路由器都要重新计算一下首部检验和（一些字段，如生存时间、标志、片偏移等都可能发生变化）。</p>
+<p>　　　　　　　　　　   不检验数据部分可减少计算的工作量。</p>
+<p>　　　　1.4）第四行</p>
+<p>　　　　　　源地址：占32为，也就是源IP地址</p>
+<p>　　　　1.5）第五行</p>
+<p>　　　　　　目标地址：占32位，也是IP地址</p>
+<p>　　2）可选部分：为了使整个数据包为整数个字节而设置的。　　　</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、ICMP协议"><a href="#五、ICMP协议" class="headerlink" title="五、ICMP协议"></a>五、ICMP协议</h1><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094156450-305546820.png" alt="img">　</p>
+<p>　　ICMP协议是一种面向无连接的协议，用于传输出错报告控制信息。它是一个非常重要的协议，它对于<a href="https://baike.baidu.com/item/网络安全" target="_blank" rel="noopener">网络安全</a>具有极其重要的意义。</p>
+<p>　　它是<a href="https://baike.baidu.com/item/TCP%2FIP协议" target="_blank" rel="noopener">TCP/IP协议</a>族的一个子协议，属于网络层协议，主要用于在主机与路由器之间传递控制信息，包括报告错误、交换受限控制和状态信息等。</p>
+<p>　　当遇到IP数据无法访问目标、IP<a href="https://baike.baidu.com/item/路由器" target="_blank" rel="noopener">路由器</a>无法按当前的传输速率转发<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>等情况时，会自动发送ICMP消息。ICMP报文在IP帧结构的首部协议类型字段（Protocol 8bit)的值=1。</p>
+<p>这个协议比较简单，它有两部分组成：ICMP差错报告报文、ICMP询问报文 。这个挺有用的，比如我们经常用来测试网络连接畅通的ping命令等</p>
+<h2 id="5-1、ICMP差错报告报文"><a href="#5-1、ICMP差错报告报文" class="headerlink" title="5.1、ICMP差错报告报文"></a>5.1、ICMP差错报告报文</h2><p>　　检测在传送数据的过程中，发生的错误，如果发生了错误，会通过该协议返回给源主机一个带有错误原因的数据包</p>
+<p>　　终点不可达：发送数据后，路由器或主机不能完成交付数据报时，就会往源主机发送终点不可达报文</p>
+<p>　　源点抑制：当路由器或主机由于网络拥塞而丢弃数据报时，返回一个源点抑制报文</p>
+<p>　　超时：</p>
+<p>　　　　参数问题，在ip数据包中的首部有的字段不正确时，丢弃该报，返回参数问题报文</p>
+<p>　　　　改变路由(重定向)：路由器把改变路由报文发送给主机，让主机下次直接经过改变后的路由器。</p>
+<h2 id="5-2、ICMP询问报文"><a href="#5-2、ICMP询问报文" class="headerlink" title="5.2、ICMP询问报文"></a>5.2、ICMP询问报文</h2><p>　　回送请求和回答：主机向特定目标发出询问，收到此报文必须返回一个ICMP回送回答报文。用于测试目的站是否可达。　　　　　　　　　　　　</p>
+<p>　　时间戳请求和回答：请某个路由器或主机回答当前的日期和时间，用于进行时钟的同步和测量时间。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、IGMP协议"><a href="#六、IGMP协议" class="headerlink" title="六、IGMP协议"></a>六、IGMP协议</h1><h2 id="6-1、概述"><a href="#6-1、概述" class="headerlink" title="6.1、概述"></a>6.1、概述</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094650106-1702985758.png" alt="img"></p>
+<h2 id="6-2、多播"><a href="#6-2、多播" class="headerlink" title="6.2、多播　　"></a>6.2、多播　　</h2><p>　　IGMP协议用于多播，解释一下多播是什么把。</p>
+<p>　　广播：老师在台上讲课，你们能随时看到老师的电脑屏幕，因为采用的广播，每个人度能接受到老师屏幕上所有的数据包</p>
+<p>　　多播：在一个局域网中，有三个多播组，A、B、C，A在放java视频，B在放C++视频，C在放娱乐视频，如果你想看Java视频，那么你就调到A这个多播组中学习java视频，学习累了，</p>
+<p>　　　　 你就可以换到C这个多播组中看看娱乐节目，这就是多播的意思，相对广播来说，自己需要什么就调什么，而不是跟广播一样，被动接受，他播到哪，就只能看到哪，多播能自由控制速度。</p>
+<p>　　单播：50个人想看视频，就得发送50个数据包。多播的话就发一个，然后通过路由器转发50分给不同的人。</p>
+<p>   单播：　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094914903-280236468.png" alt="img">   多播： <img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095019294-649093041.png" alt="img"></p>
+<h2 id="6-3、IGMP协议工作流程"><a href="#6-3、IGMP协议工作流程" class="headerlink" title="6.3、IGMP协议工作流程"></a>6.3、IGMP协议工作流程</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095155887-329195226.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095230075-1587770275.png" alt="img"></p>
+<p>　　注意：每个路由器度有一个路由表，并且主机也有记录ip地址和对应mac地址的功能。并不是每次通信度需要发广播询问。</p>
+<h2 id="7-1、分析从主机A找到主机B的过程"><a href="#7-1、分析从主机A找到主机B的过程" class="headerlink" title="7.1、分析从主机A找到主机B的过程"></a>7.1、分析从主机A找到主机B的过程</h2><p>　　1）A先在自己的网络中发送广播，通过ARP协议。问所有的主机，谁知道10.0.0.3这个ip地址的主机是谁，同时把自己的主机ip地址和mac地址一起发送，</p>
+<p>　　　　主机B发现自己是10.0.03这个ip地址，就把自己的mac地址发回去</p>
+<p>　　2）主机A发现有人回应，就知道在自己本网络中，然后就找到了目标主机，开始通讯</p>
+<h2 id="7-2、分析从主机A找到主机E的过程"><a href="#7-2、分析从主机A找到主机E的过程" class="headerlink" title="7.2、分析从主机A找到主机E的过程"></a>7.2、分析从主机A找到主机E的过程</h2><p>　　1）主机A先发广播看自己本网络没有该主机，没有，然后就给ip地址为10.0.0.1这个路由器F1发信号获得路由器的mac地址，然后给他发信号叫该路由器F1帮我们查找ip地址为12.0.0.3的主机。</p>
+<p>　　　　这个路由器的ip地址就网关，所以每台计算机上度要有三个东西，ip地址，子网掩码，网关。 </p>
+<p>　　2）路由器因为知道所有的网络在哪里，通过子网掩码和ip地址，就能够算出该ip地址在哪一个网段中，路由器就一跳一跳的经过路由器，知道找到对应网段的路由器F2</p>
+<p>　　3）找到F2后，F2就以同样的方式通过ip地址找到对应的mac地址，就这样找到了。</p>
+<p>　　省略了路由器如何找的这一步，这个可以自己看书，其中有很多中方式，很多种算法，我们就知道我们给ip地址和子网掩码给路由器，路由器就知道下一跳给谁，知道找到对应网段</p>
+<h2 id="7-3、分析从主机A到主机E数据的形式"><a href="#7-3、分析从主机A到主机E数据的形式" class="headerlink" title="7.3、分析从主机A到主机E数据的形式"></a>7.3、分析从主机A到主机E数据的形式</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095621419-1188385242.png" alt="img"></p>
+<p>　　传输层(还没讲)：讲各个数据段划分序号</p>
+<p>　　网络层：加上ip地址</p>
+<p>　　数据链路层：加上mac地址和CRC检测的FCS</p>
+<p>　　物理层：转化为比特流传输</p>
+<p>　　集线器：只认识物理层，用来转发比特流</p>
+<p>　　交换机：能认识数据链路层，所以交换机有mac地址表，能够记录各种mac地址，下一次就能选择性的转发数据了</p>
+<p>　　路由器，能认识网络层，有路由表，所以能够通过ip地址找到对应网段。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network6/#more" rel="contents">
@@ -614,7 +1340,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network3/" class="post-title-link" itemprop="url">network3</a>
+            <a href="/2020/05/10/network3/" class="post-title-link" itemprop="url">物理层详解</a>
         </h2>
 
         <div class="post-meta">
@@ -623,8 +1349,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:25" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:25-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:25 / Modified: 16:17:24" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:25-05:00">2020-05-10</time>
             </span>
 
           
@@ -639,6 +1366,183 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label0" target="_blank" rel="noopener">一、物理层概述</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label1" target="_blank" rel="noopener">二、数据通信基础知识</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_0" target="_blank" rel="noopener">2.1、数据通信模型</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_1" target="_blank" rel="noopener">2.2、常用术语</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_2" target="_blank" rel="noopener">3.3、信道与传输方式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_3" target="_blank" rel="noopener">3.4、基带信号与带通信号　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_4" target="_blank" rel="noopener">3.5、编码与调制</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label2" target="_blank" rel="noopener">四、物理层下的传输媒体</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_2_0" target="_blank" rel="noopener">4.1、导向传输媒体</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_2_1" target="_blank" rel="noopener">4.2、非导向传输媒体</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label3" target="_blank" rel="noopener">五、信道复用技术</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_0" target="_blank" rel="noopener">5.1、频分复用　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_1" target="_blank" rel="noopener">5.2、时分复用</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_2" target="_blank" rel="noopener">5.3、统计时分复用</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_3" target="_blank" rel="noopener">5.4、波分复用</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label4" target="_blank" rel="noopener">六、数字传输系统</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label5" target="_blank" rel="noopener">七、宽带接入技术</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_0" target="_blank" rel="noopener">7.1、电话网线拨号接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_1" target="_blank" rel="noopener">7.2、数字用户线接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_2" target="_blank" rel="noopener">7.3、光纤同轴混合网接入　　HFC</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_3" target="_blank" rel="noopener">7.4、光纤接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_4" target="_blank" rel="noopener">7.5、以太网接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_5" target="_blank" rel="noopener">7.6、无线网接入　</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>　　在前面说了一下，计算机网络的大概内容，没有去深刻的去了解它，这篇文章给大家分享一下物理层！</p>
+<p>　　我们知道ISO模型是七层，TCP/IP模型是五层，而tcp/ip协议只将七层概括为4层，我们将学习其中的5层， 应用层(包括表示层，会话层)、传输层、网络层、数据链路层、物理层。</p>
+<p>　　　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153021184-102798648.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、物理层概述"><a href="#一、物理层概述" class="headerlink" title="一、物理层概述"></a>一、物理层概述</h1><p>　　解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体  （通俗的讲就是传输的数据是通过何种方式，以什么形态传输的，</p>
+<p>　　　　类似于我们说话，别人是如何听到的，通过的就是声波，计算机传数据，又是怎么样吧数据带过去的呢，）</p>
+<p>　　主要任务：确定与传输媒体的接口的一些特性，即 机械特性、电气特性、功能特性、过程特性　　　　</p>
+<p>　　　　机械特性：接口形状、大小、引线数量等，通俗讲也就是网线的水晶头的设计等一些规定</p>
+<p>　　　　电气特性：规定电压范围（-5V~+5V）等 在网线中传输时所用的电压范围</p>
+<p>　　　　过程特性：也称规程特性 规定建立连接时各个相关部件的工作步骤</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、数据通信基础知识"><a href="#二、数据通信基础知识" class="headerlink" title="二、数据通信基础知识"></a>二、数据通信基础知识</h1><h2 id="2-1、数据通信模型"><a href="#2-1、数据通信模型" class="headerlink" title="2.1、数据通信模型"></a>2.1、数据通信模型</h2><p>　　源点、发送器、接受器、终点 和 源系统 – 传输系统 — 目的系统 的对应关系</p>
+<p>　　PC机要发的数据会转换为010101，数字比特流就代表着010101传给调制解调器，调制解调器将数字比特流转换为模拟信号，通过公用电话网传到很远的目的地去。然后逆过来解析成原数据就行了</p>
+<p>　　提到的数字比特流、模拟信号之后会讲解到，这样，我们就大概了解了数据通信的模型了，大概知道数据是转换成哪种形势传到目标中。</p>
+<p>　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153517544-1952982953.png" alt="img"></p>
+<h2 id="2-2、常用术语"><a href="#2-2、常用术语" class="headerlink" title="2.2、常用术语"></a>2.2、常用术语</h2><p>　　1）通信的目的是传送信息</p>
+<p>　　2）·数据：运送信息的实体</p>
+<p>　　3）信号：数据的电气或电磁的表现 通俗讲就是通过电气或者电磁的一些表现形式来代表我们的数据，这就是我们说的信号，电气、电磁，比如一些电磁波等</p>
+<p>　　　　数字信号：代表消息的参数的取值是离散的，下面就是数字信号，通过一高一低，不连续的波。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153847887-585324346.png" alt="img"></p>
+<p>　　　　模拟信号：代表信息的参数的取值是连续的，下面就是模拟信号， 有高有低，但是是连续的波</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153943262-1594686726.png" alt="img"></p>
+<p>　　4）码元：在使用时间域的波形表示数字信号时，则代表不同离散数值的基本波形就成为码元。 太理论的语言，看了跟没看一样，其实码元很简单，看下图，在数字信号中，带着0或者1的波形就是一个码元</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928154015731-1780488422.png" alt="img"></p>
+<p>　　　　码元长度：每一个码元都是通过一段时间间隔来表示， 这个时间间隔就是码元长度</p>
+<p>　　　　注意：1码元可以携带nbit的信息量，并不是1码元就只能代表1bit的信息量，可以是nbit，也就是说上面1码元就代表0或1这样1bit的信息量.</p>
+<h2 id="3-3、信道与传输方式"><a href="#3-3、信道与传输方式" class="headerlink" title="3.3、信道与传输方式"></a>3.3、信道与传输方式</h2><p>　　信道一般表示向一个方向传送信息的媒体，所以平常说的通信线路往往包含一条发送信息的信道和一条接受信息的信道</p>
+<p>　　1）单工通信：也就是单向通信，只能有一个方向的通信而没有反方向的交互</p>
+<p>　　2）半双工通信：也就是能双向通信，但是不能同时通信，一方在发送数据，另一方必须接受数据，等待对方发完，然后自己才能发，例如，电视里面军方的对讲机，都是只有等待一方说完话，另外一方才能说话。</p>
+<p>　　3）全双工通信：相对于半双工通信来讲，就是能同时通信且双向，例如，电话。</p>
+<h2 id="3-4、基带信号与带通信号"><a href="#3-4、基带信号与带通信号" class="headerlink" title="3.4、基带信号与带通信号　"></a>3.4、基带信号与带通信号　</h2><p>　　1）基带信号：即基本频带信号，来自信源的信号，像计算机输出的代表各种文字或图像文件的数据信号都属于基带信号，基带信号就是发出的直接表达了要传输的信息的信号，</p>
+<p>　　　　例如：我们说话的声波就是基带信号</p>
+<p>　　2）带通信号：把基带信号经过载波调制后，把信号的频率范围移到较高的频段以便在信道中传输</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928154648106-521641122.png" alt="img"></p>
+<h2 id="3-5、编码与调制"><a href="#3-5、编码与调制" class="headerlink" title="3.5、编码与调制"></a>3.5、编码与调制</h2><p>　　1）编码：人们将数字数据转换为数字信号的过程称为编码</p>
+<p>　　2）调制：将数字数据转换为模拟信号的过程称为调制</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、物理层下的传输媒体"><a href="#四、物理层下的传输媒体" class="headerlink" title="四、物理层下的传输媒体"></a>四、物理层下的传输媒体</h1><p>通俗的讲：前面我们知道了数据是以什么形态传输的，但是我们不知道该种形态就在什么上面传输呢？分两种：导向传输媒体 和 非导向传输媒体</p>
+<h2 id="4-1、导向传输媒体"><a href="#4-1、导向传输媒体" class="headerlink" title="4.1、导向传输媒体"></a>4.1、导向传输媒体</h2><p>　　1）双绞线</p>
+<p>　　　　屏蔽双绞线STP</p>
+<p>　　　　无屏蔽双绞线UTP</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928155420465-1000958623.png" alt="img"></p>
+<p>　　2）同轴电缆　　</p>
+<p>　　　　50Ω同轴电缆，用于数字传输，由于多用于基带传输，也叫基带同轴电缆</p>
+<p>　　　　75Ω同轴电缆，用于模拟传输，即宽带同轴电缆</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928155543497-1494848775.png" alt="img"></p>
+<p>　　这两种普通的网线（直通线 和 交叉线）</p>
+<p>　　直通线：具体的线序制作方法是：双绞线夹线顺序是两边一致，统一都是：1：白橙、2：橙、3：白绿、4：蓝、5：白蓝、6：绿、7：白棕、8：棕。</p>
+<p>　　　　　　注意两端都是同样的线序且一一对应。这就是100M网线的做线标准，即568B标准，也就是我们平常所说的正线或标准线、直通线</p>
+<p>　　　　　　直通线应用最广泛，这种类型的以太网电缆用来实现下列连接:</p>
+<p>　　　　　　　　　　　　主机到交换机或集线器</p>
+<p>　　　　　　　　　　　　路由器到交换机或集线器</p>
+<p>　　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928160036403-1105963817.png" alt="img"></p>
+<p>　　交叉线：就相当于直通线是一一对应，而交叉线就不一样，1对3 2对4 等</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928160444981-555480473.png" alt="img"></p>
+<p>　　3）光缆</p>
+<p>　　　　　　光纤长什么样子</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164129762-976198451.png" alt="img"></p>
+<p>　　　　工作原理：就是通过光的折射，在里面传播，直到光出来。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164244903-2082728975.png" alt="img"></p>
+<p>　　　　具体光在其中是怎么传播的，看下图就知道了。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164436528-106149375.png" alt="img"></p>
+<p>　　　　光纤分多模光纤和单模光纤</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164544715-243944076.png" alt="img"></p>
+<p>　　　　区别：单模光纤指只能传输一种电磁波模式，多模光纤只可以传输多个电磁波模式，实际上单模光纤和多模光纤之分，也就是纤芯的直径之分。单模光纤细，多模光纤粗。</p>
+<p>　　　　　　　　在有线电视网络中使用的光纤全是单模光纤，其传播特性好，带宽可达10GHZ，可以在一根光纤中传输60套PAL—D电视节目</p>
+<h2 id="4-2、非导向传输媒体"><a href="#4-2、非导向传输媒体" class="headerlink" title="4.2、非导向传输媒体"></a>4.2、非导向传输媒体</h2><p>　　非导向传输媒体就是指自由空间，其中的电磁波传输被称为无线传输。 通俗来讲，就是通过无线，不用那种固态的媒体，在空气中自由传播，在空气中传播的波很多，如何分别呢，就是通过每个波的频率不一样</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164858403-296019497.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、信道复用技术"><a href="#五、信道复用技术" class="headerlink" title="五、信道复用技术"></a>五、信道复用技术</h1><p>复用：通过下图，就可以很容易知道什么是复用，就是同时公用一条信道来进行传输信息。信道复用技术：频分复用、时分复用、统计时分复用、波分复用</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165056325-582172267.png" alt="img"></p>
+<h2 id="5-1、频分复用"><a href="#5-1、频分复用" class="headerlink" title="5.1、频分复用　"></a>5.1、频分复用　</h2><p>　　用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带(这个是一个范围，例如下图)</p>
+<p>　　所有用户在同样的时间占用不同的带宽资源（请注意，这里的“带宽”是频率带宽而不是数据的发送速率）</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165309731-1554676708.png" alt="img"></p>
+<p>　　分析：</p>
+<p>　　　　　发送数据：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165554965-2121202453.png" alt="img"></p>
+<p>　　　　接受数据：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165651590-1775475222.png" alt="img"></p>
+<h2 id="5-2、时分复用"><a href="#5-2、时分复用" class="headerlink" title="5.2、时分复用"></a>5.2、时分复用</h2><p>　　按时间轮流分配带宽资源给不同的用户，每个用户只在分配的时间里使用线路传输数据。</p>
+<p>　　 通俗来讲：就是每个用户都有自己的时间段来传输数据，没到自己时间就需要等待，直到属于自己的传输时间段的到来，周期性的周转</p>
+<p>　　特点：在信道中，每个资源都有先后顺序，并且不会乱，一直是按照一定的顺序传输数据。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165917106-1763923698.png" alt="img"></p>
+<p>　　　　缺点：计算机数据的突发性质，用户对分配的子信道的利用率不高，因为不知道什么时候通道就会发送数据，可能别的通道都不发数据，就一个通道需要发送，但也还是要等待一定的时间，即使信道是空的。</p>
+<h2 id="5-3、统计时分复用"><a href="#5-3、统计时分复用" class="headerlink" title="5.3、统计时分复用"></a>5.3、统计时分复用</h2><p>　　是对时分复用的一种改进，它能完善时分复用 对信道的利用率不高这个缺点，</p>
+<p>　　原理：就是在每个要发送的数据上面做一个特殊的标记，而不是通过一个多路复用器，周期性的发送数据， 给每个要发送的数据</p>
+<p>　　　　　　放入STDM帧中，让STDM帧带着数据发送过去，而接受的话，只需要分析STDM帧就行了。 </p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170152044-1587738372.png" alt="img"></p>
+<p>　　</p>
+<p>　　注意：时分复用 又称同步时分复用，统计十分复用 称为 异布时分复用。 因为某一个用户所占用的时间间隙并不是周期性的出现。</p>
+<h2 id="5-4、波分复用"><a href="#5-4、波分复用" class="headerlink" title="5.4、波分复用"></a>5.4、波分复用</h2><p>　　波分复用就是光的频分复用</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170314012-1426093120.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、数字传输系统"><a href="#六、数字传输系统" class="headerlink" title="六、数字传输系统"></a>六、数字传输系统</h1><p>PCM(脉冲编码调制)技术：将模拟电话信号转换为数字信号的一种技术。 </p>
+<p>有两种PCM技术：北美的24路PCM(T1) 1.544M/s、 欧洲的30路PCM(E1) 我国采用的是E1 2.048M/S</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、宽带接入技术"><a href="#七、宽带接入技术" class="headerlink" title="七、宽带接入技术"></a>七、宽带接入技术</h1><h2 id="7-1、电话网线拨号接入"><a href="#7-1、电话网线拨号接入" class="headerlink" title="7.1、电话网线拨号接入"></a>7.1、电话网线拨号接入</h2><p>　　老式的拨号联网方式，因为速度最高只能达到56kb/s</p>
+<p>　　工作原理：通过将计算机发出的信号转换为音频信号，因为要通过电话网线来传播数据，所以这样转换来转换去，达到的上网速率太低，虽然方便，但实用性不强， 不能同时上网和打电话。</p>
+<h2 id="7-2、数字用户线接入"><a href="#7-2、数字用户线接入" class="headerlink" title="7.2、数字用户线接入"></a>7.2、数字用户线接入</h2><p>　　DSL：数字用户线 　xDSL：用数字技术对现有的模拟电话用户线进行改造，在DSL上加了x 表示不同的数字用户线技术。</p>
+<p>　　这个其实就是改善了电话网拨号接入的缺点，能同时上网和打电话，并且网速提高了很多，</p>
+<p>　　工作原理：xDSL 技术就把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。这样一来，就互不干扰了。通过频率的高低来区分是电话还是网络数据。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170831919-1988875426.png" alt="img">)<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170902294-304477157.png" alt="img"></p>
+<p>　　举例：ADSL的接入网 </p>
+<p>　　　　上行和下行带宽做成不对称的。指的是上行信道和下行信道，具体看DMT调制技术中的解释。　　　　　　　　　　　　　　　　　　　</p>
+<p>　　　　ADSL 在用户线的两端各安装一个 ADSL 调制解调器。目的就是为了区分低频和高频</p>
+<p>　　　　我国目前采用的方案是离散多音调 DMT (Discrete Multi-Tone)调制技术</p>
+<p>　　　　　　DMT 调制技术采用频分复用的方法，把 40 kHz 以上一直到 1.1 MHz 的高端频谱划分为许多的子信道，其中 25 个子信道用于上行信道，而 249个子信道用于下行信道。</p>
+<p>　　　　　　每个子信道占据 4 kHz 带宽,并使用不同的载波（即不同的音调）进行数字调制。这种做法相当于在一对用户线上使用许多小的调制解调器并行地传送数据。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171121044-1619475971.png" alt="img"></p>
+<p>　　　　　　接入网的工作原理图</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171153575-1390296441.png" alt="img"></p>
+<h2 id="7-3、光纤同轴混合网接入-HFC"><a href="#7-3、光纤同轴混合网接入-HFC" class="headerlink" title="7.3、光纤同轴混合网接入　　HFC"></a>7.3、光纤同轴混合网接入　　HFC</h2><p>　　CATV：树形拓扑结构的同轴电缆网络，采用模拟技术的频分复用对电视节目的单向传输，</p>
+<p>　　HFC对CATV的基础上进行改造，从而开发出的一种居民宽带接入网。</p>
+<p>　　特点：</p>
+<p>　　　　HFC网的主干线路采用光纤，将原CATV网中的同轴电缆主干部分该换位光纤，并且使用的是模拟光纤技术，</p>
+<p>　　　　每个家庭都要安装一个用户接口盒</p>
+<p>　　　　 HFC 网具有比 CATV 网更宽的频谱，且具有双向传输功能</p>
+<p>　　　　光纤结点(光分配结点)，同轴电缆分别是那些，看下图</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171355934-927349929.png" alt="img"></p>
+<h2 id="7-4、光纤接入"><a href="#7-4、光纤接入" class="headerlink" title="7.4、光纤接入"></a>7.4、光纤接入</h2><p>　　FTTx（光纤到…）：实现宽带居民接入网的方案，这里字母x可代表不同的意思</p>
+<p>　　FTTH：光纤到家，光纤一直铺设到用户家庭可能是居民接入网最后的解决方法(155Mb/s)</p>
+<p>　　FTTB：光纤到大楼，光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。</p>
+<p>　　FTTC：从路边到各用户可使用星形结构双绞线作为传输媒体(155Mb/s)</p>
+<h2 id="7-5、以太网接入"><a href="#7-5、以太网接入" class="headerlink" title="7.5、以太网接入"></a>7.5、以太网接入</h2><p>　　局域网，大学校园、大型企业、各种政府通过内部的局域网，然后再让局域网接入到因特网。</p>
+<h2 id="7-6、无线网接入"><a href="#7-6、无线网接入" class="headerlink" title="7.6、无线网接入　"></a>7.6、无线网接入　</h2><p>　　前面都是有线接入，现在很多都使用无线联网，手机、笔记本等都用无线连，很方便</p>
+<p>　　从1G 到 2G 到 3G 到现在的 4G时代，每一代的特点不一样，马上就要出5G了。</p>
+<p>　　1G：蜂窝移动通信只能够模拟话音通信，跟那个电话网拨号接入类似，网速很慢很慢</p>
+<p>　　2G：以数字话音通信为主，也能提供短信，收发邮件，浏览网页的数据通信功能</p>
+<p>　　3G：3G时代，记得以前用的网页版QQ，就是要一直刷新也能接受信息，哈哈，</p>
+<p>　　4G：网速很快，能达到1M~2M之间的速度。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network3/#more" rel="contents">
@@ -679,7 +1583,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/10/network2/" class="post-title-link" itemprop="url">network2</a>
+            <a href="/2020/05/10/network2/" class="post-title-link" itemprop="url">TCP/IP总概述</a>
         </h2>
 
         <div class="post-meta">
@@ -688,8 +1592,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-05-10 16:08:22" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:22-05:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 16:08:22 / Modified: 16:15:31" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:22-05:00">2020-05-10</time>
             </span>
 
           
@@ -704,6 +1609,176 @@
 
       
           <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua/" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua/</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label0" target="_blank" rel="noopener">一、局域网、广域网和Internet</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_0_0" target="_blank" rel="noopener">1.1、局域网</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_0_1" target="_blank" rel="noopener">1.2、广域网</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_0_2" target="_blank" rel="noopener">1.3、Internet</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label1" target="_blank" rel="noopener">二、计算机数据之间通信的过程</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_1_0" target="_blank" rel="noopener">2.1、路由器的功能（转发收到的分组）</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label2" target="_blank" rel="noopener">三、OSI参考模型</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_2_0" target="_blank" rel="noopener">3.1、OSI参考模型概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_2_1" target="_blank" rel="noopener">3.2、各层功能概述</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label3" target="_blank" rel="noopener">四、TCP/IP五层模型</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label4" target="_blank" rel="noopener">五、OSI参考模型和TCP/IP协议</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_label5" target="_blank" rel="noopener">六、计算机上的各种性能指标解释</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_0" target="_blank" rel="noopener">6.1、速率</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_1" target="_blank" rel="noopener">6.2、带宽</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_2" target="_blank" rel="noopener">6.3、吞吐量</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_3" target="_blank" rel="noopener">6.4、时延</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_4" target="_blank" rel="noopener">6.5、时延带宽积</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_lab2_5_5" target="_blank" rel="noopener">6.6、往返时间</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>　　在一段时间里，都很想知道一台电脑怎么跟另一台电脑通信的，我发送一个qq给女朋友，怎么准确的发送过去的，又是怎么接受消息的。</p>
+<p>　　接下来一段时间给大家慢慢分享关于计算机网络的相关知识。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、局域网、广域网和Internet"><a href="#一、局域网、广域网和Internet" class="headerlink" title="一、局域网、广域网和Internet"></a>一、局域网、广域网和Internet</h1><h2 id="1-1、局域网"><a href="#1-1、局域网" class="headerlink" title="1.1、局域网"></a>1.1、局域网</h2><p>　　1）概述</p>
+<p>　　局域网（Local Area Network，LAN）是指在某一区域内由多台计算机互联成的计算机组。一般是方圆几千米以内。局域网可以实现<br>　　　　文件管理、应用软件共享、打印机共享、工作组内的日程安排、电子邮件和传真通信服务等功能。局域网是封闭型的，可以由办公室内的两台计算机组成，也可以由一个公司内的上千台计算机组成。<br>　　局域网（Local Area Network，LAN）是在一个局部的地理范围内（如一个学校、工厂和机关内），一般是方圆几千米以内，将各种计算机，外部设备和数据库等互相联接起来组成的计算机通信网。<br>　　　　它可以通过数据通信网或专用数据电路，与远方的局域网、数据库或处理中心相连接，构成一个较大范围的信息处理系统。局域网可以实现文件管理、应用软件共享、打印机共享、<br>　　　　扫描仪共享、工作组内的日程安排、电子邮件和传真通信服务等功能。<br>　　　　局域网严格意义上是封闭型的。它可以由办公室内几台甚至上千上万台计算机组成。决定局域网的主要技术要素为：网络拓扑，传输介质与介质访问控制方法。</p>
+<p>　　2）特点　</p>
+<p>　　覆盖范围较小、自己花钱买设备来组件小型网络，宽带固定，自己维护 </p>
+<p>　　覆盖范围小：相比于整个internet来讲，局域网肯定很小了，例如，校园网、企业网，覆盖范围也就那么一点</p>
+<p>　　宽带固定：因为是局域网，范围小，网络部拥堵，几乎就是有多少带宽，趋于稳定</p>
+<p>　　自己花钱买设备维护：比如以下的是校园网， 三个教室，每个教室都有电脑，每台电脑都连自己教室里的交换机，接入交换机又连到学校里一个更大的汇聚交换机，汇聚交换机连接外面的网络，</p>
+<p>　　　　　　　　　　　　校园内每间教室或者每个用网的地方都是如此来上网的，这样学校自己花钱买的交换机， 自己来维护自己学校里面的网络。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926172231214-561393725.png" alt="img"></p>
+<h2 id="1-2、广域网"><a href="#1-2、广域网" class="headerlink" title="1.2、广域网"></a>1.2、广域网</h2><p>　　1）概述</p>
+<p>　　广域网（WAN，Wide Area Network）也称远程网（long haul network ）。通常跨接很大的物理范围，所覆盖的范围从几十公里到几千公里，<br>　　　　它能连接多个城市或国家，或横跨几个洲并能提供远距离通信，形成国际性的远程网络。<br>　　覆盖的范围比局域网（LAN）和城域网（MAN）都广。广域网的通信子网主要使用分组交换技术。广域网的通信子网可以利用公用分组交换网、卫星通信网和无线分组交换网，<br>　　　　它将分布在不同地区的局域网或计算机系统互连起来，达到资源共享的目的。如因特网（Internet）是世界范围内最大的广域网。<br>　　广域网是由许多交换机组成的，交换机之间采用点到点线路连接，几乎所有的点到点通信方式都可以用来建立广域网，<br>　　　　包括租用线路、光纤、微波、卫星信道。而广域网交换机实际上就是一台计算机，有处理器和输入/输出设备进行数据包的收发处理。</p>
+<p>　　2）举例生活：距离远 花钱租带宽　</p>
+<p>　　看下图，我们不管哪个地方上网，都必须联网，上网能访问一些网站，跟别人聊天，为什么呢？<br>　　因为有一些ISP在帮我们做牵线工作。ISP(Internet Service Provider)因特网服务提供商，电信、联通、移动等，它们在各个地方埋网线，有自己的主机、 然后我们出钱连入他们的网络，<br>　　就能访问上网了。有一些网站站点放在电信机房中，我们电信网去访问，就会比较快，因为通往主机那边的地址的方式很多，如果电信网访问放在联通主机房中的网址，则相对会受到影响。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926173018557-1976643567.png" alt="img"></p>
+<h2 id="1-3、Internet"><a href="#1-3、Internet" class="headerlink" title="1.3、Internet"></a>1.3、Internet</h2><p>　　Internet，中文正式译名为因特网，又叫做国际互联网。它是由那些使用公用语言互相通信的计算机连接而成的全球网络。一旦你连接到它的任何一个节点上，就意味着您的计算机已经连入Internet网上了。<br>　　Internet目前的用户已经遍及全球，有超过几亿人在使用Internet，并且它的用户数还在以等比级数上升。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、计算机数据之间通信的过程"><a href="#二、计算机数据之间通信的过程" class="headerlink" title="二、计算机数据之间通信的过程"></a>二、计算机数据之间通信的过程</h1><h2 id="2-1、路由器的功能（转发收到的分组）"><a href="#2-1、路由器的功能（转发收到的分组）" class="headerlink" title="2.1、路由器的功能（转发收到的分组）"></a>2.1、路由器的功能（转发收到的分组）</h2><p>　　1）什么是分组？ </p>
+<p>　　发送一段数据，将该段数据进行分组发送，而不是一次性全发送完。</p>
+<p>　　2）什么是分组交换？</p>
+<p>　　　　在网路中，路由器跟路由器之间有一定的距离， 我们计算机要发送一段数据出去，首先将数据分成n个分组，在每个分组前特定的头部，就成了数据包。 </p>
+<p>　　然后将数据包发送到路由器，通过路由器来接受这些数据包，然后一部分一部分的发送，接受，在发送其中一个数据包的过程中，占用了其中的道路，发送完这一个，</p>
+<p>　　就释放，并不是一直占用该资源，直到传输结束，在其接受或发送数据时，也可以接受或发送别的数据，看先接受谁，就先发送谁，其实就是一个队列。</p>
+<p>　　3）分组交换、电路交换、报文交换的区别？</p>
+<p>　　电路交换：就是电话线， A打给B ，AB之间的电话线就接通了，那么不管他两说没说话，说多久，直到挂断之前，该线都是在占用之中。</p>
+<p>　　报文交换：一次性发送完整的数据，那么该段路就被占用，传完就释放，然后接下一步的传送。直到到达目的地</p>
+<p>　　分组交换：高效、灵活、迅速、可靠。</p>
+<p>　　4）图解</p>
+<p>　　　　情景： 1号计算机和2号计算机组成局域网， 主机1、主机2、主机3就相当于电信的主机，网页都存在在主机中</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926190517153-604569624.png" alt="img"></p>
+<p>　　　　4.1）ip地址跟MAC地址：　　　</p>
+<p>　　　　　　每个计算机都有自己独特的ip地址，全球独一无二，跟电话一样，有些电话是 031-开头 有些地区是079开头， 这是分地区的，ip地址也是一样，</p>
+<p>　　　　　　mac地址：每台计算机上都有一个物理地址，也是独有的。在网卡上面，路由器也有mac地址。</p>
+<p>　　　　4.2）号计算机如何通过<a href="http://www.baidu.com来访问到百度的主页：">www.baidu.com来访问到百度的主页：</a></p>
+<p>　　　　　　每台计算机上都有DNS解析器， 通过DNS将域名解析成对应地址，</p>
+<p>　　　　　　路由器每次识别目标ip地址，以此来更改原mac地址和下一步目标的mac地址</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926190845294-739300859.png" alt="img"></p>
+<p>　　　　4.3）主机如何将网页数据发回请求的计算机：　　　</p>
+<p>　　　　　　第一步：将要返回的数据分成N份<br>　　　　　　第二步：每次将发送几份到缓存中，缓存就相当于队列，先进先出，缓存中发一份发回请求的计算机<br>　　　　　　第三步：计算机接到第一份，返回一个数据，让主机发送下一份，然后将缓存中刚才发送的那一份删除<br>　　　　　　第四步；如果中途数据丢包，则从缓存中继续发送刚才不成功那一份，直到接收到请求的计算机发回的确认数据。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、OSI参考模型"><a href="#三、OSI参考模型" class="headerlink" title="三、OSI参考模型"></a>三、OSI参考模型</h1><h2 id="3-1、OSI参考模型概述"><a href="#3-1、OSI参考模型概述" class="headerlink" title="3.1、OSI参考模型概述"></a>3.1、OSI参考模型概述</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926193646450-1006921087.png" alt="img"></p>
+<p>　　OSI（Open Systems Interconnection Reference Model）OSI/RM  简称 OSI 开放系统互连参考模型，通俗的将就是我们说的7层协议的体系结构</p>
+<p>　　OSI七层模型的划分：</p>
+<p>　　OSI定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），即ISO开放互连系统参考模型。</p>
+<p>　　每一层实现各自的功能和协议，并完成与相邻层的接口通信。OSI的服务定义详细说明了各层所提供的服务。某一层的服务就是该层及其下各层的一种能力，它通过接口提供给更高一层。各层所提供的服务与这些服务是怎么实现的无关。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926191902762-385218165.png" alt="img"></p>
+<h2 id="3-2、各层功能概述"><a href="#3-2、各层功能概述" class="headerlink" title="3.2、各层功能概述"></a>3.2、各层功能概述</h2><p>　　在这里我们简单描述一下各层的功能，不详细深究，因为每一层实际都是一个复杂的层。整个过程以公司A和公司B的一次商业报价单发送为例子进行讲解。</p>
+<p>　　注意：这七层是在发送数据到网线之前，在计算机中内部就已经经过了这7层，不是在传输过程中才慢慢经过这7层的。</p>
+<p>　　1）应用层　</p>
+<p>　　　　OSI参考模型中最靠近用户的一层，是为计算机用户提供应用接口，也为用户直接提供各种网络服务。我们常见应用层的网络服务协议有：HTTP，HTTPS，FTP，POP3、SMTP等。</p>
+<p>​    　 例子 ：实际公司A的老板就是我们所述的用户，而他要发送的商业报价单，就是应用层提供的一种网络服务，当然，老板也可以选择其他服务，比如说，发一份商业合同，发一份询价单，等等。</p>
+<p>　　2）表示层</p>
+<p>　　 　表示层提供各种用于应用层数据的编码和转换功能,确保一个系统的应用层发送的数据能被另一个系统的应用层识别。如果必要，该层可提供一种标准表示形式，</p>
+<p>　　　　用于将计算机内部的多种数据格式转换成通信中采用的标准表示形式。数据压缩和加密也是表示层可提供的转换功能之一。</p>
+<p>　　　　例子：由于公司A和公司B是不同国家的公司，他们之间的商定统一用英语作为交流的语言，所以此时表示层（公司的文秘），就是将应用层的传递信息转翻译成英语。</p>
+<p>　　　　　　　同时为了防止别的公司看到，公司A的人也会对这份报价单做一些加密的处理。这就是表示的作用，将应用层的数据转换翻译等。</p>
+<p>　　3）会话层</p>
+<p>　　　　 会话层就是负责建立、管理和终止表示层实体之间的通信会话。该层的通信由不同设备中的应用程序之间的服务请求和响应组成。 </p>
+<p>　　　　例子：会话层的同事拿到表示层的同事转换后资料，（会话层的同事类似公司的外联部），会话层的同事那里可能会掌握本公司与其他好多公司的联系方式，这里公司就是实际传递过程中的实体。</p>
+<p>　　　　　　　他们要管理本公司与外界好多公司的联系会话。当接收到表示层的数据后，会话层将会建立并记录本次会话，他首先要找到公司B的地址信息，然后将整份资料放进信封，并写上地址和联系方式。</p>
+<p>　　　　　　　准备将资料寄出。等到确定公司B接收到此份报价单后，此次会话就算结束了，外联部的同事就会终止此次会话。 </p>
+<p>　　4）传输层</p>
+<p>　　　　 传输层建立了主机端到端的链接，传输层的作用是为上层协议提供端到端的可靠和透明的数据传输服务，包括处理差错控制和流量控制等问题。该层向高层屏蔽了下层数据通信的细节，</p>
+<p>　　　　使高层用户看到的只是在两个传输实体间的一条主机到主机的、可由用户控制和设定的、可靠的数据通路。我们通常说的，TCP UDP就是在这一层。端口号既是这里的“端”。 </p>
+<p>　　　　例子： 传输层就相当于公司中的负责快递邮件收发的人，公司自己的投递员，他们负责将上一层的要寄出的资料投递到快递公司或邮局。</p>
+<p>　　5）网络层</p>
+<p>　　　　 本层通过IP寻址来建立两个节点之间的连接，为源端的运输层送来的分组，选择合适的路由和交换节点，正确无误地按照地址传送给目的端的运输层。</p>
+<p>　　　　 就是通常说的IP层。这一层就是我们经常说的IP协议层。IP协议是Internet的基础。</p>
+<p>　　　　例子： 网络层就相当于快递公司庞大的快递网络，全国不同的集散中心，比如说，从深圳发往北京的顺丰快递（陆运为例啊，空运好像直接就飞到北京了），</p>
+<p>　　　　　　  首先要到顺丰的深圳集散中心，从深圳集散中心再送到武汉集散中心，从武汉集散中心再寄到北京顺义集散中心。这个每个集散中心，就相当于网络中的一个IP节点。</p>
+<p>　　6）数据链路层　　　　</p>
+<p>　　　　将比特组合成字节,再将字节组合成帧,使用链路层地址 (以太网使用MAC地址)来访问介质,并进行差错检测。<br>　　　　数据链路层又分为2个子层：逻辑链路控制子层（LLC）和媒体访问控制子层（MAC）。<br>　　　　MAC子层处理CSMA/CD算法、数据出错校验、成帧等；LLC子层定义了一些字段使上次协议能共享数据链路层。 在实际使用中，LLC子层并非必需的。</p>
+<p>　　7）物理层</p>
+<p>　　　　实际最终信号的传输是通过物理层实现的。通过物理介质传输比特流。规定了电平、速度和电缆针脚。<br>　　　　常用设备有（各种物理设备）集线器、中继器、调制解调器、网线、双绞线、同轴电缆。这些都是物理层的传输介质。<br>　　　　例子： 快递寄送过程中的交通工具，就相当于我们的物理层，例如汽车，火车，飞机，船。</p>
+<h2 id="3-3、各层通信的特点"><a href="#3-3、各层通信的特点" class="headerlink" title="3.3、各层通信的特点"></a>3.3、各层通信的特点</h2><p>　　通信特点：对等通信   </p>
+<p>　　对等通信，为了使数据分组从源传送到目的地，源端OSI模型的每一层都必须与目的端的对等层进行通信，这种通信方式称为对等层通信。在每一层通信过程中，使用本层自己协议进行通信。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926193520262-505125461.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、TCP-IP五层模型"><a href="#四、TCP-IP五层模型" class="headerlink" title="四、TCP/IP五层模型"></a>四、TCP/IP五层模型</h1><p> TCP/IP五层协议和OSI的七层协议对应关系如下　　</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926193906653-945700629.png" alt="img"></p>
+<p>在每一层都工作着不同的设备，比如我们常用的交换机就工作在数据链路层的，一般的路由器是工作在网络层的。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194002684-1345147242.png" alt="img"></p>
+<p>在每一层实现的协议也各不同，即每一层的服务也不同.下图列出了每层主要的协议。其中每层中具体的协议。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194048637-1078586652.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、OSI参考模型和TCP-IP协议"><a href="#五、OSI参考模型和TCP-IP协议" class="headerlink" title="五、OSI参考模型和TCP/IP协议"></a>五、OSI参考模型和TCP/IP协议</h1><p>　　1）OSI参考模型和TCP/IP协议图</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194238294-2065707228.png" alt="img"></p>
+<p>　　2）发送数据：数据的封装，各个层次都做了什么事情</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194416481-1695150738.png" alt="img"></p>
+<p>　　3）数据封装后的样子</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194526950-147330535.png" alt="img"></p>
+<p>　　4）接受数据，解封装</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170926194652356-395554952.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7598603.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、计算机上的各种性能指标解释"><a href="#六、计算机上的各种性能指标解释" class="headerlink" title="六、计算机上的各种性能指标解释"></a>六、计算机上的各种性能指标解释</h1><p>速率、带宽、吞吐量、时延、时延带宽积、往返时间、利用率</p>
+<h2 id="6-1、速率"><a href="#6-1、速率" class="headerlink" title="6.1、速率"></a>6.1、速率</h2><p>　　在计算机与计算机之间通信时传输数据位数的速率 单位 bit/s 1 bit也就是 1 位</p>
+<p>　　byte 与 bit 的区别和换算</p>
+<p>　　　　byte：字节 　　　bit：位</p>
+<p>　　　　1byte = 8bit</p>
+<p>　　按字节换算</p>
+<p>　　　　1 k = 1024byte　　M与byte之间的换算是1024</p>
+<p>　　　　1M = 1024K　　　</p>
+<p>　　按位换算</p>
+<p>　　　　1kb = 1000bit</p>
+<p>　　　　1Mb = 1000Kb</p>
+<p>　　　　1Gb = 1000Mb</p>
+<p>　　问题一：我们人们常说的我的网络是8M 为什么下载速度只有1M/S呢？</p>
+<p>　　　　这里的8M，单位是Mb，也就是按位来算的， 而下载速度是按字节算的 8M = 8000Kb = 8000，000bit = 1000，000 byte ≈1000kb ≈1M</p>
+<p>　　　　所以一般都市直接除以8，8M的网络下载速度就是1M/s 100M的网下载速度也就10M/s</p>
+<h2 id="6-2、带宽"><a href="#6-2、带宽" class="headerlink" title="6.2、带宽"></a>6.2、带宽</h2><p>　　接口支持最高的传输速率， 也就是我们的带宽是8M， 带宽是100M. 就是最高支持一次传输8M，自己换算一下，能传多个位。 </p>
+<h2 id="6-3、吞吐量"><a href="#6-3、吞吐量" class="headerlink" title="6.3、吞吐量"></a>6.3、吞吐量</h2><p>　　单位时间内通过某个网络的数据量</p>
+<p>　　简单的说，就是通过一根网线一次性传输的多少个位，最高位就是带宽，但不是每次传输都达到了带宽值，有可能通过的只有3M，5M，都不一定，通过的量就是我们说的吞吐量　　　　　</p>
+<h2 id="6-4、时延"><a href="#6-4、时延" class="headerlink" title="6.4、时延"></a>6.4、时延</h2><p>　　发送时延、传播时延、处理时延、排队时延</p>
+<p>　　发送时延 = 数据块长度(bit)/信道宽度(bit/s)</p>
+<p>　　过一个特定情景来讲解　　　　　　　　　　　　　　　　　　</p>
+<p>　　　　A—————-路由器———————B</p>
+<p>　　　　A发送0101010101(10bit)数据到B 带宽是10bit/s　　A距离B 100米 信号在信道上的传播速率 10米/s</p>
+<p>　　　　当从开始发送1到最后一个0从A的网卡中出来结束，发送时延 = 10bit/10bit/s = 1s</p>
+<p>　　传播时延 = 信道长度（米）/信号在信道上传播速率(米/秒)</p>
+<p>　　传播时延：从A发送1开始，到路由器，接受最后一个0结束，这一段也算是传播时延，路由器到B之间也是 100/10 = 10秒。 在电线上花费的时间是10秒</p>
+<p>　　排队时延：路由器接受数据，有一个缓冲区，相当于队列，数据到路由器，先到缓冲区排队等待路由器一个个接受数据，直到路由器开始接受第一个位，这就是排队时延，从路由器出来也需要排队时延</p>
+<p>　　处理时延：路由器开始接受第一个位，这就开始处理数据了，到最后一个位接受完，这之间就是处理时延</p>
+<h2 id="6-5、时延带宽积"><a href="#6-5、时延带宽积" class="headerlink" title="6.5、时延带宽积"></a>6.5、时延带宽积</h2><p>　　 其实也就是在信道中有多少位数据在其中，用的是带宽，也就是最高的数据。</p>
+<p>　　传播时延 * 带宽　</p>
+<h2 id="6-6、往返时间"><a href="#6-6、往返时间" class="headerlink" title="6.6、往返时间"></a>6.6、往返时间</h2><p>　　从A到B，在B返回数据到A，之间用了多少时间</p>
+<p>　　使用命令 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 从我们浏览器到存放百度地址的主机，然后返回数据到我们计算机需要的时间</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/10/network2/#more" rel="contents">
