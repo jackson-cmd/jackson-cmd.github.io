@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1440532/201809/1440532-20180912093201807-306001370.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1440532/201809/1440532-20180912093223517-341420925.png">
 <meta property="article:published_time" content="2020-05-10T18:28:43.000Z">
-<meta property="article:modified_time" content="2020-05-14T04:28:34.054Z">
+<meta property="article:modified_time" content="2020-05-14T19:26:08.308Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1440532/201809/1440532-20180912093201807-306001370.png">
@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-13 23:28:34" itemprop="dateModified" datetime="2020-05-13T23:28:34-05:00">2020-05-13</time>
+                <time title="Modified: 2020-05-14 14:26:08" itemprop="dateModified" datetime="2020-05-14T14:26:08-05:00">2020-05-14</time>
               </span>
 
           
@@ -213,9 +213,94 @@
 <p>E类：是<em>保留地址</em>。该类IP地址的最前面为“1111”，所以地址的网络号取值于240~255之间。</p>
 <p>在IP地址3种主要类型里，各保留了3个区域作为私有地址，其地址范围如下：<br>A类地址：10.0.0.0～10.255.255.255<br>B类地址：172.16.0.0～172.31.255.255<br>C类地址：192.168.0.0～192.168.255.255</p>
 <p><strong>回送地址</strong>：loopback环回</p>
-<p>127.0.0.1。 也是本机地址，等效于localhost或本机IP。一般用于测试使用。例如：ping 127.0.0.1来测试本机TCP/IP是否正常。</p>
+<p><strong>127.0.0.1。 也是本机地址，等效于localhost或本机IP。一般用于测试使用。例如：ping 127.0.0.1来测试本机TCP/IP是否正常。</strong></p>
 <p>能用的ip只有abc三类：37个亿 </p>
 <p> <img src="https://images2018.cnblogs.com/blog/1440532/201809/1440532-20180912093223517-341420925.png" alt="img"></p>
+<p>A类：(1.0.0.0-126.0.0.0)（默认子网掩码：255.0.0.0 ==\8）(缩写是8)</p>
+<p>B类：(128.0.0.0-191.255.0.0)（默认子网掩码：255.255.0.0 ==\16s）</p>
+<p>C类：(192.0.0.0-223.255.255.0)（子网掩码：255.255.255.0 ==\24）</p>
+<p>子网掩码：将一个ip地址</p>
+<p>例：192.168.1.1 mask：255.255.255.    0，掩盖住的是24位1. 1就是网络号，后面的就是主机号。</p>
+<p>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。</p>
+<p>子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。<br>子网掩码是一个32位地址，用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上。</p>
+<p>子网掩码——屏蔽一个IP地址的网络部分的“全1”比特模式。对于A类地址来说，默认的子网掩码是255.0.0.0；对于B类地址来说默认的子网掩码是255.255.0.0；对于C类地址来说默认的子网掩码是255.255.255.0。</p>
+<ul>
+<li>通过子网掩码，就可以判断两个IP在不在一个局域网内部。</li>
+<li>子网掩码可以看出有多少位是网络号，有多少位是主机号</li>
+</ul>
+<h2 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h2><hr>
+<p>网关(Gateway)又称网间连接器、协议转换器。默认网关在网络层上以实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。网关的结构也和路由器类似，不同的是互连层。网关既可以用于广域网互连，也可以用于局域网互连</p>
+<p>网关实质上是一个网络通向其他网络的IP地址。</p>
+<p>比如有网络A和网络B，网络A的IP地址范围为“192.168.1.1<del>192. 168.1.254”，子网掩码为255.255.255.0；网络B的IP地址范围为“192.168.2.1</del>192.168.2.254”，子网掩码为255.255.255.0。</p>
+<p>在没有路由器的情况下，两个网络之间是不能进行TCP/IP通信的，即使是两个网络连接在同一台交换机（或集线器）上，TCP/IP协议也会根据子网掩码（255.255.255.0）判定两个网络中的主机处在不同的网络里。</p>
+<p>而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。</p>
+<p>所以说，只有设置好网关的IP地址，TCP/IP协议才能实现不同网络之间的相互通信。那么这个IP地址是哪台机器的IP地址呢？网关的IP地址是具有路由功能的设备的IP地址，具有路由功能的设备有路由器、启用了路由协议的服务器（实质上相当于一台路由器）、代理服务器（也相当于一台路由器）。</p>
+<h2 id="广播地址-Broadcast-Address"><a href="#广播地址-Broadcast-Address" class="headerlink" title="广播地址(Broadcast Address)"></a>广播地址(Broadcast Address)</h2><hr>
+<p>广播地址(Broadcast Address)是专门用于同时向网络中所有工作站进行发送的一个地址。</p>
+<p>在使用TCP/IP 协议的网络中，主机标识段host ID 为全1 的IP 地址为广播地址，广播的分组传送给host ID段所涉及的所有计算机。例如，对于10.1.1.0 （255.255.255.0 ）网段，其广播地址为10.1.1.255 （255 即为2 进制的11111111 ），当发出一个目的地址为10.1.1.255 的分组（封包）时，它将被分发给该网段上的所有计算机。</p>
+<h1 id="根据IP地址和子网掩码求-网络地址-和-广播地址"><a href="#根据IP地址和子网掩码求-网络地址-和-广播地址" class="headerlink" title="根据IP地址和子网掩码求 网络地址 和 广播地址"></a>根据IP地址和子网掩码求 网络地址 和 广播地址</h1><hr>
+<ul>
+<li>将IP地址和子网掩码换算为二进制，子网掩码连续全1的是网络地址，后面的是主机地址，虚线前为网络地址，虚线后为主机地址</li>
+<li><strong>IP地址和子网掩码进行与运算，结果是网络地址</strong>（即主机号全0是网络地址）</li>
+<li>将运算结果中的网络地址不变，<strong>主机地址变为1，结果就是广播地址</strong></li>
+<li>地址范围就是含在本网段内的所有主机</li>
+</ul>
+<p>网络地址+1即为第一个主机地址，广播地址-1即为最后一个主机地址，<br>由此可以看出地址范围是： 网络地址+1 至 广播地址-1</p>
+<ul>
+<li>主机的数量=2^二进制位数的主机-2</li>
+</ul>
+<p>减2是因为主机不包括网络地址和广播地址。</p>
+<p><strong>示例</strong><br>一个主机的IP地址是202.112.14.137，掩码是255.255.255.224，要求计算这个主机所在网络的网络地址和广播地址</p>
+<h2 id="根据子网掩码可以分割网络号-主机号"><a href="#根据子网掩码可以分割网络号-主机号" class="headerlink" title="根据子网掩码可以分割网络号+主机号"></a>根据子网掩码可以分割网络号+主机号</h2><hr>
+<p><code>255.255.255.224</code> 转二进制：</p>
+<blockquote>
+<p>11111111 11111111 11111111 11100000</p>
+</blockquote>
+<p>网络号有27位，主机号有5位</p>
+<p>网络地址就是：把IP地址转成二进制和子网掩码进行与运算</p>
+<p>11001010 01110000 00001110 10001001</p>
+<p>IP地址&amp;子网掩码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">11001010 01110000 00001110 10001001</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">11111111 11111111 11111111 11100000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">11001010 01110000 00001110 10000000</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+</ul>
+<p>即：202.112.14.128</p>
+<h2 id="计算广播地址"><a href="#计算广播地址" class="headerlink" title="计算广播地址"></a>计算广播地址</h2><hr>
+<p>广播地址：网络地址的主机位全部变成1 ，10011111 即159 即：202.112.14.159</p>
+<h2 id="主机数"><a href="#主机数" class="headerlink" title="主机数"></a>主机数</h2><hr>
+<p>主机号有5位，那么这个地址中，就只能有25−2=3025−2=30个主机</p>
+<p>因为其中全0作为网络地址，全1作为广播地址</p>
+<h1 id="根据每个网络的主机数量进行子网地址的规划和计算子网掩码"><a href="#根据每个网络的主机数量进行子网地址的规划和计算子网掩码" class="headerlink" title="根据每个网络的主机数量进行子网地址的规划和计算子网掩码"></a>根据每个网络的主机数量进行子网地址的规划和计算子网掩码</h1><hr>
+<p>这也可按上述原则进行计算。</p>
+<p>比如一个子网有10台主机，那么对于这个子网需要的IP地址是<br>10＋1＋1＋1＝13<br>注意：加的第一个1是指这个网络连接时所需的网关地址，接着的两个1分别是指网络地址和广播地址。<br>因为13小于16（16等于2的4次方），所以主机位为4位。</p>
+<p>而 256－16＝240 所以该子网掩码为255.255.255.240。</p>
+<p>如果一个子网有14台主机，不少人常犯的错误是：依然分配具有16个地址空间的子网，而忘记了给网关分配地址。这样就错误了，因为：<br>14＋1＋1＋1＝17<br>17.大于16，所以我们只能分配具有32个地址（32等于2的5次方）空间的子网。这时子网掩码为：255.255.255.224</p>
+<p>5） 主机的数量</p>
+<h1 id="206-110-4-0-18被划分成16个子网，每个子网掩码？"><a href="#206-110-4-0-18被划分成16个子网，每个子网掩码？" class="headerlink" title="206 110 4 0/18被划分成16个子网，每个子网掩码？"></a>206 110 4 0/18被划分成16个子网，每个子网掩码？</h1><hr>
+<p>（划分成16个子网，根据子网掩码/18就表示有18个1，就要从的IP地址的主机位借4位来用作网络位！）</p>
+<p>子网掩码是255.255.252.0</p>
+<p>每个子网可以容纳的主机数是1024台。</p>
+<p>下面我来给你详细解答：</p>
+<p>206.110.1.0 /18 由最后的那个/18，我们可以知道这个IP已经规定了它的网络位是18位，它默认的子网掩码就是11111111.11111111.11 | 000000.00000000(其中1代表网络位,0代表主机位)</p>
+<p>可以看出我们可以操作的位数就是后面的14个0，也就是说我们可以在地面划分出几位作为子网的网络位，进而来划分子网。要求是切分成16个子网，我们知道2的4次方刚好等于16，这就说明子网网络位的位数是4位，那14-4=10就是子网的主机位。所以上面我写的那串二进制就可以变成：11111111.11111111.111111 | 00.00000000(其中1代表网络位,0代表主机位)</p>
+<h1 id="ip段-数字-如192-168-0-1-24是什么意思"><a href="#ip段-数字-如192-168-0-1-24是什么意思" class="headerlink" title="ip段/数字-如192.168.0.1/24是什么意思?"></a>ip段/数字-如192.168.0.1/24是什么意思?</h1><hr>
+<p>后面这个数字标示了我们的网络号的位数，也就是子网掩码中前多少号为1</p>
+<p>129.168.1.1 /24 这个24就是告诉我们网络号是24位</p>
+<p>也就相当于告诉我们了</p>
+<p>子网掩码是：<code>11111111 11111111 11111111 00000000</code></p>
+<p>即：<code>255.255.255.0</code></p>
+<p>172.16.10.33/27 中的/27</p>
+<p>也就是说子网掩码是<code>255.255.255.224</code> 即27个全1</p>
+<blockquote>
+<p>11111111 11111111 11111111 11100000</p>
+</blockquote>
 <a id="more"></a>
     </div>
 
@@ -296,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ip地址以及子网掩码"><span class="nav-number">1.</span> <span class="nav-text">ip地址以及子网掩码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址分类（A类-B类-C类-D类-E类）"><span class="nav-number">1.1.</span> <span class="nav-text">IP地址分类（A类 B类 C类 D类 E类）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ip地址以及子网掩码"><span class="nav-number">1.</span> <span class="nav-text">ip地址以及子网掩码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址分类（A类-B类-C类-D类-E类）"><span class="nav-number">1.1.</span> <span class="nav-text">IP地址分类（A类 B类 C类 D类 E类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网关"><span class="nav-number">1.2.</span> <span class="nav-text">网关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广播地址-Broadcast-Address"><span class="nav-number">1.3.</span> <span class="nav-text">广播地址(Broadcast Address)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据IP地址和子网掩码求-网络地址-和-广播地址"><span class="nav-number">2.</span> <span class="nav-text">根据IP地址和子网掩码求 网络地址 和 广播地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据子网掩码可以分割网络号-主机号"><span class="nav-number">2.1.</span> <span class="nav-text">根据子网掩码可以分割网络号+主机号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算广播地址"><span class="nav-number">2.2.</span> <span class="nav-text">计算广播地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主机数"><span class="nav-number">2.3.</span> <span class="nav-text">主机数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据每个网络的主机数量进行子网地址的规划和计算子网掩码"><span class="nav-number">3.</span> <span class="nav-text">根据每个网络的主机数量进行子网地址的规划和计算子网掩码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#206-110-4-0-18被划分成16个子网，每个子网掩码？"><span class="nav-number">4.</span> <span class="nav-text">206 110 4 0&#x2F;18被划分成16个子网，每个子网掩码？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ip段-数字-如192-168-0-1-24是什么意思"><span class="nav-number">5.</span> <span class="nav-text">ip段&#x2F;数字-如192.168.0.1&#x2F;24是什么意思?</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -310,7 +395,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
