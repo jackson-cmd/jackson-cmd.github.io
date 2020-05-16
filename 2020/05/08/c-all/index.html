@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>C++入门 | Jackson Blog</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+ <meta name="description" content="C++如何运行g++ 应用说明程序 g++ 是将 gcc 默认语言设为 C++ 的一个特殊的版本，链接时它自动使用 C++ 标准库而不用 C 标准库。通过遵循源码的命名规范并指定对应库的名字，用 gcc 来编译链接 C++ 程序是可行的，如下例所示： 12$ gcc main.cpp -lstdc++ -o main#意思是-l std c++  下面是一个保存在文件 helloworld.cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++入门">
+<meta property="og:url" content="http://yoursite.com/2020/05/08/c-all/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="C++如何运行g++ 应用说明程序 g++ 是将 gcc 默认语言设为 C++ 的一个特殊的版本，链接时它自动使用 C++ 标准库而不用 C 标准库。通过遵循源码的命名规范并指定对应库的名字，用 gcc 来编译链接 C++ 程序是可行的，如下例所示： 12$ gcc main.cpp -lstdc++ -o main#意思是-l std c++  下面是一个保存在文件 helloworld.cpp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/09/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/09/v2-48240f0e1e0dd33ec89100cbe2d30707_hd.png">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2019/03/20180617101214118.png">
+<meta property="article:published_time" content="2020-05-08T23:11:18.000Z">
+<meta property="article:modified_time" content="2020-05-09T03:31:51.405Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/09/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/08/c-all/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+ 
+
+
+
+
+
+ <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</span></p>
+<p class="p1"><span class="s1">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+</span></p>
+<p class="p1"><span class="s1">
+</span></p>
+<p class="p1"><span class="s1">
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/c-all/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-08 18:11:18 / Modified: 22:31:51" itemprop="dateCreated datePublished" datetime="2020-05-08T18:11:18-05:00">2020-05-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="C-如何运行"><a href="#C-如何运行" class="headerlink" title="C++如何运行"></a>C++如何运行</h1><h2 id="g-应用说明"><a href="#g-应用说明" class="headerlink" title="g++ 应用说明"></a>g++ 应用说明</h2><p>程序 g++ 是将 gcc 默认语言设为 C++ 的一个特殊的版本，链接时它自动使用 C++ 标准库而不用 C 标准库。通过遵循源码的命名规范并指定对应库的名字，用 gcc 来编译链接 C++ 程序是可行的，如下例所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gcc main.cpp -lstdc++ -o main</span><br><span class="line">#意思是-l std c++</span><br></pre></td></tr></table></figure>
+
+<p>下面是一个保存在文件 helloworld.cpp 中一个简单的 C++ 程序的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; &quot;Hello, world!&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最简单的编译方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp</span><br></pre></td></tr></table></figure>
+
+<p>由于命令行中未指定可执行程序的文件名，编译器采用默认的 a.out。程序可以这样来运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;a.out</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
+
+<p>通常我们使用 <strong>-o</strong> 选项指定可执行程序的文件名，以下实例生成一个 helloworld 的可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp -o helloworld</span><br></pre></td></tr></table></figure>
+
+<p>执行 helloworld:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;helloworld</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
+
+<p>如果是多个 C++ 代码文件，如 runoob1.cpp、runoob2.cpp，编译命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ runoob1.cpp runoob2.cpp -o runoob</span><br></pre></td></tr></table></figure>
+
+<p>生成一个 runoob 可执行文件。</p>
+<p>g++ 有些系统默认是使用 C++98，我们可以指定使用 C++11 来编译 main.cpp 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -g -Wall -std&#x3D;c++11 main.cpp</span><br></pre></td></tr></table></figure>
+
+<h3 id="g-常用命令选项"><a href="#g-常用命令选项" class="headerlink" title="g++ 常用命令选项"></a>g++ 常用命令选项</h3><table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-ansi</td>
+<td align="left">只支持 ANSI 标准的 C 语法。这一选项将禁止 GNU C 的某些特色， 例如 asm 或 typeof 关键词。</td>
+</tr>
+<tr>
+<td align="left">-c</td>
+<td align="left">只编译并生成目标文件。</td>
+</tr>
+<tr>
+<td align="left">-DMACRO</td>
+<td align="left">以字符串”1”定义 MACRO 宏。</td>
+</tr>
+<tr>
+<td align="left">-DMACRO=DEFN</td>
+<td align="left">以字符串”DEFN”定义 MACRO 宏。</td>
+</tr>
+<tr>
+<td align="left">-E</td>
+<td align="left">只运行 C 预编译器。</td>
+</tr>
+<tr>
+<td align="left">-g</td>
+<td align="left">生成调试信息。GNU 调试器可利用该信息。</td>
+</tr>
+<tr>
+<td align="left">-IDIRECTORY</td>
+<td align="left">指定额外的头文件搜索路径DIRECTORY。</td>
+</tr>
+<tr>
+<td align="left">-LDIRECTORY</td>
+<td align="left">指定额外的函数库搜索路径DIRECTORY。</td>
+</tr>
+<tr>
+<td align="left">-lLIBRARY</td>
+<td align="left">连接时搜索指定的函数库LIBRARY。</td>
+</tr>
+<tr>
+<td align="left">-m486</td>
+<td align="left">针对 486 进行代码优化。</td>
+</tr>
+<tr>
+<td align="left">-o</td>
+<td align="left">FILE 生成指定的输出文件。用在生成可执行文件时。</td>
+</tr>
+<tr>
+<td align="left">-O0</td>
+<td align="left">不进行优化处理。</td>
+</tr>
+<tr>
+<td align="left">-O</td>
+<td align="left">或 -O1 优化生成代码。</td>
+</tr>
+<tr>
+<td align="left">-O2</td>
+<td align="left">进一步优化。</td>
+</tr>
+<tr>
+<td align="left">-O3</td>
+<td align="left">比 -O2 更进一步优化，包括 inline 函数。</td>
+</tr>
+<tr>
+<td align="left">-shared</td>
+<td align="left">生成共享目标文件。通常用在建立共享库时。</td>
+</tr>
+<tr>
+<td align="left">-static</td>
+<td align="left">禁止使用共享连接。</td>
+</tr>
+<tr>
+<td align="left">-UMACRO</td>
+<td align="left">取消对 MACRO 宏的定义。</td>
+</tr>
+<tr>
+<td align="left">-w</td>
+<td align="left">不生成任何警告信息。</td>
+</tr>
+<tr>
+<td align="left">-Wall</td>
+<td align="left">生成所有警告信息。</td>
+</tr>
+</tbody></table>
+<h1 id="C-注释"><a href="#C-注释" class="headerlink" title="C++ 注释"></a>C++ 注释</h1><p>程序的注释是解释性语句，您可以在 C++ 代码中包含注释，这将提高源代码的可读性。所有的编程语言都允许某种形式的注释。</p>
+<p>C++ 支持单行注释和多行注释。注释中的所有字符会被 C++ 编译器忽略。</p>
+<p>C++ 注释以 /* 开始，以 */ 终止。例如：</p>
+<p>/* 这是注释 <em>/  /</em> C++ 注释也可以 * 跨行 */</p>
+<p>注释也能以 // 开始，直到行末为止。</p>
+<p> 块注释符（/<em>…</em>/）是不可以嵌套使用的。</p>
+<p>此外，我们还可以使用 <strong>#if 0 … #endif</strong> 来实现注释，且可以实现嵌套，格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#if 0</span><br><span class="line">   code</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>你可以把 <strong>#if 0</strong> 改成 <strong>#if 1</strong> 来执行 <strong>code</strong> 的代码。</p>
+<p>这种形式对程序调试也可以帮助，测试时使用 <strong>#if 1</strong> 来执行测试代码，发布后使用 <strong>#if 0</strong> 来屏蔽测试代码。</p>
+<p><strong>#if</strong> 后可以是任意的条件语句。</p>
+<p>下面的代码如果 condition 条件为 true 执行 code1 ，否则执行 code2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#if condition</span><br><span class="line">  code1</span><br><span class="line">#else</span><br><span class="line">  code2</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<h1 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C++ 数据类型"></a>C++ 数据类型</h1><h2 id="基本的内置类型"><a href="#基本的内置类型" class="headerlink" title="基本的内置类型"></a>基本的内置类型</h2><p>C++ 为程序员提供了种类丰富的内置数据类型和用户自定义的数据类型。下表列出了七种基本的 C++ 数据类型：</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">布尔型</td>
+<td align="left">bool</td>
+</tr>
+<tr>
+<td align="left">字符型</td>
+<td align="left">char</td>
+</tr>
+<tr>
+<td align="left">整型</td>
+<td align="left">int</td>
+</tr>
+<tr>
+<td align="left">浮点型</td>
+<td align="left">float</td>
+</tr>
+<tr>
+<td align="left">双浮点型</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">无类型</td>
+<td align="left">void</td>
+</tr>
+<tr>
+<td align="left">宽字符型</td>
+<td align="left">wchar_t</td>
+</tr>
+</tbody></table>
+<p>其实 wchar_t 是这样来的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef short int wchar_t;&#x2F;&#x2F;占2或4字节</span><br></pre></td></tr></table></figure>
+
+<p>所以 wchar_t 实际上的空间是和 short int 一样。</p>
+<p>一些基本类型可以使用一个或多个类型修饰符进行修饰：</p>
+<ul>
+<li><p>signed</p>
+</li>
+<li><p>unsigned</p>
+</li>
+<li><p>short：带short都是2字节</p>
+</li>
+<li><p>long</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">位</th>
+<th align="left">范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">char</td>
+<td align="left">1 个字节</td>
+<td align="left">-128 到 127 或者 0 到 255</td>
+</tr>
+<tr>
+<td align="left">unsigned char</td>
+<td align="left">1 个字节</td>
+<td align="left">0 到 255</td>
+</tr>
+<tr>
+<td align="left">signed char</td>
+<td align="left">1 个字节</td>
+<td align="left">-128 到 127</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">4 个字节</td>
+<td align="left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td align="left">unsigned int</td>
+<td align="left">4 个字节</td>
+<td align="left">0 到 4294967295</td>
+</tr>
+<tr>
+<td align="left">signed int</td>
+<td align="left">4 个字节</td>
+<td align="left">-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td align="left">short int</td>
+<td align="left">2 个字节</td>
+<td align="left">-32768 到 32767</td>
+</tr>
+<tr>
+<td align="left">unsigned short int</td>
+<td align="left">2 个字节</td>
+<td align="left">0 到 65,535</td>
+</tr>
+<tr>
+<td align="left">signed short int</td>
+<td align="left">2 个字节</td>
+<td align="left">-32768 到 32767</td>
+</tr>
+<tr>
+<td align="left">long int</td>
+<td align="left">4 个字节</td>
+<td align="left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td align="left">signed long int</td>
+<td align="left">8 个字节</td>
+<td align="left">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td align="left">unsigned long int</td>
+<td align="left">8 个字节</td>
+<td align="left">0 到 18,446,744,073,709,551,615</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">4 个字节</td>
+<td align="left">精度型占4个字节（32位）内存空间，+/- 3.4e +/- 38 (~7 个数字)</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">8 个字节</td>
+<td align="left">双精度型占8 个字节（64位）内存空间，+/- 1.7e +/- 308 (~15 个数字)</td>
+</tr>
+<tr>
+<td align="left">long double</td>
+<td align="left">16 个字节</td>
+<td align="left">长双精度型 16 个字节（128位）内存空间，可提供18-19位有效数字。</td>
+</tr>
+<tr>
+<td align="left">wchar_t</td>
+<td align="left">2 或 4 个字节</td>
+<td align="left">1 个宽字符</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="typedef-声明"><a href="#typedef-声明" class="headerlink" title="typedef 声明"></a>typedef 声明</h2><p>您可以使用 <strong>typedef</strong> 为一个已有的类型取一个新的名字。下面是使用 typedef 定义一个新类型的语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef type newname;</span><br></pre></td></tr></table></figure>
+
+<p>例如，下面的语句会告诉编译器，feet 是 int 的另一个名称：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef int feet;</span><br></pre></td></tr></table></figure>
+
+<p>现在，下面的声明是完全合法的，它创建了一个整型变量 distance：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feet distance;</span><br></pre></td></tr></table></figure>
+
+<h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。</p>
+<p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p>
+<p>创建枚举，需要使用关键字 <strong>enum</strong>。枚举类型的一般形式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum 枚举名&#123; </span><br><span class="line">     标识符[&#x3D;整型常数], </span><br><span class="line">     标识符[&#x3D;整型常数], </span><br><span class="line">... </span><br><span class="line">    标识符[&#x3D;整型常数]</span><br><span class="line">&#125; 枚举变量;</span><br></pre></td></tr></table></figure>
+
+<p>如果枚举没有初始化, 即省掉”=整型常数”时, 则从第一个标识符开始。</p>
+<p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green, blue &#125; c;</span><br><span class="line">c &#x3D; blue;</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，<strong>green</strong> 的值为 5。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green&#x3D;5, blue &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，<strong>blue</strong> 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p>
+<h1 id="C-变量类型"><a href="#C-变量类型" class="headerlink" title="C++ 变量类型"></a>C++ 变量类型</h1><p>变量的名称可以由字母、数字和下划线字符组成。它必须以字母或下划线开头。大写字母和小写字母是不同的，因为 C++ 是大小写敏感的。</p>
+<p>基于前一章讲解的基本类型，有以下几种基本的变量类型，将在下一章中进行讲解：</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bool</td>
+<td align="left">存储值 true 或 false。</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="left">通常是一个字符（八位）。这是一个整数类型。</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">对机器而言，整数的最自然的大小。</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">单精度浮点值。单精度是这样的格式，1位符号，8位指数，23位小数。<img src="https://www.runoob.com/wp-content/uploads/2014/09/v2-749cc641eb4d5dafd085e8c23f8826aa_hd.png" alt="img"></td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">双精度浮点值。双精度是1位符号，11位指数，52位小数。<img src="https://www.runoob.com/wp-content/uploads/2014/09/v2-48240f0e1e0dd33ec89100cbe2d30707_hd.png" alt="img"></td>
+</tr>
+<tr>
+<td align="left">void</td>
+<td align="left">表示类型的缺失。</td>
+</tr>
+<tr>
+<td align="left">wchar_t</td>
+<td align="left">宽字符类型。</td>
+</tr>
+</tbody></table>
+<p>C++ 也允许定义各种其他类型的变量，比如<strong>枚举、指针、数组、引用、数据结构、类</strong>等等，这将会在后续的章节中进行讲解。</p>
+<h2 id="C-中的变量定义"><a href="#C-中的变量定义" class="headerlink" title="C++ 中的变量定义"></a>C++ 中的变量定义</h2><p>变量定义就是告诉编译器在何处创建变量的存储，以及如何创建变量的存储。变量定义指定一个数据类型，并包含了该类型的一个或多个变量的列表，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type variable_list;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，<strong>type</strong> 必须是一个有效的 C++ 数据类型，可以是 char、wchar_t、int、float、double、bool 或任何用户自定义的对象，<strong>variable_list</strong> 可以由一个或多个标识符名称组成，多个标识符之间用逗号分隔。</p>
+<p>不带初始化的定义：带有静态存储持续时间的变量会被隐式初始化为 NULL（所有字节的值都是 0），其他所有变量的初始值是未定义的。</p>
+<h2 id="C-中的变量声明"><a href="#C-中的变量声明" class="headerlink" title="C++ 中的变量声明"></a>C++ 中的变量声明</h2><p>变量声明向编译器保证变量以给定的类型和名称存在，这样编译器在不需要知道变量完整细节的情况下也能继续进一步的编译。变量声明只在编译时有它的意义，在程序连接时编译器需要实际的变量声明。</p>
+<p>当您使用多个文件且只在其中一个文件中定义变量时（定义变量的文件在程序连接时是可用的），变量声明就显得非常有用。您可以使用 <strong>extern</strong> 关键字在任何地方声明一个变量。虽然您可以在 C++ 程序中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>尝试下面的实例，其中，变量在头部就已经被声明，但它们是在主函数内被定义和初始化的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 变量声明</span><br><span class="line">extern int a, b;</span><br><span class="line">extern int c;</span><br><span class="line">extern float f;</span><br><span class="line">  </span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F; 变量定义</span><br><span class="line">  int a, b;</span><br><span class="line">  int c;</span><br><span class="line">  float f;</span><br><span class="line"> </span><br><span class="line">  &#x2F;&#x2F; 实际初始化</span><br><span class="line">  a &#x3D; 10;</span><br><span class="line">  b &#x3D; 20;</span><br><span class="line">  c &#x3D; a + b;</span><br><span class="line"> </span><br><span class="line">  cout &lt;&lt; c &lt;&lt; endl ;</span><br><span class="line"> </span><br><span class="line">  f &#x3D; 70.0&#x2F;3.0;</span><br><span class="line">  cout &lt;&lt; f &lt;&lt; endl ;</span><br><span class="line"> </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">30</span><br><span class="line">23.3333</span><br></pre></td></tr></table></figure>
+
+<p>同样的，在函数声明时，提供一个函数名，而函数的实际定义则可以在任何地方进行。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 函数声明</span><br><span class="line">int func();</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 函数调用</span><br><span class="line">    int i &#x3D; func();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 函数定义</span><br><span class="line">int func()</span><br><span class="line">&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>现在才算理解声明和定义的区别了：</strong></p>
+<p>定义包含了声明，但是声明不包含定义，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 0;     &#x2F;&#x2F;定义并声明了变量 a</span><br><span class="line">extern int a;  &#x2F;&#x2F;只是声明了有一个变量 a 存在，具体 a 在哪定义的，需要编译器编译的时候去找。</span><br></pre></td></tr></table></figure>
+
+<p>函数也是类似，定义的时候同时声明。但如果只是声明，编译器只知道有这么个函数，具体函数怎么定义的要编译器去找。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void fun1();  &#x2F;&#x2F;函数声明</span><br><span class="line"></span><br><span class="line">void fun1()&#123;  &#x2F;&#x2F;函数定义</span><br><span class="line">    cout&lt;&lt;&quot;fun1&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>C/C++ 编译 cpp 文件是从上往下编译，所以 main 函数里面调用其他函数时，如果其他函数在 main 函数的下面，则要在 main 函数上面先声明这个函数。</p>
+<p>或者把 main 函数放在最下面，这个不仅限于 main 函数，其他函数的调用都是如此。被调用的函数要在调用的函数之前声明。</p>
+<p>用 extern 声明外部变量是不能进行初始化：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/20180617101214118.png" alt="img"></p>
+<p>为什么会这样呢？因为 <strong>extern int a;</strong> 只是声明而不是定义，声明是不会为变量开辟内存空间的，自然无法对其进行初始化的操作</p>
+<h2 id="C-中的左值（Lvalues）和右值（Rvalues"><a href="#C-中的左值（Lvalues）和右值（Rvalues" class="headerlink" title="C++ 中的左值（Lvalues）和右值（Rvalues)"></a>C++ 中的左值（Lvalues）和右值（Rvalues)</h2><p>C++ 中有两种类型的表达式：</p>
+<ul>
+<li><strong>左值（lvalue）：</strong>指向内存位置的表达式被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
+<li><strong>右值（rvalue）：</strong>术语右值（rvalue）指的是存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
+</ul>
+<p>变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。下面是一个有效的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int g &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+<p>但是下面这个就不是一个有效的语句，会生成编译时错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 &#x3D; 20;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C8/" rel="prev" title="计算机网络8">
+      <i class="fa fa-chevron-left"></i> 计算机网络8
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/09/vim/" rel="next" title="vim">
+      vim <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"></span></p>
+<p class="p1"><span class="s1"> 
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-如何运行"><span class="nav-number">1.</span> <span class="nav-text">C++如何运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#g-应用说明"><span class="nav-number">1.1.</span> <span class="nav-text">g++ 应用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#g-常用命令选项"><span class="nav-number">1.1.1.</span> <span class="nav-text">g++ 常用命令选项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-注释"><span class="nav-number">2.</span> <span class="nav-text">C++ 注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-数据类型"><span class="nav-number">3.</span> <span class="nav-text">C++ 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的内置类型"><span class="nav-number">3.1.</span> <span class="nav-text">基本的内置类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef-声明"><span class="nav-number">3.2.</span> <span class="nav-text">typedef 声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型"><span class="nav-number">3.3.</span> <span class="nav-text">枚举类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-变量类型"><span class="nav-number">4.</span> <span class="nav-text">C++ 变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的变量定义"><span class="nav-number">4.1.</span> <span class="nav-text">C++ 中的变量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的变量声明"><span class="nav-number">4.2.</span> <span class="nav-text">C++ 中的变量声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">4.3.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-中的左值（Lvalues）和右值（Rvalues"><span class="nav-number">4.4.</span> <span class="nav-text">C++ 中的左值（Lvalues）和右值（Rvalues)</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jackson"
+      src="/uploads/hacker.png">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+ 
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+ 
+
+
+
+
+
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+ 
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+<span class="Apple-converted-space"> </span></span></p>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

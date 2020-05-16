@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>rsa加密算法详解 | Jackson Blog</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+ <meta name="description" content="我们日常传输数据想防止hacker的攻击，需要加密算法，常见的：对称加密，非对称加密，对称加密相对于交易双方有相同钥匙，但是任意一方被黑，两方都有危险，而非对称加密，最经典的rsa解决了这个问题。 rsa算法原理： 首先找出两个质数 p和q 计算   n &#x3D; p * q φ(n) &#x3D; (p-1)  * (q-1)      这个函数又叫欧拉函数 公钥e    1 &lt; e &lt; φ(n)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rsa加密算法详解">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/rsa%E5%8A%A0%E5%AF%86/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="我们日常传输数据想防止hacker的攻击，需要加密算法，常见的：对称加密，非对称加密，对称加密相对于交易双方有相同钥匙，但是任意一方被黑，两方都有危险，而非对称加密，最经典的rsa解决了这个问题。 rsa算法原理： 首先找出两个质数 p和q 计算   n &#x3D; p * q φ(n) &#x3D; (p-1)  * (q-1)      这个函数又叫欧拉函数 公钥e    1 &lt; e &lt; φ(n)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-01T19:12:10.000Z">
+<meta property="article:modified_time" content="2020-05-01T19:25:12.490Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/01/rsa%E5%8A%A0%E5%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+ 
+
+
+
+
+
+ <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</span></p>
+<p class="p1"><span class="s1">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+</span></p>
+<p class="p1"><span class="s1">
+</span></p>
+<p class="p1"><span class="s1">
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/rsa%E5%8A%A0%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rsa加密算法详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-01 14:12:10 / Modified: 14:25:12" itemprop="dateCreated datePublished" datetime="2020-05-01T14:12:10-05:00">2020-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我们日常传输数据想防止hacker的攻击，需要加密算法，常见的：对称加密，非对称加密，对称加密相对于交易双方有相同钥匙，但是任意一方被黑，两方都有危险，而非对称加密，最经典的rsa解决了这个问题。</p>
+<p>rsa算法原理：</p>
+<p>首先找出两个质数 p和q</p>
+<p>计算   n = p * q</p>
+<p>φ(n) = (p-1)  * (q-1)      这个函数又叫欧拉函数</p>
+<p>公钥e    1 &lt; e &lt; φ(n)   在这个范围取出一个整数，并且 e 和 φ(n) 互质</p>
+<p>私钥d    (e * d ) / φ(n)  = x  ······ 1       (x是几无所谓，余数必须是1，比如 φ(n)是20 e是3 那么d就是7)</p>
+<p> 加密  m^e / n =x  ······  c     (这几个x都代表任意数的商，在这里面没有直接意义，可以忽略不看，这三个x也都不相等)</p>
+<p> 解密  c^d  / n =x   ······ m   (可以从数学上证明，经过这一系列的计算，得到结果的余数一定是m)<br>————————————————<br>版权声明：本文为CSDN博主「狱蝶阿一」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/weixin_42510528/java/article/details/80765361" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42510528/java/article/details/80765361</a></p>
+<p><strong>一、RSA加密简介</strong>（ssh典型用此算法）</p>
+<p>　　RSA加密是一种非对称加密。可以在不直接传递密钥的情况下，完成解密。这能够确保信息的安全性，避免了直接传递密钥所造成的被破解的风险。是由一对密钥来进行加解密的过程，分别称为公钥和私钥。两者之间有数学相关，该加密算法的原理就是对一极大整数做因数分解的困难性来保证安全性。通常个人保存私钥，公钥是公开的（可能同时多人持有）。</p>
+<p>　　</p>
+<p><strong>二、RSA加密、签名区别</strong></p>
+<p>　　加密和签名都是为了安全性考虑，但略有不同。常有人问加密和签名是用私钥还是公钥？其实都是对加密和签名的作用有所混淆。简单的说，加密是为了防止信息被泄露，而签名是为了防止信息被篡改。这里举2个例子说明。</p>
+<p><strong>第一个场景</strong>：战场上，B要给A传递一条消息，内容为某一指令。</p>
+<p>RSA的加密过程如下：</p>
+<p>（1）A生成一对密钥（公钥和私钥），私钥不公开，A自己保留。公钥为公开的，任何人可以获取。</p>
+<p>（2）A传递自己的公钥给B，B用A的公钥对消息进行加密。</p>
+<p>（3）A接收到B加密的消息，利用A自己的私钥对消息进行解密。</p>
+<p>　　在这个过程中，只有2次传递过程，第一次是A传递公钥给B，第二次是B传递加密消息给A，即使都被敌方截获，也没有危险性，因为只有A的私钥才能对消息进行解密，防止了消息内容的泄露。</p>
+<p>所以.ssh文件中私钥千万别动，那是你唯一救命稻草。但是公钥随便给别人。 </p>
+<p><strong>第二个场景：</strong>A收到B发的消息后，需要进行回复“收到”。</p>
+<p>RSA签名的过程如下：</p>
+<p>（1）A生成一对密钥（公钥和私钥），私钥不公开，A自己保留。公钥为公开的，任何人可以获取。</p>
+<p>（2）A用自己的私钥对消息加签，形成签名，并将加签的消息和消息本身一起传递给B。</p>
+<p>（3）B收到消息后，在获取A的公钥进行验签，如果验签出来的内容与消息本身一致，证明消息是A回复的。</p>
+<p>　　在这个过程中，只有2次传递过程，第一次是A传递加签的消息和消息本身给B，第二次是B获取A的公钥，即使都被敌方截获，也没有危险性，因为只有A的私钥才能对消息进行签名，即使知道了消息内容，也无法伪造带签名的回复给B，防止了消息内容的篡改。</p>
+<p>　　但是，综合两个场景你会发现，第一个场景虽然被截获的消息没有泄露，但是可以利用截获的公钥，将假指令进行加密，然后传递给A。第二个场景虽然截获的消息不能被篡改，但是消息的内容可以利用公钥验签来获得，并不能防止泄露。所以在实际应用中，要根据情况使用，也可以同时使用加密和签名，比如A和B都有一套自己的公钥和私钥，当A要给B发送消息时，先用B的公钥对消息加密，再对加密的消息使用A的私钥加签名，达到既不泄露也不被篡改，更能保证消息的安全性。</p>
+<p>　　<strong>总结：公钥加密、私钥解密、私钥签名、公钥验签。</strong></p>
+<p><strong>三、RSA加密、签名的方法，代码例子如下：</strong></p>
+<p>java实现此算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">  1 import java.io.ByteArrayOutputStream;&#x2F;&#x2F;都是javase6以后的包</span><br><span class="line">  2 import java.security.KeyFactory;</span><br><span class="line">  3 import java.security.KeyPair;</span><br><span class="line">  4 import java.security.KeyPairGenerator;</span><br><span class="line">  5 import java.security.PrivateKey;</span><br><span class="line">  6 import java.security.PublicKey;</span><br><span class="line">  7 import java.security.Signature;</span><br><span class="line">  8 import java.security.spec.PKCS8EncodedKeySpec;</span><br><span class="line">  9 import java.security.spec.X509EncodedKeySpec;</span><br><span class="line"> 10 import javax.crypto.Cipher;</span><br><span class="line"> 11 import org.apache.commons.codec.binary.Base64;</span><br><span class="line"> 12 </span><br><span class="line"> 13 public class TestRSA &#123;</span><br><span class="line"> 14 </span><br><span class="line"> 15     &#x2F;**</span><br><span class="line"> 16      * RSA最大加密明文大小</span><br><span class="line"> 17      *&#x2F;</span><br><span class="line"> 18     private static final int MAX_ENCRYPT_BLOCK &#x3D; 117;</span><br><span class="line"> 19 </span><br><span class="line"> 20     &#x2F;**</span><br><span class="line"> 21      * RSA最大解密密文大小</span><br><span class="line"> 22      *&#x2F;</span><br><span class="line"> 23     private static final int MAX_DECRYPT_BLOCK &#x3D; 128;</span><br><span class="line"> 24 </span><br><span class="line"> 25     &#x2F;**</span><br><span class="line"> 26      * 获取密钥对</span><br><span class="line"> 27      * </span><br><span class="line"> 28      * @return 密钥对</span><br><span class="line"> 29      *&#x2F;</span><br><span class="line"> 30     public static KeyPair getKeyPair() throws Exception &#123;</span><br><span class="line"> 31         KeyPairGenerator generator &#x3D; KeyPairGenerator.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 32         generator.initialize(1024);</span><br><span class="line"> 33         return generator.generateKeyPair();</span><br><span class="line"> 34     &#125;</span><br><span class="line"> 35 </span><br><span class="line"> 36     &#x2F;**</span><br><span class="line"> 37      * 获取私钥</span><br><span class="line"> 38      * </span><br><span class="line"> 39      * @param privateKey 私钥字符串</span><br><span class="line"> 40      * @return</span><br><span class="line"> 41      *&#x2F;</span><br><span class="line"> 42     public static PrivateKey getPrivateKey(String privateKey) throws Exception &#123;</span><br><span class="line"> 43         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 44         byte[] decodedKey &#x3D; Base64.decodeBase64(privateKey.getBytes());</span><br><span class="line"> 45         PKCS8EncodedKeySpec keySpec &#x3D; new PKCS8EncodedKeySpec(decodedKey);</span><br><span class="line"> 46         return keyFactory.generatePrivate(keySpec);</span><br><span class="line"> 47     &#125;</span><br><span class="line"> 48 </span><br><span class="line"> 49     &#x2F;**</span><br><span class="line"> 50      * 获取公钥</span><br><span class="line"> 51      * </span><br><span class="line"> 52      * @param publicKey 公钥字符串</span><br><span class="line"> 53      * @return</span><br><span class="line"> 54      *&#x2F;</span><br><span class="line"> 55     public static PublicKey getPublicKey(String publicKey) throws Exception &#123;</span><br><span class="line"> 56         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 57         byte[] decodedKey &#x3D; Base64.decodeBase64(publicKey.getBytes());</span><br><span class="line"> 58         X509EncodedKeySpec keySpec &#x3D; new X509EncodedKeySpec(decodedKey);</span><br><span class="line"> 59         return keyFactory.generatePublic(keySpec);</span><br><span class="line"> 60     &#125;</span><br><span class="line"> 61     </span><br><span class="line"> 62     &#x2F;**</span><br><span class="line"> 63      * RSA加密</span><br><span class="line"> 64      * </span><br><span class="line"> 65      * @param data 待加密数据</span><br><span class="line"> 66      * @param publicKey 公钥</span><br><span class="line"> 67      * @return</span><br><span class="line"> 68      *&#x2F;</span><br><span class="line"> 69     public static String encrypt(String data, PublicKey publicKey) throws Exception &#123;</span><br><span class="line"> 70         Cipher cipher &#x3D; Cipher.getInstance(&quot;RSA&quot;);</span><br><span class="line"> 71         cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span><br><span class="line"> 72         int inputLen &#x3D; data.getBytes().length;</span><br><span class="line"> 73         ByteArrayOutputStream out &#x3D; new ByteArrayOutputStream();</span><br><span class="line"> 74         int offset &#x3D; 0;</span><br><span class="line"> 75         byte[] cache;</span><br><span class="line"> 76         int i &#x3D; 0;</span><br><span class="line"> 77         &#x2F;&#x2F; 对数据分段加密</span><br><span class="line"> 78         while (inputLen - offset &gt; 0) &#123;</span><br><span class="line"> 79             if (inputLen - offset &gt; MAX_ENCRYPT_BLOCK) &#123;</span><br><span class="line"> 80                 cache &#x3D; cipher.doFinal(data.getBytes(), offset, MAX_ENCRYPT_BLOCK);</span><br><span class="line"> 81             &#125; else &#123;</span><br><span class="line"> 82                 cache &#x3D; cipher.doFinal(data.getBytes(), offset, inputLen - offset);</span><br><span class="line"> 83             &#125;</span><br><span class="line"> 84             out.write(cache, 0, cache.length);</span><br><span class="line"> 85             i++;</span><br><span class="line"> 86             offset &#x3D; i * MAX_ENCRYPT_BLOCK;</span><br><span class="line"> 87         &#125;</span><br><span class="line"> 88         byte[] encryptedData &#x3D; out.toByteArray();</span><br><span class="line"> 89         out.close();</span><br><span class="line"> 90         &#x2F;&#x2F; 获取加密内容使用base64进行编码,并以UTF-8为标准转化成字符串</span><br><span class="line"> 91         &#x2F;&#x2F; 加密后的字符串</span><br><span class="line"> 92         return new String(Base64.encodeBase64String(encryptedData));</span><br><span class="line"> 93     &#125;</span><br><span class="line"> 94 </span><br><span class="line"> 95     &#x2F;**</span><br><span class="line"> 96      * RSA解密</span><br><span class="line"> 97      * </span><br><span class="line"> 98      * @param data 待解密数据</span><br><span class="line"> 99      * @param privateKey 私钥</span><br><span class="line">100      * @return</span><br><span class="line">101      *&#x2F;</span><br><span class="line">102     public static String decrypt(String data, PrivateKey privateKey) throws Exception &#123;</span><br><span class="line">103         Cipher cipher &#x3D; Cipher.getInstance(&quot;RSA&quot;);</span><br><span class="line">104         cipher.init(Cipher.DECRYPT_MODE, privateKey);</span><br><span class="line">105         byte[] dataBytes &#x3D; Base64.decodeBase64(data);</span><br><span class="line">106         int inputLen &#x3D; dataBytes.length;</span><br><span class="line">107         ByteArrayOutputStream out &#x3D; new ByteArrayOutputStream();</span><br><span class="line">108         int offset &#x3D; 0;</span><br><span class="line">109         byte[] cache;</span><br><span class="line">110         int i &#x3D; 0;</span><br><span class="line">111         &#x2F;&#x2F; 对数据分段解密</span><br><span class="line">112         while (inputLen - offset &gt; 0) &#123;</span><br><span class="line">113             if (inputLen - offset &gt; MAX_DECRYPT_BLOCK) &#123;</span><br><span class="line">114                 cache &#x3D; cipher.doFinal(dataBytes, offset, MAX_DECRYPT_BLOCK);</span><br><span class="line">115             &#125; else &#123;</span><br><span class="line">116                 cache &#x3D; cipher.doFinal(dataBytes, offset, inputLen - offset);</span><br><span class="line">117             &#125;</span><br><span class="line">118             out.write(cache, 0, cache.length);</span><br><span class="line">119             i++;</span><br><span class="line">120             offset &#x3D; i * MAX_DECRYPT_BLOCK;</span><br><span class="line">121         &#125;</span><br><span class="line">122         byte[] decryptedData &#x3D; out.toByteArray();</span><br><span class="line">123         out.close();</span><br><span class="line">124         &#x2F;&#x2F; 解密后的内容 </span><br><span class="line">125         return new String(decryptedData, &quot;UTF-8&quot;);</span><br><span class="line">126     &#125;</span><br><span class="line">127 </span><br><span class="line">128     &#x2F;**</span><br><span class="line">129      * 签名</span><br><span class="line">130      * </span><br><span class="line">131      * @param data 待签名数据</span><br><span class="line">132      * @param privateKey 私钥</span><br><span class="line">133      * @return 签名</span><br><span class="line">134      *&#x2F;</span><br><span class="line">135     public static String sign(String data, PrivateKey privateKey) throws Exception &#123;</span><br><span class="line">136         byte[] keyBytes &#x3D; privateKey.getEncoded();</span><br><span class="line">137         PKCS8EncodedKeySpec keySpec &#x3D; new PKCS8EncodedKeySpec(keyBytes);</span><br><span class="line">138         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line">139         PrivateKey key &#x3D; keyFactory.generatePrivate(keySpec);</span><br><span class="line">140         Signature signature &#x3D; Signature.getInstance(&quot;MD5withRSA&quot;);</span><br><span class="line">141         signature.initSign(key);</span><br><span class="line">142         signature.update(data.getBytes());</span><br><span class="line">143         return new String(Base64.encodeBase64(signature.sign()));</span><br><span class="line">144     &#125;</span><br><span class="line">145 </span><br><span class="line">146     &#x2F;**</span><br><span class="line">147      * 验签</span><br><span class="line">148      * </span><br><span class="line">149      * @param srcData 原始字符串</span><br><span class="line">150      * @param publicKey 公钥</span><br><span class="line">151      * @param sign 签名</span><br><span class="line">152      * @return 是否验签通过</span><br><span class="line">153      *&#x2F;</span><br><span class="line">154     public static boolean verify(String srcData, PublicKey publicKey, String sign) throws Exception &#123;</span><br><span class="line">155         byte[] keyBytes &#x3D; publicKey.getEncoded();</span><br><span class="line">156         X509EncodedKeySpec keySpec &#x3D; new X509EncodedKeySpec(keyBytes);</span><br><span class="line">157         KeyFactory keyFactory &#x3D; KeyFactory.getInstance(&quot;RSA&quot;);</span><br><span class="line">158         PublicKey key &#x3D; keyFactory.generatePublic(keySpec);</span><br><span class="line">159         Signature signature &#x3D; Signature.getInstance(&quot;MD5withRSA&quot;);</span><br><span class="line">160         signature.initVerify(key);</span><br><span class="line">161         signature.update(srcData.getBytes());</span><br><span class="line">162         return signature.verify(Base64.decodeBase64(sign.getBytes()));</span><br><span class="line">163     &#125;</span><br><span class="line">164 </span><br><span class="line">165     public static void main(String[] args) &#123;</span><br><span class="line">166         try &#123;</span><br><span class="line">167             &#x2F;&#x2F; 生成密钥对</span><br><span class="line">168             KeyPair keyPair &#x3D; getKeyPair();</span><br><span class="line">169             String privateKey &#x3D; new String(Base64.encodeBase64(keyPair.getPrivate().getEncoded()));</span><br><span class="line">170             String publicKey &#x3D; new String(Base64.encodeBase64(keyPair.getPublic().getEncoded()));</span><br><span class="line">171             System.out.println(&quot;私钥:&quot; + privateKey);</span><br><span class="line">172             System.out.println(&quot;公钥:&quot; + publicKey);</span><br><span class="line">173             &#x2F;&#x2F; RSA加密</span><br><span class="line">174             String data &#x3D; &quot;待加密的文字内容&quot;;</span><br><span class="line">175             String encryptData &#x3D; encrypt(data, getPublicKey(publicKey));</span><br><span class="line">176             System.out.println(&quot;加密后内容:&quot; + encryptData);</span><br><span class="line">177             &#x2F;&#x2F; RSA解密</span><br><span class="line">178             String decryptData &#x3D; decrypt(encryptData, getPrivateKey(privateKey));</span><br><span class="line">179             System.out.println(&quot;解密后内容:&quot; + decryptData);</span><br><span class="line">180             </span><br><span class="line">181             &#x2F;&#x2F; RSA签名</span><br><span class="line">182             String sign &#x3D; sign(data, getPrivateKey(privateKey));</span><br><span class="line">183             &#x2F;&#x2F; RSA验签</span><br><span class="line">184             boolean result &#x3D; verify(data, getPublicKey(publicKey), sign);</span><br><span class="line">185             System.out.print(&quot;验签结果:&quot; + result);</span><br><span class="line">186         &#125; catch (Exception e) &#123;</span><br><span class="line">187             e.printStackTrace();</span><br><span class="line">188             System.out.print(&quot;加解密异常&quot;);</span><br><span class="line">189         &#125;</span><br><span class="line">190     &#125;</span><br><span class="line">191 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　PS:RSA加密对明文的长度有所限制，规定需加密的明文最大长度=密钥长度-11（单位是字节，即byte），所以在<strong>加密和解密的过程中需要分块进行</strong>。而密钥默认是1024位，即1024位/8位-11=128-11=117字节。所以默认加密前的明文最大长度117字节，解密密文最大长度为128字。那么为啥两者相差11字节呢？是因为RSA加密使用到了填充模式（padding），即内容不足117字节时会自动填满，用到填充模式自然会占用一定的字节，而且这部分字节也是参与加密的。</p>
+<p>　　密钥长度的设置就是上面例子的第32行。可自行调整，当然非对称加密随着密钥变长，安全性上升的同时性能也会有所下降。</p>
+<p>改编自：<a href="https://www.cnblogs.com/pcheng/p/9629621.html，https://blog.csdn.net/weixin_42510528/java/article/details/80765361" target="_blank" rel="noopener">https://www.cnblogs.com/pcheng/p/9629621.html，https://blog.csdn.net/weixin_42510528/java/article/details/80765361</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/29/python400%E9%9B%864/" rel="prev" title="python400集4">
+      <i class="fa fa-chevron-left"></i> python400集4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/03/python400%E9%9B%865/" rel="next" title="python400集5">
+      python400集5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"></span></p>
+<p class="p1"><span class="s1"> 
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jackson"
+      src="/uploads/hacker.png">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+ 
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+ 
+
+
+
+
+
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+ 
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+<span class="Apple-converted-space"> </span></span></p>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>带你学c带你飞day02 | Jackson Blog</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+ <meta name="description" content="P11123456scanf(&quot;%d&quot;, &amp;i);&#x2F;&#x2F;地址if(i&gt;0)printf(&quot;true&quot;);&#x2F;&#x2F;这样缩进可以if()&amp;#123;&amp;#125;else if()&amp;#123;&amp;#125;else&amp;#123;&amp;#125;  P121234567switch(表达式)&amp;#123;	case 常量表达式1：语句或代码块；	case ...	.	.	default: 语句或代码块；&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带你学c带你飞day02">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9Eday02/index.html">
+<meta property="og:site_name" content="Jackson Blog">
+<meta property="og:description" content="P11123456scanf(&quot;%d&quot;, &amp;i);&#x2F;&#x2F;地址if(i&gt;0)printf(&quot;true&quot;);&#x2F;&#x2F;这样缩进可以if()&amp;#123;&amp;#125;else if()&amp;#123;&amp;#125;else&amp;#123;&amp;#125;  P121234567switch(表达式)&amp;#123;	case 常量表达式1：语句或代码块；	case ...	.	.	default: 语句或代码块；&amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/678327/201507/311507392043956.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/678327/201507/311507530171602.png">
+<meta property="article:published_time" content="2020-04-21T02:06:09.000Z">
+<meta property="article:modified_time" content="2020-04-21T03:35:12.580Z">
+<meta property="article:author" content="Jackson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images0.cnblogs.com/blog2015/678327/201507/311507392043956.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9Eday02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+ 
+
+
+
+
+
+ <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jackson Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</span></p>
+<p class="p1"><span class="s1">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+</span></p>
+<p class="p1"><span class="s1">
+</span></p>
+<p class="p1"><span class="s1">
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9Eday02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          带你学c带你飞day02
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-20 21:06:09 / Modified: 22:35:12" itemprop="dateCreated datePublished" datetime="2020-04-20T21:06:09-05:00">2020-04-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="P11"><a href="#P11" class="headerlink" title="P11"></a>P11</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);<span class="comment">//地址</span></span><br><span class="line"><span class="keyword">if</span>(i&gt;<span class="number">0</span>)</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"true"</span>);<span class="comment">//这样缩进可以</span></span><br><span class="line"><span class="keyword">if</span>()&#123;&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>()&#123;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="P12"><a href="#P12" class="headerlink" title="P12"></a>P12</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">	<span class="keyword">case</span> 常量表达式<span class="number">1</span>：语句或代码块；</span><br><span class="line">	<span class="keyword">case</span> ...</span><br><span class="line">	.</span><br><span class="line">	.</span><br><span class="line">	<span class="keyword">default</span>: 语句或代码块；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> ch;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;ch);</span><br><span class="line">  <span class="keyword">switch</span>(ch)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>: <span class="built_in">printf</span>(<span class="string">"hi"</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'B'</span>: <span class="built_in">printf</span>(<span class="string">"hey"</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>: <span class="built_in">printf</span>(<span class="string">"hello"</span>); </span><br><span class="line">    <span class="keyword">break</span>;<span class="comment">//不加break会导致所有case都输出了</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(has = <span class="string">"a"</span>)&#123;&#125;<span class="comment">//永远对，所以应该 ==</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="P13"><a href="#P13" class="headerlink" title="P13"></a>P13</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getchar</span><span class="params">()</span></span>;<span class="comment">//读取下一个字符</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>()&#123;&#125;<span class="comment">//判断后循环</span></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">while</span>()；<span class="comment">//先循环在判断，while后面有语句</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="P14"><a href="#P14" class="headerlink" title="P14"></a>P14</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(循环初始;循环结束;循环条件)&#123;&#125;</span><br><span class="line"><span class="built_in">_Bool</span> flag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, <span class="keyword">int</span> j=<span class="number">0</span>;i&lt;j;i++,j++)&#123;&#125;<span class="comment">//也可以</span></span><br><span class="line">若想 <span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">10</span>;<span class="comment">//则需 gcc -std=c99 test.c &amp;&amp; ./a.out</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="P15"><a href="#P15" class="headerlink" title="P15"></a>P15</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> 在<span class="built_in">printf</span>中是%lld</span><br><span class="line">  <span class="keyword">break</span>跳出当前循环，<span class="keyword">continue</span>直接进入下一次循环</span><br></pre></td></tr></table></figure>
+
+<h2 id="P16"><a href="#P16" class="headerlink" title="P16"></a>P16</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">5</span>, j;</span><br><span class="line">j=++i;<span class="comment">//i=6=j</span></span><br><span class="line">i=<span class="number">5</span>;</span><br><span class="line">j=i++;<span class="comment">//i=6,j=5</span></span><br><span class="line"><span class="comment">//i++先把值给j，再加加</span></span><br><span class="line"><span class="comment">//多语句，逗号表达式</span></span><br><span class="line"><span class="comment">/* 语法：表达式1，...表达式n</span></span><br><span class="line"><span class="comment">表达式从左到右计算</span></span><br><span class="line"><span class="comment">	逗号表达式作为一个整体，值为最后一个表达式也就是n的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">a=(b=<span class="number">3</span>, (c=b+<span class="number">4</span>) +<span class="number">5</span>)<span class="comment">//a=12</span></span><br><span class="line">exp1 ? exp2:exp3  <span class="comment">//if exp1==true , exp2, else: exp3</span></span><br><span class="line"><span class="comment">//goto 跳到标签</span></span><br><span class="line">  <span class="keyword">goto</span> A;<span class="comment">//谨慎用goto</span></span><br><span class="line">  A: <span class="built_in">printf</span>(<span class="string">"a"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="P17"><a href="#P17" class="headerlink" title="P17"></a>P17</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组 类型 数组名[元素个数]</span></span><br><span class="line"><span class="comment">/*数组不能动态定义</span></span><br><span class="line"><span class="comment">int 自动初始化为0，最好手动初始化，要不然栈内空间会错误赋值，可能。</span></span><br><span class="line"><span class="comment">int a[5]=&#123;[2]=2,[3]=3&#125;;//这样可以</span></span><br><span class="line"><span class="comment">sizeof(a);//计算数组内存大小</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="P18"><a href="#P18" class="headerlink" title="P18"></a>P18</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//动态数组</span></span><br><span class="line">c99, c支持可变长数组，数组长度在运行时才被决定</span><br><span class="line">  新编译， 在数组越界不会出现错误，好像</span><br></pre></td></tr></table></figure>
+
+<h2 id="P19"><a href="#P19" class="headerlink" title="P19"></a>P19</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">字符串数组定义：</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">3</span>]=&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'\0'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> s[]=&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'\0'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> s[]=&#123;<span class="string">"ab"</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> s[]=<span class="string">"ab"</span>;</span><br><span class="line">字符串处理函数：&lt;<span class="built_in">string</span>.h&gt;内</span><br><span class="line">  <span class="built_in">strcat</span>：连接字符串</span><br><span class="line">  <span class="built_in">strcmp</span>:比较字符串</span><br><span class="line">  <span class="built_in">strcpy</span>:拷贝字符串</span><br><span class="line">  <span class="built_in">strlen</span>:获取长度</span><br><span class="line">  <span class="built_in">strncat</span>(str1,str2,<span class="number">5</span>):（以下<span class="number">3</span>个受限，功能一样）<span class="comment">//str2拷贝5个字符到str1</span></span><br><span class="line">  <span class="built_in">strcmp</span>:</span><br><span class="line">  <span class="built_in">strncpy</span>:</span><br><span class="line"><span class="keyword">sizeof</span>(str);<span class="comment">//n</span></span><br><span class="line"><span class="built_in">strlen</span>(str);<span class="comment">//n-1, 因为strlen不包括那个\n，sizeof包括</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-字符串基础"><a href="#1-字符串基础" class="headerlink" title="1 字符串基础"></a>1 字符串基础</h3><p>字符串是一种重要的数据类型，有零个或多个字符组成的有限串行。</p>
+<p>定义子串: 串中任意个连续的字符组成的子序列，并规定空串是任意串的子串，任意串也是其自身的子串，如字符串”adereegfb”中它本身、空串、诸如”ader”连续的字符串都是它的子串。子序列则不要求字符连续，但顺序要与主串保持一致，若有”abcd”与”ad”则两者的最长公共子序列为”ad”。在动态规划中计算最长公共子序列和最长公共子串中一定要能区分这两个概念!</p>
+<p>在C语言中并没有显示的字符串类型，它有如下两种风格的字符串：</p>
+<ul>
+<li>字符串常量: 以双引号扩起来的字符序列，规定所有的字符串常量都由编译器自动在末尾添加一个空字符</li>
+<li>字符数组: 末尾添加了’\0’的字符数组，一般需要显示在末尾添加空字符。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char c1[]&#x3D;&#123;&#39;c&#39;,&#39;+&#39;,&#39;+&#39;&#125;; &#x2F;&#x2F;末尾没有空字符</span><br><span class="line">char c2[]&#x3D;&#123;&#39;c&#39;,&#39;+&#39;,&#39;+&#39;，&#39;\0&#39;&#125;; &#x2F;&#x2F;末尾显示添加空字符</span><br><span class="line">char c3&#x3D;&quot;c++&quot;; &#x2F;&#x2F;末尾自动添加空字符</span><br></pre></td></tr></table></figure>
+
+<p>注意到通过字符数组初始化和字符串常量初始化并不完全相同的。因为字符串常量包含一个额外的空字符用于结束字符串，用它来初始化创建数组时，末尾会自动添加空字符。所以c1的长度是3，后两者的长度是4，并且字符数组c2和c3都被称为C风格字符串，而字符数组c1不是C风格字符串。</p>
+<p>规定C风格的字符串都是以NULL空字符(‘\0’)作为终结符结尾。由于它是字符串的终止符，但它本身并不是字符串的一部分，所以字符串的长度并不包括NULL字节，如strlen函数。而且C标准库中提供的各种字符串处理函数都要求提供的字符串或字符数组必须以空字符结束，否则会出现不可预料的结果。如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char c[]&#x3D;&#123;&#39;c&#39;,&#39;+&#39;,&#39;+&#39;&#125;;</span><br><span class="line">printf(&quot;%d\n&quot;,strlen(c)); &#x2F;&#x2F;结果输出为6，这是不正确的</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-标准库中的字符串处理函数"><a href="#2-标准库中的字符串处理函数" class="headerlink" title="2 标准库中的字符串处理函数"></a>2 标准库中的字符串处理函数</h3><p>C标准库中头文件<code>定义了两组字符串函数(C++中用</code>表示)。</p>
+<ul>
+<li>第一组函数的名字以str开头，它主要处理以’\0’结尾的字符串，所以字符串内部不能包含任何’\0’字符。</li>
+<li>第二组函数的名字以mem开头，主要考虑非字符串内部含有零值的情形，它能够处理任意的字节序列，操作与字符串函数类似</li>
+<li>除了memmove函数外，其他函数都没定义重叠对象间的行为</li>
+</ul>
+<p>为了提高程序在不同机器上的移植性，利用typedef定义新类型名，即<code>typedef unsigned int size_t</code>。 程序员必须要保证目标字符数组的空间能够足以存放结果字符串(有可能存在字符数组溢出的危险)</p>
+<ul>
+<li>字符串处理类</li>
+</ul>
+<p>如下表为字符串处理函数说明，变量s,t的类型是<code>char *</code>, cs和ct的类型是<code>const char *</code>;n的类型为<code>size_t</code>,c的类型为<code>int</code>。</p>
+<p><img src="https://images0.cnblogs.com/blog2015/678327/201507/311507392043956.png" alt="img"></p>
+<ul>
+<li>内存操作类</li>
+</ul>
+<p>按照字节数组的方式操作对象，提供一个高效的函数接口(提供字节流的访问)。其中s,t类型是<code>void *</code> ， cs，ct的类型是<code>const void *</code>; n类型为<code>size_t</code>，c类型为<code>int</code>。</p>
+<p><img src="https://images0.cnblogs.com/blog2015/678327/201507/311507530171602.png" alt="img"></p>
+<p>总结起来，头文件&lt; string.h&gt;实现了如下函数：</p>
+<ul>
+<li>长度计算、长度不受限和受限的复制、连接和比较版本的函数</li>
+<li>基础字符串查找(查找一个字符、一组字符和匹配一个子串)、高级字符串查找（查找子串前缀位置、返回token标记）</li>
+<li>处理任意字节序列的内存操作如复制、比较、查找和初始化等函数</li>
+</ul>
+<h2 id="P20"><a href="#P20" class="headerlink" title="P20"></a>P20</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二维数组矩阵</span></span><br><span class="line">和一维数组一样</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9E/" rel="prev" title="带你学c带你飞（day1）小甲鱼视频">
+      <i class="fa fa-chevron-left"></i> 带你学c带你飞（day1）小甲鱼视频
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9Eday03/" rel="next" title="带你学c带你飞day03">
+      带你学c带你飞day03 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"></span></p>
+<p class="p1"><span class="s1"> 
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P11"><span class="nav-number">1.</span> <span class="nav-text">P11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P12"><span class="nav-number">2.</span> <span class="nav-text">P12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P13"><span class="nav-number">3.</span> <span class="nav-text">P13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P14"><span class="nav-number">4.</span> <span class="nav-text">P14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P15"><span class="nav-number">5.</span> <span class="nav-text">P15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P16"><span class="nav-number">6.</span> <span class="nav-text">P16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P17"><span class="nav-number">7.</span> <span class="nav-text">P17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P18"><span class="nav-number">8.</span> <span class="nav-text">P18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P19"><span class="nav-number">9.</span> <span class="nav-text">P19</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-字符串基础"><span class="nav-number">9.1.</span> <span class="nav-text">1 字符串基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-标准库中的字符串处理函数"><span class="nav-number">9.2.</span> <span class="nav-text">2 标准库中的字符串处理函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P20"><span class="nav-number">10.</span> <span class="nav-text">P20</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jackson"
+      src="/uploads/hacker.png">
+  <p class="site-author-name" itemprop="name">Jackson</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+ 
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+ 
+
+
+
+
+
+
+
+<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+ 
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+<span class="Apple-converted-space"> </span></span></p>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
