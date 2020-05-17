@@ -173,6 +173,249 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network3/" class="post-title-link" itemprop="url">物理层详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 16:08:25 / Modified: 16:17:24" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:25-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label0" target="_blank" rel="noopener">一、物理层概述</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label1" target="_blank" rel="noopener">二、数据通信基础知识</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_0" target="_blank" rel="noopener">2.1、数据通信模型</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_1" target="_blank" rel="noopener">2.2、常用术语</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_2" target="_blank" rel="noopener">3.3、信道与传输方式</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_3" target="_blank" rel="noopener">3.4、基带信号与带通信号　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_1_4" target="_blank" rel="noopener">3.5、编码与调制</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label2" target="_blank" rel="noopener">四、物理层下的传输媒体</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_2_0" target="_blank" rel="noopener">4.1、导向传输媒体</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_2_1" target="_blank" rel="noopener">4.2、非导向传输媒体</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label3" target="_blank" rel="noopener">五、信道复用技术</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_0" target="_blank" rel="noopener">5.1、频分复用　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_1" target="_blank" rel="noopener">5.2、时分复用</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_2" target="_blank" rel="noopener">5.3、统计时分复用</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_3_3" target="_blank" rel="noopener">5.4、波分复用</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label4" target="_blank" rel="noopener">六、数字传输系统</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_label5" target="_blank" rel="noopener">七、宽带接入技术</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_0" target="_blank" rel="noopener">7.1、电话网线拨号接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_1" target="_blank" rel="noopener">7.2、数字用户线接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_2" target="_blank" rel="noopener">7.3、光纤同轴混合网接入　　HFC</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_3" target="_blank" rel="noopener">7.4、光纤接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_4" target="_blank" rel="noopener">7.5、以太网接入</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_lab2_5_5" target="_blank" rel="noopener">7.6、无线网接入　</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>　　在前面说了一下，计算机网络的大概内容，没有去深刻的去了解它，这篇文章给大家分享一下物理层！</p>
+<p>　　我们知道ISO模型是七层，TCP/IP模型是五层，而tcp/ip协议只将七层概括为4层，我们将学习其中的5层， 应用层(包括表示层，会话层)、传输层、网络层、数据链路层、物理层。</p>
+<p>　　　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153021184-102798648.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、物理层概述"><a href="#一、物理层概述" class="headerlink" title="一、物理层概述"></a>一、物理层概述</h1><p>　　解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体  （通俗的讲就是传输的数据是通过何种方式，以什么形态传输的，</p>
+<p>　　　　类似于我们说话，别人是如何听到的，通过的就是声波，计算机传数据，又是怎么样吧数据带过去的呢，）</p>
+<p>　　主要任务：确定与传输媒体的接口的一些特性，即 机械特性、电气特性、功能特性、过程特性　　　　</p>
+<p>　　　　机械特性：接口形状、大小、引线数量等，通俗讲也就是网线的水晶头的设计等一些规定</p>
+<p>　　　　电气特性：规定电压范围（-5V~+5V）等 在网线中传输时所用的电压范围</p>
+<p>　　　　过程特性：也称规程特性 规定建立连接时各个相关部件的工作步骤</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、数据通信基础知识"><a href="#二、数据通信基础知识" class="headerlink" title="二、数据通信基础知识"></a>二、数据通信基础知识</h1><h2 id="2-1、数据通信模型"><a href="#2-1、数据通信模型" class="headerlink" title="2.1、数据通信模型"></a>2.1、数据通信模型</h2><p>　　源点、发送器、接受器、终点 和 源系统 – 传输系统 — 目的系统 的对应关系</p>
+<p>　　PC机要发的数据会转换为010101，数字比特流就代表着010101传给调制解调器，调制解调器将数字比特流转换为模拟信号，通过公用电话网传到很远的目的地去。然后逆过来解析成原数据就行了</p>
+<p>　　提到的数字比特流、模拟信号之后会讲解到，这样，我们就大概了解了数据通信的模型了，大概知道数据是转换成哪种形势传到目标中。</p>
+<p>　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153517544-1952982953.png" alt="img"></p>
+<h2 id="2-2、常用术语"><a href="#2-2、常用术语" class="headerlink" title="2.2、常用术语"></a>2.2、常用术语</h2><p>　　1）通信的目的是传送信息</p>
+<p>　　2）·数据：运送信息的实体</p>
+<p>　　3）信号：数据的电气或电磁的表现 通俗讲就是通过电气或者电磁的一些表现形式来代表我们的数据，这就是我们说的信号，电气、电磁，比如一些电磁波等</p>
+<p>　　　　数字信号：代表消息的参数的取值是离散的，下面就是数字信号，通过一高一低，不连续的波。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153847887-585324346.png" alt="img"></p>
+<p>　　　　模拟信号：代表信息的参数的取值是连续的，下面就是模拟信号， 有高有低，但是是连续的波</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928153943262-1594686726.png" alt="img"></p>
+<p>　　4）码元：在使用时间域的波形表示数字信号时，则代表不同离散数值的基本波形就成为码元。 太理论的语言，看了跟没看一样，其实码元很简单，看下图，在数字信号中，带着0或者1的波形就是一个码元</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928154015731-1780488422.png" alt="img"></p>
+<p>　　　　码元长度：每一个码元都是通过一段时间间隔来表示， 这个时间间隔就是码元长度</p>
+<p>　　　　注意：1码元可以携带nbit的信息量，并不是1码元就只能代表1bit的信息量，可以是nbit，也就是说上面1码元就代表0或1这样1bit的信息量.</p>
+<h2 id="3-3、信道与传输方式"><a href="#3-3、信道与传输方式" class="headerlink" title="3.3、信道与传输方式"></a>3.3、信道与传输方式</h2><p>　　信道一般表示向一个方向传送信息的媒体，所以平常说的通信线路往往包含一条发送信息的信道和一条接受信息的信道</p>
+<p>　　1）单工通信：也就是单向通信，只能有一个方向的通信而没有反方向的交互</p>
+<p>　　2）半双工通信：也就是能双向通信，但是不能同时通信，一方在发送数据，另一方必须接受数据，等待对方发完，然后自己才能发，例如，电视里面军方的对讲机，都是只有等待一方说完话，另外一方才能说话。</p>
+<p>　　3）全双工通信：相对于半双工通信来讲，就是能同时通信且双向，例如，电话。</p>
+<h2 id="3-4、基带信号与带通信号"><a href="#3-4、基带信号与带通信号" class="headerlink" title="3.4、基带信号与带通信号　"></a>3.4、基带信号与带通信号　</h2><p>　　1）基带信号：即基本频带信号，来自信源的信号，像计算机输出的代表各种文字或图像文件的数据信号都属于基带信号，基带信号就是发出的直接表达了要传输的信息的信号，</p>
+<p>　　　　例如：我们说话的声波就是基带信号</p>
+<p>　　2）带通信号：把基带信号经过载波调制后，把信号的频率范围移到较高的频段以便在信道中传输</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928154648106-521641122.png" alt="img"></p>
+<h2 id="3-5、编码与调制"><a href="#3-5、编码与调制" class="headerlink" title="3.5、编码与调制"></a>3.5、编码与调制</h2><p>　　1）编码：人们将数字数据转换为数字信号的过程称为编码</p>
+<p>　　2）调制：将数字数据转换为模拟信号的过程称为调制</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、物理层下的传输媒体"><a href="#四、物理层下的传输媒体" class="headerlink" title="四、物理层下的传输媒体"></a>四、物理层下的传输媒体</h1><p>通俗的讲：前面我们知道了数据是以什么形态传输的，但是我们不知道该种形态就在什么上面传输呢？分两种：导向传输媒体 和 非导向传输媒体</p>
+<h2 id="4-1、导向传输媒体"><a href="#4-1、导向传输媒体" class="headerlink" title="4.1、导向传输媒体"></a>4.1、导向传输媒体</h2><p>　　1）双绞线</p>
+<p>　　　　屏蔽双绞线STP</p>
+<p>　　　　无屏蔽双绞线UTP</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928155420465-1000958623.png" alt="img"></p>
+<p>　　2）同轴电缆　　</p>
+<p>　　　　50Ω同轴电缆，用于数字传输，由于多用于基带传输，也叫基带同轴电缆</p>
+<p>　　　　75Ω同轴电缆，用于模拟传输，即宽带同轴电缆</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928155543497-1494848775.png" alt="img"></p>
+<p>　　这两种普通的网线（直通线 和 交叉线）</p>
+<p>　　直通线：具体的线序制作方法是：双绞线夹线顺序是两边一致，统一都是：1：白橙、2：橙、3：白绿、4：蓝、5：白蓝、6：绿、7：白棕、8：棕。</p>
+<p>　　　　　　注意两端都是同样的线序且一一对应。这就是100M网线的做线标准，即568B标准，也就是我们平常所说的正线或标准线、直通线</p>
+<p>　　　　　　直通线应用最广泛，这种类型的以太网电缆用来实现下列连接:</p>
+<p>　　　　　　　　　　　　主机到交换机或集线器</p>
+<p>　　　　　　　　　　　　路由器到交换机或集线器</p>
+<p>　　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928160036403-1105963817.png" alt="img"></p>
+<p>　　交叉线：就相当于直通线是一一对应，而交叉线就不一样，1对3 2对4 等</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928160444981-555480473.png" alt="img"></p>
+<p>　　3）光缆</p>
+<p>　　　　　　光纤长什么样子</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164129762-976198451.png" alt="img"></p>
+<p>　　　　工作原理：就是通过光的折射，在里面传播，直到光出来。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164244903-2082728975.png" alt="img"></p>
+<p>　　　　具体光在其中是怎么传播的，看下图就知道了。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164436528-106149375.png" alt="img"></p>
+<p>　　　　光纤分多模光纤和单模光纤</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164544715-243944076.png" alt="img"></p>
+<p>　　　　区别：单模光纤指只能传输一种电磁波模式，多模光纤只可以传输多个电磁波模式，实际上单模光纤和多模光纤之分，也就是纤芯的直径之分。单模光纤细，多模光纤粗。</p>
+<p>　　　　　　　　在有线电视网络中使用的光纤全是单模光纤，其传播特性好，带宽可达10GHZ，可以在一根光纤中传输60套PAL—D电视节目</p>
+<h2 id="4-2、非导向传输媒体"><a href="#4-2、非导向传输媒体" class="headerlink" title="4.2、非导向传输媒体"></a>4.2、非导向传输媒体</h2><p>　　非导向传输媒体就是指自由空间，其中的电磁波传输被称为无线传输。 通俗来讲，就是通过无线，不用那种固态的媒体，在空气中自由传播，在空气中传播的波很多，如何分别呢，就是通过每个波的频率不一样</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928164858403-296019497.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、信道复用技术"><a href="#五、信道复用技术" class="headerlink" title="五、信道复用技术"></a>五、信道复用技术</h1><p>复用：通过下图，就可以很容易知道什么是复用，就是同时公用一条信道来进行传输信息。信道复用技术：频分复用、时分复用、统计时分复用、波分复用</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165056325-582172267.png" alt="img"></p>
+<h2 id="5-1、频分复用"><a href="#5-1、频分复用" class="headerlink" title="5.1、频分复用　"></a>5.1、频分复用　</h2><p>　　用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带(这个是一个范围，例如下图)</p>
+<p>　　所有用户在同样的时间占用不同的带宽资源（请注意，这里的“带宽”是频率带宽而不是数据的发送速率）</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165309731-1554676708.png" alt="img"></p>
+<p>　　分析：</p>
+<p>　　　　　发送数据：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165554965-2121202453.png" alt="img"></p>
+<p>　　　　接受数据：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165651590-1775475222.png" alt="img"></p>
+<h2 id="5-2、时分复用"><a href="#5-2、时分复用" class="headerlink" title="5.2、时分复用"></a>5.2、时分复用</h2><p>　　按时间轮流分配带宽资源给不同的用户，每个用户只在分配的时间里使用线路传输数据。</p>
+<p>　　 通俗来讲：就是每个用户都有自己的时间段来传输数据，没到自己时间就需要等待，直到属于自己的传输时间段的到来，周期性的周转</p>
+<p>　　特点：在信道中，每个资源都有先后顺序，并且不会乱，一直是按照一定的顺序传输数据。</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928165917106-1763923698.png" alt="img"></p>
+<p>　　　　缺点：计算机数据的突发性质，用户对分配的子信道的利用率不高，因为不知道什么时候通道就会发送数据，可能别的通道都不发数据，就一个通道需要发送，但也还是要等待一定的时间，即使信道是空的。</p>
+<h2 id="5-3、统计时分复用"><a href="#5-3、统计时分复用" class="headerlink" title="5.3、统计时分复用"></a>5.3、统计时分复用</h2><p>　　是对时分复用的一种改进，它能完善时分复用 对信道的利用率不高这个缺点，</p>
+<p>　　原理：就是在每个要发送的数据上面做一个特殊的标记，而不是通过一个多路复用器，周期性的发送数据， 给每个要发送的数据</p>
+<p>　　　　　　放入STDM帧中，让STDM帧带着数据发送过去，而接受的话，只需要分析STDM帧就行了。 </p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170152044-1587738372.png" alt="img"></p>
+<p>　　</p>
+<p>　　注意：时分复用 又称同步时分复用，统计十分复用 称为 异布时分复用。 因为某一个用户所占用的时间间隙并不是周期性的出现。</p>
+<h2 id="5-4、波分复用"><a href="#5-4、波分复用" class="headerlink" title="5.4、波分复用"></a>5.4、波分复用</h2><p>　　波分复用就是光的频分复用</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170314012-1426093120.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、数字传输系统"><a href="#六、数字传输系统" class="headerlink" title="六、数字传输系统"></a>六、数字传输系统</h1><p>PCM(脉冲编码调制)技术：将模拟电话信号转换为数字信号的一种技术。 </p>
+<p>有两种PCM技术：北美的24路PCM(T1) 1.544M/s、 欧洲的30路PCM(E1) 我国采用的是E1 2.048M/S</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7607633.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、宽带接入技术"><a href="#七、宽带接入技术" class="headerlink" title="七、宽带接入技术"></a>七、宽带接入技术</h1><h2 id="7-1、电话网线拨号接入"><a href="#7-1、电话网线拨号接入" class="headerlink" title="7.1、电话网线拨号接入"></a>7.1、电话网线拨号接入</h2><p>　　老式的拨号联网方式，因为速度最高只能达到56kb/s</p>
+<p>　　工作原理：通过将计算机发出的信号转换为音频信号，因为要通过电话网线来传播数据，所以这样转换来转换去，达到的上网速率太低，虽然方便，但实用性不强， 不能同时上网和打电话。</p>
+<h2 id="7-2、数字用户线接入"><a href="#7-2、数字用户线接入" class="headerlink" title="7.2、数字用户线接入"></a>7.2、数字用户线接入</h2><p>　　DSL：数字用户线 　xDSL：用数字技术对现有的模拟电话用户线进行改造，在DSL上加了x 表示不同的数字用户线技术。</p>
+<p>　　这个其实就是改善了电话网拨号接入的缺点，能同时上网和打电话，并且网速提高了很多，</p>
+<p>　　工作原理：xDSL 技术就把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。这样一来，就互不干扰了。通过频率的高低来区分是电话还是网络数据。</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170831919-1988875426.png" alt="img">)<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928170902294-304477157.png" alt="img"></p>
+<p>　　举例：ADSL的接入网 </p>
+<p>　　　　上行和下行带宽做成不对称的。指的是上行信道和下行信道，具体看DMT调制技术中的解释。　　　　　　　　　　　　　　　　　　　</p>
+<p>　　　　ADSL 在用户线的两端各安装一个 ADSL 调制解调器。目的就是为了区分低频和高频</p>
+<p>　　　　我国目前采用的方案是离散多音调 DMT (Discrete Multi-Tone)调制技术</p>
+<p>　　　　　　DMT 调制技术采用频分复用的方法，把 40 kHz 以上一直到 1.1 MHz 的高端频谱划分为许多的子信道，其中 25 个子信道用于上行信道，而 249个子信道用于下行信道。</p>
+<p>　　　　　　每个子信道占据 4 kHz 带宽,并使用不同的载波（即不同的音调）进行数字调制。这种做法相当于在一对用户线上使用许多小的调制解调器并行地传送数据。</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171121044-1619475971.png" alt="img"></p>
+<p>　　　　　　接入网的工作原理图</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171153575-1390296441.png" alt="img"></p>
+<h2 id="7-3、光纤同轴混合网接入-HFC"><a href="#7-3、光纤同轴混合网接入-HFC" class="headerlink" title="7.3、光纤同轴混合网接入　　HFC"></a>7.3、光纤同轴混合网接入　　HFC</h2><p>　　CATV：树形拓扑结构的同轴电缆网络，采用模拟技术的频分复用对电视节目的单向传输，</p>
+<p>　　HFC对CATV的基础上进行改造，从而开发出的一种居民宽带接入网。</p>
+<p>　　特点：</p>
+<p>　　　　HFC网的主干线路采用光纤，将原CATV网中的同轴电缆主干部分该换位光纤，并且使用的是模拟光纤技术，</p>
+<p>　　　　每个家庭都要安装一个用户接口盒</p>
+<p>　　　　 HFC 网具有比 CATV 网更宽的频谱，且具有双向传输功能</p>
+<p>　　　　光纤结点(光分配结点)，同轴电缆分别是那些，看下图</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928171355934-927349929.png" alt="img"></p>
+<h2 id="7-4、光纤接入"><a href="#7-4、光纤接入" class="headerlink" title="7.4、光纤接入"></a>7.4、光纤接入</h2><p>　　FTTx（光纤到…）：实现宽带居民接入网的方案，这里字母x可代表不同的意思</p>
+<p>　　FTTH：光纤到家，光纤一直铺设到用户家庭可能是居民接入网最后的解决方法(155Mb/s)</p>
+<p>　　FTTB：光纤到大楼，光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。</p>
+<p>　　FTTC：从路边到各用户可使用星形结构双绞线作为传输媒体(155Mb/s)</p>
+<h2 id="7-5、以太网接入"><a href="#7-5、以太网接入" class="headerlink" title="7.5、以太网接入"></a>7.5、以太网接入</h2><p>　　局域网，大学校园、大型企业、各种政府通过内部的局域网，然后再让局域网接入到因特网。</p>
+<h2 id="7-6、无线网接入"><a href="#7-6、无线网接入" class="headerlink" title="7.6、无线网接入　"></a>7.6、无线网接入　</h2><p>　　前面都是有线接入，现在很多都使用无线联网，手机、笔记本等都用无线连，很方便</p>
+<p>　　从1G 到 2G 到 3G 到现在的 4G时代，每一代的特点不一样，马上就要出5G了。</p>
+<p>　　1G：蜂窝移动通信只能够模拟话音通信，跟那个电话网拨号接入类似，网速很慢很慢</p>
+<p>　　2G：以数字话音通信为主，也能提供短信，收发邮件，浏览网页的数据通信功能</p>
+<p>　　3G：3G时代，记得以前用的网页版QQ，就是要一直刷新也能接受信息，哈哈，</p>
+<p>　　4G：网速很快，能达到1M~2M之间的速度。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1070,71 +1313,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ccna3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/hacker.png">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/ccna3/" class="post-title-link" itemprop="url">ccna3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-10 13:28:45" itemprop="dateCreated datePublished" datetime="2020-05-10T13:28:45-05:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/10/ccna3/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1206,7 +1384,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

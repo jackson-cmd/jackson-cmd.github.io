@@ -6344,7 +6344,13 @@
   <entry>
     <title>python400集7</title>
     <url>/2020/05/03/python400%E9%9B%867/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="GUI-图形用户界面编程"><a href="#GUI-图形用户界面编程" class="headerlink" title="GUI 图形用户界面编程"></a>GUI 图形用户界面编程</h1><p>常用的 GUI 库</p>
+<p>\1. Tkinter<br> tkinter(Tk interface)是 Python 的标准 GUI 库，支持跨</p>
+<p>平台的 GUI 程序开发。tkinter 适合小型的 GUI 程序编写， 也特别适合初学者学习 GUI 编程。本书以 tkinter 为核心进 行讲解。<br> \2. wxPython</p>
+<p>wxPython 是比较流行的 GUI 库，适合大型应用程序开发， 功能强于 tkinter，整体设计框架类似于 MFC(Microsoft Foundation Classes 微软基础类库)。</p>
+<p>\3. PyQT<br> Qt 是一种开源的 GUI 库，适合大型 GUI 程序开发，PyQT</p>
+<p>是 Qt 工具包标准的 Python 实现。我们也可以使用 Qt Desginer 界面设计器快速开发 GUI 应用程序。</p>
+]]></content>
   </entry>
   <entry>
     <title>python400集5</title>
@@ -10014,6 +10020,76 @@
 <p>● 申请方面，该项目比较看重雅思/托福成绩，对拥有理工科背景的申请者会适当放宽托福口语要求，而文商科类申请者托福或雅思成绩要求就比较高。</p>
 <p><strong>2.纽约大学</strong></p>
 <p>纽约大学分别在文理学院和工学院下设置了CS的master项目。尽管如此，两个学院的CS项目排名大大不同，分别为29和70。其中，工学院的CS提供preparatory bridge courses, 是专门针对CS背景较弱的学生设置的，所以转专业申请的话，可以申请工学院的CS，难度相比文理学院的CS要低。</p>
+<h2 id="学校分层"><a href="#学校分层" class="headerlink" title="学校分层"></a>学校分层</h2><p>作者：<em>申</em>荣教育<br>链接：<a href="https://zhuanlan.zhihu.com/p/75261927" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/75261927</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p><strong>学校分档</strong></p>
+<p><img src="https://pic4.zhimg.com/v2-efbd28322aee77dda546da042d6ccc3f_b.jpg" alt="img"></p>
+<p><strong>1、哥伦比亚大学</strong></p>
+<p>哥大的 CS 系成立于 1979 年，研究的领域涵盖了 CS 领域的各个研究方向，包括计算生物学、计算机工程、算法和用户界面、安全与隐私、软件系统、计算机理论、视觉与机器人等等。共开设有 25 个研究小组和实验室。其中，实力较强的专业方向包括机器学习、安全与隐私、软件系统以及计算机理论。</p>
+<p><strong>申请特点</strong></p>
+<p>该校较为注重申请者的综合素质，需要申请者在硬件和软件方面有一定的积累。在硬件方面，GPA 85 分左右，TOEFL 100 分左右，GRE325 以上的条件拿到录取有较大的保障。</p>
+<p><strong>2、卡耐基梅隆大学</strong></p>
+<p>对于一般的美国院校来说，计算机科学只是设置为一个系，即Department of Computer Science，然而，CMU 对 CS 的建设非常有诚意，直接就开设成为了一个院——School of Computer Science。CMU 拥有数量庞大的教授队伍，多位曾获图灵奖，此华丽阵容，使得 CMU 当之无愧地成为 CS 专排第一的牛校。</p>
+<p>基于CMU研究人员的庞大，本校涵盖了计算机科学的所有研究方向，不单细致地做每一个研究方向，并且将这些研究方向的应用也有较为深入的研究。</p>
+<p><strong>申请特点</strong></p>
+<p>硕士课程有较大的面试几率。曾经有申请软件工程和游戏设计的客户收到了 CMU 的面试电话。面试的内容都非常带有本所的特色，如软件研究所注重软件项目经历，需要客户口头描述下自己的项目经历。</p>
+<p>从整体来看，CMU 比较看重研究背景。</p>
+<p><strong>3、纽约大学</strong></p>
+<p>研究内容包括算法与理论，密码学，计算生物学，计算机图形图像与用户界面，形式化方法，机器学习与知识呈现网络，科学计算等。CS 的特色在于与别系（尤其是数学系）合作非常紧密，CS 学生跨学科学习和合作的机会较多，如化学，物理，生物，神经科学等。</p>
+<p><strong>申请特点</strong></p>
+<p>NYU 开设了 MS 和 Ph.D 学位，对于 Master 的申请者，学校校求 T100，G 每部分在85%，或至少一部分达 92%；除此以外，还要求申请者掌握 C++，Java，汇编语言，操作系统等。</p>
+<p><strong>4、加利福尼亚大学洛杉矶分校</strong></p>
+<p>历史上 UCLA 的 CS 曾经一度辉煌，上到过第 6，由此可见UCLA 的强大程度。UCLA 辉煌的历史可能在于它对 Internet 的发展所作出的巨大贡献，它作为INTERNET 的先驱，地处阳光灿烂的南加州，应当成为 CS 学生的乐土。UCLA 的 CS 系很大，教授数量也很多。</p>
+<p><strong>申请特点</strong></p>
+<p>UCLA 的录取难度向来很高。外本和港本的学生在申请时会容易一些，而国内名校的学生在申请时会有一些优势。UCLA 除了看重硬件条件以外，也是非常看重申请者的研究背景。因此，如果只硬件好的学生在很多情况下也拿不到 UCLA 的录取。</p>
+<p><strong>5、伊利诺伊大学香槟分校</strong></p>
+<p>伊利诺伊大学香槟分校从美国国家科学基金获得研究经费量，年年在全美名列第一。计算机系和很多著名的公司保持着合作关系，例如拥有数百万美元的并行计算和云计算研究中心。</p>
+<p>学生有很多实践机会，着重计算机和其他学科的交叉研究。本专业的学生在毕业以后可以继续攻读与计算机科学相关的更高层次的学位课程，也可以直接就业。</p>
+<p><strong>申请特点</strong></p>
+<p>计算机系写明了对于申请学生 GPA 的要求，并且告知历年录取的学生平均 GPA 为 3.7。由此说明学校对于学生的本科硬件条件有着比较严格的要求。</p>
+<p><strong>6、西北大学</strong></p>
+<p>西北大学计算机专业研究领域包括：Artificial intelligence, Human computer interaction.,Distributed interactive systems., Theoretical computer science, Programming languages, Computer graphics and human computer interfaces, Robotics, Parallel processing, Computer architecture,Large-scale systems.</p>
+<p><strong>申请特点</strong></p>
+<p>西北大学的 CS 专业近两年，也成为那些要去综合排名前 20 的申请者的一个不错的选择。从发放的录取结果看来，该校的 CS 专业并不算很难申，而且发的录取也相对多。同时也适合非 CS 专业的学生申请，以往就看到有一些 EE的学生拿到录取。</p>
+<p><img src="https://pic1.zhimg.com/v2-b0b7af7691ced6b48a1e2ca9a65fe440_b.jpg" alt="img"></p>
+<p><strong>7、华盛顿大学圣路易斯分校</strong></p>
+<p>CS专业开设在工程与应用科学学院，总的来说工程学院确实不是WUSTI的一个强势学院，但是最近几年学校已经在大力发展。计算机科学与工程系共开设了3个研究生学位项目：计算机科学理学硕士，计算机工程理学硕士，计算机科学与工程硕士。</p>
+<p><strong>申请要求</strong></p>
+<p>GPA一般在3.3左右，GRE平均320，托福平均100分。</p>
+<p><strong>8、南加州大学</strong></p>
+<p>研究领域包括 1 Artificial Intelligence, Agents, Natural Language; 2 Databases and Information Management; 3 Graphics Games &amp; Multimedia; 4 Parallel and Distributed Computations; 5 Robotics, Brain Theory, and Computational Neuroscience; 6 Software Systems and Engineering; 7 Systems, Distributed Systems, Communication Networks; 8 Theory and Computational Sciences 八大方向。每个大的方向下设很多实验室和研究中心，分别有不同的教授带领着。</p>
+<p><strong>申请特点</strong></p>
+<p>招生人数较为庞大，这也是相对而言在专业排名前 30 的学校中它的申请难度大大低于其他高校的原因。但是随着历年来很多学生扎堆申请 USC 的 CS 专业，学校对于申请者的要求也在提高。</p>
+<p><strong>9、加利福尼亚大学尔湾分校</strong></p>
+<p>UCI 的 CS 系设置于该校的信息与计算机科学学院下，是该院最大的系。</p>
+<p>研究方面，该系涉及到了 CS 领域下在的 11 个研究方向，包括：算法与复杂性，人工智能与机器学习、生物医学信息学、计算机体系结构与嵌入式系统、计算机图形学与可视化计算、数据库与数据挖掘、网络与分布式系统、编程语言与编译、安全隐私与密码学、科学计算以及普适计算。</p>
+<p>其中，网络与系统、人工智能和计算机安全这几个方面的研究实力最为突出。</p>
+<p><strong>申请特点</strong></p>
+<p>UCI 是 UC 系列的院校里录取中国学生较多的院校之一，CS 专业更是如此，总的申请难度并不是太高，不过，就会很注重硬件成绩，GPA 3.5 左右，GRE 321以上，TOEFL 100 分以上的申请者才有较大的录取可能性。</p>
+<p><strong>10、东北大学</strong></p>
+<p>东北大学的 CS 系成立于 1982 年，设置在计算机与信息科学学院下面，从事 4 大专业领域，包括健康信息学、信息安全、网络科学、软件可靠性的研究。</p>
+<p>这 4 大专业领域又可以分为11 个研究组，包括：算法与理论、人工智能、形式化方法、人机交互、信息检索与数据挖掘、网络安全、编程语言、机器人技术、软件工程、社会网络以及系统等研究组。</p>
+<p><strong>申请特点</strong></p>
+<p>该校属于申请热门院校，被很多申请者拿到作为保底的选择。过去几年来看，它的录取标准是 GPA 3.0 以上，GRE 320分以上，TOEFL 90 分以上这样的水平，但东北的 CS 专业的申请难度已经逐年提高。</p>
+<p><img src="https://pic2.zhimg.com/v2-288cff649fcffc7fdaaf330bf382060d_b.jpg" alt="img"></p>
+<p><strong>11、雪城大学</strong></p>
+<p>雪城大学的 CS 系与 EE 系合并在同一系下，这也是作为雪城的办学特色，因为学生可以跨学科学习。学校非常重视研究能力，学生在学习过程中也有机会参与到研究项目当中。</p>
+<p>由于 EECS 合办的原因，该系的研究方向是有比较大的交叉性的，共有 11 个研究方向。其中属于 CS 领域的专业方向比较少包括：人工智能、网络安全，硬件设计和计算机体系结构。</p>
+<p><strong>申请特点</strong></p>
+<p>雪城的录取难度比第三档的其它学校要高一些，是介于第二档跟第三档间的。学校每年发放的录取非常多，门槛也较低。申请者的条件只要达到 GPA 80 分左右，GRE315以上，TOEFL 95分以上，拿到该校的录取就不难。</p>
+<p><strong>12、佛罗里达大学</strong></p>
+<p>CS设置在名为计算机信息科学与工程系下，此系同时归属两个大院，college of engineering 和college of liberal arts and science。该 department 的研究领域有：计算机图形模拟与艺术，计算机系统，数据库与信息系统，高能计算/应用算法，智能系统与计算机视觉。</p>
+<p><strong>申请特点</strong></p>
+<p>一般 GPA83 以上，GRE320 以上，TOEFL90 以上都有较大可能获得录取，并且此校有一个发AA 奖的传统，即无论硕士博士，条件相对较好的申请者都能拿到一半的学费减免。这一点对于申请硕士，希望拿到奖学金的学生来说是个好消息。</p>
+<p><strong>13、伍斯特理工学院</strong></p>
+<p>WPI 的 CS 有 37 个教授，大概方向有 6 个，分别是数据科学，生物信息与计算生物学，计算机安全，交互媒体和游戏开发，Learning Sciences &amp; Technologies， 机器人工程。研究最热门的是人工智能、人机交互和网络/分布式系统。</p>
+<p>MS 课程招生有两个方向，分别是computer/communications networks program 和 computer security。</p>
+<p><strong>申请特点</strong></p>
+<p>分数要求不算特别严格，特别是托福分数，目前看到我们有好几个案例都是托福分数不到 90 的；比较注重研究背景。这样的学校比较适合有一定的工作经验或者有比较丰富的项目经历，但是分数比较一般的学生去申请。</p>
+<p><strong>14、乔治华盛顿大学</strong></p>
+<p>GWU 的 CS 系比较小巧，主要从事 CS 专业下 8 个专业方向的研究：算法与理论、生物信息学与生物医学计算、计算机与信息安全、数字媒体、机器智能与认知、网络与移动计算、普适计算与嵌入式系统、软件工程与系统等。</p>
+<p>其中，较有实力的方面是算法与理论以及生物信息学与生物医学计算。</p>
+<p><strong>申请特点</strong></p>
+<p>GWU 的 CS 系在招生方面录取门槛非常低，堪称又一个高综合排名 AD 狂。如果你的目标是申请综百前 50 的 CS，而分数不好，GWU 会是一个好的选择。从前几年的录取来看，GPA80 分左右，GRE310 分以上，TOEFL 90 分以上的申请者拿到录取的可能性非常高。</p>
 <a id="more"></a>]]></content>
   </entry>
   <entry>
@@ -11443,6 +11519,103 @@ return result;</code></pre><p>}<br>再提交一次：<br>执行用时 1 ms, 在�
 <li>Time complexity : O(n)<em>O</em>(<em>n</em>). We iterate over A<em>A</em> with n<em>n</em> elements exactly once.</li>
 <li>Space complexity : O(1)<em>O</em>(1). Constant extra space is used.</li>
 </ul>
+<h2 id="1039-多边形三角剖分的最低得分"><a href="#1039-多边形三角剖分的最低得分" class="headerlink" title="1039. 多边形三角剖分的最低得分"></a><a href="https://leetcode-cn.com/problems/minimum-score-triangulation-of-polygon/" target="_blank" rel="noopener">1039. 多边形三角剖分的最低得分</a></h2><p>难度中等41收藏分享切换为英文关注反馈</p>
+<p>给定 <code>N</code>，想象一个凸 <code>N</code> 边多边形，其顶点按顺时针顺序依次标记为 <code>A[0], A[i], ..., A[N-1]</code>。</p>
+<p>假设您将多边形剖分为 <code>N-2</code> 个三角形。对于每个三角形，该三角形的值是顶点标记的<strong>乘积</strong>，三角剖分的分数是进行三角剖分后所有 <code>N-2</code> 个三角形的值之和。</p>
+<p>返回多边形进行三角剖分后可以得到的最低分。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[1,2,3]</span><br><span class="line">输出：6</span><br><span class="line">解释：多边形已经三角化，唯一三角形的分数为 6。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/05/03/minimum-score-triangulation-of-polygon-1.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[3,7,4,5]</span><br><span class="line">输出：144</span><br><span class="line">解释：有两种三角剖分，可能得分分别为：3*7*5 + 4*5*7 &#x3D; 245，或 3*4*5 + 3*4*7 &#x3D; 144。最低分数为 144。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：[1,3,1,4,1,5]</span><br><span class="line">输出：13</span><br><span class="line">解释：最低分数三角剖分的得分情况为 1*1*3 + 1*1*4 + 1*1*5 + 1*1*1 &#x3D; 13。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minScoreTriangulation</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=A.length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp=<span class="keyword">new</span> <span class="keyword">int</span>[l][l];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=l-<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">2</span>;j&lt;l;j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;j;k++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(dp[i][j]==<span class="number">0</span>)</span><br><span class="line">                        dp[i][j]=dp[i][k]+dp[k][j]+A[i]*A[j]*A[k];</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        dp[i][j]=Math.min(dp[i][k]+dp[k][j]+A[i]*A[j]*A[k],dp[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][l-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解题思路</p>
+<p>dp[i][j]表示从i到j序列的最低分。记底边为ij的三角形顶点为m，三角形imj将多边形分成三部分，总分即为三部分的分数和（如果m=i+1或m=j-1，则对应第一或第三部分分数为0）。<br>那么m在什么位置分数最低呢，将m从i+1到j-1遍历，分别计算dp[i][m]+A[i]<em>A[j]</em>A[m]+dp[m][j],取其中最小值即为dp[i][j]。<br>dp[i][j]=min(dp[i][m]+A[i]<em>A[j]</em>A[m]+dp[m][j]),for m in range [i+1,j-1]</p>
+<p>dp table只用到右上半部分，初始化相邻两元素序列结果为0（两元素序列不能构成三角形）；采用自底向上、自左向右的方向计算dp table。最终输出dp[0][n-1]。</p>
+<h2 id="1043-分隔数组以得到最大和"><a href="#1043-分隔数组以得到最大和" class="headerlink" title="1043. 分隔数组以得到最大和"></a><a href="https://leetcode-cn.com/problems/partition-array-for-maximum-sum/" target="_blank" rel="noopener">1043. 分隔数组以得到最大和</a></h2><p>难度中等48收藏分享切换为英文关注反馈</p>
+<p>给出整数数组 <code>A</code>，将该数组分隔为长度最多为 K 的几个（连续）子数组。分隔完成后，每个子数组的中的值都会变为该子数组中的最大值。</p>
+<p>返回给定数组完成分隔后的最大和。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：A &#x3D; [1,15,7,9,2,5,10], K &#x3D; 3</span><br><span class="line">输出：84</span><br><span class="line">解释：A 变为 [15,15,15,9,10,10,10]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ol>
+<li><code>1 &lt;= K &lt;= A.length &lt;= 500</code></li>
+<li><code>0 &lt;= A[i] &lt;= 10^6</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSumAfterPartitioning</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=A.length;</span><br><span class="line">        <span class="keyword">if</span>(l==<span class="number">0</span>||A==<span class="keyword">null</span>)<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">int</span>[] dp=<span class="keyword">new</span> <span class="keyword">int</span>[l+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> j=i-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> max=dp[i];</span><br><span class="line">            <span class="keyword">while</span>((i-j)&lt;=K &amp;&amp; j&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">                max=Math.max(A[j],max);</span><br><span class="line">                dp[i]=Math.max(dp[i],dp[j]+max*(i-j));</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[l];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法1：DP"><a href="#方法1：DP" class="headerlink" title="方法1：DP"></a>方法1：DP</h5><p><img src="https://pic.leetcode-cn.com/ddf9ff236598ff79b00e7365354cdaf961463cc78dfed7505334ad2628a60d73-e7c5ca8d4c19bed3e8652951c6f37c6.jpg" alt="e7c5ca8d4c19bed3e8652951c6f37c6.jpg"></p>
+<p><img src="https://pic.leetcode-cn.com/a49b3279d3d2e9b9d9617da384d72dbcfe395dc3a0f0d1fe6fc4e4587f2c6d12-image.png" alt="image.png"></p>
+<h2 id="1218-最长定差子序列"><a href="#1218-最长定差子序列" class="headerlink" title="1218. 最长定差子序列"></a><a href="https://leetcode-cn.com/problems/longest-arithmetic-subsequence-of-given-difference/" target="_blank" rel="noopener">1218. 最长定差子序列</a></h2><p>难度中等27收藏分享切换为英文关注反馈</p>
+<p>给你一个整数数组 <code>arr</code> 和一个整数 <code>difference</code>，请你找出 <code>arr</code> 中所有相邻元素之间的差等于给定 <code>difference</code> 的等差子序列，并返回其中最长的等差子序列的长度。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：arr &#x3D; [1,2,3,4], difference &#x3D; 1</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [1,2,3,4]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：arr &#x3D; [1,3,5,7], difference &#x3D; 1</span><br><span class="line">输出：1</span><br><span class="line">解释：最长的等差子序列是任意单个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：arr &#x3D; [1,5,7,8,5,3,4,2,1], difference &#x3D; -2</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [7,5,3,1]。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= arr.length &lt;= 10^5</code></li>
+<li><code>-10^4 &lt;= arr[i], difference &lt;= 10^4</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubsequence</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> difference)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: arr)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp=map.getOrDefault(i-difference, <span class="number">0</span>)+<span class="number">1</span>;</span><br><span class="line">            map.put(i,tmp);</span><br><span class="line">            result=Math.max(result,tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>思路<br>这道题思路比较简单，跟经典问题最长递增（减）子序列有点相似，而这道题称为最长等差子序列, 也就是说是固定公差的递增（减），相对还更简单一点。</p>
+<p>可以用dp[i]来记录以数字i为结尾的最长等差子序列的长度，那么它应该只有两种情况：</p>
+<p>dp[i] = 1 // 表示在 i 之前没有出现等差子序列<br>dp[i] = dp[i - difference] + 1 // 表示在 i 之前出现了等差子序列，长度为 dp[i - difference], 而 i 也是满足这个等差序列的，所以等差序列的长度在此基础上加 1 就可以了<br>考虑元素值会出现负数，所以用数组存放是不行的，那么可以用一个 map来维护以 i 结尾的最长等差序列的长度，所以也就不难得出如下代码：</p>
+<p>可以为下标加一个偏置，解决出现负值的情况，这是很OK，因为这道题arr[i]、difference的数据范围已经给的很明确了，而且比较小。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>计算机考虑院校</title>
+    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E8%99%91%E9%99%A2%E6%A0%A1/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+
+
+<p><strong>Carnegie Mellon University（CS专业排名第1名）</strong></p>
+<p>CMU拥有全世界最大的计算机学院，按研究方向分为很多系。申请者需具备较强的数学、编程和逻辑推理能力。</p>
+<p>如果特别想去这所学校，建议同时申请MISM Program或者MS in INI Program，他们不在计算机学院，难度相对小一些。</p>
+<p><strong>Columbia University（CS专业排名第15名）</strong></p>
+<p>哥伦比亚大学的计算机系，设置在工程与应用科学学院（School of Engineering and Applied Sciences，即SEAS），分为MS in Computer Science(MS CS)，MS in Computer Engineering (MS CE)两个项目。</p>
+<p>如果你的三围在3.6+/4.0、105+和325+，也有较强的研究背景，你可尝试申请MS CS，如果相对弱一点，可以考虑申请MS CE。</p>
+<p><strong>University of Pennsylvania（CS专业排名第19名）</strong></p>
+<p>宾大的计算机系叫做Computer and Information Science(CIS)，提供的以下硕士项目： MSE in Computer and Information Science，MSE in Computer Graphics and Game Technology，MSE in Robotics 和Master of Computer and Information Technology。宾大计算机科学在其工学院内一枝独秀，竞争非常激烈。</p>
+<p>需要注意的是宾大的申请有两轮，第一轮截止日期是当年的11月15日，第二轮截止日期是次年的3月15日，两轮申请的难度都很大。其中MCIT接受各种转专业申请。</p>
+<p><strong>Northwestern University（CS专业排名第34名）</strong></p>
+<p>西北大学的计算机专业，设置在Electrical Engineering and Computer Science系，这个系开设了三个专业，即EE, CE和CS，其中CS的申请难度最大。</p>
+<p>如果你很想去西北大学，建议可以先申请EE或CE，然后再去转专业到CS，转专业相对来说还是比较容易的。西北大学建议尽早申请，也可尝试直接申请博士，审核时会同时考虑硕士录取可能性。</p>
+<p><strong>University of California-</strong> <strong>Los Angeles（CS专业排名第13名）</strong></p>
+<p>洛杉矶的计算机系，有两种硕士学位：论文型和综合性考试型。</p>
+<p>学校对三围有明确的要求，TOEFL总分87+(写作25+，口语24+)，录取学生的平均GPA平均GPA：3.67/4.00，GRE单项平均分：V: 157 (74%); Q: 167 (95%);AW: 3.7 (41%)。</p>
+<p>另外，申请人还需要很强的计算机专业知识和研究背景</p>
+<p><strong>9. New York University（CS专业排名第30名）</strong></p>
+<p>纽约大学的研究生院，开设了计算机专业，其硕士项目有：MSCS 和 Masters in Information Systems ，大学地理位置比较好，申请人不少。另外，新加入的工学院的计算机项目比较好申请。</p>
+<p><strong>Washington University IN St. Louis（CS专业排名第40名）</strong></p>
+<p>华大的计算机专业设置在Computer Science &amp;Engineering系，这个系提供三种硕士项目，即MS CS, MS CE和MEng CSE，其中CS的申请难度最大。</p>
+<p>如果你非常想去这个学校，建议你可以先申请CE，然后去那边多选修一些CS的课程，若表现优异的话，就有机会转到CS，或者你可以选择申请MEng项目。对于本科专业是物联网等非正统CS的学生，还可以选择申请Master of Science in Information Systems (MSIS)项目，申请难度会相对小一些。这个项目需要面试，但是比较容易，网上有很多相关的面经。</p>
+<p><strong>University of Southern California（CS专业排名第20名）</strong></p>
+<p>南加州大学计算机专业，有广泛的硕士项目：MS CS；和具体的分支项目：Computer Security, Game Development, Computer Networks, Software Engineering,High Performance Computing and Simulation, Intelligent Robotics, Multimedia andCreative Technologies, Data Science.。你可以根据自己的研究背景或者喜好来选择。南加大还有专门接受转专业申请的项目，MS CS (Scientist and Engineer)，优秀学生很容易申请到。</p>
+<p>美国绝大部分学校都开设了计算机科学专业，此专业基本开设在工学院下。</p>
+<p>总的来说，计算机专业前20名的学校可分成三类：</p>
+<p>A．4个最为优秀的CS Program：Stanford，MIT，U.C.Berkeley，CMU.</p>
+<p>B．6个其他前10名的：UIUC，Cornell，U.Washington，Princeton，U.Wisconsin- Madison和 U.Texas-Austin.</p>
+<p>C．其他非常非常优秀的CS：CalTech，U.Maryland-College Park，UCLA，U.Michigan, GIT，Brown，Harvard，Yale，Purdue和 Rice.</p>
+<a id="more"></a>]]></content>
   </entry>
 </search>
