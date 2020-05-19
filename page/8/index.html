@@ -1104,7 +1104,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-17 11:29:04" itemprop="dateModified" datetime="2020-05-17T11:29:04-05:00">2020-05-17</time>
+                <time title="Modified: 2020-05-19 14:39:56" itemprop="dateModified" datetime="2020-05-19T14:39:56-05:00">2020-05-19</time>
               </span>
 
           
@@ -1622,6 +1622,240 @@ return result;</code></pre><p>}<br>再提交一次：<br>执行用时 1 ms, 在�
 <p>可以用dp[i]来记录以数字i为结尾的最长等差子序列的长度，那么它应该只有两种情况：</p>
 <p>dp[i] = 1 // 表示在 i 之前没有出现等差子序列<br>dp[i] = dp[i - difference] + 1 // 表示在 i 之前出现了等差子序列，长度为 dp[i - difference], 而 i 也是满足这个等差序列的，所以等差序列的长度在此基础上加 1 就可以了<br>考虑元素值会出现负数，所以用数组存放是不行的，那么可以用一个 map来维护以 i 结尾的最长等差序列的长度，所以也就不难得出如下代码：</p>
 <p>可以为下标加一个偏置，解决出现负值的情况，这是很OK，因为这道题arr[i]、difference的数据范围已经给的很明确了，而且比较小。</p>
+<h2 id="1269-停在原地的方案数"><a href="#1269-停在原地的方案数" class="headerlink" title="1269. 停在原地的方案数"></a><a href="https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/" target="_blank" rel="noopener">1269. 停在原地的方案数</a></h2><p>难度困难23收藏分享切换为英文关注反馈</p>
+<p>有一个长度为 <code>arrLen</code> 的数组，开始有一个指针在索引 <code>0</code> 处。</p>
+<p>每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。</p>
+<p>给你两个整数 <code>steps</code> 和 <code>arrLen</code> ，请你计算并返回：在恰好执行 <code>steps</code> 次操作以后，指针仍然指向索引 <code>0</code> 处的方案数。</p>
+<p>由于答案可能会很大，请返回方案数 <strong>模</strong> <code>10^9 + 7</code> 后的结果。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：steps &#x3D; 3, arrLen &#x3D; 2</span><br><span class="line">输出：4</span><br><span class="line">解释：3 步后，总共有 4 种不同的方法可以停在索引 0 处。</span><br><span class="line">向右，向左，不动</span><br><span class="line">不动，向右，向左</span><br><span class="line">向右，不动，向左</span><br><span class="line">不动，不动，不动</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：steps &#x3D; 2, arrLen &#x3D; 4</span><br><span class="line">输出：2</span><br><span class="line">解释：2 步后，总共有 2 种不同的方法可以停在索引 0 处。</span><br><span class="line">向右，向左</span><br><span class="line">不动，不动</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：steps &#x3D; 4, arrLen &#x3D; 2</span><br><span class="line">输出：8</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><p><code>1 &lt;= steps &lt;= 500</code></p>
+</li>
+<li><p><code>1 &lt;= arrLen &lt;= 10^6</code></p>
+<p>s: steps</p>
+<pre><code>l：经过s步，停留的坐标
+p[s][l]: 经过s步，停留在坐标l的总方案数
+arrLen: 数组长度</code></pre></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> MOD = <span class="number">1_000_000_007</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> steps, <span class="keyword">int</span> arrLen)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p[][] = <span class="keyword">new</span> <span class="keyword">int</span>[steps+<span class="number">1</span>][steps+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        p[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> s=<span class="number">1</span>; s&lt;=steps; s++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> l=<span class="number">0</span>; l &lt; Math.min(steps+<span class="number">1</span>, arrLen); l++) &#123;                        </span><br><span class="line">                <span class="keyword">if</span> (s == l) &#123;</span><br><span class="line">                    p[s][l] = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (s &lt; l) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                p[s][l] = p[s-<span class="number">1</span>][l];</span><br><span class="line">                <span class="keyword">if</span> (l-<span class="number">1</span> &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">                    p[s][l] += p[s-<span class="number">1</span>][l-<span class="number">1</span>];</span><br><span class="line">                    p[s][l] %= MOD;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (l+<span class="number">1</span> &lt; arrLen) &#123;</span><br><span class="line">                    p[s][l] += p[s-<span class="number">1</span>][l+<span class="number">1</span>];</span><br><span class="line">                    p[s][l] %= MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p[steps][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>动态规划解法三要素：
+1、最优子结构
+指针可以向左、向右、停在原地，所有最后一步可以前面的基础上往这三个方向前进，即子结构为：
+p[s-1][l], p[s-1][l-1] , p[s-1][l+1]   PS: 原地、向右、向左
+2、状态转移方程
+p[s][l] = p[s-1][l] + p[s-1][l-1] + p[s-1][l+1]
+3、边界条件
+p[0][0] = 1;
+p[s][l] = 0 if s &lt; l  
+
+问题求解：
+p[s][0]
+arrLen
+
+
+注意点：
+1、 中间结果数组，注意边界条件p[s][l] = 0 if s &lt; l  ，所以只需要定义int[steps+1][steps+1] 而不需要是int[steps+1][arrLen]，不然会超出内存限制；
+2、 结果是返回模 10^9 + 7 后的结果，p[s][l] = p[s-1][l] + p[s-1][l-1] + p[s-1][l+1]  状态方程是两两相加就要求mod，而不是三个求和之后再求mod，之前结果总有用例不过
+就是因为三个求和之后再求的mod。</code></pre><h2 id="1312-让字符串成为回文串的最少插入次数"><a href="#1312-让字符串成为回文串的最少插入次数" class="headerlink" title="1312. 让字符串成为回文串的最少插入次数"></a><a href="https://leetcode-cn.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/" target="_blank" rel="noopener">1312. 让字符串成为回文串的最少插入次数</a></h2><p>难度困难34收藏分享切换为英文关注反馈</p>
+<p>给你一个字符串 <code>s</code> ，每一次操作你都可以在字符串的任意位置插入任意字符。</p>
+<p>请你返回让 <code>s</code> 成为回文串的 <strong>最少操作次数</strong> 。</p>
+<p>「回文串」是正读和反读都相同的字符串。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;zzazz&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：字符串 &quot;zzazz&quot; 已经是回文串了，所以不需要做任何插入操作。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;mbadm&quot;</span><br><span class="line">输出：2</span><br><span class="line">解释：字符串可变为 &quot;mbdadbm&quot; 或者 &quot;mdbabdm&quot; 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;leetcode&quot;</span><br><span class="line">输出：5</span><br><span class="line">解释：插入 5 个字符后字符串变为 &quot;leetcodocteel&quot; 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;g&quot;</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;no&quot;</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 500</code></li>
+<li><code>s</code> 中所有字符都是小写字母。</li>
+</ul>
+<p>我们用 dp[i][j] 表示对于字符串 s 的子串 s[i:j]（这里的下标从 0 开始，并且 s[i:j] 包含 s 中的第 i 和第 j 个字符），最少添加的字符数量，使得 s[i:j] 变为回文串。</p>
+<p>我们从外向内考虑 s[i:j]：</p>
+<p>如果 s[i] == s[j]，那么最外层已经形成了回文，我们只需要继续考虑 s[i+1:j-1]；</p>
+<p>如果 s[i] != s[j]，那么我们要么在 s[i:j] 的末尾添加字符 s[i]，要么在 s[i:j] 的开头添加字符 s[j]，才能使得最外层形成回文。如果我们选择前者，那么需要继续考虑 s[i+1:j]；如果我们选择后者，那么需要继续考虑 s[i:j-1]。</p>
+<p>因此我们可以得到如下的状态转移方程：</p>
+<p>dp[i][j] = min(dp[i + 1][j] + 1, dp[i][j - 1] + 1)                     if s[i] != s[j]<br>dp[i][j] = min(dp[i + 1][j] + 1, dp[i][j - 1] + 1, dp[i + 1][j - 1])   if s[i] == s[j]<br>边界条件为：</p>
+<p>dp[i][j] = 0   if i &gt;= j<br>注意该动态规划为区间动态规划，需要注意 dp[i][j] 的计算顺序。一种可行的方法是，我们递增地枚举子串 s[i:j] 的长度 span = j - i + 1，再枚举起始位置 i，通过 j = i + span - 1 得到 j 的值并计算 dp[i][j]。这样的计算顺序可以保证在计算 dp[i][j] 时，状态转移方程中的状态 dp[i + 1][j]，dp[i][j - 1] 和 dp[i + 1][j - 1] 均已计算过。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minInsertions</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">int</span>[][] dp=<span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> span = <span class="number">2</span>; span &lt;= n; ++span) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - span; ++i) &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i + span - <span class="number">1</span>;</span><br><span class="line">                dp[i][j] = Math.min(dp[i + <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i) == s.charAt(j)) &#123;</span><br><span class="line">                    dp[i][j] = Math.min(dp[i][j], dp[i + <span class="number">1</span>][j - <span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="509-斐波那契数"><a href="#509-斐波那契数" class="headerlink" title="509. 斐波那契数"></a><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. 斐波那契数</a></h2><p>难度简单118收藏分享切换为英文关注反馈</p>
+<p><strong>斐波那契数</strong>，通常用 <code>F(n)</code> 表示，形成的序列称为<strong>斐波那契数列</strong>。该数列由 <code>0</code> 和 <code>1</code> 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F(0) &#x3D; 0,   F(1) &#x3D; 1</span><br><span class="line">F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1.</span><br></pre></td></tr></table></figure>
+
+<p>给定 <code>N</code>，计算 <code>F(N)</code>。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：2</span><br><span class="line">输出：1</span><br><span class="line">解释：F(2) &#x3D; F(1) + F(0) &#x3D; 1 + 0 &#x3D; 1.</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：3</span><br><span class="line">输出：2</span><br><span class="line">解释：F(3) &#x3D; F(2) + F(1) &#x3D; 1 + 1 &#x3D; 2.</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：4</span><br><span class="line">输出：3</span><br><span class="line">解释：F(4) &#x3D; F(3) + F(2) &#x3D; 2 + 1 &#x3D; 3.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>0 ≤ <code>N</code> ≤ 30</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    private Integer[] cache &#x3D; new Integer[31];</span><br><span class="line"></span><br><span class="line">    public int fib(int N) &#123;</span><br><span class="line">        if (N &lt;&#x3D; 1) &#123;</span><br><span class="line">            return N;</span><br><span class="line">        &#125;</span><br><span class="line">        cache[0] &#x3D; 0;</span><br><span class="line">        cache[1] &#x3D; 1;</span><br><span class="line">        return memoize(N);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int memoize(int N) &#123;</span><br><span class="line">      if (cache[N] !&#x3D; null) &#123;</span><br><span class="line">          return cache[N];</span><br><span class="line">      &#125;</span><br><span class="line">      cache[N] &#x3D; memoize(N-1) + memoize(N-2);</span><br><span class="line">      return memoize(N);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-Recursion"><a href="#Approach-1-Recursion" class="headerlink" title="Approach 1: Recursion"></a>Approach 1: Recursion</h4><p><strong>Intuition</strong></p>
+<p>Use recursion to compute the Fibonacci number of a given integer.</p>
+<p><img src="https://leetcode.com/problems/fibonacci-number/Figures/509/fibonacciRecursion5.png" alt="fib(5) Recursion diagram"></p>
+<p><em>Figure 1. An example tree representing what <code>fib(5)</code> would look like</em></p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Check if the provided input value, N, is less than or equal to 1. If true, return N.</li>
+<li>Otherwise, the function <code>fib(int N)</code> calls itself, with the result of the 2 previous numbers being added to each other, passed in as the argument. This is derived directly from the <code>recurrence relation</code>: Fn=Fn−1+Fn−2<em>F**n</em>=<em>F*</em>n<em>−1+</em>F*<em>n</em>−2</li>
+<li>Do this until all numbers have been computed, then return the resulting answer.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/uoCAvhCh/shared" frameborder="0" width="100%" height="191" name="uoCAvhCh" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(2N)<em>O</em>(2<em>N</em>). This is the slowest way to solve the <code>Fibonacci Sequence</code> because it takes exponential time. The amount of operations needed, for each level of recursion, grows exponentially as the depth approaches <code>N</code>.</li>
+<li>Space complexity : O(N)<em>O</em>(<em>N</em>). We need space proportionate to <code>N</code> to account for the max size of the stack, in memory. This stack keeps track of the function calls to <code>fib(N)</code>. This has the potential to be bad in cases that there isn’t enough physical memory to handle the increasingly growing stack, leading to a <code>StackOverflowError</code>. The <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/StackOverflowError.html" target="_blank" rel="noopener">Java docs</a> have a good explanation of this, describing it as an error that occurs because an application recurses too deeply.</li>
+</ul>
+<hr>
+<h4 id="Approach-2-Bottom-Up-Approach-using-Memoization"><a href="#Approach-2-Bottom-Up-Approach-using-Memoization" class="headerlink" title="Approach 2: Bottom-Up Approach using Memoization"></a>Approach 2: Bottom-Up Approach using Memoization</h4><p><strong>Intuition</strong></p>
+<p>Improve upon the recursive option by using iteration, still solving for all of the sub-problems and returning the answer for N, using already computed Fibonacci values. In using a bottom-up approach, we can iteratively compute and store the values, only returning once we reach the result.</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>If <code>N</code> is less than or equal to 1, return <code>N</code></li>
+<li>Otherwise, iterate through <code>N</code>, storing each computed answer in an array along the way.</li>
+<li>Use this array as a reference to the 2 previous numbers to calculate the current Fibonacci number.</li>
+<li>Once we’ve reached the last number, return it’s Fibonacci number.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/uEUpwCPg/shared" frameborder="0" width="100%" height="361" name="uEUpwCPg" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(N)<em>O</em>(<em>N</em>). Each number, starting at 2 up to and including <code>N</code>, is visited, computed and then stored for O(1)<em>O</em>(1)access later on.</li>
+<li>Space complexity : O(N)<em>O</em>(<em>N</em>). The size of the data structure is proportionate to <code>N</code>.</li>
+</ul>
+<hr>
+<h4 id="Approach-3-Top-Down-Approach-using-Memoization"><a href="#Approach-3-Top-Down-Approach-using-Memoization" class="headerlink" title="Approach 3: Top-Down Approach using Memoization"></a>Approach 3: Top-Down Approach using Memoization</h4><p><strong>Intuition</strong></p>
+<p>Solve for all of the sub-problems, use memoization to store the pre-computed answers, then return the answer for N. We will leverage recursion, but in a smarter way by not repeating the work to calculate existing values.</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Check if <code>N &lt;= 1</code>. If it is, return <code>N</code>.</li>
+<li>Call and return <code>memoize(N)</code></li>
+<li>If <code>N</code> exists in the map, return the cached value for <code>N</code></li>
+<li>Otherwise set the value of <code>N</code>, in our mapping, to the value of <code>memoize(N-1) + memoize(N-2)</code></li>
+</ul>
+<iframe src="https://leetcode.com/playground/T6ZdXXX4/shared" frameborder="0" width="100%" height="395" name="T6ZdXXX4" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(N)<em>O</em>(<em>N</em>). Each number, starting at 2 up to and including <code>N</code>, is visited, computed and then stored for O(1)<em>O</em>(1)access later on.</li>
+<li>Space complexity : O(N)<em>O</em>(<em>N</em>). The size of the stack in memory is proportionate to <code>N</code>.</li>
+</ul>
+<hr>
+<h4 id="Approach-4-Iterative-Top-Down-Approach"><a href="#Approach-4-Iterative-Top-Down-Approach" class="headerlink" title="Approach 4: Iterative Top-Down Approach"></a>Approach 4: Iterative Top-Down Approach</h4><p><strong>Intuition</strong></p>
+<p>Let’s get rid of the need to use all of that space and instead use the minimum amount of space required. We can achieve O(1)<em>O</em>(1)space complexity by only storing the value of the two previous numbers and updating them as we iterate to <code>N</code>.</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Check if <code>N &lt;= 1</code>, if it is then we should return <code>N</code>.</li>
+<li>Check if <code>N == 2</code>, if it is then we should return <code>1</code> since <code>N</code> is 2 and <code>fib(2-1) + fib(2-2)</code> equals <code>1 + 0 = 1</code>.</li>
+<li>To use an iterative approach, we need at least 3 variables to store each state <code>fib(N)</code>, <code>fib(N-1)</code> and <code>fib(N-2)</code>.</li>
+<li>Preset the initial values:<ul>
+<li>Initialize <code>current</code> with 0.</li>
+<li>Initialize <code>prev1</code> with 1, since this will represent <code>fib(N-1)</code> when computing the current value.</li>
+<li>Initialize <code>prev2</code> with 1, since this will represent <code>fib(N-2)</code> when computing the current value.</li>
+</ul>
+</li>
+<li>Iterate, incrementally by 1, all the way up to and including <code>N</code>. Starting at 3, since <code>0</code>, <code>1</code> and <code>2</code> are pre-computed.</li>
+<li>Set the <code>current</code> value to <code>fib(N-1) + fib(N-2)</code> because that is the value we are currently computing.</li>
+<li>Set the <code>prev2</code> value to <code>fib(N-1)</code>.</li>
+<li>Set the <code>prev1</code> value to <code>current_value</code>.</li>
+<li>When we reach <code>N+1</code>, we will exit the loop and return the previously set <code>current</code> value.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/pM6EDZh2/shared" frameborder="0" width="100%" height="412" name="pM6EDZh2" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(N)<em>O</em>(<em>N</em>). Each value from <code>2 to N</code> will be visited at least once. The time it takes to do this is directly proportionate to <code>N</code> where <code>N</code> is the <code>Fibonacci Number</code> we are looking to compute.</li>
+<li>Space complexity : O(1)<em>O</em>(1). This requires 1 unit of Space for the integer <code>N</code> and 3 units of Space to store the computed values (<code>curr</code>, <code>prev1</code> and <code>prev2</code>) for every loop iteration. The amount of Space doesn’t change so this is constant Space complexity.</li>
+</ul>
+<hr>
+<h4 id="Approach-5-Matrix-Exponentiation"><a href="#Approach-5-Matrix-Exponentiation" class="headerlink" title="Approach 5: Matrix Exponentiation"></a>Approach 5: Matrix Exponentiation</h4><p><strong>Intuition</strong></p>
+<p>Use Matrix Exponentiation to get the Fibonacci number from the element at (0, 0) in the resultant matrix.</p>
+<p>In order to do this we can rely on the matrix equation for the Fibonacci sequence, to find the <code>Nth</code> Fibonacci number: (1  11  0)n=( F(n+1)     F(n) F(n)     F(n−1))(1110)<em>n</em>=(<em>F</em>(<em>n</em>+1)<em>F</em>(<em>n</em>)<em>F</em>(<em>n</em>)<em>F</em>(<em>n</em>−1))</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Check if <code>N</code> is less than or equal to 1. If it is, return <code>N</code>.</li>
+<li>Use a recursive function, <code>matrixPower</code>, to calculate the power of a given matrix <code>A</code>. The power will be <code>N-1</code>, where <code>N</code> is the <code>Nth Fibonacci number</code>.</li>
+<li>The <code>matrixPower</code> function will be performed for <code>N/2</code> of the Fibonacci numbers.</li>
+<li>Within <code>matrixPower</code>, call the <code>multiply</code> function to multiply 2 matrices.</li>
+<li>Once we finish doing the calculations, return <code>A[0][0]</code> to get the <code>Nth</code> Fibonacci number.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/y9EwghPh/shared" frameborder="0" width="100%" height="500" name="y9EwghPh" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(log⁡N)<em>O</em>(log<em>N</em>). By halving the <code>N</code> value in every <code>matrixPower</code>‘s call to itself, we are halving the work needed to be done.</li>
+<li>Space complexity : O(log⁡N)<em>O</em>(log<em>N</em>). The size of the stack in memory is proportionate to the function calls to <code>matrixPower</code> plus the memory used to account for the matrices which takes up constant space.</li>
+</ul>
+<hr>
+<h4 id="Approach-6-Math"><a href="#Approach-6-Math" class="headerlink" title="Approach 6: Math"></a>Approach 6: Math</h4><p><strong>Intuition</strong> Using the <code>golden ratio</code>, a.k.a <code>Binet&#39;s forumula</code>: φ=1+52≈1.6180339887….<em>φ</em>=21+5≈1.6180339887….</p>
+<p>Here’s a <a href="http://demonstrations.wolfram.com/GeneralizedFibonacciSequenceAndTheGoldenRatio/" target="_blank" rel="noopener">link</a> to find out more about how the Fibonacci sequence and the golden ratio work.</p>
+<p>We can derive the most efficient solution to this problem using only constant time and constant space!</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Use the <code>golden ratio</code> formula to calculate the <code>Nth</code> Fibonacci number.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/vgmYRSh2/shared" frameborder="0" width="100%" height="157" name="vgmYRSh2" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity : O(1)<em>O</em>(1). Constant time complexity since we are using no loops or recursion and the time is based on the result of performing the calculation using <code>Binet&#39;s formula</code>.</li>
+<li>Space complexity : O(1)<em>O</em>(1). The space used is the space needed to create the variable to store the <code>golden ratio</code> formula.</li>
+</ul>
+<h4 id="面试题-17-16-按摩师"><a href="#面试题-17-16-按摩师" class="headerlink" title="面试题 17.16. 按摩师"></a><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/" target="_blank" rel="noopener">面试题 17.16. 按摩师</a></h4><p>难度简单98收藏分享切换为英文关注反馈</p>
+<p>一个有名的按摩师会收到源源不断的预约请求，每个预约都可以选择接或不接。在每次预约服务之间要有休息时间，因此她不能接受相邻的预约。给定一个预约请求序列，替按摩师找到最优的预约集合（总预约时间最长），返回总的分钟数。</p>
+<p><strong>注意：</strong>本题相对原题稍作改动</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： [1,2,3,1]</span><br><span class="line">输出： 4</span><br><span class="line">解释： 选择 1 号预约和 3 号预约，总时长 &#x3D; 1 + 3 &#x3D; 4。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： [2,7,9,3,1]</span><br><span class="line">输出： 12</span><br><span class="line">解释： 选择 1 号预约、 3 号预约和 5 号预约，总时长 &#x3D; 2 + 9 + 1 &#x3D; 12。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： [2,1,4,5,3,1,1,3]</span><br><span class="line">输出： 12</span><br><span class="line">解释： 选择 1 号预约、 3 号预约、 5 号预约和 8 号预约，总时长 &#x3D; 2 + 4 + 3 + 3 &#x3D; 12。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">massage</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> premax=<span class="number">0</span>;<span class="comment">//记录上一个max</span></span><br><span class="line">        <span class="keyword">int</span> curmax=<span class="number">0</span>;<span class="comment">//当前max</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i:nums)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp=curmax;</span><br><span class="line">            curmax=Math.max(premax+i, curmax);<span class="comment">//取当时max还是之前max加上目前值</span></span><br><span class="line">            premax=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> curmax;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>《程序员面试金典（第 6 版）》独家授权<img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/11/logo20190828-02.png" alt="img"></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/09/30/book_2.jpg" alt="img"></p>
+<p>本书是原谷歌资深面试官的经验之作，帮助了许多想要加入脸书、苹果、谷歌等 IT 名企的求职者拿到 Dream offer。本专题的 100+ 编程面试题是在原书基础上精心挑选出来的，帮助你轻松应战 IT 名企技术面试。</p>
 
       
     </div>
