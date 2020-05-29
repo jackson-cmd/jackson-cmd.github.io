@@ -9058,7 +9058,87 @@
 <p>返回锯齿形层次遍历如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [20,9],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(TreeNode node, <span class="keyword">int</span> level, List&lt;List&lt;Integer&gt;&gt; results)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (level &gt;= results.size()) &#123;</span><br><span class="line">      LinkedList&lt;Integer&gt; newLevel = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">      newLevel.add(node.val);</span><br><span class="line">      results.add(newLevel);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (level % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">        results.get(level).add(node.val);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        results.get(level).add(<span class="number">0</span>, node.val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) DFS(node.left, level + <span class="number">1</span>, results);</span><br><span class="line">    <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) DFS(node.right, level + <span class="number">1</span>, results);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; results = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    DFS(root, <span class="number">0</span>, results);</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-BFS-Breadth-First-Search"><a href="#Approach-1-BFS-Breadth-First-Search" class="headerlink" title="Approach 1: BFS (Breadth-First Search)"></a>Approach 1: BFS (Breadth-First Search)</h4><p><strong>Intuition</strong></p>
+<p>Following the description of the problem, the most intuitive solution would be the <em>BFS</em> (Breadth-First Search) approach through which we traverse the tree level-by-level.</p>
+<p>The default ordering of BFS within a single level is from left to right. As a result, we should adjust the BFS algorithm a bit to generate the desired zigzag ordering.</p>
+<blockquote>
+<p>One of the keys here is to store the values that are of the same level with the <code>deque</code> (double-ended queue) data structure, where we could add new values on either end of a queue.</p>
+</blockquote>
+<p>So if we want to have the ordering of <strong>FIFO</strong> (first-in-first-out), we simply append the new elements to the <em>tail</em> of the queue, <em>i.e.</em> the late comers stand last in the queue. While if we want to have the ordering of <strong>FILO</strong> (first-in-last-out), we insert the new elements to the <em>head</em> of the queue, <em>i.e.</em> the late comers jump the queue.</p>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_BFS.png" alt="pic"></p>
+<p><strong>Algorithm</strong></p>
+<p>There are several ways to implement the BFS algorithm.</p>
+<ul>
+<li>One way would be that we run a two-level nested loop, with the <em>outer loop</em> iterating each level on the tree, and with the <em>inner loop</em> iterating each node within a single level. </li>
+<li>We could also implement BFS with a single loop though. The trick is that we append the nodes to be visited into a queue and we separate nodes of different levels with a sort of <strong>delimiter</strong> (<em>e.g.</em> an empty node). The delimiter marks the end of a level, as well as the beginning of a new level.</li>
+</ul>
+<p>Here we adopt the <em>second</em> approach above. One can start with the normal BFS algorithm, upon which we add a touch of <em>zigzag*order with the help of <code>deque</code>. For each level, we start from an empty deque container to hold all the values of the same level. Depending on the ordering of each level, *i.e.</em> either from-left-to-right or from-right-to-left, we decide at which end of the deque to add the new element:</p>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_deque.png" alt="pic"></p>
+<ul>
+<li>For the ordering of from-left-to-right (FIFO), we <em>append</em> the new element to the <strong><em>tail\</em></strong> of the queue, so that the element that comes late would get out late as well. As we can see from the above graph, given an input sequence of <code>[1, 2, 3, 4, 5]</code>, with FIFO ordering, we would have an output sequence of <code>[1, 2, 3, 4, 5]</code>.</li>
+<li>For the ordering of from-right-to-left (FILO), we <em>insert</em> the new element to the <strong><em>head\</em></strong> of the queue, so that the element that comes late would get out first. With the same input sequence of <code>[1, 2, 3, 4, 5]</code>, with FILO ordering, we would obtain an output sequence of <code>[5, 4, 3, 2, 1]</code>.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/CuzksuMQ/shared" frameborder="0" width="100%" height="500" name="CuzksuMQ" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p>Note: as an alternative approach, one can also implement the normal BFS algorithm first, which would generate the ordering of from-left-to-right for each of the levels. Then, at the end of the algorithm, we can simply <strong><em>reverse\</em></strong> the ordering of certain levels, following the zigzag steps.</p>
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li><p>Time Complexity: O(N)O(<em>N</em>), where N<em>N</em> is the number of nodes in the tree.</p>
+<ul>
+<li>We visit each node once and only once.</li>
+<li>In addition, the insertion operation on either end of the deque takes a constant time, rather than using the array/list data structure where the inserting at the head could take the O(K)O(<em>K</em>) time where K<em>K</em> is the length of the list.</li>
+</ul>
+</li>
+<li><p>Space Complexity: O(N)O(<em>N</em>) where N<em>N</em> is the number of nodes in the tree.</p>
+<ul>
+<li><p>The main memory consumption of the algorithm is the <code>node_queue</code> that we use for the loop, apart from the array that we use to keep the final output.</p>
+</li>
+<li><p>As one can see, at any given moment, the <code>node_queue</code> would hold the nodes that are <em>at most</em> across two levels. Therefore, at most, the size of the queue would be no more than 2⋅L2⋅<em>L</em>, assuming L<em>L</em> is the maximum number of nodes that might reside on the same level. Since we have a binary tree, the level that contains the most nodes could occur to consist all the leave nodes in a full binary tree, which is roughly L=N2<em>L</em>=2<em>N</em>. As a result, we have the space complexity of 2⋅N2=N2⋅2<em>N</em>=<em>N</em> in the worst case.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Approach-2-DFS-Depth-First-Search"><a href="#Approach-2-DFS-Depth-First-Search" class="headerlink" title="Approach 2: DFS (Depth-First Search)"></a>Approach 2: DFS (Depth-First Search)</h4><p><strong>Intuition</strong></p>
+<p>Though not intuitive, we could also obtain the <em>BFS</em> traversal ordering via the <em>DFS</em> (Depth-First Search) traversal in the tree.</p>
+<blockquote>
+<p>The trick is that during the DFS traversal, we maintain the results in a <em>global</em> array that is indexed by the level, <em>i.e.</em> the element <code>array[level]</code> would contain all the nodes that are at the same level. The global array would then be referred and updated at each step of DFS.</p>
+</blockquote>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_DFS.png" alt="pic"></p>
+<p>Similar with the above modified BFS algorithm, we employ the <code>deque</code> data structure to hold the nodes that are of the same level, and we alternate the insertion direction (<em>i.e.</em> either to the head or to the tail) to generate the desired output ordering.</p>
+<p><strong>Algorithm</strong></p>
+<p>Here we implement the DFS algorithm via <em>recursion</em>. We define a recursive function called <code>DFS(node, level)</code> which only takes care of the current <code>node</code> which is located at the specified <code>level</code>. Within the function, here are three steps that we would perform:</p>
+<ul>
+<li>If this is the first time that we visit any node at the <code>level</code>, <em>i.e.</em> the deque for the level does not exist, then we simply create the deque with the current node value as the initial element.</li>
+<li>If the deque for this level exists, then depending on the ordering, we insert the current node value either to the head or to the tail of the queue.</li>
+<li>At the end, we <em>recursively</em> call the function for each of its child nodes.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/5kZDYMsP/shared" frameborder="0" width="100%" height="500" name="5kZDYMsP" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p>It might go without saying that, one can also implement the DFS traversal via <strong><em>iteration\</em></strong> rather than recursion, which could be one of the followup questions by an interviewer.</p>
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time Complexity: O(N)O(<em>N</em>), where N<em>N</em> is the number of nodes in the tree.<ul>
+<li>Same as the previous BFS approach, we visit each node once and only once.</li>
+</ul>
+</li>
+<li>Space Complexity: O(H)O(<em>H</em>), where H<em>H</em> is the height of the tree, <em>i.e.</em> the number of levels in the tree, which would be roughly log⁡2Nlog2<em>N</em>.<ul>
+<li>Unlike the BFS approach, in the DFS approach, we do not need to maintain the <code>node_queue</code> data structure for the traversal.</li>
+<li>However, the function recursion would incur additional memory consumption on the <em>function call stack</em>. As we can see, the size of the call stack for any invocation of <code>DFS(node, level)</code> would be exactly the number of <code>level</code> that the current node resides on. Therefore, the space complexity of our DFS algorithm is O(log⁡2N)O(log2<em>N</em>) which is much better than the BFS approach. </li>
+</ul>
+</li>
+</ul>
+<h2 id="107-二叉树的层次遍历-II"><a href="#107-二叉树的层次遍历-II" class="headerlink" title="107. 二叉树的层次遍历 II"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. 二叉树的层次遍历 II</a></h2><p>难度简单235收藏分享切换为英文关注反馈</p>
+<p>给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）</p>
+<p>例如：<br>给定二叉树 <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<p>返回其自底向上的层次遍历为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">  [15,7],</span><br><span class="line">  [9,20],</span><br><span class="line">  [3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
@@ -11850,6 +11930,312 @@ arrLen
 <p>A．4个最为优秀的CS Program：Stanford，MIT，U.C.Berkeley，CMU.</p>
 <p>B．6个其他前10名的：UIUC，Cornell，U.Washington，Princeton，U.Wisconsin- Madison和 U.Texas-Austin.</p>
 <p>C．其他非常非常优秀的CS：CalTech，U.Maryland-College Park，UCLA，U.Michigan, GIT，Brown，Harvard，Yale，Purdue和 Rice.</p>
+<a id="more"></a>]]></content>
+  </entry>
+  <entry>
+    <title>非常全面的人工智能</title>
+    <url>/2020/05/28/ai/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h1 id="听说你想了解人工智能？这篇文章教你从零基础成为深度学习高手"><a href="#听说你想了解人工智能？这篇文章教你从零基础成为深度学习高手" class="headerlink" title="听说你想了解人工智能？这篇文章教你从零基础成为深度学习高手"></a>听说你想了解人工智能？这篇文章教你从零基础成为深度学习高手</h1><p><a href="https://www.zhihu.com/people/richard1989" target="_blank" rel="noopener"><img src="https://pic3.zhimg.com/v2-d8f11ccd06e021a90bdcdaa69aa66a6f_xs.jpg" alt="许良"></a></p>
+<p><a href="https://www.zhihu.com/people/richard1989" target="_blank" rel="noopener">许良</a><a href="https://www.zhihu.com/question/48509984" target="_blank" rel="noopener"></a></p>
+<p><a href="https://www.zhihu.com/people/richard1989/creations/19551915" target="_blank" rel="noopener">汽车</a> 话题的优秀回答者</p>
+<p>关注他</p>
+<p>编辑推荐</p>
+<p>2,973 人赞同了该文章</p>
+<p><em>本文共9876字，阅读约需14分钟。</em></p>
+<p>近期在公司内部做了一个关于人工智能/深度学习相关的主题分享讲座，为了准备这个演讲，我花了100个小时左右，接下来就把精心准备的内容分享给大家。</p>
+<p>有一个好消息是，考虑文章比较长和文字本身表达的局限性，同时为了解答大家的疑问，我近期会<strong>完全免费</strong>开一个视频直播，具体内容如下。</p>
+<p>\1. 深度学习入门到晋级</p>
+<p>\2. 深度学习模型解析和代码实现展示</p>
+<p>\3. 答疑环节</p>
+<p>————-分割线—————</p>
+<p>好，内容正式开始。</p>
+<p>一提到人工智能和深度学习，很多人觉得比较难，其实那只是因为没有遇到能够讲的清楚的人而已。</p>
+<p>很多人喜欢把简单的事情说得玄乎，以显示自己很厉害，但其实真正厉害的人，是能够把复杂的事情讲解的很深入浅出、通俗易懂的，这也是我一直努力的方向。</p>
+<p>看这篇文章的读者，估计大多数可能之前没有深入了解过深度学习，这么说来，我有幸成为各位在深度学习方面的启蒙老师了（笑）。</p>
+<p>分享的内容分四部分，分别是<strong>入门、基础、进阶和发展趋势</strong>。</p>
+<h2 id="深度学习简单入门"><a href="#深度学习简单入门" class="headerlink" title="深度学习简单入门"></a><strong>深度学习简单入门</strong></h2><p>2016年3月份，AlphaGo以4：1战胜韩国围棋手李世石，一举震惊了世界。</p>
+<p>人工智能一下就引爆了整个世界。有种趋势就是，不谈人工智能，就落伍了。</p>
+<p>以前资本圈融资都谈的是“互联网+”，现在都在谈“AI+”了。</p>
+<p>有人说，马上人工智能时代就要来了，甚至有人宣扬人工智能威胁论。</p>
+<p>那么，当我们谈论人工智能的时候，我们究竟在谈论什么呢？</p>
+<p><img src="https://pic1.zhimg.com/80/v2-9e189bc1d61d604a7117bce1d5b43c74_1440w.jpg" alt="img"></p>
+<p>我们先来讨论下“人工智能”的定义。</p>
+<p>什么叫做智能呢？所谓智能，其实就是对人某些高级功能的模拟，让计算机去完成一些以前只有人才能完成的工作，比如思考、决策、解决问题等等。</p>
+<p>比如以前只有人可以进行数学计算，而现在计算机也可以进行计算，而且算的比人还准，还快，我们说计算机有一点智能了。</p>
+<p>人工智能的发展经历了好几个发展阶段，从最开始的简单的逻辑推理，到中期的基于规则（Rule-based）的专家系统，这些都已经有一定的的智能了，但距离我们想象的人工智能还有一大段距离。直到机器学习诞生以后，人工智能界感觉终于找到了感觉。基于机器学习的图像识别和语音识别在某些垂直领域达到了跟人相媲美的程度。人工智能终于能够达到一定的高度了。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-f8e4e1e3a5b006ab525640e540fea67f_1440w.jpg" alt="img"></p>
+<p>当前机器学习的应用场景非常普遍，比如图像识别、语音识别，中英文翻译，数据挖掘等，未来也会慢慢融入到各行各业。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-c94c89c39ae3727cac1f6c2448b69449_1440w.jpg" alt="img"></p>
+<p>虽然都是机器学习，但是背后的训练方法和模型是完全不同的。</p>
+<p>根据训练的方法不同，机器学习算法可以大致分类为<strong>监督学习、无监督学习</strong>和<strong>强化学习</strong>三种。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-5060313f92529503cd3adfde9d7e267e_1440w.jpg" alt="img"></p>
+<p>监督学习，就是训练数据是有标签的，也就是每个数据都是标注过的，是有正确答案的。训练的时候会告诉模型什么是对的，什么的错的，然后找到输入和输出之间正确的映射关系，比如物体种类的图像识别，识别一张图片内容是只狗，还是棵树。</p>
+<p>非监督学习，就是训练数据没有标签的，只有部分特征。模型自己分析数据的特征，找到数据别后隐含的架构关系，比如说自己对数据进行学习分类等等，常见的算法有聚类算法，给你一堆数据，将这数据分为几类。比如在银行的数据库中，给你所有客户的消费记录，让你挑选出哪些可以升级成VIP客户，这就是聚类算法。</p>
+<p>还有一种是强化学习，目标是建立环境到行为之间的最佳映射。强化学习的训练是不需要数据的，你告诉他规则或者给他明确一个环境，让模型自己通过不断地尝试，自己根据结果来自己摸索。</p>
+<p>Deep Mind的AlphaGo Zero就是通过强化学习训练的,号称花了3天的训练时间就能100：0打败AlphaGo。</p>
+<p>比较适合强化学习的一般是环境到行为之间的结果规则比较明确，或者环境比较单一、不太容易受噪音干扰等等，比如下围棋的输赢等等，还可以模拟直升机起降、双足机器人行走等等。</p>
+<p><strong>我们今天讨论的就是基于监督学习在图像识别领域的应用。</strong></p>
+<p>接下来我们再看下人工智能的历史。</p>
+<p>虽说我们感觉人工智能最近几年才开始火起来，但是这个概念一点也不新鲜。</p>
+<p>起源于上世纪五、六十年代就提出人工智能的概念了，当时叫<strong>感知机</strong>（perceptron），拥有输入层、输出层和一个隐含层。输入的特征向量通过隐含层变换达到输出层，在输出层得到分类结果，当时的人们对此非常乐观，号称要在10年内解决所有的问题。但是，单层感知机有一个严重得不能再严重的问题，即它对稍复杂一些的函数都无能为力（比如最为典型的“异或”逻辑），连异或都不能拟合。当时有一个专家叫明斯基，号称人工智能之父，在一次行业大会上公开承认，人工智能连一些基本的逻辑运算（比如异或运算）都无能为力，于是政府所有的资助全部都停掉了，于是进入人工智能的第一个冬天。</p>
+<p>随着数学的发展，这个缺点直到上世纪八十年代才发明了<strong>多层感知机</strong>克服，同时也提出了梯度下降、误差反向传播（BP）算法等当前深度学习中非常基础的算法。之前被人诟病的问题已经被解决了，希望的小火苗又重新点燃了，于是人工智能开始再次兴起。</p>
+<p>但是没过多久大家发现了，虽然理论模型是完善了，但是并没有实际用途，还不能解决实际问题，于是又冷下去了，人工智能的第二个冬天降临。</p>
+<p>直到2012年开始第三次兴起，也就是最近几年人工智能的热潮。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-e4ec48459dc6d7ed18a9d7157484ed1a_1440w.jpg" alt="img"></p>
+<p>下面我们就来第三次热潮是如何兴起的。</p>
+<p>在这之前，我们先介绍一个比赛。这个比赛是一项图像识别的挑战赛，给你大量图片去做图像识别，比赛看谁的识别错误低。在2012年之前，错误率降低到30%以后，再往下降就很难了，每年只能下降个2，3个百分点。</p>
+<p>直到2012年，有一个哥们叫Alex，这哥们在寝室用GPU死磕了一个卷积神经网络的模型，将识别错误率从26%下降到了16%，下降了10%左右，一举震惊了整个人工智能界，当之无愧的获得了当年的冠军。</p>
+<p>从此之后，卷积神经网络一炮而红。之后每年挑战赛的冠军，胜者都是利用卷积神经网络来训练的。2015年，挑战赛的错误率已经降低到3.5%附近，而在同样的图像识别的任务，人眼的辨识错误率大概在5.1%，也就是目前的深度学习模型的识别能力已经超过了人眼。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-d25448f96d37b4b45bce30cd6a4ada61_1440w.jpg" alt="img"></p>
+<p>下图是最近几年比较有代表性的模型的架构。</p>
+<p>大家可以看出来，深度学习的模型的发展规律，深，更深。没有最深，只有更深。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-6c0809c5b7f5ba224ea4b77389529f2a_1440w.jpg" alt="img"></p>
+<p>那么Alex的卷积神经网络这么厉害，是因为这个哥们是个学术大牛，有什么独创性的学术研究成果么？</p>
+<p>其实并不是。</p>
+<p>他所采用的模型是1998年Yann Lecun就提出了这个模型，当时Yann Lecun把这个模型应用在识别手写邮编数字的识别上，取得了很好的效果，他搭建的网络，命名为Lenet。这个人的名字——Yann Lecun，大家一定要记住，因为我们后面的内容将会以Lenet作为范本来讲解。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-d2a63026c01885d5dfccd838b80eb417_1440w.jpg" alt="img"></p>
+<p>这个模型是1998年提出来的，可为什么时隔这么多年才开始火起来呢？</p>
+<p>人工智能突然爆发背后深层次的原因是什么？我总结了一下，背后的原因主要有三个：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-7a993ea464fa612de7af43036d47fd29_1440w.jpg" alt="img"></p>
+<p>1.算法的成熟，尤其是随机梯度下降的方法的优化，以及一些能够有效防止过拟合的算法的提出，至于什么是随机梯度下降和过拟合，后面我们会详细讲到</p>
+<p>2.数据获取，互联网的爆发，尤其是移动互联网和社交网络的普及，可以比较容易的获取大量的互联网资源，尤其是图片和视频资源，因为做深度学习训练的时候需要大量的数据。</p>
+<p>3.计算能力的提升，因为要训练的数据量很大（都是百万级以上的数据），而且训练的参数也很大（有的比较深的模型有几百万甚至上千万个的参数需要同时优化），而多亏了摩尔定律，能够以较低的价格获取强大的运算能力，也多亏了Nvida，开发了GPU这个神器，可以大幅降低训练时间。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f218a41d127071ddc51f1ea1240ca751_1440w.jpg" alt="img"></p>
+<p>GPU的运算速度是CPU的5-10倍左右，同样的模型需要训练，如果用CPU训练需要一个礼拜的话，那使用GPU，只需要一天时间就可以了。</p>
+<p><em>截止到目前，我们汇总下我们的学习内容，我们了解了人工智能的简单介绍，大致了解了人工智能的算法分类以及发展历史。</em></p>
+<h2 id="深度学习基础知识"><a href="#深度学习基础知识" class="headerlink" title="深度学习基础知识"></a><strong>深度学习基础知识</strong></h2><p>接下来我们了解一下基础知识。</p>
+<p>我们上面也提到了，我们这次主要以卷积神经网络在图像识别领域的应用来介绍深度学习的。</p>
+<p>卷积神经网络，这个词听起来非常深奥。</p>
+<p>但其实没什么复杂的，我们可以分开成两个词来理解，卷积和神经网络。</p>
+<p>先看下卷积。</p>
+<p>卷积时数学的定义，在数学里是有明确的公式定义的。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-cfce3aa9c184d67212a33bda4e1201d6_1440w.jpg" alt="img"></p>
+<p>是不是觉得公式太抽象，看不明白？没关系，我们举个栗子就明白了。</p>
+<p><img src="https://pic2.zhimg.com/v2-d2859e5c486ed704492ab80079e99535_b.jpg" alt="img"></p>
+<p>还是以图像识别为例，我们看到的图像其实是由一个个像素点构成的。</p>
+<p>一般彩色图像的是RGB格式的，也就是每个像素点的颜色，都是有RGB（红绿蓝三原色混合而成的），是三个值综合的表现。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-27b835158bff7414d461cd986d44c6e7_1440w.jpg" alt="img"></p>
+<p>假设f函数为5x5（对应到图片上即为5x5像素）为例，h函数为3x3的函数，大家可以理解为为一个手电筒（也就是筛选器），依次扫过这个5x5的区间。在照过一个区域，就像对应区域里的值就和框里的数据去做运算。最终输出为我们的输出图。</p>
+<p>手电筒本身是一个函数，在3x3的区域内，他在每个位置都有参数，它的参数和对应到图片上相应位置的数字，先相乘，然后再把相乘的数字相加的结果输出，依次按照这些去把整个图片全部筛选一遍，就是我们所说的卷积运算了。</p>
+<p>还是比较抽象，没关系，看下面这个图片就清楚了。</p>
+<p><img src="https://pic2.zhimg.com/v2-f9dab2820dc8a941e62c1e5c63e418f1_b.webp" alt="img"></p>
+<p>那我们为什么要做卷积呢？我们其实就是建立一个输入和输出的函数，图像识别的目的就是把输入的信息（像素点信息）对应到我们输出结果（识别类别）上去，所以是逐层提取有用特征，去除无用信息的过程。</p>
+<p>比如下图所示，第一层可以识别一些边缘信息，后面逐层抽象，汇总到最后，就可以输出我们想要的结果，也就是我们的识别结果。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-9cce8e8972bd8ef97646bf9dcfaff268_1440w.jpg" alt="img"></p>
+<p>虽然我们知道特征是逐层抽象提取的，但是不幸的是，我们并不知道那一层是具体做什么的，也就不知道那个层数具体是什么意思。</p>
+<p>也就是说，其实深度学习网络对于我们而言，是个黑盒子，我们只能通过他的输出来判断其好坏，而不能直接去调整某个参数。</p>
+<p>那么，什么是神经网络呢？其实这个模型来自于心理学和神经学，人工智能的专家借鉴了这个结构。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-66ee3df39241f6d742bd21666b66fd31_1440w.jpg" alt="img"></p>
+<p>左侧为神经元，神经元接收外界的输入刺激或者其他神经元的传递过来的信号，经过处理，传递给外界或者给其他神经元。</p>
+<p>右侧为我们根据神经元的生物学特征抽象出来的数学模型，其中x是输入，包括一开始数据来源（外部刺激）的输入，也包括其他节点（神经元）的输入。</p>
+<p>w为参数（weight），每个节点还有一个b，这个b其实是一个偏置。</p>
+<p><strong>大家在学习新东西的时候，凡事多问个为什么？只有知道背后的原因了，这样你才能理解的更深刻。有句话说得好，还有什么比带着问题学习更有效率的学习方法呢?</strong></p>
+<p>为什么要加这个b呢？大家想想看，如果没有b的话，当输入x为0的时候，输出全部为0，这是我们不想看到的。所以要加上这个b，引入更多的参数，带来更大的优化空间。</p>
+<p>大家看一下，目前为止，这个神经元里的函数（对输入信号的处理）都还是线性的，也就是说输出与输入是线性相关的，但是根据神经元的生物学研究，发现其接受到的刺激与输入并不是线性相关的，也为了能够表征一些非线性函数，所以必须要再引入一个函数，也就是下面我们要讲的激活函数（activation function）。</p>
+<p>为什么需要激活函数？因为需要引入一些非线性的特性在里面。</p>
+<p>常见的激活函数有这些。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-227231cd8f502b37edab36eac2e24e81_1440w.jpg" alt="img"></p>
+<p>以前是sigmoid比较常见，但是现在ReLU用的比较多一些。</p>
+<p>就类似于下图这样，在节点经过线性运算后，经过非线性的ReLU,然后进入下一层的下一个节点。中间的w和b，就是我们卷积神经网络的参数，也是我们模型中需要训练的对象。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-54627b088d8fc1470923057b230d603e_1440w.jpg" alt="img"></p>
+<p>大家看LeNet模型中，就是在输入数据多次进行卷积神经网络的处理。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-0a5c0f92bef5ea3d0b902c8823f9cd8f_1440w.jpg" alt="img"></p>
+<p>对于模型而已，我们习惯把输入的数据叫做输入层，中间的网络叫做隐藏层，输出的结果叫做输出层。中间层数越多，模型越复杂，所需要训练的参数也就越多。</p>
+<p>所谓的deep learning中的deep，指的就是中间层的层数，右图中GoogLenet有22层。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-7f90a17fdc71dd2ae810bcb91b1bade0_1440w.jpg" alt="img"></p>
+<p>一般说来，模型越复杂，所能实现的功能也越强大，所能达到的精度也越高，目前最深的模型大概有10的7次方个神经元，其神经元比相对原始的脊椎动物如青蛙的神经系统还要小。<br>自从引入隐藏单元，人工神经网络的大小大约每 2.4 年翻一倍，按照现在的发展速度，大概要到2050年左右才能达到人类大脑的神经元数量的规模。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-9274b46be316d9c77990c7b8d8c77e93_1440w.jpg" alt="img"></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>怎么判断一个模型训练的好坏呢？我们需要一个评价指标（也就是KPI考核指标），也就是损失函数。</p>
+<p>我们最初的目标是什么？是建立输入输出的映射关系。</p>
+<p>比如我们的目标是判断一张图片上是只猫，还是一棵树。那这张图片上所有的像素点就是输入，而判断结果就是输出。</p>
+<p>那怎么表征这个模型的好坏呢？很简单，大家应该很容易想到，就是把模型输出的答案和正确答案做一下比对，看一下相差多少。</p>
+<p>我们一般用下面这个公式（平均平方误差，即MSE）来评估我们的模型好坏。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-8c1ebb180425d386f4a1b236393a0953_1440w.jpg" alt="img"></p>
+<p>我们就是通过对比输出结果与预期结果的差异，其中带帽子的yu就是预期的结果（也就是标签值，即是真值），而前面的不带帽子的yu就是实际的输出结果。当训练结果非常好的时候，比如说是全对的时候，平均误差就是0。当训练结果非常差的时候，比如说全错的时候，误差即为1.</p>
+<p>于是我们知道了，这个E越小越好，最好变成0.</p>
+<p>大家注意下，这个求和的标识，表示是所有的数据的和，而不是一个的数值。我们常说大数据来训练模型，其实这就是大数据。我们训练的时候需要上百万张的图片，最终得出来的误差，就是这里，然后再除以数量，取平均值。</p>
+<p>那怎么去降低这个误差呢？要回答这个问题，就涉及到卷积神经网络的核心思想了，也就是反向传播。</p>
+<h2 id="反向传播-梯度下降"><a href="#反向传播-梯度下降" class="headerlink" title="反向传播/梯度下降"></a>反向传播/梯度下降</h2><p>既然讲到机器学习，那当然是让机器自己去通过数据去学习，那机器是如何进行自学习的呢？下面就要敲黑板，划重点了，因为这就是深度学习的重中之重了，也就是机器学习的核心了，理解了这个概念，基本上就理解了一多半了。</p>
+<p>这个概念就是反向传播。听名字比较玄乎，其实这个概念大家在高等数学里都接触过这个概念了——梯度，其实也就是求导。</p>
+<p>对于一维函数而言，函数梯度下降的方向就是导数的反方向。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-1c18f58067b7c5524454562e9f5e9f43_1440w.jpg" alt="img"></p>
+<p>对于二维函数而言，就是把误差对每个变量求偏导，偏导的反方向即为梯度下降的方向。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-5c5920ccd21c6ba5923602ca8436bbe6_1440w.jpg" alt="img"></p>
+<p>说起来有点抽象，我们举个实例来说明一下。</p>
+<p>下面是我们的参数和损失函数的值。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-e1910cd6062c05840e0eb179bf81ff2c_1440w.jpg" alt="img"></p>
+<p>我们先对第一个参数加一个极小值，算出新的损失函数。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-73d4438aef9d4046c089cfd91d28233a_1440w.jpg" alt="img"></p>
+<p>然后用损失函数的变化去除这个极小值，就是这个参数的梯度了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-a5402c78e656fc193449b05d56df9bc0_1440w.jpg" alt="img"></p>
+<p>同样我们可以使用同样的方法去求得其他参数的梯度。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-a0d47ad39247a3aae81529631a7e6a99_1440w.jpg" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-a0f3ae13ff9c4623d57136a049c4a14f_1440w.jpg" alt="img"></p>
+<p>只要找到梯度下降的方向，按照方向去优化这些参数就好了。这个概念就是梯度下降。</p>
+<p>但是我们知道，我们要训练的参数非常多，数据量也非常大，经常是百万、千万量级的，如果每次都把全部训练数据都重新计算一遍，计算损失函数，然后再反向传播，计算梯度，这样下去，模型的误差优化的非常非常慢。</p>
+<p>那有没有更快的方法呢？</p>
+<p>当然有了。</p>
+<p>这些参数（weights），数量非常多，大概有上百万个，为了保证能够更好、更快的计算，节省算力，一般选用随机梯度下降方法，随机抽取一定数量（即为批量，batch）的样本，去计算梯度值，一般选择32/64/128。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-4e874cea17cdeaa41fdb7b942b6d21cf_1440w.jpg" alt="img"></p>
+<p>这个方法就是随机梯度下降，这个批量（batch）这也是大家经常要调的参数。</p>
+<p>我们可以这样理解随机梯度下降，其核心思想是，梯度是期望。期望可使用小规模的样本近似估计。具体而言，在算法的每一步，我们从训练集中均匀抽出小批量样本来代替全部数据的梯度，因为其梯度期望是一致的。</p>
+<p>值得一提是：这些batch中的样本，必须是随机抽取的，否则其期望就准确了。选的批量（batch）的值越小，进行一次参数优化的计算量越小，就越快，但是其随机性会比较大一些，如果选取的批量值比较大，则计算会稍微慢一些，但是随机性会小一些，这是我们需要权衡的。</p>
+<p>前向计算一次，反向反馈一下，更新一下参数，叫做一个Epoch.</p>
+<p>Epoch的次数也是个超参数，也是需要搭建模型的时候可以调整的参数。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-e82e5cd376517518daecfb9f6e63c08e_1440w.jpg" alt="img"></p>
+<p>在整个模型中也是类似的。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-bb6f9fd6aabaefa8f6835982357d28f1_1440w.jpg" alt="img"></p>
+<p><em>简单总结下，截止到目前，我们已经了解了一些深度学习的基本概念，比如什么是卷积神经网络，了解了反向传播的传播的概念，如何梯度下降的方法去优化误差。</em></p>
+<p>基本上深度学习是什么回事，大家已经知道了，但是深度学习还需要注意一些细节。有句话说的好，细节就是魔鬼，细节处理的好坏很大程度上决定了你是一个高手，还是一个菜鸟。</p>
+<h2 id="深度学习之高手进阶"><a href="#深度学习之高手进阶" class="headerlink" title="深度学习之高手进阶"></a><strong>深度学习之高手进阶</strong></h2><p>我们在进行深度学习的时候一般会按照这4个步骤进行。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-ad9a8000c49cdaf230bac3899451df93_1440w.jpg" alt="img"></p>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><p>很大程度上，数据的多少决定模型所能达到的精度。再好的模型，没有足够数据，也是白瞎。</p>
+<p>对于监督学习而言，需要大量标定的数据。</p>
+<p>数据的获取是有成本的，尤其是我们需要的数据都是百万、千万量级的，成本非常高。亚马逊有个专门发布标定任务的平台，叫做Amazon Mechanical Turk.</p>
+<p>很多大的数据，比如IMAGENET就是在这上面做label的。</p>
+<p>Amazon从中抽取20%的费用，也就是说，需求方发布100美元的任务，得多交20美元给Amazon，躺着也挣钱。</p>
+<p>由于数据的获取是有成本的，而且成本很高的。</p>
+<p>所以我们需要以尽量低的价格去获得更多的数据，所以，在已经获得数据基础上，仅仅通过软件处理去扩展数据，就是非常重要的，常见的数据扩展的方法见下图。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f425bece53e7ed73734b0b4ef60b19d1_1440w.jpg" alt="img"></p>
+<h2 id="数据预处理-归一化"><a href="#数据预处理-归一化" class="headerlink" title="数据预处理-归一化"></a>数据预处理-归一化</h2><p>为了更好的计算数据，避免出现太大或者太小的数据，从而出现计算溢出或者精度失真，一般在开始做数据处理之前，需要进行归一化处理，就是将像素保持在合理的范围内，如[0,1]或者[-1,1]。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-696e07cd03c0b213dee97862df4dbcc8_1440w.jpg" alt="img"></p>
+<h2 id="模型搭建"><a href="#模型搭建" class="headerlink" title="模型搭建"></a>模型搭建</h2><p>除了上面提到的卷积神经网络之外，我们在搭建模型的时候，还需要一些其他层，最常见的是输出控制。</p>
+<h2 id="全连接层Fully-connected"><a href="#全连接层Fully-connected" class="headerlink" title="全连接层Fully-connected"></a>全连接层Fully-connected</h2><p>全连接层，其字面意思就是将每个输入值和每个输出值都连接起来，全连接层的目的其实就是控制输出数量。</p>
+<p>比如我们最终分类是有10类，那我们需要把输出控制为10个，那就需要一个全连接层来链接输出层。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-ad4c6f5a691a0b8ae05ed0e853e3b3c7_1440w.jpg" alt="img"></p>
+<h2 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h2><p>我们用数值来表征其可能性大小，数值越大，其可能性越大，有的值可能很大，有的值可能很小，是负的。</p>
+<p>怎么用概率来表征其可能性呢？总不能加起来一除吧，但是有负数怎么办呢？全连接之后，我们每个类别得到一个值，那怎么转化表征其可能性的概率呢？我们一般通过softmax来转化。</p>
+<p>softmax的目的就是把数值转化给每个标签的概率，就是将最终各个值的得分，转化成各个输出值的概率。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-14e4d597044da401b0373704cd900252_1440w.jpg" alt="img"></p>
+<h2 id="独热编码-One-Hot-Encoding"><a href="#独热编码-One-Hot-Encoding" class="headerlink" title="独热编码 One-Hot Encoding"></a>独热编码 One-Hot Encoding</h2><p>独热编码,又叫做一位有效编码</p>
+<p>有多少标签，就转化为多少行的单列矩阵，其本质就是将连续值转化为离散值。</p>
+<p>这样可以直接直接将输出值直接输出，得到一个唯一值。</p>
+<p>就像一个筛子，只留一个最大值，其他全部筛掉。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-00f633a3545c693f738dabb769018110_1440w.jpg" alt="img"></p>
+<p>我们以LeNet为例串起来看（见下图），输出值经过全连接层，转化为10个标签值，然后经过softmax和one-hot<br>encoding，最终转化为唯一的识别标签值，就是我们想要的结果。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-b0c7c76587551362644dd50d1f9d23d5_1440w.jpg" alt="img"></p>
+<h2 id="客观评价——交叉验证"><a href="#客观评价——交叉验证" class="headerlink" title="客观评价——交叉验证"></a>客观评价——交叉验证</h2><p>讲完输出控制，我们再讲一下评价方法。</p>
+<p>我们有一些数据，希望利用现有的数据去训练模型，同时利用这些数据去评价这个模型的好坏，也就是我们需要知道，这个模型的准确率是50%，还是90%，还是99%？</p>
+<p>具体怎么去做呢？</p>
+<p>最先想到的是，用全部的数据去训练，然后评价的时候，从中抽取一定数量的样本去做验证。这不是很简单嘛？</p>
+<p>但是，这样不行。</p>
+<p>想像一下，在高考考场上，你打开试卷，看了一眼之后高兴坏了。因为你发现这些试题你之前做练习的时候都做过。</p>
+<p>其实是一个道理。如果拿训练过的数据去做验证，那得到的误差率会比实际的误差率要低得多，也就失去了意义。</p>
+<p>那怎么办呢？我们需要把训练数据和最终评价的数据（也就是验证数据）要分开。这样才能保证你验证的时候看的是全新的数据，才能保证得到的结果是客观可靠地结果。所以我们会得到两个误差率，一个是训练集的误差率，一个是验证集的误差率，记住这两个误差率，后面会用到。</p>
+<p>拿到数据的第一步，先把所有的数据随机分成两部分：训练集和验证集。一般而言，训练集占总数据的80%左右，验证集占20%左右。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-0ee469c2d19957af1e2972a77a429b2d_1440w.jpg" alt="img"></p>
+<p>训练的时候，随机从训练集中抽取一个批量的数据，去训练，也就是一次正向传播和一次反向传播。</p>
+<p>这一轮做完之后，从验证集里随机抽取一定数量来评价下其误差率。</p>
+<p>每做一轮学习，一次正向传播一次反向传播，就随机从验证集里抽取一定数量数据来评价其模型的准确率，一轮之后我们获得训练误差率和验证误差率。</p>
+<p>接下来就是重点了，就是模型训练。</p>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>实际训练模型的时候，我们会碰到两大终极难题，一个是欠拟合，一个是过拟合。</p>
+<p>所谓欠拟合，就是训练误差率和验证误差率都很高。</p>
+<p>所谓过拟合，就是训练集的误差率很低，但是验证集的误差率很高。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-997550d365493f2288bbfc5c65c5f9ae_1440w.jpg" alt="img"></p>
+<p>欠拟合和过拟合其实跟模型的复杂程度有很大的关系。</p>
+<p>比如这张图里面，本来是抛物线的数据，如果用线性模型去拟合的话，效果很很差。如果用9次方模型去拟合的话，虽然训练集表现非常好，但是测试新数据的时候，你会发现表现很差。</p>
+<p>欠拟合的原因其实比较简单，就是模型的深度不够，只需要把模型变得复杂一些就能解决。</p>
+<p>过拟合的原因就比较多了，一般来说，简单粗暴的增加训练集的数量就能解决这个问题，但是有时候受限于客观条件，我们没有那么多数据。这时候我们就需要调整一些参数来解决过拟合的问题了。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-67a769fc62f09c8e81297ea311a1f435_1440w.jpg" alt="img"></p>
+<p>模型中能调整的参数叫做超参数。</p>
+<p>调整这些参数，有时候有道理，有时候又没有道理，更多的是靠的一种感觉。有人说，调整超参数与其说是个科学，其实更像是一项艺术。</p>
+<p>常见的调整的超参数有以下几种，下面我们逐项介绍一下。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-e8973bae36ee37031ee11352c2382ace_1440w.jpg" alt="img"></p>
+<h2 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h2><p>上面提到的随机梯度下降中，我们会在梯度的前面加一个系数，我们管它叫做学习率，这个参数直接影响了我们误差下降的快慢。</p>
+<p>当我们遇到问题的时候，先尝试调整下学习率，说不定就能解决问题。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-3b5f2ece4a0923f6834ae7b2cc569fd1_1440w.jpg" alt="img"></p>
+<p>选择一个合适的学习率可能是困难的。学习率太小会导致收敛的速度很慢，学习率太大会妨碍收敛，导致损失函数在最小值附近波动甚至偏离最小值。下面这张图比较好的说明了学习率高低对模型误差下降的影响。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-cadf3a87bdd764cda9f8e3df46486c17_1440w.jpg" alt="img"></p>
+<h2 id="冲量Momentum"><a href="#冲量Momentum" class="headerlink" title="冲量Momentum"></a>冲量Momentum</h2><p>冲量的概念其实就是在梯度下降的时候，把上次的梯度乘以一个系数pho，加上本次计算的梯度，然后乘以学习率，作为本次下降用的梯度。pho一般选取0.9或者0.99。其本质就是加上了之前梯度下降的惯性在里面，所以叫做冲量。</p>
+<p>有时候会采用冲量（momentum）能够有效的提高训练速度，并且也能够更好的消除SGD的噪音（相当于加了平均值），但是有个问题，就是容易冲过头了，不过总体来说，表现还是很不错的，一般用的也比较多。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-0df32955d4c39e25a4aec0f6e5c0c022_1440w.jpg" alt="img"></p>
+<p>下面这两张图也能看出来，SGD+冲量能够有效的加快优化速度，还能够避免随机的噪音。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-987cdbf1a45cce44e800df7615e38a99_1440w.jpg" alt="img"></p>
+<h2 id="轮数epochs"><a href="#轮数epochs" class="headerlink" title="轮数epochs"></a>轮数epochs</h2><p>前面提到，一次正向传播，一次反向传播就是一轮，也就是一个epoch。</p>
+<p>一般来说，轮数越多，其误差会越好，但是当学习的越多的时候，他会把一些不太关键的特征作为一些重要的判别标准，从而出现了过拟合。如果发现这种情况（下图），我们需要尽早停止学习。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-6e3cb0f28ad30f056e36911f4b264900_1440w.jpg" alt="img"></p>
+<h2 id="参数初始化（weights-initialization）"><a href="#参数初始化（weights-initialization）" class="headerlink" title="参数初始化（weights initialization）"></a>参数初始化（weights initialization）</h2><p>对于模型的所有参数，我们均随机进行初始化，但是初始化的时候我们一般会让其均值为0，公差为sigma，sigma一般选择比较大，这样其分散效果比较好，训练效果也比较好。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-9e026d489b019e1026b82723b9034e82_1440w.jpg" alt="img"></p>
+<p>但是有时候仅仅调整超参数并不能解决过拟合的问题，这时候我们需要在模型上做一些文章，在模型上做一些处理，来避免过拟合。</p>
+<h2 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h2><p>最常见的方法就是dropout.</p>
+<p>drop的逻辑非常简单粗暴，就是在dropout过程中，有一半的参数不参与运算。</p>
+<p>比如说公司里，每天随机有一般人不来上班，为了正常运转，每个岗位都需要有好几个人来备份，这样公司就不会过于依赖某一个人，其实是一个道理。</p>
+<p>dropout的本质是冗余。为了避免过拟合，我们需要额外增加很多冗余，使得其输出结果不依赖于某一个或几个特征。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-06808823a69e5068ef34a79219b5ed3a_1440w.jpg" alt="img"></p>
+<h2 id="Pooling池化"><a href="#Pooling池化" class="headerlink" title="Pooling池化"></a>Pooling池化</h2><p>除此之外，池化也是比较常用到的。</p>
+<p>Pooling主要的作用为降维，降维的同时能够保留主要特征，能够防止过拟合。</p>
+<p>Pooling主要有两种：一种是最大化Pooling，还有一中是平均池化。</p>
+<p>最大池化就是把区域的最大值传递到下一层（见下图），平均池化就是把区域内的平均值传递到下一层。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-afd83e56ee9acc725aa45b66597dfc06_1440w.jpg" alt="img"></p>
+<p>一般在Pooling之后会加上一个1x1的卷积层，这样能够以非常低的成本（运算量），带来更多的参数，</p>
+<p>更深的深度，而且验证下来效果也非常好。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-91026b0dc2be4df5455a78abd2dbad9c_1440w.jpg" alt="img"></p>
+<p>接下来我们可以分析下Lenet的数据，看的出来是卷积—&gt;池化—&gt;卷积—&gt;池化—&gt;平化（Flatten，将深度转化为维度）—&gt;全连接—&gt;全连接—&gt;全连接。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-4cfd34bbd4b08285ba26ed3cb0b8c378_1440w.jpg" alt="img"></p>
+<p>下面这个模型也比较简单，经过多层卷积、池化之后，平化，然后经过softmax转化。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-2a441974c11cea97851a75698406f904_1440w.jpg" alt="img"></p>
+<p><em>截止到目前，我们又了解了训练模型所需要的技巧，如获取数据、预处理数据、模型搭建和模型调试，重点了解了如何防止过拟合。</em></p>
+<p>恭喜你，现在你已经完全了解了深度学习的全部思想，成功晋级成深度学习高手了~</p>
+<p>接下来我们看下深度学习的发展趋势。</p>
+<h2 id="深度学习发展趋势"><a href="#深度学习发展趋势" class="headerlink" title="深度学习发展趋势"></a><strong>深度学习发展趋势</strong></h2><p>目前深度学习在图像识别领域取得了很多突破，比如可以对一张图片多次筛选获取多个类别，并标注在图片上。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-da4ea9dabbdec27e7b5a805e3abf236b_1440w.jpg" alt="img"></p>
+<p>还可以进行图像分割。</p>
+<p>在做图像分割标注的时候，难度很大，需要把每个类别的范围用像素级的精度画出来。这对标注者的素质要求很高。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b4707b8dda4510cb853848413538855e_1440w.jpg" alt="img"></p>
+<p>还可以根据图像识别的结果直接生成语句。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-a87fb852a09a2f6b5ca7456bac76f083_1440w.jpg" alt="img"></p>
+<p>Google翻译可以直接将图片上的字母翻译过来，显示在图片上，很厉害。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-fc267e91e7dd9e2a350c236c71904e83_1440w.jpg" alt="img"></p>
+<p>最近媒体上很多新闻，说人工智能可以作诗，写文章，画画等等，这也都是比较简单的。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-269e064b481409888bb390996027da0e_1440w.jpg" alt="img"></p>
+<p>但是当前图像识别领域还存在一些问题，最大的就是其抗干扰能力比较差。</p>
+<p>下图中左侧的图片为原始图片，模型可以轻易识别，但是人工加上一些干扰之后，对于肉眼识别不会造成干扰，但是会引起模型的严重误判。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-e0cee8d5c9e8580fb2bcc0b8646ae264_1440w.jpg" alt="img"></p>
+<p>这种情况可能会在某些很重要的商业应用中带来一些风险，比如在自动驾驶的物体识别时，如果有人故意对摄像头造成干扰，就会引起误判，从而可能会引起严重后果。</p>
+<p>深度学习在自动驾驶领域有比较多的应用，下面是我做自动驾驶项目中的视频。</p>
+<p>车辆识别：</p>
+<iframe frameborder="0" allowfullscreen="" src="https://www.zhihu.com/video/920687534550446080?autoplay=false&amp;useMSE=" style="display: block; width: 688.011px; height: 387.003px;"></iframe>
+
+<p>行为克隆：</p>
+<iframe frameborder="0" allowfullscreen="" src="https://www.zhihu.com/video/920687705740943360?autoplay=false&amp;useMSE=" style="display: block; width: 688.011px; height: 387.003px;"></iframe>
+
+<p>下图为加特纳技术曲线，就是根据技术发展周期理论来分析新技术的发展周期曲线（从1995年开始每年均有报告），以便帮助人们判断某种新技术是否采用。其把技术成熟经过5个阶段：1是萌芽期，人们对新技术产品和概念开始感知，并且表现出兴趣；2是过热期，人们一拥而上，纷纷采用这种新技术，讨论这种新技术；3是低谷期，又称幻想破灭期。过度的预期，严峻的现实，往往会把人们心理的一把火浇灭；4是复苏期，又称恢复期。人们开始反思问题，并从实际出发考虑技术的价值。相比之前冷静不少；5是成熟期，又称高原期。该技术已经成为一种平常。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-4f13b15a340886fa20eb602ed6d4b7a6_1440w.jpg" alt="img"></p>
+<p>当前机器学习和自动驾驶就处在过热期。</p>
+<p>说到底，人工智能其实就是一种工具而已，只不过这项工具能做的事情多了一些而已。</p>
+<p>未来人工智能会融入到生活中的方方面面，我们不可能阻挡这种趋势，所以我们唯一能做的，就是好好利用好这个工具，让未来的工作和生活更加方便一些。</p>
+<p>送大家一句话：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-a189b6ac6314953f72ae70483e7024ce_1440w.jpg" alt="img"></p>
+<h2 id="关于人工智能威胁论"><a href="#关于人工智能威胁论" class="headerlink" title="关于人工智能威胁论"></a><strong>关于人工智能威胁论</strong></h2><p>当前有些媒体在肆意宣扬人工智能威胁论，这其实是毫无道理的。</p>
+<p><strong>当人类对自己不了解的事物会本能的产生恐惧，越是不了解，越是会产生恐惧。</strong></p>
+<p>大家今天看下来，是不是也觉得人工智能也没啥。</p>
+<p>其实就是因为了解了，所以才不会恐惧。我们只有了解他，才能更好的利用好它。</p>
+<p>当前有部分无良媒体以及所谓的专家，在传播人工智能威胁论。</p>
+<p>其实所谓的专家根本就不是这个领域的专家，如果他不是这个领域的专家，那他对这个话题其实就没有话语权，他说话的分量就跟一个普通人说的没什么区别。</p>
+<p>流传比较广的，比如说某个坐在轮椅上的英国物理学家，对，没错，我说的就是霍金。</p>
+<p>还有某国际著名新能源汽车公司的CEO，对，我说的就是Elon Musk。</p>
+<p>他们对人工智能其实也完全是一知半解。</p>
+<p>相信大家今天看完这篇文章之后，对人工智能的理解就可以秒杀他们了。</p>
+<p>最近看到吴军的一句话，来解释人工智能威胁论，觉得非常恰当。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">说一下人工智能的边界：</span><br><span class="line">1. 世界上有很多问题，其中只有一小部分是数学问题；</span><br><span class="line">2. 在数学问题中，只有一小部分是有解的；</span><br><span class="line">3. 在有解的问题中，只有一部分是理想状态的图灵机可以解决的；</span><br><span class="line">4. 在后一类的问题中，又只有一部分是今天实际的计算机可以解决的；</span><br><span class="line">5. 而人工智能可以解决的问题，又只是计算机可以解决问题的一部分。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后分享一下学习资料：</p>
+<ol>
+<li>Stanford CS231n课程：<a href="https://link.zhihu.com/?target=http%3A//cs231n.stanford.edu/">http://cs231n.stanford.edu/</a></li>
+<li>MIT自动驾驶课程：<a href="https://link.zhihu.com/?target=https%3A//selfdrivingcars.mit.edu/">https</a><a href="https://link.zhihu.com/?target=https%3A//selfdrivingcars.mit.edu/">://</a><a href="https://link.zhihu.com/?target=https%3A//selfdrivingcars.mit.edu/">selfdrivingcars.mit.edu</a><a href="https://link.zhihu.com/?target=https%3A//selfdrivingcars.mit.edu/">/</a></li>
+<li>Deep Learning书籍: <a href="https://link.zhihu.com/?target=http%3A//deeplearningbook.org/">http://deeplearningbook.org</a></li>
+<li>Foundational papers: <a href="https://link.zhihu.com/?target=http%3A//deeplearning.net/reading-list">http://deeplearning.net/reading-list</a></li>
+<li>快速上手 <a href="https://link.zhihu.com/?target=http%3A//www.fast.ai/">http://www.fast.ai/</a></li>
+<li>图解机器学习 <a href="https://link.zhihu.com/?target=http%3A//www.r2d3.us/visual-intro-to-machine-learning-part-1/">http://www.r2d3.us/visual-intro-to-machine-learning-part-1/</a></li>
+</ol>
+<p>最后的最后，附上一个段子图，下排中间一脸虎视眈眈、苦大仇深、表情凝重的哥们，就是我们念叨的机器学习大神——Yann LeCun，目前是Facebook AI试验室的负责人。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-b3601551102fa4f36811b73d552da961_1440w.jpg" alt="img"></p>
+<p>最后，大家都看到这里了，请求大家关注下我的专栏和公众号“业界良新”不过分吧~</p>
+<p>谢谢大家阅读。</p>
 <a id="more"></a>]]></content>
   </entry>
 </search>

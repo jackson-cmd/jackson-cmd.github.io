@@ -173,6 +173,280 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/network6/" class="post-title-link" itemprop="url">网络层</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 16:08:31 / Modified: 16:20:59" itemprop="dateCreated datePublished" datetime="2020-05-10T16:08:31-05:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p>复制自：<a href="https://www.cnblogs.com/zhangyinhua" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyinhua</a></p>
+<p><strong>阅读目录(Content)</strong></p>
+<ul>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label0" target="_blank" rel="noopener">一、网络层概述</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_0_0" target="_blank" rel="noopener">1.1、网络层简介</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label1" target="_blank" rel="noopener">二、网络层的基础知识</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_0" target="_blank" rel="noopener">2.1、ip地址</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_1" target="_blank" rel="noopener">2.2、ip地址的分类</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_1_2" target="_blank" rel="noopener">2.3、mac地址和ip地址的区别与联系</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label2" target="_blank" rel="noopener">三、ARP协议</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label3" target="_blank" rel="noopener">四、IP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_3_0" target="_blank" rel="noopener">4.1、IP协议概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_3_1" target="_blank" rel="noopener">4.2、通过IP数据包格式认识IP协议</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label4" target="_blank" rel="noopener">五、ICMP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_4_0" target="_blank" rel="noopener">5.1、ICMP差错报告报文</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_4_1" target="_blank" rel="noopener">5.2、ICMP询问报文</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label5" target="_blank" rel="noopener">六、IGMP协议</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_0" target="_blank" rel="noopener">6.1、概述</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_1" target="_blank" rel="noopener">6.2、多播　　</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_5_2" target="_blank" rel="noopener">6.3、IGMP协议工作流程</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_label6" target="_blank" rel="noopener">七、总结</a></p>
+</li>
+<li><ul>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_0" target="_blank" rel="noopener">7.1、分析从主机A找到主机B的过程</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_1" target="_blank" rel="noopener">7.2、分析从主机A找到主机E的过程</a></li>
+<li><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_lab2_6_2" target="_blank" rel="noopener">7.3、分析从主机A到主机E数据的形式</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>前言</strong></p>
+<p>前面给大家介绍了计算机网络的基本概述，物理层和数据链路层。这一篇给大家介绍面试中经常会被问到的网络层。在介绍之前我们回顾一下之前学习的知识！</p>
+<p>　　CP/IP协议栈：物理层、链路层、网络层、传输层、应用层（会话层+表示层+应用层）</p>
+<p>　　物理层：通过比特流在线路中传输来完成我们传输数据的目的，传输的方式很多种，传输的介质也很多中，光纤等</p>
+<p>　　链路层：数据帧，在数据包(报)上加mac地址形成数据帧，其中的CRC检测原理用来检测数据的完整性，这一层用到的协议有PPP（点到点协议）、例如家中的拨号上网，</p>
+<p>　　　　　　 CSMA/CD协议(广播协议)，在局域网中用的很多。其中会发生一系列的问题，和解决问题的办法。</p>
+<p>　　网络层：数据包(报)，加上源ip地址和目标ip地址了。这一层的协议有四种，ARP（地址解析协议）、RARP(逆地址解析协议)、ICMP(网际控制报文协议)、IGMP(网际组管理协议)。</p>
+<p>　　　　　　 这四种协议只是和IP协议配套使用，。在一章还能学到的是数据包的结构是怎么样的。什么是ip地址，为什么需要ip地址，怎么分配和区分ip地址的，这这一节我们度会讲解到。</p>
+<p>　　传输层：这里会讲解到端口。常见的80端口，我们学习javaWeb时，使用Tomcat中，看到的是8080端口，浏览器使用的是80端口，这一节就会讲到端口是干嘛用的。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="一、网络层概述"><a href="#一、网络层概述" class="headerlink" title="一、网络层概述"></a>一、网络层概述</h1><h2 id="1-1、网络层简介"><a href="#1-1、网络层简介" class="headerlink" title="1.1、网络层简介"></a>1.1、网络层简介</h2><p>　　百度定义：</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233007340-2050092694.png" alt="img"></p>
+<p>　　功能目的：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233359669-2035398138.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="二、网络层的基础知识"><a href="#二、网络层的基础知识" class="headerlink" title="二、网络层的基础知识"></a>二、网络层的基础知识</h1><h2 id="2-1、ip地址"><a href="#2-1、ip地址" class="headerlink" title="2.1、ip地址"></a>2.1、ip地址</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928233739450-1743368147.png" alt="img"></p>
+<p>　　不就是一连串数组加.组成的吗，比如我们常常设置路由器时登录192.168.1.1。这个就是ip地址。那到底是什么样的呢？</p>
+<p>　　ip地址就是32位，也就是4个字节组成，因为32位太长了，我们不好识别，所以每次将其分为8位一组，分成4组，然后在根据每组换算成10进制数组，组与组之间用.分隔开来。</p>
+<p>　　举个例子：11111111，11111111，11111111，11111111就可以用255，255，255，255来表示了，所以每一组都是从0到255之间。现在在来看192.168.1.1这个ip地址，</p>
+<p>　　　　　　　也能将其换成2进制来表示，只不过那样太麻烦，让人不易于看懂，所以就将其用10进制来表示。</p>
+<p>　　ip地址的意义在哪里呢？</p>
+<p>　　要上网就需要一个ip地址，这个ip地址不能和别人一样，独一无二，因为在网络上通信就是通过ip地址来找到你这台主机的，但是这个ip地址不是固定的，比如你在家拨号上网，</p>
+<p>　　是A这个ip地址，下一次拨号，可能就不是A，变成B了，这要看你所在的网络给你分配了什么ip地址。如何通过ip查找到你，这个问题后面来讨论。</p>
+<h2 id="2-2、ip地址的分类"><a href="#2-2、ip地址的分类" class="headerlink" title="2.2、ip地址的分类"></a>2.2、ip地址的分类</h2><p>　　既然每个人的ip地址都不一样，那一台主机怎么通过ip地址找到另一台主机的呢，茫茫人海，不可能一个个查找把，所以就有专门的人来管理和分配这个ip地址，看看以前怎么分的地址(了解)</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170928234128122-1717449504.png" alt="img">　</p>
+<p>　　网络号由你所连的网决定，学校的局域网，公司的局域网，城市的广域网等，就是相当于先市、在区、在到村这样的。跟快递一样，你ip地址肯定也得这样分，先找到大的，然后慢慢一层层找下去。</p>
+<p>　　A类地址：网络号有8位，第一位固定为0，127种，主机号有24位，那么就能给该类地址划分16777215个ip地址，也就1千多万个地址，意思就是比如你需要组建一个有1千多万台主机的网络，</p>
+<p>　　　　　　 那么你就要去分配一个A类地址，要求给你一个网络号，然后其中1千多万的ip地址就由你自己分配了，最多也就只能分配127个这样的网络</p>
+<p>　　B类：网络号、主机号16位，就能有65535个网络号和65535个主机号了。</p>
+<p>　　C类：网络号有24位，也就能够分配1000多万个网络，但是主机号只有8位，也就是只能够自己分配254台主机最多</p>
+<p>　　D类：用于多播，多播后面讲</p>
+<p>　　E类：留着以后用</p>
+<p>　　这就是我们老早以前所使用的ip地址，就是这样分的，这样看起来很合理啊，你看B类中，有那么多种，肯定够分了把，但是会暴露出一个问题就是，C类地址只能分配254台主机，</p>
+<p>　　现在中小型网络那么多，都超过了254台电脑，如果A公司有1000台电脑，那他肯定要去分配B类地址，就造成了几万个的ip地址浪费了。这显然不是很合理。</p>
+<p>　　</p>
+<p>　　划分子网 = &lt;网络号&gt;+&lt;子网号&gt;+&lt;主机号&gt;</p>
+<p>　　这是ip地址分类的第二大步，中间加了一个子网号，这样就加大了对上面的A类和B类地址的使用率。也就减少了A类和B类地址的浪费，但是也有问题就是C类地址不管怎么划分，</p>
+<p>　　他所容纳的主机太小了，随着网路的扩增，人人度使用电脑，那么A类和B类迟早度会用光，所以就用到了我们现在的IP地址。</p>
+<p>　　无分类编址 = &lt;网路前缀&gt;+&lt;主机号&gt;  这个就是我们现在用的ip地址的算法。</p>
+<p>　　这个一看，跟第一种分类编址一样呀，其实很大的不同就在于分类编址的网络号不能变，是固定长度，而无分类编址通过网络前缀可变化，就能根据你需要多少个主机号来自由给你分配网络前缀了。</p>
+<p>　　网络前缀：也就是用不定长的一连串1来表示ip地址的网络号。什么意思呢？</p>
+<p>　　　　网络前缀：255.0.0.0 ip地址：192.168.1.1 那么该ip地址的前8位就属于网络号。</p>
+<p>　　　　网络前缀：255.224.0.0 ip地址：192.255.1.1 因为255是8个1，224是111 00000 ，所以前11位表示网络号，也就是这个ip地址是处于192.224.0.0这个网络中，在这个网络中，能包含21个1转换为10进制这么多的主机。</p>
+<p>　　这个网络前缀我们也称子网掩码，所以现在知道ip地址和我们的子网掩码什么意思了吗。</p>
+<p>　　例如：已知ip地址141.14.72.24，所在网络的子网掩码是255.255.192.0，试求其网络地址？</p>
+<p>　　　　子网掩码：255.255.192.0   11111111，11111111，11000000，00000000</p>
+<p>　　　　ip地址：141.14.72.24      10001101，00001110，01001000，00011000</p>
+<p>　　　　所以根据子网掩码知道ip地址的前18位为网络号，网络地址就为：10001101.00001110.01</p>
+<p>　　所以根据子网掩码知道ip地址的前18位为网络号，网络地址就为：10001101.00001110.01000000.00000000 转换为10进制就是141.14.64.0， 能够存纳14位1也就是16383台主机。</p>
+<p>　　(别问我怎么算的，肯定拿二进制转换器啊，不可能自己手算把，哈哈，二进制转10进制这么多怎么手算呢，记住特殊的，8个1就是255)</p>
+<h2 id="2-3、mac地址和ip地址的区别与联系"><a href="#2-3、mac地址和ip地址的区别与联系" class="headerlink" title="2.3、mac地址和ip地址的区别与联系"></a>2.3、mac地址和ip地址的区别与联系</h2><p>　　1）mac地址概述</p>
+<p>　　　　百度中定义：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929000551575-1238725768.png" alt="img"></p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929000719575-1844362601.png" alt="img"></p>
+<p>　　2）mac地址的作用　</p>
+<p>　　　　谈起MAC地址，不得不说一下IP地址。IP地址工作在OSI参考模型的第三层网络层。两者之间分工明确，默契合作，完成通信过程。IP地址专注于网络层，</p>
+<p>　　将数据包从一个网络转发到另外一个网络；而MAC地址专注于数据链路层，将一个数据帧从一个节点传送到相同链路的另一个节点。</p>
+<p>　　　　在一个稳定的网络中，IP地址和MAC地址是成对出现的。如果一台计算机要和网络中另一外计算机通信，那么要配置这两台计算机的IP地址，MAC地址是网卡出厂时设定的，</p>
+<p>　　这样配置的IP地址就和MAC地址形成了一种对应关系。在数据通信时，IP地址负责表示计算机的网络层地址，网络层设备（如路由器）根据IP地址来进行操作；MAC地址负责表示计算机的数据链路层地址，</p>
+<p>　　数据链路层设备（如交换机）根据MAC地址来进行操作。IP和MAC地址映射关系是由这种ARP（Address Resolution Protocol，<a href="https://baike.baidu.com/item/地址解析协议" target="_blank" rel="noopener">地址解析协议</a>）协议完成。</p>
+<p>　　　　IP地址就如同一个<a href="https://baike.baidu.com/item/职位" target="_blank" rel="noopener">职位</a>，而MAC地址则好像是去应聘这个职位的人才，职位既可以让甲坐，也可以让乙坐，同样的道理一个结点的IP地址对于<a href="https://baike.baidu.com/item/网卡" target="_blank" rel="noopener">网卡</a>是不做要求，基本上什么样的厂家都可以用，</p>
+<p>　　也就是说IP地址与MAC地址并不存在着绑定关系。本身有的计算机流动性就比较强，正如同人才可以给不同的单位干活的道理一样的，人才的流动性是比较强的。职位和人才的对应关系就有点像是IP地址与MAC地址的对应关系。</p>
+<p>　　比如，如果一个网卡坏了，可以被更换，而无须取得一个新的IP地址。如果一个IP<a href="https://baike.baidu.com/item/主机" target="_blank" rel="noopener">主机</a>从一个网络移到另一个网络，可以给它一个新的IP地址，而无须换一个新的网卡。当然MAC地址除了仅仅只有这个功能还是不够的，</p>
+<p>　　就拿人类社会与网络进行类比，通过类比，我们就可以发现其中的类似之处，更好地理解MAC地址的作用。无论是局域网，还是<a href="https://baike.baidu.com/item/广域网" target="_blank" rel="noopener">广域网</a>中的计算机之间的通信，最终都表现为将<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>从某种形式的链路上的初始<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>出发，</p>
+<p>　　从一个结点传递到另一个<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>，最终传送到目的<a href="https://baike.baidu.com/item/结点" target="_blank" rel="noopener">结点</a>。<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>在这些<a href="https://baike.baidu.com/item/节点" target="_blank" rel="noopener">节点</a>之间的移动都是由ARP负责将IP地址映射到MAC地址上来完成的。其实人类社会和<a href="https://baike.baidu.com/item/网络" target="_blank" rel="noopener">网络</a>也是类似的，试想在人际关系网络中，甲要捎个口信给丁，</p>
+<p>　　就会通过乙和丙中转一下，最后由丙 转告给丁。在网络中，这个口信就好比是一个网络中的一个<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>。<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>在传送过程中会不断询问相邻<a href="https://baike.baidu.com/item/节点" target="_blank" rel="noopener">节点</a>的MAC地址，这个过程就好比是人类社会的口信传送过程。</p>
+<p>　　相信通过这两个例子，我们就可以进一步理解MAC地址的作用。</p>
+<p>　　3）mac地址和ip地址的区别　</p>
+<p>　　IP地址和MAC地址相同点是它们都唯一，不同的特点主要有：<br>　　　　一是：对于网络上的某一设备，如一台计算机或一台路由器，其IP地址是基于网络拓扑设计出的，同一台设备或计算机上，改动IP地址是很容易的（但必须唯一），而MAC则是生产厂商烧录好的，</p>
+<p>　　　　　　  一般不能改动。我们可以根据需要给一台主机指定任意的IP地址，如我们可以给局域网上的某台计算机分配IP地址为192.168.0.112 ，也可以将它改成192.168.0.200。</p>
+<p>　　　　　　而任一网络设备（如网卡，路由器）一旦生产出来以后，其MAC地址不可由本地连接内的配置进行修改。如果一个计算机的网卡坏了，在更换网卡之后，该计算机的MAC地址就变了。<br>　　　　二是：长度不同。IP地址为32位，MAC地址为48位。<br>　　　　三是：分配依据不同。IP地址的分配是基于网络拓扑，MAC地址的分配是基于制造商。<br>　　　　四是：寻址协议层不同。IP地址应用于OSI第三层，即网络层，而MAC地址应用在OSI第二层，即数据链路层。 数据链路层协议可以使数据从一个节点传递到相同链路的另一个节点上（通过MAC地址），</p>
+<p>　　　　　　  而网络层协议使数据可以从一个网络传递到另一个网络上（ARP根据目的IP地址，找到中间节点的MAC地址，通过中间节点传送，从而最终到达目的网络）。</p>
+<p>　　4）两者关系</p>
+<p>　　　　这两者的关系是什么呢？在网络中我们通过主机的ip地址，先找到他的网络地址，到达了网络地址后，然后通过该网络中的老大(路由器)来分析一下这个ip地址是你网路中的哪个主机，</p>
+<p>　　　　这时，老大(路由器)就通过该目标ip地址改到对应主机的mac地址，既然知道了mac地址，就能找到该计算机了。就好比什么呢。路由器是每次分配给你的ip地址不一样，但是你的mac地址肯定不会变，</p>
+<p>　　　　所以就根据ip地址找到你的mac地址。但是怎么找到的呢？就要通过网络层中的ARP(地址解析协议)协议了。</p>
+<p>　　知道了基础的知识后，现在来讲解网络层的几个协议：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929002500122-2057977063.png" alt="img"></p>
+<p>　　RARP:逆地址解析协议(现在不单独讲这个了，所以我在图中画在红色圆圈内部，因为RARP已经被DHCP协议给包含了，DHCP协议在后面会讲解到)，所以我们下面讲的就4个协议。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="三、ARP协议"><a href="#三、ARP协议" class="headerlink" title="三、ARP协议"></a>三、ARP协议</h1><p>　　百度介绍：</p>
+<p>　　　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929100309731-515973451.png" alt="img"></p>
+<p>　　地址解析协议：通过ip地址来解析主机的mac地址，是怎么个过程呢，拿局域网来说，一个局域网中有很多主机，主机A想和局域网中的主机B通话，但是只知道对方的ip地址，所以他就通过发广播，</p>
+<p>给局域网中所有的主机，问这个ip地址是谁，主机B收到了这个信息，通过网络适配器(网卡)就发现自己是这个ip地址，然后就把自己的mac地址发给源主机，这样就知道了mac地址，就能够通信了。</p>
+<p>　　类似的，在跨网络中就不是直接发广播了，先通过ip地址找到对应的网络地址，如何找到的对应的网络地址呢，通过路由器，每个路由器都有三层。网络层、链路层、物理层，也就是说最高能够识别网络层中的东西来，</p>
+<p>那么路由器也就有ARP协议了，每个路由器都能识别出目标ip地址在哪个路由器上，这其中涉及到了很多算法，我们这里不做更多的解释，简单来说，路由器能根据目标ip地址找到下一跳路由器的mac地址，然后一步一步跳下去，</p>
+<p>直到找到目标ip地址的网络地址的路由器，然后通过该路由器来找到目标ip地址的mac地址，这样就能够找到目标主机了。这就是ARP协议。</p>
+<p>　　　　　　发送方是主机，要把IP数据报发送到本网络上的另一个主机。这时用 ARP 找到目的主机的硬件地址。<br>　　　　　　发送方是主机，要把 IP 数据报发送到另一个网络上的一个主机。这时用 ARP 找到本网络上的一个路由器的硬件地址。剩下的工作由这个路由器来完成。<br>　　　　　　发送方是路由器，要把 IP 数据报转发到本网络上的一个主机。这时用 ARP 找到目的主机的硬件地址。<br>　　　　　　发送方是路由器，要把 IP 数据报转发到另一个网络上的一个主机。这时用 ARP 找到本网络上的一个路由器的硬件地址。剩下的工作由这个路由器来完成。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="四、IP协议"><a href="#四、IP协议" class="headerlink" title="四、IP协议"></a>四、IP协议</h1><h2 id="4-1、IP协议概述"><a href="#4-1、IP协议概述" class="headerlink" title="4.1、IP协议概述"></a>4.1、IP协议概述</h2><p>　　百度定义：</p>
+<p>　　　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929003508153-1142284506.png" alt="img"></p>
+<p>　　其实IP的责任就是把数据从源地址传送到目的地。它不负责保证传送可靠性，流控制，包顺序和其它对于主机到主机协议来说很普通的服务。</p>
+<h2 id="4-2、通过IP数据包格式认识IP协议"><a href="#4-2、通过IP数据包格式认识IP协议" class="headerlink" title="4.2、通过IP数据包格式认识IP协议"></a>4.2、通过IP数据包格式认识IP协议</h2><p>　　IP协议通过看一下IP数据包(报)的格式就知道IP协议是干嘛的了，就是来规定数据报的格式，以及定义的功能</p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929003804434-2101323158.png" alt="img"></p>
+<p>　　1）固定部分：20个字节，一行是4个字节，有5行，自己看清楚</p>
+<p>　　　　1.1）第一行　　</p>
+<p>　　　　　　版本：占4位，IP协议的版本，通信双方的IP协议版本要一致，普遍用IPv4，以后可能会用IPv6.</p>
+<p>　　　　　　首部长度：占4位，可表示的最大十进制为15，单位是32位字(4个字节)，表示首部最长为60个字节，也就是说除去固定部分的20个字节，可选字段和填充最多能是40个字节。</p>
+<p>　　　　　　区分服务：占8位，1个字节。有些要传输的数据要立马传达到对面，比如视频，语音这样的，不能跟邮件慢慢吞吞的达到对方一样，需要立马送达，这就是为什么需要这个区分服务了</p>
+<p>　　　　　　总长度：占16位，2个字节。占首部+数据部分 的总长度是多少。数据帧最长不能超过1500个字节，数据包就不能一次性发太大，如果发的太大就要选择分片处理了。</p>
+<p>　　　　1.2）第二行　　</p>
+<p>　　　　　　标识：占16位，2个字节，一个计数器，每产生一个数据包，计数器就加1，当数据包被分片时，下面将会说到分片问题，所有分片后的数据包的标识度一样。这样相同的标识的数据包片就能够重新组合到一起</p>
+<p>　　　　　　标志：占3位，第一位暂时没意义，第二位DF：不能分片的意思，为1时，不能分片，为0就可以分片 第三位MF 还有分片的意思，为0代表这是若干数据包中的最后一片</p>
+<p>　　　　　　片偏移：占13位，在较长的分组在分片后，某片在原分组中的相对位置，几个例子，1111，1111，1111，1111 这16位，分成4个数据包分片来发，第一个数据包分片的片偏移为1，第二个为5，第三个为9，</p>
+<p>　　　　　　　　　　第四个为13，就是这个意思，片偏移以8个字节为偏移单位，也就是说，每个分片的长度一定是8字节的整数倍，上面是以位来举例说明问题，实际上单位是8个字节为单位。</p>
+<p>　　　　1.3）第三行　　</p>
+<p>　　　　　　生存时间：也就是ping命令中显示的TTL字段，跳数限制，每经过一个路由器，就减1，当跳到0后，就丢弃该数据包。window系统的起始TTL为32、Linux64、xp：128</p>
+<p>　　　　　　协议：占8位，数据包中数据部分使用的是什么协议，方便目的主机的IP层知道讲数据部分上交给哪个处理。(也就是下一章要将的TCP还是UDP协议)</p>
+<p>　　　　　　首部检验和：占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，路由器都要重新计算一下首部检验和（一些字段，如生存时间、标志、片偏移等都可能发生变化）。</p>
+<p>　　　　　　　　　　   不检验数据部分可减少计算的工作量。</p>
+<p>　　　　1.4）第四行</p>
+<p>　　　　　　源地址：占32为，也就是源IP地址</p>
+<p>　　　　1.5）第五行</p>
+<p>　　　　　　目标地址：占32位，也是IP地址</p>
+<p>　　2）可选部分：为了使整个数据包为整数个字节而设置的。　　　</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="五、ICMP协议"><a href="#五、ICMP协议" class="headerlink" title="五、ICMP协议"></a>五、ICMP协议</h1><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094156450-305546820.png" alt="img">　</p>
+<p>　　ICMP协议是一种面向无连接的协议，用于传输出错报告控制信息。它是一个非常重要的协议，它对于<a href="https://baike.baidu.com/item/网络安全" target="_blank" rel="noopener">网络安全</a>具有极其重要的意义。</p>
+<p>　　它是<a href="https://baike.baidu.com/item/TCP%2FIP协议" target="_blank" rel="noopener">TCP/IP协议</a>族的一个子协议，属于网络层协议，主要用于在主机与路由器之间传递控制信息，包括报告错误、交换受限控制和状态信息等。</p>
+<p>　　当遇到IP数据无法访问目标、IP<a href="https://baike.baidu.com/item/路由器" target="_blank" rel="noopener">路由器</a>无法按当前的传输速率转发<a href="https://baike.baidu.com/item/数据包" target="_blank" rel="noopener">数据包</a>等情况时，会自动发送ICMP消息。ICMP报文在IP帧结构的首部协议类型字段（Protocol 8bit)的值=1。</p>
+<p>这个协议比较简单，它有两部分组成：ICMP差错报告报文、ICMP询问报文 。这个挺有用的，比如我们经常用来测试网络连接畅通的ping命令等</p>
+<h2 id="5-1、ICMP差错报告报文"><a href="#5-1、ICMP差错报告报文" class="headerlink" title="5.1、ICMP差错报告报文"></a>5.1、ICMP差错报告报文</h2><p>　　检测在传送数据的过程中，发生的错误，如果发生了错误，会通过该协议返回给源主机一个带有错误原因的数据包</p>
+<p>　　终点不可达：发送数据后，路由器或主机不能完成交付数据报时，就会往源主机发送终点不可达报文</p>
+<p>　　源点抑制：当路由器或主机由于网络拥塞而丢弃数据报时，返回一个源点抑制报文</p>
+<p>　　超时：</p>
+<p>　　　　参数问题，在ip数据包中的首部有的字段不正确时，丢弃该报，返回参数问题报文</p>
+<p>　　　　改变路由(重定向)：路由器把改变路由报文发送给主机，让主机下次直接经过改变后的路由器。</p>
+<h2 id="5-2、ICMP询问报文"><a href="#5-2、ICMP询问报文" class="headerlink" title="5.2、ICMP询问报文"></a>5.2、ICMP询问报文</h2><p>　　回送请求和回答：主机向特定目标发出询问，收到此报文必须返回一个ICMP回送回答报文。用于测试目的站是否可达。　　　　　　　　　　　　</p>
+<p>　　时间戳请求和回答：请某个路由器或主机回答当前的日期和时间，用于进行时钟的同步和测量时间。</p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="六、IGMP协议"><a href="#六、IGMP协议" class="headerlink" title="六、IGMP协议"></a>六、IGMP协议</h1><h2 id="6-1、概述"><a href="#6-1、概述" class="headerlink" title="6.1、概述"></a>6.1、概述</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094650106-1702985758.png" alt="img"></p>
+<h2 id="6-2、多播"><a href="#6-2、多播" class="headerlink" title="6.2、多播　　"></a>6.2、多播　　</h2><p>　　IGMP协议用于多播，解释一下多播是什么把。</p>
+<p>　　广播：老师在台上讲课，你们能随时看到老师的电脑屏幕，因为采用的广播，每个人度能接受到老师屏幕上所有的数据包</p>
+<p>　　多播：在一个局域网中，有三个多播组，A、B、C，A在放java视频，B在放C++视频，C在放娱乐视频，如果你想看Java视频，那么你就调到A这个多播组中学习java视频，学习累了，</p>
+<p>　　　　 你就可以换到C这个多播组中看看娱乐节目，这就是多播的意思，相对广播来说，自己需要什么就调什么，而不是跟广播一样，被动接受，他播到哪，就只能看到哪，多播能自由控制速度。</p>
+<p>　　单播：50个人想看视频，就得发送50个数据包。多播的话就发一个，然后通过路由器转发50分给不同的人。</p>
+<p>   单播：　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929094914903-280236468.png" alt="img">   多播： <img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095019294-649093041.png" alt="img"></p>
+<h2 id="6-3、IGMP协议工作流程"><a href="#6-3、IGMP协议工作流程" class="headerlink" title="6.3、IGMP协议工作流程"></a>6.3、IGMP协议工作流程</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095155887-329195226.png" alt="img"></p>
+<p><a href="https://www.cnblogs.com/zhangyinhua/p/7609242.html#_labelTop" target="_blank" rel="noopener">回到顶部(go to top)</a></p>
+<h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095230075-1587770275.png" alt="img"></p>
+<p>　　注意：每个路由器度有一个路由表，并且主机也有记录ip地址和对应mac地址的功能。并不是每次通信度需要发广播询问。</p>
+<h2 id="7-1、分析从主机A找到主机B的过程"><a href="#7-1、分析从主机A找到主机B的过程" class="headerlink" title="7.1、分析从主机A找到主机B的过程"></a>7.1、分析从主机A找到主机B的过程</h2><p>　　1）A先在自己的网络中发送广播，通过ARP协议。问所有的主机，谁知道10.0.0.3这个ip地址的主机是谁，同时把自己的主机ip地址和mac地址一起发送，</p>
+<p>　　　　主机B发现自己是10.0.03这个ip地址，就把自己的mac地址发回去</p>
+<p>　　2）主机A发现有人回应，就知道在自己本网络中，然后就找到了目标主机，开始通讯</p>
+<h2 id="7-2、分析从主机A找到主机E的过程"><a href="#7-2、分析从主机A找到主机E的过程" class="headerlink" title="7.2、分析从主机A找到主机E的过程"></a>7.2、分析从主机A找到主机E的过程</h2><p>　　1）主机A先发广播看自己本网络没有该主机，没有，然后就给ip地址为10.0.0.1这个路由器F1发信号获得路由器的mac地址，然后给他发信号叫该路由器F1帮我们查找ip地址为12.0.0.3的主机。</p>
+<p>　　　　这个路由器的ip地址就网关，所以每台计算机上度要有三个东西，ip地址，子网掩码，网关。 </p>
+<p>　　2）路由器因为知道所有的网络在哪里，通过子网掩码和ip地址，就能够算出该ip地址在哪一个网段中，路由器就一跳一跳的经过路由器，知道找到对应网段的路由器F2</p>
+<p>　　3）找到F2后，F2就以同样的方式通过ip地址找到对应的mac地址，就这样找到了。</p>
+<p>　　省略了路由器如何找的这一步，这个可以自己看书，其中有很多中方式，很多种算法，我们就知道我们给ip地址和子网掩码给路由器，路由器就知道下一跳给谁，知道找到对应网段</p>
+<h2 id="7-3、分析从主机A到主机E数据的形式"><a href="#7-3、分析从主机A到主机E数据的形式" class="headerlink" title="7.3、分析从主机A到主机E数据的形式"></a>7.3、分析从主机A到主机E数据的形式</h2><p>　　<img src="https://images2017.cnblogs.com/blog/999804/201709/999804-20170929095621419-1188385242.png" alt="img"></p>
+<p>　　传输层(还没讲)：讲各个数据段划分序号</p>
+<p>　　网络层：加上ip地址</p>
+<p>　　数据链路层：加上mac地址和CRC检测的FCS</p>
+<p>　　物理层：转化为比特流传输</p>
+<p>　　集线器：只认识物理层，用来转发比特流</p>
+<p>　　交换机：能认识数据链路层，所以交换机有mac地址表，能够记录各种mac地址，下一次就能选择性的转发数据了</p>
+<p>　　路由器，能认识网络层，有路由表，所以能够通过ip地址找到对应网段。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/10/network6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/network3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1248,75 +1522,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ccna4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/hacker.png">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/ccna4/" class="post-title-link" itemprop="url">ccna4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-10 13:28:47" itemprop="dateCreated datePublished" datetime="2020-05-10T13:28:47-05:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/10/ccna4/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1384,7 +1593,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

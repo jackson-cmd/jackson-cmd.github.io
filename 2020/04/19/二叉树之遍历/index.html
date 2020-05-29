@@ -27,10 +27,14 @@
 <meta property="og:site_name" content="Jackson Blog">
 <meta property="og:description" content="94. 二叉树的中序遍历难度中等477收藏分享切换为英文关注反馈 给定一个二叉树，返回它的中序 遍历。 示例: 12345678输入: [1,null,2,3]   1    \     2    &#x2F;   3输出: [1,3,2]  进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 123456789101112131415161718192021222324252627&#x2F;** * D">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_BFS.png">
+<meta property="og:image" content="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_deque.png">
+<meta property="og:image" content="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_DFS.png">
 <meta property="article:published_time" content="2020-04-19T15:17:19.000Z">
-<meta property="article:modified_time" content="2020-04-25T17:40:58.053Z">
+<meta property="article:modified_time" content="2020-05-21T14:13:23.174Z">
 <meta property="article:author" content="Jackson">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_BFS.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/04/19/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B9%8B%E9%81%8D%E5%8E%86/">
 
@@ -208,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-25 12:40:58" itemprop="dateModified" datetime="2020-04-25T12:40:58-05:00">2020-04-25</time>
+                <time title="Modified: 2020-05-21 09:13:23" itemprop="dateModified" datetime="2020-05-21T09:13:23-05:00">2020-05-21</time>
               </span>
 
           
@@ -252,7 +256,87 @@
 <p>返回锯齿形层次遍历如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [20,9],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(TreeNode node, <span class="keyword">int</span> level, List&lt;List&lt;Integer&gt;&gt; results)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (level &gt;= results.size()) &#123;</span><br><span class="line">      LinkedList&lt;Integer&gt; newLevel = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">      newLevel.add(node.val);</span><br><span class="line">      results.add(newLevel);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (level % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">        results.get(level).add(node.val);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        results.get(level).add(<span class="number">0</span>, node.val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) DFS(node.left, level + <span class="number">1</span>, results);</span><br><span class="line">    <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) DFS(node.right, level + <span class="number">1</span>, results);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; results = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    DFS(root, <span class="number">0</span>, results);</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-BFS-Breadth-First-Search"><a href="#Approach-1-BFS-Breadth-First-Search" class="headerlink" title="Approach 1: BFS (Breadth-First Search)"></a>Approach 1: BFS (Breadth-First Search)</h4><p><strong>Intuition</strong></p>
+<p>Following the description of the problem, the most intuitive solution would be the <em>BFS</em> (Breadth-First Search) approach through which we traverse the tree level-by-level.</p>
+<p>The default ordering of BFS within a single level is from left to right. As a result, we should adjust the BFS algorithm a bit to generate the desired zigzag ordering.</p>
+<blockquote>
+<p>One of the keys here is to store the values that are of the same level with the <code>deque</code> (double-ended queue) data structure, where we could add new values on either end of a queue.</p>
+</blockquote>
+<p>So if we want to have the ordering of <strong>FIFO</strong> (first-in-first-out), we simply append the new elements to the <em>tail</em> of the queue, <em>i.e.</em> the late comers stand last in the queue. While if we want to have the ordering of <strong>FILO</strong> (first-in-last-out), we insert the new elements to the <em>head</em> of the queue, <em>i.e.</em> the late comers jump the queue.</p>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_BFS.png" alt="pic"></p>
+<p><strong>Algorithm</strong></p>
+<p>There are several ways to implement the BFS algorithm.</p>
+<ul>
+<li>One way would be that we run a two-level nested loop, with the <em>outer loop</em> iterating each level on the tree, and with the <em>inner loop</em> iterating each node within a single level. </li>
+<li>We could also implement BFS with a single loop though. The trick is that we append the nodes to be visited into a queue and we separate nodes of different levels with a sort of <strong>delimiter</strong> (<em>e.g.</em> an empty node). The delimiter marks the end of a level, as well as the beginning of a new level.</li>
+</ul>
+<p>Here we adopt the <em>second</em> approach above. One can start with the normal BFS algorithm, upon which we add a touch of <em>zigzag*order with the help of <code>deque</code>. For each level, we start from an empty deque container to hold all the values of the same level. Depending on the ordering of each level, *i.e.</em> either from-left-to-right or from-right-to-left, we decide at which end of the deque to add the new element:</p>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_deque.png" alt="pic"></p>
+<ul>
+<li>For the ordering of from-left-to-right (FIFO), we <em>append</em> the new element to the <strong><em>tail\</em></strong> of the queue, so that the element that comes late would get out late as well. As we can see from the above graph, given an input sequence of <code>[1, 2, 3, 4, 5]</code>, with FIFO ordering, we would have an output sequence of <code>[1, 2, 3, 4, 5]</code>.</li>
+<li>For the ordering of from-right-to-left (FILO), we <em>insert</em> the new element to the <strong><em>head\</em></strong> of the queue, so that the element that comes late would get out first. With the same input sequence of <code>[1, 2, 3, 4, 5]</code>, with FILO ordering, we would obtain an output sequence of <code>[5, 4, 3, 2, 1]</code>.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/CuzksuMQ/shared" frameborder="0" width="100%" height="500" name="CuzksuMQ" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p>Note: as an alternative approach, one can also implement the normal BFS algorithm first, which would generate the ordering of from-left-to-right for each of the levels. Then, at the end of the algorithm, we can simply <strong><em>reverse\</em></strong> the ordering of certain levels, following the zigzag steps.</p>
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li><p>Time Complexity: O(N)O(<em>N</em>), where N<em>N</em> is the number of nodes in the tree.</p>
+<ul>
+<li>We visit each node once and only once.</li>
+<li>In addition, the insertion operation on either end of the deque takes a constant time, rather than using the array/list data structure where the inserting at the head could take the O(K)O(<em>K</em>) time where K<em>K</em> is the length of the list.</li>
+</ul>
+</li>
+<li><p>Space Complexity: O(N)O(<em>N</em>) where N<em>N</em> is the number of nodes in the tree.</p>
+<ul>
+<li><p>The main memory consumption of the algorithm is the <code>node_queue</code> that we use for the loop, apart from the array that we use to keep the final output.</p>
+</li>
+<li><p>As one can see, at any given moment, the <code>node_queue</code> would hold the nodes that are <em>at most</em> across two levels. Therefore, at most, the size of the queue would be no more than 2⋅L2⋅<em>L</em>, assuming L<em>L</em> is the maximum number of nodes that might reside on the same level. Since we have a binary tree, the level that contains the most nodes could occur to consist all the leave nodes in a full binary tree, which is roughly L=N2<em>L</em>=2<em>N</em>. As a result, we have the space complexity of 2⋅N2=N2⋅2<em>N</em>=<em>N</em> in the worst case.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Approach-2-DFS-Depth-First-Search"><a href="#Approach-2-DFS-Depth-First-Search" class="headerlink" title="Approach 2: DFS (Depth-First Search)"></a>Approach 2: DFS (Depth-First Search)</h4><p><strong>Intuition</strong></p>
+<p>Though not intuitive, we could also obtain the <em>BFS</em> traversal ordering via the <em>DFS</em> (Depth-First Search) traversal in the tree.</p>
+<blockquote>
+<p>The trick is that during the DFS traversal, we maintain the results in a <em>global</em> array that is indexed by the level, <em>i.e.</em> the element <code>array[level]</code> would contain all the nodes that are at the same level. The global array would then be referred and updated at each step of DFS.</p>
+</blockquote>
+<p><img src="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_DFS.png" alt="pic"></p>
+<p>Similar with the above modified BFS algorithm, we employ the <code>deque</code> data structure to hold the nodes that are of the same level, and we alternate the insertion direction (<em>i.e.</em> either to the head or to the tail) to generate the desired output ordering.</p>
+<p><strong>Algorithm</strong></p>
+<p>Here we implement the DFS algorithm via <em>recursion</em>. We define a recursive function called <code>DFS(node, level)</code> which only takes care of the current <code>node</code> which is located at the specified <code>level</code>. Within the function, here are three steps that we would perform:</p>
+<ul>
+<li>If this is the first time that we visit any node at the <code>level</code>, <em>i.e.</em> the deque for the level does not exist, then we simply create the deque with the current node value as the initial element.</li>
+<li>If the deque for this level exists, then depending on the ordering, we insert the current node value either to the head or to the tail of the queue.</li>
+<li>At the end, we <em>recursively</em> call the function for each of its child nodes.</li>
+</ul>
+<iframe src="https://leetcode.com/playground/5kZDYMsP/shared" frameborder="0" width="100%" height="500" name="5kZDYMsP" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p>It might go without saying that, one can also implement the DFS traversal via <strong><em>iteration\</em></strong> rather than recursion, which could be one of the followup questions by an interviewer.</p>
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time Complexity: O(N)O(<em>N</em>), where N<em>N</em> is the number of nodes in the tree.<ul>
+<li>Same as the previous BFS approach, we visit each node once and only once.</li>
+</ul>
+</li>
+<li>Space Complexity: O(H)O(<em>H</em>), where H<em>H</em> is the height of the tree, <em>i.e.</em> the number of levels in the tree, which would be roughly log⁡2Nlog2<em>N</em>.<ul>
+<li>Unlike the BFS approach, in the DFS approach, we do not need to maintain the <code>node_queue</code> data structure for the traversal.</li>
+<li>However, the function recursion would incur additional memory consumption on the <em>function call stack</em>. As we can see, the size of the call stack for any invocation of <code>DFS(node, level)</code> would be exactly the number of <code>level</code> that the current node resides on. Therefore, the space complexity of our DFS algorithm is O(log⁡2N)O(log2<em>N</em>) which is much better than the BFS approach. </li>
+</ul>
+</li>
+</ul>
+<h2 id="107-二叉树的层次遍历-II"><a href="#107-二叉树的层次遍历-II" class="headerlink" title="107. 二叉树的层次遍历 II"></a><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. 二叉树的层次遍历 II</a></h2><p>难度简单235收藏分享切换为英文关注反馈</p>
+<p>给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）</p>
+<p>例如：<br>给定二叉树 <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<p>返回其自底向上的层次遍历为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [15,7],</span><br><span class="line">  [9,20],</span><br><span class="line">  [3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -334,7 +418,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#94-二叉树的中序遍历"><span class="nav-number">1.</span> <span class="nav-text">94. 二叉树的中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#102-二叉树的层序遍历"><span class="nav-number">2.</span> <span class="nav-text">102. 二叉树的层序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#103-二叉树的锯齿形层次遍历"><span class="nav-number">3.</span> <span class="nav-text">103. 二叉树的锯齿形层次遍历</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#94-二叉树的中序遍历"><span class="nav-number">1.</span> <span class="nav-text">94. 二叉树的中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#102-二叉树的层序遍历"><span class="nav-number">2.</span> <span class="nav-text">102. 二叉树的层序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#103-二叉树的锯齿形层次遍历"><span class="nav-number">3.</span> <span class="nav-text">103. 二叉树的锯齿形层次遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Approach-1-BFS-Breadth-First-Search"><span class="nav-number">3.0.1.</span> <span class="nav-text">Approach 1: BFS (Breadth-First Search)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Approach-2-DFS-Depth-First-Search"><span class="nav-number">3.0.2.</span> <span class="nav-text">Approach 2: DFS (Depth-First Search)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#107-二叉树的层次遍历-II"><span class="nav-number">4.</span> <span class="nav-text">107. 二叉树的层次遍历 II</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -350,7 +434,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
