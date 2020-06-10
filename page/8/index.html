@@ -173,6 +173,254 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/linux%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/25/linux%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">linux基础（1-18集）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-25 14:07:36 / Modified: 16:52:52" itemprop="dateCreated datePublished" datetime="2020-04-25T14:07:36-05:00">2020-04-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="linux-100集"><a href="#linux-100集" class="headerlink" title="linux 100集"></a>linux 100集</h1><h2 id="P3：操作系统作用"><a href="#P3：操作系统作用" class="headerlink" title="P3：操作系统作用"></a>P3：操作系统作用</h2><p>操作系统作用：1. 直接操作硬件 2把操作硬件的代码封装成一个个系统调用，供其他使用。</p>
+<p>操作系统，与硬件交互。操作系统作用：操作系统位于底层硬件与用户之间，是两者沟通的桥梁。用户可以通过操作系统的用户界面，输入命令。操作系统则对命令进行解释，驱动硬件设备，实现用户要求。以现代标准而言，一个标准PC的操作系统应该提供以下的功能：</p>
+<p>1、进程管理。又称处理器管理，其主要任务是对处理器的时间进行合理分配、对处理器的运行实施有效的管理。</p>
+<p>2、存储器管理。由于多道程序共享内存资源，所以存储器管理的主要任务是对存储器进行分配、保护和扩充。</p>
+<p>3、设备管理。根据确定的设备分配原则对设备进行分配，使设备与主机能够并行工作，为用户提供良好的设备使用界面。</p>
+<p>4、文件管理。有效地管理文件的存储空间，合理地组织和管理文件系统，为文件访问和文件保护提供更有效的方法及手段。</p>
+<p>5、用户接口。用户操作计算机的界面称为用户接口（或用户界面），通过用户接口，用户只需进行简单操作，就能实现复杂的应用处理。</p>
+<p>例：听音乐，把硬盘中文件加载内存，然后声卡对音频数据解码，然后解码后数据给音响。这些都是操作系统做的。</p>
+<h2 id="P4-10：历史简介"><a href="#P4-10：历史简介" class="headerlink" title="P4-10：历史简介"></a>P4-10：历史简介</h2><p>桌面操作系统：Windows（用户多，安全性较差，稳定性较差），Linux（应用软件少）， macOS（开发人员用）</p>
+<p>服务器操作系统：Linux（安全，稳定，免费，占有率高，一般公司服务器都是Linux）（维护机房计算机，在远程维护），Windows Server（微软付费的，占有率低）</p>
+<p>嵌入式操作系统：Linux（）</p>
+<p>系统设备操作系统：iOS，Android</p>
+<p>虚拟机：通过软件模拟具有完整硬件系统功能的，运行在一个完全隔离环境中的完整计算机系统。</p>
+<p>Ken Thompson, 1969运行space travel，用汇编写了Unix原型，老爷子后来用B语言写了Unix</p>
+<p>Dennis M.Ritchie发明了c语言，然后两个人一起重写了Unix。</p>
+<p>unix version7 后unix不在开源源代码，因为ken老爷子喜欢走后门，让贝尔实验室很不爽。</p>
+<p>Linux出现了，Linus老爷子来了，用GNU的bash当开发环境，gcc做compiler，编写了linux内核。</p>
+<p>Linux两个版本：内核版本和发行版本。</p>
+<p><u>终端命令</u>调系统调用，<u>系统调用</u>与硬件交互。</p>
+<p>内核版本：kernel，Linux内核：内核只有一个<br>        linux内核是一种开放源码的操作系统，由Linux Torvalds负责维护，提供硬件抽象层、硬盘及文件系统控制及多任务功能的系统核心程序。</p>
+<p>Linux发行版：<br>        linux发行版基于linux内核源码，将Linux系统的内核与外围实用程序(Utilities)软件和文档包装起来，并提供一些系统安装界面和系统配置、设定与管理工具，就构成了一种发行版本(distribution)，Linux的发行版本其实就是Linux核心再加上外围的实用程序组成的一个大软件包。</p>
+<p>linux主要发行版：</p>
+<p>Fedora Core、Debian、Mandrake、Ubuntu、Red Hat Linux、SuSE、Linux Mint、Gentoo、CentOS、</p>
+<h2 id="P11：Linux文件目录"><a href="#P11：Linux文件目录" class="headerlink" title="P11：Linux文件目录"></a>P11：Linux文件目录</h2><p>windows每个驱动器都有根目录，前身是单用户操作系统</p>
+<p>unix/linux是多用户操作系统，ubuntu目录：</p>
+<p>/是根目录：/bin, /etc, /home, /lib, /usr</p>
+<p>在/home中有/python, /laowang, 在这两个用户中都有/Desktop, /Documents, /Downloads, 各人各家，不会干扰别人。linux没有盘符概念</p>
+<p>/bin: /usr/bin: 可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</p>
+<p>/boot：放置linux系统启动时用到的一些文件。/boot/vmlinuz 为 linux 的内核文件，以及 /boot/gurb。建议单独分区，分区大小100M即可</p>
+<p>/dev：存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱 mount /dev/cdrom /mnt。</p>
+<p>/etc：系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有 /etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d修改配置文件之前记得备份。</p>
+<p>注：/etc/X11 存放与 x windows 有关的设置。</p>
+<p>/home：系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下，<del>表示当前用户的家目录，</del>edu 表示用户 edu 的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据</p>
+<p>/lib: /usr/lib: /usr/local/lib：系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为 /lib/modules。</p>
+<p>/lost+fount：系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。如加载硬盘于 /disk 中，此目录下就会自动产生目录 /disk/lost+found</p>
+<p>/mnt: /media：光盘默认挂载点，通常光盘挂载于 /mnt/cdrom 下，也不一定，可以选择任意位置进行挂载。</p>
+<p>/opt：给主机额外安装软件所摆放的目录。如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的 KDE 桌面软件，可以将该软件安装在该目录下。以前的 Linux 系统中，习惯放置在 /usr/local 目录下</p>
+<p>/proc：此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有 /proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/* 等。</p>
+<p>/root：系统管理员root的家目录，系统第一个启动的分区为 /，所以最好将 /root和 /放置在一个分区下。</p>
+<p>/sbin: /usr/sbin: /usr/local/sbin：放置系统管理员使用的可执行命令，如fdisk、shutdown、mount 等。与 /bin 不同的是，这几个目录是给系统管理员 root使用的命令，一般用户只能”查看”而不能设置和使用。</p>
+<p>/tmp：一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下</p>
+<p>/srv：服务启动之后需要访问的数据目录，如 www 服务需要访问的网页数据存放在 /srv/www 内。</p>
+<p>/usr：应用程序存放目录，/usr/bin 存放应用程序，/usr/share 存放共享数据，/usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local: 存放软件升级包。/usr/share/doc: 系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录，使用 man ls 时会查询 /usr/share/man/man1/ls.1.gz 的内容建议单独分区，设置较大的磁盘空间</p>
+<p>/var：放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放的目录，/var/run:程序或服务启动后，其PID存放在该目录下。建议单独分区，设置较大的磁盘空间</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="一切皆文件"><a href="#一切皆文件" class="headerlink" title="一切皆文件"></a>一切皆文件</h3><p>Linux 对数据文件(<em>.mp3、</em>.bmp)，程序文件(<em>.c、</em>.h、*.o)，设备文件（LCD、触摸屏、鼠标），网络文件( socket ) 等的管理都抽象为文件，使用统一的方式方法管理。</p>
+<p>文件分类：</p>
+<p>1）普通文件( 数据文件 )</p>
+<p>普通文件是用于存放数据、程序等信息的文件，一般都长期地存放在外存储器（磁盘）中。普通文件又分为文本文件和二进制文件。</p>
+<p>2）目录文件</p>
+<p>目录文件是文件系统中一个目录所包含的目录项所组成的文件。</p>
+<p>3）设备文件</p>
+<p>设备文件是用于为操作系统与设备提供连接的一种文件。在Linux系统中将设备作为文件来处理，操作设备就像是操作普通文件一样。每一个设备对应一个设备文件，存放在 /dev 目录中。</p>
+<p>5）链接文件</p>
+<p>似于 windows 下的快捷方式，链接又可以分为软链接（符号链接）和硬链接。</p>
+<p>6）管道文件</p>
+<p>管道文件主要用于在进程间传递数据的一种特殊文件。</p>
+<p>7）套接口文件</p>
+<p>主要用于不同计算机间网络通信的一种特殊文件。</p>
+<p><strong>【常见目录说明】</strong></p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bin</td>
+<td>存放二进制可执行文件(ls,cat,mkdir等)，常用命令一般都在这里。</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>存放系统管理和配置文件</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是/home/user，可以用~user表示</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>用于存放系统应用程序，比较重要的目录/usr/local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录。/usr/x11r6 存放x window的目录/usr/bin 众多的应用程序  /usr/sbin 超级用户的一些管理程序  /usr/doc linux文档  /usr/include linux下开发和编译应用程序所需要的头文件  /usr/lib 常用的动态链接库和软件包的配置文件  /usr/man 帮助文档  /usr/src 源代码，linux内核的源代码就放在/usr/src/linux里  /usr/local/bin 本地增加的命令  /usr/local/lib 本地增加的库</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把tomcat等都安装到这里。</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息。</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>超级用户（系统管理员）的主目录（特权阶级^o^）</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>存放二进制可执行文件，只有root才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如ifconfig等。</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>用于存放设备文件。</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统。</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>存放用于系统引导时使用的各种文件</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows里的.dll文件，存放了根文件系统程序运行所需的共享文件。</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>用于存放各种临时文件，是公用的临时文件存储点。</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等。</td>
+</tr>
+<tr>
+<td>/lost+found</td>
+<td>这个目录平时是空的，系统非正常关机而留下“无家可归”的文件（windows下叫什么.chk）就在这里</td>
+</tr>
+</tbody></table>
+<h2 id="P13-17-LInux终端命令"><a href="#P13-17-LInux终端命令" class="headerlink" title="P13-17.LInux终端命令"></a>P13-17.LInux终端命令</h2><p>terminal放大字体：ctrl + shift + =；缩小字体： ctrl + -</p>
+<p>linux常用命令：ls, pwd, cd, touch, mkdir, rm, clear.</p>
+<p>对应：list, print work directory, change directory, touch(创建文件，例如java，txt文件), mkdir(创建目录)马克directory，clear（清屏), rmdir(删除目录)</p>
+<p>终端命令格式：command [options] [parameter]</p>
+<p>Linux中的rm －r 和rm －R区别为：用途不同道、范围不同、数量不同。</p>
+<p>一、用途不同</p>
+<p>1、rm －r ：rm －r 只能用于删除文件，不能用于删除文件夹。</p>
+<p>2、rm －R：rm －R既能用于删除文件，也能用于删除文件夹。</p>
+<p>二、范围不同内</p>
+<p>1、rm －容r ：rm －r的删除范围是删除当前输入位置的文件。</p>
+<p>2、rm －R：rm －R的删除范围是删除当前输入的目录文件夹里文件及其子目录里的文件。</p>
+<p><strong>系统信息</strong><br>arch 显示机器的处理器架构<br>uname -m 显示机器的处理器架构<br>uname -r 显示正在使用的内核版本<br>dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)<br>hdparm -i /dev/hda 罗列一个磁盘的架构特性<br>hdparm -tT /dev/sda 在磁盘上执行测试性读取操作<br>cat /proc/cpuinfo 显示CPU info的信息<br>cat /proc/interrupts 显示中断<br>cat /proc/meminfo 校验内存使用<br>cat /proc/swaps 显示哪些swap被使用<br>cat /proc/version 显示内核的版本<br>cat /proc/net/dev 显示网络适配器及统计<br>cat /proc/mounts 显示已加载的文件系统<br>lspci -tv 罗列 PCI 设备<br>lsusb -tv 显示 USB 设备<br>date 显示系统日期<br>cal 2007 显示2007年的日历表<br>date 041217002007.00 设置日期和时间 - 月日时分年.秒<br>clock -w 将时间修改保存到 BIOS </p>
+<p><strong>关机 (系统的关机、重启以及登出 )</strong><br>shutdown -h now 关闭系统<br>init 0 关闭系统<br>telinit 0 关闭系统<br>shutdown -h hours:minutes &amp; 按预定时间关闭系统<br>shutdown -c 取消按预定时间关闭系统<br>shutdown -r now 重启<br>reboot 重启<br>logout 注销 </p>
+<p><strong>文件和目录</strong><br>cd /home 进入 ‘/ home’ 目录’<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd 进入个人的主目录<br>cd ~user1 进入个人的主目录<br>cd - 返回上次所在的目录<br>pwd 显示工作路径<br>ls 查看目录中的文件<br>ls -F 查看目录中的文件<br>ls -l 显示文件和目录的详细资料<br>ls -a 显示隐藏文件<br>ls <em>[0-9]</em> 显示包含数字的文件名和目录名<br>tree 显示文件和目录由根目录开始的树形结构<br>lstree 显示文件和目录由根目录开始的树形结构<br>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树<br>rm -f file1 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 删除一个叫做 ‘dir1’ 的目录’<br>rm -rf dir1 删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2 同时删除两个目录及它们的内容<br>mv dir1 new_dir 重命名/移动 一个目录<br>cp file1 file2 复制一个文件<br>cp dir/* . 复制一个目录下的所有文件到当前工作目录<br>cp -a /tmp/dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
+<p>cp -r dir1 dir2 复制一个目录及子目录<br>ln -s file1 lnk1 创建一个指向文件或目录的软链接<br>ln file1 lnk1 创建一个指向文件或目录的物理链接<br>touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)<br>file file1 outputs the mime type of the file as text<br>iconv -l 列出已知的编码<br>iconv -f fromEncoding -t toEncoding inputFile &gt; outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding.<br>find . -maxdepth 1 -name *.jpg -print -exec convert “{}” -resize 80x60 “thumbs/{}” ; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick) </p>
+<p><strong>文件搜索</strong><br>find / -name file1 从 ‘/‘ 开始进入根文件系统搜索文件和目录<br>find / -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find /home/user1 -name *.bin 在目录 ‘/ home/user1’ 中搜索带有’.bin’ 结尾的文件<br>find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件<br>find / -name *.rpm -exec chmod 755 ‘{}’ ; 搜索以 ‘.rpm’ 结尾的文件并定义其权限<br>find / -xdev -name *.rpm 搜索以 ‘.rpm’ 结尾的文件，忽略光驱、捷盘等可移动设备<br>locate *.ps 寻找以 ‘.ps’ 结尾的文件 - 先运行 ‘updatedb’ 命令<br>whereis halt 显示一个二进制文件、源码或man的位置<br>which halt 显示一个二进制文件或可执行文件的完整路径 </p>
+<p><strong>挂载一个文件系统</strong><br>mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 ‘/ mnt/hda2’ 已经存在<br>umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 ‘/ mnt/hda2’ 退出<br>fuser -km /mnt/hda2 当设备繁忙时强制卸载<br>umount -n /mnt/hda2 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用<br>mount /dev/fd0 /mnt/floppy 挂载一个软盘<br>mount /dev/cdrom /mnt/cdrom 挂载一个cdrom或dvdrom<br>mount /dev/hdc /mnt/cdrecorder 挂载一个cdrw或dvdrom<br>mount /dev/hdb /mnt/cdrecorder 挂载一个cdrw或dvdrom<br>mount -o loop file.iso /mnt/cdrom 挂载一个文件或ISO镜像文件<br>mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统<br>mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备<br>mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享 </p>
+<p><strong>磁盘空间</strong><br>df -h 显示已经挂载的分区列表<br>ls -lSr |more 以尺寸大小排列文件和目录<br>du -sh dir1 估算目录 ‘dir1’ 已经使用的磁盘空间’<br>du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小<br>rpm -q -a –qf ‘%10{SIZE}t%{NAME}n’ | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统)<br>dpkg-query -W -f=’${Installed-Size;10}t${Package}n’ | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统) </p>
+<p><strong>用户和群组</strong><br>groupadd group_name 创建一个新用户组<br>groupdel group_name 删除一个用户组<br>groupmod -n new_group_name old_group_name 重命名一个用户组<br>useradd -c “Name Surname “ -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 “admin” 用户组的用户<br>useradd user1 创建一个新用户<br>userdel -r user1 删除一个用户 ( ‘-r’ 排除主目录)<br>usermod -c “User FTP” -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性<br>passwd 修改口令<br>passwd user1 修改一个用户的口令 (只允许root执行)<br>chage -E 2005-12-31 user1 设置用户口令的失效期限<br>pwck 检查 ‘/etc/passwd’ 的文件格式和语法修正以及存在的用户<br>grpck 检查 ‘/etc/passwd’ 的文件格式和语法修正以及存在的群组<br>newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 </p>
+<p><strong>文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</strong><br>ls -lh 显示权限<br>ls /tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示<br>chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限<br>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限<br>chown user1 file1 改变一个文件的所有人属性<br>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性<br>chgrp group1 file1 改变文件的群组<br>chown user1:group1 file1 改变一个文件的所有人和群组属性<br>find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件<br>chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限<br>chmod u-s /bin/file1 禁用一个二进制文件的 SUID位<br>chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的<br>chmod g-s /home/public 禁用一个目录的 SGID 位<br>chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件<br>chmod o-t /home/public 禁用一个目录的 STIKY 位 </p>
+<p><strong>文件的特殊属性 - 使用 “+” 设置权限，使用 “-“ 用于取消</strong><br>chattr +a file1 只允许以追加方式读写文件<br>chattr +c file1 允许这个文件能被内核自动压缩/解压<br>chattr +d file1 在进行文件系统备份时，dump程序将忽略这个文件<br>chattr +i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接<br>chattr +s file1 允许一个文件被安全地删除<br>chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘<br>chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件<br>lsattr 显示特殊的属性 </p>
+<p><strong>打包和压缩文件</strong><br>bunzip2 file1.bz2 解压一个叫做 ‘file1.bz2’的文件<br>bzip2 file1 压缩一个叫做 ‘file1’ 的文件<br>gunzip file1.gz 解压一个叫做 ‘file1.gz’的文件<br>gzip file1 压缩一个叫做 ‘file1’的文件<br>gzip -9 file1 最大程度压缩<br>rar a file1.rar test_file 创建一个叫做 ‘file1.rar’ 的包<br>rar a file1.rar file1 file2 dir1 同时压缩 ‘file1’, ‘file2’ 以及目录 ‘dir1’<br>rar x file1.rar 解压rar包<br>unrar x file1.rar 解压rar包<br>tar -cvf archive.tar file1 创建一个非压缩的 tarball<br>tar -cvf archive.tar file1 file2 dir1 创建一个包含了 ‘file1’, ‘file2’ 以及 ‘dir1’的档案文件<br>tar -tf archive.tar 显示一个包中的内容<br>tar -xvf archive.tar 释放一个包<br>tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下<br>tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包<br>tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包<br>tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包<br>tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包<br>zip file1.zip file1 创建一个zip格式的压缩包<br>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包<br>unzip file1.zip 解压一个zip格式压缩包 </p>
+<p><strong>RPM 包 - （Fedora, Redhat及类似系统）</strong><br>rpm -ivh package.rpm 安装一个rpm包<br>rpm -ivh –nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告<br>rpm -U package.rpm 更新一个rpm包但不改变其配置文件<br>rpm -F package.rpm 更新一个确定已经安装的rpm包<br>rpm -e package_name.rpm 删除一个rpm包<br>rpm -qa 显示系统中所有已经安装的rpm包<br>rpm -qa | grep httpd 显示所有名称中包含 “httpd” 字样的rpm包<br>rpm -qi package_name 获取一个已安装包的特殊信息<br>rpm -qg “System Environment/Daemons” 显示一个组件的rpm包<br>rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表<br>rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表<br>rpm -q package_name –whatrequires 显示与一个rpm包存在依赖关系的列表<br>rpm -q package_name –whatprovides 显示一个rpm包所占的体积<br>rpm -q package_name –scripts 显示在安装/删除期间所执行的脚本l<br>rpm -q package_name –changelog 显示一个rpm包的修改历史<br>rpm -qf /etc/httpd/conf/httpd.conf 确认所给的文件由哪个rpm包所提供<br>rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表<br>rpm –import /media/cdrom/RPM-GPG-KEY 导入公钥数字证书<br>rpm –checksig package.rpm 确认一个rpm包的完整性<br>rpm -qa gpg-pubkey 确认已安装的所有rpm包的完整性<br>rpm -V package_name 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间<br>rpm -Va 检查系统中所有已安装的rpm包- 小心使用<br>rpm -Vp package.rpm 确认一个rpm包还未安装<br>rpm2cpio package.rpm | cpio –extract –make-directories <em>bin</em> 从一个rpm包运行可执行文件<br>rpm -ivh /usr/src/redhat/RPMS/<code>arch</code>/package.rpm 从一个rpm源码安装一个构建好的包<br>rpmbuild –rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 </p>
+<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
+<p><strong>DEB 包 (Debian, Ubuntu 以及类似系统)</strong><br>dpkg -i package.deb 安装/更新一个 deb 包<br>dpkg -r package_name 从系统删除一个 deb 包<br>dpkg -l 显示系统中所有已经安装的 deb 包<br>dpkg -l | grep httpd 显示所有名称中包含 “httpd” 字样的deb包<br>dpkg -s package_name 获得已经安装在系统中一个特殊包的信息<br>dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表<br>dpkg –contents package.deb 显示尚未安装的一个包所提供的文件列表<br>dpkg -S /bin/ping 确认所给的文件由哪个deb包提供 </p>
+<p><strong>APT 软件工具 (Debian, Ubuntu 以及类似系统)</strong><br>apt-get install package_name 安装/更新一个 deb 包<br>apt-cdrom install package_name 从光盘安装/更新一个 deb 包<br>apt-get update 升级列表中的软件包<br>apt-get upgrade 升级所有已安装的软件<br>apt-get remove package_name 从系统删除一个deb包<br>apt-get check 确认依赖的软件仓库正确<br>apt-get clean 从下载的软件包中清理缓存<br>apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 </p>
+<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f /var/log/messages 实时查看被添加到一个文件中的内容 </p>
+<p><strong>文本处理</strong><br>cat file1 file2 … | command &lt;&gt; file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT<br>cat file1 | command( sed, grep, awk, grep, etc…) &gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中<br>cat file1 | command( sed, grep, awk, grep, etc…) &gt;&gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中<br>grep Aug /var/log/messages 在文件 ‘/var/log/messages’中查找关键词”Aug”<br>grep ^Aug /var/log/messages 在文件 ‘/var/log/messages’中查找以”Aug”开始的词汇<br>grep [0-9] /var/log/messages 选择 ‘/var/log/messages’ 文件中所有包含数字的行<br>grep Aug -R /var/log/* 在目录 ‘/var/log’ 及随后的目录中搜索字符串”Aug”<br>sed ‘s/stringa1/stringa2/g’ example.txt 将example.txt文件中的 “string1” 替换成 “string2”<br>sed ‘/^$/d’ example.txt 从example.txt文件中删除所有空白行<br>sed ‘/ <em>#/d; /^$/d’ example.txt 从example.txt文件中删除所有注释和空白行<br>echo ‘esempio’ | tr ‘[:lower:]’ ‘[:upper:]’ 合并上下单元格内容<br>sed -e ‘1d’ result.txt 从文件example.txt 中排除第一行<br>sed -n ‘/stringa1/p’ 查看只包含词汇 “string1”的行<br>sed -e ‘s/ *$//‘ example.txt 删除每一行最后的空白字符<br>sed -e ‘s/stringa1//g’ example.txt 从文档中只删除词汇 “string1” 并保留剩余全部<br>sed -n ‘1,5p;5q’ example.txt 查看从第一行到第5行内容<br>sed -n ‘5p;5q’ example.txt 查看第5行<br>sed -e ‘s/00</em>/0/g’ example.txt 用单个零替换多个零<br>cat -n file1 标示文件的行数<br>cat example.txt | awk ‘NR%2==1’ 删除example.txt文件中的所有偶数行<br>echo a b c | awk ‘{print $1}’ 查看一行第一栏<br>echo a b c | awk ‘{print $1,$3}’ 查看一行的第一和第三栏<br>paste file1 file2 合并两个文件或两栏的内容<br>paste -d ‘+’ file1 file2 合并两个文件或两栏的内容，中间用”+”区分<br>sort file1 file2 排序两个文件的内容<br>sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份)<br>sort file1 file2 | uniq -u 删除交集，留下其他的行<br>sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件)<br>comm -1 file1 file2 比较两个文件的内容只删除 ‘file1’ 所包含的内容<br>comm -2 file1 file2 比较两个文件的内容只删除 ‘file2’ 所包含的内容<br>comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分 </p>
+<p><strong>字符设置和文件格式转换</strong><br>dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX<br>unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS<br>recode ..HTML &lt; page.txt &gt; page.html 将一个文本文件转换成html<br>recode -l | more 显示所有允许的转换格式 </p>
+<p><strong>文件系统分析</strong><br>badblocks -v /dev/hda1 检查磁盘hda1上的坏磁块<br>fsck /dev/hda1 修复/检查hda1磁盘上linux文件系统的完整性<br>fsck.ext2 /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性<br>e2fsck /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性<br>e2fsck -j /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性<br>fsck.ext3 /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性<br>fsck.vfat /dev/hda1 修复/检查hda1磁盘上fat文件系统的完整性<br>fsck.msdos /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性<br>dosfsck /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性 </p>
+<p><strong>初始化一个文件系统</strong><br>mkfs /dev/hda1 在hda1分区创建一个文件系统<br>mke2fs /dev/hda1 在hda1分区创建一个linux ext2的文件系统<br>mke2fs -j /dev/hda1 在hda1分区创建一个linux ext3(日志型)的文件系统<br>mkfs -t vfat 32 -F /dev/hda1 创建一个 FAT32 文件系统<br>fdformat -n /dev/fd0 格式化一个软盘<br>mkswap /dev/hda3 创建一个swap文件系统 </p>
+<p><strong>SWAP文件系统</strong><br>mkswap /dev/hda3 创建一个swap文件系统<br>swapon /dev/hda3 启用一个新的swap文件系统<br>swapon /dev/hda2 /dev/hdb3 启用两个swap分区 </p>
+<p><strong>备份</strong><br>dump -0aj -f /tmp/home0.bak /home 制作一个 ‘/home’ 目录的完整备份<br>dump -1aj -f /tmp/home0.bak /home 制作一个 ‘/home’ 目录的交互式备份<br>restore -if /tmp/home0.bak 还原一个交互式备份<br>rsync -rogpav –delete /home /tmp 同步两边的目录<br>rsync -rogpav -e ssh –delete /home ip_address:/tmp 通过SSH通道rsync<br>rsync -az -e ssh –delete ip_addr:/home/public /home/local 通过ssh和压缩将一个远程目录同步到本地目录<br>rsync -az -e ssh –delete /home/local ip_addr:/home/public 通过ssh和压缩将本地目录同步到远程目录<br>dd bs=1M if=/dev/hda | gzip | ssh user@ip_addr ‘dd of=hda.gz’ 通过ssh在远程主机上执行一次备份本地磁盘的操作<br>dd if=/dev/sda of=/tmp/file1 备份磁盘内容到一个文件<br>tar -Puf backup.tar /home/user 执行一次对 ‘/home/user’ 目录的交互式备份操作<br>( cd /tmp/local/ &amp;&amp; tar c . ) | ssh -C user@ip_addr ‘cd /home/share/ &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个目录内容<br>( tar c /home ) | ssh -C user@ip_addr ‘cd /home/backup-home &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个本地目录<br>tar cf - . | (cd /tmp/backup ; tar xf - ) 本地将一个目录复制到另一个地方，保留原有权限及链接<br>find /home/user1 -name ‘<em>.txt’ | xargs cp -av –target-directory=/home/backup/ –parents 从一个目录查找并复制所有以 ‘.txt’ 结尾的文件到另一个目录<br>find /var/log -name ‘</em>.log’ | tar cv –files-from=- | bzip2 &gt; log.tar.bz2 查找所有以 ‘.log’ 结尾的文件并做成一个bzip包<br>dd if=/dev/hda of=/dev/fd0 bs=512 count=1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作<br>dd if=/dev/fd0 of=/dev/hda bs=512 count=1 从已经保存到软盘的备份中恢复MBR内容 </p>
+<p><strong>光盘</strong><br>cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容<br>mkisofs /dev/cdrom &gt; cd.iso 在磁盘上创建一个光盘的iso镜像文件<br>mkisofs /dev/cdrom | gzip &gt; cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件<br>mkisofs -J -allow-leading-dots -R -V “Label CD” -iso-level 4 -o ./cd.iso data_cd 创建一个目录的iso镜像文件<br>cdrecord -v dev=/dev/cdrom cd.iso 刻录一个ISO镜像文件<br>gzip -dc cd_iso.gz | cdrecord dev=/dev/cdrom - 刻录一个压缩了的ISO镜像文件<br>mount -o loop cd.iso /mnt/iso 挂载一个ISO镜像文件<br>cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中<br>cd-paranoia – “-3” 从一个CD光盘转录音轨到 wav 文件中（参数-3）<br>cdrecord –scanbus 扫描总线以识别scsi通道<br>dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD </p>
+<p><strong>网络 - （以太网和WIFI无线</strong>）<br>ifconfig eth0 显示一个以太网卡的配置<br>ifup eth0 启用一个 ‘eth0’ 网络设备<br>ifdown eth0 禁用一个 ‘eth0’ 网络设备<br>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址<br>ifconfig eth0 promisc 设置 ‘eth0’ 成混杂模式以嗅探数据包 (sniffing)<br>dhclient eth0 以dhcp模式启用 ‘eth0’<br>route -n show routing table<br>route add -net 0/0 gw IP_Gateway configura default gateway<br>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network ‘192.168.0.0/16’<br>route del 0/0 gw IP_gateway remove static route<br>echo “1” &gt; /proc/sys/net/ipv4/ip_forward activate ip routing<br>hostname show hostname of system<br>host <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>nslookup <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>ip link show show link status of all interfaces<br>mii-tool eth0 show link status of ‘eth0’<br>ethtool eth0 show statistics of network card ‘eth0’<br>netstat -tup show all active network connections and their PID<br>netstat -tupl show all network services listening on the system and their PID<br>tcpdump tcp port 80 show all HTTP traffic<br>iwlist scan show wireless networks<br>iwconfig eth1 show configuration of a wireless network card<br>hostname show hostname<br>host <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>nslookup <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup hostname to resolve name to ip address and viceversa<br>whois <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> lookup on Whois database </p>
+<p><strong>JPS工具</strong></p>
+<p>jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。</p>
+<p>  我想很多人都是用过unix系统里的ps命令，这个命令主要是用来显示当前系统的进程情况，有哪些进程，及其 id。 jps 也是一样，它的作用是显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。</p>
+<p>   <strong>使用方法：在当前命令行下打 jps(需要JAVA_HOME，没有的话，到改程序的目录下打) 。</strong></p>
+<p><strong>jps存放在JAVA_HOME/bin/jps，使用时为了方便请将JAVA_HOME/bin/加入到Path.</strong></p>
+<p>$&gt; <strong>jps</strong><br>23991 Jps<br>23789 BossMain<br>23651 Resin</p>
+<p>比较常用的参数：</p>
+<p><strong>-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数</strong><br>$&gt; <strong>jps -q</strong><br>28680<br>23789<br>23651</p>
+<p><strong>-m 输出传递给main 方法的参数，在嵌入式jvm上可能是null</strong></p>
+<p>$&gt; <strong>jps -m</strong><br>28715 Jps -m<br>23789 BossMain<br>23651 Resin -socketwait 32768 -stdout /data/aoxj/resin/log/stdout.log -stderr /data/aoxj/resin/log/stderr.log</p>
+<p><strong>-l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名</strong></p>
+<p>$&gt; <strong>jps -l</strong><br>28729 sun.tools.jps.Jps<br>23789 com.asiainfo.aimc.bossbi.BossMain<br>23651 com.caucho.server.resin.Resin</p>
+<p><strong>-v 输出传递给JVM的参数</strong></p>
+<p>$&gt; <strong>jps -v</strong><br>23789 BossMain<br>28802 Jps -Denv.class.path=/data/aoxj/bossbi/twsecurity/java/trustwork140.jar:/data/aoxj/bossbi/twsecurity/java/:/data/aoxj/bossbi/twsecurity/java/twcmcc.jar:/data/aoxj/jdk15/lib/rt.jar:/data/aoxj/jd</p>
+<p>k15/lib/tools.jar -Dapplication.home=/data/aoxj/jdk15 -Xms8m<br>23651 Resin -Xss1m -Dresin.home=/data/aoxj/resin -Dserver.root=/data/aoxj/resin -Djava.util.logging.manager=com.caucho.log.LogManagerImpl -</p>
+<p>Djavax.management.builder.initial=com.caucho.jmx.MBeanServerBuilderImpl</p>
+<p><strong>sudo jps看到的进程数量最全</strong></p>
+<p><strong>jps 192.168.0.77</strong></p>
+<p><strong>列出远程服务器192.168.0.77机器所有的jvm实例，采用rmi协议，默认连接端口为1099</strong></p>
+<p><strong>（前提是远程服务器提供jstatd服务）</strong></p>
+<p><strong>注：jps命令有个地方很不好，似乎只能显示当前用户的java进程，要显示其他用户的还是只能用unix/linux的ps命令。</strong></p>
+<h2 id="P18"><a href="#P18" class="headerlink" title="P18"></a>P18</h2><p>查阅命令帮助信息，command –help, man command.</p>
+<p>系统中会有单独的man文件，命令百<br>man term<br>等同于<br>less [manpath]/term.X[.gz] // X为1-8中的数，视term而定<br>就是说，如果系统没有安装对度应man文件，哪怕term命令完全正常，知man term都没结果（同样，只要安装了man文件，哪怕没term命令，也可以得到道一大堆东西）。内<br>而–help参数将会显示可执行程序自带的信息，这些信容息是嵌入到程序本身的（所以–help信息较简短）。man是在系统安装的时候安装了狠制多的文档，可以在系统的目录doc下找到，如果软件有配套的页面，就可以使用man来查找，<br>而 help是软件编写百人员在编写的时候提供了内置的查询参数，查询的参数在程序里度面。也就是说man查询的结果是在程序外面，而help 查询出来的内容在程序里面。</p>
+<p>man是一个详细的介绍，help是一个命令选项的简单介绍</p>
+<p>man的用法：man    -&gt;&gt;manual    ###man是手册缩写<br>man man            #####查看man命令的帮助<br>man passwd        ###查看passwd命令的帮助</p>
+<p>man的级别<br>1    系统命令<br>2    系统接口<br>3    函数库<br>4    特殊文件，比如设备文件<br>5    文件<br>6    游戏<br>7    系统的软件包<br>8    系统管理命令<br>9    内核</p>
+<p>man 5 passwd    ##查看/etc/passwd文件的帮助<br>man 1 passwd    ##查看passwd命令的帮助，1可以省略</p>
+<p>man页面的快捷方式<br>上下键            ##向上或向下一行<br>pageup|pagedown        ##向下一个屏幕或者向上一个屏幕<br>d|u            ##向下或者向上半个屏幕<br>G|gg            ##跳转页面到man最下面或最上面<br>/关键字            ##搜索关键字，关键字会高亮显示，n向下匹配，N向上<br>q            ##退出帮助页面</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/%E5%B8%A6%E4%BD%A0%E5%AD%A6c%E5%B8%A6%E4%BD%A0%E9%A3%9Eday06/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1065,7 +1313,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-21 09:13:23" itemprop="dateModified" datetime="2020-05-21T09:13:23-05:00">2020-05-21</time>
+                <time title="Modified: 2020-06-10 16:11:40" itemprop="dateModified" datetime="2020-06-10T16:11:40-05:00">2020-06-10</time>
               </span>
 
           
@@ -1189,8 +1437,423 @@
 <p>返回其自底向上的层次遍历为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [15,7],</span><br><span class="line">  [9,20],</span><br><span class="line">  [3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; levels= <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode node, <span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(levels.size()==level) </span><br><span class="line">            levels.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        levels.get(level).add(node.val);</span><br><span class="line">        <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)</span><br><span class="line">            helper(node.left,level+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(node.right!=<span class="keyword">null</span>)</span><br><span class="line">            helper(node.right,level+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span> levels;</span><br><span class="line">        helper(root,<span class="number">0</span>);</span><br><span class="line">        Collections.reverse(levels);</span><br><span class="line">        <span class="keyword">return</span> levels;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="How-to-traverse-the-tree"><a href="#How-to-traverse-the-tree" class="headerlink" title="How to traverse the tree"></a>How to traverse the tree</h4><p>There are two general strategies to traverse a tree:</p>
+<ul>
+<li><p><em>Depth First Search</em> (<code>DFS</code>)</p>
+<p>In this strategy, we adopt the <code>depth</code> as the priority, so that one would start from a root and reach all the way down to a certain leaf, and then back to root to reach another branch.</p>
+<p>The DFS strategy can further be distinguished as <code>preorder</code>, <code>inorder</code>, and <code>postorder</code> depending on the relative order among the root node, left node, and right node.</p>
+</li>
+<li><p><em>Breadth First Search</em> (<code>BFS</code>)</p>
+<p>We scan through the tree level by level, following the order of height, from top to bottom. The nodes on a higher level would be visited before the ones on lower levels.</p>
+</li>
+</ul>
+<p>In the following figure the nodes are enumerated in the order you visit them, please follow <code>1-2-3-4-5</code> to compare different strategies.</p>
+<p><img src="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/Figures/107/ddfs.png" alt="postorder"></p>
+<p>Here the problem is to implement split-level BFS traversal : <code>[[4, 5], [2, 3], [1]]</code>. That means we could use one of the <code>Node-&gt;Left-&gt;Right</code> techniques: BFS or DFS Preorder.</p>
+<p>We already discussed <a href="https://leetcode.com/articles/binary-tree-right-side-view/" target="_blank" rel="noopener">three different ways</a> to implement iterative BFS traversal with the queue, and compared <a href="https://leetcode.com/problems/deepest-leaves-sum/solution/" target="_blank" rel="noopener">iterative BFS vs. iterative DFS</a>. Let’s use this article to discuss the two most simple and fast techniques:</p>
+<ul>
+<li>Recursive DFS.</li>
+<li>Iterative BFS with two queues.</li>
+</ul>
+<blockquote>
+<p>Note, that both approaches are root-to-bottom traversals, and we’re asked to provide bottom-up output. To achieve that, the final result should be reversed.</p>
+</blockquote>
+<hr>
+<h4 id="Approach-1-Recursion-DFS-Preorder-Traversal"><a href="#Approach-1-Recursion-DFS-Preorder-Traversal" class="headerlink" title="Approach 1: Recursion: DFS Preorder Traversal"></a>Approach 1: Recursion: DFS Preorder Traversal</h4><p><strong>Intuition</strong></p>
+<p>The first step is to ensure that the tree is not empty. The second step is to implement the recursive function <code>helper(node, level)</code>, which takes the current node and its level as the arguments.</p>
+<p><strong>Algorithm for the Recursive Function</strong></p>
+<p>Here is its implementation:</p>
+<ul>
+<li>Initialize the output list <code>levels</code>. The length of this list determines which level is currently updated. You should compare this level <code>len(levels)</code> with a node level <code>level</code>, to ensure that you add the node on the correct level. If you’re still on the previous level - add the new level by adding a new list into <code>levels</code>.</li>
+<li>Append the node value to the last level in <code>levels</code>.</li>
+<li>Process recursively child nodes if they are not <code>None</code>: <code>helper(node.left / node.right, level + 1)</code>.</li>
+</ul>
+<p><strong>Implementation</strong></p>
+<p><img src="data:image/png;base64,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jlznaOwodY7UNbKyOo1DL805+qk4Qm8RBFIRkaROEkQSghsckbRYGsRBJHVgT1J9+QPifZAACZAACZAACZBAgAhQIAUILIctm0BR58gRRxrIoOIIJXW+iqOio0NIYSsukhwnyUTSQjhJFElFmfFnEiABEiABEiABEiCB0glQIJXOhZ8GiEAx56h3bwtkGDtqrImjEwhkgHOkcedY6DUyKlyjup2eo6LOUWmXVq5I0nK7ha5IakAnqTR+/IwESIAESIAESIAESMAhQIHEv4QaI1BMHCGQQdPqxo4sRRxpIAOEEdY5QiBDReLIvYGSIilfgxsaNHB7ko4XEUlxLLdzofGdBEiABEiABEiABEigGAEKpGI4+EugCKxcubIwkKGn6xxVozhyr7t8kVQkuKFUJ8npY3LH4jsJkAAJkAAJkAAJkMCpR4AC6dR75jV+xxBHCGR47733BOIIUd5jyhNHXnWO1EXy1TkqeUMViqSCcruY2Dhp377kOkkUSSV58ncSIAESIAESIAESOJUIUCCdSk+7Fu7VnKMKxFEoeo4Kyuq8Ko7wc2XFkXuLZYmkzp2dCHD0JC1dulhiEQHevmS6HUWSy5HvJEACJEACJEACJHCqEaBAOtWeeA3er+scTVTnqFdBWR2coxMnNK0us0ggg9tzVOAcOYvAhlrMd1Uut0yRpBHgJ05kaE/SPBVJ36tI0p6k9h1LRIBTJFWFPY8lARIgARIgARIggbpKgAKprj65IL9ut+fILau7//4HZfTIMeWKI48KpeoSRy6eMkVS564FIsl1kiiSXGZ8JwESIAESIAESIIFTmQAF0qn89AN074XO0cSJjnNUS+LIvb1yRVJGhiwq1pNEJ8nlxncSIAESIAESIAESOBUJUCCdik89gPdcKI6KBDI4zlHWybI6XdHV1jlClLeW1QXCOSp5i+WJpOPHVSQtUidJF5NluV1JcvydBEiABEiABEiABE4tAhRIp9bzDujdQhw99thj8v7770vPPn1snaPRo9yyumxnEdgi4giBDEirq+6yurJusjyRhL6ohQvmyRINboiJQbodnaSyOPJzEiABEiABEiABEqjPBCiQ6vPTrcF7W7FihUV5QxxZIIOV1Y0u6DkqIo4QyBClSXU1LI5cFOWKpAwVSRbcsFiioxtI+w4USS43vpMACZAACZAACZDAqUKAAulUedIB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" alt="Current"></p>
+<p>1 / 16</p>
+<iframe src="https://leetcode.com/playground/H8Jue6Az/shared" frameborder="0" width="100%" height="480" name="H8Jue6Az" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li><p>Time complexity: O(N)O(<em>N</em>) since each node is processed exactly once.</p>
+</li>
+<li><p>Space complexity: O(N)O(<em>N</em>) to keep the output structure which contains N<em>N</em> node values. </p>
+</li>
+</ul>
+<hr>
+<h4 id="Approach-2-Iteration-BFS-Traversal"><a href="#Approach-2-Iteration-BFS-Traversal" class="headerlink" title="Approach 2: Iteration: BFS Traversal"></a>Approach 2: Iteration: BFS Traversal</h4><p><strong>Algorithm</strong></p>
+<p>The recursion above could be rewritten in the iteration form.</p>
+<p>Let’s keep each tree level in the <em>queue</em> structure, which typically orders elements in a FIFO (first-in-first-out) manner. In Java one could use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html" target="_blank" rel="noopener"><code>ArrayDeque</code> implementation of the <code>Queue</code> interface</a>. In Python using <a href="https://docs.python.org/3/library/queue.html" target="_blank" rel="noopener"><code>Queue</code> structure</a> would be an overkill since it’s designed for a safe exchange between multiple threads and hence requires locking which leads to a performance downgrade. In Python the queue implementation with a fast atomic <code>append()</code> and <code>popleft()</code> is <a href="https://docs.python.org/3/library/collections.html#collections.deque" target="_blank" rel="noopener"><code>deque</code></a>.</p>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Initialize two queues: one for the current level, and one for the next. Add root into <code>nextLevel</code> queue.</li>
+<li>While <code>nextLevel</code> queue is not empty:<ul>
+<li>Initialize the current level <code>currLevel = nextLevel</code>, and empty the next level <code>nextLevel</code>.</li>
+<li>Iterate over the current level queue:<ul>
+<li>Append the node value to the last level in <code>levels</code>.</li>
+<li>Add first <em>left</em> and then <em>right</em> child node into <code>nextLevel</code> queue.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Return reversed <code>levels</code>.</li>
+</ul>
+<p><strong>Implementation</strong></p>
+<iframe src="https://leetcode.com/playground/H5xJuMYH/shared" frameborder="0" width="100%" height="500" name="H5xJuMYH" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity: O(N)O(<em>N</em>) since each node is processed exactly once.</li>
+<li>Space complexity: O(N)O(<em>N</em>) to keep the output structure which contains N<em>N</em> node values.</li>
+</ul>
+<h2 id="230-二叉搜索树中第K小的元素"><a href="#230-二叉搜索树中第K小的元素" class="headerlink" title="230. 二叉搜索树中第K小的元素"></a><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/" target="_blank" rel="noopener">230. 二叉搜索树中第K小的元素</a></h2><p>难度中等216收藏分享切换为英文关注反馈</p>
+<p>给定一个二叉搜索树，编写一个函数 <code>kthSmallest</code> 来查找其中第 <strong>k</strong> 个最小的元素。</p>
+<p><strong>说明：</strong><br>你可以假设 k 总是有效的，1 ≤ k ≤ 二叉搜索树元素个数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: root &#x3D; [3,1,4,null,2], k &#x3D; 1</span><br><span class="line">   3</span><br><span class="line">  &#x2F; \</span><br><span class="line"> 1   4</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: root &#x3D; [5,3,6,2,4,null,null,1], k &#x3D; 3</span><br><span class="line">       5</span><br><span class="line">      &#x2F; \</span><br><span class="line">     3   6</span><br><span class="line">    &#x2F; \</span><br><span class="line">   2   4</span><br><span class="line">  &#x2F;</span><br><span class="line"> 1</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>进阶：</strong><br>如果二叉搜索树经常被修改（插入/删除操作）并且你需要频繁地查找第 k 小的值，你将如何优化 <code>kthSmallest</code> 函数？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;recursion</span><br><span class="line">class Solution &#123;</span><br><span class="line">    private ArrayList&lt;Integer&gt; helper(TreeNode root, ArrayList&lt;Integer&gt; ans)&#123;</span><br><span class="line">        if(root&#x3D;&#x3D;null) return ans;</span><br><span class="line">        helper(root.left, ans);</span><br><span class="line">        ans.add(root.val);</span><br><span class="line">        helper(root.right,ans);</span><br><span class="line">        return ans;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    public int kthSmallest(TreeNode root, int k) &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; num&#x3D; helper(root, new ArrayList&lt;Integer&gt;());</span><br><span class="line">        return num.get(k-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;iterative</span><br><span class="line">class Solution &#123;</span><br><span class="line">  public int kthSmallest(TreeNode root, int k) &#123;</span><br><span class="line">    LinkedList&lt;TreeNode&gt; stack &#x3D; new LinkedList&lt;TreeNode&gt;();</span><br><span class="line"></span><br><span class="line">    while (true) &#123;</span><br><span class="line">      while (root !&#x3D; null) &#123;</span><br><span class="line">        stack.add(root);</span><br><span class="line">        root &#x3D; root.left;</span><br><span class="line">      &#125;</span><br><span class="line">      root &#x3D; stack.removeLast();</span><br><span class="line">      if (--k &#x3D;&#x3D; 0) return root.val;</span><br><span class="line">      root &#x3D; root.right;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="How-to-traverse-the-tree-1"><a href="#How-to-traverse-the-tree-1" class="headerlink" title="How to traverse the tree"></a>How to traverse the tree</h4><p>There are two general strategies to traverse a tree:</p>
+<ul>
+<li><p><em>Depth First Search</em> (<code>DFS</code>)</p>
+<p>In this strategy, we adopt the <code>depth</code> as the priority, so that one would start from a root and reach all the way down to certain leaf, and then back to root to reach another branch.</p>
+<p>The DFS strategy can further be distinguished as <code>preorder</code>, <code>inorder</code>, and <code>postorder</code> depending on the relative order among the root node, left node and right node.</p>
+</li>
+<li><p><em>Breadth First Search</em> (<code>BFS</code>)</p>
+<p>We scan through the tree level by level, following the order of height, from top to bottom. The nodes on higher level would be visited before the ones with lower levels.</p>
+</li>
+</ul>
+<p>On the following figure the nodes are numerated in the order you visit them, please follow <code>1-2-3-4-5</code> to compare different strategies.</p>
+<p><img src="https://leetcode.com/problems/kth-smallest-element-in-a-bst/Figures/230/bfs_dfs.png" alt="postorder"></p>
+<blockquote>
+<p>To solve the problem, one could use the property of BST : inorder traversal of BST is an array sorted in the ascending order.</p>
+</blockquote>
+<hr>
+<h4 id="Approach-1-Recursion"><a href="#Approach-1-Recursion" class="headerlink" title="Approach 1: Recursion"></a>Approach 1: Recursion</h4><p>It’s a very straightforward approach with O(N)O(<em>N</em>) time complexity. The idea is to build an inorder traversal of BST which is an array sorted in the ascending order. Now the answer is the <code>k - 1</code>th element of this array.</p>
+<p><img src="https://leetcode.com/problems/kth-smallest-element-in-a-bst/Figures/230/inorder.png" alt="bla"></p>
+<iframe src="https://leetcode.com/playground/7SGJHL4u/shared" frameborder="0" width="100%" height="293" name="7SGJHL4u" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li><p>Time complexity : O(N)O(<em>N</em>) to build a traversal.</p>
+</li>
+<li><p>Space complexity : O(N)O(<em>N</em>) to keep an inorder traversal. </p>
+</li>
+</ul>
+<hr>
+<h4 id="Approach-2-Iteration"><a href="#Approach-2-Iteration" class="headerlink" title="Approach 2: Iteration"></a>Approach 2: Iteration</h4><p>The above recursion could be converted into iteration, with the help of stack. This way one could speed up the solution because there is no need to build the entire inorder traversal, and one could stop after the kth element.</p>
+<p><img src="https://leetcode.com/problems/kth-smallest-element-in-a-bst/Figures/230/iteration.png" alt="bla"></p>
+<iframe src="https://leetcode.com/playground/NFRsiKKu/shared" frameborder="0" width="100%" height="361" name="NFRsiKKu" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li><p>Time complexity : O(H+k)O(<em>H</em>+<em>k</em>), where H<em>H</em> is a tree height. This complexity is defined by the stack, which contains at least H+k<em>H</em>+<em>k</em> elements, since before starting to pop out one has to go down to a leaf. This results in O(log⁡N+k)O(log<em>N</em>+<em>k</em>) for the balanced tree and O(N+k)O(<em>N</em>+<em>k</em>) for completely unbalanced tree with all the nodes in the left subtree.</p>
+</li>
+<li><p>Space complexity : O(H+k)O(<em>H</em>+<em>k</em>), the same as for time complexity, O(N+k)O(<em>N</em>+<em>k</em>) in the worst case, and O(log⁡N+k)O(log<em>N</em>+<em>k</em>) in the average case. </p>
+</li>
+</ul>
+<hr>
+<h4 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h4><blockquote>
+<p>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
+</blockquote>
+<p><a href="https://leetcode.com/articles/insert-into-a-bst/" target="_blank" rel="noopener">Insert</a> and <a href="https://leetcode.com/articles/delete-node-in-a-bst/" target="_blank" rel="noopener">delete</a> in a BST were discussed last week, the time complexity of these operations is O(H)O(<em>H</em>), where H<em>H</em> is a height of binary tree, and H=log⁡N<em>H</em>=log<em>N</em> for the balanced tree.</p>
+<p>Hence without any optimisation insert/delete + search of kth element has O(2H+k)O(2<em>H</em>+<em>k</em>) complexity. How to optimise that?</p>
+<p>That’s a design question, basically we’re asked to implement a structure which contains a BST inside and optimises the following operations :</p>
+<ul>
+<li>Insert</li>
+<li>Delete</li>
+<li>Find kth smallest</li>
+</ul>
+<p>Seems like a database description, isn’t it? Let’s use here the same logic as for <a href="https://leetcode.com/articles/lru-cache/" target="_blank" rel="noopener">LRU cache</a> design, and combine an indexing structure (we could keep BST here) with a double linked list.</p>
+<p>Such a structure would provide:</p>
+<ul>
+<li>O(H)O(<em>H</em>) time for the insert and delete.</li>
+<li>O(k)O(<em>k</em>) for the search of kth smallest.</li>
+</ul>
+<p><img src="https://leetcode.com/problems/kth-smallest-element-in-a-bst/Figures/230/linked_list2.png" alt="bla"></p>
+<p>The overall time complexity for insert/delete + search of kth smallest is O(H+k)O(<em>H</em>+<em>k</em>) instead of O(2H+k)O(2<em>H</em>+<em>k</em>).</p>
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time complexity for insert/delete + search of kth smallest: O(H+k)O(<em>H</em>+<em>k</em>), where H<em>H</em> is a tree height. O(log⁡N+k)O(log<em>N</em>+<em>k</em>) in the average case, O(N+k)O(<em>N</em>+<em>k</em>) in the worst case.</li>
+<li>Space complexity : O(N)O(<em>N</em>) to keep the linked list.</li>
+</ul>
+<h2 id="501-二叉搜索树中的众数"><a href="#501-二叉搜索树中的众数" class="headerlink" title="501. 二叉搜索树中的众数"></a><a href="https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/" target="_blank" rel="noopener">501. 二叉搜索树中的众数</a></h2><p>难度简单109收藏分享切换为英文关注反馈</p>
+<p>给定一个有相同值的二叉搜索树（BST），找出 BST 中的所有众数（出现频率最高的元素）。</p>
+<p>假定 BST 有如下定义：</p>
+<ul>
+<li>结点左子树中所含结点的值小于等于当前结点的值</li>
+<li>结点右子树中所含结点的值大于等于当前结点的值</li>
+<li>左子树和右子树都是二叉搜索树</li>
+</ul>
+<p>例如：<br>给定 BST <code>[1,null,2,2]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line"> &#x2F;</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p><code>返回[2]</code>.</p>
+<p><strong>提示</strong>：如果众数超过1个，不需考虑输出顺序</p>
+<p><strong>进阶：</strong>你可以不使用额外的空间吗？（假设由递归产生的隐式调用栈的开销不被计算在内）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode() &#123;&#125;</span><br><span class="line"> *     TreeNode(int val) &#123; this.val &#x3D; val; &#125;</span><br><span class="line"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><br><span class="line"> *         this.val &#x3D; val;</span><br><span class="line"> *         this.left &#x3D; left;</span><br><span class="line"> *         this.right &#x3D; right;</span><br><span class="line"> *     &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    private List&lt;Integer&gt; items;</span><br><span class="line">    private int maxCount;</span><br><span class="line">    private int curCount;</span><br><span class="line">    private TreeNode pre;</span><br><span class="line"></span><br><span class="line">    public int[] findMode(TreeNode root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; null)</span><br><span class="line">            return new int[0];</span><br><span class="line">        items &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        &#x2F;&#x2F; 这里设置为1是因为 在递归中 BST中最左边的结点被跳过了，作为初状态 该结点值出现一次，记录的出现最多次数一开始也为1</span><br><span class="line">        maxCount &#x3D; 1;</span><br><span class="line">        curCount &#x3D; 1;</span><br><span class="line">        midTraversal(root);</span><br><span class="line">        &#x2F;&#x2F; 最右端结点的处理，从递归中看，最后一个结点与前一个结点相等只更新了curCount的值；不相等则只考虑到倒数第二个结点。</span><br><span class="line">        if(curCount &gt; maxCount)</span><br><span class="line">            return new int[]&#123;pre.val&#125;;</span><br><span class="line">        if(curCount &#x3D;&#x3D; maxCount)</span><br><span class="line">            items.add(pre.val);</span><br><span class="line">        int[] res &#x3D; new int[items.size()];</span><br><span class="line">        for (int i &#x3D; 0; i &lt; res.length; i++)</span><br><span class="line">            res[i] &#x3D; items.get(i);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void midTraversal(TreeNode x) &#123;</span><br><span class="line">        if (x &#x3D;&#x3D; null) return;</span><br><span class="line">        midTraversal(x.left);</span><br><span class="line">        if(pre !&#x3D; null)&#123;</span><br><span class="line">            if(x.val !&#x3D; pre.val)&#123; &#x2F;&#x2F; 说明上一个值的结点数量已经统计完成 要看出现次数的情况</span><br><span class="line">                if(curCount &gt; maxCount)&#123; &#x2F;&#x2F; 出现次数更多，清空之前的出现少的数，更新最大出现次数</span><br><span class="line">                    maxCount &#x3D; curCount;</span><br><span class="line">                    items.clear();</span><br><span class="line">                    items.add(pre.val);</span><br><span class="line">                &#125;</span><br><span class="line">                else if(curCount &#x3D;&#x3D; maxCount)&#123; &#x2F;&#x2F; 不止一个众数</span><br><span class="line">                    items.add(pre.val);</span><br><span class="line">                &#125;</span><br><span class="line">                curCount &#x3D; 1; &#x2F;&#x2F; 当前值与上一个结点值不同，重置计数</span><br><span class="line">            &#125;</span><br><span class="line">            else curCount++; &#x2F;&#x2F; 当前值与上一个结点值相同，当前值的出现次数增加。</span><br><span class="line">        &#125;</span><br><span class="line">        pre &#x3D; x;</span><br><span class="line">        midTraversal(x.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用List即时存放出现最多的数</p>
+<pre><code>private List&lt;Integer&gt; items;
+private int maxCount;
+private int curCount;
+private TreeNode pre;
+
+public int[] findMode(TreeNode root) {
+    if (root == null)
+        return new int[0];
+    items = new ArrayList&lt;&gt;();
+    // 这里设置为1是因为 在递归中 BST中最左边的结点被跳过了，作为初状态 该结点值出现一次，记录的出现最多次数一开始也为1
+    maxCount = 1;
+    curCount = 1;
+    midTraversal(root);
+    // 最右端结点的处理，从递归中看，最后一个结点与前一个结点相等只更新了curCount的值；不相等则只考虑到倒数第二个结点。
+    if(curCount &gt; maxCount)
+        return new int[]{pre.val};
+    if(curCount == maxCount)
+        items.add(pre.val);
+    int[] res = new int[items.size()];
+    for (int i = 0; i &lt; res.length; i++)
+        res[i] = items.get(i);
+    return res;
+}
+
+private void midTraversal(TreeNode x) {
+    if (x == null) return;
+    midTraversal(x.left);
+    if(pre != null){
+        if(x.val != pre.val){ // 说明上一个值的结点数量已经统计完成 要看出现次数的情况
+            if(curCount &gt; maxCount){ // 出现次数更多，清空之前的出现少的数，更新最大出现次数
+                maxCount = curCount;
+                items.clear();
+                items.add(pre.val);
+            }
+            else if(curCount == maxCount){ // 不止一个众数
+                items.add(pre.val);
+            }
+            curCount = 1; // 当前值与上一个结点值不同，重置计数
+        }
+        else curCount++; // 当前值与上一个结点值相同，当前值的出现次数增加。
+    }
+    pre = x;
+    midTraversal(x.right);
+}</code></pre><p>思路分析：</p>
+<p>找众数，说明要统计出现次数，一般会直接想到搞个哈希表来计数（就像后面的方法二）。但是如果一个有序数组中统计出现次数，使用双指针就能很好解决，类似的这里给我们的树不是一般的树，而是BST，中序遍历相当于遍历有序数组。</p>
+<p>利用BST这个特性，我们不需要使用哈希表来计数。如同双指针的做法，这里也需要记录上一个结点TreeNode pre;这样才能知道当前结点值与谁比较；另外还需要记录某个值的出现次数curCount，以及出现次数的最大值maxCount（否则你咋知道谁出现最多次）。并且这里遍历过程中的众数信息需要记录（List存放众数）及更新。</p>
+<p>在中序遍历中：</p>
+<p>如果pre == null，说明这是遍历的第一个结点，不需要处理（第一个结点的初条件在主函数中设定）。</p>
+<p>如果当前结点值与上一个结点值相等，那么这个数字的出现次数+1。</p>
+<p>否则，我们先去判断，上一个数字的出现次数curCount与之前的最大出现次数maxCount谁更大：</p>
+<p>如果上一个数字出现次数最大，需要更新众数信息。首先更新最大出现次数maxCount = curCount;。然后将之前记录的众数清空，再将上一个数字放入items.clear(); items.add(pre.val);<br>如果一个数字出现次数等于最大出现次数，那么目前来看，它也是可能的众数，加入列表items.add(pre.val);<br>否则，上一个数字一定不是众数，不管它，继续保留List中的数字。<br>最后，重置计数curCount = 1;，表示当前数字出现一次了。<br>然后更新pre = x;</p>
+<p>回到主函数：</p>
+<p>特殊情况处理，root == null直接返回new int[0]。<br>然后上文提到的初始化，因为最左边结点在中序的递归中不处理，所以，我们要首先将maxCount = 1，因为树非空总会有数字出现一次，然后curCount = 1，代表最左边结点被我们在主函数计数了。<br>调用辅助函数后，还需要处理最后一个结点的值，因为在递归中不会有再下一个结点值与之不相等然后来判断它的值是否为众数。<br>所以如果curCount &gt; maxCount，说明最后一个结点才是唯一众数，return new int[]{pre.val};<br>如果curCount == maxCount，说明最后一个结点也是众数，items.add(pre.val);<br>最后，将List转成数组返回。<br>这个题要注意边界的考虑！</p>
+<p>时间复杂度为<br>O<br>(<br>n<br>)<br>O(n)， 不考虑递归调用栈的话，空间复杂度可以认为是常数，中间状态List的元素并不会很多。</p>
+<h2 id="543-二叉树的直径"><a href="#543-二叉树的直径" class="headerlink" title="543. 二叉树的直径"></a><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. 二叉树的直径</a></h2><p>难度简单372收藏分享切换为英文关注反馈</p>
+<p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
+<p><strong>示例 :</strong><br>给定二叉树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   3</span><br><span class="line"> &#x2F; \     </span><br><span class="line">4   5</span><br></pre></td></tr></table></figure>
+
+<p>返回 <strong>3</strong>, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l=depth(node.left);</span><br><span class="line">        <span class="keyword">int</span> r=depth(node.right);</span><br><span class="line">        ans=Math.max(l+r+<span class="number">1</span>,ans);</span><br><span class="line">        <span class="keyword">return</span> Math.max(l,r)+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        depth(root);</span><br><span class="line">        <span class="keyword">return</span> ans-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-Depth-First-Search-Accepted"><a href="#Approach-1-Depth-First-Search-Accepted" class="headerlink" title="Approach #1: Depth-First Search [Accepted]"></a>Approach #1: Depth-First Search [Accepted]</h4><p><strong>Intuition</strong></p>
+<p>Any path can be written as two <em>arrows</em> (in different directions) from some node, where an arrow is a path that starts at some node and only travels down to child nodes.</p>
+<p>If we knew the maximum length arrows <code>L, R</code> for each child, then the best path touches <code>L + R + 1</code> nodes.</p>
+<p><strong>Algorithm</strong></p>
+<p>Let’s calculate the depth of a node in the usual way: max(depth of node.left, depth of node.right) + 1. While we do, a path “through” this node uses 1 + (depth of node.left) + (depth of node.right) nodes. Let’s search each node and remember the highest number of nodes used in some path. The desired length is 1 minus this number.</p>
+<iframe src="https://leetcode.com/playground/6X2NvWFQ/shared" frameborder="0" width="100%" height="310" name="6X2NvWFQ" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time Complexity: O(N)<em>O</em>(<em>N</em>). We visit every node once.</li>
+<li>Space Complexity: O(N)<em>O</em>(<em>N</em>), the size of our implicit call stack during our depth-first search.</li>
+</ul>
+<h2 id="663-Equal-Tree-Partition"><a href="#663-Equal-Tree-Partition" class="headerlink" title="663. Equal Tree Partition"></a>663. Equal Tree Partition</h2><p>Given a binary tree with <code>n</code> nodes, your task is to check if it’s possible to partition the tree to two trees which have the equal sum of values after removing <strong>exactly</strong> one edge on the original tree.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Input:     </span><br><span class="line">    5</span><br><span class="line">   &#x2F; \</span><br><span class="line">  10 10</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   2   3</span><br><span class="line"></span><br><span class="line">Output: True</span><br><span class="line">Explanation: </span><br><span class="line">    5</span><br><span class="line">   &#x2F; </span><br><span class="line">  10</span><br><span class="line">      </span><br><span class="line">Sum: 15</span><br><span class="line"></span><br><span class="line">   10</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 2    3</span><br><span class="line"></span><br><span class="line">Sum: 15</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input:     </span><br><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2  10</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   2   20</span><br><span class="line"></span><br><span class="line">Output: False</span><br><span class="line">Explanation: You can&#39;t split the tree into two trees with equal sum after removing exactly one edge on the tree.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Note:</strong></p>
+<ol>
+<li>The range of tree node value is in the range of [-100000, 100000].</li>
+<li>1 &lt;= n &lt;= 10000</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    Stack &lt;Integer&gt; seen;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(TreeNode node)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        seen.push(sum(node.left)+sum(node.right)+node.val);</span><br><span class="line">        <span class="keyword">return</span> seen.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkEqualTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        seen=<span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">int</span> total=sum(root);</span><br><span class="line">        seen.pop();</span><br><span class="line">        <span class="keyword">if</span>(total%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i: seen)</span><br><span class="line">                <span class="keyword">if</span>(i==total/<span class="number">2</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-Depth-First-Search-Accepted-1"><a href="#Approach-1-Depth-First-Search-Accepted-1" class="headerlink" title="Approach #1: Depth-First Search [Accepted]"></a>Approach #1: Depth-First Search [Accepted]</h4><p><strong>Intuition and Algorithm</strong></p>
+<p>After removing some edge from <code>parent</code> to <code>child</code>, (where the <code>child</code> cannot be the original <code>root</code>) the subtree rooted at <code>child</code> must be half the sum of the entire tree.</p>
+<p>Let’s record the sum of every subtree. We can do this recursively using depth-first search. After, we should check that half the sum of the entire tree occurs somewhere in our recording (and not from the total of the entire tree.)</p>
+<p>Our careful treatment and analysis above prevented errors in the case of these trees:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">0</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">-1</span>  <span class="number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="number">0</span></span><br><span class="line">  \</span><br><span class="line">   <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<iframe src="https://leetcode.com/playground/bY5XPeuF/shared" frameborder="0" width="100%" height="378" name="bY5XPeuF" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<ul>
+<li>Time Complexity: O(N)<em>O</em>(<em>N</em>) where N<em>N</em> is the number of nodes in the input tree. We traverse every node.</li>
+<li>Space Complexity: O(N)<em>O</em>(<em>N</em>), the size of <code>seen</code> and the implicit call stack in our DFS.</li>
+</ul>
+<h2 id="1339-分裂二叉树的最大乘积"><a href="#1339-分裂二叉树的最大乘积" class="headerlink" title="1339. 分裂二叉树的最大乘积"></a><a href="https://leetcode-cn.com/problems/maximum-product-of-splitted-binary-tree/" target="_blank" rel="noopener">1339. 分裂二叉树的最大乘积</a></h2><p>难度中等26收藏分享切换为英文关注反馈</p>
+<p>给你一棵二叉树，它的根为 <code>root</code> 。请你删除 1 条边，使二叉树分裂成两棵子树，且它们子树和的乘积尽可能大。</p>
+<p>由于答案可能会很大，请你将结果对 10^9 + 7 取模后再返回。</p>
+<p><strong>示例 1：</strong></p>
+<p><strong><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/02/sample_1_1699.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [1,2,3,4,5,6]</span><br><span class="line">输出：110</span><br><span class="line">解释：删除红色的边，得到 2 棵子树，和分别为 11 和 10 。它们的乘积是 110 （11*10）</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/02/sample_2_1699.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [1,null,2,3,4,null,null,5,6]</span><br><span class="line">输出：90</span><br><span class="line">解释：移除红色的边，得到 2 棵子树，和分别是 15 和 6 。它们的乘积为 90 （15*6）</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [2,3,9,10,7,8,6,5,4,11,1]</span><br><span class="line">输出：1025</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [1,1]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>每棵树最多有 <code>50000</code> 个节点，且至少有 <code>2</code> 个节点。</li>
+<li>每个节点的值在 <code>[1, 10000]</code> 之间。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;Integer&gt; all&#x3D;new ArrayList();</span><br><span class="line">    private int sum(TreeNode subroot)&#123;</span><br><span class="line">        if(subroot&#x3D;&#x3D;null) return 0;</span><br><span class="line">        int l&#x3D;sum(subroot.left);</span><br><span class="line">        int r&#x3D;sum(subroot.right);</span><br><span class="line">        int total&#x3D;l+r+subroot.val;</span><br><span class="line">        all.add(total);</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">    public int maxProduct(TreeNode root) &#123;</span><br><span class="line">        long total&#x3D;sum(root);</span><br><span class="line">        long ans&#x3D;0;</span><br><span class="line">        for(long i:all)</span><br><span class="line">            ans&#x3D;Math.max(ans,i*(total-i));</span><br><span class="line">        return (int)(ans%1000000007);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Approach-1-One-Pass-DFS"><a href="#Approach-1-One-Pass-DFS" class="headerlink" title="Approach 1: One-Pass DFS"></a>Approach 1: One-Pass DFS</h4><p><strong>Intuition</strong></p>
+<p>To get started, we’re just going to pretend that integers can be infinitely large.</p>
+<p>We’ll use the following tree example.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/tree.png" alt="The tree example."></p>
+<p>There are <code>n - 1</code> edges in a tree with <code>n</code> nodes, and so for this question there are <code>n - 1</code> different possible ways of splitting the tree into a pair of subtrees. Here are 4 out of the 10 possible ways.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/4_trees.png" alt="4 possible ways of splitting the original tree."></p>
+<p>Of these 4 possible ways, the best is the third one, which has a product of <code>651</code>.</p>
+<p>To make it easier to discuss the solution, we’ll name each of the subtrees in a pair.</p>
+<ol>
+<li>One of the new subtrees is rooted at the node below the removed edge. We’ll call it <code>Subtree 1</code>.</li>
+<li>The other is rooted at the root node of the original tree, and is missing the subtree below the removed edge. We’ll call it <code>Subtree 2</code>.</li>
+</ol>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/subtree_pair.png" alt="Diagram of Subtree 1 and Subtree 2."></p>
+<p>Remember that we’re required to find the pair of subtrees that have the maximum product. This is done by calculating the sum of each subtree and then multiplying them together. The sum of a subtree is the sum of all the nodes in it.</p>
+<p>Calculating the sum of <code>Subtree 1</code> can be done using the following recursive tree algorithm. The root of <code>Subtree 1</code> is passed into the function.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tree_sum</span><span class="params">(subroot)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> subroot <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    left_sum = tree_sum(subroot.left)</span><br><span class="line">    right_sum = tree_sum(subroot.right)</span><br><span class="line">    <span class="keyword">return</span> subroot.val + left_sum + right_sum</span><br><span class="line"></span><br><span class="line">print(tree_sum(sub_tree_1_root))</span><br></pre></td></tr></table></figure>
+
+<p>This algorithm calculates the sum of a subtree by calculating the sum of its left subtree, sum of its right subtree, and then adding these to the root value. The sum of the left and right subtrees is done in the same way by the recursion.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/sum_recursive.png" alt="Diagram illustrating how sums are calculated."></p>
+<p>If you’re confused by this recursive summing algorithm, it might help you to <a href="https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/534/" target="_blank" rel="noopener">read this article</a> on solving tree problems with recursive (top down) algorithms.</p>
+<p>We still need a way to calculate the sum of <code>Subtree 2</code>. Recall that <code>Subtree 2</code> is the tree we get by removing <code>Subtree 1</code>. The only way we could directly use the above summing algorithm to calculate the sum of <code>Subtree 2</code> is to actually <em>remove</em> the edge above <code>Subtree 1</code> first. Otherwise, <code>Subtree 1</code> would be automatically traversed too.</p>
+<p>A simpler way is to recognise that <code>Sum(Subtree 2) = Sum(Entire Tree) - Sum(Sub Tree 1)</code>.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/sum_rearranging.png" alt="Diagram showing the relationship between subtree sums."></p>
+<p>Another benefit of this approach is that we only need to calculate <code>Sum(Entire Tree)</code> once. Then, for each <code>Sum(Subtree 1)</code> we calculate, we can immediately calculate <code>Sum(Subtree 2)</code> as an O(1)<em>O</em>(1) operation.</p>
+<p>Recall how the summing algorithm above worked. The recursive function is called once for every node in the tree (i.e. subtree rooted at that node), and returns the sum of that subtree.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/sum_full_recursion.png" alt="Diagram of the recursive calls of part of the tree."></p>
+<p>Therefore we can simply gather up all the possible <code>Subtree 1</code> sums with a list as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">subtree_1_sums = [] <span class="comment"># All Subtree 1 sums will go here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tree_sum</span><span class="params">(subroot)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> subroot <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    left_sum = tree_sum(subroot.left)</span><br><span class="line">    right_sum = tree_sum(subroot.right)</span><br><span class="line">    subtree_sum = left_sum + right_sum + subroot.val</span><br><span class="line">    subtree_1_sums.append(subtree_sum) <span class="comment"># Add this subtree sum to the list.</span></span><br><span class="line">    <span class="keyword">return</span> subtree_sum</span><br><span class="line"></span><br><span class="line">total_sum = tree_sum(root) <span class="comment"># Call with the root of the entire tree.</span></span><br><span class="line">print(subtree_1_sums) <span class="comment"># This is all the subree sums.</span></span><br></pre></td></tr></table></figure>
+
+<p>Now that we have a list of the sums for all possible <code>Subtree 1</code>‘s, we can calculate what the corresponding <code>Subtree 2</code> would be for each of them, and then calculate the product, keeping track of the best seen so far.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Call the function.</span></span><br><span class="line">subtree_1_sums = [] <span class="comment"># Populate by function call.</span></span><br><span class="line">total_sum = tree_sum(root)</span><br><span class="line"></span><br><span class="line">best_product = <span class="number">0</span></span><br><span class="line"><span class="comment"># Find the best product.</span></span><br><span class="line"><span class="keyword">for</span> subtree_1_sum <span class="keyword">in</span> subtree_1_sums:</span><br><span class="line">    subtree_2_sum = total_sum - subtree_1_sum</span><br><span class="line">    product = subtree_1_sum * subtree_2_sum</span><br><span class="line">    best_product = max(best_product, product)</span><br><span class="line"></span><br><span class="line">print(best_product)</span><br></pre></td></tr></table></figure>
+
+<p>The question also says we need to take the answer modulo <code>10 ^ 9 + 7</code>. Expanded out, this number is <code>1,000,000,007</code>. So when we return the product, we’ll do:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">best_product % <span class="number">1000000007</span></span><br></pre></td></tr></table></figure>
+
+<p>Only take the <em>final product</em> modulo <code>10 ^ 9 + 7</code>. Otherwise, you might not be correctly comparing the products.</p>
+<hr>
+<p>Up until now, we’ve assumed that integers can be of an infinite size. This is a safe assumption for Python, but not for Java. For Java (and other languages that use a 32-bit integer by default), we’ll need to think carefully about where integer overflows could occur.</p>
+<p>The problem statement states that there can be up to <code>50000</code> nodes, each with a value of up to <code>10000</code>. Therefore, the maximum possible subtree sum would be <code>50,000 * 10,000 = 500,000,000</code>. This is well below the size of a 32-bit integer (<code>2,147,483,647</code>). Therefore, it is impossible for an integer overflow to occur during the summing phase with these constraints.</p>
+<p>However, multiplying the subtrees could be a problem. For example, if we had subtrees of <code>100,000,000</code> and <code>400,000,000</code>, then we’d get a total product of <code>400,000,000,000,000,000</code> which is definitely larger than a 32-bit integer, and therefore and overflow would occur!</p>
+<p>The easiest solution is to instead use 64-bit integers. In Java, this is the <code>long</code> primitive type. The largest possible product would be <code>250,000,000 * 250,000,000 = 62,500,000,000,000,000‬</code>, which is below the maximum a 64-bit integer can hold.</p>
+<p>In Approach #3, we discuss other ways of solving the problem <em>if you only had access to 32-bit integers</em>.</p>
+<p><strong>Algorithm</strong></p>
+<iframe src="https://leetcode.com/playground/beQ6Fss6/shared" frameborder="0" width="100%" height="480" name="beQ6Fss6" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<p>n<em>n</em> is the number of nodes in the tree.</p>
+<ul>
+<li><p>Time Complexity : O(n)<em>O</em>(<em>n</em>).</p>
+<p>The recursive function visits each of the n<em>n</em> nodes in the tree exactly once, performing an O(1)<em>O</em>(1) recursive operation on each. This gives a total of O(n)<em>O</em>(<em>n</em>)</p>
+<p>There are n−1<em>n</em>−1 numbers in the list. Each of these is processed with an O(1)<em>O</em>(1) operation, giving a total of O(n)<em>O</em>(<em>n</em>) time for this phase too.</p>
+<p>In total, we have O(n)<em>O</em>(<em>n</em>).</p>
+</li>
+<li><p>Space Complexity O(n)<em>O</em>(<em>n</em>).</p>
+<p>There are two places that extra space is used.</p>
+<p>Firstly, the recursion is putting frames on the stack. The maximum number of frames at any one time is the maximum depth of the tree. For a balanced tree, this is around O(log⁡ n)<em>O</em>(log<em>n</em>), and in the worst case (a long skinny tree) it is O(n)<em>O</em>(<em>n</em>).</p>
+<p>Secondly, the list takes up space. It contains n−1<em>n</em>−1 numbers at the end, so it too is O(n)<em>O</em>(<em>n</em>).</p>
+<p>In both the average case and worst case, we have a total of O(n)<em>O</em>(<em>n</em>) space used by this approach.</p>
+</li>
+</ul>
+<p>Something you might have realised is that the subtree pair that leads to the largest product is the pair with the smallest difference between them. Interestingly, this fact doesn’t help us much with optimizing the algorithm. This is because subtree sums are <em>not<em>obtained in sorted order, and so any attempt to sort them (and thus find the nearest to middle directly) will cost at least O(n log⁡ n)</em>O</em>(<em>n</em>log<em>n</em>) to do. With the overall algorithm, even with the linear search, only being O(n)<em>O</em>(<em>n</em>), this is strictly worse. The only situation this insight becomes useful is if you <em>have</em> to solve the problem using only 32-bit integers. The reason for this is discussed in Approach #3.</p>
+<hr>
+<h4 id="Approach-2-Two-Pass-DFS"><a href="#Approach-2-Two-Pass-DFS" class="headerlink" title="Approach 2: Two-Pass DFS"></a>Approach 2: Two-Pass DFS</h4><p><strong>Intuition</strong></p>
+<p>Instead of putting the <code>Subtree 1</code> sums into a separate list, we can do 2 separate tree summing traversals.</p>
+<ol>
+<li>Calculate the sum of the entire tree.</li>
+<li>Check the product we’d get for each subtree.</li>
+</ol>
+<p>Calculating the total sum is done in the same way as before.</p>
+<p>Finding the maximum product is similar, except requires a variable outside of the function to keep track of the maximum product seen so far.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maximum_product</span><span class="params">(subroot, total)</span>:</span></span><br><span class="line">    best = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recursive_helper</span><span class="params">(subroot)</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> best</span><br><span class="line">        <span class="keyword">if</span> subroot <span class="keyword">is</span> <span class="literal">None</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        left_sum = recursive_helper(subroot.left)</span><br><span class="line">        right_sum = recursive_helper(subroot.right)</span><br><span class="line">        total_sum = left_sum + right_sum + subroot.val</span><br><span class="line">        product = total_sum * (tree_total_sum - total_sum)</span><br><span class="line">        best = max(best, product)</span><br><span class="line">        <span class="keyword">return</span> total_sum</span><br><span class="line">    recursive_helper(subroot)</span><br><span class="line">    <span class="keyword">return</span> best</span><br></pre></td></tr></table></figure>
+
+<p><strong>Algorithm</strong></p>
+<p>It is possible to combine the 2 recursive functions into a single one that is called twice, however the side effects of the functions (changing of class variables) hurt code readability and can be confusing. For this reason, the code below uses 2 separate functions.</p>
+<iframe src="https://leetcode.com/playground/NyJCwW9Q/shared" frameborder="0" width="100%" height="500" name="NyJCwW9Q" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<p>n<em>n</em> is the number of nodes in the tree.</p>
+<ul>
+<li><p>Time Complexity : O(n)<em>O</em>(<em>n</em>).</p>
+<p>Each recursive function visits each of the n<em>n</em> nodes in the tree exactly once, performing an O(1)<em>O</em>(1) recursive operation on each. This gives a total of O(n)<em>O</em>(<em>n</em>).</p>
+</li>
+<li><p>Space Complexity O(n)<em>O</em>(<em>n</em>).</p>
+<p>The recursion is putting frames on the stack. The maximum number of frames at any one time is the maximum depth of the tree. For a balanced tree, this is around O(log⁡ n)<em>O</em>(log<em>n</em>), and in the worst case (a long skinny tree) it is O(n)<em>O</em>(<em>n</em>).</p>
+<p>Because we use worst case for complexity analysis, we say this algorithm uses O(n)<em>O</em>(<em>n</em>) space. However, it’s worth noting that as long as the tree is fairly balanced, the space usage will be a lot nearer to O(log⁡ n)<em>O</em>(log<em>n</em>).</p>
+</li>
+</ul>
+<hr>
+<h4 id="Approach-3-Advanced-Strategies-for-Dealing-with-32-Bit-Integers"><a href="#Approach-3-Advanced-Strategies-for-Dealing-with-32-Bit-Integers" class="headerlink" title="Approach 3: Advanced Strategies for Dealing with 32-Bit Integers"></a>Approach 3: Advanced Strategies for Dealing with 32-Bit Integers</h4><p><strong>Intuition</strong></p>
+<p><em>This is an advanced bonus section that discusses ways of solving the problem using only 32-bit integers. It’s not essential for an interview, although could be useful depending on your choice of programming language. Some of the ideas might also help with potential follow up questions. This section assumes prior experience with introductory modular arithmetic.</em></p>
+<p>We’ll additionally assume that the 32-bit integer we’re working with is <em>signed</em>, so has a <strong>maximum</strong> value of <code>2,147,483,647</code>.</p>
+<p>What if your chosen programming language only supported 32-bit integers, and you had no access to a Big Integer library? Could we still solve this problem? What are the problems we’d need to address?</p>
+<p>The solutions above relied on being able to multiply 2 numbers of up to 30 (signed) bits each without overflow. Because the number of bits in the product add, we would expect the product to require ~60 bits to represent. Using a 64-bit integer was therefore enough. Additionally, with a modulus of <code>1,000,000,007</code>, the <em>final</em> product, after taken to the modulus, will always fit within a <em>32-bit</em> integer.</p>
+<p>However, we’re now assuming that we only have 32-bit integers. When working with 32-bit integers, we must <em>always</em> keep the total below <code>2,147,483,647</code>, even during intermediate calculations. Therefore, we’ll need a way of doing the math within this restriction. One way to do the multiplication safely is to write an algorithm using the same underlying idea as <a href="https://en.wikipedia.org/wiki/Modular_exponentiation" target="_blank" rel="noopener">modular exponentiation</a>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">modularMultiplication</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> product = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> currentSum = a;</span><br><span class="line">    <span class="keyword">while</span> (b &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> bit = b % <span class="number">2</span>;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (bit == <span class="number">1</span>) &#123;</span><br><span class="line">            product += currentSum;</span><br><span class="line">            product %= m;</span><br><span class="line">        &#125;</span><br><span class="line">        currentSum &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        currentSum %= m;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> product;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There is one possible pitfall with this though. We are supposed to return the calculation for the <em>largest</em> product, determined <strong>before</strong> the modulus is taken.</p>
+<p>For example, consider the following 2 products:</p>
+<ol>
+<li><code>34,000 * 30,000 = 1,020,000,000</code> becomes <code>1,020,000,000 % 1,000,000,007 = 19,999,993</code>.</li>
+<li><code>30,000 * 30,000 = 900,000,000</code> doesn’t change because <code>900,000,000 % 1,000,000,007 = 900,000,000</code>.</li>
+</ol>
+<p>So if we were to compare them <em>before</em> taking the modulus, product 1 would be larger, which is correct. But if we compared them after, then product 2 is larger, which is incorrect.</p>
+<p>Therefore, we need a way to determine which product will be the biggest, without actually calculating them. Then once we know which is biggest, we can use our method for calculating a product modulo <code>1,000,000,007</code> without going over <code>2,147,483,647</code>.</p>
+<p>The trick is to realise that <code>Sum(Subtree 1) + Sum(Subtree 2)</code> is constant, but <code>Sum(Subtree 1) * Sum(Subtree 2)</code> increases as <code>Sum(Subtree 1) - Sum(Subtree 2)</code> gets nearer to 0, i.e. as the sum of the subtrees is more balanced. A good way of visualising this is to imagine you have <code>X</code> meters of fence and need to make a <em>rectangular</em> enclosure for some sheep. You want to maximise the area. It turns out that the optimal solution is to make a square. The nearer to a square the enclosure is, the nearer to the optimal area it will be. For example, where <code>H + W = 11</code>, the best (integer) solution is <code>5 x 6 = 30</code>.</p>
+<p><img src="https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/Figures/1339/area_fences.png" alt="Different ways of building a fence."></p>
+<p>A simple way to do this in code is to loop over the list of all the sums and find the <code>(sum, total - sum)</code> pair that has the minimal difference. This approach ensures we do <em>not</em> need to use floating point numbers.</p>
+<p><strong>Algorithm</strong></p>
+<p>We’ll use Approach #1 as a basis for the code, as it’s simpler and easier to understand. The same ideas can be used in Approach #2 though.</p>
+<iframe src="https://leetcode.com/playground/vj739xxH/shared" frameborder="0" width="100%" height="500" name="vj739xxH" style="box-sizing: border-box; margin: 20px 0px;"></iframe>
+
+<p><strong>Complexity Analysis</strong></p>
+<p>n<em>n</em> is the number of nodes in the tree.</p>
+<ul>
+<li><p>Time Complexity : O(n)<em>O</em>(<em>n</em>).</p>
+<p>Same as above approaches.</p>
+</li>
+<li><p>Space Complexity : O(n)<em>O</em>(<em>n</em>).</p>
+<p>Same as above approaches.</p>
+</li>
+</ul>
+<p>The <code>modularMultiplication</code> function has a time complexity of O(log⁡ b)<em>O</em>(log<em>b</em>) because the loop removes one bit from b<em>b</em> each iteration, until there are none left. This <em>doesn’t</em> bring up the total time complexity to O(n log⁡ b)<em>O</em>(<em>n</em>log<em>b</em>) though, because b<em>b</em> has a fixed upper limit of 32, and is therefore treated as a constant.</p>
 
       
     </div>
@@ -2008,81 +2671,6 @@ arrLen
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%99%BA%E8%83%BD%E5%AD%98%E5%82%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/hacker.png">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E6%99%BA%E8%83%BD%E5%AD%98%E5%82%A8/" class="post-title-link" itemprop="url">动态规划之智能存储</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-19 09:37:02 / Modified: 10:16:05" itemprop="dateCreated datePublished" datetime="2020-04-19T09:37:02-05:00">2020-04-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="304-二维区域和检索-矩阵不可变"><a href="#304-二维区域和检索-矩阵不可变" class="headerlink" title="304. 二维区域和检索 - 矩阵不可变"></a><a href="https://leetcode-cn.com/problems/range-sum-query-2d-immutable/" target="_blank" rel="noopener">304. 二维区域和检索 - 矩阵不可变</a></h2><p>难度中等79收藏分享切换为英文关注反馈</p>
-<p>给定一个二维矩阵，计算其子矩形范围内元素的总和，该子矩阵的左上角为 (<em>row</em>1, <em>col</em>1) ，右下角为 (<em>row</em>2, <em>col</em>2)。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/images/304.png" alt="Range Sum Query 2D"><br>上图子矩阵左上角 (row1, col1) = <strong>(2, 1)</strong> ，右下角(row2, col2) = <strong>(4, 3)，</strong>该子矩形内元素的总和为 8。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定 matrix &#x3D; [</span><br><span class="line">  [3, 0, 1, 4, 2],</span><br><span class="line">  [5, 6, 3, 2, 1],</span><br><span class="line">  [1, 2, 0, 1, 5],</span><br><span class="line">  [4, 1, 0, 1, 7],</span><br><span class="line">  [1, 0, 3, 0, 5]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">sumRegion(2, 1, 4, 3) -&gt; 8</span><br><span class="line">sumRegion(1, 1, 2, 2) -&gt; 11</span><br><span class="line">sumRegion(1, 2, 2, 4) -&gt; 12</span><br></pre></td></tr></table></figure>
-
-<p><strong>说明:</strong></p>
-<ol>
-<li><p>你可以假设矩阵不可变。</p>
-</li>
-<li><p>会多次调用 <em>sumRegion</em> 方法<em>。</em></p>
-</li>
-<li><p>你可以假设 <em>row</em>1 ≤ <em>row</em>2 且 <em>col</em>1 ≤ <em>col</em>2。</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumMatrix</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] dp;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NumMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length==<span class="number">0</span> || matrix[<span class="number">0</span>].length==<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> r=matrix.length;</span><br><span class="line">        <span class="keyword">int</span> c=matrix[<span class="number">0</span>].length;</span><br><span class="line">        dp=<span class="keyword">new</span> <span class="keyword">int</span>[r+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;r;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;c;j++)&#123;</span><br><span class="line">                dp[i+<span class="number">1</span>][j+<span class="number">1</span>]=dp[i][j+<span class="number">1</span>]+dp[i+<span class="number">1</span>][j]+matrix[i][j]-dp[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumRegion</span><span class="params">(<span class="keyword">int</span> row1, <span class="keyword">int</span> col1, <span class="keyword">int</span> row2, <span class="keyword">int</span> col2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dp[row2+<span class="number">1</span>][col2+<span class="number">1</span>]-dp[row1][col2+<span class="number">1</span>]-dp[row2+<span class="number">1</span>][col1]+dp[row1][col1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NumMatrix object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * NumMatrix obj = new NumMatrix(matrix);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.sumRegion(row1,col1,row2,col2);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2154,7 +2742,7 @@ arrLen
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
