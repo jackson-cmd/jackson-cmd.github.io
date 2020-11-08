@@ -173,63 +173,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/hacker.png">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD2/" class="post-title-link" itemprop="url">人工智能2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-07 11:28:18" itemprop="dateCreated datePublished" datetime="2020-05-07T11:28:18-05:00">2020-05-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2104,6 +2047,381 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/python400%E9%9B%864/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/29/python400%E9%9B%864/" class="post-title-link" itemprop="url">python400集4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-29 15:09:31" itemprop="dateCreated datePublished" datetime="2020-04-29T15:09:31-05:00">2020-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-03 20:08:15" itemprop="dateModified" datetime="2020-05-03T20:08:15-05:00">2020-05-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="异常和错误"><a href="#异常和错误" class="headerlink" title="异常和错误"></a>异常和错误</h1><p>软件程序在运行过程中，非常可能遇到刚刚提到的这些问题，我们称之为 异常，英文是:Exception，意思是例外。</p>
+<h2 id="异常机制本质"><a href="#异常机制本质" class="headerlink" title="异常机制本质"></a>异常机制本质</h2><p>异常指程序运行过程中出现的非正常现象，例如用户输入错误、除数为零、需 要处理的文件不存在、数组下标越界等。</p>
+<p>所谓异常处理，就是指程序在出现问题时依然可以正确的执行剩余的程序，而 不会因为异常而终止程序执行。</p>
+<p>python 中，引进了很多用来描述和处理异常的类，称为异常类。异常类定义中 包含了该类异常的信息和对异常进行处理的方法。</p>
+<p>python 中内建异常类的继承层次:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BaseException:所以异常的父类</span><br><span class="line">有4子类：KeyBoardInterrupt, Exception, SystemExit,GeneratorExit</span><br><span class="line">Exception内子类：NameError, ValueError, AttributeError等</span><br></pre></td></tr></table></figure>
+
+<p><strong>python 中一切都是对象，异常也采用对象的方式来处理。处理过程:</strong> </p>
+<ol>
+<li><p><strong>抛出异常:</strong>在执行一个方法时，如果发生异常，则这个方法生成代表该异常的一个对象，停止当前执行路径，并把异常对象提交给解释器。</p>
+</li>
+<li><p><strong>捕获异常:</strong>解释器得到该异常后，寻找相应的代码来处理该异常。</p>
+</li>
+</ol>
+<p>异常解决的关键:定位</p>
+<p>当发生异常时，解释器会报相关的错误信息，并会在控制台打印出相关错误信息。我们 只需按照从上到下的顺序即可追溯(Trackback)错误发生的过程，最终定位引起错误的那一 行代码。</p>
+<h2 id="try…-一个except-结构"><a href="#try…-一个except-结构" class="headerlink" title="try… 一个except 结构"></a><strong>try…</strong> 一个<strong>except</strong> 结构</h2><p>try…except 是最常见的异常处理结构。结构如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">	被监控的可能引发异常的语句块</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> BaseException [<span class="keyword">as</span> e]:</span><br><span class="line"></span><br><span class="line">	异常处理语句块</span><br></pre></td></tr></table></figure>
+
+<p>try 块包含着可能引发异常的代码，except 块则用来捕捉和处理发生的异常。执行的时 候，如果 try 块中没有引发异常，则跳过 ecept 块继续执行后续代码;执行的时候，如果 try块中发生了异常，则跳过 try 块中的后续代码，跳到相应的 except 块中处理异常;异常处理 完后，继续执行后续代码。</p>
+<p>例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  print(<span class="string">"step1"</span>)</span><br><span class="line">  a=<span class="number">3</span>/<span class="number">0</span></span><br><span class="line">  print(<span class="string">"step2"</span>)</span><br><span class="line"><span class="keyword">except</span> BaseException <span class="keyword">as</span> e:</span><br><span class="line">  print(<span class="string">"step3"</span>)</span><br><span class="line">  print(<span class="string">"e"</span>)</span><br><span class="line">print(<span class="string">"step4"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">step1</span><br><span class="line">step3</span><br><span class="line">division by zero </span><br><span class="line">step4</span><br></pre></td></tr></table></figure>
+
+<p>例子2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">  print(&quot;step1&quot;)</span><br><span class="line">  a&#x3D;3&#x2F;2</span><br><span class="line">  print(&quot;step2&quot;)</span><br><span class="line">except BaseException as e:</span><br><span class="line">  print(&quot;step3&quot;)</span><br><span class="line">  print(&quot;e&quot;)</span><br><span class="line">print(&quot;step4&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>#结果</p>
+<p>step1<br>step2<br>step4</p>
+<h2 id="try…多个-except-结构"><a href="#try…多个-except-结构" class="headerlink" title="try…多个 except 结构"></a><strong>try…</strong>多个 <strong>except</strong> 结构</h2><p>上面的结构可以捕获所有的异常，工作中也很常见。但是，从经典理论考虑，一般建议 尽量捕获可能出现的多个异常(按照先子类后父类的顺序)，并且针对性的写出异常处理代 码。为了避免遗漏可能出现的异常，可以在最后增加 BaseException。结构如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">	被监控的可能引发异常的语句块</span><br><span class="line">except Exception1:</span><br><span class="line"> 处理 Exception1 的语句块</span><br><span class="line"></span><br><span class="line">except Exception2:</span><br><span class="line"> 处理 Exception2 的语句块</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+
+<p>例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	a=input(<span class="string">"输入一个被除数："</span>)</span><br><span class="line">	b=input(<span class="string">"输入一个除数："</span>)</span><br><span class="line">  c=float(a)/float(b)</span><br><span class="line">  print(c)</span><br><span class="line"><span class="keyword">except</span> ZeroDicisionError:</span><br><span class="line">  print(<span class="string">"除数不为0"</span>)</span><br><span class="line"><span class="keyword">except</span> TypeError: </span><br><span class="line">  print(<span class="string">"异常:除数和被除数都应该为数值类型"</span>)</span><br><span class="line"><span class="keyword">except</span> NameError: </span><br><span class="line">  print(<span class="string">"异常:变量不存在"</span>)</span><br><span class="line"><span class="keyword">except</span> BaseException <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br><span class="line">    print(type(e)) </span><br><span class="line"> ```</span><br><span class="line">请输入被除数:<span class="number">10</span> </span><br><span class="line">请输入除数:<span class="number">0</span> </span><br><span class="line">异常:除数不能为 <span class="number">0</span></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h2 id="try…except…else-结构"><a href="#try…except…else-结构" class="headerlink" title="try…except…else 结构"></a><strong>try…except…else</strong> 结构</h2><p> try…except…else 结构增加了“else 块”。如果 try 块中没有抛出异常，则执行 else 块。如果</p>
+<p>try 块中抛出异常，则执行 except 块，不执行 else 块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">发生异常的执行情况(执行 except 块，没有执行 else):</span><br><span class="line"></span><br><span class="line">没有发生异常的执行情况(执行完 try 块后，执行 else):</span><br></pre></td></tr></table></figure>
+
+<h2 id="try…except…finally-结构"><a href="#try…except…finally-结构" class="headerlink" title="try…except…finally 结构"></a><strong>try…except…finally</strong> 结构</h2><p> try…except…finally 结构中，finally 块无论是否发生异常都会被执行;通常用来释放 try 块中申请的资源</p>
+<p> finally 中的语句，无论是否发生异常都执行</p>
+<p>读取文件，finally 中保证关闭文件资源</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	f = open(<span class="string">"d:/a.txt"</span>,<span class="string">'r'</span>) </span><br><span class="line">  content = f.readline() </span><br><span class="line">  print(content)</span><br><span class="line"><span class="keyword">except</span> BaseException <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">	f.close() <span class="comment">#释放资源。此处也可能会发生异常。若发生异常，则程序终止,不会继续往下执行</span></span><br><span class="line">print(<span class="string">"step4"</span>)</span><br><span class="line">```</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">[Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">'d:/a.txt'</span></span><br><span class="line">File <span class="string">"C:/PycharmProjects/mypro_exception/my01.py"</span>, line <span class="number">8</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">f.close() <span class="comment">#释放资源。此处也可能会发生异常。若发生异常，则程序终止,不会继续往下执行</span></span><br><span class="line">NameError: name <span class="string">'f'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined Process finished <span class="keyword">with</span> exit code <span class="number">1</span></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<p>需要把f.close也try except</p>
+<h2 id="return-语句和异常处理问题"><a href="#return-语句和异常处理问题" class="headerlink" title="return 语句和异常处理问题"></a><strong>return</strong> 语句和异常处理问题</h2><p> 由于 return 有两种作用:结束方法运行、返回值。我们一般不把 return 放到异常处理结构</p>
+<p>中，而是放到方法最后。</p>
+<h3 id="一般不要将-return-语句放到-try、except、else、finally-块中，会发生一些意想不到的错误。建议放到方法最后。"><a href="#一般不要将-return-语句放到-try、except、else、finally-块中，会发生一些意想不到的错误。建议放到方法最后。" class="headerlink" title="一般不要将 return 语句放到 try、except、else、finally 块中，会发生一些意想不到的错误。建议放到方法最后。"></a>一般不要将 return 语句放到 try、except、else、finally 块中，会发生一些意想不到的错误。建议放到方法最后。</h3><h2 id="常见异常的解决"><a href="#常见异常的解决" class="headerlink" title="常见异常的解决"></a>常见异常的解决</h2><p>Python 中的异常都派生自 BaseException 类</p>
+<p>\1. SyntaxError:语法错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D;3 </span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<p>\2. NameError:尝试访问一个没有申明的变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(a)</span><br><span class="line">NameError: name &#39;a&#39; is not defined</span><br></pre></td></tr></table></figure>
+
+<p>\3. ZeroDivisionError:除数为0错误(零除错误)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 3&#x2F;0</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
+
+<p>\4. ValueError:数值错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float(&quot;gaoqi&quot;)</span><br><span class="line">ValueError: could not convert string to float: &#39;gaoqi&#39;</span><br></pre></td></tr></table></figure>
+
+<p>\5. TypeError:类型错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123+&quot;abc&quot;</span><br><span class="line">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span><br></pre></td></tr></table></figure>
+
+<p>\6. AttributeError:访问对象的不存在的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.sayhi()</span><br><span class="line">AttributeError: &#39;int&#39; object has no attribute &#39;sayhi&#39;</span><br></pre></td></tr></table></figure>
+
+<p>\7. IndexError:索引越界异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a[10]</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure>
+
+<p>\8. KeyError:字典的关键字不存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[&#39;salary&#39;] KeyError: &#39;salary&#39;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>异常名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ArithmeticError</code></td>
+<td>所有数值计算错误的基类</td>
+</tr>
+<tr>
+<td><code>AssertionError</code></td>
+<td>断言语句失败</td>
+</tr>
+<tr>
+<td><code>AttributeError</code></td>
+<td>对象没有这个属性</td>
+</tr>
+<tr>
+<td><code>BaseException</code></td>
+<td>所有异常的基类</td>
+</tr>
+<tr>
+<td><code>DeprecationWarning</code></td>
+<td>关于被弃用的特征的警告</td>
+</tr>
+<tr>
+<td><code>EnvironmentError</code></td>
+<td>操作系统错误的基类</td>
+</tr>
+<tr>
+<td>EOFError</td>
+<td>没有内建输入,到达 EOF 标记</td>
+</tr>
+<tr>
+<td>Exception</td>
+<td>常规错误的基类</td>
+</tr>
+<tr>
+<td><code>FloatingPointError</code></td>
+<td>浮点计算错误</td>
+</tr>
+<tr>
+<td><code>FutureWarning</code></td>
+<td><code>关于构造将来语义会有改变的警告</code></td>
+</tr>
+<tr>
+<td><code>GeneratorExit</code></td>
+<td>生成器(generator)发生异常来通知退出</td>
+</tr>
+<tr>
+<td>ImportError</td>
+<td>导入模块/对象失败</td>
+</tr>
+<tr>
+<td><code>IndentationError</code></td>
+<td>缩进错误</td>
+</tr>
+<tr>
+<td>IndexError</td>
+<td>序列中没有此索引(index)</td>
+</tr>
+<tr>
+<td>IOError</td>
+<td>输入/输出操作失败</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><code>KeyboardInterrupt</code></th>
+<th>用户中断执行(通常是输入^C)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KeyError</td>
+<td>映射中没有这个键</td>
+</tr>
+<tr>
+<td>LookupError</td>
+<td>无效数据查询的基类</td>
+</tr>
+<tr>
+<td>MemoryError</td>
+<td>内存溢出错误(对于 Python 解释器不是致命的)</td>
+</tr>
+<tr>
+<td>NameError</td>
+<td>未声明/初始化对象 (没有属性)</td>
+</tr>
+<tr>
+<td><code>NotImplementedError</code></td>
+<td>尚未实现的方法</td>
+</tr>
+<tr>
+<td>OSError</td>
+<td>操作系统错误</td>
+</tr>
+<tr>
+<td><code>OverflowError</code></td>
+<td>数值运算超出最大限制</td>
+</tr>
+<tr>
+<td><code>OverflowWarning</code></td>
+<td>旧的关于自动提升为长整型(long)的警告</td>
+</tr>
+<tr>
+<td><code>PendingDeprecationWarning</code></td>
+<td><code>关于特性将会被废弃的警告</code></td>
+</tr>
+<tr>
+<td><code>ReferenceError</code></td>
+<td>弱引用(Weak reference)试图访问已经垃圾回收了的对象</td>
+</tr>
+<tr>
+<td><code>RuntimeError</code></td>
+<td>一般的运行时错误</td>
+</tr>
+<tr>
+<td><code>RuntimeWarning</code></td>
+<td>可疑的运行时行为(runtime behavior)的警告</td>
+</tr>
+<tr>
+<td><code>StandardError</code></td>
+<td><code>所有的内建标准异常的基类</code></td>
+</tr>
+<tr>
+<td><code>StopIteration</code></td>
+<td>迭代器没有更多的值</td>
+</tr>
+<tr>
+<td>SyntaxError</td>
+<td>Python 语法错误</td>
+</tr>
+<tr>
+<td><code>SyntaxWarning</code></td>
+<td>可疑的语法的警告</td>
+</tr>
+<tr>
+<td>SystemError</td>
+<td>一般的解释器系统错误</td>
+</tr>
+<tr>
+<td>SystemExit</td>
+<td>解释器请求退出</td>
+</tr>
+<tr>
+<td>TabError</td>
+<td>Tab 和空格混用</td>
+</tr>
+<tr>
+<td>TypeError</td>
+<td>对类型无效的操作</td>
+</tr>
+<tr>
+<td><code>UnboundLocalError</code></td>
+<td>访问未初始化的本地变量</td>
+</tr>
+<tr>
+<td><code>UnicodeDecodeError</code></td>
+<td>Unicode 解码时的错误</td>
+</tr>
+<tr>
+<td><code>UnicodeEncodeError</code></td>
+<td>Unicode 编码时错误</td>
+</tr>
+<tr>
+<td><code>UnicodeError</code></td>
+<td>Unicode 相关的错误</td>
+</tr>
+<tr>
+<td><code>UnicodeTranslateError</code></td>
+<td>Unicode 转换时错误</td>
+</tr>
+<tr>
+<td>UserWarning</td>
+<td>用户代码生成的警告</td>
+</tr>
+<tr>
+<td>ValueError</td>
+<td>传入无效的参数</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>警告的基类</td>
+</tr>
+<tr>
+<td><code>WindowsError</code></td>
+<td>系统调用失败</td>
+</tr>
+<tr>
+<td><code>ZeroDivisionError</code></td>
+<td>除(或取模)零 (所有数据类型)</td>
+</tr>
+</tbody></table>
+<h2 id="with-上下文管理"><a href="#with-上下文管理" class="headerlink" title="with 上下文管理"></a><strong>with</strong> 上下文管理</h2><p> finally 块由于是否发生异常都会执行，通常我们放释放资源的代码。其实，我们可以通过 with 上下文管理，更方便的实现释放资源的操作。 with 上下文管理的语法结构如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> context_expr [ <span class="keyword">as</span> var]: </span><br><span class="line">	语句块</span><br></pre></td></tr></table></figure>
+
+<p>with 上下文管理可以自动管理资源，在 with 代码块执行完毕后自动还原进入该代码之前的 现场或上下文。不论何种原因跳出 with 块，不论是否有异常，总能保证资源正常释放。极 大的简化了工作，在文件操作、网络通信相关的场合非常常用。</p>
+<h3 id="With不是取代try…except…finally的，而是作为补充，方便文件管理，网络通信时的开发"><a href="#With不是取代try…except…finally的，而是作为补充，方便文件管理，网络通信时的开发" class="headerlink" title="With不是取代try…except…finally的，而是作为补充，方便文件管理，网络通信时的开发"></a>With不是取代try…except…finally的，而是作为补充，方便文件管理，网络通信时的开发</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"d:/bb.txt"</span>) <span class="keyword">as</span> f: </span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">		print(line)</span><br></pre></td></tr></table></figure>
+
+<h2 id="trackback-模块"><a href="#trackback-模块" class="headerlink" title="trackback 模块"></a><strong>trackback</strong> 模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">try</span>: </span><br><span class="line">  print(<span class="string">"step1"</span>)</span><br><span class="line">	num = <span class="number">1</span>/<span class="number">0</span> </span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	traceback.print_exc()</span><br><span class="line">  ```</span><br><span class="line">  step1</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/Users/mengxiaowang/Documents/a.py"</span>, line <span class="number">4</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    num = <span class="number">1</span>/<span class="number">0</span></span><br><span class="line">ZeroDivisionError: division by zero</span><br><span class="line">  ```</span><br></pre></td></tr></table></figure>
+
+<p>使用 traceback 将异常信息写入日志文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">try</span>: </span><br><span class="line">  print(<span class="string">"step1"</span>)</span><br><span class="line">	num = <span class="number">1</span>/<span class="number">0</span> </span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">	<span class="keyword">with</span> open(<span class="string">"d:/a.log"</span>,<span class="string">"a"</span>) <span class="keyword">as</span> f: </span><br><span class="line">    traceback.print_exc(file=f)</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义异常类"><a href="#自定义异常类" class="headerlink" title="自定义异常类"></a>自定义异常类</h2><p>程序开发中，有时候我们也需要自己定义异常类。自定义异常类一般都是运行时异常，通常继承 Exception 或其子类即可。命名一般以 Error、Exception 为后缀。</p>
+<p> 自定义异常由 raise 语句主动抛出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">classAgeError(Exception): <span class="comment">#继承Exception </span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,errorInfo)</span>:</span></span><br><span class="line">		Exception.__init__(self)</span><br><span class="line">		self.errorInfo = errorInfo </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> str(self.errorInfo)+<span class="string">",年龄错误!应该在 1-150 之间"</span></span><br><span class="line"><span class="comment">############测试代码################</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>: <span class="comment">#如果为 True，则模块是作为独立文件运行， 可以执行测试代码</span></span><br><span class="line">	age = int(input(<span class="string">"输入一个年龄:"</span>)) </span><br><span class="line">  	<span class="keyword">if</span> age&lt;<span class="number">1</span> <span class="keyword">or</span> age&gt;<span class="number">150</span>:</span><br><span class="line">    	<span class="keyword">raise</span> AgeError(age)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">"正常的年龄:"</span>,age)</span><br><span class="line">```</span><br><span class="line">输入一个年龄：<span class="number">160</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">"C:/Users/Administrator/PycharmProjects/mypro_exception/my10.py"</span>, line <span class="number">16</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"><span class="keyword">raise</span> AgeError(age)</span><br><span class="line">__main__.AgeError: <span class="number">200</span>,年龄错误!应该在 <span class="number">1</span><span class="number">-150</span> 之间</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h2 id="if-name-‘main‘-的作用"><a href="#if-name-‘main‘-的作用" class="headerlink" title="if name == ‘main‘:的作用"></a>if <strong>name</strong> == ‘<strong>main</strong>‘:的作用</h2><p>简单说：</p>
+<h4 id="在当前执行的程序下（例如当前程序为test-py），如果导入其他模块（other-test-py），则运行程序时other-test-py的if-name-‘main‘-语句判断失败，将不会运行下面的方法。"><a href="#在当前执行的程序下（例如当前程序为test-py），如果导入其他模块（other-test-py），则运行程序时other-test-py的if-name-‘main‘-语句判断失败，将不会运行下面的方法。" class="headerlink" title="在当前执行的程序下（例如当前程序为test.py），如果导入其他模块（other_test.py），则运行程序时other_test.py的if name == ‘main‘ 语句判断失败，将不会运行下面的方法。"></a>在当前执行的程序下（例如当前程序为test.py），如果导入其他模块（other_test.py），则运行程序时other_test.py的if <strong>name</strong> == ‘<strong>main</strong>‘ 语句判断失败，将不会运行下面的方法。</h4><p>也就是说导入的模块的if <strong>name</strong> == ‘<strong>main</strong>‘ 语句下的方法是不会执行的。只会执行当前的if <strong>name</strong> == ‘<strong>main</strong>‘ 下的方法。<br>一个python文件通常有两种使用方法，第一是作为脚本直接执行，第二是 import 到其他的 python 脚本中被调用（模块重用）执行。因此 if <strong>name</strong> == ‘main’: 的作用就是控制这两种情况执行代码的过程，在 if <strong>name</strong> == ‘main’: 下的代码只有在第一种情况下（即文件作为脚本直接执行）才会被执行，而 import 到其他脚本中是不会被执行的。举例说明如下：</p>
+<ul>
+<li>直接执行</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190510141202522.png" alt="img"></p>
+<p><strong>直接执行 test.py，</strong>结果如下图，可以成功 print 两行字符串。即<strong>，if <strong>name</strong>==”<strong>main</strong>“: 语句之前和之后的代码都被执行。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20190510141303114.png" alt="img"></p>
+<ul>
+<li>import 执行</li>
+</ul>
+<p>然后在同一文件夹新建名称为 import_test.py 的脚本，输入如下代码：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190510141602268.png" alt="img"></p>
+<p>执行 <strong>import_test.py 脚本</strong>，输出结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190510141624918.png" alt="img"></p>
+<p>只输出了第一行字符串。即，<strong>if <strong>name</strong>==”<strong>main</strong>“: 之前的语句被执行，之后的没有被执行。</strong></p>
+<h3 id="if-name-‘main‘-的运行原理"><a href="#if-name-‘main‘-的运行原理" class="headerlink" title="if name == ‘main‘:的运行原理"></a>if <strong>name</strong> == ‘<strong>main</strong>‘:的运行原理</h3><p><strong>每个python模块</strong>（python文件，也就是此处的 test.py 和 import_test.py）都包含<strong>内置的变量 <strong>name</strong></strong>，当该模块被<strong>直接执行</strong>的时候，<strong><strong>name</strong> 等于文件名（包含后缀 .py ）</strong>；如果该模块 <strong>import</strong> 到其他模块中，<strong>则该模块的 <strong>name</strong> 等于模块名称（不包含后缀.py）。</strong></p>
+<p>而 <strong>“<strong>main</strong>” 始终指当前执行模块的名称（包含后缀.py）</strong>。进而当模块被<strong>直接执行</strong>时<strong>，<strong>name</strong> == ‘main’ 结果为真。</strong></p>
+<p>为了进一步说明，我们在 test.py 脚本的 if <strong>name</strong>==”<strong>main</strong>“: 之前<strong>加入 print(<strong>name</strong>)，</strong>即将 <strong>name</strong> 打印出来。文件内容和结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190510142230219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hlcWlhbmc1MjU=,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190510142253482.png" alt="img"></p>
+<p>可以看出，此时变量<strong><strong>name</strong>的值为”<strong>main</strong>“。</strong></p>
+<p>再执行 import_test.py，执行结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190510142441889.png" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190510142452571.png" alt="img"></p>
+<p>此时，<strong>test.py中的<strong>name</strong>变量值为 test，</strong>不满足 <strong>name</strong>==”<strong>main</strong>“ 的条件，因此，无法执行其后的代码。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -2175,7 +2493,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
