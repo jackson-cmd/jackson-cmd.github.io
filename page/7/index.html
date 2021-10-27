@@ -173,6 +173,930 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/python400%E9%9B%866/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/hacker.png">
+      <meta itemprop="name" content="Jackson">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/03/python400%E9%9B%866/" class="post-title-link" itemprop="url">python400集6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-03 20:13:51" itemprop="dateCreated datePublished" datetime="2020-05-03T20:13:51-04:00">2020-05-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-07 01:09:16" itemprop="dateModified" datetime="2020-05-07T01:09:16-04:00">2020-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>module：一个 .py 文件就是个 module</p>
+<p>lib：抽象概念，和另外两个不zhidao是一类，只要你喜欢，什么都是 lib，就算只有个 hello world</p>
+<p>package：就是个带 <strong>init</strong>.py 的文件夹，并不在乎里内面有什么，不过一般来讲会包含一些 packages/modules</p>
+<p>scrapy、flask、Django、numpy、scipy、NLTK、jieba一般都被认为是 lib，因为关注点并不是代码是怎么组织容的。</p>
+<ol>
+<li>Python 程序由模块组成。一个模块对应 python 源文件，一般后缀名是:.py。</li>
+<li>模块由语句组成。运行 Python 程序时，按照模块中语句的顺序依次执行。</li>
+<li>语句是 Python 程序的构造单元，用于创建对象、变量赋值、调用函数、控制语句等。</li>
+</ol>
+<h2 id="1-python模块是："><a href="#1-python模块是：" class="headerlink" title="1.python模块是："></a>1.python模块是：</h2><p>python模块：包含并且有组织的代码片段为模块。</p>
+<p>表现形式为：写的代码保存为文件。这个文件就是一个模块。sample.py 其中文件名smaple为模块名字。</p>
+<p>关系图：</p>
+<p><a href="https://iknow-pic.cdn.bcebos.com/1ad5ad6eddc451dad2c24565bffd5266d0163203" target="_blank" rel="noopener"><img src="https://iknow-pic.cdn.bcebos.com/1ad5ad6eddc451dad2c24565bffd5266d0163203?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1" alt="img"></a></p>
+<h2 id="2-python包是："><a href="#2-python包是：" class="headerlink" title="2.python包是："></a>2.python包是：</h2><p>包是一个有层次的文件目录结构，它定义了由n个模块或n个子包组成的python应用程序执行环境。通俗一点：包是一个包含<strong>init</strong>.py 文件的目录，该目录下一定得有这个<strong>init</strong>.py文件和其它e68a84e79fa5e9819331333365656638模块或子包。</p>
+<p>常见问题：</p>
+<p>引入某一特定路径下的模块</p>
+<p>使用sys.path.append(yourmodulepath)</p>
+<p>将一个路径加入到python系统路径下，避免每次通过代码指定路径</p>
+<p>利用系统环境变量 export PYTHONPATH=$PYTHONPATH:yourmodulepath，</p>
+<p>直接将这个路径链接到类似/Library/Python/2.7/site-packages目录下</p>
+<p>好的建议：</p>
+<p>经常使用if <strong>name</strong> == ‘<strong>main</strong>‘，保证写包既可以import又可以独立运行，用于test。</p>
+<p>多次import不会多次执行模块，只会执行一次。可以使用reload来强制运行模块，但不提倡。</p>
+<p>常见的包结构如下：</p>
+<p>package_a├── <strong>init</strong>.py├── module_a1.py└── module_a2.pypackage_b├── <strong>init</strong>.py├── module_b1.py└── module_b2.py</p>
+<p>main.py</p>
+<p>如果main.py想要引用packagea中的模块modulea1，可以使用:</p>
+<p>from package_a import module_a1</p>
+<p>import package_a.module_a1</p>
+<p>如果packagea中的modulea1需要引用packageb，那么默认情况下，python是找不到packageb。我们可以使用sys.path.append(‘../‘),可以在packagea中的<strong>init</strong>.py添加这句话，然后该包下得所有module都添加* import __init_即可。</p>
+<p>关系图：</p>
+<p><a href="https://iknow-pic.cdn.bcebos.com/1c950a7b02087bf4949b1e67fbd3572c10dfcfcd" target="_blank" rel="noopener"><img src="https://iknow-pic.cdn.bcebos.com/1c950a7b02087bf4949b1e67fbd3572c10dfcfcd?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1" alt="img"></a></p>
+<h2 id="3-库（library）"><a href="#3-库（library）" class="headerlink" title="3.库（library）"></a>3.库（library）</h2><p>库的概念是具有相关功能模块的集合。这也是Python的一大特色之一，即具有强大的标准库、第三方库以及自定义模块。</p>
+<h2 id="1-2-标准库模块-standard-library"><a href="#1-2-标准库模块-standard-library" class="headerlink" title="1.2 标准库模块(standard library)"></a><strong>1.2 标准库模块(standard library)</strong></h2><p>与函数类似，模块也分为标准库模块和用户自定义模块。<br> Python 标准库提供了操作系统功能、网络通信、文本处理、文件处理、数学运算等基 本的功能。比如:random(随机数)、math(数学运算)、time(时间处理)、file(文件处理)、 os(和操作系统交互)、sys(和解释器交互)等。</p>
+<p>另外，Python 还提供了海量的第三方模块，使用方式和标准库类似。功能覆盖了我们 能想象到的所有领域，比如:科学计算、WEB 开发、大数据、人工智能、图形系统等。</p>
+<p>模块化编程有如下几个重要优势:<br> \1. 便于将一个任务分解成多个模块，实现团队协同开发，完成大规模程序 2. 实现代码复用。一个模块实现后，可以被反复调用。<br> \3. 可维护性增强。</p>
+<p><strong>1.4 模块化编程的流程</strong></p>
+<p>模块化编程的一般流程:<br> \1. 设计 API，进行功能描述</p>
+<p>\2. 编码实现 API 中描述的功能。<br> \3. 在模块中编写测试代码，并消除全局代码。<br> \4. 使用私有函数实现不被外部客户端调用的模块函数。</p>
+<p>API(Application Programming Interface 应用程序编程接口)是用于描述模 块中提供的函数和类的功能描述和使用方式描述。</p>
+<p>模块化编程中，首先设计的就是模块的 API(即要实现的功能描述)，然后开始编 码实现 API 中描述的功能。最后，在其他模块中导入本模块进行调用。</p>
+<p>我们可以通过help(模块名)查看模块的API。一般使用时先导入模块 然后通过help函数查看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">help(math)</span><br></pre></td></tr></table></figure>
+
+<p>设计计算薪水模块的 API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">本模块用于计算公司员工的薪资</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">company &#x3D; &quot;北京尚学堂&quot;</span><br><span class="line"></span><br><span class="line">def yearSalary(monthSalary):</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;根据传入的月薪，计算出年薪&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">  pass</span><br><span class="line"></span><br><span class="line">def daySalary(monthSalary): </span><br><span class="line">&quot;&quot;&quot;根据传入的月薪，计算出每天的薪资&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">	pass</span><br></pre></td></tr></table></figure>
+
+<p>如上模块只有功能描述和规范，需要编码人员按照要求实现编码。 我们可以通过<strong>doc</strong>可以获得模块的文档字符串的内容。</p>
+<p>test.py 的源代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import salary</span><br><span class="line"></span><br><span class="line">print(salary.__doc__)</span><br><span class="line"></span><br><span class="line">print(salary.yearSalary.__doc__)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<p>本模块用于计算公司员工的薪资 </p>
+<p>根据传入的月薪，计算出年薪</p>
+<p><strong>模块的创建和测试代码</strong></p>
+<p>每个模块都有一个名称，通过特殊变量<strong>name</strong>可以获取模块的名称。在正常情况下，模块名字对应源文件名。 仅有一个例外，就是当一个模块被作为程序入口时(主 程序、交互式提示符下)，它的<strong>name</strong>的值为“<strong>main</strong>”。我们可以根据这个特 点，将模块源代码文件中的测试代码进行独立的处理。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> import math</span><br><span class="line"></span><br><span class="line">math.__name__ #输出&#39;math&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">company = <span class="string">"北京尚学堂"</span></span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">yearSalary</span><span class="params">(monthSalary)</span>:</span> </span><br><span class="line"> <span class="string">"""根据传入的月薪，计算出年薪"""</span></span><br><span class="line">		<span class="keyword">return</span> monthSalary*<span class="number">12</span></span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">daySalary</span><span class="params">(monthSalary)</span>:</span></span><br><span class="line"><span class="string">"""根据传入的月薪，计算出每天的薪资"""</span></span><br><span class="line">	<span class="keyword">return</span> monthSalary/<span class="number">22.5</span> <span class="comment">#国家规定每个月的平均工作日是 22.5</span></span><br><span class="line"> <span class="keyword">if</span> __name__ ==<span class="string">"__main__"</span>: <span class="comment">#测试代码</span></span><br><span class="line">		print(yearSalary(<span class="number">3000</span>))</span><br><span class="line">		print(daySalary(<span class="number">3000</span>))</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.7 模块文档字符串和 API 设计</strong></p>
+<p>我们可以在模块的第一行增加一个文档字符串，用于描述模块的相关功能。然后，通过 <strong>doc</strong>可以获得文档字符串的内容。</p>
+<h2 id="2-模块的导入"><a href="#2-模块的导入" class="headerlink" title="2. 模块的导入"></a><strong>2. 模块的导入</strong></h2><p>模块化设计的好处之一就是“代码复用性高”。写好的模块可以被反复调用，重复使用。 模块的导入就是“在本模块中使用其他模块”。</p>
+<p><strong>2.1 import 语句导入</strong></p>
+<p>import 语句的基本语法格式如下: import 模块名</p>
+<p>import 模块 1，模块 2… import 模块名 as 模块别名</p>
+<p>#导入一个模块 #导入多个模块</p>
+<p>#导入模块并使用新名字</p>
+<p>import 加载的模块分为四个通用类别:<br> a.使用 python 编写的代码(.py 文件); b.已被编译为共享库或 DLL 的 C 或 C++扩展; c.包好一组模块的包<br> d.使用 C 编写并链接到 python 解释器的内置模块;</p>
+<p>我们一般通过 import 语句实现模块的导入和使用，import 本质上是使用了内置函数 <strong>import</strong>()。</p>
+<p>当我们通过 import 导入一个模块时，python 解释器进行执行，最终会生成一个对象， 这个对象就代表了被加载的模块。</p>
+<p>我们可以看到 math 模块被加载后，实际会生成一个 module 类的对象，该对象被 math 变量引用。我们可以通过 math 变量引用模块中所有的内容。</p>
+<p>我们通过 import 导入多个模块，本质上也是生成多个 module 类的对象而已。</p>
+<p>有时候，我们也需要给模块起个别名，本质上，这个别名仅仅是新创建一个变量引用加 载的模块对象而已。</p>
+<p><strong>2.2 from…import 导入</strong></p>
+<p>Python 中可以使用 from…import 导入模块中的成员。基本语法格式如下: from 模块名 import 成员 1，成员 2，…</p>
+<p>如果希望导入一个模块中的所有成员，则可以采用如下方式: from 模块名 import *</p>
+<p>【注】尽量避免“from 模块名 import <em>”这种写法。</em> 它表示导入模块中所有的不 是以下划线(_)开头的名字都导入到当前位置。 但你不知道你导入什么名字，很有可能 会覆盖掉你之前已经定义的名字。而且可读性极其的差。一般生产环境中尽量避免使用， 学习时没有关系。</p>
+<h2 id="2-3-import-语句和-from…import-语句的区别"><a href="#2-3-import-语句和-from…import-语句的区别" class="headerlink" title="2.3 import 语句和 from…import 语句的区别"></a><strong>2.3 import 语句和 from…import 语句的区别</strong></h2><p>import 导入的是模块。from…import 导入的是模块中的一个函数/一个类。</p>
+<p>如果进行类比的话，import 导入的是“文件”，我们要使用该“文件”下的内容，必 须前面加“文件名称”。from…import 导入的是文件下的“内容”，我们直接使用这 些“内容”即可，前面再也不需要加“文件名称”了。</p>
+<p><strong>2.4 <strong>import</strong>()动态导入</strong></p>
+<p>import 语句本质上就是调用内置函数<strong>import</strong>()，我们可以通过它实现动态导入。给 <strong>import</strong>()动态传递不同的的参数值，就能导入不同的模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s &#x3D; &quot;math&quot;</span><br><span class="line">m &#x3D; __import__(s) #导入后生成的模块对象的引用给变量 m</span><br><span class="line">print(m.pi)</span><br></pre></td></tr></table></figure>
+
+<p>注意:一般不建议我们自行使用<strong>import</strong>()导入，其行为在 python2 和 python3 中 有差异，会导致意外错误。如果需要动态导入可以使用 importlib 模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import importlib</span><br><span class="line">a &#x3D; importlib.import_module(&quot;math&quot;)</span><br><span class="line">print(a.pi)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.5 模块的加载问题</strong></p>
+<p>当导入一个模块时， 模块中的代码都会被执行。不过，如果再次导入这个模块， 则不会再次执行。</p>
+<p>Python 的设计者为什么这么设计?因为，导入模块更多的时候需要的是定义模块 中的变量、函数、对象等。这些并不需要反复定义和执行。“只导入一次 import-only-once”就成了一种优化。</p>
+<p>一个模块无论导入多少次，这个模块在整个解释器进程内有且仅有一个实例对象。</p>
+<p><strong>重新加载 有时候我们确实需要重新加载一个模块，这时候可以使用:**</strong>importlib.reload()**</p>
+<p><strong>方法:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import test02</span><br><span class="line">import test02</span><br><span class="line">print(&quot;####&quot;)</span><br><span class="line">import importlib </span><br><span class="line">importlib.reload(test02)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-包-package-的使用"><a href="#3-包-package-的使用" class="headerlink" title="3. 包 package 的使用"></a><strong>3. 包 package 的使用</strong></h2><p><strong>3.1 包(package)的概念和结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当一个项目中有很多个模块时，需要再进行组织。我们将功能类似的模块放到一起， 形成了“包”。本质上，“包”就是一个必须有__init__.py 的文件夹。典型结构如下:</span><br></pre></td></tr></table></figure>
+
+<p>包下面可以包含“模块(module)”，也可以再包含“子包(subpackage)”。就像文件 夹下面可以有文件，也可以有子文件夹一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">，a 是上层的包，下面有一个子包:aa。可以看到每个包里面都有__init__.py 文件。</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.2 pycharm 中创建包</strong></p>
+<p>在 pycharm 开发环境中创建包，非常简单。在要创建包的地方单击右键:New–&gt;Python package 即可。pycharm 会自动帮助我们生成带有<strong>init</strong>.py 文件的包。</p>
+<p><strong>3.3 导入包操作和本质</strong></p>
+<p>上一节中的包结构，我们需要导入 module_AA.py。方式如下:</p>
+<ol>
+<li><p>import a.aa.module_AA</p>
+<p>在使用时，必须加完整名称来引用，比如:a.aa.module_AA.fun_AA()</p>
+</li>
+<li><p>from a.aa import module_AA</p>
+<p>在使用时，直接可以使用模块名。 比如:module_AA.fun_AA()</p>
+</li>
+<li><p>from a.aa.module_AA import fun_AA 直接导入函数</p>
+<p>在使用时，直接可以使用函数名。 比如:fun_AA()</p>
+<p>【注】<br> \1. from package import item 这种语法中，item 可以是包、模块，也可以是函数、</p>
+<p>类、变量。<br> \2. import item1.item2 这种语法中，item 必须是包或模块，不能是其他。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">导入包的本质其实是“导入了包的__init__.py”文件。也就是说，”import pack1”意味 着执行了包 pack1 下面的__init__.py 文件。 这样，可以在__init__.py 中批量导入我们需要 的模块，而不再需要一个个导入。</span><br><span class="line"></span><br><span class="line">__init__.py 的三个核心作用:</span><br><span class="line">1. 作为包的标识，不能删除。</span><br><span class="line">2. 用来实现模糊导入</span><br><span class="line">3. 导入包实质是执行__init__.py 文件，可以在__init__.py 文件中做这个包的初始化、以及 需要统一执行代码、批量导入。</span><br></pre></td></tr></table></figure>
+
+<h4 id="可以说“包的本质还是模块”。"><a href="#可以说“包的本质还是模块”。" class="headerlink" title="可以说“包的本质还是模块”。"></a>可以说“包的本质还是模块”。</h4><p><strong>3.4 用*导入包</strong></p>
+<p>import * 这样的语句理论上是希望文件系统找出包中所有的子模块，然后导入它们。 这可能会花长时间等。Python 解决方案是提供一个明确的包索引。</p>
+<p>这个索引由 <strong>init</strong>.py 定义 <strong>all</strong> 变量，该变量为一列表，如上例 a 包下的 <strong>init</strong>.py 中，可定义 <strong>all</strong> = [“module_A”,”module_A2”]</p>
+<p>这意味着， from sound.effects import * 会从对应的包中导入以上两个子模块;</p>
+<p>【注】尽管提供 import * 的方法，仍不建议在生产代码中使用这种写法。</p>
+<p><strong>3.5 包内引用</strong></p>
+<p>如果是子包内的引用，可以按相对位置引入子模块 以 aa 包下的 module_AA 中导入 a 包下内容为例:</p>
+<p>from .. import module_A #..表示上级目录 .表示同级目录 </p>
+<p>from . import module_A2 #.表示同级目录</p>
+<p><strong>3.6 sys.path 和模块搜索路径</strong></p>
+<p>当我们导入某个模块文件时， Python 解释器去哪里找这个文件呢?只有找到这个文 件才能读取、装载运行该模块文件。它一般按照如下路径寻找模块文件(按照顺序寻找，找 到即停不继续往下寻找):</p>
+<p>\1. 内置模块<br> \2. 当前目录<br> \3. 程序的主目录<br> \4. pythonpath 目录(如果已经设置了 pythonpath 环境变量) 5. 标准链接库目录<br> \6. 第三方库目录(site-packages 目录)<br> \7. .pth 文件的内容(如果存在的话)<br> \8. sys.path.append()临时添加的目录</p>
+<p>当任何一个 python 程序启动时，就将上面这些搜索路径(除内置模块以外的路径)进行收集， 放到 sys 模块的 path 属性中(sys.path)。</p>
+<p><strong>使用 sys.path 查看和临时修改搜索路径</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys </span><br><span class="line">sys.path.append(&quot;d:&#x2F;&quot;) </span><br><span class="line">print(sys.path)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-模块发布和安装"><a href="#4-模块发布和安装" class="headerlink" title="4. 模块发布和安装"></a><strong>4. 模块发布和安装</strong></h2><p>4.1 模块的本地发布**</p>
+<p>当我们完成了某个模块开发后，可以将他对外发布，其他开发者也可以以“第三方扩展 库”的方式使用我们的模块。我们按照如下步骤即可实现模块的发布:</p>
+<p>1.为模块文件创建如下结构的文件夹(一般，文件夹的名字和模块的名字一样):</p>
+<p>2.在文件夹中创建一个名为『setup.py』的文件</p>
+<p>\3. 构建一个发布文件。通过终端，cd 到模块文件夹 c 下面，再键入命令:</p>
+<p>python setup.py sdist</p>
+<p><strong>4.3 上传模块到 PyPI</strong></p>
+<p>将自己开发好的模块上传到 PyPI 网站上，将成为公开的资源，可以让全球用户自由使 用。按照如下步骤做，很容易就实现上传模块操作。</p>
+<p><strong>·管理你的模块</strong></p>
+<p><strong>4.4 让别人使用你的模块</strong></p>
+<p>模块发布完成后，其他人只需要使用 pip 就可以安装你的模块文件。比如:</p>
+<p>pip <strong>install package</strong>-<strong>name</strong></p>
+<h2 id="5-库-Library"><a href="#5-库-Library" class="headerlink" title="5. 库(Library)"></a><strong>5. 库(Library)</strong></h2><p>Python 中库是借用其他编程语言的概念，没有特别具体的定义。模块和包侧重于代码 组织，有明确的定义。</p>
+<p>一般情况，库强调的是功能性，而不是代码组织。我们通常将某个功能的“模块的集合”， 称为库。</p>
+<p><strong>5.1 标准库(Standard Library)</strong></p>
+<p>Python 拥有一个强大的标准库。Python 语言的核心只包含数字、字符串、列表、字典、 文件等常见类型和函数，而由 Python 标准库提供了系统管理、网络通信、文本处理、数据 库接口、图形系统、XML 处理等额外的功能。</p>
+<p>Python 标准库的主要功能有:<br> \1. 文本处理，包含文本格式化、正则表达式匹配、文本差异计算与合并、Unicode 支 持，二进制数据处理等功能<br> \2. 文件处理，包含文件操作、创建临时文件、文件压缩与归档、操作配置文件等功能</p>
+<p>\3. 操作系统功能，包含线程与进程支持、IO 复用、日期与时间处理、调用系统函数、 日志(logging)等功能<br> \4. 网络通信，包含网络套接字，SSL 加密通信、异步网络通信等功能<br> \5. 网络协议，支持 HTTP，FTP，SMTP，POP，IMAP，NNTP，XMLRPC 等多种网 络协议，并提供了编写网络服务器的框架</p>
+<p>\6. W3C 格式支持，包含 HTML，SGML，XML 的处理<br> \7. 其它功能，包括国际化支持、数学运算、HASH、Tkinter 等</p>
+<p>目前学过的有:random、math、time、file、os、sys 等模块。可以通过 random 模 块实现随机数处理、math 模块实现数学相关的运算、time 模块实现时间的处理、file 模块 实现对文件的操作、OS 模块实现和操作系统的交互、sys 模块实现和解释器的交互。</p>
+<p><strong>5.2 第三方扩展库的介绍</strong></p>
+<p>强大的标准库奠定了 python 发展的基石，丰富和不断扩展的第三方库是 python 壮大 的保证。我们可以进入 PyPI 官网:</p>
+<p><strong>常用第三方库大汇总</strong></p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>库名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>环境管理</td>
+<td>P</td>
+<td>非常简单的交互式 python 版本管理工具</td>
+</tr>
+<tr>
+<td>Pyenv</td>
+<td>简单的 Python 版本管理工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Vex</td>
+<td><code>可以在虚拟环境中执行命令</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Virtualenv virtualenvwrapp</td>
+<td>创建独立 Python 环境的工具</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>er</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>包管理</td>
+<td>pip</td>
+<td>Python 包和依赖关系管理工具</td>
+</tr>
+<tr>
+<td>pip-tools</td>
+<td>保证 Python 包依赖关系更新的一组工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Pipenv</td>
+<td>Python 官方推荐的新一代包管理工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Poetry</td>
+<td>可完全取代 setup.py 的包管理工具</td>
+<td></td>
+</tr>
+<tr>
+<td>包仓库</td>
+<td>warehouse</td>
+<td>下一代 PyPI</td>
+</tr>
+<tr>
+<td>Devpi</td>
+<td>PyPI 服务和打包/测试/分发工具</td>
+<td></td>
+</tr>
+<tr>
+<td>分发 (打包为可执行文件 以便分发)</td>
+<td>PyInstaller</td>
+<td>将 Python 程序转成独立的执行文件(跨平台)</td>
+</tr>
+<tr>
+<td>Nuitka</td>
+<td>将脚本、模块、包编译成可执行文件或扩展模块</td>
+<td></td>
+</tr>
+<tr>
+<td>py2app</td>
+<td>将 Python 脚本变为独立软件包(Mac OS X)</td>
+<td></td>
+</tr>
+<tr>
+<td>py2exe</td>
+<td>将 Python 脚本变为独立软件包(Windows)</td>
+<td></td>
+</tr>
+<tr>
+<td>pynsist</td>
+<td>一个用来创建 Windows 安装程序的工具，可 以在安装程序中打包 Python 本身</td>
+<td></td>
+</tr>
+<tr>
+<td>构建工具 (将源码编译成软件)</td>
+<td>Buildout</td>
+<td>构建系统，从多个组件来创建，组装和部署应用</td>
+</tr>
+<tr>
+<td>BitBake</td>
+<td>针对嵌入式 Linux 的类似 make 的构建工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Fabricate</td>
+<td><code>对任何语言自动找到依赖关系的构建工具</code></td>
+<td></td>
+</tr>
+<tr>
+<td>交互式 Python 解 析器</td>
+<td>IPython</td>
+<td>功能丰富的工具，非常有效的使用交互式 Python</td>
+</tr>
+<tr>
+<td>bpython</td>
+<td>界面丰富的 Python 解析器</td>
+<td></td>
+</tr>
+<tr>
+<td>Ptpython</td>
+<td>高级交互式 Python 解析器，构建 于 python-prompt-toolkit 之上</td>
+<td></td>
+</tr>
+<tr>
+<td>文件管理</td>
+<td>Aiofiles</td>
+<td>基于 asyncio，提供文件异步操作</td>
+</tr>
+<tr>
+<td>Imghdr</td>
+<td>(Python 标准库)检测图片类型</td>
+<td></td>
+</tr>
+<tr>
+<td>Mimetypes</td>
+<td>(Python 标准库)将文件名映射为 MIME 类型</td>
+<td></td>
+</tr>
+<tr>
+<td>path.py</td>
+<td>对 os.path 进行封装的模块</td>
+<td></td>
+</tr>
+<tr>
+<td>Pathlib</td>
+<td>(Python3.4+ 标准库)跨平台的、面向对象的 路径操作库</td>
+<td></td>
+</tr>
+<tr>
+<td>Unipath</td>
+<td><code>用面向对象的方式操作文件和目录</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Watchdog</td>
+<td>管理文件系统事件的 API 和 shell 工具</td>
+<td></td>
+</tr>
+<tr>
+<td>日期和时间</td>
+<td>Arrow</td>
+<td>更好的 Python 日期时间操作类库</td>
+</tr>
+<tr>
+<td>Chronyk</td>
+<td><code>解析手写格式的时间和日期</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Dateutil</td>
+<td>Python datetime 模块的扩展</td>
+<td></td>
+</tr>
+<tr>
+<td>PyTime</td>
+<td>一个简单易用的 Python 模块，用于通过字符 串来操作日期/时间</td>
+<td></td>
+</tr>
+<tr>
+<td>when.py</td>
+<td>提供用户友好的函数来帮助用户进行常用的日 期和时间操作</td>
+<td></td>
+</tr>
+<tr>
+<td>文本处理</td>
+<td>chardet</td>
+<td>字符编码检测器，兼容 Python2 和 Python3</td>
+</tr>
+</tbody></table>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Difflib</th>
+<th>(Python 标准库)帮助我们进行差异化比较</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fuzzywuzzy</td>
+<td>模糊字符串匹配</td>
+<td></td>
+</tr>
+<tr>
+<td>Levenshtein</td>
+<td><code>快速计算编辑距离以及字符串的相似度</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Pypinyin</td>
+<td>汉字拼音转换工具 Python 版</td>
+<td></td>
+</tr>
+<tr>
+<td>Shortuuid</td>
+<td>一个生成器库，用以生成简洁的，明白的，URL 安全的 UUID</td>
+<td></td>
+</tr>
+<tr>
+<td>simplejson</td>
+<td>Python 的 JSON 编码、解码器</td>
+<td></td>
+</tr>
+<tr>
+<td>Unidecode</td>
+<td>Unicode 文本的 ASCII 转换形式</td>
+<td></td>
+</tr>
+<tr>
+<td>Xpinyin</td>
+<td>一个用于把汉字转换为拼音的库</td>
+<td></td>
+</tr>
+<tr>
+<td>Pygment</td>
+<td>通用语法高亮工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Phonenumbers</td>
+<td>解析，格式化，储存，验证电话号码</td>
+<td></td>
+</tr>
+<tr>
+<td>Sqlparse</td>
+<td>一个无验证的 SQL 解析器</td>
+<td></td>
+</tr>
+<tr>
+<td>特殊文本格式处理</td>
+<td>Tablib</td>
+<td>一个用来处理中表格数据的模块</td>
+</tr>
+<tr>
+<td>Pyexcel</td>
+<td>用来读写，操作 Excel 文件的库</td>
+<td></td>
+</tr>
+<tr>
+<td>python-docx</td>
+<td>读取，查询以及修改 word 文件</td>
+<td></td>
+</tr>
+<tr>
+<td>PDFMiner</td>
+<td>一个用于从 PDF 文档中抽取信息的工具</td>
+<td></td>
+</tr>
+<tr>
+<td>Python-Markdo wn2</td>
+<td>纯 Python 实现的 Markdown 解析器</td>
+<td></td>
+</tr>
+<tr>
+<td>Csvkit</td>
+<td>用于转换和操作 CSV 的工具</td>
+<td></td>
+</tr>
+<tr>
+<td>自然语言处理</td>
+<td>NLTK</td>
+<td>一个先进的平台，用以构建处理人类语言数据的 Python 程序</td>
+</tr>
+<tr>
+<td>Jieba</td>
+<td>中文分词工具</td>
+<td></td>
+</tr>
+<tr>
+<td>langid.py</td>
+<td>独立的语言识别系统</td>
+<td></td>
+</tr>
+<tr>
+<td>SnowNLP</td>
+<td>一个用来处理中文文本的库</td>
+<td></td>
+</tr>
+<tr>
+<td>Thulac</td>
+<td>清华大学自然语言处理与社会人文计算实验室 研制推出的一套中文词法分析工具包</td>
+<td></td>
+</tr>
+<tr>
+<td>下载器</td>
+<td>you-get</td>
+<td>一个 YouTube/Youku/Niconico 视频下载器</td>
+</tr>
+<tr>
+<td>图像处理</td>
+<td>pillow</td>
+<td>最常用的图像处理库</td>
+</tr>
+<tr>
+<td>imgSeek</td>
+<td>一个使用视觉相似性搜索一组图片集合的项目</td>
+<td></td>
+</tr>
+<tr>
+<td>face_recognition</td>
+<td>简单易用的 python 人脸识别</td>
+<td></td>
+</tr>
+<tr>
+<td>python-qrcode</td>
+<td>一个纯 Python 实现的二维码生成器</td>
+<td></td>
+</tr>
+<tr>
+<td>OCR</td>
+<td>Pyocr</td>
+<td>Tesseract 和 Cuneiform 的 一 个 封 装 (wrapper)</td>
+</tr>
+<tr>
+<td>pytesseract</td>
+<td>Google Tesseract OCR 的 另 一 个 封 装</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>(wrapper)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>音频处理</td>
+<td>Audiolazy</td>
+<td>Python 的数字信号处理包</td>
+</tr>
+<tr>
+<td>Dejavu</td>
+<td>音频指纹提取和识别</td>
+<td></td>
+</tr>
+<tr>
+<td>id3reader</td>
+<td>一个用来读取 MP3 元数据的 Python 模块</td>
+<td></td>
+</tr>
+<tr>
+<td>TimeSide</td>
+<td>开源 web 音频处理框架</td>
+<td></td>
+</tr>
+<tr>
+<td>Tinytag</td>
+<td>一个用来读取 MP3, OGG, FLAC 以及 Wave 文件音乐元数据的库</td>
+<td></td>
+</tr>
+<tr>
+<td>Mingus</td>
+<td>一个高级音乐理论和曲谱包，支持 MIDI 文件 和回放功能</td>
+<td></td>
+</tr>
+<tr>
+<td>视频和 GIF 处理</td>
+<td>Moviepy</td>
+<td>一个用来进行基于脚本的视频编辑模块，适用于 多种格式，包括动图 GIFs</td>
+</tr>
+<tr>
+<td>scikit-video</td>
+<td>SciPy 视频处理常用程序</td>
+<td></td>
+</tr>
+<tr>
+<td>地理位置</td>
+<td>GeoDjango</td>
+<td>世界级地理图形 web 框架</td>
+</tr>
+<tr>
+<td>GeoIP</td>
+<td>MaxMind GeoIP Legacy 数 据 库 的 Python API</td>
+<td></td>
+</tr>
+<tr>
+<td>Geopy</td>
+<td>Python 地址编码工具箱</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>requests</td>
+<td>人性化的 HTTP 请求库</td>
+</tr>
+<tr>
+<td>httplib2</td>
+<td>全面的 HTTP 客户端库</td>
+<td></td>
+</tr>
+<tr>
+<td>urllib3</td>
+<td>一个具有线程安全连接池，支持文件 post，清 晰友好的 HTTP 库</td>
+<td></td>
+</tr>
+<tr>
+<td>Python 实现的 数据库</td>
+<td>pickleDB</td>
+<td>一个简单，轻量级键值储存数据库</td>
+</tr>
+<tr>
+<td>PipelineDB</td>
+<td>流式 SQL 数据库</td>
+<td></td>
+</tr>
+<tr>
+<td>TinyDB</td>
+<td>一个微型的，面向文档型数据库</td>
+<td></td>
+</tr>
+<tr>
+<td>web 框架</td>
+<td>Django</td>
+<td>Python 界最流行的 web 框架</td>
+</tr>
+<tr>
+<td>Flask</td>
+<td>一个 Python 微型框架</td>
+<td></td>
+</tr>
+<tr>
+<td>Tornado</td>
+<td>一个 web 框架和异步网络库</td>
+<td></td>
+</tr>
+<tr>
+<td>CMS 内容管理系统</td>
+<td>odoo-cms</td>
+<td>一个开源的，企业级 CMS，基于 odoo</td>
+</tr>
+<tr>
+<td>djedi-cms</td>
+<td>一个轻量级但却非常强大的 Django CMS ，考 虑到了插件，内联编辑以及性能</td>
+<td></td>
+</tr>
+<tr>
+<td>Opps</td>
+<td>一个为杂志，报纸网站以及大流量门户网站设计 的 CMS 平台，基于 Django</td>
+<td></td>
+</tr>
+<tr>
+<td>电子商务和支付系 统</td>
+<td>django-oscar</td>
+<td>一个用于 Django 的开源的电子商务框架</td>
+</tr>
+<tr>
+<td>django-shop</td>
+<td>一个基于 Django 的店铺系统</td>
+<td></td>
+</tr>
+<tr>
+<td>Shoop</td>
+<td>一个基于 Django 的开源电子商务平台</td>
+<td></td>
+</tr>
+<tr>
+<td>Alipay</td>
+<td>Python 支付宝 API</td>
+<td></td>
+</tr>
+<tr>
+<td>Merchant</td>
+<td>一个可以接收来自多种支付平台支付的</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Django 应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>游戏开发</td>
+<td>Cocos2d</td>
+<td>用来开发 2D 游戏</td>
+</tr>
+<tr>
+<td>Panda3D</td>
+<td>由迪士尼开发的 3D 游戏引擎，并由卡内基梅 陇娱乐技术中心负责维护。使用 C++ 编写, 针 对 Python 进行了完全的封装</td>
+<td></td>
+</tr>
+<tr>
+<td>Pygame</td>
+<td>Pygame 是一组 Python 模块，用来编写游戏</td>
+<td></td>
+</tr>
+<tr>
+<td>RenPy</td>
+<td>一个视觉小说(visual novel)引擎</td>
+<td></td>
+</tr>
+<tr>
+<td>计算机视觉库</td>
+<td>OpenCV</td>
+<td>开源计算机视觉库</td>
+</tr>
+<tr>
+<td>Pyocr</td>
+<td>Tesseract 和 Cuneiform 的包装库</td>
+<td></td>
+</tr>
+<tr>
+<td>SimpleCV</td>
+<td>一个用来创建计算机视觉应用的开源框架</td>
+<td></td>
+</tr>
+<tr>
+<td>机器学习 人工智能</td>
+<td>TensorFlow</td>
+<td><code>谷歌开源的最受欢迎的深度学习框架</code></td>
+</tr>
+<tr>
+<td>keras</td>
+<td>以 tensorflow/theano/CNTK 为 后 端 的 深 度 学习封装库，快速上手神经网络</td>
+<td></td>
+</tr>
+<tr>
+<td>Hebel</td>
+<td>GPU 加速的深度学习库</td>
+<td></td>
+</tr>
+<tr>
+<td>Pytorch</td>
+<td>一个具有张量和动态神经网络，并有强大 GPU 加速能力的深度学习框架</td>
+<td></td>
+</tr>
+<tr>
+<td>scikit-learn</td>
+<td>基于 SciPy 构建的机器学习 Python 模块</td>
+<td></td>
+</tr>
+<tr>
+<td>NuPIC</td>
+<td>智能计算 Numenta 平台</td>
+<td></td>
+</tr>
+<tr>
+<td>科学计算和数据分 析</td>
+<td>NumPy</td>
+<td>使用 Python 进行科学计算的基础包</td>
+</tr>
+<tr>
+<td>Pandas</td>
+<td>提供高性能，易用的数据结构和数据分析工具</td>
+<td></td>
+</tr>
+<tr>
+<td>SciPy</td>
+<td>用于数学，科学和工程的开源软件构成的生态系 统</td>
+<td></td>
+</tr>
+<tr>
+<td>PyMC</td>
+<td><code>马尔科夫链蒙特卡洛采样工具</code></td>
+<td></td>
+</tr>
+<tr>
+<td>代码分析和调试</td>
+<td>code2flow</td>
+<td>把你的 Python 和 JavaScript 代码转换为流 程图</td>
+</tr>
+<tr>
+<td>Pycallgraph</td>
+<td>这个库可以把你的 Python 应用的流程(调用 图)进行可视化</td>
+<td></td>
+</tr>
+<tr>
+<td>Pylint</td>
+<td>一个完全可定制的源码分析器</td>
+<td></td>
+</tr>
+<tr>
+<td>autopep8</td>
+<td>自动格式化 Python 代码，以使其符合 PEP8 规范</td>
+<td></td>
+</tr>
+<tr>
+<td>Wdb</td>
+<td>一个奇异的 web 调试器，通过 WebSockets 工作</td>
+<td></td>
+</tr>
+<tr>
+<td>Lineprofiler</td>
+<td>逐行性能分析</td>
+<td></td>
+</tr>
+<tr>
+<td>Memory Profiler</td>
+<td>监控 Python 代码的内存使用</td>
+<td></td>
+</tr>
+<tr>
+<td>图形用户界面</td>
+<td>Pyglet</td>
+<td>一个 Python 的跨平台窗口及多媒体库</td>
+</tr>
+</tbody></table>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PyQt</th>
+<th>跨平台用户界面框架 Qt 的 Python 绑定 ，支 持 Qtv4 和 Qtv5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tkinter</td>
+<td>Tkinter 是 Python GUI 的一个事实标准库</td>
+<td></td>
+</tr>
+<tr>
+<td>wxPython</td>
+<td>wxPython 是 wxWidgets C++ 类 库 和 Python 语言混合的产物</td>
+<td></td>
+</tr>
+<tr>
+<td>网络爬虫和 HTML 分析</td>
+<td>Scrapy</td>
+<td>一个快速高级的屏幕爬取及网页采集框架</td>
+</tr>
+<tr>
+<td>Cola</td>
+<td>一个分布式爬虫框架</td>
+<td></td>
+</tr>
+<tr>
+<td>Grab</td>
+<td>站点爬取框架</td>
+<td></td>
+</tr>
+<tr>
+<td>Pyspider</td>
+<td>一个强大的爬虫系统</td>
+<td></td>
+</tr>
+<tr>
+<td>html2text</td>
+<td>将 HTML 转换为 Markdown 格式文本</td>
+<td></td>
+</tr>
+<tr>
+<td>python-goose</td>
+<td>HTML 内容/文章提取器</td>
+<td></td>
+</tr>
+<tr>
+<td>硬件编程</td>
+<td>Ino</td>
+<td>操作 Arduino 的命令行工具</td>
+</tr>
+<tr>
+<td>Pyro</td>
+<td>Python 机器人编程库</td>
+<td></td>
+</tr>
+<tr>
+<td>PyUserInput</td>
+<td>跨平台的，控制鼠标和键盘的模块</td>
+<td></td>
+</tr>
+<tr>
+<td>Pingo</td>
+<td>Pingo 为类似 RaspberryPi，pcDuino，Intel Galileo 等设备提供统一的 API</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>5.4 安装第三方扩展库的 2 种方式</strong></p>
+<p>第三方库有数十万种之多，以 pillow 库为例讲解第三方扩展库的安装。pillow 是 Python 平台事实上的图像处理标准库，本节以安装 pillow 为例，给大家介绍第三方库的两 种常用的安装方法。</p>
+<p>尚学堂·百战程序员 <a href="http://www.itbaizhan.cn" target="_blank" rel="noopener">www.itbaizhan.cn</a></p>
+<p><strong>第一种方式:命令行下远程安装</strong></p>
+<p>以安装第三方 pillow 图像库为例，在命令行提示符下输入:pip 安装完成后，我们就可以开始使用。</p>
+<p><strong>第二种方式:Pycharm 中直接安装到项目中</strong></p>
+<p>在 Pycharm 中，依次点击:file–&gt;setting–&gt;Project 本项目名–&gt;Project Interpreter</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/python400%E9%9B%865/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2607,589 +3531,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/linux5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/hacker.png">
-      <meta itemprop="name" content="Jackson">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/linux5/" class="post-title-link" itemprop="url">linux基础（81-100集）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-04-26 22:50:33" itemprop="dateCreated datePublished" datetime="2020-04-26T22:50:33-04:00">2020-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-27 00:27:03" itemprop="dateModified" datetime="2020-04-27T00:27:03-04:00">2020-04-27</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="P81-87（系统信息）"><a href="#P81-87（系统信息）" class="headerlink" title="P81-87（系统信息）"></a>P81-87（系统信息）</h2><h3 id="01-时间和日期"><a href="#01-时间和日期" class="headerlink" title="01.时间和日期"></a>01.时间和日期</h3><p>​    date：查看系统日期</p>
-<p>​    cal：calendar查看日历，-y选项可以查看一年日历</p>
-<h3 id="02-磁盘信息"><a href="#02-磁盘信息" class="headerlink" title="02.磁盘信息"></a>02.磁盘信息</h3><p>​    df -h：disk free显示磁盘剩余空间</p>
-<p>​    du -h[目录名]：disk usage显示目录下文件大小（-h以人性化方式显示文件大小）</p>
-<p>​    /看根目录</p>
-<h3 id="03-进程信息"><a href="#03-进程信息" class="headerlink" title="03. 进程信息"></a>03. 进程信息</h3><p>当前正在执行的一个程序是进程</p>
-<p>​    ps aux：process status查看进程的详细状况</p>
-<p>​    top：动态显示运行中的进程并且排序</p>
-<p>​    kill [-9] 进程代号：终止指定代号进程，-9是强制终止</p>
-<h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><p>Linux ps命令用于显示当前进程 (process) 的状态。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps [options] [--help]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong>：</p>
-<ul>
-<li>ps 的参数非常多, 在此仅列出几个常用的参数并大略介绍含义</li>
-<li>-A 列出所有的行程</li>
-<li>-w 显示加宽可以显示较多的资讯</li>
-<li>-au 显示较详细的资讯</li>
-<li>-aux 显示所有包含其他使用者的行程（</li>
-<li>au(x) 输出格式 :（常用）</li>
-<li>USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND</li>
-<li>USER: 行程拥有者</li>
-<li>PID: pid</li>
-<li>%CPU: 占用的 CPU 使用率</li>
-<li>%MEM: 占用的记忆体使用率</li>
-<li>VSZ: 占用的虚拟记忆体大小</li>
-<li>RSS: 占用的记忆体大小</li>
-<li>TTY: 终端的次要装置号码 (minor device number of tty)</li>
-<li>STAT: 该行程的状态:</li>
-<li>D: 无法中断的休眠状态 (通常 IO 的进程)</li>
-<li>R: 正在执行中</li>
-<li>S: 静止状态</li>
-<li>T: 暂停执行</li>
-<li>Z: 不存在但暂时无法消除</li>
-<li>W: 没有足够的记忆体分页可分配</li>
-<li>&lt;: 高优先序的行程</li>
-<li>N: 低优先序的行程</li>
-<li>L: 有记忆体分页分配并锁在记忆体内 (实时系统或捱A I/O)</li>
-<li>START: 行程开始时间</li>
-<li>TIME: 执行的时间</li>
-<li>COMMAND:所执行的指令</li>
-<li>x：显示没有控制终端的进程（会显示很多）</li>
-</ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># ps -A 显示进程信息</span><br><span class="line">PID TTY     TIME CMD</span><br><span class="line">  1 ?    00:00:02 init</span><br><span class="line">  2 ?    00:00:00 kthreadd</span><br><span class="line">  3 ?    00:00:00 migration&#x2F;0</span><br><span class="line">  4 ?    00:00:00 ksoftirqd&#x2F;0</span><br><span class="line">  5 ?    00:00:00 watchdog&#x2F;0</span><br><span class="line">  6 ?    00:00:00 events&#x2F;0</span><br><span class="line">  7 ?    00:00:00 cpuset</span><br><span class="line">  8 ?    00:00:00 khelper</span><br><span class="line">  9 ?    00:00:00 netns</span><br><span class="line">  10 ?    00:00:00 async&#x2F;mgr</span><br><span class="line">  11 ?    00:00:00 pm</span><br><span class="line">  12 ?    00:00:00 sync_supers</span><br><span class="line">  13 ?    00:00:00 bdi-default</span><br><span class="line">  14 ?    00:00:00 kintegrityd&#x2F;0</span><br><span class="line">  15 ?    00:00:02 kblockd&#x2F;0</span><br><span class="line">  16 ?    00:00:00 kacpid</span><br><span class="line">  17 ?    00:00:00 kacpi_notify</span><br><span class="line">  18 ?    00:00:00 kacpi_hotplug</span><br><span class="line">  19 ?    00:00:27 ata&#x2F;0</span><br><span class="line">……省略部分结果</span><br><span class="line">30749 pts&#x2F;0  00:00:15 gedit</span><br><span class="line">30886 ?    00:01:10 qtcreator.bin</span><br><span class="line">30894 ?    00:00:00 qtcreator.bin </span><br><span class="line">31160 ?    00:00:00 dhclient</span><br><span class="line">31211 ?    00:00:00 aptd</span><br><span class="line">31302 ?    00:00:00 sshd</span><br><span class="line">31374 pts&#x2F;2  00:00:00 bash</span><br><span class="line">31396 pts&#x2F;2  00:00:00 ps</span><br></pre></td></tr></table></figure>
-
-<p>显示指定用户信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># ps -u root &#x2F;&#x2F;显示root进程用户信息</span><br><span class="line"> PID TTY     TIME CMD</span><br><span class="line">  1 ?    00:00:02 init</span><br><span class="line">  2 ?    00:00:00 kthreadd</span><br><span class="line">  3 ?    00:00:00 migration&#x2F;0</span><br><span class="line">  4 ?    00:00:00 ksoftirqd&#x2F;0</span><br><span class="line">  5 ?    00:00:00 watchdog&#x2F;0</span><br><span class="line">  6 ?    00:00:00 events&#x2F;0</span><br><span class="line">  7 ?    00:00:00 cpuset</span><br><span class="line">  8 ?    00:00:00 khelper</span><br><span class="line">  9 ?    00:00:00 netns</span><br><span class="line">  10 ?    00:00:00 async&#x2F;mgr</span><br><span class="line">  11 ?    00:00:00 pm</span><br><span class="line">  12 ?    00:00:00 sync_supers</span><br><span class="line">  13 ?    00:00:00 bdi-default</span><br><span class="line">  14 ?    00:00:00 kintegrityd&#x2F;0</span><br><span class="line">  15 ?    00:00:02 kblockd&#x2F;0</span><br><span class="line">  16 ?    00:00:00 kacpid</span><br><span class="line">……省略部分结果</span><br><span class="line">30487 ?    00:00:06 gnome-terminal</span><br><span class="line">30488 ?    00:00:00 gnome-pty-helpe</span><br><span class="line">30489 pts&#x2F;0  00:00:00 bash</span><br><span class="line">30670 ?    00:00:00 debconf-communi </span><br><span class="line">30749 pts&#x2F;0  00:00:15 gedit</span><br><span class="line">30886 ?    00:01:10 qtcreator.bin</span><br><span class="line">30894 ?    00:00:00 qtcreator.bin </span><br><span class="line">31160 ?    00:00:00 dhclient</span><br><span class="line">31211 ?    00:00:00 aptd</span><br><span class="line">31302 ?    00:00:00 sshd</span><br><span class="line">31374 pts&#x2F;2  00:00:00 bash</span><br><span class="line">31397 pts&#x2F;2  00:00:00 ps</span><br></pre></td></tr></table></figure>
-
-<p>显示所有进程信息，连同命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># ps -ef &#x2F;&#x2F;显示所有命令，连带命令行</span><br><span class="line">UID    PID PPID C STIME TTY     TIME CMD</span><br><span class="line">root     1   0 0 10:22 ?    00:00:02 &#x2F;sbin&#x2F;init</span><br><span class="line">root     2   0 0 10:22 ?    00:00:00 [kthreadd]</span><br><span class="line">root     3   2 0 10:22 ?    00:00:00 [migration&#x2F;0]</span><br><span class="line">root     4   2 0 10:22 ?    00:00:00 [ksoftirqd&#x2F;0]</span><br><span class="line">root     5   2 0 10:22 ?    00:00:00 [watchdog&#x2F;0]</span><br><span class="line">root     6   2 0 10:22 ?    &#x2F;usr&#x2F;lib&#x2F;NetworkManager</span><br><span class="line">……省略部分结果</span><br><span class="line">root   31302 2095 0 17:42 ?    00:00:00 sshd: root@pts&#x2F;2 </span><br><span class="line">root   31374 31302 0 17:42 pts&#x2F;2  00:00:00 -bash</span><br><span class="line">root   31400   1 0 17:46 ?    00:00:00 &#x2F;usr&#x2F;bin&#x2F;python &#x2F;usr&#x2F;sbin&#x2F;aptd</span><br><span class="line">root   31407 31374 0 17:48 pts&#x2F;2  00:00:00 ps -ef</span><br></pre></td></tr></table></figure>
-
-<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>（Linux top命令用于实时显示 process 的动态。（好玩哪）</p>
-<p>使用权限：所有使用者。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top [-] [d delay] [q] [c] [S] [s] [i] [n] [b]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>d : 改变显示的更新速度，或是在交谈式指令列( interactive command)按 s</li>
-<li>q : 没有任何延迟的显示速度，如果使用者是有 superuser 的权限，则 top 将会以最高的优先序执行</li>
-<li>c : 切换显示模式，共有两种模式，一是只显示执行档的名称，另一种是显示完整的路径与名称S : 累积模式，会将己完成或消失的子行程 ( dead child process ) 的 CPU time 累积起来</li>
-<li>s : 安全模式，将交谈式指令取消, 避免潜在的危机</li>
-<li>i : 不显示任何闲置 (idle) 或无用 (zombie) 的行程</li>
-<li>n : 更新的次数，完成后将会退出 top</li>
-<li>b : 批次档模式，搭配 “n” 参数一起使用，可以用来将 top 的结果输出到档案内</li>
-</ul>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>显示进程信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># top</span><br></pre></td></tr></table></figure>
-
-<p>显示完整命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># top -c</span><br></pre></td></tr></table></figure>
-
-<p>以批处理模式显示程序信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># top -b</span><br></pre></td></tr></table></figure>
-
-<p>以累积模式显示程序信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># top -S</span><br></pre></td></tr></table></figure>
-
-<p>设置信息更新次数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">top -n 2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;表示更新两次后终止更新显示</span><br></pre></td></tr></table></figure>
-
-<p>设置信息更新时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># top -d 3</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;表示更新周期为3秒</span><br></pre></td></tr></table></figure>
-
-<p>显示指定的进程信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># top -p 139</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;显示进程号为139的进程信息，CPU、内存占用率等</span><br></pre></td></tr></table></figure>
-
-<p>显示更新十次后退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -n 10</span><br></pre></td></tr></table></figure>
-
-<p>使用者将不能利用交谈式指令来对行程下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -s</span><br></pre></td></tr></table></figure>
-
-<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>Linux kill命令用于删除执行中的程序或工作。</p>
-<p>kill可将指定的信息送至程序。预设的信息为SIGTERM(15)，可将指定程序终止。若仍无法终止该程序，可使用SIGKILL(9)信息尝试强制删除程序。程序或工作的编号可利用ps指令或jobs指令查看。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill [-s &lt;信息名称或编号&gt;][程序]　或　kill [-l &lt;信息编号&gt;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong>：</p>
-<ul>
-<li>-l &lt;信息编号&gt; 　若不加&lt;信息编号&gt;选项，则-l参数会列出全部的信息名称。</li>
-<li>-s &lt;信息名称或编号&gt; 　指定要送出的信息。</li>
-<li>[程序] 　[程序]可以是程序的PID或是PGID，也可以是工作编号。</li>
-</ul>
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p>杀死进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kill 12345</span><br></pre></td></tr></table></figure>
-
-<p>强制杀死进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kill -KILL 123456</span><br></pre></td></tr></table></figure>
-
-<p>发送SIGHUP信号，可以使用一下信号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kill -HUP pid</span><br></pre></td></tr></table></figure>
-
-<p>彻底杀死进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kill -9 123456</span><br></pre></td></tr></table></figure>
-
-<p>显示信号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># kill -l</span><br><span class="line">1) SIGHUP     2) SIGINT     3) SIGQUIT     4) SIGILL     5) SIGTRAP</span><br><span class="line">6) SIGABRT     7) SIGBUS     8) SIGFPE     9) SIGKILL    10) SIGUSR1</span><br><span class="line">11) SIGSEGV    12) SIGUSR2    13) SIGPIPE    14) SIGALRM    15) SIGTERM</span><br><span class="line">16) SIGSTKFLT    17) SIGCHLD    18) SIGCONT    19) SIGSTOP    20) SIGTSTP</span><br><span class="line">21) SIGTTIN    22) SIGTTOU    23) SIGURG    24) SIGXCPU    25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM    27) SIGPROF    28) SIGWINCH    29) SIGIO    30) SIGPWR</span><br><span class="line">31) SIGSYS    34) SIGRTMIN    35) SIGRTMIN+1    36) SIGRTMIN+2    37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4    39) SIGRTMIN+5    40) SIGRTMIN+6    41) SIGRTMIN+7    42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9    44) SIGRTMIN+10    45) SIGRTMIN+11    46) SIGRTMIN+12    47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14    49) SIGRTMIN+15    50) SIGRTMAX-14    51) SIGRTMAX-13    52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11    54) SIGRTMAX-10    55) SIGRTMAX-9    56) SIGRTMAX-8    57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6    59) SIGRTMAX-5    60) SIGRTMAX-4    61) SIGRTMAX-3    62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1    64) SIGRTMAX</span><br></pre></td></tr></table></figure>
-
-<p>杀死指定用户所有进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#kill -9 $(ps -ef | grep hnlinux) &#x2F;&#x2F;方法一 过滤出hnlinux用户进程 </span><br><span class="line">#kill -u hnlinux &#x2F;&#x2F;方法二</span><br></pre></td></tr></table></figure>
-
-<h2 id="P88-92（其他命令）"><a href="#P88-92（其他命令）" class="headerlink" title="P88-92（其他命令）"></a>P88-92（其他命令）</h2><h3 id="1-查找文件"><a href="#1-查找文件" class="headerlink" title="1.查找文件"></a>1.查找文件</h3><p>​    find</p>
-<p>Linux find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find   path   -option   [   -print ]   [ -exec   -ok   command ]   &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数说明</strong> :</p>
-<p>find 根据下列规则判断 path 和 expression，在命令列上第一个 - ( ) , ! 之前的部份为 path，之后的是 expression。如果 path 是空字串则使用目前路径，如果 expression 是空字串则使用 -print 为预设 expression。</p>
-<p>expression 中可使用的选项有二三十个之多，在此只介绍最常用的部份。</p>
-<p>-mount, -xdev : 只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件</p>
-<p>-amin n : 在过去 n 分钟内被读取过</p>
-<p>-anewer file : 比文件 file 更晚被读取过的文件</p>
-<p>-atime n : 在过去n天内被读取过的文件</p>
-<p>-cmin n : 在过去 n 分钟内被修改过</p>
-<p>-cnewer file :比文件 file 更新的文件</p>
-<p>-ctime n : 在过去n天内被修改过的文件</p>
-<p>-empty : 空的文件-gid n or -group name : gid 是 n 或是 group 名称是 name</p>
-<p>-ipath p, -path p : 路径名称符合 p 的文件，ipath 会忽略大小写</p>
-<p>-name name, -iname name : 文件名称符合 name 的文件。iname 会忽略大小写（常用）</p>
-<p>-size n : 文件大小 是 n 单位，b 代表 512 位元组的区块，c 表示字元数，k 表示 kilo bytes，w 是二个位元组。-type c : 文件类型是 c 的文件。</p>
-<p>d: 目录</p>
-<p>c: 字型装置文件</p>
-<p>b: 区块装置文件</p>
-<p>p: 具名贮列</p>
-<p>f: 一般文件</p>
-<p>l: 符号连结</p>
-<p>s: socket</p>
-<p>-pid n : process id 是 n 的文件</p>
-<p>你可以使用 ( ) 将运算式分隔，并使用下列运算。</p>
-<p>exp1 -and exp2</p>
-<p>! expr</p>
-<p>-not expr</p>
-<p>exp1 -or exp2</p>
-<p>exp1, exp2</p>
-<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><p>将目前目录及其子目录下所有延伸档名是 c 的文件列出来。（经典）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find . -name &quot;*.c&quot;</span><br></pre></td></tr></table></figure>
-
-<p>将目前目录其其下子目录中所有一般文件列出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find . -type f</span><br></pre></td></tr></table></figure>
-
-<p>将目前目录及其子目录下所有最近 20 天内更新过的文件列出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find . -ctime -20</span><br></pre></td></tr></table></figure>
-
-<p>查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问它们：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find &#x2F;var&#x2F;log -type f -mtime +7 -ok rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<p>查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find . -type f -perm 644 -exec ls -l &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<p>为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># find &#x2F; -type f -size 0 -exec ls -l &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-软链接（类似快捷方式）"><a href="#2-软链接（类似快捷方式）" class="headerlink" title="2. 软链接（类似快捷方式）"></a>2. 软链接（类似快捷方式）</h3><p>ln -s 被链接的源文件 起的文件名</p>
-<p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。这个命令最常用的参数是-s,具体用法是：ln -s 源文件 目标文件。当 我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在其它的 目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
-<p>例如：ln -s /bin/less /usr/local/bin/less </p>
-<p>-s 是代号（symbolic）的意思。 </p>
-<p>这 里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又软链接 和硬链接两种，软链接就是ln -s ** *<em>,它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln *</em> **,没有参数-s, 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。<br>如果你用ls察看一个目录时，发现有的文件后面有一个@的符号，那就是一个用ln命令生成的文件，用ls -l命令去察看，就可以看到显示的link的路径了。 </p>
-<p>不加-s是硬链接，ls -l可以查看硬链接数</p>
-<p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同不的链接，这个命令最常用的参数是-s，具体用法是：ln –s 源文件 目标文件。<br>　　当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。例如：ln –s /bin/less /usr/local/bin/less<br>　　-s 是代号（symbolic）的意思。<br>　　这里有两点要注意：第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；第二，ln的链接又 软链接和硬链接两种，软链接就是ln –s ** *<em>，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln *</em> **，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。<br>　　如果你用ls察看一个目录时，发现有的文件后面有一个@的符号，那就是一个用ln命令生成的文件，用ls –l命令去察看，就可以看到显示的link的路径了。<br>　　指令详细说明<br>　　指令名称 : ln<br>　　使用权限 : 所有使用者<br>　　使用方式 : ln [options] source dist，其中 option 的格式为 :<br>　　[-bdfinsvF] [-S backup-suffix] [-V {numbered,existing,simple}]<br>　　[–help] [–version] [–]<br>　　说明 : Linux/Unix 档案系统中，有所谓的连结(link)，我们可以将其视为档案的别名，而连结又可分为两种 : 硬连结(hard link)与软连结(symbolic link)，硬连结的意思是一个档案可以有多个名称，而软连结的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬连结是存在同一个档 案系统中，而软连结却可以跨越不同的档案系统。<br>　　ln source dist 是产生一个连结(dist)到 source，至于使用硬连结或软链结则由参数决定。<br>　　不论是硬连结或软链结都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。</p>
-<p>Linux ln命令是一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接。</p>
-<p>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln [参数][源文件或目录][目标文件或目录]</span><br></pre></td></tr></table></figure>
-
-<p>其中参数的格式为</p>
-<p>[-bdfinsvF] [-S backup-suffix] [-V {numbered,existing,simple}]</p>
-<p>[–help] [–version] [–]</p>
-<p><strong>命令功能</strong> :<br>Linux文件系统中，有所谓的链接(link)，我们可以将其视为档案的别名，而链接又可分为两种 : 硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬链接是存在同一个文件系统中，而软链接却可以跨越不同的文件系统。</p>
-<p>不论是硬链接或软链接都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。</p>
-<p><strong>软链接</strong>：（用绝对路径）</p>
-<ul>
-<li>1.软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式</li>
-<li>2.软链接可以 跨文件系统 ，硬链接不可以</li>
-<li>3.软链接可以对一个不存在的文件名进行链接</li>
-<li>4.软链接可以对目录进行链接</li>
-</ul>
-<p><strong>硬链接</strong>：</p>
-<ul>
-<li>1.硬链接，以文件副本的形式存在。但不占用实际空间。</li>
-<li>2.不允许给目录创建硬链接</li>
-<li>3.硬链接只有在同一个文件系统中才能创建</li>
-</ul>
-<h4 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h4><p><strong>必要参数</strong>：</p>
-<ul>
-<li>-b 删除，覆盖以前建立的链接</li>
-<li>-d 允许超级用户制作目录的硬链接</li>
-<li>-f 强制执行</li>
-<li>-i 交互模式，文件存在则提示用户是否覆盖</li>
-<li>-n 把符号链接视为一般目录</li>
-<li>-s 软链接(符号链接)（常用）</li>
-<li>-v 显示详细的处理过程</li>
-</ul>
-<p><strong>选择参数</strong>：</p>
-<ul>
-<li>-S “-S&lt;字尾备份字符串&gt; “或 “–suffix=&lt;字尾备份字符串&gt;”</li>
-<li>-V “-V&lt;备份方式&gt;”或”–version-control=&lt;备份方式&gt;”</li>
-<li>–help 显示帮助信息</li>
-<li>–version 显示版本信息</li>
-</ul>
-<h3 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h3><p>给文件创建软链接，为log2013.log文件创建软链接link2013，如果log2013.log丢失，link2013将失效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s log2013.log link2013</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">-rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log</span><br><span class="line">[root@localhost test]# ln -s log2013.log link2013</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">lrwxrwxrwx 1 root root     11 12-07 16:01 link2013 -&gt; log2013.log</span><br><span class="line">-rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log</span><br></pre></td></tr></table></figure>
-
-<p>给文件创建硬链接，为log2013.log创建硬链接ln2013，log2013.log与ln2013的各项属性相同</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln log2013.log ln2013</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ll</span><br><span class="line">lrwxrwxrwx 1 root root     11 12-07 16:01 link2013 -&gt; log2013.log</span><br><span class="line">-rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log</span><br><span class="line">[root@localhost test]# ln log2013.log ln2013</span><br><span class="line">[root@localhost test]# ll</span><br><span class="line">lrwxrwxrwx 1 root root     11 12-07 16:01 link2013 -&gt; log2013.log</span><br><span class="line">-rw-r--r-- 2 root bin      61 11-13 06:03 ln2013</span><br><span class="line">-rw-r--r-- 2 root bin      61 11-13 06:03 log2013.log</span><br></pre></td></tr></table></figure>
-
-<h2 id="P93（软链接硬链接）"><a href="#P93（软链接硬链接）" class="headerlink" title="P93（软链接硬链接）"></a>P93（软链接硬链接）</h2><p>linux中文件名和文件数据分开存储</p>
-<p>删除文件，软链接自动删除，文件数据自动删除，硬链接不会删除，文件数据还可以硬链接读取，几乎不会用硬链接。</p>
-<h2 id="P94-97打包压缩"><a href="#P94-97打包压缩" class="headerlink" title="P94-97打包压缩"></a>P94-97打包压缩</h2><p>windows中：rar</p>
-<p>mac中：zip</p>
-<p>linux：tar.gz</p>
-<p>Linux tar命令用于备份文件。</p>
-<p>tar是用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。</p>
-<p>tar -cvf 打包文件.tar 被打包文件/路径… #打包</p>
-<p>tar -xvf 打包文件.tar#解压</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b &lt;区块数目&gt;][-C &lt;目的目录&gt;][-f &lt;备份文件&gt;][-F &lt;Script文件&gt;][-K &lt;文件&gt;][-L &lt;媒体容量&gt;][-N &lt;日期时间&gt;][-T &lt;范本文件&gt;][-V &lt;卷册名称&gt;][-X &lt;范本文件&gt;][-&lt;设备编号&gt;&lt;存储密度&gt;][--after-date&#x3D;&lt;日期时间&gt;][--atime-preserve][--backuup&#x3D;&lt;备份方式&gt;][--checkpoint][--concatenate][--confirmation][--delete][--exclude&#x3D;&lt;范本样式&gt;][--force-local][--group&#x3D;&lt;群组名称&gt;][--help][--ignore-failed-read][--new-volume-script&#x3D;&lt;Script文件&gt;][--newer-mtime][--no-recursion][--null][--numeric-owner][--owner&#x3D;&lt;用户名称&gt;][--posix][--erve][--preserve-order][--preserve-permissions][--record-size&#x3D;&lt;区块数目&gt;][--recursive-unlink][--remove-files][--rsh-command&#x3D;&lt;执行指令&gt;][--same-owner][--suffix&#x3D;&lt;备份字尾字符串&gt;][--totals][--use-compress-program&#x3D;&lt;执行指令&gt;][--version][--volno-file&#x3D;&lt;编号文件&gt;][文件或目录...]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong>：</p>
-<ul>
-<li>-A或–catenate 新增文件到已存在的备份文件。</li>
-<li>-b&lt;区块数目&gt;或–blocking-factor=&lt;区块数目&gt; 设置每笔记录的区块数目，每个区块大小为12Bytes。</li>
-<li>-B或–read-full-records 读取数据时重设区块大小。</li>
-<li>-c或–create 建立新的备份文件。</li>
-<li>-C&lt;目的目录&gt;或–directory=&lt;目的目录&gt; 切换到指定的目录。</li>
-<li>-d或–diff或–compare 对比备份文件内和文件系统上的文件的差异。</li>
-<li>-f&lt;备份文件&gt;或–file=&lt;备份文件&gt; 指定备份文件。</li>
-<li>-F&lt;Script文件&gt;或–info-script=&lt;Script文件&gt; 每次更换磁带时，就执行指定的Script文件。</li>
-<li>-g或–listed-incremental 处理GNU格式的大量备份。</li>
-<li>-G或–incremental 处理旧的GNU格式的大量备份。</li>
-<li>-h或–dereference 不建立符号连接，直接复制该连接所指向的原始文件。</li>
-<li>-i或–ignore-zeros 忽略备份文件中的0 Byte区块，也就是EOF。</li>
-<li>-k或–keep-old-files 解开备份文件时，不覆盖已有的文件。</li>
-<li>-K&lt;文件&gt;或–starting-file=&lt;文件&gt; 从指定的文件开始还原。</li>
-<li>-l或–one-file-system 复制的文件或目录存放的文件系统，必须与tar指令执行时所处的文件系统相同，否则不予复制。</li>
-<li>-L&lt;媒体容量&gt;或-tape-length=&lt;媒体容量&gt; 设置存放每体的容量，单位以1024 Bytes计算。</li>
-<li>-m或–modification-time 还原文件时，不变更文件的更改时间。</li>
-<li>-M或–multi-volume 在建立，还原备份文件或列出其中的内容时，采用多卷册模式。</li>
-<li>-N&lt;日期格式&gt;或–newer=&lt;日期时间&gt; 只将较指定日期更新的文件保存到备份文件里。</li>
-<li>-o或–old-archive或–portability 将资料写入备份文件时使用V7格式。</li>
-<li>-O或–stdout 把从备份文件里还原的文件输出到标准输出设备。</li>
-<li>-p或–same-permissions 用原来的文件权限还原文件。</li>
-<li>-P或–absolute-names 文件名使用绝对名称，不移除文件名称前的”/“号。</li>
-<li>-r或–append 新增文件到已存在的备份文件的结尾部分。</li>
-<li>-R或–block-number 列出每个信息在备份文件中的区块编号。</li>
-<li>-s或–same-order 还原文件的顺序和备份文件内的存放顺序相同。</li>
-<li>-S或–sparse 倘若一个文件内含大量的连续0字节，则将此文件存成稀疏文件。</li>
-<li>-t或–list 列出备份文件的内容。</li>
-<li>-T&lt;范本文件&gt;或–files-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让tar解开或建立符合设置条件的文件。</li>
-<li>-u或–update 仅置换较备份文件内的文件更新的文件。</li>
-<li>-U或–unlink-first 解开压缩文件还原文件之前，先解除文件的连接。</li>
-<li>-v或–verbose 显示指令执行过程。</li>
-<li>-V&lt;卷册名称&gt;或–label=&lt;卷册名称&gt; 建立使用指定的卷册名称的备份文件。</li>
-<li>-w或–interactive 遭遇问题时先询问用户。</li>
-<li>-W或–verify 写入备份文件后，确认文件正确无误。</li>
-<li>-x或–extract或–get 从备份文件中还原文件。</li>
-<li>-X&lt;范本文件&gt;或–exclude-from=&lt;范本文件&gt; 指定范本文件，其内含有一个或多个范本样式，让ar排除符合设置条件的文件。</li>
-<li>-z或–gzip或–ungzip 通过gzip指令处理备份文件。</li>
-<li>-Z或–compress或–uncompress 通过compress指令处理备份文件。</li>
-<li>-&lt;设备编号&gt;&lt;存储密度&gt; 设置备份用的外围设备编号及存放数据的密度。</li>
-<li>–after-date=&lt;日期时间&gt; 此参数的效果和指定”-N”参数相同。</li>
-<li>–atime-preserve 不变更文件的存取时间。</li>
-<li>–backup=&lt;备份方式&gt;或–backup 移除文件前先进行备份。</li>
-<li>–checkpoint 读取备份文件时列出目录名称。</li>
-<li>–concatenate 此参数的效果和指定”-A”参数相同。</li>
-<li>–confirmation 此参数的效果和指定”-w”参数相同。</li>
-<li>–delete 从备份文件中删除指定的文件。</li>
-<li>–exclude=&lt;范本样式&gt; 排除符合范本样式的文件。</li>
-<li>–group=&lt;群组名称&gt; 把加入设备文件中的文件的所属群组设成指定的群组。</li>
-<li>–help 在线帮助。</li>
-<li>–ignore-failed-read 忽略数据读取错误，不中断程序的执行。</li>
-<li>–new-volume-script=&lt;Script文件&gt; 此参数的效果和指定”-F”参数相同。</li>
-<li>–newer-mtime 只保存更改过的文件。</li>
-<li>–no-recursion 不做递归处理，也就是指定目录下的所有文件及子目录不予处理。</li>
-<li>–null 从null设备读取文件名称。</li>
-<li>–numeric-owner 以用户识别码及群组识别码取代用户名称和群组名称。</li>
-<li>–owner=&lt;用户名称&gt; 把加入备份文件中的文件的拥有者设成指定的用户。</li>
-<li>–posix 将数据写入备份文件时使用POSIX格式。</li>
-<li>–preserve 此参数的效果和指定”-ps”参数相同。</li>
-<li>–preserve-order 此参数的效果和指定”-A”参数相同。</li>
-<li>–preserve-permissions 此参数的效果和指定”-p”参数相同。</li>
-<li>–record-size=&lt;区块数目&gt; 此参数的效果和指定”-b”参数相同。</li>
-<li>–recursive-unlink 解开压缩文件还原目录之前，先解除整个目录下所有文件的连接。</li>
-<li>–remove-files 文件加入备份文件后，就将其删除。</li>
-<li>–rsh-command=&lt;执行指令&gt; 设置要在远端主机上执行的指令，以取代rsh指令。</li>
-<li>–same-owner 尝试以相同的文件拥有者还原文件。</li>
-<li>–suffix=&lt;备份字尾字符串&gt; 移除文件前先行备份。</li>
-<li>–totals 备份文件建立后，列出文件大小。</li>
-<li>–use-compress-program=&lt;执行指令&gt; 通过指定的指令处理备份文件。</li>
-<li>–version 显示版本信息。</li>
-<li>–volno-file=&lt;编号文件&gt; 使用指定文件内的编号取代预设的卷册编号。</li>
-</ul>
-<h3 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h3><p>压缩文件 非打包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># touch a.c       </span><br><span class="line"># tar -czvf test.tar.gz a.c   &#x2F;&#x2F;压缩 a.c文件为test.tar.gz</span><br><span class="line">a.c</span><br></pre></td></tr></table></figure>
-
-<p>列出压缩文件内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># tar -tzvf test.tar.gz </span><br><span class="line">-rw-r--r-- root&#x2F;root     0 2010-05-24 16:51:59 a.c</span><br></pre></td></tr></table></figure>
-
-<p>解压文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzvf test.tar.gz </span><br><span class="line">a.c</span><br></pre></td></tr></table></figure>
-
-<p>Linux 常用的压缩与解压缩命令有：tar、gzip、gunzip、bzip2、bunzip2、compress 、uncompress、 zip、 unzip、rar、unrar 等。</p>
-<hr>
-<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><p>最常用的打包命令是 tar，使用 tar 程序打出来的包我们常称为 tar 包，tar 包文件的命令通常都是以 .tar 结尾的。生成 tar 包后，就可以用其它的程序来进行压缩了，所以首先就来讲讲 tar 命令的基本用法。</p>
-<p>tar 命令的选项有很多(用 man tar 可以查看到)，但常用的就那么几个选项，下面来举例说明一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -cf all.tar *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件打成一个名为 all.tar 的包。-c 是表示产生新的包，-f 指定包的文件名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -rf all.tar *.gif</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .gif 的文件增加到 all.tar 的包里面去，-r 是表示增加文件的意思。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -uf all.tar logo.gif</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是更新原来 tar 包 all.tar 中 logo.gif 文件，-u 是表示更新文件的意思。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -tf all.tar</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是列出 all.tar 包中所有文件，-t 是列出文件的意思。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -xf all.tar</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是解出 all.tar 包中所有文件，-x 是解开的意思。</p>
-<p>以上就是 tar 的最基本的用法。为了方便用户在打包解包的同时可以压缩或解压文件，tar 提供了一种特殊的功能。这就是 tar 可以在打包或解包的同时调用其它的压缩程序，比如调用 gzip、bzip2 等。</p>
-<h3 id="1-tar调用"><a href="#1-tar调用" class="headerlink" title="1) tar调用"></a>1) tar调用</h3><p>gzip 是 GNU 组织开发的一个压缩程序，.gz 结尾的文件就是 gzip 压缩的结果。与 gzip 相对的解压程序是 gunzip。tar 中使用 -z 这个参数来调用gzip。下面来举例说明一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -czf all.tar.gz *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件打成一个 tar 包，并且将其用 gzip 压缩，生成一个 gzip 压缩过的包，包名为 all.tar.gz。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzf all.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将上面产生的包解开。</p>
-<h3 id="2-tar-调用-bzip2"><a href="#2-tar-调用-bzip2" class="headerlink" title="2) tar 调用 bzip2"></a>2) tar 调用 bzip2</h3><p>bzip2 是一个压缩能力更强的压缩程序，.bz2 结尾的文件就是 bzip2 压缩的结果。</p>
-<p>与 bzip2 相对的解压程序是 bunzip2。tar 中使用 -j 这个参数来调用 gzip。下面来举例说明一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -cjf all.tar.bz2 *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件打成一个 tar 包，并且将其用 bzip2 压缩，生成一个 bzip2 压缩过的包，包名为 all.tar.bz2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -xjf all.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将上面产生的包解开。</p>
-<h3 id="3-tar-调用-compress"><a href="#3-tar-调用-compress" class="headerlink" title="3)tar 调用 compress"></a>3)tar 调用 compress</h3><p>compress 也是一个压缩程序，但是好象使用 compress 的人不如 gzip 和 bzip2 的人多。.Z 结尾的文件就是 bzip2 压缩的结果。与 compress 相对的解压程序是 uncompress。tar 中使用 -Z 这个参数来调用 compress。下面来举例说明一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -cZf all.tar.Z *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件打成一个 tar 包，并且将其用 compress 压缩，生成一个 uncompress 压缩过的包，包名为 all.tar.Z。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -xZf all.tar.Z</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将上面产生的包解开。</p>
-<p>有了上面的知识，你应该可以解开多种压缩文件了，下面对于 tar 系列的压缩文件作一个小结：</p>
-<p><strong>1) 对于.tar结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xf all.tar</span><br></pre></td></tr></table></figure>
-
-<p><strong>2) 对于 .gz 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d all.gz</span><br><span class="line">gunzip all.gz</span><br></pre></td></tr></table></figure>
-
-<p><strong>3)对于 .tgz 或 .tar.gz 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf all.tar.gz</span><br><span class="line">tar -xzf all.tgz</span><br></pre></td></tr></table></figure>
-
-<p><strong>4) 对于 .bz2 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bzip2 -d all.bz2</span><br><span class="line">bunzip2 all.bz2</span><br></pre></td></tr></table></figure>
-
-<p><strong>5) 对于 tar.bz2 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xjf all.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p><strong>6) 对于 .Z 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uncompress all.Z</span><br></pre></td></tr></table></figure>
-
-<p><strong>7) 对于 .tar.Z 结尾的文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xZf all.tar.z</span><br></pre></td></tr></table></figure>
-
-<p>另外对于 Windows 下的常见压缩文件 .zip 和 .rar，Linux 也有相应的方法来解压它们：</p>
-<p><strong>1) 对于 .zip</strong></p>
-<p>linux 下提供了 zip 和 unzip 程序，zip 是压缩程序，unzip 是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># zip all.zip *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件压缩成一个 zip 包:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># unzip all.zip</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将 all.zip 中的所有文件解压出来。</p>
-<p><strong>2) 对于 .rar</strong></p>
-<p>要在 linux 下处理 .rar 文件，需要安装 RAR for Linux。下载地址：<a href="http://www.rarsoft.com/download.htm，下载后安装即可。" target="_blank" rel="noopener">http://www.rarsoft.com/download.htm，下载后安装即可。</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># tar -xzpvf rarlinux-x64-5.6.b5.tar.gz</span><br><span class="line"># cd rar </span><br><span class="line"># make</span><br></pre></td></tr></table></figure>
-
-<p>这样就安装好了，安装后就有了 rar 和 unrar 这两个程序，rar 是压缩程序，unrar 是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># rar a all *.jpg</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .jpg 的文件压缩成一个 rar 包，名为 all.rar，该程序会将 .rar 扩展名将自动附加到包名后。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># unrar e all.rar</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将 all.rar 中的所有文件解压出来：</p>
-<hr>
-<h2 id="扩展内容"><a href="#扩展内容" class="headerlink" title="扩展内容"></a>扩展内容</h2><p><strong>tar</strong></p>
-<p>-C 解压缩到指定目录，且目录必须存在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c: 建立压缩档案 </span><br><span class="line">-x：解压 </span><br><span class="line">-t：查看内容 </span><br><span class="line">-r：向压缩归档文件末尾追加文件 </span><br><span class="line">-u：更新原压缩包中的文件</span><br></pre></td></tr></table></figure>
-
-<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-z：有gzip属性的 </span><br><span class="line">-j：有bz2属性的 </span><br><span class="line">-Z：有compress属性的 </span><br><span class="line">-v：显示所有过程 </span><br><span class="line">-O：将文件解开到标准输出</span><br></pre></td></tr></table></figure>
-
-<p>下面的参数 -f 是必须的:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</span><br></pre></td></tr></table></figure>
-
-<p># tar -cf all.tar *.jpg </p>
-<p>这条命令是将所有 .jpg 的文件打成一个名为 all.tar 的包。-c 是表示产生新的包，-f 指定包的文件名。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -rf all.tar *.gif</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是将所有 .gif 的文件增加到 all.tar 的包里面去。-r 是表示增加文件的意思。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -uf all.tar logo.gif</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是更新原来 tar 包 all.tar 中 logo.gif 文件，-u 是表示更新文件的意思。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -tf all.tar</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是列出 all.tar 包中所有文件，-t 是列出文件的意思。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tar -xf all.tar</span><br></pre></td></tr></table></figure>
-
-<p>这条命令是解出 all.tar 包中所有文件，-x 是解开的意思。</p>
-<p><strong>压缩</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar –cvf jpg.tar *.jpg       &#x2F;&#x2F; 将目录里所有jpg文件打包成 tar.jpg </span><br><span class="line">tar –czf jpg.tar.gz *.jpg    &#x2F;&#x2F; 将目录里所有jpg文件打包成 jpg.tar 后，并且将其用 gzip 压缩，生成一个 gzip 压缩过的包，命名为 jpg.tar.gz </span><br><span class="line">tar –cjf jpg.tar.bz2 *.jpg   &#x2F;&#x2F; 将目录里所有jpg文件打包成 jpg.tar 后，并且将其用 bzip2 压缩，生成一个 bzip2 压缩过的包，命名为jpg.tar.bz2 </span><br><span class="line">tar –cZf jpg.tar.Z *.jpg     &#x2F;&#x2F; 将目录里所有 jpg 文件打包成 jpg.tar 后，并且将其用 compress 压缩，生成一个 umcompress 压缩过的包，命名为jpg.tar.Z </span><br><span class="line">rar a jpg.rar *.jpg          &#x2F;&#x2F; rar格式的压缩，需要先下载 rar for linux </span><br><span class="line">zip jpg.zip *.jpg            &#x2F;&#x2F; zip格式的压缩，需要先下载 zip for linux</span><br></pre></td></tr></table></figure>
-
-<p><strong>解压</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar –xvf file.tar         &#x2F;&#x2F; 解压 tar 包 （常用）</span><br><span class="line">tar -xzvf file.tar.gz     &#x2F;&#x2F; 解压 tar.gz </span><br><span class="line">tar -xjvf file.tar.bz2    &#x2F;&#x2F; 解压 tar.bz2 </span><br><span class="line">tar –xZvf file.tar.Z      &#x2F;&#x2F; 解压 tar.Z </span><br><span class="line">unrar e file.rar          &#x2F;&#x2F; 解压 rar </span><br><span class="line">unzip file.zip            &#x2F;&#x2F; 解压 zip</span><br></pre></td></tr></table></figure>
-
-<p><strong>总结</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、*.tar 用 tar –xvf 解压 </span><br><span class="line">2、*.gz 用 gzip -d或者gunzip 解压 </span><br><span class="line">3、*.tar.gz和*.tgz 用 tar –xzf 解压 </span><br><span class="line">4、*.bz2 用 bzip2 -d或者用bunzip2 解压 </span><br><span class="line">5、*.tar.bz2用tar –xjf 解压 </span><br><span class="line">6、*.Z 用 uncompress 解压 </span><br><span class="line">7、*.tar.Z 用tar –xZf 解压 </span><br><span class="line">8、*.rar 用 unrar e解压 </span><br><span class="line">9、*.zip 用 unzip 解压</span><br></pre></td></tr></table></figure>
-
-<h3 id="压缩-解压缩"><a href="#压缩-解压缩" class="headerlink" title="压缩/解压缩"></a>压缩/解压缩</h3><p>总结：tar -cvf tar -xvf（一对）（打包解压）</p>
-<p>​            tar -zcvf tar-zxvf(一对) （压缩解压）</p>
-<p>​            tar -zcvf 打包文件.tar.gz 被压缩文件/路径 #压缩</p>
-<p>​            tar -zxvf 打包文件.tar.gz #压缩文件  </p>
-<p>​            tar -zxvf 打包文件.tar.gz -C 目标路径 #解压到指定路径</p>
-<p>gzip：压缩（和tar一起用：打包压缩）</p>
-<p>Linux gzip命令用于压缩文件。</p>
-<p>gzip是个使用广泛的压缩程序，文件经它压缩过后，其名称后面会多出”.gz”的扩展名。</p>
-<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip [-acdfhlLnNqrtvV][-S &lt;压缩字尾字符串&gt;][-&lt;压缩效率&gt;][--best&#x2F;fast][文件...] 或 gzip [-acdfhlLnNqrtvV][-S &lt;压缩字尾字符串&gt;][-&lt;压缩效率&gt;][--best&#x2F;fast][目录]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong>：</p>
-<ul>
-<li>-a或–ascii 　使用ASCII文字模式。</li>
-<li>-c或–stdout或–to-stdout 　把压缩后的文件输出到标准输出设备，不去更动原始文件。</li>
-<li>-d或–decompress或—-uncompress 　解开压缩文件。</li>
-<li>-f或–force 　强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接。</li>
-<li>-h或–help 　在线帮助。</li>
-<li>-l或–list 　列出压缩文件的相关信息。</li>
-<li>-L或–license 　显示版本与版权信息。</li>
-<li>-n或–no-name 　压缩文件时，不保存原来的文件名称及时间戳记。</li>
-<li>-N或–name 　压缩文件时，保存原来的文件名称及时间戳记。</li>
-<li>-q或–quiet 　不显示警告信息。</li>
-<li>-r或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。</li>
-<li>-S&lt;压缩字尾字符串&gt;或—-suffix&lt;压缩字尾字符串&gt; 　更改压缩字尾字符串。</li>
-<li>-t或–test 　测试压缩文件是否正确无误。</li>
-<li>-v或–verbose 　显示指令执行过程。</li>
-<li>-V或–version 　显示版本信息。</li>
-<li>-&lt;压缩效率&gt; 　压缩效率是一个介于1－9的数值，预设值为”6”，指定愈大的数值，压缩效率就会愈高。</li>
-<li>–best 　此参数的效果和指定”-9”参数相同。</li>
-<li>–fast 　此参数的效果和指定”-1”参数相同。</li>
-</ul>
-<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>压缩文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@runoob.com a]# ls &#x2F;&#x2F;显示当前目录文件</span><br><span class="line">a.c b.h d.cpp</span><br><span class="line">[root@runoob.com a]# gzip * &#x2F;&#x2F;压缩目录下的所有文件</span><br><span class="line">[root@runoob.com a]# ls &#x2F;&#x2F;显示当前目录文件</span><br><span class="line">a.c.gz    b.h.gz    d.cpp.gz</span><br><span class="line">[root@runoob.com a]#</span><br></pre></td></tr></table></figure>
-
-<p>接范例1， 列出详细的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@runoob.com a]# gzip -dv * &#x2F;&#x2F;解压文件，并列出详细信息</span><br><span class="line">a.c.gz:     0.0% -- replaced with a.c</span><br><span class="line">b.h.gz:     0.0% -- replaced with b.h</span><br><span class="line">d.cpp.gz:     0.0% -- replaced with d.cpp</span><br><span class="line">[root@runoob.com a]#</span><br></pre></td></tr></table></figure>
-
-<p>接范例1，显示压缩文件的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@runoob.com a]# gzip -l *</span><br><span class="line">     compressed    uncompressed ratio uncompressed_name</span><br><span class="line">         24          0  0.0% a.c</span><br><span class="line">         24          0  0.0% b.h</span><br><span class="line">         26          0  0.0% d.cpp</span><br></pre></td></tr></table></figure>
-
-<h3 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h3><p>Linux bzip2命令是.bz2文件的压缩程序。</p>
-<p>bzip2像gzip一样，tar打包，bzip2压缩tar后文件，扩展名 .tar.bz2</p>
-<p>压缩文件 tar -jcvf 打包文件.tar.bz2 被压缩文件/路径</p>
-<p>解压 tar -jxvf 打包文件.tar.bz2</p>
-<p>-C 解压缩到指定目录，且目录必须存在</p>
-<p>bzip2采用新的压缩演算法，压缩效果比传统的LZ77/LZ78压缩演算法来得好。若没有加上任何参数，bzip2压缩完文件后会产生.bz2的压缩文件，并删除原始的文件。</p>
-<h3 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bzip2 [-cdfhkLstvVz][--repetitive-best][--repetitive-fast][- 压缩等级][要压缩的文件]</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数</strong>：</p>
-<ul>
-<li>-c或–stdout 　将压缩与解压缩的结果送到标准输出。</li>
-<li>-d或–decompress 　执行解压缩。</li>
-<li>-f或–force 　bzip2在压缩或解压缩时，若输出文件与现有文件同名，预设不会覆盖现有文件。若要覆盖，请使用此参数。</li>
-<li>-h或–help 　显示帮助。</li>
-<li>-k或–keep 　bzip2在压缩或解压缩后，会删除原始的文件。若要保留原始文件，请使用此参数。</li>
-<li>-s或–small 　降低程序执行时内存的使用量。</li>
-<li>-t或–test 　测试.bz2压缩文件的完整性。</li>
-<li>-v或–verbose 　压缩或解压缩文件时，显示详细的信息。</li>
-<li>-z或–compress 　强制执行压缩。</li>
-<li>-L,–license,</li>
-<li>-V或–version 　显示版本信息。</li>
-<li>–repetitive-best 　若文件中有重复出现的资料时，可利用此参数提高压缩效果。</li>
-<li>–repetitive-fast 　若文件中有重复出现的资料时，可利用此参数加快执行速度。</li>
-<li>-压缩等级 　压缩时的区块大小。</li>
-</ul>
-<h3 id="实例-7"><a href="#实例-7" class="headerlink" title="实例"></a>实例</h3><p>解压.bz2文件 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@w3cschool.cc ~]# bzip2 -v temp.bz2 &#x2F;&#x2F;解压文件显示详细处理信息</span><br></pre></td></tr></table></figure>
-
-<p>压缩文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@w3cschool.cc ~]# bzip2 -c a.c b.c c.c</span><br></pre></td></tr></table></figure>
-
-<p>检查文件完整性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@w3cschool.cc ~]# bzip2 -t temp.bz2</span><br></pre></td></tr></table></figure>
-
-<h2 id="P98-100软件安装"><a href="#P98-100软件安装" class="headerlink" title="P98-100软件安装"></a>P98-100软件安装</h2><p>apt是advanced packaging tool，linux下安装管理工具</p>
-<p>sudo apt install 软件包#安装</p>
-<p>sudo apt remove 软件包名#卸载</p>
-<p>sudo apt upgrade#更新</p>
-<p>sudo apt install htop#查看当前进程，输入htop即可</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -3261,7 +3602,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-count">96</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
