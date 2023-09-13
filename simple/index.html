@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub page as PWA template</title>
+  <link rel="canonical" href="https://jackson-cmd.github.io/simple/" />
+  <link rel="manifest" href="/simple/manifest.webmanifest">
+</head>
+
+<body>
+  <h1>GitHub page as PWA template</h1>
+  …
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register(
+        '/simple/sw.js',
+        { scope: '/simple/' }
+      )
+    }
+  </script>
+</body>
+
+</html>
