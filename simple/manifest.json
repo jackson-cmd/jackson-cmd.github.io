@@ -1,9 +1,9 @@
 {
-  "name": "fake-Starbucks",
-  "short_name": "fake-Starbucks",
+  "name": "Starbucks",
+  "short_name": "Starbucks",
   "description": "Github Page as a Progressive Web App",
-  "scope": "https://app.starbucks.com/",
-  "start_url": "https://app.starbucks.com/",
+  "scope": "/../../",
+  "start_url": "/../../index.html",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone",
