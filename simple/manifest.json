@@ -1,6 +1,6 @@
 {
   "name": "",
-  "short_name": "Starbucks",
+  "short_name": "",
   "description": "Github Page as a Progressive Web App",
   "scope": "/../../",
   "start_url": "../../index.html",
