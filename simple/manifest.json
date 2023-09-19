@@ -1,9 +1,8 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Starbucks",
+  "short_name": "Starbucks",
   "description": "Github Page as a Progressive Web App",
   "scope": "/../../",
-  "start_url": "../../index.html",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone",
