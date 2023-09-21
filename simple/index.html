@@ -15,9 +15,10 @@
   <p id="status"></p>
   <a id="map-link" target="_blank"></a>
 
-  <h1> Notifications Permission</h1>
-  <br>
-  <button id="showNotificationBtn">Show Notification</button>
+  <h1>Notification Permission</h1>
+
+  <button id="requestNotificationBtn">Request Notification Permission</button>
+  <p id="notificationPermissionStatus">Notification Permission: Not requested</p>
 
   <h1>Microphone and Camera Permissions</h1>
 
@@ -32,36 +33,30 @@
         { scope: '/simple/' }
       )
     }
-    // Check if the browser supports the Notification API
-    if ("Notification" in window) {
-      // Check if notifications are allowed
-      if (Notification.permission === "granted") {
-        // If permission is already granted, you can show a notification
-        showNotification();
-      } else if (Notification.permission !== "denied") {
-        // If permission is not denied, request permission
-        document.getElementById("showNotificationBtn").addEventListener("click", function () {
-          Notification.requestPermission().then(function (permission) {
-            if (permission === "granted") {
-              showNotification();
-            }
-          });
-        });
+    const requestNotificationBtn = document.getElementById("requestNotificationBtn");
+    const notificationPermissionStatus = document.getElementById("notificationPermissionStatus");
+
+    requestNotificationBtn.addEventListener("click", async () => {
+      try {
+        // Request notification permission
+        const permission = await Notification.requestPermission();
+
+        // Check the permission status
+        if (permission === "granted") {
+          // Notification permission is allowed
+          notificationPermissionStatus.textContent = "Notification Permission: Allowed";
+        } else if (permission === "denied") {
+          // Notification permission is denied
+          notificationPermissionStatus.textContent = "Notification Permission: Denied";
+        } else if (permission === "default") {
+          // Notification permission is not yet requested or the user dismissed the request
+          notificationPermissionStatus.textContent = "Notification Permission: Not requested";
+        }
+      } catch (error) {
+        // Handle any errors
+        console.error("Error requesting notification permission:", error);
       }
-    }
-
-    function showNotification() {
-      // Create and display a notification
-      const notification = new Notification("Hello, World!", {
-        body: "This is a notification example.",
-        icon: "https://via.placeholder.com/48", // Replace with your own icon URL
-      });
-
-      // Handle click on the notification
-      notification.addEventListener("click", function () {
-        alert("Notification clicked!");
-      });
-    }
+    });
 
     // get geolocation
     function geoFindMe() {
