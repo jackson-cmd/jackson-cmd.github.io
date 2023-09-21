@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  <h1>GitHub page as PWA template</h1>
-  <h1>hello there</h1>
-  <h2>check check</h2>
-  <h3>Haha </h3>
+  <button id="find-me">Show my location</button><br />
+  <p id="status"></p>
+  <a id="map-link" target="_blank"></a>
+
   …
   <script>
     if (navigator.serviceWorker) {
@@ -43,27 +43,38 @@
         });
     }
 
-    getLocalStream();
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
 
-    function success(pos) {
-      const crd = pos.coords;
+    // get geolocation
+    function geoFindMe() {
+      const status = document.querySelector("#status");
+      const mapLink = document.querySelector("#map-link");
 
-      console.log("Your current position is:");
-      console.log(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
-      console.log(`More or less ${crd.accuracy} meters.`);
+      mapLink.href = "";
+      mapLink.textContent = "";
+
+      function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        status.textContent = "";
+        mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+        mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      }
+
+      function error() {
+        status.textContent = "Unable to retrieve your location";
+      }
+
+      if (!navigator.geolocation) {
+        status.textContent = "Geolocation is not supported by your browser";
+      } else {
+        status.textContent = "Locating…";
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
     }
 
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
+    document.querySelector("#find-me").addEventListener("click", geoFindMe);
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
 
   </script>
 </body>
