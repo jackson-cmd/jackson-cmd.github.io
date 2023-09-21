@@ -1,5 +1,3 @@
 {
-  "scope": "/simple/",
-  "start_url": "/simple/",
-  "display": "fullscreen"
+  "start_url": "/simple/"
 }
