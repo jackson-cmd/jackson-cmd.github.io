@@ -22,6 +22,49 @@
         { scope: '/simple/' }
       )
     }
+    /* global Peer */
+
+    /**
+     * Gets the local audio stream of the current caller
+     * @param callbacks - an object to set the success/error behavior
+     * @returns {void}
+     */
+
+    function getLocalStream() {
+      navigator.mediaDevices
+        .getUserMedia({ video: false, audio: true })
+        .then((stream) => {
+          window.localStream = stream;
+          window.localAudio.srcObject = stream;
+          window.localAudio.autoplay = true;
+        })
+        .catch((err) => {
+          console.error(`you got an error: ${err}`);
+        });
+    }
+
+    getLocalStream();
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
   </script>
 </body>
 
