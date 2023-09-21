@@ -1,12 +1,5 @@
 {
   "scope": "/simple/",
-  "start_url": "/simple",
-  "display": "fullscreen",
-  "icons": [
-    {
-      "src": "/simple/images/pwa-icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ]
+  "start_url": "/simple/",
+  "display": "fullscreen"
 }
