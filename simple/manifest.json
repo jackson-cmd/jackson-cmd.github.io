@@ -6,5 +6,12 @@
   "start_url": "/simple",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "display": "fullscreen"
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/simple/images/pwa-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
