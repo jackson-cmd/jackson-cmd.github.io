@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Starbucks</title>
+  <title>AStarbucks</title>
   <link rel="canonical" href="https://jackson-cmd.github.io/simple/" />
   <link rel="manifest" href="/simple/manifest.json">
 </head>
@@ -27,12 +27,12 @@
   <p id="microphonePermissionStatus">Microphone Permission: Not requested</p>
   <p id="cameraPermissionStatus">Camera Permission: Not requested</p>
   <script>
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register(
-        '/simple/sw.js',
-        { scope: '/simple/' }
-      )
-    }
+    // if (navigator.serviceWorker) {
+    //   navigator.serviceWorker.register(
+    //     '/simple/sw.js',
+    //     { scope: '/simple/' }
+    //   )
+    // }
     const requestNotificationBtn = document.getElementById("requestNotificationBtn");
     const notificationPermissionStatus = document.getElementById("notificationPermissionStatus");
 
