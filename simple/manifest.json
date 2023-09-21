@@ -3,7 +3,6 @@
   "short_name": "Starbucks",
   "description": "Github Page as a Progressive Web App",
   "scope": "/simple/",
-  "start_url": "/simple/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "fullscreen",
