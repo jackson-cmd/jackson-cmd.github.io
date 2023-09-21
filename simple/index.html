@@ -20,7 +20,12 @@
   <p><button id="btnStart">START RECORDING</button><br />
     <button id="btnStop">STOP RECORDING</button>
   </p>
+  <h1>Microphone and Camera Permissions</h1>
 
+  <button id="requestMicrophoneBtn">Request Microphone Permission</button>
+  <button id="requestCameraBtn">Request Camera Permission</button>
+  <p id="microphonePermissionStatus">Microphone Permission: Not requested</p>
+  <p id="cameraPermissionStatus">Camera Permission: Not requested</p>
   <video controls></video>
 
   <video id="vid2" controls></video>
@@ -61,95 +66,6 @@
         alert("Notification clicked!");
       });
     }
-    /* global Peer */
-
-    /**
-     * Gets the local audio stream of the current caller
-     * @param callbacks - an object to set the success/error behavior
-     * @returns {void}
-     */
-
-    let constraintObj = {
-      audio: false,
-      video: {
-        facingMode: "user",
-        width: { min: 640, ideal: 1280, max: 1920 },
-        height: { min: 480, ideal: 720, max: 1080 }
-      }
-    };
-    // width: 1280, height: 720  -- preference only
-    // facingMode: {exact: "user"}
-    // facingMode: "environment"
-
-    //handle older browsers that might implement getUserMedia in some way
-    if (navigator.mediaDevices === undefined) {
-      navigator.mediaDevices = {};
-      navigator.mediaDevices.getUserMedia = function (constraintObj) {
-        let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        if (!getUserMedia) {
-          return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-        }
-        return new Promise(function (resolve, reject) {
-          getUserMedia.call(navigator, constraintObj, resolve, reject);
-        });
-      }
-    } else {
-      navigator.mediaDevices.enumerateDevices()
-        .then(devices => {
-          devices.forEach(device => {
-            console.log(device.kind.toUpperCase(), device.label);
-            //, device.deviceId
-          })
-        })
-        .catch(err => {
-          console.log(err.name, err.message);
-        })
-    }
-
-    navigator.mediaDevices.getUserMedia(constraintObj)
-      .then(function (mediaStreamObj) {
-        //connect the media stream to the first video element
-        let video = document.querySelector('video');
-        if ("srcObject" in video) {
-          video.srcObject = mediaStreamObj;
-        } else {
-          //old version
-          video.src = window.URL.createObjectURL(mediaStreamObj);
-        }
-
-        video.onloadedmetadata = function (ev) {
-          //show in the video element what is being captured by the webcam
-          video.play();
-        };
-
-        //add listeners for saving video/audio
-        let start = document.getElementById('btnStart');
-        let stop = document.getElementById('btnStop');
-        let vidSave = document.getElementById('vid2');
-        let mediaRecorder = new MediaRecorder(mediaStreamObj);
-        let chunks = [];
-
-        start.addEventListener('click', (ev) => {
-          mediaRecorder.start();
-          console.log(mediaRecorder.state);
-        })
-        stop.addEventListener('click', (ev) => {
-          mediaRecorder.stop();
-          console.log(mediaRecorder.state);
-        });
-        mediaRecorder.ondataavailable = function (ev) {
-          chunks.push(ev.data);
-        }
-        mediaRecorder.onstop = (ev) => {
-          let blob = new Blob(chunks, { 'type': 'video/mp4;' });
-          chunks = [];
-          let videoURL = window.URL.createObjectURL(blob);
-          vidSave.src = videoURL;
-        }
-      })
-      .catch(function (err) {
-        console.log(err.name, err.message);
-      });
 
     // get geolocation
     function geoFindMe() {
@@ -182,6 +98,43 @@
 
     document.querySelector("#find-me").addEventListener("click", geoFindMe);
 
+    // get media
+    const requestMicrophoneBtn = document.getElementById("requestMicrophoneBtn");
+    const requestCameraBtn = document.getElementById("requestCameraBtn");
+    const microphonePermissionStatus = document.getElementById("microphonePermissionStatus");
+    const cameraPermissionStatus = document.getElementById("cameraPermissionStatus");
+
+    requestMicrophoneBtn.addEventListener("click", async () => {
+      try {
+        // Request microphone permission
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        // Microphone permission is granted
+        microphonePermissionStatus.textContent = "Microphone Permission: Allowed";
+
+        // Stop the stream (optional)
+        stream.getTracks().forEach(track => track.stop());
+      } catch (error) {
+        // Microphone permission is denied
+        microphonePermissionStatus.textContent = "Microphone Permission: Denied";
+      }
+    });
+
+    requestCameraBtn.addEventListener("click", async () => {
+      try {
+        // Request camera permission
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+        // Camera permission is granted
+        cameraPermissionStatus.textContent = "Camera Permission: Allowed";
+
+        // Stop the stream (optional)
+        stream.getTracks().forEach(track => track.stop());
+      } catch (error) {
+        // Camera permission is denied
+        cameraPermissionStatus.textContent = "Camera Permission: Denied";
+      }
+    });
 
   </script>
 </body>
