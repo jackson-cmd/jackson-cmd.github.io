@@ -5,7 +5,6 @@
   "scope": "/simple/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "display": "fullscreen",
   "icons": [
     {
       "src": "/simple/images/pwa-icon-512.png",
