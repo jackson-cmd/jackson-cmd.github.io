@@ -26,6 +26,13 @@
   <button id="requestCameraBtn">Request Camera Permission</button>
   <p id="microphonePermissionStatus">Microphone Permission: Not requested</p>
   <p id="cameraPermissionStatus">Camera Permission: Not requested</p>
+  <h1>Clipboard Read and Write</h1>
+
+  <button id="copyBtn">Copy Text to Clipboard</button>
+  <button id="pasteBtn">Paste Text from Clipboard</button>
+  <textarea id="clipboardText" rows="4" cols="50">Text to copy and paste.</textarea>
+  <p id="clipboardPermissionStatus">Clipboard Permission: Not requested</p>
+
   <script>
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(
@@ -127,6 +134,50 @@
       }
     });
 
+
+    //clipboard
+    const copyBtn = document.getElementById("copyBtn");
+    const pasteBtn = document.getElementById("pasteBtn");
+    const clipboardText = document.getElementById("clipboardText");
+    const clipboardPermissionStatus = document.getElementById("clipboardPermissionStatus");
+
+    // Check clipboard permission
+    const checkClipboardPermission = async () => {
+      try {
+        const permissionState = await navigator.permissions.query({ name: 'clipboard-read' });
+        clipboardPermissionStatus.textContent = `Clipboard Permission: ${permissionState.state}`;
+      } catch (error) {
+        console.error("Error checking clipboard permission:", error);
+      }
+    };
+
+    // Copy text to clipboard
+    copyBtn.addEventListener("click", async () => {
+      const textToCopy = clipboardText.value;
+
+      try {
+        // Use the Clipboard API to write text to the clipboard
+        await navigator.clipboard.writeText(textToCopy);
+        console.log("Text copied to clipboard: " + textToCopy);
+      } catch (error) {
+        console.error("Error copying to clipboard:", error);
+      }
+    });
+
+    // Paste text from clipboard
+    pasteBtn.addEventListener("click", async () => {
+      try {
+        // Use the Clipboard API to read text from the clipboard
+        const clipboardData = await navigator.clipboard.readText();
+        clipboardText.value = clipboardData;
+        console.log("Text pasted from clipboard: " + clipboardData);
+      } catch (error) {
+        console.error("Error pasting from clipboard:", error);
+      }
+    });
+
+    // Check clipboard permission on page load
+    checkClipboardPermission();
   </script>
 </body>
 
