@@ -1,6 +1,6 @@
 {
-  "name": "Starbucks",
-  "short_name": "Starbucks",
+  "name": "PWA",
+  "short_name": "PWA",
   "description": "Github Page as a Progressive Web App",
   "scope": "/simple/",
   "start_url": "/simple/",
