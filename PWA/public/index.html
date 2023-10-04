@@ -1,43 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PWAGram</title>
-  <link rel="manifest" href="/PWA/public/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub page as PWA template</title>
+  <link rel="canonical" href="https://codepo8.github.io/github-page-pwa/" />
+  <link rel="manifest" href="/github-page-pwa/manifest.webmanifest">
 </head>
 
 <body>
-  <link rel="manifest" href="/PWA/public/manifest.json" />
-  <div id="app">
-    <div>
-      <script>
-        let output = ""
-        for (const a of ['accelerometer', 'accessibility-events', 'ambient-light-sensor', 'background-sync', "background-fetch", 'camera', 'clipboard-read', 'clipboard-write', 'geolocation', 'gyroscope', 'magnetometer', 'microphone', 'midi', 'notifications', 'payment-handler', 'persistent-storage', 'push', "screen-wake-lock", "nfc", "display-capture", "idle-detection",
-          "periodic-background-sync",
-          "system-wake-lock",
-          "storage-access", "window-management",
-          "window-placement",
-          "local-fonts",
-          "top-level-storage-access",]) {
-          navigator.permissions.query({ name: a }).then((result) => {
-            document.write(`${a}: ${result.state} <br>`)
-          });
-        }
-
-      </script>
-    </div>
-  </div>
-  <script defer src="/src/js/material.min.js"></script>
-  <script src="/src/js/promise.js"></script>
-  <script src="/src/js/fetch.js"></script>
-  <script src="/src/js/app.js"></script>
-  <script src="/src/js/feed.js"></script>
+  <h1>GitHub page as PWA template</h1>
+  …
   <script>
-    navigator.serviceWorker.register("sw.js");
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register(
+        '/github-page-pwa/sw.js',
+        { scope: '/github-page-pwa/' }
+      )
+    }
   </script>
 </body>
 
