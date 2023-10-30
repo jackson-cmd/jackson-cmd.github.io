@@ -33,6 +33,10 @@
   <textarea id="clipboardText" rows="4" cols="50">Text to copy and paste.</textarea>
   <p id="clipboardPermissionStatus">Clipboard Permission: Not requested</p>
 
+  <h1>NFC</h1>
+  <button id="scanButton">Scan NFC Tag</button>
+  <button id="writeButton">Write NFC Tag</button>
+  <button id="makeReadOnlyButton">Make NFC Tag Read-Only</button>
   <script>
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(
@@ -178,6 +182,52 @@
 
     // Check clipboard permission on page load
     checkClipboardPermission();
+
+    //NFC api
+    scanButton.addEventListener("click", async () => {
+      log("User clicked scan button");
+
+      try {
+        const ndef = new NDEFReader();
+        await ndef.scan();
+        log("> Scan started");
+
+        ndef.addEventListener("readingerror", () => {
+          log("Argh! Cannot read data from the NFC tag. Try another one?");
+        });
+
+        ndef.addEventListener("reading", ({ message, serialNumber }) => {
+          log(`> Serial Number: ${serialNumber}`);
+          log(`> Records: (${message.records.length})`);
+        });
+      } catch (error) {
+        log("Argh! " + error);
+      }
+    });
+
+    writeButton.addEventListener("click", async () => {
+      log("User clicked write button");
+
+      try {
+        const ndef = new NDEFReader();
+        await ndef.write("Hello world!");
+        log("> Message written");
+      } catch (error) {
+        log("Argh! " + error);
+      }
+    });
+
+    makeReadOnlyButton.addEventListener("click", async () => {
+      log("User clicked make read-only button");
+
+      try {
+        const ndef = new NDEFReader();
+        await ndef.makeReadOnly();
+        log("> NFC tag has been made permanently read-only");
+      } catch (error) {
+        log("Argh! " + error);
+      }
+    });
   </script>
 </body>
 
