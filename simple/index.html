@@ -37,6 +37,7 @@
   <button id="scanButton">Scan NFC Tag</button>
   <button id="writeButton">Write NFC Tag</button>
   <button id="makeReadOnlyButton">Make NFC Tag Read-Only</button>
+  <textarea id="log" rows="10" cols="50"></textarea>
   <script>
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(
@@ -184,6 +185,9 @@
     checkClipboardPermission();
 
     //NFC api
+    log = (message) => {
+      document.getElementById("log").innerHTML += `${message}\n`;
+    };
     scanButton.addEventListener("click", async () => {
       log("User clicked scan button");
 
