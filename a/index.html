@@ -19,7 +19,7 @@
       "storage-access", "window-management",
       "window-placement",
       "local-fonts",
-      "top-level-storage-access",]) {
+      "top-level-storage-access", "speaker-selection", "bluetooth"]) {
       navigator.permissions.query({ name: a }).then(e => { document.getElementById('permissions').innerText += a + ":" + e.state + "\n" }).catch(e => { document.getElementById('permissions').innerText += a + ":" + e + "\n" })
     }
     if (navigator.serviceWorker) {
