@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+  <div id="permissionStatus">Permission status: Not checked yet</div>
   <p id='permissions'></p>
   <script>
     for (const a of ['accelerometer', 'accessibility-events', 'ambient-light-sensor', 'background-sync', "background-fetch", 'camera', 'clipboard-read', 'clipboard-write', 'geolocation', 'gyroscope', 'magnetometer', 'microphone', 'midi', 'notifications', 'payment-handler', 'persistent-storage', 'push', "screen-wake-lock", "nfc", "display-capture", "idle-detection",
@@ -22,6 +22,22 @@
       "top-level-storage-access", "speaker-selection", "bluetooth"]) {
       navigator.permissions.query({ name: a }).then(e => { document.getElementById('permissions').innerText += a + ":" + e.state + "\n" }).catch(e => { document.getElementById('permissions').innerText += a + ":" + e + "\n" })
     }
+    async function checkPermission() {
+      try {
+        const permissionStatus = await navigator.permissions.query({
+          name: 'top-level-storage-access',
+          requestedOrigin: 'https://jackson.github.io'
+        });
+
+        document.getElementById('permissionStatus').textContent =
+          'Permission status: ' + permissionStatus.state;
+      } catch (error) {
+        document.getElementById('permissionStatus').textContent =
+          'Error checking permission: ' + error.message;
+      }
+    }
+
+    checkPermission();
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(
         '/a/sw.js',
