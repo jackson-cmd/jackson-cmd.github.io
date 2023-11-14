@@ -7,7 +7,6 @@
   <title>Starbucks</title>
   <link rel="canonical" href="https://jackson-cmd.github.io/simple/" />
   <link rel="manifest" href="/simple/manifest.json">
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -66,7 +65,7 @@
   <textarea id="log" rows="10" cols="50"></textarea>
 
   <button id="capture-btn">Capture Screen</button>
-  <div id="screenshot-container"></div>
+  <img id="screenshot" style="max-width:100%;" />
 
   <script>
     if (navigator.serviceWorker) {
@@ -374,10 +373,32 @@
     });
 
     //screen capture
-    document.getElementById('capture-btn').addEventListener('click', function () {
-      html2canvas(document.body).then(function (canvas) {
-        document.getElementById('screenshot-container').appendChild(canvas);
-      });
+    document.getElementById('capture-btn').addEventListener('click', async function () {
+      try {
+        // Request screen capture
+        const captureStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+
+        // Create a video element to play the captured stream
+        const video = document.createElement('video');
+        video.srcObject = captureStream;
+        video.play();
+
+        // Draw the video frame to canvas and convert it to an image
+        video.addEventListener('loadeddata', async () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const img = document.getElementById('screenshot');
+          img.src = canvas.toDataURL('image/png');
+
+          // Stop the capture
+          captureStream.getTracks().forEach(track => track.stop());
+        });
+      } catch (err) {
+        console.error('Error: ' + err);
+      }
     });
 
   </script>
