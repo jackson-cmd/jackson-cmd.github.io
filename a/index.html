@@ -29,7 +29,7 @@
         });
 
         document.getElementById('permissionStatus').textContent =
-          'Permission status: ' + permissionStatus.state;
+          'top-level-storage-access: ' + permissionStatus.state;
       } catch (error) {
         document.getElementById('permissionStatus').textContent =
           'Error checking permission: ' + error.message;
