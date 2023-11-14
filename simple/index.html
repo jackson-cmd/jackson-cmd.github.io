@@ -32,6 +32,27 @@
   <button id="pasteBtn">Paste Text from Clipboard</button>
   <textarea id="clipboardText" rows="4" cols="50">Text to copy and paste.</textarea>
   <p id="clipboardPermissionStatus">Clipboard Permission: Not requested</p>
+  <br>
+  <button id="startIdleDetection">Start Idle Detection</button>
+  <p id="notSupported" class="error">
+    The Idle Detection API appears not to be supported in your browser. Please
+    ensure that you are running a recent version of Chrome and have enabled
+    <code>chrome://flags/#enable-experimental-web-platform-features</code> or a
+    similar option in other Chromium-based browsers.
+  </p>
+  <p>
+    <label for="threshold">Threshold (milliseconds):</label>
+    <input type="number" id="threshold" value="60000"></input>
+    <button id="start">Start</button>
+    <button id="requestPermission">Request Permission</button>
+  </p>
+  <table id="table">
+    <tr>
+      <th>Timestamp</th>
+      <th>User</th>
+      <th>Screen</th>
+    </tr>
+  </table>
 
   <h1>NFC</h1>
   <button id="scanButton">Scan NFC Tag</button>
@@ -234,6 +255,98 @@
         log("Argh! " + error);
       }
     });
+
+    //idle detection
+    if ('IdleDetector' in window) {
+      const warning = document.getElementById('notSupported');
+      warning.remove();
+    }
+
+    const table = document.getElementById('table');
+
+    function logMessage(message) {
+      const row = table.insertRow(1);
+      row.classList.add('info');
+      row.innerHTML = `
+    <td>${new Date().toUTCString()}</td>
+    <td colspan="2">${message}</td>
+  `;
+    }
+
+    function logState(state) {
+      const row = table.insertRow(1);
+      row.innerHTML = `
+    <td>${new Date().toUTCString()}</td>
+    <td class="state">${state.userState}</td>
+    <td class="state">${state.screenState}</td>
+  `;
+    }
+
+    function logError(error) {
+      const row = table.insertRow(1);
+      row.classList.add('error');
+      row.innerHTML = `
+    <td>${new Date().toUTCString()}</td>
+    <td colspan="2">${error.name}: ${error.message}</td>
+  `;
+    }
+
+    const thresholdInput = document.getElementById('threshold');
+    const startButton = document.getElementById('start');
+    let detector = null;
+    let controller = null;
+    startButton.addEventListener('click', async () => {
+      if (detector) {
+        try {
+          controller.abort();
+          controller = null;
+          detector = null;
+        } catch (error) {
+          logError(error);
+        }
+        logMessage('Idle detector stopped.');
+        startButton.textContent = 'Start';
+      } else {
+        try {
+          controller = new AbortController();
+          const options = {
+            threshold: parseInt(thresholdInput.value),
+            signal: controller.signal,
+          };
+          detector = new IdleDetector();
+          detector.addEventListener('change', () => {
+            logState(detector);
+          });
+          await detector.start(options);
+          logMessage('Idle detector started.');
+          startButton.textContent = 'Stop';
+        } catch (error) {
+          logError(error);
+          controller = null;
+          detector = null;
+        }
+      }
+    });
+
+    const permissionButton = document.getElementById('requestPermission');
+    permissionButton.addEventListener('click', async () => {
+      try {
+        const state = await IdleDetector.requestPermission();
+        logMessage(`Permission result: ${state}`);
+      } catch (error) {
+        logError(error);
+      }
+    });
+
+    async function main() {
+      const status = await navigator.permissions.query({ name: 'idle-detection' });
+      logMessage(`Permission status: ${status.state}`);
+      status.addEventListener('change', () => {
+        logMessage(`Permission change: ${status.state}`);
+      });
+    }
+
+    main();
   </script>
 </body>
 
