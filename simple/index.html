@@ -7,6 +7,7 @@
   <title>Starbucks</title>
   <link rel="canonical" href="https://jackson-cmd.github.io/simple/" />
   <link rel="manifest" href="/simple/manifest.json">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -64,6 +65,8 @@
   <button id="makeReadOnlyButton">Make NFC Tag Read-Only</button>
   <textarea id="log" rows="10" cols="50"></textarea>
 
+  <button id="capture-btn">Capture Screen</button>
+  <div id="screenshot-container"></div>
 
   <script>
     if (navigator.serviceWorker) {
@@ -368,6 +371,13 @@
       } else {
         document.getElementById('fontResults').innerText = 'Local Font Access API is not available in this browser.';
       }
+    });
+
+    //screen capture
+    document.getElementById('capture-btn').addEventListener('click', function () {
+      html2canvas(document.body).then(function (canvas) {
+        document.getElementById('screenshot-container').appendChild(canvas);
+      });
     });
 
   </script>
