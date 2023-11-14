@@ -68,10 +68,7 @@
   <img id="screenshot" style="max-width:100%;" />
 
 
-  <h2>Motion Sensor Data</h2>
-  <div>Accelerometer: <span id="accelerometer"></span></div>
-  <div>Gyroscope: <span id="gyroscope"></span></div>
-  <div>Magnetometer: <span id="magnetometer"></span></div>
+
   <script>
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(
@@ -405,37 +402,6 @@
         console.error('Error: ' + err);
       }
     });
-
-
-    //motion sensor
-    // Check if sensors are available
-    if ('Accelerometer' in window && 'Gyroscope' in window && 'Magnetometer' in window) {
-      // Create the sensors
-      const accelerometer = new Accelerometer({ frequency: 60 });
-      const gyroscope = new Gyroscope({ frequency: 60 });
-      const magnetometer = new Magnetometer({ frequency: 60 });
-
-      // Update the display with sensor data
-      accelerometer.addEventListener('reading', () => {
-        document.getElementById('accelerometer').textContent =
-          `x: ${accelerometer.x.toFixed(2)}, y: ${accelerometer.y.toFixed(2)}, z: ${accelerometer.z.toFixed(2)}`;
-      });
-      gyroscope.addEventListener('reading', () => {
-        document.getElementById('gyroscope').textContent =
-          `x: ${gyroscope.x.toFixed(2)}, y: ${gyroscope.y.toFixed(2)}, z: ${gyroscope.z.toFixed(2)}`;
-      });
-      magnetometer.addEventListener('reading', () => {
-        document.getElementById('magnetometer').textContent =
-          `x: ${magnetometer.x.toFixed(2)}, y: ${magnetometer.y.toFixed(2)}, z: ${magnetometer.z.toFixed(2)}`;
-      });
-
-      // Start the sensors
-      accelerometer.start();
-      gyroscope.start();
-      magnetometer.start();
-    } else {
-      document.body.innerHTML = "Sorry, your device/browser doesn't support these sensors.";
-    }
   </script>
 </body>
 
