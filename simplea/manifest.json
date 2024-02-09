@@ -1,0 +1,17 @@
+{
+  "name": "PWA",
+  "short_name": "Starbucks",
+  "description": "Github Page as a Progressive Web App",
+  "scope": "/simplea/",
+  "start_url": "/simplea/",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/simplea/images/pwa-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
