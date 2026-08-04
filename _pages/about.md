@@ -11,7 +11,7 @@ I am a Ph.D. student in Computer Science at [Texas A&M University](https://www.t
 
 My research focuses on the security of large language model (LLM) agents in high-stakes domains, with an emphasis on autonomous financial trading systems. I work on targeted attacks — prompt injection, jailbreak, and prompt leaking — against domain-specific LLM agents, and on defenses that hold up under adversarial pressure. Recent work includes a systematization of security failures in academic financial LLM trading schemes, and information-injection attacks on networks of trading agents.
 
-Before Texas A&M, I earned my M.S. in Electrical and Computer Engineering from Carnegie Mellon University (2023), where I worked in [CyLab](https://www.cylab.cmu.edu/) on TypeScript taint analysis and vulnerability discovery across the npm ecosystem. I completed my B.A. in Computer Science with a Minor in Statistics at the University of Minnesota, Twin Cities (2021).
+Before Texas A&M, I earned my M.S. in Electrical and Computer Engineering from [Carnegie Mellon University](https://www.cmu.edu/) (2023), where I worked in [CyLab](https://www.cylab.cmu.edu/) on TypeScript taint analysis and vulnerability discovery across the npm ecosystem. I completed my B.A. in Computer Science with a Minor in Statistics at the [University of Minnesota, Twin Cities](https://twin-cities.umn.edu/) (2021).
 
 Recent News
 ======
