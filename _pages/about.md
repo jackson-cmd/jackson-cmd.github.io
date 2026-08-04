@@ -15,7 +15,7 @@ Before Texas A&M, I earned my M.S. in Electrical and Computer Engineering from [
 
 Recent News
 ======
-* **Jul 2026** — Two papers under review: *SoK: Trading Agents or Market Crashers?* and *AgentNets as Market Attackers*.
+* **Jul 2026** — Paper under review: *SoK: Trading Agents or Market Crashers?*
 * **Jun 2026** — Started supervising Landry Taylor (BBA) on an undergraduate research project at Texas A&M.
 * **Mar 2026** — *Demystifying Progressive Web Application Permission Systems* accepted to **DSN 2026**.
 * **Nov 2025** — Awarded the **OpenAI Researcher Access Program** grant.
