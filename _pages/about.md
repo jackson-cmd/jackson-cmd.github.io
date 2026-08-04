@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a Ph.D. student in Computer Science at [Texas A&M University](https://www.tamu.edu/), advised by [Prof. Nitesh Saxena](https://engineering.tamu.edu/cse/profiles/saxena-nitesh.html) in the [SPIES Lab](https://spies.cse.tamu.edu/). I started my Ph.D. in Fall 2023.
+I am a Ph.D. student in Computer Science at [Texas A&M University](https://www.tamu.edu/), advised by [Prof. Nitesh Saxena](https://engineering.tamu.edu/cse/profiles/saxena-nitesh.html) in the [SPIES Lab](https://spies.engr.tamu.edu/). I started my Ph.D. in Fall 2023.
 
 My research focuses on the security of large language model (LLM) agents in high-stakes domains, with an emphasis on autonomous financial trading systems. I work on targeted attacks — prompt injection, jailbreak, and prompt leaking — against domain-specific LLM agents, and on defenses that hold up under adversarial pressure. Recent work includes a systematization of security failures in academic financial LLM trading schemes, and information-injection attacks on networks of trading agents.
 
