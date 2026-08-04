@@ -1,12 +1,8 @@
 ---
 permalink: /service/
-title: "Service &amp; Awards"
+title: "Service"
 author_profile: true
 ---
-
-Awards &amp; Grants
-======
-* **OpenAI Researcher Access Program Grant** — 2025
 
 Program Committee
 ======

@@ -1,9 +1,21 @@
 main:
+  - title: "Research"
+    url: /research/
+
   - title: "Publications"
     url: /publications/
 
+  - title: "Teaching"
+    url: /teaching/
+
   - title: "Service"
     url: /service/
+
+  - title: "Grants & Leadership"
+    url: /leadership/
+
+  - title: "Contact"
+    url: /contact/
 
   - title: "CV"
     url: /files/cv.pdf
