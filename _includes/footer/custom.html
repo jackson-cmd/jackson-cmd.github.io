@@ -3,4 +3,42 @@
 <!-- Support for MathJax -->
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
+<!-- Service worker: register, poll for updates, force-reload on new version -->
+<script>
+(function () {
+  if (!("serviceWorker" in navigator)) return;
+
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js").then(function (reg) {
+      // ask the browser to check for a new SW every 30 min
+      setInterval(function () { reg.update(); }, 30 * 60 * 1000);
+      // also check when the tab is refocused
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) reg.update();
+      });
+      // if a new SW is waiting, tell it to take over immediately
+      function nudge(worker) {
+        if (worker && worker.state === "installed" && navigator.serviceWorker.controller) {
+          worker.postMessage("SKIP_WAITING");
+        }
+      }
+      if (reg.waiting) nudge(reg.waiting);
+      reg.addEventListener("updatefound", function () {
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener("statechange", function () { nudge(nw); });
+      });
+    }).catch(function () { /* offline / http — ignore */ });
+
+    // once the new SW controls the page, reload once to pick up fresh assets
+    var reloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+  });
+})();
+</script>
+
 <!-- end custom footer snippets -->
