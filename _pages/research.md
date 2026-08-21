@@ -4,4 +4,4 @@ title: "Research"
 author_profile: true
 ---
 
-My research is on **agentic security**. Modern LLM agents pull inputs from a wide and heterogeneous set of channels — user prompts, tool outputs, retrieved documents, and external services — and each channel is a place where an attacker can insert instructions that the model will treat as trusted. I study general attacks against LLM-based agents, including prompt injection, jailbreak, and side channels, and how to design defenses that hold up under adversarial pressure.
+My research is on **agentic security** — both attacks against and defenses for LLM-based agents. I focus in particular on prompt leaking, prompt injection, and indirect prompt injection, as well as the domain-specific security problems that arise once these agents are deployed in real systems.
