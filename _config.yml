@@ -71,12 +71,12 @@ author:
 
 # Publication Category
 publication_category:
-  preprints:
-    title: 'Under Review / Preprints'
   conferences:
     title: 'Conference Papers'
   manuscripts:
     title: 'Journal Articles'
+  preprints:
+    title: 'Preprints'
 
 # Site Settings
 teaser                   :
