@@ -8,6 +8,10 @@ Awards &amp; Grants
 ======
 * **OpenAI Researcher Access Program Grant** &mdash; 2025
 
+Certifications
+======
+* **Certified Futures and Options Analyst (CFOA)**
+
 Program Committee
 ======
 * **ACM The Web Conference (WWW)** &mdash; 2025
