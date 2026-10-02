@@ -1,0 +1,248 @@
+/* Flash crash demo (/flash-crash/) */
+
+/* give the demo the full content column on wide screens */
+article.page:has(#fc-app) { padding-right: 0; }
+
+.fc-lede { font-size: 1.05em; }
+
+.fc {
+  --fc-bg: #ffffff;
+  --fc-panel: #f5f6f7;
+  --fc-ink: #1f2427;
+  --fc-muted: #6b7378;
+  --fc-line: #dde1e4;
+  --fc-grid: #eceff1;
+  --fc-up: #12804c;
+  --fc-down: #d13b3b;
+  --fc-you: #c96a00;
+  --fc-fair: #8a9196;
+  --fc-on-up: #ffffff;
+  --fc-on-down: #ffffff;
+  --fc-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  position: relative;
+  margin: 1.25em 0 2em;
+  padding: 14px;
+  border: 1px solid var(--fc-line);
+  border-radius: 12px;
+  background: var(--fc-bg);
+  color: var(--fc-ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+html[data-theme="dark"] .fc {
+  --fc-bg: #2a2c2e;
+  --fc-panel: #323538;
+  --fc-ink: #f1f3f4;
+  --fc-muted: #a7aeb3;
+  --fc-line: #474b4f;
+  --fc-grid: #393c3f;
+  --fc-up: #46c983;
+  --fc-down: #ff6b6b;
+  --fc-you: #ffad33;
+  --fc-fair: #9aa1a6;
+  --fc-on-up: #06210f;
+  --fc-on-down: #2b0606;
+}
+
+.fc *, .fc *::before, .fc *::after { box-sizing: border-box; }
+.fc b, .fc span, .fc strong, .fc p, .fc button { transition: none; }
+.fc p { margin: 0; }
+.fc [hidden] { display: none !important; }
+
+/* top bar */
+.fc-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.fc-quote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-family: var(--fc-mono); font-variant-numeric: tabular-nums; }
+.fc-sym { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--fc-muted); }
+.fc-px { font-size: 28px; font-weight: 700; line-height: 1; }
+.fc-chg { font-size: 13px; font-weight: 600; }
+.fc-chg.is-up, .fc .is-up { color: var(--fc-up); }
+.fc-chg.is-down, .fc .is-down { color: var(--fc-down); }
+.fc-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fc-clock { font: 600 12px/1 var(--fc-mono); color: var(--fc-muted); font-variant-numeric: tabular-nums; }
+.fc-pill { display: inline-block; font: 600 12px/1 var(--fc-mono); padding: 6px 9px; border-radius: 999px; background: var(--fc-panel); color: var(--fc-muted); white-space: nowrap; }
+.fc-pill.is-live::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--fc-up); vertical-align: 1px; }
+.fc-pill.is-crash { background: var(--fc-down); color: var(--fc-on-down); }
+.fc-pill.is-halt { background: var(--fc-you); color: #1d1600; }
+.fc-pill.is-slow { background: transparent; border: 1px dashed var(--fc-muted); padding: 5px 8px; }
+.fc-pause { font: 600 12px/1 var(--fc-mono); padding: 6px 10px; border: 1px solid var(--fc-line); border-radius: 999px; background: transparent; color: var(--fc-ink); cursor: pointer; }
+.fc-pause:hover { border-color: var(--fc-muted); }
+
+/* stats */
+.fc-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 12px 0 10px; }
+.fc-stat { background: var(--fc-panel); border-radius: 8px; padding: 7px 10px; min-width: 0; }
+.fc-stat b { display: block; font: 700 15px/1.25 var(--fc-mono); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fc-stat span { display: block; font-size: 11.5px; color: var(--fc-muted); }
+.fc-stat-you b { color: var(--fc-you); }
+
+/* layout: chart beside the agents, controls right below, book and log underneath */
+.fc-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  grid-template-areas:
+    "chart   agents"
+    "coach   coach"
+    "actions knobs"
+    "debrief debrief"
+    "book    log";
+  gap: 12px 16px;
+}
+.fc-chart-wrap { grid-area: chart; position: relative; min-height: 280px; }
+.fc-agents { grid-area: agents; }
+.fc-coach { grid-area: coach; }
+.fc-actions { grid-area: actions; align-self: start; }
+.fc-knobs { grid-area: knobs; }
+.fc-debrief { grid-area: debrief; }
+.fc-panel-book { grid-area: book; display: flex; flex-direction: column; }
+.fc-panel-log { grid-area: log; }
+
+.fc-chart { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: pan-y; }
+.fc-book-wrap { position: relative; flex: 1 1 auto; min-height: 140px; }
+.fc-book { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+.fc-panel { background: var(--fc-panel); border-radius: 10px; padding: 10px 12px 12px; min-width: 0; }
+.fc-panel-h { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 10px; margin-bottom: 8px; font-size: 12px; color: var(--fc-muted); }
+.fc-panel-h strong { color: var(--fc-ink); font-size: 13px; }
+
+.fc-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.fc-agent {
+  --f: 0.3;
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid var(--fc-line);
+  border-radius: 50%;
+  background: var(--fc-bg);
+  color: var(--fc-muted);
+  font: 700 11px/1 var(--fc-mono);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.fc-agent::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: transparent; opacity: var(--f); }
+.fc-agent span { position: relative; }
+.fc-agent:hover { border-color: var(--fc-muted); }
+.fc-agent:focus-visible { outline: 2px solid var(--fc-ink); outline-offset: 2px; }
+.fc-agent.is-long { border-color: var(--fc-up); color: var(--fc-ink); }
+.fc-agent.is-long::before { background: var(--fc-up); }
+.fc-agent.is-short { border-color: var(--fc-down); color: var(--fc-ink); }
+.fc-agent.is-short::before { background: var(--fc-down); }
+.fc-agent.is-full.is-long { color: var(--fc-on-up); }
+.fc-agent.is-full.is-short { color: var(--fc-on-down); }
+.fc-agent.is-you { border-color: var(--fc-you); box-shadow: 0 0 0 2px var(--fc-you); color: var(--fc-you); }
+.fc-agent.is-dead { border-style: dashed; border-color: var(--fc-muted); color: transparent; opacity: 0.55; }
+.fc-agent.is-dead::after { content: "\00d7"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--fc-down); font-size: 16px; }
+.fc-agent.is-liq { border-color: var(--fc-down); box-shadow: 0 0 0 2px var(--fc-down); }
+.fc-agent.is-trading { transform: scale(1.12); }
+@media (prefers-reduced-motion: reduce) { .fc-agent.is-trading { transform: none; } }
+
+.fc-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 10px; font-size: 11.5px; color: var(--fc-muted); }
+.fc-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; border: 1.5px solid var(--fc-line); }
+.fc-legend .lg-long { background: var(--fc-up); border-color: var(--fc-up); }
+.fc-legend .lg-short { background: var(--fc-down); border-color: var(--fc-down); }
+.fc-legend .lg-you { border-color: var(--fc-you); box-shadow: 0 0 0 1.5px var(--fc-you); }
+.fc-legend .lg-dead { border-style: dashed; border-color: var(--fc-muted); }
+
+.fc-book-note { margin-top: 6px; font-size: 11.5px; color: var(--fc-muted); }
+
+/* tooltip */
+.fc-tip {
+  position: absolute; z-index: 5; pointer-events: none;
+  transform: translate(-50%, calc(-100% - 8px));
+  padding: 7px 9px; border-radius: 6px;
+  background: var(--fc-ink); color: var(--fc-bg);
+  font: 12px/1.45 var(--fc-mono); white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+.fc-tip-you { color: var(--fc-you); }
+html[data-theme="dark"] .fc-tip-you { color: #b25e00; }
+
+/* coach + controls */
+.fc .fc-coach {
+  margin: 0; padding: 9px 12px; min-height: 2.9em;
+  display: flex; align-items: center;
+  border-left: 3px solid var(--fc-you); border-radius: 0 8px 8px 0;
+  background: var(--fc-panel); font-size: 14px;
+}
+.fc-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+.fc-btn {
+  appearance: none; -webkit-appearance: none;
+  margin: 0; padding: 9px 13px;
+  border: 1px solid var(--fc-line); border-radius: 8px;
+  background: var(--fc-bg); color: var(--fc-ink);
+  font: 600 13.5px/1.1 inherit; font-family: inherit;
+  cursor: pointer; white-space: nowrap;
+}
+.fc-btn:hover:not(:disabled) { border-color: var(--fc-muted); }
+.fc-btn:focus-visible { outline: 2px solid var(--fc-ink); outline-offset: 2px; }
+.fc-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.fc-btn-quiet { background: transparent; }
+.fc-hold { position: relative; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.fc-btn-buy { min-width: 9.5em; padding: 12px 16px; font-size: 15px; background: var(--fc-up); border-color: var(--fc-up); color: var(--fc-on-up); }
+.fc-btn-buy:hover:not(:disabled) { border-color: var(--fc-up); filter: brightness(1.07); }
+.fc-hold.is-held { box-shadow: 0 0 0 3px var(--fc-you); }
+.fc-btn-buy.is-held { filter: brightness(1.12); }
+.fc-meter { position: absolute; left: 0; bottom: 0; height: 4px; width: 0; background: var(--fc-on-up); opacity: 0.75; }
+.fc-kbd { font: 600 11px/1 var(--fc-mono); opacity: 0.8; margin-left: 6px; }
+
+.fc-knobs { display: grid; gap: 8px; }
+.fc-knob { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 10px; margin: 0; font-size: 13px; color: var(--fc-ink); cursor: default; }
+.fc-knob output { font: 700 13px var(--fc-mono); color: var(--fc-ink); }
+.fc-knob small { grid-column: 1 / -1; font-size: 11.5px; color: var(--fc-muted); }
+.fc input[type="range"] {
+  grid-column: 1 / -1; display: block; width: 100%; height: 22px; margin: 0; padding: 0;
+  border: 0; box-shadow: none; background: transparent; accent-color: var(--fc-you); cursor: pointer;
+}
+.fc-check { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 13px; color: var(--fc-ink); }
+.fc input[type="checkbox"] { width: 16px; height: 16px; margin: 0; accent-color: var(--fc-you); }
+
+/* debrief */
+.fc-debrief { padding: 12px 14px; border: 1px solid var(--fc-down); border-radius: 10px; background: var(--fc-panel); }
+.fc-debrief-h { font-size: 15px; font-weight: 600; }
+.fc-debrief-drop { font: 700 22px/1 var(--fc-mono); color: var(--fc-down); margin-right: 4px; }
+.fc-debrief-sub { margin-left: 10px; font: 12px var(--fc-mono); color: var(--fc-muted); }
+.fc-debrief ul { margin: 8px 0 12px; padding-left: 1.2em; }
+.fc-debrief li { margin: 0 0 4px; font-size: 13.5px; }
+.fc-debrief-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fc-runs { margin-top: 12px; overflow-x: auto; }
+.fc-runs table { width: 100%; margin: 0; border: 0; font: 12px/1.3 var(--fc-mono); border-collapse: collapse; }
+.fc-runs th, .fc-runs td { padding: 4px 8px; border: 0; border-bottom: 1px solid var(--fc-line); text-align: right; white-space: nowrap; }
+.fc-runs thead, .fc-runs tr, .fc-runs th, .fc-runs td { background: transparent; }
+.fc-runs th { font-weight: 600; color: var(--fc-muted); }
+.fc-runs td { color: var(--fc-ink); }
+.fc-runs th:first-child, .fc-runs td:first-child { text-align: left; padding-left: 0; }
+.fc-runs tbody tr:first-child td { font-weight: 700; }
+
+/* event log */
+.fc ol.fc-log { list-style: none; margin: 0; padding: 0; min-height: 9.4em; font: 12px/1.45 var(--fc-mono); }
+.fc-log li { display: flex; gap: 10px; margin: 0; padding: 1px 0 3px; color: var(--fc-muted); }
+.fc-log li:first-child { color: var(--fc-ink); }
+.fc-log time { flex: none; opacity: 0.75; font-variant-numeric: tabular-nums; }
+.fc-log .k-you, .fc-log .k-news { color: var(--fc-you); }
+.fc-log .k-crash, .fc-log .k-cascade, .fc-log .k-liq, .fc-log .k-herd-sell { color: var(--fc-down); }
+.fc-log .k-herd-buy, .fc-log .k-rebound, .fc-log .k-squeeze { color: var(--fc-up); }
+.fc-log li:not(:first-child) { opacity: 0.85; }
+
+@media (max-width: 700px) {
+  .fc { padding: 10px; }
+  .fc-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "chart" "agents" "coach" "actions" "debrief" "knobs" "book" "log";
+    gap: 10px;
+  }
+  .fc-chart-wrap { min-height: 230px; }
+  .fc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fc-stat b { font-size: 12.5px; }
+  .fc-px { font-size: 24px; }
+  .fc-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; }
+  .fc-agent { font-size: 9px; border-width: 1px; }
+  .fc-agent.is-dead::after { font-size: 12px; }
+  .fc-btn-buy { flex: 1 1 auto; }
+  .fc-log li { flex-direction: column; gap: 0; }
+  .fc-runs table { font-size: 11px; }
+  .fc-runs th, .fc-runs td { padding: 3px 4px; }
+  .fc-runs th { white-space: normal; vertical-align: bottom; }
+}

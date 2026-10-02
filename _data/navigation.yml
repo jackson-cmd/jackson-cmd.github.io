@@ -5,6 +5,9 @@ main:
   - title: "Publications"
     url: /publications/
 
+  - title: "Flash Crash"
+    url: /flash-crash/
+
   - title: "Teaching"
     url: /teaching/
 
