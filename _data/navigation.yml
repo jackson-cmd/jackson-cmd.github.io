@@ -14,5 +14,8 @@ main:
   - title: "Service"
     url: /service/
 
+  - title: "Resources"
+    url: /resources/
+
   - title: "Contact"
     url: /contact/

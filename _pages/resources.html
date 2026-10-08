@@ -1,0 +1,199 @@
+---
+permalink: /resources/
+title: "Resources"
+author_profile: true
+description: "Curated academic resources, tools, and the Conference Deadline Calendar for Security, AI, and NLP."
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/deadlines.css' | relative_url }}">
+
+<div class="resources-container">
+
+  <!-- =========================================================================
+       Resource Hub Overview (Easily expandable for future tools and guides)
+       ========================================================================= -->
+  <section class="res-hub" aria-label="Resources Directory">
+    <p class="res-hub-lead">
+      A curated collection of academic utilities, conference trackers, and research toolkits for cybersecurity, artificial intelligence, and agentic systems.
+    </p>
+
+    <div class="res-cards-grid">
+      <!-- Active Tool: Conference Calendar -->
+      <a href="#calendar" class="res-card res-card-active">
+        <span class="res-card-badge">Featured Tool</span>
+        <h3><span>📅</span> Conference Deadlines</h3>
+        <p>Annual submission calendar across Security, AI, and NLP, organized by typical submission months, CORE 2026 tiers, CCF classes, and historical acceptance rates.</p>
+        <div class="res-card-cta">Explore Calendar ↓</div>
+      </a>
+
+      <!-- Future Expansion Slot: Paper Writing & Toolchain -->
+      <div class="res-card" style="opacity: 0.85;">
+        <span class="res-card-badge is-pending">Coming Soon</span>
+        <h3><span>📝</span> Paper Writing & Toolchain</h3>
+        <p>LaTeX templates, rhetoric structures, rebuttal playbooks, and camera-ready checklists tailored for USENIX Security, IEEE S&P, ACM CCS, and NDSS.</p>
+        <div class="res-card-cta" style="color: var(--rc-text-subtle);">In Preparation</div>
+      </div>
+
+      <!-- Future Expansion Slot: Datasets & Agent Security -->
+      <div class="res-card" style="opacity: 0.85;">
+        <span class="res-card-badge is-pending">Coming Soon</span>
+        <h3><span>🛡️</span> Agentic Security Benchmarks</h3>
+        <p>Curated benchmarks, high-stakes market simulation environments, and prompt injection evaluation harnesses for autonomous LLM agents.</p>
+        <div class="res-card-cta" style="color: var(--rc-text-subtle);">In Preparation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Conference Deadline Calendar Interactive App
+       ========================================================================= -->
+  <section id="calendar" class="cal-section" aria-label="Conference Deadline Calendar">
+    <header class="cal-header">
+      <div class="cal-title-row">
+        <h2 class="cal-title"><span>🗓️</span> Conference Deadline Calendar</h2>
+      </div>
+      <p class="cal-subtitle">Security &nbsp;|&nbsp; Artificial Intelligence &nbsp;|&nbsp; NLP — Typical submission-deadline months</p>
+
+      <!-- How to Read / Data Source Collapsible Box -->
+      <details class="cal-info-box">
+        <summary>ℹ️ How to read this calendar & data sources</summary>
+        <p>
+          Each conference appears under its typical deadline month, grouped by CORE tier (ICORE 2026). The typical month is the most common final-cycle full-paper deadline over the last three editions (ccf-deadlines dataset; ARR commitment steps excluded).
+        </p>
+        <p>
+          Multi-cycle venues are placed under their main (final) cycle — e.g. <strong>USENIX Security</strong> in January, <strong>IEEE S&amp;P</strong> in November, <strong>ACM CCS</strong> in April. CCF classes follow the CCF 2026 directory (7th edition). DRM and ILP are omitted (no recent public deadline data). Acceptance rates are estimated from the last three editions with published numbers. New venues not yet in the CCF directory (e.g. IEEE SaTML) are marked <strong>NEW</strong>.
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.78rem;">
+          <strong>Data sources:</strong>
+          <a href="https://ccf.atom.im" target="_blank" rel="noopener">ccf.atom.im</a> (CCF 2026, 7th ed.) &nbsp;•&nbsp;
+          <a href="https://portal.core.edu.au/conf-ranks/" target="_blank" rel="noopener">portal.core.edu.au</a> (ICORE 2026) &nbsp;•&nbsp;
+          <a href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener">ccf-deadlines (GitHub)</a>
+        </p>
+      </details>
+
+      <!-- Stats Ribbon -->
+      <div class="cal-stats-ribbon">
+        <div class="stat-pill"><strong>88</strong> Conferences</div>
+        <div class="stat-pill"><strong>20</strong> CORE A* Venues</div>
+        <div class="stat-pill"><strong>13</strong> CCF A Venues</div>
+        <div class="stat-pill"><strong>3</strong> Research Tracks (SEC / AI / NLP)</div>
+      </div>
+    </header>
+
+    <!-- Controls Toolbar -->
+    <div class="cal-controls">
+      <div class="controls-row-top">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+          <input type="text" id="cal-search" placeholder="Search conference by acronym, name, or keyword (e.g. USENIX, ICML, Vision, Crypto)..." autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="view-mode-toggle" role="group" aria-label="View Mode">
+          <button type="button" class="view-btn is-active" data-view="month">
+            <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Month Cards
+          </button>
+          <button type="button" class="view-btn" data-view="table">
+            <i class="fa-solid fa-table-list" aria-hidden="true"></i> Full Table
+          </button>
+        </div>
+      </div>
+
+      <div class="filters-row">
+        <!-- Track Filter -->
+        <div class="filter-group">
+          <span class="filter-label">Track:</span>
+          <button type="button" class="filter-btn is-active" data-filter-type="track" data-filter-val="all">All</button>
+          <button type="button" class="filter-btn" data-filter-type="track" data-filter-val="Security">🛡️ Security</button>
+          <button type="button" class="filter-btn" data-filter-type="track" data-filter-val="AI">🤖 AI / ML</button>
+          <button type="button" class="filter-btn" data-filter-type="track" data-filter-val="NLP">💬 NLP</button>
+        </div>
+
+        <!-- CORE Filter -->
+        <div class="filter-group">
+          <span class="filter-label">CORE:</span>
+          <button type="button" class="filter-btn is-active" data-filter-type="core" data-filter-val="all">All</button>
+          <button type="button" class="filter-btn" data-filter-type="core" data-filter-val="CORE A*">A*</button>
+          <button type="button" class="filter-btn" data-filter-type="core" data-filter-val="CORE A">A</button>
+          <button type="button" class="filter-btn" data-filter-type="core" data-filter-val="CORE B">B</button>
+          <button type="button" class="filter-btn" data-filter-type="core" data-filter-val="CORE C">C</button>
+          <button type="button" class="filter-btn" data-filter-type="core" data-filter-val="Other">Other</button>
+        </div>
+
+        <!-- CCF Filter -->
+        <div class="filter-group">
+          <span class="filter-label">CCF:</span>
+          <button type="button" class="filter-btn is-active" data-filter-type="ccf" data-filter-val="all">All</button>
+          <button type="button" class="filter-btn" data-filter-type="ccf" data-filter-val="CCF A">CCF A</button>
+          <button type="button" class="filter-btn" data-filter-type="ccf" data-filter-val="CCF B">CCF B</button>
+          <button type="button" class="filter-btn" data-filter-type="ccf" data-filter-val="CCF C">CCF C</button>
+        </div>
+
+        <button type="button" class="btn-reset" id="cal-reset-btn">Reset Filters</button>
+      </div>
+    </div>
+
+    <!-- Quick Month Anchor Bar -->
+    <nav class="month-quicknav" aria-label="Jump to month">
+      <span style="font-size:0.75rem;font-weight:700;color:var(--rc-text-subtle);align-self:center;text-transform:uppercase;margin-right:0.25rem;">Months:</span>
+      <a href="#month-january" class="month-nav-pill">Jan</a>
+      <a href="#month-february" class="month-nav-pill">Feb</a>
+      <a href="#month-march" class="month-nav-pill">Mar</a>
+      <a href="#month-april" class="month-nav-pill">Apr</a>
+      <a href="#month-may" class="month-nav-pill">May</a>
+      <a href="#month-june" class="month-nav-pill">Jun</a>
+      <a href="#month-july" class="month-nav-pill">Jul</a>
+      <a href="#month-august" class="month-nav-pill">Aug</a>
+      <a href="#month-september" class="month-nav-pill">Sep</a>
+      <a href="#month-october" class="month-nav-pill">Oct</a>
+      <a href="#month-november" class="month-nav-pill">Nov</a>
+      <a href="#month-december" class="month-nav-pill">Dec</a>
+    </nav>
+
+    <!-- Active Count Status Line -->
+    <div class="cal-status-line">
+      <span id="cal-matches-count">Showing 88 of 88 conferences</span>
+    </div>
+
+    <!-- Month Card Grid View -->
+    <div id="cal-months-grid" class="months-grid"></div>
+
+    <!-- Table View -->
+    <div id="cal-table-view" class="cal-table-view">
+      <div class="table-responsive">
+        <table class="cal-table">
+          <thead>
+            <tr>
+              <th data-sort="month">Month ▲</th>
+              <th data-sort="abbr">Conference</th>
+              <th data-sort="name">Full Name</th>
+              <th data-sort="track">Track</th>
+              <th data-sort="core">CORE</th>
+              <th data-sort="ccf">CCF</th>
+              <th data-sort="rate">Acceptance</th>
+            </tr>
+          </thead>
+          <tbody id="cal-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- No Results State -->
+    <div id="cal-no-results" class="cal-no-results">
+      <h4>No conferences matched your query</h4>
+      <p>Try clearing your search keyword or relaxing some filters.</p>
+    </div>
+
+    <!-- Page Footer Attribution -->
+    <footer class="cal-footer">
+      <p>
+        Conference Deadline Calendar &nbsp;•&nbsp;
+        Data: <a href="https://ccf.atom.im" target="_blank" rel="noopener">ccf.atom.im</a> (CCF 2026, 7th ed.) /
+        <a href="https://portal.core.edu.au" target="_blank" rel="noopener">portal.core.edu.au</a> (ICORE 2026) /
+        <a href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener">ccf-deadlines</a>
+      </p>
+    </footer>
+  </section>
+
+</div>
+
+<script src="{{ '/assets/js/deadlines.js' | relative_url }}" defer></script>
