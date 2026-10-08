@@ -195,8 +195,7 @@ html[data-theme="dark"] .resources-container {
    ========================================================================== */
 
 .cal-section {
-  padding-top: 1rem;
-  border-top: 1px solid var(--rc-border);
+  padding-top: 0;
 }
 
 .cal-header {
