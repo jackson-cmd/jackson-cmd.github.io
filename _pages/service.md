@@ -22,10 +22,13 @@ Artifact Evaluation Committee
 
 External Reviewer
 ======
-* **ACM Conference on Computer and Communications Security (CCS)** &mdash; 2023, 2024, 2025
-* **USENIX Security Symposium** &mdash; 2024, 2025
-* **Network and Distributed System Security Symposium (NDSS)** &mdash; 2023, 2024
-* **IEEE Symposium on Security and Privacy (S&amp;P)** &mdash; 2023
+* **Network and Distributed System Security Symposium (NDSS)** &mdash; 2025
+
+Sub-reviewer
+======
+* **USENIX Security Symposium** &mdash; 2024
+* **ACM Conference on Computer and Communications Security (CCS)** &mdash; 2025
+* **Network and Distributed System Security Symposium (NDSS)** &mdash; 2026
 
 Mentoring
 ======
