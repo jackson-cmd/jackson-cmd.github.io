@@ -14,7 +14,11 @@ Certifications
 
 Program Committee
 ======
-* **ACM The Web Conference (WWW)** &mdash; 2025
+* **ACM The Web Conference (WWW)** &mdash; 2026, Security and Privacy track
+
+Artifact Evaluation Committee
+======
+* **Network and Distributed System Security Symposium (NDSS)** &mdash; 2027
 
 External Reviewer
 ======
