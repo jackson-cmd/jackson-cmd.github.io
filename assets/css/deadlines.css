@@ -468,96 +468,44 @@ html[data-theme="dark"] .resources-container {
    Month Card Layout (Calendar Grid)
    ========================================================================== */
 
-/* Month cards sit in one horizontal row that slides: every card has the same
-   width and height, the row snaps card by card, and a long month scrolls
-   inside its own card. Three cards per view on wide screens, two on medium,
-   one (with the next one peeking) on phones. */
+/* Two month cards per row (one on phones). Every card has the same height;
+   a month with many deadlines scrolls inside its own card. */
 .months-grid {
-  --month-gap: 1.25rem;
-  --month-per-view: 3;
-  --month-card-h: 32rem;
-  display: flex;
-  gap: var(--month-gap);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 0;
-  padding: 0.15rem 0.15rem 0.9rem;
-  cursor: grab;
-  scrollbar-width: thin;
-}
-
-.months-grid.is-dragging {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  user-select: none;
-}
-
-@media (max-width: 1099px) {
-  .months-grid { --month-per-view: 2; }
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
 @media (max-width: 699px) {
-  .months-grid { --month-per-view: 1.15; --month-card-h: 28rem; }
+  .months-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .months-grid > .month-card {
-  flex: 0 0 calc((100% - (var(--month-per-view) - 1) * var(--month-gap)) / var(--month-per-view));
-  height: var(--month-card-h);
+  height: 30rem;
   min-width: 0;
-  scroll-snap-align: start;
 }
 
 .months-grid .month-body {
   overflow-y: auto;
   min-height: 0;
-  overscroll-behavior-y: contain;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rc-border) transparent;
 }
 
-.cal-scroll-btns {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+.months-grid .month-body::-webkit-scrollbar {
+  width: 6px;
 }
 
-.cal-scroll-hint {
-  font-size: 0.76rem;
-  color: var(--rc-text-subtle);
+.months-grid .month-body::-webkit-scrollbar-thumb {
+  background: var(--rc-border);
+  border-radius: 3px;
 }
 
-@media (max-width: 699px) {
-  .cal-scroll-hint { display: none; }
-}
-
-.cal-scroll-btn {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 1px solid var(--rc-border);
-  background: var(--rc-card-bg);
-  color: var(--rc-text-main);
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.cal-scroll-btn:hover:not(:disabled) {
-  border-color: var(--rc-accent);
-  color: var(--rc-accent);
-}
-
-.cal-scroll-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.cal-scroll-btn:focus-visible {
-  outline: 2px solid var(--rc-accent);
-  outline-offset: 2px;
+.months-grid .month-body::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .month-card {
