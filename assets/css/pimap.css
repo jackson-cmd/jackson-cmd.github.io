@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Security PI map (resources/security-pi-map) and the Resources card hub.
+   Colors come from the .resources-container tokens in deadlines.css; the map
+   adds its own heat ramp, land and bubble tokens, with dark overrides.
+   ========================================================================== */
+
+.pimap {
+  --pm-land: #e8edf3;
+  --pm-land-line: #cbd5e1;
+  --pm-heat-lo: #dbeafe;
+  --pm-heat-hi: #1e3a8a;
+  --pm-bubble: #ea580c;
+  --pm-bubble-line: #ffffff;
+  --pm-chip: #f1f5f9;
+  --pm-llm-bg: #dbeafe;
+  --pm-llm-text: #1d4ed8;
+  --pm-warn: #9a3412;
+  --pm-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--rc-text-main);
+}
+html[data-theme="dark"] .pimap {
+  --pm-land: #1f2b3d;
+  --pm-land-line: #334155;
+  --pm-heat-lo: #1e3a5f;
+  --pm-heat-hi: #93c5fd;
+  --pm-bubble: #fb923c;
+  --pm-bubble-line: #0f172a;
+  --pm-chip: #0f172a;
+  --pm-llm-bg: rgba(59, 130, 246, 0.22);
+  --pm-llm-text: #93c5fd;
+  --pm-warn: #fdba74;
+}
+
+.pimap p { max-width: 75ch; }
+.pimap .pm-lead { font-size: 1rem; color: var(--rc-text-main); }
+.pimap .pm-stats { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0.6rem 0 0.2rem; font-family: var(--pm-mono); font-size: 0.78rem; color: var(--rc-text-muted); font-variant-numeric: tabular-nums; }
+.pimap .pm-stats b { color: var(--rc-text-main); font-weight: 600; }
+
+.pimap .pm-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 1rem 0 0.8rem; }
+.pimap .pm-tabs { display: inline-flex; border: 1px solid var(--rc-border); border-radius: 8px; overflow: hidden; background: var(--rc-card-bg); }
+.pimap .pm-tabs button { font: 600 0.82rem/1 inherit; font-family: inherit; color: var(--rc-text-muted); background: transparent; border: 0; padding: 0.55rem 1rem; cursor: pointer; margin: 0; }
+.pimap .pm-tabs button[aria-pressed="true"] { background: var(--rc-accent); color: #ffffff; }
+.pimap select, .pimap input[type="search"] { font-family: inherit; font-size: 0.82rem; color: var(--rc-text-main); background: var(--rc-card-bg); border: 1px solid var(--rc-border); border-radius: 8px; padding: 0.45rem 0.6rem; margin: 0; width: auto; min-width: 0; height: auto; box-shadow: none; }
+.pimap input[type="search"] { width: 15rem; max-width: 100%; }
+.pimap label.pm-check { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: var(--rc-text-muted); cursor: pointer; margin: 0; }
+.pimap label.pm-check input { margin: 0; width: auto; }
+.pimap button:focus-visible, .pimap select:focus-visible, .pimap input:focus-visible, .pimap .pm-row:focus-visible, .pimap a:focus-visible { outline: 2px solid var(--rc-accent); outline-offset: 2px; }
+
+.pimap .pm-grid { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: 1rem; align-items: start; }
+@media (max-width: 64em) { .pimap .pm-grid { grid-template-columns: minmax(0, 1fr); } }
+.pimap .pm-mapcard { background: var(--rc-card-bg); border: 1px solid var(--rc-border); border-radius: 10px; position: relative; overflow: hidden; min-width: 0; }
+.pimap svg.pm-map { display: block; width: 100%; height: auto; }
+.pimap .pm-land { fill: var(--pm-land); stroke: var(--pm-land-line); stroke-width: 0.5; }
+.pimap .pm-land.hit { cursor: pointer; }
+.pimap .pm-land.sel { stroke: var(--rc-text-main); stroke-width: 1.4; }
+.pimap .pm-bub { fill: var(--pm-bubble); fill-opacity: 0.78; stroke: var(--pm-bubble-line); stroke-width: 1; cursor: pointer; }
+.pimap .pm-bub.sel { fill-opacity: 1; stroke: var(--rc-text-main); stroke-width: 1.6; }
+.pimap .pm-stlabel { font: 600 10px var(--pm-mono); fill: var(--rc-text-main); pointer-events: none; paint-order: stroke; stroke: var(--rc-card-bg); stroke-width: 2.5px; }
+.pimap .pm-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; padding: 0.5rem 0.8rem 0.7rem; font-size: 0.74rem; color: var(--rc-text-muted); border-top: 1px solid var(--rc-border); }
+.pimap .pm-ramp { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--pm-mono); }
+.pimap .pm-ramp i { display: inline-block; width: 6rem; height: 0.5rem; border-radius: 2px; background: linear-gradient(90deg, var(--pm-heat-lo), var(--pm-heat-hi)); }
+.pimap .pm-dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--pm-bubble); vertical-align: -1px; margin-right: 0.25rem; }
+.pimap .pm-tip { position: absolute; pointer-events: none; background: var(--rc-text-main); color: var(--rc-card-bg); font-size: 0.74rem; padding: 0.3rem 0.5rem; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -125%); z-index: 2; }
+
+.pimap .pm-panel { background: var(--rc-card-bg); border: 1px solid var(--rc-border); border-radius: 10px; padding: 0.9rem 0.9rem 0.6rem; min-width: 0; display: grid; gap: 0.6rem; max-height: 46rem; overflow: auto; }
+@media (max-width: 64em) { .pimap .pm-panel { max-height: none; } }
+.pimap .pm-crumb { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; font-size: 0.74rem; color: var(--rc-text-muted); }
+.pimap .pm-crumb button { font: inherit; color: var(--rc-accent); background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+.pimap .pm-panel h3 { font-size: 1.05rem; margin: 0; line-height: 1.3; }
+.pimap .pm-meta { font-size: 0.76rem; color: var(--rc-text-muted); margin: -0.4rem 0 0; }
+.pimap .pm-sect { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--rc-text-muted); margin: 0.3rem 0 -0.3rem; }
+.pimap .pm-rows { display: grid; gap: 1px; }
+.pimap .pm-row { display: grid; grid-template-columns: minmax(0, 1fr) 2.4rem 4rem; align-items: center; gap: 0.5rem; padding: 0.3rem 0.4rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+.pimap .pm-row:hover { background: var(--rc-card-hover); }
+.pimap .pm-row .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pimap .pm-row .nm small { color: var(--rc-text-muted); margin-left: 0.35rem; }
+.pimap .pm-row .ct { font-family: var(--pm-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.pimap .pm-row .bar { height: 0.35rem; border-radius: 3px; background: var(--pm-chip); overflow: hidden; }
+.pimap .pm-row .bar b { display: block; height: 100%; background: var(--rc-accent); }
+.pimap ol.pm-people { list-style: none; padding: 0; margin: 0; }
+.pimap .pm-person { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0.5rem; padding: 0.5rem 0; border-top: 1px solid var(--rc-border); margin: 0; }
+.pimap .pm-person .rk { font-family: var(--pm-mono); font-size: 0.74rem; color: var(--rc-text-muted); padding-top: 0.1rem; font-variant-numeric: tabular-nums; }
+.pimap .pm-person .who { min-width: 0; font-size: 0.8rem; }
+.pimap .pm-person a { color: var(--rc-text-main); font-weight: 600; text-decoration: none; }
+.pimap .pm-person a:hover { color: var(--rc-accent); text-decoration: underline; }
+.pimap .pm-person .where, .pimap .pm-person .tops { color: var(--rc-text-muted); font-size: 0.76rem; }
+.pimap .pm-person .nums { font-family: var(--pm-mono); font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+.pimap .pm-person .nums span { color: var(--rc-text-muted); }
+.pimap .pm-chips { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem; }
+.pimap .pm-chip { font-size: 0.7rem; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--pm-chip); color: var(--rc-text-main); border: 1px solid var(--rc-border); }
+.pimap .pm-chip.llm { background: var(--pm-llm-bg); color: var(--pm-llm-text); border-color: transparent; font-weight: 600; }
+.pimap .pm-note { font-size: 0.72rem; color: var(--pm-warn); margin-top: 0.2rem; }
+.pimap .pm-empty { color: var(--rc-text-muted); font-size: 0.8rem; padding: 0.4rem 0; margin: 0; }
+
+.pimap .pm-about { margin-top: 2rem; display: grid; gap: 0.2rem; }
+.pimap .pm-about h2 { font-size: 1.15rem; margin: 1.2rem 0 0.3rem; border: 0; }
+.pimap .pm-about ol, .pimap .pm-about ul { margin: 0.2rem 0 0.6rem; max-width: 80ch; }
+.pimap .pm-about li { font-size: 0.9rem; margin: 0.25rem 0; }
+.pimap .pm-disclaimer { border: 1px solid var(--rc-border); background: var(--rc-subcard-bg); border-radius: 10px; padding: 0.4rem 1.1rem 0.6rem; margin-top: 0.6rem; }
+.pimap .pm-credits { font-size: 0.8rem; color: var(--rc-text-muted); }
+
+.pimap details.pm-full { margin-top: 1.6rem; border-top: 1px solid var(--rc-border); padding-top: 0.6rem; }
+.pimap details.pm-full summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; }
+.pimap .pm-tablewrap { overflow-x: auto; margin-top: 0.6rem; }
+.pimap table.pm-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; display: table; }
+.pimap table.pm-table th, .pimap table.pm-table td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--rc-border-subtle); vertical-align: top; }
+.pimap table.pm-table th { color: var(--rc-text-muted); font-weight: 600; border-bottom: 1px solid var(--rc-border); }
+.pimap table.pm-table td.num { font-family: var(--pm-mono); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Resources hub cards */
+.res-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+.res-card { display: grid; grid-template-rows: auto 1fr; background: var(--rc-card-bg); border: 1px solid var(--rc-border); border-radius: 12px; overflow: hidden; color: var(--rc-text-main); text-decoration: none; transition: border-color 0.15s, transform 0.15s; }
+.res-card:hover, .res-card:focus-visible { border-color: var(--rc-accent); text-decoration: none; color: var(--rc-text-main); }
+@media (prefers-reduced-motion: no-preference) { .res-card:hover { transform: translateY(-2px); } }
+.res-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; border-bottom: 1px solid var(--rc-border); background: var(--rc-subcard-bg); max-width: 100%; }
+.res-card .res-body { padding: 0.9rem 1rem 1rem; display: grid; gap: 0.45rem; align-content: start; }
+.res-card h2 { font-size: 1.05rem; margin: 0; border: 0; padding: 0; line-height: 1.3; }
+.res-card p { font-size: 0.85rem; color: var(--rc-text-muted); margin: 0; }
+.res-card .res-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.res-card .res-chips span { font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: var(--rc-subcard-bg); border: 1px solid var(--rc-border); color: var(--rc-text-muted); }
+.res-card .res-go { font-size: 0.82rem; font-weight: 600; color: var(--rc-accent); }

@@ -1,7 +1,7 @@
 ---
 permalink: /research/
 title: "Research"
-author_profile: true
+author_profile: false
 ---
 
 My research is on **agentic security in high-stakes domains**, where LLM agents act with real authority and a single compromised action can cause irreversible harm.

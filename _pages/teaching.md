@@ -1,7 +1,7 @@
 ---
 permalink: /teaching/
 title: "Teaching"
-author_profile: true
+author_profile: false
 ---
 
 Teaching Assistant, Texas A&amp;M University

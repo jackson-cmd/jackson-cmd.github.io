@@ -1,0 +1,581 @@
+---
+permalink: /resources/security-pi-map/
+title: "Top Security PIs and Research Groups (2024–2026)"
+description: "Interactive map of the 500 most active researchers and PIs at the top four security conferences (IEEE S&P, USENIX Security, ACM CCS, NDSS) in 2024–2026, by country, US state and institution, with research topics. Useful for finding related work, PhD and postdoc groups, and collaborators."
+author_profile: false
+---
+
+<link rel="stylesheet" href="/assets/css/deadlines.css">
+<link rel="stylesheet" href="/assets/css/pimap.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Top Security PIs and Research Groups at IEEE S&P, USENIX Security, ACM CCS and NDSS (2024–2026)", "description": "Map and list of the 500 researchers with the most papers at the four top security conferences (IEEE S&P, USENIX Security, ACM CCS and NDSS) in 2024–2026, with institution, country, US state and main research topics.", "url": "https://jackson-cmd.github.io/resources/security-pi-map/", "creator": {"@type": "Person", "name": "Mengxiao Wang", "url": "https://jackson-cmd.github.io/"}, "temporalCoverage": "2024/2026", "dateModified": "2026-11-15", "keywords": ["security research groups", "top security PIs", "IEEE S&P", "USENIX Security", "ACM CCS", "NDSS", "security faculty", "LLM security", "PhD applications", "related work"], "isBasedOn": ["https://nebelwelt.net/pubstats/top-authors-sys_sec.html", "https://dblp.org/", "https://csrankings.org/"], "variableMeasured": ["papers at IEEE S&P, USENIX Security, ACM CCS and NDSS in 2024–2026", "institution", "location", "research topic"]}</script>
+
+<div class="resources-container">
+<div class="pimap" id="pimap" data-base="">
+
+<p class="pm-lead">This page maps the 500 researchers with the most papers at the four top security conferences (IEEE S&amp;P, USENIX Security, ACM CCS and NDSS) in 2024–2026, with their institution, location and main research topics. Click a country, a US state or an institution to see who works there.</p>
+<p>The page exists to keep track of what active groups at these venues are working on. It can help you find related work, or find groups close to your topic when you apply to graduate programs or postdoc positions, or when you look for collaborators. It counts papers at four venues only, so it leaves out a lot of great research; please read <a href="#how-built">how the list was built</a> and the <a href="#disclaimer">disclaimer</a> before using it.</p>
+<div class="pm-stats"><span><b>500</b> researchers</span><span><b>21</b> countries and regions</span><span><b>166</b> institutions</span><span>United States <b>193</b></span><span>Updated November 2026</span></div>
+
+<div class="pm-controls">
+  <div class="pm-tabs" role="group" aria-label="Map view">
+    <button type="button" id="pm-tab-world" aria-pressed="true">World</button>
+    <button type="button" id="pm-tab-us" aria-pressed="false">United States by state</button>
+  </div>
+  <select id="pm-topic" aria-label="Filter by main topic"><option value="">All topics</option></select>
+  <label class="pm-check"><input type="checkbox" id="pm-llm"> LLM-related papers ≥ 3</label>
+  <label class="pm-check"><input type="checkbox" id="pm-fac"> CSRankings faculty only (392)</label>
+  <input type="search" id="pm-q" placeholder="Search a name, institution or city" aria-label="Search a name, institution or city">
+</div>
+
+<div class="pm-grid">
+  <section class="pm-mapcard">
+    <svg class="pm-map" role="img" aria-label="Map of researchers by country or US state"></svg>
+    <div class="pm-legend"></div>
+    <div class="pm-tip" hidden></div>
+  </section>
+  <aside class="pm-panel" aria-live="polite"><p class="pm-empty">Loading the map…</p></aside>
+</div>
+
+<div class="pm-about">
+<h2 id="how-built">How the list was built</h2>
+<ol>
+<li><strong>Paper counts.</strong> Each person's number of papers at IEEE S&amp;P, USENIX Security, ACM CCS and NDSS comes from <a href="https://nebelwelt.net/pubstats/top-authors-sys_sec.html" target="_blank" rel="noopener">pubstats</a> by Mathias Payer, which counts papers per author from <a href="https://dblp.org/" target="_blank" rel="noopener">DBLP</a> (data processed on 9 November 2026). It adds up 2024, 2025 and 2026 and keeps the 500 people with the most papers; people tied at the cutoff of 4 papers are ordered by their 2023–2025 papers. ACM CCS 2026 was not yet in DBLP, so it is not counted.</li>
+<li><strong>People and affiliations.</strong> pubstats lists authors with at least three papers at these venues and gives each an affiliation from CSRankings or DBLP. It keeps only people who have an affiliation. Roles are not in the data, so the list is mostly faculty but also includes some students, postdocs and industry researchers. The "CSRankings faculty" tag marks the 392 people found in <a href="https://csrankings.org/" target="_blank" rel="noopener">CSRankings</a>, which lists computer-science faculty; it misses faculty in other departments and at research institutes.</li>
+<li><strong>Locations.</strong> Each institution is placed using the <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> institution records and OpenStreetMap, with a few corrected by hand.</li>
+<li><strong>Topics.</strong> Every paper at the four conferences in 2024–2026 was assigned one main topic out of 21 (for example Software security or LLM &amp; AI security) by a language model reading its title and abstract. Author lists come from Semantic Scholar and the USENIX Security programs. A researcher's topics are the most common ones among their papers that could be matched by author name. "LLM-related" counts papers on LLM and AI security plus papers that use LLMs.</li>
+</ol>
+
+<div class="pm-disclaimer" id="disclaimer">
+<h2>Disclaimer</h2>
+<ul>
+<li>This is not a ranking of research quality or impact. It only counts papers at four conferences over three years; it does not look at citations, author order, team size or any other venue.</li>
+<li>Many excellent researchers and groups are not on this list, including people who publish mainly at other venues (machine learning, cryptography, privacy and usable-security conferences, or journals), who publish fewer but very influential papers, who are early in their careers, or who work in industry or government. Name changes and name variants in DBLP can also split one person's papers.</li>
+<li>Affiliations can lag behind recent moves. When recent USENIX Security papers give a different affiliation, the entry shows it.</li>
+<li>Topics are automatic estimates and can be wrong, especially for people who share a name with another researcher; those entries carry a note.</li>
+<li>The page is meant to help people track ongoing work at the top security venues, find related work, and find groups when applying to programs or looking for collaborators. Please do not use it to evaluate individuals.</li>
+<li>If an entry about you is wrong, or you would like it removed, please send an email (the address is on the <a href="/">homepage</a>); it will be fixed in the next update.</li>
+<li>This page is not affiliated with any of the data sources below, and they do not endorse it.</li>
+</ul>
+</div>
+
+<h2>Data sources and credits</h2>
+<p class="pm-credits">Paper counts: <a href="https://nebelwelt.net/pubstats/" target="_blank" rel="noopener">pubstats</a> (Mathias Payer) built on <a href="https://dblp.org/" target="_blank" rel="noopener">DBLP</a> and <a href="https://csrankings.org/" target="_blank" rel="noopener">CSRankings</a> (Emery Berger). Author lists: <a href="https://www.semanticscholar.org/" target="_blank" rel="noopener">Semantic Scholar</a> and <a href="https://www.usenix.org/conferences/byname/108" target="_blank" rel="noopener">USENIX</a>. Locations: <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> and © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>. Base maps: Natural Earth (world-atlas) and the US Census Bureau (us-atlas). Drawn with D3. Compiled by Mengxiao Wang, Texas A&amp;M University. Last updated November 2026.</p>
+</div>
+
+<details class="pm-full">
+<summary>Full list of the 500 researchers</summary>
+<div class="pm-tablewrap">
+<table class="pm-table">
+<thead><tr><th>#</th><th>Name</th><th>Institution</th><th>Location</th><th>Papers 2024–26</th><th>Main topic</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>Qi Li</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">47</td><td>Network security</td></tr>
+<tr><td class="num">2</td><td>Hai-Xin Duan</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">40</td><td>Network security</td></tr>
+<tr><td class="num">3</td><td>Kui Ren</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">35</td><td>ML security</td></tr>
+<tr><td class="num">4</td><td>Min Yang</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">32</td><td>Software security</td></tr>
+<tr><td class="num">5</td><td>Ke Xu</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">30</td><td>Network security</td></tr>
+<tr><td class="num">6</td><td>Yang Zhang</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">29</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">7</td><td>Xiapu Luo</td><td>The Hong Kong Polytechnic University</td><td>Hong Kong SAR</td><td class="num">28</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">8</td><td>Minhui Xue</td><td>Adelaide University</td><td>Adelaide, Australia</td><td class="num">28</td><td>ML security</td></tr>
+<tr><td class="num">9</td><td>Tianwei Zhang</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">28</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">10</td><td>Kai Chen</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">24</td><td>Software security</td></tr>
+<tr><td class="num">11</td><td>Wenyuan Xu</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">23</td><td>ML security</td></tr>
+<tr><td class="num">12</td><td>Chao Zhang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">23</td><td>Software security</td></tr>
+<tr><td class="num">13</td><td>Ahmad-Reza Sadeghi</td><td>TU Darmstadt</td><td>Darmstadt, Germany</td><td class="num">23</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">14</td><td>Thorsten Holz</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">23</td><td>Software security</td></tr>
+<tr><td class="num">15</td><td>Michael Backes</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">22</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">16</td><td>Shouling Ji</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">22</td><td>Software security</td></tr>
+<tr><td class="num">17</td><td>Baojun Liu</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">22</td><td>Network security</td></tr>
+<tr><td class="num">18</td><td>XiaoFeng Wang</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">21</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">19</td><td>Mathias Payer</td><td>EPFL</td><td>Lausanne, Switzerland</td><td class="num">21</td><td>Software security</td></tr>
+<tr><td class="num">20</td><td>Shuai Wang</td><td>Hong Kong University of Science and Technology</td><td>Hong Kong SAR</td><td class="num">20</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">21</td><td>Yuan Zhang</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">20</td><td>Software security</td></tr>
+<tr><td class="num">22</td><td>Z. Berkay Celik</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">20</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">23</td><td>Tianhao Wang</td><td>University of Virginia</td><td>Charlottesville, Virginia</td><td class="num">20</td><td>Privacy</td></tr>
+<tr><td class="num">24</td><td>Zhiyun Qian</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">20</td><td>Software security</td></tr>
+<tr><td class="num">25</td><td>Zhan Qin</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">20</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">26</td><td>Xiaoyu Ji</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">19</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">27</td><td>Jianjun Chen</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">19</td><td>Network security</td></tr>
+<tr><td class="num">28</td><td>Kun Sun</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">18</td><td>Network security</td></tr>
+<tr><td class="num">29</td><td>Yinzhi Cao</td><td>Johns Hopkins University</td><td>Baltimore, Maryland</td><td class="num">18</td><td>Web security</td></tr>
+<tr><td class="num">30</td><td>Michel van Eeten</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">18</td><td>Policy &amp; economics</td></tr>
+<tr><td class="num">31</td><td>Adam Doupé</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">18</td><td>Software security</td></tr>
+<tr><td class="num">32</td><td>Michael Schwarz</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">18</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">33</td><td>Zhiqiang Lin</td><td>Ohio State University</td><td>Columbus, Ohio</td><td class="num">17</td><td>Software security</td></tr>
+<tr><td class="num">34</td><td>Haoyu Wang</td><td>Huazhong University of Science and Technology</td><td>Wuhan, China</td><td class="num">17</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">35</td><td>Yinqian Zhang</td><td>Southern University of Science and Technology</td><td>Shenzhen, China</td><td class="num">17</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">36</td><td>Neil Zhenqiang Gong</td><td>Duke University</td><td>Durham, North Carolina</td><td class="num">17</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">37</td><td>Zhuotao Liu</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">17</td><td>Network security</td></tr>
+<tr><td class="num">38</td><td>Yang Liu</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">16</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">39</td><td>Ruoyu Wang</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">16</td><td>Software security</td></tr>
+<tr><td class="num">40</td><td>Yan Shoshitaishvili</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">16</td><td>Software security</td></tr>
+<tr><td class="num">41</td><td>Zhen Ling</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">16</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">42</td><td>Sascha Fahl</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">15</td><td>Usable security</td></tr>
+<tr><td class="num">43</td><td>Daniel Genkin</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">15</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">44</td><td>Aniket Kate</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">15</td><td>Applied cryptography</td></tr>
+<tr><td class="num">45</td><td>Yasemin Acar</td><td>Paderborn University</td><td>Paderborn, Germany</td><td class="num">14</td><td>Usable security</td></tr>
+<tr><td class="num">46</td><td>Xiangyu Zhang</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">14</td><td>ML security</td></tr>
+<tr><td class="num">47</td><td>Yuval Yarom</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">14</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">48</td><td>Xiaojing Liao</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">14</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">49</td><td>Yue Zhang</td><td>Shandong University</td><td>Jinan, China</td><td class="num">14</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">50</td><td>Antonio Bianchi</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">14</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">51</td><td>Cristiano Giuffrida</td><td>VU Amsterdam</td><td>Amsterdam, Netherlands</td><td class="num">14</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">52</td><td>Daniel Gruss</td><td>Graz University of Technology</td><td>Graz, Austria</td><td class="num">14</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">53</td><td>Xiang Li</td><td>Nankai University</td><td>Tianjin, China</td><td class="num">14</td><td>Network security</td></tr>
+<tr><td class="num">54</td><td>Tiffany Bao</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">14</td><td>Software security</td></tr>
+<tr><td class="num">55</td><td>Qian Wang</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">14</td><td>ML security</td></tr>
+<tr><td class="num">56</td><td>Xinwen Fu</td><td>University of Massachusetts Lowell</td><td>Lowell, Massachusetts</td><td class="num">14</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">57</td><td>Robert H. Deng</td><td>Singapore Management University</td><td>Singapore</td><td class="num">14</td><td>Applied cryptography</td></tr>
+<tr><td class="num">58</td><td>Kevin R. B. Butler</td><td>University of Florida</td><td>Gainesville, Florida</td><td class="num">13</td><td>ML security</td></tr>
+<tr><td class="num">59</td><td>Ning Zhang</td><td>Washington University in St. Louis</td><td>Saint Louis, Missouri</td><td class="num">13</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">60</td><td>Luyi Xing</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">13</td><td>Mobile security</td></tr>
+<tr><td class="num">61</td><td>Zhikun Zhang</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">13</td><td>ML security</td></tr>
+<tr><td class="num">62</td><td>Kaveh Razavi</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">13</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">63</td><td>Syed Rafiul Hussain</td><td>Pennsylvania State University</td><td>State College, Pennsylvania</td><td class="num">13</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">64</td><td>Xiao Wang</td><td>Northwestern University</td><td>Evanston, Illinois</td><td class="num">13</td><td>Applied cryptography</td></tr>
+<tr><td class="num">65</td><td>Brendan Saltaformaggio</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">13</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">66</td><td>Roya Ensafi</td><td>University of Michigan</td><td>Ann Arbor, Michigan</td><td class="num">13</td><td>Network security</td></tr>
+<tr><td class="num">67</td><td>Jiaheng Zhang</td><td>National University of Singapore</td><td>Singapore</td><td class="num">13</td><td>Applied cryptography</td></tr>
+<tr><td class="num">68</td><td>Chen Yan</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">12</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">69</td><td>Moritz Schloegel</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">12</td><td>Software security</td></tr>
+<tr><td class="num">70</td><td>Jinyuan Jia</td><td>Pennsylvania State University</td><td>State College, Pennsylvania</td><td class="num">12</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">71</td><td>Patrick Traynor</td><td>University of Florida</td><td>Gainesville, Florida</td><td class="num">12</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">72</td><td>Ding Li</td><td>Peking University</td><td>Beijing, China</td><td class="num">12</td><td>ML security</td></tr>
+<tr><td class="num">73</td><td>Cheng Hong</td><td>Ant Group</td><td>Hangzhou, China</td><td class="num">12</td><td>Applied cryptography</td></tr>
+<tr><td class="num">74</td><td>Jie Zhang</td><td>A*STAR</td><td>Singapore</td><td class="num">12</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">75</td><td>Song Bian</td><td>Beihang University</td><td>Beijing, China</td><td class="num">12</td><td>Applied cryptography</td></tr>
+<tr><td class="num">76</td><td>Xinfeng Li</td><td>The Hong Kong Polytechnic University</td><td>Hong Kong SAR</td><td class="num">12</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">77</td><td>Leo Yu Zhang</td><td>Griffith University</td><td>Brisbane, Australia</td><td class="num">12</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">78</td><td>Ben Stock</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">11</td><td>Web security</td></tr>
+<tr><td class="num">79</td><td>Carmela Troncoso</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">11</td><td>Applied cryptography</td></tr>
+<tr><td class="num">80</td><td>Christopher Krügel</td><td>University of California, Santa Barbara</td><td>Santa Barbara, California</td><td class="num">11</td><td>Software security</td></tr>
+<tr><td class="num">81</td><td>Giovanni Vigna</td><td>University of California, Santa Barbara</td><td>Santa Barbara, California</td><td class="num">11</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">82</td><td>Kangjie Lu</td><td>University of Minnesota</td><td>Minneapolis, Minnesota</td><td class="num">11</td><td>Software security</td></tr>
+<tr><td class="num">83</td><td>Zhongjie Ba</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">11</td><td>ML security</td></tr>
+<tr><td class="num">84</td><td>Amir Houmansadr</td><td>University of Massachusetts Amherst</td><td>Amherst, Massachusetts</td><td class="num">11</td><td>Network security</td></tr>
+<tr><td class="num">85</td><td>Hai Jin</td><td>Huazhong University of Science and Technology</td><td>Wuhan, China</td><td class="num">11</td><td>Software security</td></tr>
+<tr><td class="num">86</td><td>Thomas Ristenpart</td><td>University of Toronto</td><td>Toronto, Canada</td><td class="num">11</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">87</td><td>Tao Wei</td><td>Ant Group</td><td>Hangzhou, China</td><td class="num">11</td><td>Applied cryptography</td></tr>
+<tr><td class="num">88</td><td>Yuan Hong</td><td>University of Connecticut</td><td>Storrs, Connecticut</td><td class="num">11</td><td>ML security</td></tr>
+<tr><td class="num">89</td><td>Cong Wang</td><td>City University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">11</td><td>ML security</td></tr>
+<tr><td class="num">90</td><td>Dimitrios Papadopoulos</td><td>Hong Kong University of Science and Technology</td><td>Hong Kong SAR</td><td class="num">11</td><td>Applied cryptography</td></tr>
+<tr><td class="num">91</td><td>Yuekang Li</td><td>UNSW</td><td>Sydney, Australia</td><td class="num">11</td><td>Software security</td></tr>
+<tr><td class="num">92</td><td>Shweta Shinde</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">11</td><td>Systems security</td></tr>
+<tr><td class="num">93</td><td>Ninghui Li</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">11</td><td>ML security</td></tr>
+<tr><td class="num">94</td><td>Wenjie Qu</td><td>National University of Singapore</td><td>Singapore</td><td class="num">11</td><td>Applied cryptography</td></tr>
+<tr><td class="num">95</td><td>Yiming Zhang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">11</td><td>Network security</td></tr>
+<tr><td class="num">96</td><td>Zhibo Wang</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">11</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">97</td><td>Yanjiao Chen</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">10</td><td>ML security</td></tr>
+<tr><td class="num">98</td><td>Stefan Mangard</td><td>Graz University of Technology</td><td>Graz, Austria</td><td class="num">10</td><td>Systems security</td></tr>
+<tr><td class="num">99</td><td>Tadayoshi Kohno</td><td>University of Washington</td><td>Seattle, Washington</td><td class="num">10</td><td>Usable security</td></tr>
+<tr><td class="num">100</td><td>Yu Jiang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">10</td><td>Software security</td></tr>
+<tr><td class="num">101</td><td>Martin Johns</td><td>TU Braunschweig</td><td>Braunschweig, Germany</td><td class="num">10</td><td>Web security</td></tr>
+<tr><td class="num">102</td><td>Michael K. Reiter</td><td>Duke University</td><td>Durham, North Carolina</td><td class="num">10</td><td>ML security</td></tr>
+<tr><td class="num">103</td><td>Alexandra Dmitrienko</td><td>University of Würzburg</td><td>Würzburg, Germany</td><td class="num">10</td><td>ML security</td></tr>
+<tr><td class="num">104</td><td>Srdjan Capkun</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">10</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">105</td><td>Carlos Gañán</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">10</td><td>Policy &amp; economics</td></tr>
+<tr><td class="num">106</td><td>Ding Wang</td><td>Nankai University</td><td>Tianjin, China</td><td class="num">10</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">107</td><td>Elisa Bertino</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">10</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">108</td><td>Yuan Tian</td><td>University of California, Los Angeles</td><td>Los Angeles, California</td><td class="num">10</td><td>Software security</td></tr>
+<tr><td class="num">109</td><td>Lukas Gerlach</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">10</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">110</td><td>Shuo Wang</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">10</td><td>ML security</td></tr>
+<tr><td class="num">111</td><td>Chun Chen</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">10</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">112</td><td>Shanqing Guo</td><td>Shandong University</td><td>Jinan, China</td><td class="num">10</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">113</td><td>Zihao Li</td><td>University of Electronic Science and Technology of China</td><td>Chengdu, China</td><td class="num">10</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">114</td><td>Christian Rossow</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">10</td><td>Network security</td></tr>
+<tr><td class="num">115</td><td>Geng Hong</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">10</td><td>Network security</td></tr>
+<tr><td class="num">116</td><td>Jo Van Bulck</td><td>KU Leuven</td><td>Leuven, Belgium</td><td class="num">10</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">117</td><td>Qi Alfred Chen</td><td>University of California, Irvine</td><td>Irvine, California</td><td class="num">10</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">118</td><td>Chen Gong</td><td>University of Virginia</td><td>Charlottesville, Virginia</td><td class="num">10</td><td>ML security</td></tr>
+<tr><td class="num">119</td><td>Guomin Yang</td><td>Singapore Management University</td><td>Singapore</td><td class="num">10</td><td>Applied cryptography</td></tr>
+<tr><td class="num">120</td><td>Zhenkai Zhang</td><td>Clemson University</td><td>Clemson, South Carolina</td><td class="num">10</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">121</td><td>Yiming Li</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">10</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">122</td><td>Michelle L. Mazurek</td><td>University of Maryland, College Park</td><td>College Park, Maryland</td><td class="num">9</td><td>Usable security</td></tr>
+<tr><td class="num">123</td><td>David A. Basin</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">9</td><td>Formal methods</td></tr>
+<tr><td class="num">124</td><td>Frank Li</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">9</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">125</td><td>Gang Wang</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">9</td><td>Forensics &amp; detection</td></tr>
+<tr><td class="num">126</td><td>Jing (Dave) Tian</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">9</td><td></td></tr>
+<tr><td class="num">127</td><td>Taesoo Kim</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">9</td><td>Software security</td></tr>
+<tr><td class="num">128</td><td>Habiba Farrukh</td><td>University of California, Irvine</td><td>Irvine, California</td><td class="num">9</td><td>Mobile security</td></tr>
+<tr><td class="num">129</td><td>Kartik Nayak</td><td>Duke University</td><td>Durham, North Carolina</td><td class="num">9</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">130</td><td>Xiaokuan Zhang</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">9</td><td>Software security</td></tr>
+<tr><td class="num">131</td><td>Xinlei He</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">9</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">132</td><td>Zheng Li</td><td>Shandong University</td><td>Jinan, China</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">133</td><td>Haojin Zhu</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">9</td><td>Systems security</td></tr>
+<tr><td class="num">134</td><td>Ting Chen</td><td>University of Electronic Science and Technology of China</td><td>Chengdu, China</td><td class="num">9</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">135</td><td>Xingliang Yuan</td><td>University of Melbourne</td><td>Melbourne, Australia</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">136</td><td>Elissa M. Redmiles</td><td>Georgetown University</td><td>Washington, District of Columbia</td><td class="num">9</td><td>Usable security</td></tr>
+<tr><td class="num">137</td><td>Hyoungshick Kim</td><td>Sungkyunkwan University</td><td>Suwon, South Korea</td><td class="num">9</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">138</td><td>N. Asokan</td><td>University of Waterloo</td><td>Waterloo, Canada</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">139</td><td>Adrian Perrig</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">9</td><td>Network security</td></tr>
+<tr><td class="num">140</td><td>Binghui Wang</td><td>Illinois Institute of Technology</td><td>Chicago, Illinois</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">141</td><td>Byoungyoung Lee</td><td>Seoul National University</td><td>Seoul, South Korea</td><td class="num">9</td><td>Systems security</td></tr>
+<tr><td class="num">142</td><td>Qingchuan Zhao</td><td>City University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">143</td><td>Zhi Zhang</td><td>University of Western Australia</td><td>Perth, Australia</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">144</td><td>Fengyu Liu</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">9</td><td>Web security</td></tr>
+<tr><td class="num">145</td><td>Yansong Gao</td><td>CSIRO</td><td>Canberra, Australia</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">146</td><td>Yu Yu</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">9</td><td>Applied cryptography</td></tr>
+<tr><td class="num">147</td><td>Saman Zonouz</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">9</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">148</td><td>Stjepan Picek</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">9</td><td>ML security</td></tr>
+<tr><td class="num">149</td><td>Taejoong Chung</td><td>Virginia Tech</td><td>Blacksburg, Virginia</td><td class="num">9</td><td>Network security</td></tr>
+<tr><td class="num">150</td><td>Zhenyu Guan</td><td>Beihang University</td><td>Beijing, China</td><td class="num">9</td><td>Applied cryptography</td></tr>
+<tr><td class="num">151</td><td>Bo Li</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">152</td><td>Cas Cremers</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">153</td><td>Dawn Song</td><td>University of California, Berkeley</td><td>Berkeley, California</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">154</td><td>Guanhong Tao</td><td>University of Utah</td><td>Salt Lake City, Utah</td><td class="num">8</td><td>ML security</td></tr>
+<tr><td class="num">155</td><td>Nick Nikiforakis</td><td>Stony Brook University</td><td>Stony Brook, New York</td><td class="num">8</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">156</td><td>Katharina Krombholz</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">8</td><td>Usable security</td></tr>
+<tr><td class="num">157</td><td>Mahimna Kelkar</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">8</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">158</td><td>Siyuan Cheng</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">159</td><td>Guoxing Chen</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">8</td><td>Systems security</td></tr>
+<tr><td class="num">160</td><td>Jörg Schwenk</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">8</td><td>Network security</td></tr>
+<tr><td class="num">161</td><td>Kenneth G. Paterson</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">162</td><td>Wenbo Shen</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">8</td><td>Systems security</td></tr>
+<tr><td class="num">163</td><td>Zhibo Liu</td><td>Nanjing University</td><td>Nanjing, China</td><td class="num">8</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">164</td><td>Eyal Ronen</td><td>Tel Aviv University</td><td>Tel Aviv, Israel</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">165</td><td>Giancarlo Pellegrino</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">8</td><td>Web security</td></tr>
+<tr><td class="num">166</td><td>Hongxin Hu</td><td>University at Buffalo</td><td>Buffalo, New York</td><td class="num">8</td><td>Online harms</td></tr>
+<tr><td class="num">167</td><td>Kaiyuan Zhang</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">8</td><td>ML security</td></tr>
+<tr><td class="num">168</td><td>Lei Zhang</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">8</td><td>Web security</td></tr>
+<tr><td class="num">169</td><td>Mauro Conti</td><td>University of Padova</td><td>Padua, Italy</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">170</td><td>Penghui Li</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">8</td><td>Web security</td></tr>
+<tr><td class="num">171</td><td>Raheem A. Beyah</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">8</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">172</td><td>Xinyue Shen</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">173</td><td>Bo Luo</td><td>University of Kansas</td><td>Lawrence, Kansas</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">174</td><td>Chao Shen</td><td>Xi&#x27;an Jiaotong University</td><td>Xi&#x27;an, China</td><td class="num">8</td><td>ML security</td></tr>
+<tr><td class="num">175</td><td>Fengwei Zhang</td><td>Southern University of Science and Technology</td><td>Shenzhen, China</td><td class="num">8</td><td>Systems security</td></tr>
+<tr><td class="num">176</td><td>Flavien Solt</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">8</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">177</td><td>Juraj Somorovsky</td><td>Paderborn University</td><td>Paderborn, Germany</td><td class="num">8</td><td>Network security</td></tr>
+<tr><td class="num">178</td><td>Daniel Weber</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">8</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">179</td><td>Emiliano De Cristofaro</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">8</td><td>Privacy</td></tr>
+<tr><td class="num">180</td><td>Hongwei Li</td><td>University of Electronic Science and Technology of China</td><td>Chengdu, China</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">181</td><td>Riccardo Paccagnella</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">8</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">182</td><td>Sherman S. M. Chow</td><td>Chinese University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">183</td><td>Ziqi Zhang</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">8</td><td>ML security</td></tr>
+<tr><td class="num">184</td><td>Kang Yang</td><td>State Key Laboratory of Cryptology</td><td>Beijing, China</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">185</td><td>Min Zhang</td><td>National University of Defense Technology</td><td>Changsha, China</td><td class="num">8</td><td>Network security</td></tr>
+<tr><td class="num">186</td><td>Mingxuan Liu</td><td>Zhongguancun Laboratory</td><td>Beijing, China</td><td class="num">8</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">187</td><td>Tianqing Zhu</td><td>City University of Macau</td><td>Macau, Macao SAR</td><td class="num">8</td><td>ML security</td></tr>
+<tr><td class="num">188</td><td>Weiming Zhang</td><td>University of Science and Technology of China</td><td>Hefei, China</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">189</td><td>Xiuzhen Cheng</td><td>George Washington University</td><td>Washington, District of Columbia</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">190</td><td>Zhenkai Liang</td><td>National University of Singapore</td><td>Singapore</td><td class="num">8</td><td>Systems security</td></tr>
+<tr><td class="num">191</td><td>Chenxiong Qian</td><td>University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">8</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">192</td><td>Cristina Nita-Rotaru</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">8</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">193</td><td>Rui Hou</td><td>Institute of Information Engineering, CAS</td><td>Beijing, China</td><td class="num">8</td><td>Systems security</td></tr>
+<tr><td class="num">194</td><td>Jianwei Liu</td><td>Beihang University</td><td>Beijing, China</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">195</td><td>Zheli Liu</td><td>Nankai University</td><td>Tianjin, China</td><td class="num">8</td><td>Applied cryptography</td></tr>
+<tr><td class="num">196</td><td>Xinyu Xing</td><td>Northwestern University</td><td>Evanston, Illinois</td><td class="num">7</td><td>Software security</td></tr>
+<tr><td class="num">197</td><td>Yuanyuan Yuan</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">7</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">198</td><td>Ling Ren</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">199</td><td>Shiqing Ma</td><td>University of Massachusetts Amherst</td><td>Amherst, Massachusetts</td><td class="num">7</td><td>ML security</td></tr>
+<tr><td class="num">200</td><td>Matteo Maffei</td><td>TU Wien</td><td>Vienna, Austria</td><td class="num">7</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">201</td><td>Zhuo Zhang</td><td>Columbia University</td><td>New York, New York</td><td class="num">7</td><td>Software security</td></tr>
+<tr><td class="num">202</td><td>Daniel Votipka</td><td>Tufts University</td><td>Medford, Massachusetts</td><td class="num">7</td><td>Usable security</td></tr>
+<tr><td class="num">203</td><td>Wei Meng</td><td>Chinese University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">7</td><td>Web security</td></tr>
+<tr><td class="num">204</td><td>Ziming Zhao</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">7</td><td>Online harms</td></tr>
+<tr><td class="num">205</td><td>Herbert Bos</td><td>VU Amsterdam</td><td>Amsterdam, Netherlands</td><td class="num">7</td><td>Software security</td></tr>
+<tr><td class="num">206</td><td>Jia Zhang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">207</td><td>Jonathan Katz</td><td>University of Maryland, College Park</td><td>College Park, Maryland</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">208</td><td>Xiangqun Chen</td><td>Peking University</td><td>Beijing, China</td><td class="num">7</td><td>ML security</td></tr>
+<tr><td class="num">209</td><td>Yao Guo</td><td>Peking University</td><td>Beijing, China</td><td class="num">7</td><td>ML security</td></tr>
+<tr><td class="num">210</td><td>Yuhong Nan</td><td>Sun Yat-sen University</td><td>Guangzhou, China</td><td class="num">7</td><td>Mobile security</td></tr>
+<tr><td class="num">211</td><td>David Klein</td><td>TU Braunschweig</td><td>Braunschweig, Germany</td><td class="num">7</td><td>Web security</td></tr>
+<tr><td class="num">212</td><td>Doowon Kim</td><td>University of Tennessee</td><td>Knoxville, Tennessee</td><td class="num">7</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">213</td><td>Elaine Shi</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">214</td><td>Ilya Grishchenko</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">7</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">215</td><td>Jian Liu</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">216</td><td>Lujo Bauer</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">7</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">217</td><td>Mahmood Sharif</td><td>Tel Aviv University</td><td>Tel Aviv, Israel</td><td class="num">7</td><td>ML security</td></tr>
+<tr><td class="num">218</td><td>Mingming Zhang</td><td>Zhongguancun Laboratory</td><td>Beijing, China</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">219</td><td>Sanjam Garg</td><td>University of California, Berkeley</td><td>Berkeley, California</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">220</td><td>Trent Jaeger</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">7</td><td>Software security</td></tr>
+<tr><td class="num">221</td><td>Wenguang Chen</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">222</td><td>Yuval Ishai</td><td>Technion</td><td>Haifa, Israel</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">223</td><td>Zhemin Yang</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">7</td><td>Mobile security</td></tr>
+<tr><td class="num">224</td><td>Adwait Nadkarni</td><td>College of William and Mary</td><td>Williamsburg, Virginia</td><td class="num">7</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">225</td><td>Haiyang Xue</td><td>Singapore Management University</td><td>Singapore</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">226</td><td>Haya Schulmann</td><td>Goethe University Frankfurt</td><td>Frankfurt am Main, Germany</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">227</td><td>Ittay Eyal</td><td>Technion</td><td>Haifa, Israel</td><td class="num">7</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">228</td><td>James C. Davis</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">7</td><td>Supply chain</td></tr>
+<tr><td class="num">229</td><td>Jianliang Wu</td><td>Simon Fraser University</td><td>Burnaby, Canada</td><td class="num">7</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">230</td><td>Nicolas Christin</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">231</td><td>Wenting Zheng</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">232</td><td>Yier Jin</td><td>University of Florida</td><td>Gainesville, Florida</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">233</td><td>Zakir Durumeric</td><td>Stanford University</td><td>Stanford, California</td><td class="num">7</td><td>Online harms</td></tr>
+<tr><td class="num">234</td><td>Zeyu Liu</td><td>Yale University</td><td>New Haven, Connecticut</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">235</td><td>Arjun Arunasalam</td><td>Florida International University</td><td>Miami, Florida</td><td class="num">7</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">236</td><td>Dan Meng</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">237</td><td>Fan Shi</td><td>National University of Defense Technology</td><td>Changsha, China</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">238</td><td>Jingqiang Lin</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">239</td><td>Kun He</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">7</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">240</td><td>Mariana Raykova</td><td>Google</td><td>Mountain View, California</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">241</td><td>Meng Hao</td><td>Singapore Management University</td><td>Singapore</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">242</td><td>Ming Yang</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">7</td><td>Systems security</td></tr>
+<tr><td class="num">243</td><td>Qiang Tang</td><td>University of Sydney</td><td>Sydney, Australia</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">244</td><td>Xinhao Deng</td><td>Ant Group</td><td>Hangzhou, China</td><td class="num">7</td><td>Network security</td></tr>
+<tr><td class="num">245</td><td>Yang Xiang</td><td>Swinburne University of Technology</td><td>Melbourne, Australia</td><td class="num">7</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">246</td><td>Ali Abbasi</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">7</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">247</td><td>Alina Oprea</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">7</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">248</td><td>Limin Sun</td><td>University of Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">7</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">249</td><td>Linkang Du</td><td>Xi&#x27;an Jiaotong University</td><td>Xi&#x27;an, China</td><td class="num">7</td><td>ML security</td></tr>
+<tr><td class="num">250</td><td>Yixin Zou</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">7</td><td>Usable security</td></tr>
+<tr><td class="num">251</td><td>Yizhong Liu</td><td>Beihang University</td><td>Beijing, China</td><td class="num">7</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">252</td><td>Yuan Lu</td><td>Institute of Software, CAS</td><td>Beijing, China</td><td class="num">7</td><td>Applied cryptography</td></tr>
+<tr><td class="num">253</td><td>Yanan Guo</td><td>University of Rochester</td><td>Rochester, New York</td><td class="num">7</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">254</td><td>Mengjia Yan</td><td>MIT</td><td>Cambridge, Massachusetts</td><td class="num">7</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">255</td><td>Xuhong Zhang</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">256</td><td>Dongyan Xu</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">6</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">257</td><td>Feng Lin</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">258</td><td>Florian Kerschbaum</td><td>University of Waterloo</td><td>Waterloo, Canada</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">259</td><td>Peter Schwabe</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">260</td><td>Shengwei An</td><td>Virginia Tech</td><td>Blacksburg, Virginia</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">261</td><td>M. Angela Sasse</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">262</td><td>Rahul Chatterjee</td><td>University of Wisconsin, Madison</td><td>Madison, Wisconsin</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">263</td><td>Ruoxi Sun</td><td>Data61</td><td>Sydney, Australia</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">264</td><td>Adam J. Aviv</td><td>George Washington University</td><td>Washington, District of Columbia</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">265</td><td>Ben Y. Zhao</td><td>University of Chicago</td><td>Chicago, Illinois</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">266</td><td>Haitao Zheng</td><td>University of Chicago</td><td>Chicago, Illinois</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">267</td><td>Haixu Tang</td><td>Indiana University</td><td>Bloomington, Indiana</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">268</td><td>Jianfeng Ma</td><td>Xidian University</td><td>Xi&#x27;an, China</td><td class="num">6</td><td>Forensics &amp; detection</td></tr>
+<tr><td class="num">269</td><td>Jonas Hielscher</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">270</td><td>Li Lu</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">271</td><td>Mingwei Xu</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">272</td><td>Nitesh Saxena</td><td>Texas A&amp;M University</td><td>College Station, Texas</td><td class="num">6</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">273</td><td>Vasileios P. Kemerlis</td><td>Brown University</td><td>Providence, Rhode Island</td><td class="num">6</td><td>Systems security</td></tr>
+<tr><td class="num">274</td><td>Wenzhi Chen</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">275</td><td>Yang Xiao</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">276</td><td>Chuhan Wang</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">277</td><td>Feng Dong</td><td>Huazhong University of Science and Technology</td><td>Wuhan, China</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">278</td><td>Filipo Sharevski</td><td>DePaul University</td><td>Chicago, Illinois</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">279</td><td>Florian Tramèr</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">280</td><td>Franziska Roesner</td><td>University of Washington</td><td>Seattle, Washington</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">281</td><td>Guozhu Meng</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">282</td><td>Harshini Sri Ramulu</td><td>Paderborn University</td><td>Paderborn, Germany</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">283</td><td>Iasonas Polakis</td><td>University of Illinois at Chicago</td><td>Chicago, Illinois</td><td class="num">6</td><td></td></tr>
+<tr><td class="num">284</td><td>Insu Yun</td><td>KAIST</td><td>Daejeon, South Korea</td><td class="num">6</td><td>Systems security</td></tr>
+<tr><td class="num">285</td><td>Jiang Ming</td><td>Tulane University</td><td>New Orleans, Louisiana</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">286</td><td>Min Chen</td><td>VU Amsterdam</td><td>Amsterdam, Netherlands</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">287</td><td>Seungwon Shin</td><td>KAIST</td><td>Daejeon, South Korea</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">288</td><td>Srini Devadas</td><td>MIT</td><td>Cambridge, Massachusetts</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">289</td><td>Veelasha Moonsamy</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">6</td><td>Privacy</td></tr>
+<tr><td class="num">290</td><td>Wei Huo</td><td>Institute of Information Engineering, CAS</td><td>Beijing, China</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">291</td><td>Yue Xiao</td><td>College of William and Mary</td><td>Williamsburg, Virginia</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">292</td><td>Charalampos Papamanthou</td><td>Yale University</td><td>New Haven, Connecticut</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">293</td><td>Gianluca Stringhini</td><td>Boston University</td><td>Boston, Massachusetts</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">294</td><td>Houman Homayoun</td><td>University of California, Davis</td><td>Davis, California</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">295</td><td>Jian Lou</td><td>Sun Yat-sen University</td><td>Guangzhou, China</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">296</td><td>Karthik Pattabiraman</td><td>University of British Columbia</td><td>Vancouver, Canada</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">297</td><td>Marius Muench</td><td>University of Birmingham</td><td>Birmingham, United Kingdom</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">298</td><td>Meng Shen</td><td>Beijing Institute of Technology</td><td>Beijing, China</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">299</td><td>Micah Sherr</td><td>Georgetown University</td><td>Washington, District of Columbia</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">300</td><td>Nicholas Carlini</td><td>Google</td><td>Mountain View, California</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">301</td><td>Shu Wang</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">302</td><td>Xiaokui Xiao</td><td>National University of Singapore</td><td>Singapore</td><td class="num">6</td><td>Privacy</td></tr>
+<tr><td class="num">303</td><td>Yixin Wu</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">304</td><td>Zhou Li</td><td>University of California, Irvine</td><td>Irvine, California</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">305</td><td>Alexandros Kapravelos</td><td>North Carolina State University</td><td>Raleigh, North Carolina</td><td class="num">6</td><td>Supply chain</td></tr>
+<tr><td class="num">306</td><td>Dan Li</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">307</td><td>Eugene Bagdasarian</td><td>University of Massachusetts Amherst</td><td>Amherst, Massachusetts</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">308</td><td>Kanye Ye Wang</td><td>University of Macau</td><td>Macau, Macao SAR</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">309</td><td>Lea Schönherr</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">310</td><td>Li Chen</td><td>Zhongguancun Laboratory</td><td>Beijing, China</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">311</td><td>Lingchen Zhao</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">312</td><td>Lorrie Faith Cranor</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">6</td><td>Usable security</td></tr>
+<tr><td class="num">313</td><td>Man Ho Au</td><td>The Hong Kong Polytechnic University</td><td>Hong Kong SAR</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">314</td><td>Mathy Vanhoef</td><td>KU Leuven</td><td>Leuven, Belgium</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">315</td><td>Nenghai Yu</td><td>University of Science and Technology of China</td><td>Hefei, China</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">316</td><td>Tao Xiang</td><td>Chongqing University</td><td>Chongqing, China</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">317</td><td>Ting Yu</td><td>MBZUAI</td><td>Abu Dhabi, United Arab Emirates</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">318</td><td>Yan Meng</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">319</td><td>Zion Leonahenahe Basque</td><td>University of Georgia</td><td>Athens, Georgia</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">320</td><td>Bo Liu</td><td>University of Technology Sydney</td><td>Sydney, Australia</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">321</td><td>Jiming Chen</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">322</td><td>Jing Chen</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">6</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">323</td><td>Li Xiong</td><td>Emory University</td><td>Atlanta, Georgia</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">324</td><td>Qi Wang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">6</td><td>Network security</td></tr>
+<tr><td class="num">325</td><td>Ruiyi Zhang</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">6</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">326</td><td>Rujia Li</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">6</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">327</td><td>Songze Li</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">6</td><td>ML security</td></tr>
+<tr><td class="num">328</td><td>Junfeng Yang</td><td>Columbia University</td><td>New York, New York</td><td class="num">6</td><td>Software security</td></tr>
+<tr><td class="num">329</td><td>Le Guan</td><td>University of Georgia</td><td>Athens, Georgia</td><td class="num">6</td><td>Systems security</td></tr>
+<tr><td class="num">330</td><td>Wei Dong</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">331</td><td>Ying Yan</td><td>Ant Group</td><td>Hangzhou, China</td><td class="num">6</td><td>Applied cryptography</td></tr>
+<tr><td class="num">332</td><td>Yuqi Jia</td><td>Duke University</td><td>Durham, North Carolina</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">333</td><td>Yuntao Du</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">6</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">334</td><td>Wenke Lee</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">5</td><td>Web security</td></tr>
+<tr><td class="num">335</td><td>Yajin Zhou</td><td>Chinese University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">336</td><td>Muslum Ozgur Ozmen</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">337</td><td>Wenbo Guo</td><td>University of California, Santa Barbara</td><td>Santa Barbara, California</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">338</td><td>Christopher W. Fletcher</td><td>University of California, Berkeley</td><td>Berkeley, California</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">339</td><td>Haipeng Cai</td><td>University at Buffalo</td><td>Buffalo, New York</td><td class="num">5</td><td>Mobile security</td></tr>
+<tr><td class="num">340</td><td>Jiahai Yang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">341</td><td>Long Cheng</td><td>Clemson University</td><td>Clemson, South Carolina</td><td class="num">5</td><td>Web security</td></tr>
+<tr><td class="num">342</td><td>Ting Wang</td><td>Stony Brook University</td><td>Stony Brook, New York</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">343</td><td>Zhiliang Wang</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">344</td><td>Adam Bates</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">5</td><td>Forensics &amp; detection</td></tr>
+<tr><td class="num">345</td><td>Di Tang</td><td>Sun Yat-sen University</td><td>Guangzhou, China</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">346</td><td>Frank Piessens</td><td>KU Leuven</td><td>Leuven, Belgium</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">347</td><td>Gene Tsudik</td><td>University of California, Irvine</td><td>Irvine, California</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">348</td><td>Guangliang Yang</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">5</td><td>Web security</td></tr>
+<tr><td class="num">349</td><td>Hamed Haddadi</td><td>Imperial College London</td><td>London, United Kingdom</td><td class="num">5</td><td>Web security</td></tr>
+<tr><td class="num">350</td><td>Jianping Wu</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">351</td><td>Jinwen Wang</td><td>University of Texas at Dallas</td><td>Dallas, Texas</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">352</td><td>Nael B. Abu-Ghazaleh</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">353</td><td>Sara Rampazzi</td><td>University of Florida</td><td>Gainesville, Florida</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">354</td><td>Savvas Zannettou</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">5</td><td>Online harms</td></tr>
+<tr><td class="num">355</td><td>Sourav Das</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">356</td><td>Zubair Shafiq</td><td>University of California, Davis</td><td>Davis, California</td><td class="num">5</td><td>Privacy</td></tr>
+<tr><td class="num">357</td><td>Ben Fisch</td><td>Yale University</td><td>New Haven, Connecticut</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">358</td><td>Blase Ur</td><td>University of Chicago</td><td>Chicago, Illinois</td><td class="num">5</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">359</td><td>Di Wang</td><td>KAUST</td><td>Thuwal, Saudi Arabia</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">360</td><td>Engin Kirda</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">361</td><td>Guangdong Bai</td><td>City University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">362</td><td>Hao Zhou</td><td>The Hong Kong Polytechnic University</td><td>Hong Kong SAR</td><td class="num">5</td><td>Mobile security</td></tr>
+<tr><td class="num">363</td><td>Jeyavijayan Rajendran</td><td>Texas A&amp;M University</td><td>College Station, Texas</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">364</td><td>Kai Dong</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">365</td><td>Kaitai Liang</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">366</td><td>Liehuang Zhu</td><td>Beijing Institute of Technology</td><td>Beijing, China</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">367</td><td>Martin Strohmeier</td><td>armasuisse</td><td>Thun, Switzerland</td><td class="num">5</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">368</td><td>Martina Lindorfer</td><td>TU Wien</td><td>Vienna, Austria</td><td class="num">5</td><td>Mobile security</td></tr>
+<tr><td class="num">369</td><td>Michael Waidner</td><td>TU Darmstadt</td><td>Darmstadt, Germany</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">370</td><td>Murtuza Jadliwala</td><td>University of Texas at San Antonio</td><td>San Antonio, Texas</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">371</td><td>Nick Feamster</td><td>University of Chicago</td><td>Chicago, Illinois</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">372</td><td>Raluca A. Popa</td><td>University of California, Berkeley</td><td>Berkeley, California</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">373</td><td>Rui Zhu</td><td>Yale University</td><td>New Haven, Connecticut</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">374</td><td>Shawn Shan</td><td>Dartmouth College</td><td>Hanover, New Hampshire</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">375</td><td>Sri Aravinda Krishnan Thyagarajan</td><td>University of Sydney</td><td>Sydney, Australia</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">376</td><td>Thomas Eisenbarth</td><td>University of Lübeck</td><td>Lübeck, Germany</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">377</td><td>Thorsten Eisenhofer</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">378</td><td>Weili Han</td><td>Fudan University</td><td>Shanghai, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">379</td><td>Yaxing Yao</td><td>Johns Hopkins University</td><td>Baltimore, Maryland</td><td class="num">5</td><td>Usable security</td></tr>
+<tr><td class="num">380</td><td>Yu Hao</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">381</td><td>Zhendong Su</td><td>ETH Zurich</td><td>Zurich, Switzerland</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">382</td><td>Alena Naiakshina</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">5</td><td>Usable security</td></tr>
+<tr><td class="num">383</td><td>Anupam Das</td><td>North Carolina State University</td><td>Raleigh, North Carolina</td><td class="num">5</td><td>Usable security</td></tr>
+<tr><td class="num">384</td><td>Charles Zhang</td><td>Hong Kong University of Science and Technology</td><td>Hong Kong SAR</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">385</td><td>Chongzhou Fang</td><td>Rochester Institute of Technology</td><td>Rochester, New York</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">386</td><td>Dawu Gu</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">387</td><td>Fan Zhang</td><td>Yale University</td><td>New Haven, Connecticut</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">388</td><td>Gang Tan</td><td>Pennsylvania State University</td><td>State College, Pennsylvania</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">389</td><td>Georgios Smaragdakis</td><td>TU Delft</td><td>Delft, Netherlands</td><td class="num">5</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">390</td><td>Ghassan Karame</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">391</td><td>Hanshen Xiao</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">5</td><td>Privacy</td></tr>
+<tr><td class="num">392</td><td>Jian Weng</td><td>Jinan University</td><td>Guangzhou, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">393</td><td>Marco Squarcina</td><td>TU Wien</td><td>Vienna, Austria</td><td class="num">5</td><td>Mobile security</td></tr>
+<tr><td class="num">394</td><td>Rui Wen</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">395</td><td>Shaofeng Li</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">396</td><td>Thang Hoang</td><td>Virginia Tech</td><td>Blacksburg, Virginia</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">397</td><td>Vitaly Shmatikov</td><td>Cornell University</td><td>Ithaca, New York</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">398</td><td>Wanlei Zhou</td><td>City University of Macau</td><td>Macau, Macao SAR</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">399</td><td>Wenhai Wang</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">400</td><td>William Enck</td><td>North Carolina State University</td><td>Raleigh, North Carolina</td><td class="num">5</td><td>Supply chain</td></tr>
+<tr><td class="num">401</td><td>Xueqiang Wang</td><td>University of Central Florida</td><td>Orlando, Florida</td><td class="num">5</td><td>Mobile security</td></tr>
+<tr><td class="num">402</td><td>Yi Liu</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">403</td><td>Yonghwi Kwon</td><td>University of Maryland, College Park</td><td>College Park, Maryland</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">404</td><td>Yunheung Paek</td><td>Seoul National University</td><td>Seoul, South Korea</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">405</td><td>Yuseok Jeon</td><td>Korea University</td><td>Seoul, South Korea</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">406</td><td>Zhou Zhang</td><td>Beihang University</td><td>Beijing, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">407</td><td>Andrew Kwong</td><td>University of North Carolina</td><td>Chapel Hill, North Carolina</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">408</td><td>Bingsheng Zhang</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">409</td><td>Chenkai Weng</td><td>Arizona State University</td><td>Tempe, Arizona</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">410</td><td>David Lie</td><td>University of Toronto</td><td>Toronto, Canada</td><td class="num">5</td><td>Privacy</td></tr>
+<tr><td class="num">411</td><td>Diogo Barradas</td><td>University of Waterloo</td><td>Waterloo, Canada</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">412</td><td>Earlence Fernandes</td><td>University of California, San Diego</td><td>San Diego, California</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">413</td><td>Evgenios M. Kornaropoulos</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">414</td><td>Fraser Brown</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">415</td><td>Gaoning Pan</td><td>Hangzhou Dianzi University</td><td>Hangzhou, China</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">416</td><td>Guojun Peng</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">417</td><td>Hanxiao Chen</td><td>University of Electronic Science and Technology of China</td><td>Chengdu, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">418</td><td>Ioannis Demertzis</td><td>University of California, Santa Cruz</td><td>Santa Cruz, California</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">419</td><td>Jeman Park</td><td>Kyung Hee University</td><td>Seoul, South Korea</td><td class="num">5</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">420</td><td>Jianming Fu</td><td>Wuhan University</td><td>Wuhan, China</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">421</td><td>Jianwei Zhuge</td><td>Tsinghua University</td><td>Beijing, China</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">422</td><td>Manos Antonakakis</td><td>Georgia Institute of Technology</td><td>Atlanta, Georgia</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">423</td><td>Mu Zhang</td><td>University of Utah</td><td>Salt Lake City, Utah</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">424</td><td>Nicolas Papernot</td><td>University of Toronto</td><td>Toronto, Canada</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">425</td><td>Qing Guo</td><td>Nankai University</td><td>Tianjin, China</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">426</td><td>Rosanna Bellini</td><td>New York University</td><td>New York, New York</td><td class="num">5</td><td>Usable security</td></tr>
+<tr><td class="num">427</td><td>Santiago Torres-Arias</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">5</td><td>Supply chain</td></tr>
+<tr><td class="num">428</td><td>Sebastian Faust</td><td>TU Darmstadt</td><td>Darmstadt, Germany</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">429</td><td>Sheng Zhong</td><td>Nanjing University</td><td>Nanjing, China</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">430</td><td>Shengshan Hu</td><td>Huazhong University of Science and Technology</td><td>Wuhan, China</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">431</td><td>Sikhar Patranabis</td><td>IBM Research India</td><td>New Delhi, India</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">432</td><td>Sven Bugiel</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">433</td><td>Takeshi Sugawara</td><td>The University of Electro-Communications</td><td>Chofu, Japan</td><td class="num">5</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">434</td><td>Wenhao Wang</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">435</td><td>Yi Yang</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">436</td><td>Zheng Yu</td><td>Northwestern University</td><td>Evanston, Illinois</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">437</td><td>Zhuo Ma</td><td>Xidian University</td><td>Xi&#x27;an, China</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">438</td><td>Aaron Schulman</td><td>University of California, San Diego</td><td>San Diego, California</td><td class="num">5</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">439</td><td>Arvind S. Raj</td><td>Amrita Vishwa Vidyapeetham</td><td>Coimbatore, India</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">440</td><td>Christof Paar</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">441</td><td>Daniel Moghimi</td><td>Google</td><td>Mountain View, California</td><td class="num">5</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">442</td><td>David F. Oswald</td><td>University of Birmingham</td><td>Birmingham, United Kingdom</td><td class="num">5</td><td>Systems security</td></tr>
+<tr><td class="num">443</td><td>Giuseppe Ateniese</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">5</td><td>Authentication &amp; access control</td></tr>
+<tr><td class="num">444</td><td>Liyao Xiang</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">5</td><td>Privacy</td></tr>
+<tr><td class="num">445</td><td>Niklas Vogel</td><td>Goethe University Frankfurt</td><td>Frankfurt am Main, Germany</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">446</td><td>Peng Liu</td><td>Pennsylvania State University</td><td>State College, Pennsylvania</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">447</td><td>Pratyush Mishra</td><td>University of Pennsylvania</td><td>Philadelphia, Pennsylvania</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">448</td><td>Qin Wang</td><td>CSIRO</td><td>Canberra, Australia</td><td class="num">5</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">449</td><td>Shifeng Sun</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">450</td><td>Shirui Pan</td><td>Griffith University</td><td>Brisbane, Australia</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">451</td><td>Siu-Ming Yiu</td><td>University of Hong Kong</td><td>Hong Kong SAR</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">452</td><td>Srikanth V. Krishnamurthy</td><td>University of California, Riverside</td><td>Riverside, California</td><td class="num">5</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">453</td><td>Xiaogang Zhu</td><td>Adelaide University</td><td>Adelaide, Australia</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">454</td><td>Yanjun Zhang</td><td>Griffith University</td><td>Brisbane, Australia</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">455</td><td>Zheng Zhang</td><td>University of California</td><td>Oakland, California</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">456</td><td>Bruno Ribeiro</td><td>Purdue University</td><td>West Lafayette, Indiana</td><td class="num">5</td><td>ML security</td></tr>
+<tr><td class="num">457</td><td>Guangchi Liu</td><td>Southeast University</td><td>Nanjing, China</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">458</td><td>Lin Liu</td><td>National University of Defense Technology</td><td>Changsha, China</td><td class="num">5</td><td>Network security</td></tr>
+<tr><td class="num">459</td><td>Xu He</td><td>Hunan University</td><td>Changsha, China</td><td class="num">5</td><td>Software security</td></tr>
+<tr><td class="num">460</td><td>Yuncong Hu</td><td>Shanghai Jiao Tong University</td><td>Shanghai, China</td><td class="num">5</td><td>Applied cryptography</td></tr>
+<tr><td class="num">461</td><td>Shuo Shao</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">5</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">462</td><td>Kassem Fawaz</td><td>University of Wisconsin, Madison</td><td>Madison, Wisconsin</td><td class="num">4</td><td>Online harms</td></tr>
+<tr><td class="num">463</td><td>Farinaz Koushanfar</td><td>University of California, San Diego</td><td>San Diego, California</td><td class="num">4</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">464</td><td>Julian Loss</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">465</td><td>Yongdae Kim</td><td>KAIST</td><td>Daejeon, South Korea</td><td class="num">4</td><td>Wireless &amp; cellular</td></tr>
+<tr><td class="num">466</td><td>Charlie Jacomme</td><td>CISPA Helmholtz Center for Information Security</td><td>Saarbrücken, Germany</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">467</td><td>Gilles Barthe</td><td>Max Planck Institute for Security and Privacy</td><td>Bochum, Germany</td><td class="num">4</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">468</td><td>Yang Wang</td><td>University of Illinois Urbana-Champaign</td><td>Urbana, Illinois</td><td class="num">4</td><td>Usable security</td></tr>
+<tr><td class="num">469</td><td>Anwar Hithnawi</td><td>University of Toronto</td><td>Toronto, Canada</td><td class="num">4</td><td>Privacy</td></tr>
+<tr><td class="num">470</td><td>Ari Juels</td><td>Cornell University</td><td>Ithaca, New York</td><td class="num">4</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">471</td><td>Binbin Zhao</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">4</td><td>Software security</td></tr>
+<tr><td class="num">472</td><td>Bradley Reaves</td><td>North Carolina State University</td><td>Raleigh, North Carolina</td><td class="num">4</td><td>Malware &amp; cybercrime</td></tr>
+<tr><td class="num">473</td><td>Bryan Parno</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">4</td><td>Formal methods</td></tr>
+<tr><td class="num">474</td><td>Dave Levin</td><td>University of Maryland, College Park</td><td>College Park, Maryland</td><td class="num">4</td><td>Privacy</td></tr>
+<tr><td class="num">475</td><td>David Kohlbrenner</td><td>University of Washington</td><td>Seattle, Washington</td><td class="num">4</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">476</td><td>Eran Tromer</td><td>Boston University</td><td>Boston, Massachusetts</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">477</td><td>Flavio Toffalini</td><td>Ruhr-University Bochum</td><td>Bochum, Germany</td><td class="num">4</td><td>Software security</td></tr>
+<tr><td class="num">478</td><td>Jin Song Dong</td><td>National University of Singapore</td><td>Singapore</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">479</td><td>Ke Yi</td><td>Hong Kong University of Science and Technology</td><td>Hong Kong SAR</td><td class="num">4</td><td>Privacy</td></tr>
+<tr><td class="num">480</td><td>Prateek Saxena</td><td>National University of Singapore</td><td>Singapore</td><td class="num">4</td><td>ML security</td></tr>
+<tr><td class="num">481</td><td>Qiang Zeng</td><td>George Mason University</td><td>Fairfax, Virginia</td><td class="num">4</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">482</td><td>Riad S. Wahby</td><td>Carnegie Mellon University</td><td>Pittsburgh, Pennsylvania</td><td class="num">4</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">483</td><td>Xing Gao</td><td>University of Delaware</td><td>Newark, Delaware</td><td class="num">4</td><td>Supply chain</td></tr>
+<tr><td class="num">484</td><td>Chenggang Wu</td><td>Chinese Academy of Sciences</td><td>Beijing, China</td><td class="num">4</td><td>Systems security</td></tr>
+<tr><td class="num">485</td><td>Divya Gupta</td><td>Microsoft Research India</td><td>Bengaluru, India</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">486</td><td>Florian Schaub</td><td>University of Michigan</td><td>Ann Arbor, Michigan</td><td class="num">4</td><td>Usable security</td></tr>
+<tr><td class="num">487</td><td>Hong Hu</td><td>Pennsylvania State University</td><td>State College, Pennsylvania</td><td class="num">4</td><td>Software security</td></tr>
+<tr><td class="num">488</td><td>Hyungon Moon</td><td>UNIST</td><td>Ulsan, South Korea</td><td class="num">4</td><td>Software security</td></tr>
+<tr><td class="num">489</td><td>Ingrid Verbauwhede</td><td>KU Leuven</td><td>Leuven, Belgium</td><td class="num">4</td><td>Applied cryptography</td></tr>
+<tr><td class="num">490</td><td>Joshua Gancher</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">4</td><td>Formal methods</td></tr>
+<tr><td class="num">491</td><td>Jun Luo</td><td>Nanyang Technological University</td><td>Singapore</td><td class="num">4</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">492</td><td>Kevin Fu</td><td>Northeastern University</td><td>Boston, Massachusetts</td><td class="num">4</td><td>Hardware &amp; microarchitecture</td></tr>
+<tr><td class="num">493</td><td>Konrad Rieck</td><td>TU Berlin</td><td>Berlin, Germany</td><td class="num">4</td><td>Web security</td></tr>
+<tr><td class="num">494</td><td>Laurence T. Yang</td><td>Huazhong University of Science and Technology</td><td>Wuhan, China</td><td class="num">4</td><td>Blockchain &amp; finance</td></tr>
+<tr><td class="num">495</td><td>Ming Li</td><td>University of Arizona</td><td>Tucson, Arizona</td><td class="num">4</td><td>ML security</td></tr>
+<tr><td class="num">496</td><td>Ning Yu</td><td>Netflix Eyeline Studios</td><td>Los Angeles, California</td><td class="num">4</td><td>LLM &amp; AI security</td></tr>
+<tr><td class="num">497</td><td>Pascal Lafourcade</td><td>University Clermont Auvergne</td><td>Clermont-Ferrand, France</td><td class="num">4</td><td>Formal methods</td></tr>
+<tr><td class="num">498</td><td>Peiyu Liu</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">4</td><td>Software security</td></tr>
+<tr><td class="num">499</td><td>Peng Cheng</td><td>Zhejiang University</td><td>Hangzhou, China</td><td class="num">4</td><td>IoT &amp; CPS</td></tr>
+<tr><td class="num">500</td><td>Qingkai Shi</td><td>Nanjing University</td><td>Nanjing, China</td><td class="num">4</td><td>Network security</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="/assets/js/pimap.js"></script>

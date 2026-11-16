@@ -1,7 +1,7 @@
 ---
 permalink: /service/
 title: "Service"
-author_profile: true
+author_profile: false
 ---
 
 Awards &amp; Grants
