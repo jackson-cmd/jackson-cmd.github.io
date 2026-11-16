@@ -56,6 +56,30 @@ article.page:has(.resources-container) {
   color: var(--rc-text-main);
 }
 
+/* Back button on Resources sub-pages */
+.res-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.8rem 0.35rem 0.6rem;
+  border: 1px solid var(--rc-border);
+  border-radius: 999px;
+  background: var(--rc-card-bg);
+  color: var(--rc-text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.res-back:hover,
+.res-back:focus-visible {
+  border-color: var(--rc-accent);
+  color: var(--rc-accent);
+  text-decoration: none;
+}
+
 /* Dark Mode Overrides */
 html[data-theme="dark"] .resources-container {
   --rc-bg: #1e293b;
