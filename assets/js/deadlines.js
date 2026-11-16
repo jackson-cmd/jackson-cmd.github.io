@@ -377,7 +377,7 @@
     } else {
       if (noResultsEl) noResultsEl.classList.remove('is-visible');
       if (state.view === 'month') {
-        if (monthsGridEl) monthsGridEl.style.display = 'grid';
+        if (monthsGridEl) monthsGridEl.style.display = 'flex';
         if (tableViewEl) tableViewEl.classList.remove('is-active');
         renderMonthGrid(filtered);
       } else {
@@ -485,13 +485,69 @@
         const targetId = this.getAttribute('href').substring(1);
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // slide the month row to this card and bring the row into view
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
       });
     });
 
+    // Month row: arrow buttons, drag to scroll, button state
+    initMonthSlider();
+
     // Initial render
     update();
+  }
+
+  function initMonthSlider() {
+    const row = document.getElementById('cal-months-grid');
+    const prev = document.getElementById('cal-prev');
+    const next = document.getElementById('cal-next');
+    const btns = document.getElementById('cal-scroll-btns');
+    if (!row) return;
+
+    const step = () => {
+      const card = row.querySelector('.month-card.has-matches');
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      return card ? card.getBoundingClientRect().width + gap : row.clientWidth;
+    };
+    const sync = () => {
+      const max = row.scrollWidth - row.clientWidth - 6;  // snap stops a few pixels from either end
+      if (prev) prev.disabled = row.scrollLeft <= 6;
+      if (next) next.disabled = row.scrollLeft >= max;
+      if (btns) btns.hidden = state.view !== 'month' || row.style.display === 'none' || max <= 0;
+    };
+    if (prev) prev.addEventListener('click', () => row.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => row.scrollBy({ left: step(), behavior: 'smooth' }));
+    row.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    new MutationObserver(sync).observe(row, { childList: true, attributes: true, attributeFilter: ['style'] });
+
+    // Drag with the mouse (touch and trackpads scroll natively)
+    let down = false, startX = 0, startLeft = 0, moved = false;
+    row.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true; moved = false; startX = e.clientX; startLeft = row.scrollLeft;
+    });
+    window.addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) < 5) return;
+      if (!moved) { moved = true; row.classList.add('is-dragging'); }
+      row.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!down) return;
+      down = false;
+      if (moved) {
+        row.classList.remove('is-dragging');
+        // let the row snap to the nearest card after a drag
+        const s = step();
+        row.scrollTo({ left: Math.round(row.scrollLeft / s) * s, behavior: 'smooth' });
+      }
+    });
+    // a drag should not also count as a click on a conference row
+    row.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    sync();
   }
 
   if (document.readyState === 'loading') {
