@@ -123,6 +123,9 @@ include:
   - _pages
   - files
 exclude:
+  - scripts
+  - docker-compose.yaml
+  - _config_docker.yml
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache
