@@ -243,3 +243,24 @@
     }
   }
 }
+
+/* Publication entries: author line and plain text links */
+.pub-authors {
+  margin-bottom: 0.2em;
+}
+
+.pub-venue {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+.pub-links a {
+  margin-right: 0.9em;
+  white-space: nowrap;
+}
+
+.pub-bibtex {
+  font-size: $type-size-7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

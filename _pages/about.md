@@ -9,7 +9,13 @@ redirect_from:
 
 I am a Ph.D. student in Computer Science at [Texas A&M University](https://www.tamu.edu/), advised by [Prof. Nitesh Saxena](https://engineering.tamu.edu/cse/profiles/saxena-nitesh.html) in the [SPIES Lab](https://spies.engr.tamu.edu/).
 
-My research focuses on **agentic security in high-stakes domains** — attacks against and defenses for LLM agents across the harness, agentic loop, tools, skills, and memory, including prompt injection, indirect prompt injection, prompt leaking, jailbreak, and memory poisoning. My current work uses financial trading agents as a representative case ([SoK: Trading Agents or Market Crashers?](https://arxiv.org/abs/2609.19705)).
+My research focuses on the security of **LLM agents that act with real authority**: agents that delete files, move money, and place trades on behalf of their users. I work on three kinds of agents:
+
+- **Rogue AI agents.** Coding and assistant agents keep making the news for deleting production databases or sending money nobody approved, often with no attacker involved. [ROGUE-AI](/publication/2026-11-rogue-ai) rebuilds reported agent incidents offline, each next to a control without the blamed cause, to test what actually went wrong and which defenses stop it.
+- **Trading agents.** LLM trading agents read the same news feeds and copy the same few published designs, so one fake headline can push many of them into the same trade at once. I study how fabricated news steers them ([Fake News, Real Crashes](/publication/2026-10-fake-news-real-crashes)) and how academic trading agents fail under market stress and attack ([Trading Agents or Market Crashers?](/publication/2026-09-trading-agents-market-crashers)).
+- **Options-trading agents.** Agents now place options orders at retail brokers, where a wrong strike or expiry can mean unbounded loss. [Unbounded Losses, Unchecked Inputs](/publication/2026-10-options-trading-agents) measures which safeguards these agents actually enforce.
+
+Across all three, I look at the whole agent rather than only its model (the harness, tools, skills, and memory), study attacks such as prompt injection, indirect prompt injection, and memory poisoning, and build defenses that hold once agents are deployed.
 
 Before Texas A&M, I earned my M.S. in Electrical and Computer Engineering from [Carnegie Mellon University](https://www.cmu.edu/), where I worked in [CyLab](https://www.cylab.cmu.edu/) on TypeScript taint analysis and vulnerability discovery across the npm ecosystem. I completed my B.A. in Computer Science with a Minor in Statistics at the [University of Minnesota, Twin Cities](https://twin-cities.umn.edu/).
 

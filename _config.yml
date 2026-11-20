@@ -4,7 +4,7 @@ site_theme               : "default"
 title                    : "Mengxiao Wang"
 title_separator          : "-"
 name                     : &name "Mengxiao Wang"
-description              : &description "Ph.D. student in the SPIES Lab at Texas A&M University. Research on the security of LLM agents in high-stakes domains."
+description              : &description "Ph.D. student in the SPIES Lab at Texas A&M University. Research on the security of rogue AI agents, LLM trading agents, and options-trading agents."
 url                      : https://jackson-cmd.github.io
 baseurl                  : ""
 repository               : "jackson-cmd/jackson-cmd.github.io"
@@ -107,9 +107,13 @@ facebook:
 og_image                 :
 og_description           :
 social:
-  type                   :
-  name                   :
+  type                   : Person
+  name                   : "Mengxiao Wang"
   links:
+    - "https://scholar.google.com/citations?user=wAQ5cpIAAAAJ"
+    - "https://orcid.org/0009-0006-7436-1054"
+    - "https://openreview.net/profile?id=~Mengxiao_Wang1"
+    - "https://github.com/jackson-cmd"
 
 # Analytics
 analytics:
@@ -193,6 +197,7 @@ plugins:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from
   - jemoji
 
 # Mimic GitHub Pages with --safe
@@ -201,6 +206,7 @@ whitelist:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from
   - jemoji
 
 # Archives

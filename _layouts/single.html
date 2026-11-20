@@ -36,6 +36,10 @@ layout: default
         
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif page.collection == 'publications' and page.authors %}
+          <p class="pub-authors">{% include pub-authors.html authors=page.authors %}</p>
+          <p class="pub-venue"><i>{% if page.conference %}{{ page.conference }}{% else %}{{ page.venue }}{% endif %}</i>, {{ page.date | date: "%Y" }}</p>
+          <p>{% include pub-links.html pub=page %}</p>
         {% elsif page.venue and page.date %}
           <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
@@ -45,6 +49,14 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+        {% if page.collection == 'publications' and page.authors %}
+        <h2>{% if page.summary_only %}Summary{% else %}Abstract{% endif %}</h2>
+        {{ content }}
+        {% if page.bibtex %}
+        <h2>BibTeX</h2>
+        <pre class="pub-bibtex"><code>{{ page.bibtex | strip | escape }}</code></pre>
+        {% endif %}
+        {% else %}
         {{ content }}
 
         {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
@@ -71,6 +83,7 @@ layout: default
           <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
         {% elsif page.bibtexurl %}
           <p style="font-size: smaller"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+        {% endif %}
         {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
