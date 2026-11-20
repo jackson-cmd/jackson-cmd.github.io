@@ -1,3 +1,6 @@
 <!-- start custom analytics snippet -->
-
+{% if site.analytics.goatcounter %}
+<script data-goatcounter="https://{{ site.analytics.goatcounter }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="{{ '/assets/js/pageviews.js' | relative_url }}" data-gc="{{ site.analytics.goatcounter }}" defer></script>
+{% endif %}
 <!-- end custom analytics snippet -->

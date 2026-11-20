@@ -882,3 +882,8 @@ html[data-theme="dark"] mark.cal-hl {
   background: rgba(234, 179, 8, 0.35);
   color: #fef08a;
 }
+
+/* Visit counts (assets/js/pageviews.js): hidden until a count arrives */
+[data-views]:empty { display: none; }
+.res-views { margin-left: 0.7rem; font-size: 0.82rem; color: var(--rc-text-muted); font-variant-numeric: tabular-nums; }
+.res-views b { color: var(--rc-text-main); font-weight: 600; }
