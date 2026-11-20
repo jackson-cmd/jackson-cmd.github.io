@@ -118,7 +118,7 @@ social:
 # Analytics
 analytics:
   provider               :  "custom"
-  goatcounter            :  # GoatCounter site code: "abc" for abc.goatcounter.com; empty = no tracking
+  goatcounter            :  "jackson-cmd"  # GoatCounter site code (jackson-cmd.goatcounter.com); empty = no tracking
   google:
     tracking_id          :
 
