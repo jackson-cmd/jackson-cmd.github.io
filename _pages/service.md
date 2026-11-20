@@ -23,11 +23,19 @@ Program Committee
 
 **Workshops**
 
-* **AAAI 2027:** LLM Agents Under Threat in Cyberspace; SAFE (Synthetic and Adversarial ForEnsics); FinFM (Foundation Models and Generative AI for Finance); Agentic Laboratories; TEA-OS (Trustworthy Evolution of AI Agents); Social Simulation with LLMs; AgenticSE (Agentic Software Engineering); DiMiGenAIS (Disinformation and Misinformation under the Lens of Generative AI Safety)
-* **WWW 2027:** HCRS (Human-Centered Recommender Systems); SynWeb (Trustworthy Synthetic Data for the Web)
-* **NAACL 2027:** Student Research Workshop (SRW)
-* **WSDM 2027:** Management of Agentic Systems
-* **WACV 2027:** Data4VFM
+* **LLM Agents Under Threat@AAAI** &mdash; 2027
+* **SAFE@AAAI** &mdash; 2027
+* **FinFM@AAAI** &mdash; 2027
+* **Agentic Labs@AAAI** &mdash; 2027
+* **TEA-OS@AAAI** &mdash; 2027
+* **Social Sim@AAAI** &mdash; 2027
+* **AgenticSE@AAAI** &mdash; 2027
+* **DiMiGenAIS@AAAI** &mdash; 2027
+* **HCRS@WWW** &mdash; 2027
+* **SynWeb@WWW** &mdash; 2027
+* **SRW@NAACL** &mdash; 2027
+* **Management of Agentic Systems@WSDM** &mdash; 2027
+* **Data4VFM@WACV** &mdash; 2027
 
 Artifact Evaluation Committee
 ======
