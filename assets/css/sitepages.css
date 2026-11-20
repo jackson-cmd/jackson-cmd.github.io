@@ -1,0 +1,33 @@
+/* Tools, Impact and Talks pages. Uses the theme's CSS variables so light and dark modes both work. */
+.sp-lead { color: var(--global-text-color-light, inherit); margin-bottom: 1.4em; }
+.sp-list { display: grid; gap: 0.9rem; margin: 0.6em 0 1.8em; }
+.sp-item {
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  padding: 0.85rem 1rem 0.75rem;
+}
+.sp-item h3 { margin: 0 0 0.25em; font-size: 1.05em; }
+.sp-item h3 a { text-decoration: none; }
+.sp-item p { margin: 0 0 0.45em; font-size: 0.9em; line-height: 1.55; }
+.sp-meta { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; align-items: center; font-size: 0.8em; }
+.sp-meta a { white-space: nowrap; }
+.sp-tag {
+  display: inline-block;
+  padding: 0.05em 0.5em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.sp-stars:empty, .sp-views:empty { display: none; }
+.sp-figures { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.6em 0 1.6em; }
+.sp-figure {
+  flex: 1 1 150px;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+}
+.sp-figure strong { display: block; font-size: 1.5em; line-height: 1.2; }
+.sp-figure span { font-size: 0.8em; }
+.sp-table { width: 100%; font-size: 0.88em; }
+.sp-table td, .sp-table th { padding: 0.45em 0.6em; vertical-align: top; }
+.sp-table td.num, .sp-table th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }

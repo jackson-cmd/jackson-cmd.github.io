@@ -42,6 +42,29 @@ description: "Security conference deadlines: typical submission months for IEEE 
         <div class="stat-pill"><strong>13</strong> CCF A Venues</div>
         <div class="stat-pill"><strong>3</strong> Research Tracks (SEC / AI / NLP)</div>
       </div>
+
+      <!-- Calendar subscription -->
+      {% assign feed = site.data.deadline_feed %}
+      <div class="cal-subscribe" id="subscribe">
+        <div class="cal-sub-text">
+          <strong><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i> Add the deadlines to your calendar</strong>
+          <span>Exact dates of the next deadlines ({{ feed.events }} events, {{ feed.conferences_total }} conferences). Dates not yet announced are repeated from the last edition and marked <em>Expected</em>. Times are converted to your time zone, with a reminder 7 days before. Updated {{ feed.updated }}.</span>
+        </div>
+        <div class="cal-sub-feeds">
+          {% assign feeds = "security-deadlines|Security only|" | append: feed.security_events | append: ";conference-deadlines|Security, AI and NLP|" | append: feed.events | split: ";" %}
+          {% for f in feeds %}
+            {% assign p = f | split: "|" %}
+            {% capture ics %}{{ site.url | default: "https://jackson-cmd.github.io" | replace: "https://", "" }}/assets/cal/{{ p[0] }}.ics{% endcapture %}
+            <div class="cal-sub-row">
+              <span class="cal-sub-name">{{ p[1] }} <small>{{ p[2] }} events</small></span>
+              <a class="cal-sub-btn" href="https://calendar.google.com/calendar/render?cid=webcal://{{ ics }}" target="_blank" rel="noopener">Google</a>
+              <a class="cal-sub-btn" href="webcal://{{ ics }}">Apple / Outlook</a>
+              <a class="cal-sub-btn" href="{{ '/assets/cal/' | append: p[0] | append: '.ics' | relative_url }}" download>.ics</a>
+              <button type="button" class="cal-sub-btn cal-sub-copy" data-url="https://{{ ics }}">Copy link</button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </header>
 
     <!-- Controls Toolbar -->

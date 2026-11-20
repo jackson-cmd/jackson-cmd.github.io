@@ -1,0 +1,5 @@
+# Talks listed on /talks/, newest first. Fields: date (YYYY-MM-DD), title,
+# event, location, slides (URL or /files/... path), video (URL), paper
+# (permalink of a publication, optional). The page stays unpublished
+# (published: false in _pages/talks.md) until this list has entries.
+[]

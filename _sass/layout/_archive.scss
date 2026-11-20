@@ -264,3 +264,40 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Publication entries: folded TL;DR and BibTeX */
+.pub-actions { margin-bottom: 0.4em; }
+.pub-toggles { white-space: nowrap; }
+.pub-toggle,
+.pub-copy {
+  font: inherit;
+  font-size: $type-size-7;
+  line-height: 1.4;
+  padding: 0.1em 0.55em;
+  margin-right: 0.45em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.pub-toggle:hover,
+.pub-toggle[aria-expanded="true"] { border-color: var(--global-link-color); color: var(--global-link-color); }
+.pub-panel {
+  position: relative;
+  margin: 0.2em 0 1em;
+  padding: 0.6em 0.9em;
+  border-left: 3px solid var(--global-border-color);
+  background: rgba(127, 127, 127, 0.06);
+  font-size: $type-size-6;
+}
+.pub-panel p:last-child { margin-bottom: 0; }
+.pub-bib pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: $type-size-7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.pub-bib .pub-copy { position: absolute; top: 0.45em; right: 0.5em; margin: 0; }

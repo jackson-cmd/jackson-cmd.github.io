@@ -1,0 +1,2433 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//jackson-cmd.github.io//Conference deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Conference deadlines (Security\, AI\, NLP)
+X-WR-CALDESC:Upcoming paper deadlines. Source: https://jackson-cmd.github
+ .io/resources/security-conference-deadlines/
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:codaspy-2027-paper-deadline-202611241159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261124T112900Z
+DTEND:20261124T115900Z
+SUMMARY:CODASPY 2027 Paper deadline
+DESCRIPTION:Conference on Data and Application Security and Privacy 2027\
+ nPaper deadline: 2026-11-23 23:59 UTC-12:00\nTrack: Security | Not in COR
+ E | CCF C | acceptance 22%\nAbstract registration required (1 week before
+  deadline AoE).\nAlways confirm on the official call for papers.\nCalenda
+ r: https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:http://www.codaspy.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CODASPY deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acisp-2027-paper-deadline-cycle-1-202612011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261201T112900Z
+DTEND:20261201T115900Z
+SUMMARY:ACISP 2027 Paper deadline (cycle 1)
+DESCRIPTION:Australasia Conference on Information Security and Privacy 20
+ 27\nPaper deadline (cycle 1): 2026-11-30 23:59 UTC-12:00\nTrack: Security
+  | CORE B | CCF C | acceptance 29.6%\nAlways confirm on the official call
+  for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-
+ conference-deadlines/
+URL:https://acisp.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACISP deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wisec-2027-paper-deadline-cycle-1-202612011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261201T112900Z
+DTEND:20261201T115900Z
+SUMMARY:WiSec 2027 Paper deadline (cycle 1)
+DESCRIPTION:ACM Conference on Security and Privacy in Wireless and Mobile
+  Networks 2027\nPaper deadline (cycle 1): 2026-11-30 23:59 UTC-12:00\nTra
+ ck: Security | CORE B | CCF C | acceptance 20.6%\nAlways confirm on the o
+ fficial call for papers.\nCalendar: https://jackson-cmd.github.io/resourc
+ es/security-conference-deadlines/
+URL:https://ntu-dtc.github.io/wisec2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:WiSec deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pets-2027-paper-deadline-issue-3-paper-submission-deadline-2026120111
+ 59@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261201T112959Z
+DTEND:20261201T115959Z
+SUMMARY:PETS 2027 Paper deadline (Issue 3 Paper Submission Deadline)
+DESCRIPTION:Privacy Enhancing Technologies Symposium 2027\nPaper deadline
+  (Issue 3 Paper Submission Deadline): 2026-11-30 23:59 UTC-12:00\nTrack: 
+ Security | CORE A | CCF C | acceptance 23.1%\nIssue 3 Paper Submission De
+ adline\nAlways confirm on the official call for papers.\nCalendar: https:
+ //jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://petsymposium.org/cfp27.php
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PETS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:blocksys-2027-paper-deadline-round-1-submission-deadline-202612011159
+ @jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261201T112959Z
+DTEND:20261201T115959Z
+SUMMARY:BlockSys 2027 Paper deadline (Round 1 Submission Deadline)
+DESCRIPTION:International Conference on Blockchain\, Artificial Intellige
+ nce\, and Trustworthy Systems 2027\nPaper deadline (Round 1 Submission De
+ adline): 2026-11-30 23:59 UTC-12:00\nTrack: Security | Not in CORE | CCF 
+ C | acceptance 47.1%\nRound 1 Submission Deadline\nAlways confirm on the 
+ official call for papers.\nCalendar: https://jackson-cmd.github.io/resour
+ ces/security-conference-deadlines/
+URL:https://blocksys.info/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BlockSys deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fse-2027-paper-deadline-202612021159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261202T112959Z
+DTEND:20261202T115959Z
+SUMMARY:FSE 2027 Paper deadline
+DESCRIPTION:Fast Software Encryption 2027\nPaper deadline: 2026-12-01 23:
+ 59 UTC-12:00\nTrack: Security | CORE B | CCF B | acceptance 26.3%\nToSC\,
+  Volume 2027\, Issue 1 Submission deadline\nAlways confirm on the officia
+ l call for papers.\nCalendar: https://jackson-cmd.github.io/resources/sec
+ urity-conference-deadlines/
+URL:https://fse.iacr.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FSE deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dsn-2027-paper-deadline-202612031159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261203T112900Z
+DTEND:20261203T115900Z
+SUMMARY:DSN 2027 Paper deadline
+DESCRIPTION:International Conference on Dependable Systems and Networks 2
+ 027\nPaper deadline: 2026-12-02 23:59 UTC-12:00\nTrack: Security | CORE A
+  | CCF B | acceptance 20.1%\nAbstract registration required (1 week befor
+ e deadline AoE).\nAlways confirm on the official call for papers.\nCalend
+ ar: https://jackson-cmd.github.io/resources/security-conference-deadlines
+ /
+URL:https://dsn2027-berlin.github.io/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DSN deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:euros-p-2027-paper-deadline-202612031159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261203T112900Z
+DTEND:20261203T115900Z
+SUMMARY:EuroS&P 2027 Paper deadline
+DESCRIPTION:IEEE European Symposium on Security and Privacy 2027\nPaper d
+ eadline: 2026-12-02 23:59 UTC-12:00\nTrack: Security | CORE A | CCF C | a
+ cceptance 19.3%\nAbstract registration required (1 week before deadline A
+ oE).\nAlways confirm on the official call for papers.\nCalendar: https://
+ jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://eurosp2027.ieee-security.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EuroS&P deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icaps-2027-abstract-deadline-202612081159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261208T112959Z
+DTEND:20261208T115959Z
+SUMMARY:ICAPS 2027 Abstract deadline
+DESCRIPTION:International Conference on Automated Planning and Scheduling
+  2027\nAbstract deadline: 2026-12-07 23:59 UTC-12:00\nTrack: AI | CORE A*
+  | CCF B | acceptance 23.2%\nAlways confirm on the official call for pape
+ rs.\nCalendar: https://jackson-cmd.github.io/resources/security-conferenc
+ e-deadlines/
+URL:https://icaps27.icaps-conference.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICAPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dimva-2027-paper-deadline-cycle-1-202612111159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261211T112900Z
+DTEND:20261211T115900Z
+SUMMARY:DIMVA 2027 Paper deadline (cycle 1)
+DESCRIPTION:Conference on Detection of Intrusions and Malware & Vulnerabi
+ lity Assessment 2027\nPaper deadline (cycle 1): 2026-12-10 23:59 UTC-12:0
+ 0\nTrack: Security | CORE B | CCF C | acceptance 26.5%\nAbstract registra
+ tion required (1 week before deadline AoE).\nAlways confirm on the offici
+ al call for papers.\nCalendar: https://jackson-cmd.github.io/resources/se
+ curity-conference-deadlines/
+URL:https://www.dimva.org/dimva2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DIMVA deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:asiaccs-2027-paper-deadline-cycle-2-202612121159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261212T112900Z
+DTEND:20261212T115900Z
+SUMMARY:AsiaCCS 2027 Paper deadline (cycle 2)
+DESCRIPTION:ACM Asia Conference on Computer and Communications Security 2
+ 027\nPaper deadline (cycle 2): 2026-12-11 23:59 UTC-12:00\nTrack: Securit
+ y | CORE A | CCF C | acceptance 18.3%\nAlways confirm on the official cal
+ l for papers.\nCalendar: https://jackson-cmd.github.io/resources/security
+ -conference-deadlines/
+URL:https://asiaccs2027.cityu.edu.mo/home/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AsiaCCS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aamas-2027-paper-deadline-202612121159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261212T112959Z
+DTEND:20261212T115959Z
+SUMMARY:AAMAS 2027 Paper deadline
+DESCRIPTION:International Joint Conference on Autonomous Agents and Multi
+ -agent Systems 2027\nPaper deadline: 2026-12-11 23:59 UTC-12:00\nTrack: A
+ I | CORE A | CCF B | acceptance 25.3%\nAAAI fast track\; eligible AAAI-27
+  Main Technical Track resubmissions only\nAlways confirm on the official 
+ call for papers.\nCalendar: https://jackson-cmd.github.io/resources/secur
+ ity-conference-deadlines/
+URL:https://warwick.ac.uk/fac/sci/dcs/aamas2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AAMAS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icaps-2027-paper-deadline-202612151159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261215T112959Z
+DTEND:20261215T115959Z
+SUMMARY:ICAPS 2027 Paper deadline
+DESCRIPTION:International Conference on Automated Planning and Scheduling
+  2027\nPaper deadline: 2026-12-14 23:59 UTC-12:00\nTrack: AI | CORE A* | 
+ CCF B | acceptance 23.2%\nAlways confirm on the official call for papers.
+ \nCalendar: https://jackson-cmd.github.io/resources/security-conference-d
+ eadlines/
+URL:https://icaps27.icaps-conference.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICAPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sec-2027-paper-deadline-202612161159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261216T112900Z
+DTEND:20261216T115900Z
+SUMMARY:SEC 2027 Paper deadline
+DESCRIPTION:IFIP International Information Security Conference 2027\nPape
+ r deadline: 2026-12-15 23:59 UTC-12:00\nTrack: Security | CORE B | CCF C 
+ | acceptance 25.4%\nAlways confirm on the official call for papers.\nCale
+ ndar: https://jackson-cmd.github.io/resources/security-conference-deadlin
+ es/
+URL:https://ifipsec.org/cfp.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SEC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icdf2c-2027-paper-deadline-full-paper-submission-deadline-20261216115
+ 9@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261216T112959Z
+DTEND:20261216T115959Z
+SUMMARY:ICDF2C 2027 Paper deadline (Full Paper Submission deadline)
+DESCRIPTION:International Conference on Digital Forensics & Cyber Crime 2
+ 027\nPaper deadline (Full Paper Submission deadline): 2026-12-15 23:59 UT
+ C-12:00\nTrack: Security | Not in CORE | CCF C | acceptance 33.4%\nFull P
+ aper Submission deadline\nAlways confirm on the official call for papers.
+ \nCalendar: https://jackson-cmd.github.io/resources/security-conference-d
+ eadlines/
+URL:https://icdf2c.eai-conferences.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICDF2C deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:naacl-2027-paper-deadline-202612241159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261224T112959Z
+DTEND:20261224T115959Z
+SUMMARY:NAACL 2027 Paper deadline
+DESCRIPTION:North American Chapter of the Association for Computational L
+ inguistics 2027\nPaper deadline: 2026-12-23 23:59 UTC-12:00\nTrack: NLP |
+  CORE A | CCF B | acceptance 24.6%\nNAACL commitment after ARR meta-revie
+ ws\; reviewed papers only\nAlways confirm on the official call for papers
+ .\nCalendar: https://jackson-cmd.github.io/resources/security-conference-
+ deadlines/
+URL:https://2027.naacl.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NAACL deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:coling-2027-paper-deadline-202612241159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20261224T112959Z
+DTEND:20261224T115959Z
+SUMMARY:COLING 2027 Paper deadline
+DESCRIPTION:International Conference on Computational Linguistics 2027\nP
+ aper deadline: 2026-12-23 23:59 UTC-12:00\nTrack: NLP | CORE B | CCF B | 
+ acceptance 34.9%\nCommitment deadline for long research papers reviewed b
+ y ARR\nAlways confirm on the official call for papers.\nCalendar: https:/
+ /jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2027.coling-iccl.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:COLING deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ijcai-2027-abstract-deadline-202701051159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270105T112959Z
+DTEND:20270105T115959Z
+SUMMARY:IJCAI 2027 Abstract deadline
+DESCRIPTION:International Joint Conference on Artificial Intelligence 202
+ 7\nAbstract deadline: 2027-01-04 23:59 UTC-12:00\nTrack: AI | CORE A* | C
+ CF B | acceptance 15.3%\nSeparate satellite event: August 15-17\, 2027\, 
+ Hengqin\, China\nAlways confirm on the official call for papers.\nCalenda
+ r: https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2027.ijcai.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IJCAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acl-2027-paper-deadline-arr-submission-202701051159@jackson-cmd.githu
+ b.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270105T112959Z
+DTEND:20270105T115959Z
+SUMMARY:ACL 2027 Paper deadline (ARR Submission)
+DESCRIPTION:Annual Meeting of the Association for Computational Linguisti
+ cs 2027\nPaper deadline (ARR Submission): 2027-01-04 23:59 UTC-12:00\nTra
+ ck: NLP | CORE A* | CCF A | acceptance 19.8%\nARR Submission\nAlways conf
+ irm on the official call for papers.\nCalendar: https://jackson-cmd.githu
+ b.io/resources/security-conference-deadlines/
+URL:https://2027.aclweb.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACL deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ccs-2027-expected-abstract-deadline-202701081159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270108T112959Z
+DTEND:20270108T115959Z
+SUMMARY:CCS 2027 Expected abstract deadline
+DESCRIPTION:ACM Conference on Computer and Communications Security 2027\n
+ Expected abstract deadline: 2027-01-07 23:59 UTC-12:00\nTrack: Security |
+  CORE A* | CCF A | acceptance 20.5%\nNot announced yet\; date estimated f
+ rom the 2026 edition.\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://www.sigsac.org/ccs/CCS2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CCS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esorics-2027-expected-paper-deadline-winter-202701101159@jackson-cmd.
+ github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270110T112959Z
+DTEND:20270110T115959Z
+SUMMARY:ESORICS 2027 Expected paper deadline (Winter)
+DESCRIPTION:European Symposium on Research in Computer Security 2027\nExp
+ ected paper deadline (Winter): 2027-01-09 23:59 UTC-12:00\nTrack: Securit
+ y | CORE A | CCF B | acceptance 15.7%\nNot announced yet\; date estimated
+  from the 2026 edition.\nAlways confirm on the official call for papers.\
+ nCalendar: https://jackson-cmd.github.io/resources/security-conference-de
+ adlines/
+URL:https://sites.google.com/di.uniroma1.it/esorics2026/home
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ESORICS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ijcai-2027-paper-deadline-202701121159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270112T112959Z
+DTEND:20270112T115959Z
+SUMMARY:IJCAI 2027 Paper deadline
+DESCRIPTION:International Joint Conference on Artificial Intelligence 202
+ 7\nPaper deadline: 2027-01-11 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF 
+ B | acceptance 15.3%\nSeparate satellite event: August 15-17\, 2027\, Hen
+ gqin\, China\nAlways confirm on the official call for papers.\nCalendar: 
+ https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2027.ijcai.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IJCAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icml-2027-abstract-deadline-202701151159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270115T112959Z
+DTEND:20270115T115959Z
+SUMMARY:ICML 2027 Abstract deadline
+DESCRIPTION:International Conference on Machine Learning 2027\nAbstract d
+ eadline: 2027-01-14 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF A | accept
+ ance 27.0%\nAlways confirm on the official call for papers.\nCalendar: ht
+ tps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://icml.cc/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ccs-2027-expected-paper-deadline-cycle-1-202701151159@jackson-cmd.git
+ hub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270115T112959Z
+DTEND:20270115T115959Z
+SUMMARY:CCS 2027 Expected paper deadline (Cycle 1)
+DESCRIPTION:ACM Conference on Computer and Communications Security 2027\n
+ Expected paper deadline (Cycle 1): 2027-01-14 23:59 UTC-12:00\nTrack: Sec
+ urity | CORE A* | CCF A | acceptance 20.5%\nNot announced yet\; date esti
+ mated from the 2026 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://www.sigsac.org/ccs/CCS2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CCS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ches-2027-paper-deadline-schedule-for-tches-volume-2027-3-20270116115
+ 9@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270116T112959Z
+DTEND:20270116T115959Z
+SUMMARY:CHES 2027 Paper deadline (Schedule for TCHES Volume 2027/3)
+DESCRIPTION:International Conference on Cryptographic Hardware and Embedd
+ ed Systems 2027\nPaper deadline (Schedule for TCHES Volume 2027/3): 2027-
+ 01-15 23:59 UTC-12:00\nTrack: Security | CORE A | CCF B | acceptance 28.7
+ %\nSchedule for TCHES Volume 2027/3\nAlways confirm on the official call 
+ for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-c
+ onference-deadlines/
+URL:https://ches.iacr.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CHES deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gecco-2027-abstract-deadline-202701191159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270119T112959Z
+DTEND:20270119T115959Z
+SUMMARY:GECCO 2027 Abstract deadline
+DESCRIPTION:Genetic and Evolutionary Computation Conference 2027\nAbstrac
+ t deadline: 2027-01-18 23:59 UTC-12:00\nTrack: AI | CORE A | CCF C | acce
+ ptance 35.9%\nAlways confirm on the official call for papers.\nCalendar: 
+ https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://gecco-2027.sigevo.org/HomePage
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:GECCO deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acns-2027-paper-deadline-cycle-2-202701221159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270122T112900Z
+DTEND:20270122T115900Z
+SUMMARY:ACNS 2027 Paper deadline (cycle 2)
+DESCRIPTION:International Conference on Applied Cryptography and Network 
+ Security 2027\nPaper deadline (cycle 2): 2027-01-21 23:59 UTC-12:00\nTrac
+ k: Security | CORE B | CCF C | acceptance 22.3%\nAlways confirm on the of
+ ficial call for papers.\nCalendar: https://jackson-cmd.github.io/resource
+ s/security-conference-deadlines/
+URL:https://acns2027.isg.rhul.ac.uk/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACNS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icml-2027-paper-deadline-202701231159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270123T112959Z
+DTEND:20270123T115959Z
+SUMMARY:ICML 2027 Paper deadline
+DESCRIPTION:International Conference on Machine Learning 2027\nPaper dead
+ line: 2027-01-22 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF A | acceptanc
+ e 27.0%\nAlways confirm on the official call for papers.\nCalendar: https
+ ://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://icml.cc/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gecco-2027-paper-deadline-202701261159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270126T112959Z
+DTEND:20270126T115959Z
+SUMMARY:GECCO 2027 Paper deadline
+DESCRIPTION:Genetic and Evolutionary Computation Conference 2027\nPaper d
+ eadline: 2027-01-25 23:59 UTC-12:00\nTrack: AI | CORE A | CCF C | accepta
+ nce 35.9%\nAlways confirm on the official call for papers.\nCalendar: htt
+ ps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://gecco-2027.sigevo.org/HomePage
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:GECCO deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:usenix-security-2027-paper-deadline-cycle-2-202701271159@jackson-cmd.
+ github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270127T112900Z
+DTEND:20270127T115900Z
+SUMMARY:USENIX Security 2027 Paper deadline (cycle 2)
+DESCRIPTION:USENIX Security Symposium 2027\nPaper deadline (cycle 2): 202
+ 7-01-26 23:59 UTC-12:00\nTrack: Security | CORE A* | CCF A | acceptance 1
+ 5.4%\nAbstract registration required (1 week before deadline AoE).\nAlway
+ s confirm on the official call for papers.\nCalendar: https://jackson-cmd
+ .github.io/resources/security-conference-deadlines/
+URL:https://www.usenix.org/conference/usenixsecurity27
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:USENIX Security deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:csfw-2027-paper-deadline-cycle-3-202701291159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270129T112900Z
+DTEND:20270129T115900Z
+SUMMARY:CSFW 2027 Paper deadline (cycle 3)
+DESCRIPTION:IEEE Computer Security Foundations Workshop 2027\nPaper deadl
+ ine (cycle 3): 2027-01-28 23:59 UTC-12:00\nTrack: Security | CORE A | CCF
+  B | acceptance 20.6%\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://www.ieee-security.org/TC/CSF2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSFW deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:colt-2027-paper-deadline-202701301159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270130T112959Z
+DTEND:20270130T115959Z
+SUMMARY:COLT 2027 Paper deadline
+DESCRIPTION:Annual Conference on Computational Learning Theory 2027\nPape
+ r deadline: 2027-01-29 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF B | acc
+ eptance 32.6%\nExpected rebuttal March 29 - April 2\; author notification
+  on or before May 3.\nAlways confirm on the official call for papers.\nCa
+ lendar: https://jackson-cmd.github.io/resources/security-conference-deadl
+ ines/
+URL:https://learningtheory.org/colt2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:COLT deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ijcnn-2027-paper-deadline-202702011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270201T112959Z
+DTEND:20270201T115959Z
+SUMMARY:IJCNN 2027 Paper deadline
+DESCRIPTION:International Joint Conference on Neural Networks 2027\nPaper
+  deadline: 2027-01-31 23:59 UTC-12:00\nTrack: AI | CORE B | CCF C | accep
+ tance 46.3%\nAlways confirm on the official call for papers.\nCalendar: h
+ ttps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://ijcnn.org/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IJCNN deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:blocksys-2027-paper-deadline-round-2-submission-deadline-202702011159
+ @jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270201T112959Z
+DTEND:20270201T115959Z
+SUMMARY:BlockSys 2027 Paper deadline (Round 2 Submission Deadline)
+DESCRIPTION:International Conference on Blockchain\, Artificial Intellige
+ nce\, and Trustworthy Systems 2027\nPaper deadline (Round 2 Submission De
+ adline): 2027-01-31 23:59 UTC-12:00\nTrack: Security | Not in CORE | CCF 
+ C | acceptance 47.1%\nRound 2 Submission Deadline\nAlways confirm on the 
+ official call for papers.\nCalendar: https://jackson-cmd.github.io/resour
+ ces/security-conference-deadlines/
+URL:https://blocksys.info/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BlockSys deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:securecomm-2027-paper-deadline-cycle-1-202702021159@jackson-cmd.githu
+ b.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270202T112900Z
+DTEND:20270202T115900Z
+SUMMARY:SecureComm 2027 Paper deadline (cycle 1)
+DESCRIPTION:International Conference on Security and Privacy in Communica
+ tion Networks 2027\nPaper deadline (cycle 1): 2027-02-01 23:59 UTC-12:00\
+ nTrack: Security | CORE C | CCF C | acceptance 34.6%\nAlways confirm on t
+ he official call for papers.\nCalendar: https://jackson-cmd.github.io/res
+ ources/security-conference-deadlines/
+URL:https://securecomm.eai-conferences.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SecureComm deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sac-2027-expected-paper-deadline-cycle-1-202702031159@jackson-cmd.git
+ hub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270203T112959Z
+DTEND:20270203T115959Z
+SUMMARY:SAC 2027 Expected paper deadline (Cycle 1)
+DESCRIPTION:Selected Areas in Cryptography 2027\nExpected paper deadline 
+ (Cycle 1): 2027-02-02 23:59 UTC-12:00\nTrack: Security | CORE B | CCF C |
+  acceptance 26.7%\nNot announced yet\; date estimated from the 2026 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://sacworkshop.org/SAC26/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SAC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sacmat-2027-paper-deadline-cycle-2-202702131159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270213T112900Z
+DTEND:20270213T115900Z
+SUMMARY:SACMAT 2027 Paper deadline (cycle 2)
+DESCRIPTION:ACM Symposium on Access Control Models and Technologies 2027\
+ nPaper deadline (cycle 2): 2027-02-12 23:59 UTC-12:00\nTrack: Security | 
+ CORE C | CCF C | acceptance 31.3%\nAlways confirm on the official call fo
+ r papers.\nCalendar: https://jackson-cmd.github.io/resources/security-con
+ ference-deadlines/
+URL:https://www.sacmat.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SACMAT deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:crypto-2027-expected-paper-deadline-202702131159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270213T112959Z
+DTEND:20270213T115959Z
+SUMMARY:CRYPTO 2027 Expected paper deadline
+DESCRIPTION:International Cryptology Conference 2027\nExpected paper dead
+ line: 2027-02-12 23:59 UTC-12:00\nTrack: Security | CORE A* | CCF A | acc
+ eptance 25.2%\nNot announced yet\; date estimated from the 2026 edition.\
+ nAlways confirm on the official call for papers.\nCalendar: https://jacks
+ on-cmd.github.io/resources/security-conference-deadlines/
+URL:https://crypto.iacr.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CRYPTO deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:soups-2027-expected-abstract-deadline-202702131159@jackson-cmd.github
+ .io
+DTSTAMP:20261120T230449Z
+DTSTART:20270213T112959Z
+DTEND:20270213T115959Z
+SUMMARY:SOUPS 2027 Expected abstract deadline
+DESCRIPTION:Symposium On Usable Privacy and Security 2027\nExpected abstr
+ act deadline: 2027-02-12 23:59 UTC-12:00\nTrack: Security | CORE A | CCF 
+ C | acceptance 20.9%\nNot announced yet\; date estimated from the 2026 ed
+ ition.\nAlways confirm on the official call for papers.\nCalendar: https:
+ //jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://soups.page/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SOUPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wisec-2027-paper-deadline-cycle-2-202702161159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270216T112900Z
+DTEND:20270216T115900Z
+SUMMARY:WiSec 2027 Paper deadline (cycle 2)
+DESCRIPTION:ACM Conference on Security and Privacy in Wireless and Mobile
+  Networks 2027\nPaper deadline (cycle 2): 2027-02-15 23:59 UTC-12:00\nTra
+ ck: Security | CORE B | CCF C | acceptance 20.6%\nAlways confirm on the o
+ fficial call for papers.\nCalendar: https://jackson-cmd.github.io/resourc
+ es/security-conference-deadlines/
+URL:https://ntu-dtc.github.io/wisec2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:WiSec deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dimva-2027-paper-deadline-cycle-2-202702191159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270219T112900Z
+DTEND:20270219T115900Z
+SUMMARY:DIMVA 2027 Paper deadline (cycle 2)
+DESCRIPTION:Conference on Detection of Intrusions and Malware & Vulnerabi
+ lity Assessment 2027\nPaper deadline (cycle 2): 2027-02-18 23:59 UTC-12:0
+ 0\nTrack: Security | CORE B | CCF C | acceptance 26.5%\nAbstract registra
+ tion required (1 week before deadline AoE).\nAlways confirm on the offici
+ al call for papers.\nCalendar: https://jackson-cmd.github.io/resources/se
+ curity-conference-deadlines/
+URL:https://www.dimva.org/dimva2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DIMVA deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:soups-2027-expected-paper-deadline-202702201159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270220T112959Z
+DTEND:20270220T115959Z
+SUMMARY:SOUPS 2027 Expected paper deadline
+DESCRIPTION:Symposium On Usable Privacy and Security 2027\nExpected paper
+  deadline: 2027-02-19 23:59 UTC-12:00\nTrack: Security | CORE A | CCF C |
+  acceptance 20.9%\nNot announced yet\; date estimated from the 2026 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://soups.page/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SOUPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:conll-2027-expected-paper-deadline-202702201159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270220T112959Z
+DTEND:20270220T115959Z
+SUMMARY:CoNLL 2027 Expected paper deadline
+DESCRIPTION:Conference on Computational Natural Language Learning 2027\nE
+ xpected paper deadline: 2027-02-19 23:59 UTC-12:00\nTrack: NLP | CORE B |
+  CCF C | acceptance 22.2%\nNot announced yet\; date estimated from the 20
+ 26 edition.\nAlways confirm on the official call for papers.\nCalendar: h
+ ttps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.conll.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CoNLL deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uai-2027-expected-paper-deadline-202702261159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270226T112959Z
+DTEND:20270226T115959Z
+SUMMARY:UAI 2027 Expected paper deadline
+DESCRIPTION:Conference on Uncertainty in Artificial Intelligence 2027\nEx
+ pected paper deadline: 2027-02-25 23:59 UTC-12:00\nTrack: AI | CORE A | C
+ CF B | acceptance 28.2%\nNot announced yet\; date estimated from the 2026
+  edition.\nAlways confirm on the official call for papers.\nCalendar: htt
+ ps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.auai.org/uai2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:UAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eccv-2027-expected-abstract-deadline-202702262200@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270226T213000Z
+DTEND:20270226T220000Z
+SUMMARY:ECCV 2027 Expected abstract deadline
+DESCRIPTION:European Conference on Computer Vision 2027\nExpected abstrac
+ t deadline: 2027-02-26 14:00 UTC-08:00\nTrack: AI | CORE A* | CCF B | acc
+ eptance 27.6%\nNot announced yet\; date estimated from the 2026 edition.\
+ nAlways confirm on the official call for papers.\nCalendar: https://jacks
+ on-cmd.github.io/resources/security-conference-deadlines/
+URL:https://eccv.ecva.net/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ECCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icdar-2027-abstract-deadline-202702271159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270227T112959Z
+DTEND:20270227T115959Z
+SUMMARY:ICDAR 2027 Abstract deadline
+DESCRIPTION:International Conference on Document Analysis and Recognition
+  2027\nAbstract deadline: 2027-02-26 23:59 UTC-12:00\nTrack: AI | CORE A 
+ | CCF C | acceptance 48.9%\nConference track\nAlways confirm on the offic
+ ial call for papers.\nCalendar: https://jackson-cmd.github.io/resources/s
+ ecurity-conference-deadlines/
+URL:https://icdar2027.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICDAR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icics-2027-paper-deadline-cycle-1-202703011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270301T112900Z
+DTEND:20270301T115900Z
+SUMMARY:ICICS 2027 Paper deadline (cycle 1)
+DESCRIPTION:International Conference on Information and Communications Se
+ curity 2027\nPaper deadline (cycle 1): 2027-02-28 23:59 UTC-12:00\nTrack:
+  Security | CORE C | CCF C | acceptance 24.2%\nAlways confirm on the offi
+ cial call for papers.\nCalendar: https://jackson-cmd.github.io/resources/
+ security-conference-deadlines/
+URL:https://icics2027.github.io/ICICS-bot/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICICS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ieee-cec-2027-paper-deadline-202703011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270301T112959Z
+DTEND:20270301T115959Z
+SUMMARY:IEEE CEC 2027 Paper deadline
+DESCRIPTION:Congress on Evolutionary Computation 2027\nPaper deadline: 20
+ 27-02-28 23:59 UTC-12:00\nTrack: AI | CORE B | CCF C | acceptance 53.6%\n
+ Always confirm on the official call for papers.\nCalendar: https://jackso
+ n-cmd.github.io/resources/security-conference-deadlines/
+URL:https://ieeecec.org/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IEEE CEC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pets-2027-paper-deadline-issue-4-paper-submission-deadline-2027030111
+ 59@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270301T112959Z
+DTEND:20270301T115959Z
+SUMMARY:PETS 2027 Paper deadline (Issue 4 Paper Submission Deadline)
+DESCRIPTION:Privacy Enhancing Technologies Symposium 2027\nPaper deadline
+  (Issue 4 Paper Submission Deadline): 2027-02-28 23:59 UTC-12:00\nTrack: 
+ Security | CORE A | CCF C | acceptance 23.1%\nIssue 4 Paper Submission De
+ adline\nAlways confirm on the official call for papers.\nCalendar: https:
+ //jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://petsymposium.org/cfp27.php
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PETS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ksem-2027-expected-paper-deadline-202703011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270301T112959Z
+DTEND:20270301T115959Z
+SUMMARY:KSEM 2027 Expected paper deadline
+DESCRIPTION:International conference on Knowledge Science\, Engineering a
+ nd Management 2027\nExpected paper deadline: 2027-02-28 23:59 UTC-12:00\n
+ Track: AI | CORE C | CCF C | acceptance 40.0%\nNot announced yet\; date e
+ stimated from the 2026 edition.\nAlways confirm on the official call for 
+ papers.\nCalendar: https://jackson-cmd.github.io/resources/security-confe
+ rence-deadlines/
+URL:https://ksem2026.rosc.org.cn/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:KSEM deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acisp-2027-paper-deadline-cycle-2-202703021159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270302T112900Z
+DTEND:20270302T115900Z
+SUMMARY:ACISP 2027 Paper deadline (cycle 2)
+DESCRIPTION:Australasia Conference on Information Security and Privacy 20
+ 27\nPaper deadline (cycle 2): 2027-03-01 23:59 UTC-12:00\nTrack: Security
+  | CORE B | CCF C | acceptance 29.6%\nAlways confirm on the official call
+  for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-
+ conference-deadlines/
+URL:https://acisp.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACISP deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icpr-2027-abstract-deadline-202703021159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270302T112959Z
+DTEND:20270302T115959Z
+SUMMARY:ICPR 2027 Abstract deadline
+DESCRIPTION:International Conference on Pattern Recognition 2027\nAbstrac
+ t deadline: 2027-03-01 23:59 UTC-12:00\nTrack: AI | CORE B | CCF C | acce
+ ptance 45.1%\nAll dates tentative\; March 1 is paper registration\; autho
+ r rebuttal May 17 (provisional\, cutoff unspecified)\nAlways confirm on t
+ he official call for papers.\nCalendar: https://jackson-cmd.github.io/res
+ ources/security-conference-deadlines/
+URL:https://www.icpr2027.com/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICPR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iros-2027-paper-deadline-202703021159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270302T112959Z
+DTEND:20270302T115959Z
+SUMMARY:IROS 2027 Paper deadline
+DESCRIPTION:IEEE/RSJ International Conference on Intelligent Robots and S
+ ystems 2027\nPaper deadline: 2027-03-01 23:59 UTC-12:00\nTrack: AI | CORE
+  A | CCF C | acceptance 41.8%\nPaper submission deadline: March 1\, 2027\
+ ; exact cutoff time and timezone not specified on the official IEEE RAS e
+ vent page\nAlways confirm on the official call for papers.\nCalendar: htt
+ ps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2027.ieee-iros.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IROS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ih-mmsec-2027-expected-paper-deadline-202703031159@jackson-cmd.github
+ .io
+DTSTAMP:20261120T230449Z
+DTSTART:20270303T112959Z
+DTEND:20270303T115959Z
+SUMMARY:IH&MMSec 2027 Expected paper deadline
+DESCRIPTION:ACM Workshop on Information Hiding and Multimedia Security 20
+ 27\nExpected paper deadline: 2027-03-02 23:59 UTC-12:00\nTrack: Security 
+ | CORE C | CCF C | acceptance 48.7%\nNot announced yet\; date estimated f
+ rom the 2026 edition.\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://www.ihmmsec.org/cms/home/home2026.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IH&MMSec deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iccv-2027-expected-abstract-deadline-202703040959@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270304T092959Z
+DTEND:20270304T095959Z
+SUMMARY:ICCV 2027 Expected abstract deadline
+DESCRIPTION:International Conference on Computer Vision 2027\nExpected ab
+ stract deadline: 2027-03-04 09:59 UTC\nTrack: AI | CORE A* | CCF A | acce
+ ptance 25.2%\nNot announced yet\; date estimated from the 2025 edition.\n
+ Always confirm on the official call for papers.\nCalendar: https://jackso
+ n-cmd.github.io/resources/security-conference-deadlines/
+URL:https://iccv.thecvf.com/Conferences/2025
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eccv-2027-expected-paper-deadline-202703052200@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270305T213000Z
+DTEND:20270305T220000Z
+SUMMARY:ECCV 2027 Expected paper deadline
+DESCRIPTION:European Conference on Computer Vision 2027\nExpected paper d
+ eadline: 2027-03-05 14:00 UTC-08:00\nTrack: AI | CORE A* | CCF B | accept
+ ance 27.6%\nNot announced yet\; date estimated from the 2026 edition.\nAl
+ ways confirm on the official call for papers.\nCalendar: https://jackson-
+ cmd.github.io/resources/security-conference-deadlines/
+URL:https://eccv.ecva.net/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ECCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icdar-2027-paper-deadline-conference-track-202703061159@jackson-cmd.g
+ ithub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270306T112959Z
+DTEND:20270306T115959Z
+SUMMARY:ICDAR 2027 Paper deadline (Conference track)
+DESCRIPTION:International Conference on Document Analysis and Recognition
+  2027\nPaper deadline (Conference track): 2027-03-05 23:59 UTC-12:00\nTra
+ ck: AI | CORE A | CCF C | acceptance 48.9%\nConference track\nAlways conf
+ irm on the official call for papers.\nCalendar: https://jackson-cmd.githu
+ b.io/resources/security-conference-deadlines/
+URL:https://icdar2027.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICDAR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iccv-2027-expected-paper-deadline-202703080959@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270308T092959Z
+DTEND:20270308T095959Z
+SUMMARY:ICCV 2027 Expected paper deadline
+DESCRIPTION:International Conference on Computer Vision 2027\nExpected pa
+ per deadline: 2027-03-08 09:59 UTC\nTrack: AI | CORE A* | CCF A | accepta
+ nce 25.2%\nNot announced yet\; date estimated from the 2025 edition.\nAlw
+ ays confirm on the official call for papers.\nCalendar: https://jackson-c
+ md.github.io/resources/security-conference-deadlines/
+URL:https://iccv.thecvf.com/Conferences/2025
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icpr-2027-paper-deadline-202703091159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270309T112959Z
+DTEND:20270309T115959Z
+SUMMARY:ICPR 2027 Paper deadline
+DESCRIPTION:International Conference on Pattern Recognition 2027\nPaper d
+ eadline: 2027-03-08 23:59 UTC-12:00\nTrack: AI | CORE B | CCF C | accepta
+ nce 45.1%\nAll dates tentative\; March 1 is paper registration\; author r
+ ebuttal May 17 (provisional\, cutoff unspecified)\nAlways confirm on the 
+ official call for papers.\nCalendar: https://jackson-cmd.github.io/resour
+ ces/security-conference-deadlines/
+URL:https://www.icpr2027.com/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICPR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iccbr-2027-expected-abstract-deadline-202703211159@jackson-cmd.github
+ .io
+DTSTAMP:20261120T230449Z
+DTSTART:20270321T112959Z
+DTEND:20270321T115959Z
+SUMMARY:ICCBR 2027 Expected abstract deadline
+DESCRIPTION:International Conference on Case-Based Reasoning 2027\nExpect
+ ed abstract deadline: 2027-03-20 23:59 UTC-12:00\nTrack: AI | CORE C | CC
+ F B | acceptance 37.0%\nNot announced yet\; date estimated from the 2026 
+ edition.\nAlways confirm on the official call for papers.\nCalendar: http
+ s://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2026.iccbr.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICCBR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iccbr-2027-expected-paper-deadline-202703281159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270328T112959Z
+DTEND:20270328T115959Z
+SUMMARY:ICCBR 2027 Expected paper deadline
+DESCRIPTION:International Conference on Case-Based Reasoning 2027\nExpect
+ ed paper deadline: 2027-03-27 23:59 UTC-12:00\nTrack: AI | CORE C | CCF B
+  | acceptance 37.0%\nNot announced yet\; date estimated from the 2026 edi
+ tion.\nAlways confirm on the official call for papers.\nCalendar: https:/
+ /jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://2026.iccbr.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICCBR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ppsn-2027-expected-paper-deadline-202703291159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270329T112959Z
+DTEND:20270329T115959Z
+SUMMARY:PPSN 2027 Expected paper deadline
+DESCRIPTION:Parallel Problem Solving from Nature 2027\nExpected paper dea
+ dline: 2027-03-28 23:59 UTC-12:00\nTrack: AI | CORE A | CCF B | acceptanc
+ e 34.9%\nNot announced yet\; date estimated from the 2026 edition.\nAlway
+ s confirm on the official call for papers.\nCalendar: https://jackson-cmd
+ .github.io/resources/security-conference-deadlines/
+URL:https://ppsn2026.disi.unitn.it/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PPSN deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icann-2027-expected-paper-deadline-202703311159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270331T112959Z
+DTEND:20270331T115959Z
+SUMMARY:ICANN 2027 Expected paper deadline
+DESCRIPTION:International Conference on Artificial Neural Networks 2027\n
+ Expected paper deadline: 2027-03-30 23:59 UTC-12:00\nTrack: AI | CORE C |
+  CCF C | acceptance 45.2%\nNot announced yet\; date estimated from the 20
+ 26 edition.\nAlways confirm on the official call for papers.\nCalendar: h
+ ttps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://e-nns.org/icann2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICANN deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ijcb-2027-paper-deadline-202704111159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270411T112959Z
+DTEND:20270411T115959Z
+SUMMARY:IJCB 2027 Paper deadline
+DESCRIPTION:International Joint Conference on Biometrics 2027\nPaper dead
+ line: 2027-04-10 23:59 UTC-12:00\nTrack: AI | CORE B | CCF C | acceptance
+  36.2%\nAlways confirm on the official call for papers.\nCalendar: https:
+ //jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://ijcb2027.ieee-biometrics.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IJCB deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ecai-2027-paper-deadline-202704151159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270415T112959Z
+DTEND:20270415T115959Z
+SUMMARY:ECAI 2027 Paper deadline
+DESCRIPTION:European Conference on Artificial Intelligence 2027\nPaper de
+ adline: 2027-04-14 23:59 UTC-12:00\nTrack: AI | CORE A | CCF B | acceptan
+ ce 19.0%\nAlways confirm on the official call for papers.\nCalendar: http
+ s://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://ecai2027.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ECAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:securecomm-2027-paper-deadline-cycle-2-202704161159@jackson-cmd.githu
+ b.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270416T112900Z
+DTEND:20270416T115900Z
+SUMMARY:SecureComm 2027 Paper deadline (cycle 2)
+DESCRIPTION:International Conference on Security and Privacy in Communica
+ tion Networks 2027\nPaper deadline (cycle 2): 2027-04-15 23:59 UTC-12:00\
+ nTrack: Security | CORE C | CCF C | acceptance 34.6%\nAlways confirm on t
+ he official call for papers.\nCalendar: https://jackson-cmd.github.io/res
+ ources/security-conference-deadlines/
+URL:https://securecomm.eai-conferences.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SecureComm deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ches-2027-paper-deadline-schedule-for-tches-volume-2027-4-20270416115
+ 9@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270416T112959Z
+DTEND:20270416T115959Z
+SUMMARY:CHES 2027 Paper deadline (Schedule for TCHES Volume 2027/4)
+DESCRIPTION:International Conference on Cryptographic Hardware and Embedd
+ ed Systems 2027\nPaper deadline (Schedule for TCHES Volume 2027/4): 2027-
+ 04-15 23:59 UTC-12:00\nTrack: Security | CORE A | CCF B | acceptance 28.7
+ %\nSchedule for TCHES Volume 2027/4\nAlways confirm on the official call 
+ for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-c
+ onference-deadlines/
+URL:https://ches.iacr.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CHES deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:raid-2027-expected-paper-deadline-202704171159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270417T112959Z
+DTEND:20270417T115959Z
+SUMMARY:RAID 2027 Expected paper deadline
+DESCRIPTION:International Symposium on Recent Advances in Intrusion Detec
+ tion 2027\nExpected paper deadline: 2027-04-16 23:59 UTC-12:00\nTrack: Se
+ curity | CORE A | CCF B | acceptance 21.6%\nNot announced yet\; date esti
+ mated from the 2026 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://raid2026.org
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RAID deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esorics-2027-expected-paper-deadline-spring-202704221159@jackson-cmd.
+ github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270422T112959Z
+DTEND:20270422T115959Z
+SUMMARY:ESORICS 2027 Expected paper deadline (Spring)
+DESCRIPTION:European Symposium on Research in Computer Security 2027\nExp
+ ected paper deadline (Spring): 2027-04-21 23:59 UTC-12:00\nTrack: Securit
+ y | CORE A | CCF B | acceptance 15.7%\nNot announced yet\; date estimated
+  from the 2026 edition.\nAlways confirm on the official call for papers.\
+ nCalendar: https://jackson-cmd.github.io/resources/security-conference-de
+ adlines/
+URL:https://sites.google.com/di.uniroma1.it/esorics2026/home
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ESORICS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ccs-2027-expected-abstract-deadline-202704231159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270423T112959Z
+DTEND:20270423T115959Z
+SUMMARY:CCS 2027 Expected abstract deadline
+DESCRIPTION:ACM Conference on Computer and Communications Security 2027\n
+ Expected abstract deadline: 2027-04-22 23:59 UTC-12:00\nTrack: Security |
+  CORE A* | CCF A | acceptance 20.5%\nNot announced yet\; date estimated f
+ rom the 2026 edition.\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://www.sigsac.org/ccs/CCS2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CCS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kr-2027-abstract-deadline-202704241159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270424T112959Z
+DTEND:20270424T115959Z
+SUMMARY:KR 2027 Abstract deadline
+DESCRIPTION:International Conference on Principles of Knowledge Represent
+ ation and Reasoning 2027\nAbstract deadline: 2027-04-23 23:59 UTC-12:00\n
+ Track: AI | CORE A* | CCF B | acceptance 26.8%\nMain track\; author respo
+ nse period: June 15-18\, 2027\nAlways confirm on the official call for pa
+ pers.\nCalendar: https://jackson-cmd.github.io/resources/security-confere
+ nce-deadlines/
+URL:https://kr.org/KR2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:KR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kr-2027-paper-deadline-202704291159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270429T112959Z
+DTEND:20270429T115959Z
+SUMMARY:KR 2027 Paper deadline
+DESCRIPTION:International Conference on Principles of Knowledge Represent
+ ation and Reasoning 2027\nPaper deadline: 2027-04-28 23:59 UTC-12:00\nTra
+ ck: AI | CORE A* | CCF B | acceptance 26.8%\nMain track\; author response
+  period: June 15-18\, 2027\nAlways confirm on the official call for paper
+ s.\nCalendar: https://jackson-cmd.github.io/resources/security-conference
+ -deadlines/
+URL:https://kr.org/KR2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:KR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ccs-2027-expected-paper-deadline-cycle-2-202704301159@jackson-cmd.git
+ hub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270430T112959Z
+DTEND:20270430T115959Z
+SUMMARY:CCS 2027 Expected paper deadline (Cycle 2)
+DESCRIPTION:ACM Conference on Computer and Communications Security 2027\n
+ Expected paper deadline (Cycle 2): 2027-04-29 23:59 UTC-12:00\nTrack: Sec
+ urity | CORE A* | CCF A | acceptance 20.5%\nNot announced yet\; date esti
+ mated from the 2026 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://www.sigsac.org/ccs/CCS2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CCS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:srds-2027-expected-abstract-deadline-202705021159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270502T112959Z
+DTEND:20270502T115959Z
+SUMMARY:SRDS 2027 Expected abstract deadline
+DESCRIPTION:IEEE International Symposium on Reliable Distributed Systems 
+ 2027\nExpected abstract deadline: 2027-05-01 23:59 UTC-12:00\nTrack: Secu
+ rity | CORE B | CCF B | acceptance 32.1%\nNot announced yet\; date estima
+ ted from the 2026 edition.\nAlways confirm on the official call for paper
+ s.\nCalendar: https://jackson-cmd.github.io/resources/security-conference
+ -deadlines/
+URL:https://srds-conference.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SRDS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:neurips-2027-expected-abstract-deadline-202705051159@jackson-cmd.gith
+ ub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270505T112900Z
+DTEND:20270505T115900Z
+SUMMARY:NeurIPS 2027 Expected abstract deadline
+DESCRIPTION:Conference on Neural Information Processing Systems 2027\nExp
+ ected abstract deadline: 2027-05-05 11:59 UTC\nTrack: AI | CORE A* | CCF 
+ A | acceptance 25.3%\nNot announced yet\; date estimated from the 2026 ed
+ ition.\nAlways confirm on the official call for papers.\nCalendar: https:
+ //jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://neurips.cc/Conferences/2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NeurIPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:neurips-2027-expected-paper-deadline-202705071159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270507T112959Z
+DTEND:20270507T115959Z
+SUMMARY:NeurIPS 2027 Expected paper deadline
+DESCRIPTION:Conference on Neural Information Processing Systems 2027\nExp
+ ected paper deadline: 2027-05-07 11:59 UTC\nTrack: AI | CORE A* | CCF A |
+  acceptance 25.3%\nNot announced yet\; date estimated from the 2026 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://neurips.cc/Conferences/2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NeurIPS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ndss-2028-expected-paper-deadline-202705071159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270507T112959Z
+DTEND:20270507T115959Z
+SUMMARY:NDSS 2028 Expected paper deadline
+DESCRIPTION:Network and Distributed System Security Symposium 2028\nExpec
+ ted paper deadline: 2027-05-06 23:59 UTC-12:00\nTrack: Security | CORE A*
+  | CCF A | acceptance 18.2%\nNot announced yet\; date estimated from the 
+ 2027 edition.\nAlways confirm on the official call for papers.\nCalendar:
+  https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.ndss-symposium.org/ndss2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NDSS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:inscrypt-2027-expected-paper-deadline-1st-round-202705091159@jackson-
+ cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270509T112959Z
+DTEND:20270509T115959Z
+SUMMARY:Inscrypt 2027 Expected paper deadline (1st Round)
+DESCRIPTION:International Conference on Information Security and Cryptolo
+ gy 2027\nExpected paper deadline (1st Round): 2027-05-08 23:59 UTC-12:00\
+ nTrack: Security | CORE China-regional | CCF C | acceptance 27.3%\nNot an
+ nounced yet\; date estimated from the 2026 edition.\nAlways confirm on th
+ e official call for papers.\nCalendar: https://jackson-cmd.github.io/reso
+ urces/security-conference-deadlines/
+URL:https://inscrypt2026.comp.polyu.edu.hk
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Inscrypt deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sac-2027-expected-paper-deadline-cycle-2-202705121159@jackson-cmd.git
+ hub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270512T112959Z
+DTEND:20270512T115959Z
+SUMMARY:SAC 2027 Expected paper deadline (Cycle 2)
+DESCRIPTION:Selected Areas in Cryptography 2027\nExpected paper deadline 
+ (Cycle 2): 2027-05-11 23:59 UTC-12:00\nTrack: Security | CORE B | CCF C |
+  acceptance 26.7%\nNot announced yet\; date estimated from the 2026 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://sacworkshop.org/SAC26/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SAC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nspw-2027-expected-paper-deadline-202705151159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270515T112959Z
+DTEND:20270515T115959Z
+SUMMARY:NSPW 2027 Expected paper deadline
+DESCRIPTION:New Security Paradigms Workshop 2027\nExpected paper deadline
+ : 2027-05-14 23:59 UTC-12:00\nTrack: Security | CORE C | CCF C | acceptan
+ ce 33.3%\nNot announced yet\; date estimated from the 2026 edition.\nAlwa
+ ys confirm on the official call for papers.\nCalendar: https://jackson-cm
+ d.github.io/resources/security-conference-deadlines/
+URL:https://www.nspw.org/2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NSPW deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tcc-2027-expected-paper-deadline-202705201159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270520T112959Z
+DTEND:20270520T115959Z
+SUMMARY:TCC 2027 Expected paper deadline
+DESCRIPTION:Theory of Cryptography Conference 2027\nExpected paper deadli
+ ne: 2027-05-19 23:59 UTC-12:00\nTrack: Security | CORE B | CCF B | accept
+ ance 35.4%\nNot announced yet\; date estimated from the 2026 edition.\nAl
+ ways confirm on the official call for papers.\nCalendar: https://jackson-
+ cmd.github.io/resources/security-conference-deadlines/
+URL:https://tcc.iacr.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:TCC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:asiacrypt-2027-expected-paper-deadline-202705221159@jackson-cmd.githu
+ b.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270522T112959Z
+DTEND:20270522T115959Z
+SUMMARY:ASIACRYPT 2027 Expected paper deadline
+DESCRIPTION:Annual International Conference on the Theory and Application
+  of Cryptology and Information Security 2027\nExpected paper deadline: 20
+ 27-05-22 11:59 UTC\nTrack: Security | CORE A | CCF B | acceptance 28.0%\n
+ Not announced yet\; date estimated from the 2026 edition.\nAlways confirm
+  on the official call for papers.\nCalendar: https://jackson-cmd.github.i
+ o/resources/security-conference-deadlines/
+URL:https://asiacrypt.iacr.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ASIACRYPT deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bmvc-2027-expected-abstract-deadline-202705231159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270523T112959Z
+DTEND:20270523T115959Z
+SUMMARY:BMVC 2027 Expected abstract deadline
+DESCRIPTION:British Machine Vision Conference 2027\nExpected abstract dea
+ dline: 2027-05-22 23:59 UTC-12:00\nTrack: AI | CORE A | CCF C | acceptanc
+ e 28.3%\nNot announced yet\; date estimated from the 2026 edition.\nAlway
+ s confirm on the official call for papers.\nCalendar: https://jackson-cmd
+ .github.io/resources/security-conference-deadlines/
+URL:https://bmvc2026.bmva.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BMVC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:emnlp-2027-expected-paper-deadline-arr-submission-202705261159@jackso
+ n-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270526T112959Z
+DTEND:20270526T115959Z
+SUMMARY:EMNLP 2027 Expected paper deadline (ARR Submission)
+DESCRIPTION:Conference on Empirical Methods in Natural Language Processin
+ g 2027\nExpected paper deadline (ARR Submission): 2027-05-25 23:59 UTC-12
+ :00\nTrack: NLP | CORE A* | CCF B | acceptance 21.5%\nNot announced yet\;
+  date estimated from the 2026 edition.\nAlways confirm on the official ca
+ ll for papers.\nCalendar: https://jackson-cmd.github.io/resources/securit
+ y-conference-deadlines/
+URL:https://2026.emnlp.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EMNLP deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acsac-2027-expected-paper-deadline-202705271159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270527T112959Z
+DTEND:20270527T115959Z
+SUMMARY:ACSAC 2027 Expected paper deadline
+DESCRIPTION:Annual Computer Security Applications Conference 2027\nExpect
+ ed paper deadline: 2027-05-26 23:59 UTC-12:00\nTrack: Security | CORE A |
+  CCF B | acceptance 21.1%\nNot announced yet\; date estimated from the 20
+ 26 edition.\nAlways confirm on the official call for papers.\nCalendar: h
+ ttps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.acsac.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACSAC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bmvc-2027-expected-paper-deadline-202705301159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270530T112959Z
+DTEND:20270530T115959Z
+SUMMARY:BMVC 2027 Expected paper deadline
+DESCRIPTION:British Machine Vision Conference 2027\nExpected paper deadli
+ ne: 2027-05-29 23:59 UTC-12:00\nTrack: AI | CORE A | CCF C | acceptance 2
+ 8.3%\nNot announced yet\; date estimated from the 2026 edition.\nAlways c
+ onfirm on the official call for papers.\nCalendar: https://jackson-cmd.gi
+ thub.io/resources/security-conference-deadlines/
+URL:https://bmvc2026.bmva.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:BMVC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icics-2027-paper-deadline-cycle-2-202705311159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270531T112900Z
+DTEND:20270531T115900Z
+SUMMARY:ICICS 2027 Paper deadline (cycle 2)
+DESCRIPTION:International Conference on Information and Communications Se
+ curity 2027\nPaper deadline (cycle 2): 2027-05-30 23:59 UTC-12:00\nTrack:
+  Security | CORE C | CCF C | acceptance 24.2%\nAlways confirm on the offi
+ cial call for papers.\nCalendar: https://jackson-cmd.github.io/resources/
+ security-conference-deadlines/
+URL:https://icics2027.github.io/ICICS-bot/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICICS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iconip-2027-expected-paper-deadline-202706011159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270601T112959Z
+DTEND:20270601T115959Z
+SUMMARY:ICONIP 2027 Expected paper deadline
+DESCRIPTION:International Conference on Neural Information Processing 202
+ 7\nExpected paper deadline: 2027-05-31 23:59 UTC-12:00\nTrack: AI | CORE 
+ B | CCF C | acceptance 50.9%\nNot announced yet\; date estimated from the
+  2026 edition.\nAlways confirm on the official call for papers.\nCalendar
+ : https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.iconip2026.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICONIP deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:s-p-2028-expected-abstract-deadline-202706051159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270605T112959Z
+DTEND:20270605T115959Z
+SUMMARY:S&P 2028 Expected abstract deadline
+DESCRIPTION:IEEE Symposium on Security and Privacy 2028\nExpected abstrac
+ t deadline: 2027-06-04 23:59 UTC-12:00\nTrack: Security | CORE A* | CCF A
+  | acceptance 13.8%\nNot announced yet\; date estimated from the 2027 edi
+ tion.\nAlways confirm on the official call for papers.\nCalendar: https:/
+ /jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://sp2027.ieee-security.org/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:S&P deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:s-p-2028-expected-paper-deadline-first-paper-submission-deadline-2027
+ 06121159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270612T112959Z
+DTEND:20270612T115959Z
+SUMMARY:S&P 2028 Expected paper deadline (First Paper submission deadline)
+DESCRIPTION:IEEE Symposium on Security and Privacy 2028\nExpected paper d
+ eadline (First Paper submission deadline): 2027-06-11 23:59 UTC-12:00\nTr
+ ack: Security | CORE A* | CCF A | acceptance 13.8%\nNot announced yet\; d
+ ate estimated from the 2027 edition.\nAlways confirm on the official call
+  for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-
+ conference-deadlines/
+URL:https://sp2027.ieee-security.org/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:S&P deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nlpcc-2027-expected-paper-deadline-notification-expected-to-be-unchan
+ ged-202706201559@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270620T152959Z
+DTEND:20270620T155959Z
+SUMMARY:NLPCC 2027 Expected paper deadline (Notification expected to be u
+ nchanged)
+DESCRIPTION:CCF International Conference on Natural Language Processing a
+ nd Chinese Computing 2027\nExpected paper deadline (Notification expected
+  to be unchanged): 2027-06-20 23:59 UTC+08:00\nTrack: NLP | Not in CORE |
+  CCF C | acceptance 31.8%\nNot announced yet\; date estimated from the 20
+ 26 edition.\nAlways confirm on the official call for papers.\nCalendar: h
+ ttps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:http://tcci.ccf.org.cn/conference/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NLPCC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acml-2027-expected-paper-deadline-journal-track-202706211159@jackson-
+ cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270621T112959Z
+DTEND:20270621T115959Z
+SUMMARY:ACML 2027 Expected paper deadline (Journal Track)
+DESCRIPTION:Asian Conference on Machine Learning 2027\nExpected paper dea
+ dline (Journal Track): 2027-06-20 23:59 UTC-12:00\nTrack: AI | CORE C | C
+ CF C | acceptance 29.1%\nNot announced yet\; date estimated from the 2026
+  edition.\nAlways confirm on the official call for papers.\nCalendar: htt
+ ps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.acml-conf.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pricai-2027-expected-paper-deadline-202706281159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270628T112959Z
+DTEND:20270628T115959Z
+SUMMARY:PRICAI 2027 Expected paper deadline
+DESCRIPTION:Pacific Rim International Conference on Artificial Intelligen
+ ce 2027\nExpected paper deadline: 2027-06-27 23:59 UTC-12:00\nTrack: AI |
+  CORE B | CCF C | acceptance 36.3%\nNot announced yet\; date estimated fr
+ om the 2026 edition.\nAlways confirm on the official call for papers.\nCa
+ lendar: https://jackson-cmd.github.io/resources/security-conference-deadl
+ ines/
+URL:https://2026.pricai.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PRICAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:isc-2027-expected-paper-deadline-202707031159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270703T112959Z
+DTEND:20270703T115959Z
+SUMMARY:ISC 2027 Expected paper deadline
+DESCRIPTION:Information Security Conference 2027\nExpected paper deadline
+ : 2027-07-02 23:59 UTC-12:00\nTrack: Security | CORE C | CCF C | acceptan
+ ce 30.5%\nNot announced yet\; date estimated from the 2026 edition.\nAlwa
+ ys confirm on the official call for papers.\nCalendar: https://jackson-cm
+ d.github.io/resources/security-conference-deadlines/
+URL:https://isc2026.github.io/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ISC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:accv-2027-expected-abstract-deadline-202707032359@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270703T232959Z
+DTEND:20270703T235959Z
+SUMMARY:ACCV 2027 Expected abstract deadline
+DESCRIPTION:Asian Conference on Computer Vision 2027\nExpected abstract d
+ eadline: 2027-07-03 23:59 UTC\nTrack: AI | CORE B | CCF C | acceptance 32
+ .6%\nNot announced yet\; date estimated from the 2026 edition.\nAlways co
+ nfirm on the official call for papers.\nCalendar: https://jackson-cmd.git
+ hub.io/resources/security-conference-deadlines/
+URL:https://accv2026.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:accv-2027-expected-paper-deadline-202707052359@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270705T232959Z
+DTEND:20270705T235959Z
+SUMMARY:ACCV 2027 Expected paper deadline
+DESCRIPTION:Asian Conference on Computer Vision 2027\nExpected paper dead
+ line: 2027-07-05 23:59 UTC\nTrack: AI | CORE B | CCF C | acceptance 32.6%
+ \nNot announced yet\; date estimated from the 2026 edition.\nAlways confi
+ rm on the official call for papers.\nCalendar: https://jackson-cmd.github
+ .io/resources/security-conference-deadlines/
+URL:https://accv2026.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACCV deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:acml-2027-expected-paper-deadline-conference-track-202707061159@jacks
+ on-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270706T112959Z
+DTEND:20270706T115959Z
+SUMMARY:ACML 2027 Expected paper deadline (Conference Track)
+DESCRIPTION:Asian Conference on Machine Learning 2027\nExpected paper dea
+ dline (Conference Track): 2027-07-05 23:59 UTC-12:00\nTrack: AI | CORE C 
+ | CCF C | acceptance 29.1%\nNot announced yet\; date estimated from the 2
+ 026 edition.\nAlways confirm on the official call for papers.\nCalendar: 
+ https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.acml-conf.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ACML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ictai-2027-expected-paper-deadline-202707221159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270722T112959Z
+DTEND:20270722T115959Z
+SUMMARY:ICTAI 2027 Expected paper deadline
+DESCRIPTION:IEEE International Conference on Tools with Artificial Intell
+ igence 2027\nExpected paper deadline: 2027-07-21 23:59 UTC-12:00\nTrack: 
+ AI | CORE B | CCF C | acceptance 37.7%\nNot announced yet\; date estimate
+ d from the 2026 edition.\nAlways confirm on the official call for papers.
+ \nCalendar: https://jackson-cmd.github.io/resources/security-conference-d
+ eadlines/
+URL:https://ictai.computer.org/2026/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICTAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aaai-2028-expected-abstract-deadline-202707221159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270722T112959Z
+DTEND:20270722T115959Z
+SUMMARY:AAAI 2028 Expected abstract deadline
+DESCRIPTION:AAAI Conference on Artificial Intelligence 2028\nExpected abs
+ tract deadline: 2027-07-21 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF A |
+  acceptance 20.5%\nNot announced yet\; date estimated from the 2027 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://aaai.org/conference/aaai/aaai-27/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AAAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aaai-2028-expected-paper-deadline-202707291159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270729T112959Z
+DTEND:20270729T115959Z
+SUMMARY:AAAI 2028 Expected paper deadline
+DESCRIPTION:AAAI Conference on Artificial Intelligence 2028\nExpected pap
+ er deadline: 2027-07-28 23:59 UTC-12:00\nTrack: AI | CORE A* | CCF A | ac
+ ceptance 20.5%\nNot announced yet\; date estimated from the 2027 edition.
+ \nAlways confirm on the official call for papers.\nCalendar: https://jack
+ son-cmd.github.io/resources/security-conference-deadlines/
+URL:https://aaai.org/conference/aaai/aaai-27/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AAAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:emnlp-2027-expected-paper-deadline-202708031159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270803T112959Z
+DTEND:20270803T115959Z
+SUMMARY:EMNLP 2027 Expected paper deadline
+DESCRIPTION:Conference on Empirical Methods in Natural Language Processin
+ g 2027\nExpected paper deadline: 2027-08-02 23:59 UTC-12:00\nTrack: NLP |
+  CORE A* | CCF B | acceptance 21.5%\nNot announced yet\; date estimated f
+ rom the 2026 edition.\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://2026.emnlp.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EMNLP deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dai-2027-expected-paper-deadline-202708041159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270804T112959Z
+DTEND:20270804T115959Z
+SUMMARY:DAI 2027 Expected paper deadline
+DESCRIPTION:International Conference on Distributed Artificial Intelligen
+ ce 2027\nExpected paper deadline: 2027-08-03 23:59 UTC-12:00\nTrack: AI |
+  Not in CORE | CCF C | acceptance 48.4%\nNot announced yet\; date estimat
+ ed from the 2026 edition.\nAlways confirm on the official call for papers
+ .\nCalendar: https://jackson-cmd.github.io/resources/security-conference-
+ deadlines/
+URL:https://www.adai.ai/dai/2026/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DAI deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pkc-2028-expected-paper-deadline-202708171159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270817T112959Z
+DTEND:20270817T115959Z
+SUMMARY:PKC 2028 Expected paper deadline
+DESCRIPTION:International Workshop on Practice and Theory in Public Key C
+ ryptography 2028\nExpected paper deadline: 2027-08-16 23:59 UTC-12:00\nTr
+ ack: Security | CORE B | CCF B | acceptance 28.2%\nNot announced yet\; da
+ te estimated from the 2027 edition.\nAlways confirm on the official call 
+ for papers.\nCalendar: https://jackson-cmd.github.io/resources/security-c
+ onference-deadlines/
+URL:https://pkc.iacr.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PKC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ndss-2028-expected-paper-deadline-202708201159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270820T112959Z
+DTEND:20270820T115959Z
+SUMMARY:NDSS 2028 Expected paper deadline
+DESCRIPTION:Network and Distributed System Security Symposium 2028\nExpec
+ ted paper deadline: 2027-08-19 23:59 UTC-12:00\nTrack: Security | CORE A*
+  | CCF A | acceptance 18.2%\nNot announced yet\; date estimated from the 
+ 2027 edition.\nAlways confirm on the official call for papers.\nCalendar:
+  https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://www.ndss-symposium.org/ndss2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NDSS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:trustcom-2027-expected-paper-deadline-firm-submission-deadline-202708
+ 251559@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270825T152959Z
+DTEND:20270825T155959Z
+SUMMARY:TrustCom 2027 Expected paper deadline (Firm submission deadline)
+DESCRIPTION:IEEE International Conference on Trust\, Security and Privacy
+  in Computing and Communications 2027\nExpected paper deadline (Firm subm
+ ission deadline): 2027-08-25 23:59 UTC+08:00\nTrack: Security | CORE B | 
+ CCF C | acceptance 28%\nNot announced yet\; date estimated from the 2025 
+ edition.\nAlways confirm on the official call for papers.\nCalendar: http
+ s://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://ieee-aiplus-2025.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:TrustCom deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cscloud-2027-expected-paper-deadline-202709161159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270916T112959Z
+DTEND:20270916T115959Z
+SUMMARY:CSCloud 2027 Expected paper deadline
+DESCRIPTION:International Conference on Cyber Security and Cloud Computin
+ g 2027\nExpected paper deadline: 2027-09-15 23:59 UTC-12:00\nTrack: Secur
+ ity | Not in CORE | CCF C | acceptance 22%\nNot announced yet\; date esti
+ mated from the 2026 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://www.cloud-conf.net/cscloud/2026/cscloud/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSCloud deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icra-2028-expected-paper-deadline-extended-submission-deadline-202709
+ 170759@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270917T072959Z
+DTEND:20270917T075959Z
+SUMMARY:ICRA 2028 Expected paper deadline (Extended submission deadline)
+DESCRIPTION:IEEE International Conference on Robotics and Automation 2028
+ \nExpected paper deadline (Extended submission deadline): 2027-09-16 23:5
+ 9 UTC-08:00\nTrack: AI | CORE A* | CCF B | acceptance 41.6%\nNot announce
+ d yet\; date estimated from the 2027 edition.\nAlways confirm on the offi
+ cial call for papers.\nCalendar: https://jackson-cmd.github.io/resources/
+ security-conference-deadlines/
+URL:https://2027.ieee-icra.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICRA deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:eurocrypt-2028-expected-paper-deadline-202709181159@jackson-cmd.githu
+ b.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270918T112959Z
+DTEND:20270918T115959Z
+SUMMARY:EUROCRYPT 2028 Expected paper deadline
+DESCRIPTION:International Conference on the Theory and Applications of Cr
+ yptographic Techniques 2028\nExpected paper deadline: 2027-09-17 23:59 UT
+ C-12:00\nTrack: Security | CORE A* | CCF A | acceptance 20.8%\nNot announ
+ ced yet\; date estimated from the 2027 edition.\nAlways confirm on the of
+ ficial call for papers.\nCalendar: https://jackson-cmd.github.io/resource
+ s/security-conference-deadlines/
+URL:https://eurocrypt.iacr.org/2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EUROCRYPT deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iclr-2028-expected-abstract-deadline-202709191159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20270919T112959Z
+DTEND:20270919T115959Z
+SUMMARY:ICLR 2028 Expected abstract deadline
+DESCRIPTION:International Conference on Learning Representations 2028\nEx
+ pected abstract deadline: 2027-09-18 23:59 UTC-12:00\nTrack: AI | CORE A*
+  | CCF A | acceptance 29.5%\nNot announced yet\; date estimated from the 
+ 2027 edition.\nAlways confirm on the official call for papers.\nCalendar:
+  https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://iclr.cc/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICLR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:satml-2028-expected-abstract-deadline-202709231159@jackson-cmd.github
+ .io
+DTSTAMP:20261120T230449Z
+DTSTART:20270923T112959Z
+DTEND:20270923T115959Z
+SUMMARY:SaTML 2028 Expected abstract deadline
+DESCRIPTION:IEEE Conference on Secure and Trustworthy Machine Learning 20
+ 28\nExpected abstract deadline: 2027-09-22 23:59 UTC-12:00\nTrack: Securi
+ ty | Not in CORE | CCF — | acceptance 24.9%\nNot announced yet\; date e
+ stimated from the 2027 edition.\nAlways confirm on the official call for 
+ papers.\nCalendar: https://jackson-cmd.github.io/resources/security-confe
+ rence-deadlines/
+URL:https://satml.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SaTML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fc-2028-expected-paper-deadline-submission-deadline-202709251159@jack
+ son-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270925T112959Z
+DTEND:20270925T115959Z
+SUMMARY:FC 2028 Expected paper deadline (Submission deadline)
+DESCRIPTION:Financial Cryptography and Data Security 2028\nExpected paper
+  deadline (Submission deadline): 2027-09-24 23:59 UTC-12:00\nTrack: Secur
+ ity | CORE A | CCF C | acceptance 18.0%\nNot announced yet\; date estimat
+ ed from the 2027 edition.\nAlways confirm on the official call for papers
+ .\nCalendar: https://jackson-cmd.github.io/resources/security-conference-
+ deadlines/
+URL:https://fc27.ifca.ai/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FC deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:iclr-2028-expected-paper-deadline-202709261159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270926T112959Z
+DTEND:20270926T115959Z
+SUMMARY:ICLR 2028 Expected paper deadline
+DESCRIPTION:International Conference on Learning Representations 2028\nEx
+ pected paper deadline: 2027-09-25 23:59 UTC-12:00\nTrack: AI | CORE A* | 
+ CCF A | acceptance 29.5%\nNot announced yet\; date estimated from the 202
+ 7 edition.\nAlways confirm on the official call for papers.\nCalendar: ht
+ tps://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://iclr.cc/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ICLR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:satml-2028-expected-paper-deadline-202709301159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270930T112959Z
+DTEND:20270930T115959Z
+SUMMARY:SaTML 2028 Expected paper deadline
+DESCRIPTION:IEEE Conference on Secure and Trustworthy Machine Learning 20
+ 28\nExpected paper deadline: 2027-09-29 23:59 UTC-12:00\nTrack: Security 
+ | Not in CORE | CCF — | acceptance 24.9%\nNot announced yet\; date esti
+ mated from the 2027 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://satml.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:SaTML deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aistats-2028-expected-abstract-deadline-202709301159@jackson-cmd.gith
+ ub.io
+DTSTAMP:20261120T230449Z
+DTSTART:20270930T112959Z
+DTEND:20270930T115959Z
+SUMMARY:AISTATS 2028 Expected abstract deadline
+DESCRIPTION:International Conference on Artificial Intelligence and Stati
+ stics 2028\nExpected abstract deadline: 2027-09-29 23:59 UTC-12:00\nTrack
+ : AI | CORE A | CCF C | acceptance 28.4%\nNot announced yet\; date estima
+ ted from the 2027 edition.\nAlways confirm on the official call for paper
+ s.\nCalendar: https://jackson-cmd.github.io/resources/security-conference
+ -deadlines/
+URL:https://virtual.aistats.org/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AISTATS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dfrws-2028-expected-abstract-deadline-202710031159@jackson-cmd.github
+ .io
+DTSTAMP:20261120T230449Z
+DTSTART:20271003T112959Z
+DTEND:20271003T115959Z
+SUMMARY:DFRWS 2028 Expected abstract deadline
+DESCRIPTION:Digital Forensic Research Workshop 2028\nExpected abstract de
+ adline: 2027-10-02 23:59 UTC-12:00\nTrack: Security | Not in CORE | CCF C
+  | acceptance 23%\nNot announced yet\; date estimated from the 2027 editi
+ on.\nAlways confirm on the official call for papers.\nCalendar: https://j
+ ackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://dfrws.org/conferences/dfceurope2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DFRWS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aistats-2028-expected-paper-deadline-202710071159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20271007T112959Z
+DTEND:20271007T115959Z
+SUMMARY:AISTATS 2028 Expected paper deadline
+DESCRIPTION:International Conference on Artificial Intelligence and Stati
+ stics 2028\nExpected paper deadline: 2027-10-06 23:59 UTC-12:00\nTrack: A
+ I | CORE A | CCF C | acceptance 28.4%\nNot announced yet\; date estimated
+  from the 2027 edition.\nAlways confirm on the official call for papers.\
+ nCalendar: https://jackson-cmd.github.io/resources/security-conference-de
+ adlines/
+URL:https://virtual.aistats.org/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AISTATS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dfrws-2028-expected-paper-deadline-extended-deadlines-202710101159@ja
+ ckson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271010T112959Z
+DTEND:20271010T115959Z
+SUMMARY:DFRWS 2028 Expected paper deadline (Extended deadlines)
+DESCRIPTION:Digital Forensic Research Workshop 2028\nExpected paper deadl
+ ine (Extended deadlines): 2027-10-09 23:59 UTC-12:00\nTrack: Security | N
+ ot in CORE | CCF C | acceptance 23%\nNot announced yet\; date estimated f
+ rom the 2027 edition.\nAlways confirm on the official call for papers.\nC
+ alendar: https://jackson-cmd.github.io/resources/security-conference-dead
+ lines/
+URL:https://dfrws.org/conferences/dfceurope2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:DFRWS deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:alt-2028-expected-paper-deadline-202710131159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271013T112959Z
+DTEND:20271013T115959Z
+SUMMARY:ALT 2028 Expected paper deadline
+DESCRIPTION:International Conference on Algorithmic Learning Theory 2028\
+ nExpected paper deadline: 2027-10-12 23:59 UTC-12:00\nTrack: AI | CORE B 
+ | CCF C | acceptance 35.7%\nNot announced yet\; date estimated from the 2
+ 027 edition.\nAlways confirm on the official call for papers.\nCalendar: 
+ https://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://algorithmiclearningtheory.org/alt2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ALT deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:hotsec-2027-expected-paper-deadline-extended-202710131159@jackson-cmd
+ .github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271013T112959Z
+DTEND:20271013T115959Z
+SUMMARY:HotSec 2027 Expected paper deadline (Extended)
+DESCRIPTION:USENIX Workshop on Hot Topics in Security 2027\nExpected pape
+ r deadline (Extended): 2027-10-12 23:59 UTC-12:00\nTrack: Security | Not 
+ in CORE | CCF C | acceptance —\nNot announced yet\; date estimated from
+  the 2021 edition.\nAlways confirm on the official call for papers.\nCale
+ ndar: https://jackson-cmd.github.io/resources/security-conference-deadlin
+ es/
+URL:https://www.usenix.org/conferences/byname/158
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:HotSec deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pam-2028-expected-abstract-deadline-202710161159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271016T112959Z
+DTEND:20271016T115959Z
+SUMMARY:PAM 2028 Expected abstract deadline
+DESCRIPTION:Passive and Active Measurement Conference 2028\nExpected abst
+ ract deadline: 2027-10-15 23:59 UTC-12:00\nTrack: Security | CORE B | CCF
+  C | acceptance 34.6%\nNot announced yet\; date estimated from the 2026 e
+ dition.\nAlways confirm on the official call for papers.\nCalendar: https
+ ://jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://pam2026.at/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PAM deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pam-2028-expected-paper-deadline-202710161159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271016T112959Z
+DTEND:20271016T115959Z
+SUMMARY:PAM 2028 Expected paper deadline
+DESCRIPTION:Passive and Active Measurement Conference 2028\nExpected pape
+ r deadline: 2027-10-15 23:59 UTC-12:00\nTrack: Security | CORE B | CCF C 
+ | acceptance 34.6%\nNot announced yet\; date estimated from the 2026 edit
+ ion.\nAlways confirm on the official call for papers.\nCalendar: https://
+ jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://pam2026.at/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PAM deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ct-rsa-2028-expected-paper-deadline-paper-submission-deadline-2027102
+ 31159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271023T112959Z
+DTEND:20271023T115959Z
+SUMMARY:CT-RSA 2028 Expected paper deadline (Paper submission deadline)
+DESCRIPTION:The Cryptographer's Track at RSA Conference 2028\nExpected pa
+ per deadline (Paper submission deadline): 2027-10-22 23:59 UTC-12:00\nTra
+ ck: Security | CORE B | CCF C | acceptance 34.3%\nNot announced yet\; dat
+ e estimated from the 2027 edition.\nAlways confirm on the official call f
+ or papers.\nCalendar: https://jackson-cmd.github.io/resources/security-co
+ nference-deadlines/
+URL:https://www.esat.kuleuven.be/cosic/events/ct-rsa-2027/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CT-RSA deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fg-2028-expected-abstract-deadline-202710241159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271024T112959Z
+DTEND:20271024T115959Z
+SUMMARY:FG 2028 Expected abstract deadline
+DESCRIPTION:IEEE International Conference on Automatic Face and Gesture R
+ ecognition 2028\nExpected abstract deadline: 2027-10-23 23:59 UTC-12:00\n
+ Track: AI | CORE B | CCF C | acceptance 60.0%\nNot announced yet\; date e
+ stimated from the 2027 edition.\nAlways confirm on the official call for 
+ papers.\nCalendar: https://jackson-cmd.github.io/resources/security-confe
+ rence-deadlines/
+URL:https://fg2027.ieee-biometrics.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FG deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ifip-wg-11-9-2028-expected-paper-deadline-submission-deadline-2027102
+ 61159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271026T112959Z
+DTEND:20271026T115959Z
+SUMMARY:IFIP WG 11.9 2028 Expected paper deadline (Submission Deadline)
+DESCRIPTION:IFIP Working Group 11.9 International Conference on Digital F
+ orensics 2028\nExpected paper deadline (Submission Deadline): 2027-10-25 
+ 23:59 UTC-12:00\nTrack: Security | Not in CORE | CCF C | acceptance 34.4%
+ \nNot announced yet\; date estimated from the 2027 edition.\nAlways confi
+ rm on the official call for papers.\nCalendar: https://jackson-cmd.github
+ .io/resources/security-conference-deadlines/
+URL:https://www.ifip119.org/Conferences/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:IFIP WG 11.9 deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fg-2028-expected-paper-deadline-202710311159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271031T112959Z
+DTEND:20271031T115959Z
+SUMMARY:FG 2028 Expected paper deadline
+DESCRIPTION:IEEE International Conference on Automatic Face and Gesture R
+ ecognition 2028\nExpected paper deadline: 2027-10-30 23:59 UTC-12:00\nTra
+ ck: AI | CORE B | CCF C | acceptance 60.0%\nNot announced yet\; date esti
+ mated from the 2027 edition.\nAlways confirm on the official call for pap
+ ers.\nCalendar: https://jackson-cmd.github.io/resources/security-conferen
+ ce-deadlines/
+URL:https://fg2027.ieee-biometrics.org/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:FG deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cvpr-2028-expected-abstract-deadline-202711111159@jackson-cmd.github.
+ io
+DTSTAMP:20261120T230449Z
+DTSTART:20271111T112959Z
+DTEND:20271111T115959Z
+SUMMARY:CVPR 2028 Expected abstract deadline
+DESCRIPTION:IEEE/CVF Computer Vision and Pattern Recognition Conference 2
+ 028\nExpected abstract deadline: 2027-11-10 23:59 UTC-12:00\nTrack: AI | 
+ CORE A* | CCF A | acceptance 23.8%\nNot announced yet\; date estimated fr
+ om the 2027 edition.\nAlways confirm on the official call for papers.\nCa
+ lendar: https://jackson-cmd.github.io/resources/security-conference-deadl
+ ines/
+URL:https://cvpr.thecvf.com/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CVPR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:s-p-2028-expected-abstract-deadline-202711111159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271111T112959Z
+DTEND:20271111T115959Z
+SUMMARY:S&P 2028 Expected abstract deadline
+DESCRIPTION:IEEE Symposium on Security and Privacy 2028\nExpected abstrac
+ t deadline: 2027-11-10 23:59 UTC-12:00\nTrack: Security | CORE A* | CCF A
+  | acceptance 13.8%\nNot announced yet\; date estimated from the 2027 edi
+ tion.\nAlways confirm on the official call for papers.\nCalendar: https:/
+ /jackson-cmd.github.io/resources/security-conference-deadlines/
+URL:https://sp2027.ieee-security.org/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:S&P deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cvpr-2028-expected-paper-deadline-202711171159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271117T112959Z
+DTEND:20271117T115959Z
+SUMMARY:CVPR 2028 Expected paper deadline
+DESCRIPTION:IEEE/CVF Computer Vision and Pattern Recognition Conference 2
+ 028\nExpected paper deadline: 2027-11-16 23:59 UTC-12:00\nTrack: AI | COR
+ E A* | CCF A | acceptance 23.8%\nNot announced yet\; date estimated from 
+ the 2027 edition.\nAlways confirm on the official call for papers.\nCalen
+ dar: https://jackson-cmd.github.io/resources/security-conference-deadline
+ s/
+URL:https://cvpr.thecvf.com/Conferences/2027
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CVPR deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:s-p-2028-expected-paper-deadline-second-paper-submission-deadline-202
+ 711181159@jackson-cmd.github.io
+DTSTAMP:20261120T230449Z
+DTSTART:20271118T112959Z
+DTEND:20271118T115959Z
+SUMMARY:S&P 2028 Expected paper deadline (Second Paper submission deadlin
+ e)
+DESCRIPTION:IEEE Symposium on Security and Privacy 2028\nExpected paper d
+ eadline (Second Paper submission deadline): 2027-11-17 23:59 UTC-12:00\nT
+ rack: Security | CORE A* | CCF A | acceptance 13.8%\nNot announced yet\; 
+ date estimated from the 2027 edition.\nAlways confirm on the official cal
+ l for papers.\nCalendar: https://jackson-cmd.github.io/resources/security
+ -conference-deadlines/
+URL:https://sp2027.ieee-security.org/index.html
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:S&P deadline in 7 days
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

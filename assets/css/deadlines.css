@@ -887,3 +887,39 @@ html[data-theme="dark"] mark.cal-hl {
 [data-views]:empty { display: none; }
 .res-views { margin-left: 0.7rem; font-size: 0.82rem; color: var(--rc-text-muted); font-variant-numeric: tabular-nums; }
 .res-views b { color: var(--rc-text-main); font-weight: 600; }
+
+/* Calendar subscription */
+.cal-subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.5rem;
+  align-items: flex-start;
+  background: var(--rc-subcard-bg);
+  border: 1px solid var(--rc-border);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  margin: 1rem 0 0.25rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--rc-text-muted);
+}
+.cal-sub-text { flex: 1 1 280px; }
+.cal-sub-text strong { display: block; color: var(--rc-text-main); margin-bottom: 0.2rem; }
+.cal-sub-feeds { flex: 1 1 340px; display: grid; gap: 0.45rem; }
+.cal-sub-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.cal-sub-name { flex: 1 1 100%; font-weight: 600; color: var(--rc-text-main); }
+.cal-sub-name small { font-weight: 400; color: var(--rc-text-subtle); margin-left: 0.3rem; }
+.cal-sub-btn {
+  display: inline-block;
+  padding: 0.22rem 0.6rem;
+  border: 1px solid var(--rc-border);
+  border-radius: 6px;
+  background: var(--rc-card-bg);
+  color: var(--rc-text-main) !important;
+  font: inherit;
+  font-size: 0.78rem;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.cal-sub-btn:hover { border-color: var(--rc-accent); color: var(--rc-accent) !important; }
+@media (min-width: 640px) { .cal-sub-name { flex: 0 0 9.5rem; } }

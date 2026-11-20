@@ -49,14 +49,19 @@
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
-    {% if post.excerpt and site.read_more != 'enabled' %}
+    {% assign is_pub = false %}{% if post.collection == 'publications' and post.authors %}{% assign is_pub = true %}{% endif %}
+    {% if is_pub %}
+    {% elsif post.excerpt and site.read_more != 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
     {% elsif post.excerpt and site.read_more == 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
     {% endif %}
     
     {% if post.collection == 'publications' and post.authors %}
-      <p>{% include pub-links.html pub=post %}</p>
+      {% assign pid = post.url | split: '/' | last | slugify %}
+      <p class="pub-actions">{% include pub-links.html pub=post %}<span class="pub-toggles"><button type="button" class="pub-toggle" aria-expanded="false" aria-controls="tldr-{{ pid }}">TL;DR</button>{% if post.bibtex %}<button type="button" class="pub-toggle" aria-expanded="false" aria-controls="bib-{{ pid }}">BibTeX</button>{% endif %}</span></p>
+      <div class="pub-panel pub-tldr" id="tldr-{{ pid }}" itemprop="description" hidden>{{ post.tldr | default: post.excerpt | markdownify }}</div>
+      {% if post.bibtex %}<div class="pub-panel pub-bib" id="bib-{{ pid }}" hidden><button type="button" class="pub-copy" aria-label="Copy BibTeX">Copy</button><pre><code>{{ post.bibtex | strip | xml_escape }}</code></pre></div>{% endif %}
     {% elsif post.citation and post.paperurl and post.slidesurl and post.bibtexurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Download Paper</a> | <a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.citation and post.paperurl and post.slidesurl %}

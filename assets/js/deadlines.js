@@ -500,3 +500,13 @@
     init();
   }
 })();
+
+// Calendar subscription: copy feed link
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.cal-sub-copy');
+  if (!b) return;
+  var url = b.getAttribute('data-url');
+  var done = function () { var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1500); };
+  if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(done, function () { window.prompt('Calendar link', url); }); }
+  else { window.prompt('Calendar link', url); }
+});
