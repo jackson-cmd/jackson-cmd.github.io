@@ -10,6 +10,7 @@ authors: ['Mengxiao Wang', 'Nitesh Saxena']
 arxiv: '2610.26438'
 paperurl: 'https://arxiv.org/abs/2610.26438'
 pdfurl: 'https://arxiv.org/pdf/2610.26438'
+hfurl: 'https://huggingface.co/papers/2610.26438'
 keywords: 'LLM trading agents, information injection, fake news, prompt injection, agent security, financial agents'
 excerpt: 'An attack benchmark for information injection against LLM trading agents. Fabricated news reaches 62% attack success where prompt injection reaches 14%, and credibility cues such as a named source, not the false claim itself, decide whether a fake post works.'
 citation: 'Mengxiao Wang and Nitesh Saxena. (2026). &quot;Fake News, Real Crashes: Information Injection Attacks on LLM Financial Trading Agents.&quot; <i>arXiv preprint arXiv:2610.26438</i>.'

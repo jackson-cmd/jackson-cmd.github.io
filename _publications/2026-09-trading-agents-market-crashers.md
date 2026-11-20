@@ -12,6 +12,7 @@ authors: ['Mengxiao Wang', 'Nitesh Saxena']
 arxiv: '2609.19705'
 paperurl: 'https://arxiv.org/abs/2609.19705'
 pdfurl: 'https://arxiv.org/pdf/2609.19705'
+hfurl: 'https://huggingface.co/papers/2609.19705'
 keywords: 'LLM trading agents, financial agents, agent security, flash crash, market manipulation, fake news'
 excerpt: 'FARSIGHT rates 15 academic LLM trading agents on robustness to market stress and security against source manipulation, and checks the ratings against released code. In a simulated market driven by their decisions, one fake headline crashes the market in every run with 400 agents.'
 citation: 'Mengxiao Wang and Nitesh Saxena. (2026). &quot;Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes.&quot; <i>arXiv preprint arXiv:2609.19705</i>.'

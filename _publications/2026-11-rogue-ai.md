@@ -10,6 +10,7 @@ authors: ['Mengxiao Wang', 'Mahbub Alam', 'Kalyan Nakka', 'Nitesh Saxena']
 arxiv: '2611.26553'
 paperurl: 'https://arxiv.org/abs/2611.26553'
 pdfurl: 'https://arxiv.org/pdf/2611.26553'
+hfurl: 'https://huggingface.co/papers/2611.26553'
 projecturl: 'https://rogue-ai.surge.sh'
 keywords: 'LLM agents, AI agent incidents, incident replication, agent security, prompt injection, root cause analysis'
 excerpt: 'ROGUE-AI rebuilds reported LLM-agent incidents offline, each with a matched control that lacks only the blamed cause. It reproduces the reported harm in 89% of 108 attempted replications, and 62 of the 72 incidents with real-world harm had no attacker behind them.'

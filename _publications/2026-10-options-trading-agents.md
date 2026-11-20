@@ -10,6 +10,7 @@ authors: ['Mengxiao Wang', 'Nitesh Saxena']
 arxiv: '2610.24289'
 paperurl: 'https://arxiv.org/abs/2610.24289'
 pdfurl: 'https://arxiv.org/pdf/2610.24289'
+hfurl: 'https://huggingface.co/papers/2610.24289'
 keywords: 'LLM agents, options trading, trading agents, agent security, measurement, pre-trade risk limits'
 excerpt: 'The first measurement of the LLM options-trading agents that brokers and developers ship. Of 26 systems scored on 18 safeguards, 13 can reach unbounded loss and none authenticates its text sources or cross-checks market data.'
 citation: 'Mengxiao Wang and Nitesh Saxena. (2026). &quot;Unbounded Losses, Unchecked Inputs: Measuring the Safeguards of LLM Options-Trading Agents.&quot; <i>arXiv preprint arXiv:2610.24289</i>.'
