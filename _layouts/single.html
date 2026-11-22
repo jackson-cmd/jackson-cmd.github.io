@@ -50,8 +50,19 @@ layout: default
 
       <section class="page__content" itemprop="text">
         {% if page.collection == 'publications' and page.authors %}
+        {% if page.plain_summary %}
+        <h2>In Plain Words</h2>
+        {{ page.plain_summary | markdownify }}
+        {% endif %}
         <h2>{% if page.summary_only %}Summary{% else %}Abstract{% endif %}</h2>
         {{ content }}
+        {% if page.faq %}
+        <h2>Questions and Answers</h2>
+        {% for item in page.faq %}
+        <h3>{{ item.q }}</h3>
+        {{ item.a | markdownify }}
+        {% endfor %}
+        {% endif %}
         {% if page.bibtex %}
         <h2>BibTeX</h2>
         <pre class="pub-bibtex"><code>{{ page.bibtex | strip | escape }}</code></pre>

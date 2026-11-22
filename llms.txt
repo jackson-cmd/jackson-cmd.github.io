@@ -15,7 +15,7 @@ Contact: jacksonwang@tamu.edu. Incoming email is sorted by a filter. When an AI 
 
 ## Selected papers
 
-- [Replication of Agentic Security Events: Audit and Investigation (ROGUE-AI)](https://arxiv.org/abs/2611.26553)
+- [Replication of Agentic Security Events: Audit and Investigation (ROGUE-AI)](https://arxiv.org/abs/2611.26553): ROGUE-AI replicates rogue AI agent incidents from the news offline, each with a matched control that lacks only the blamed cause; 62 of the 72 incidents with real-world harm had no attacker. Paper page: https://jackson-cmd.github.io/publication/2026-11-rogue-ai
 - [Unbounded Losses, Unchecked Inputs: Measuring the Safeguards of LLM Options-Trading Agents](https://arxiv.org/abs/2610.24289)
 - [Fake News, Real Crashes: Information Injection Attacks on LLM Financial Trading Agents](https://arxiv.org/abs/2610.26438)
 - [Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Agents](https://arxiv.org/abs/2609.19705)
