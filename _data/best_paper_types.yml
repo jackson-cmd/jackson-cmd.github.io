@@ -1,0 +1,47 @@
+# Types of paper used on /resources/security-best-papers/. "name" must match the
+# "type" field in best_papers.json. "examples" are exact titles from that file.
+- name: "New attack"
+  what: "Shows that a new kind of attack works against real, deployed systems."
+  learn:
+    - "A precise threat model, with the weakest attacker for which the attack still works."
+    - "An end-to-end demonstration on real products or real users, not only a simulation."
+    - "The root cause explained, so the attack teaches something beyond one bug."
+    - "Disclosure to vendors and their responses, and mitigations that were tested."
+- name: "Measurement study"
+  what: "Measures how something behaves in the wild, at a scale or depth nobody had before."
+  learn:
+    - "A dataset nobody else has, or the widest or longest one."
+    - "A method checked against ground truth before any finding is reported."
+    - "Findings stated as numbers that change what practitioners or policy makers do."
+    - "An ethics section that says what was collected, what was not, and why."
+- name: "Defense or system"
+  what: "Builds a defense or a secure system and shows it works at an acceptable cost."
+  learn:
+    - "A clear security goal, and an honest statement of what is out of scope."
+    - "A security argument plus an evaluation against real attacks or known CVEs."
+    - "Overhead on standard benchmarks, compared with the best prior defense."
+    - "Released code, so others can check and build on it."
+- name: "Bug finding and analysis"
+  what: "A new technique (fuzzing, static or dynamic analysis, verification) that finds vulnerabilities."
+  learn:
+    - "One new insight about why existing tools miss these bugs."
+    - "New bugs found in widely used software, with CVEs and vendor fixes."
+    - "A fair comparison with the state of the art on the same targets and time budget."
+- name: "User study"
+  what: "Studies how people understand, use or are harmed by security and privacy technology."
+  learn:
+    - "Research questions first, then a method (interviews, surveys, field study) that can answer them."
+    - "The sample and its limits described honestly."
+    - "Recommendations that designers, platforms or regulators can act on."
+- name: "Cryptography and formal analysis"
+  what: "Defines and proves (or breaks) the security of protocols and cryptographic systems."
+  learn:
+    - "Precise models and definitions, with proofs that are mechanized where possible."
+    - "Applied to protocols that are actually deployed, not only to toy versions."
+    - "Either a real flaw found or a guarantee that holds for the deployed design."
+- name: "SoK"
+  what: "A systematization of knowledge: organizes a crowded area and says what is solved and what is not."
+  learn:
+    - "A framework or taxonomy that makes a messy area easy to compare."
+    - "A stated method for which papers were covered."
+    - "New insights or experiments, and concrete open problems."

@@ -1,0 +1,122 @@
+---
+permalink: /resources/security-best-papers/
+title: "Best Papers at the Top Four Security Conferences"
+description: "Best Paper and Distinguished Paper award winners at IEEE S&P, USENIX Security, ACM CCS and NDSS, searchable by venue, year, award, topic and type of paper, with notes on what to learn from each type of paper."
+author_profile: false
+# Not built until _data/best_papers.json holds the verified award lists.
+published: false
+---
+{% assign BP = site.data.best_papers %}
+{% assign P = BP.papers %}
+{% assign years = P | map: "y" | uniq | sort | reverse %}
+{% assign n_best = P | where: "a", "best" | size %}
+{% assign n_sp = P | where: "v", "sp" | size %}{% assign n_sec = P | where: "v", "sec" | size %}{% assign n_ccs = P | where: "v", "ccs" | size %}{% assign n_ndss = P | where: "v", "ndss" | size %}
+
+<link rel="stylesheet" href="{{ '/assets/css/deadlines.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/pimap.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/bestpapers.css' | relative_url }}">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Best papers at IEEE S&P, USENIX Security, ACM CCS and NDSS", "description": "Best Paper and Distinguished Paper award winners at the four top security conferences (IEEE S&P, USENIX Security, ACM CCS and NDSS), {{ years | last }}–{{ years | first }}, with authors, links and the official award pages, labeled by topic and type of paper.", "url": "https://jackson-cmd.github.io/resources/security-best-papers/", "creator": {"@type": "Person", "name": "Mengxiao Wang", "url": "https://jackson-cmd.github.io/"}, "temporalCoverage": "{{ years | last }}/{{ years | first }}", "dateModified": "{{ BP.modified }}", "keywords": ["security best paper award", "distinguished paper award", "IEEE S&P", "USENIX Security", "ACM CCS", "NDSS", "how to write a security paper", "top security papers"], "isBasedOn": {{ BP.sources | jsonify }}}</script>
+
+<div class="resources-container">
+<a class="res-back" href="{{ '/resources/' | relative_url }}">&larr; Resources</a><span class="res-views" data-views></span>
+<div class="bpl" id="bpl">
+
+<p class="bp-lead">Every paper that won a Best Paper or Distinguished Paper award at the four top security conferences: IEEE S&amp;P, USENIX Security, ACM CCS and NDSS, from {{ years | last }} to {{ years | first }}. Each entry links to the paper, and each award is checked against the conference's own award page.</p>
+<p>Award papers are a good model for your own work: they show what program committees reward in each area. Filter the list to your topic and to the type of paper you are writing, read a few of them, and compare how they state the problem, the threat model and the evidence. The guide below lists what award papers of each type tend to have in common.</p>
+<div class="bp-stats"><span><b>{{ P | size }}</b> award papers</span><span><b>{{ n_best }}</b> Best Paper</span><span>IEEE S&amp;P <b>{{ n_sp }}</b></span><span>USENIX Security <b>{{ n_sec }}</b></span><span>ACM CCS <b>{{ n_ccs }}</b></span><span>NDSS <b>{{ n_ndss }}</b></span><span>Updated {{ BP.updated }}</span></div>
+
+<section class="bp-guide" aria-labelledby="bp-guide-h">
+<h2 id="bp-guide-h">What to learn from them, by type of paper</h2>
+<p>Most award papers fall into one of seven types. Each card lists what the award papers of that type usually do well. These are common patterns, not rules; read the papers to see how each one does it.</p>
+<div class="bp-types">
+{% for ty in site.data.best_paper_types %}
+{% assign n_ty = P | where: "type", ty.name | size %}
+<div class="bp-type">
+<h3>{{ ty.name }} <small>{{ n_ty }} papers</small></h3>
+<p>{{ ty.what }}</p>
+<ul>{% for l in ty.learn %}<li>{{ l }}</li>{% endfor %}</ul>
+{% if ty.examples %}<div class="bp-ex">Start with: {% for e in ty.examples %}{% assign ep = P | where: "t", e | first %}{% if ep %}<a href="{{ ep.u | default: '#' }}" target="_blank" rel="noopener">{{ ep.t }}</a> ({% case ep.v %}{% when "sp" %}IEEE S&amp;P{% when "sec" %}USENIX Security{% when "ccs" %}ACM CCS{% when "ndss" %}NDSS{% endcase %} {{ ep.y }}){% unless forloop.last %}; {% endunless %}{% endif %}{% endfor %}</div>{% endif %}
+<button type="button" data-show-type="{{ ty.name }}">Show the {{ n_ty }} papers &darr;</button>
+</div>
+{% endfor %}
+</div>
+</section>
+
+<div class="bp-controls" id="bp-list-top">
+  <div class="bp-venues" role="group" aria-label="Venue">
+    <button type="button" data-v="" aria-pressed="true">All</button>
+    <button type="button" data-v="sp" aria-pressed="false">IEEE S&amp;P</button>
+    <button type="button" data-v="sec" aria-pressed="false">USENIX Security</button>
+    <button type="button" data-v="ccs" aria-pressed="false">ACM CCS</button>
+    <button type="button" data-v="ndss" aria-pressed="false">NDSS</button>
+  </div>
+  <select id="bp-award" aria-label="Award">
+    <option value="">All awards</option>
+    <option value="best">Best Paper</option>
+    <option value="dist">Distinguished Paper</option>
+    <option value="other">Best Student / Practical Paper</option>
+  </select>
+  <select id="bp-year" aria-label="Year"><option value="">All years</option></select>
+  <select id="bp-topic" aria-label="Topic"><option value="">All topics</option></select>
+  <select id="bp-type" aria-label="Type of paper"><option value="">All types of paper</option></select>
+  <input type="search" id="bp-q" placeholder="Search a title, author or keyword" aria-label="Search a title, author or keyword">
+  <button type="button" class="bp-reset">Reset</button>
+</div>
+<p class="bp-count" id="bp-count" aria-live="polite">{{ P | size }} award papers</p>
+
+<details class="bp-topics">
+<summary>Topics of the papers shown</summary>
+<div class="bp-bars"></div>
+<p class="bp-bars-note">Counts follow the other filters. Click a topic to filter by it.</p>
+</details>
+
+{% for y in years %}
+{% assign ps = P | where: "y", y %}
+<section class="bp-year" data-year="{{ y }}">
+<h2 id="y{{ y }}">{{ y }} <small>{{ ps | size }} papers</small></h2>
+<ol class="bp-list">
+{% for p in ps %}
+{% capture scholar %}https://scholar.google.com/scholar?q=%22{{ p.t | url_encode }}%22{% endcapture %}
+<li class="bp-item" data-v="{{ p.v }}" data-a="{{ p.a }}" data-topic="{{ p.topic }}" data-type="{{ p.type }}">
+  <div class="bp-tags">
+    <span class="bp-venue v-{{ p.v }}">{% case p.v %}{% when "sp" %}IEEE S&amp;P{% when "sec" %}USENIX Sec{% when "ccs" %}ACM CCS{% when "ndss" %}NDSS{% endcase %} {{ p.y }}</span>
+    <span class="bp-award a-{{ p.a }}" title="{{ p.ar }}">{% case p.a %}{% when "best" %}Best Paper{% when "dist" %}Distinguished{% when "student" %}Best Student Paper{% when "practical" %}Best Practical Paper{% endcase %}</span>
+  </div>
+  <div class="bp-main">
+    <h3 class="bp-title"><a href="{{ p.u | default: scholar }}" target="_blank" rel="noopener">{{ p.t }}</a></h3>
+    {% if p.au.size > 0 %}<p class="bp-authors">{{ p.au | join: ", " }}</p>{% endif %}
+    <div class="bp-meta"><span class="bp-chip{% if p.topic == 'LLM & AI security' %} llm{% endif %}">{{ p.topic }}</span><span class="bp-chip ty">{{ p.type }}</span>{% if p.u %}<a href="{{ p.u }}" target="_blank" rel="noopener">Paper</a>{% endif %}<a href="{{ scholar }}" target="_blank" rel="noopener">Scholar</a><a href="{{ p.src }}" target="_blank" rel="noopener" title="Official page listing this award">Award source</a></div>
+    {% if p.note %}<p class="bp-note">{{ p.note }}</p>{% endif %}
+  </div>
+</li>
+{% endfor %}
+</ol>
+</section>
+{% endfor %}
+<p class="bp-empty" hidden>No award papers match these filters. Try another year or topic, or press Reset.</p>
+
+<div class="bp-about">
+<h2 id="how-built">How the list was built</h2>
+<ol>
+{% for s in BP.method %}<li>{{ s }}</li>
+{% endfor %}
+</ol>
+
+<div class="bp-disclaimer" id="disclaimer">
+<h2>Disclaimer</h2>
+<ul>
+<li>An award is one committee's judgment in one year. Many of the most influential security papers never won one, and award practices differ between the four conferences and over time (for example, some years give one Best Paper and others give twenty Distinguished Papers), so counts are not comparable across venues or years.</li>
+<li>Topics and types of paper are automatic estimates from titles and can be wrong; a paper often fits more than one.</li>
+<li>Award lists on conference websites sometimes change after the event or disappear when a site moves. If an entry is wrong or missing, please send an email (the address is on the <a href="{{ '/' | relative_url }}">homepage</a>); it will be fixed in the next update.</li>
+<li>This page is not affiliated with the conferences or their sponsors (IEEE, USENIX, ACM SIGSAC, the Internet Society), and they do not endorse it.</li>
+</ul>
+</div>
+
+<h2>Data sources and credits</h2>
+<p class="bp-credits">Award lists: the official award pages of each conference, linked from every entry. {{ BP.credits }} Compiled by Mengxiao Wang, Texas A&amp;M University. Last updated {{ BP.updated }}.</p>
+</div>
+
+</div>
+</div>
+
+<script src="{{ '/assets/js/bestpapers.js' | relative_url }}" defer></script>
