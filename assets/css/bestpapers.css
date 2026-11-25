@@ -116,6 +116,7 @@ html[data-theme="dark"] .bpl {
 .bpl .bp-chip.ty { background: transparent; color: var(--rc-text-muted); }
 .bpl .bp-meta a { color: var(--rc-text-muted); margin-left: 0.25rem; }
 .bpl .bp-meta a:hover { color: var(--rc-accent); }
+.bpl .bp-meta a.bp-pdf { color: var(--rc-accent); font-weight: 600; }
 .bpl .bp-note { font-size: 0.74rem; color: var(--rc-text-muted); margin: 0.2rem 0 0; font-style: italic; }
 .bpl .bp-empty { color: var(--rc-text-muted); font-size: 0.9rem; padding: 1rem 0; }
 .bpl mark { background: rgba(253, 224, 71, 0.45); color: inherit; padding: 0 1px; border-radius: 2px; }

@@ -33,7 +33,7 @@ author_profile: false
 <h3>{{ ty.name }} <small>{{ n_ty }} papers</small></h3>
 <p>{{ ty.what }}</p>
 <ul>{% for l in ty.learn %}<li>{{ l }}</li>{% endfor %}</ul>
-{% if ty.examples %}<div class="bp-ex">Start with: {% for e in ty.examples %}{% assign ep = P | where: "t", e | first %}{% if ep %}{% capture exs %}https://scholar.google.com/scholar?q=%22{{ ep.t | url_encode }}%22{% endcapture %}<a href="{{ ep.u | default: exs }}" target="_blank" rel="noopener">{{ ep.t }}</a> ({% case ep.v %}{% when "sp" %}IEEE S&amp;P{% when "sec" %}USENIX Security{% when "ccs" %}ACM CCS{% when "ndss" %}NDSS{% endcase %} {{ ep.y }}){% unless forloop.last %}; {% endunless %}{% endif %}{% endfor %}</div>{% endif %}
+{% if ty.examples %}<div class="bp-ex">Start with: {% for e in ty.examples %}{% assign ep = P | where: "t", e | first %}{% if ep %}{% capture exs %}https://scholar.google.com/scholar?q=%22{{ ep.t | url_encode }}%22{% endcapture %}<a href="{{ ep.pdf | default: ep.u | default: exs }}" target="_blank" rel="noopener">{{ ep.t }}</a> ({% case ep.v %}{% when "sp" %}IEEE S&amp;P{% when "sec" %}USENIX Security{% when "ccs" %}ACM CCS{% when "ndss" %}NDSS{% endcase %} {{ ep.y }}){% unless forloop.last %}; {% endunless %}{% endif %}{% endfor %}</div>{% endif %}
 <button type="button" data-show-type="{{ ty.name }}">Show the {{ n_ty }} papers &darr;</button>
 </div>
 {% endfor %}
@@ -82,9 +82,9 @@ author_profile: false
     <span class="bp-award a-{{ p.a }}" title="{{ p.ar }}">{% case p.a %}{% when "best" %}Best Paper{% when "dist" %}Distinguished{% when "student" %}Best Student Paper{% when "practical" %}Best Practical Paper{% endcase %}</span>
   </div>
   <div class="bp-main">
-    <h3 class="bp-title"><a href="{{ p.u | default: scholar }}" target="_blank" rel="noopener">{{ p.t }}</a></h3>
+    <h3 class="bp-title"><a href="{{ p.pdf | default: p.u | default: scholar }}" target="_blank" rel="noopener">{{ p.t }}</a></h3>
     {% if p.au.size > 0 %}<p class="bp-authors">{{ p.au | join: ", " }}</p>{% endif %}
-    <div class="bp-meta"><span class="bp-chip{% if p.topic == 'LLM & AI security' %} llm{% endif %}">{{ p.topic }}</span>{% if p.llm and p.topic != 'LLM & AI security' %}<span class="bp-chip llm">Uses LLMs</span>{% endif %}<span class="bp-chip ty">{{ p.type }}</span>{% if p.u %}<a href="{{ p.u }}" target="_blank" rel="noopener">Paper</a>{% endif %}<a href="{{ scholar }}" target="_blank" rel="noopener">Scholar</a><a href="{{ p.src }}" target="_blank" rel="noopener" title="Official page listing this award">Award source</a></div>
+    <div class="bp-meta"><span class="bp-chip{% if p.topic == 'LLM & AI security' %} llm{% endif %}">{{ p.topic }}</span>{% if p.llm and p.topic != 'LLM & AI security' %}<span class="bp-chip llm">Uses LLMs</span>{% endif %}<span class="bp-chip ty">{{ p.type }}</span>{% if p.pdf %}<a class="bp-pdf" href="{{ p.pdf }}" target="_blank" rel="noopener">PDF</a>{% else %}<a href="{{ scholar }}" target="_blank" rel="noopener">Scholar</a>{% endif %}{% if p.u %}<a href="{{ p.u }}" target="_blank" rel="noopener">{% if p.u contains "doi.org" %}DOI{% else %}Paper page{% endif %}</a>{% endif %}<a href="{{ p.src }}" target="_blank" rel="noopener" title="Official page listing this award">Award source</a></div>
     {% if p.note %}<p class="bp-note">{{ p.note }}</p>{% endif %}
   </div>
 </li>
