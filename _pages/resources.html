@@ -2,7 +2,7 @@
 permalink: /resources/
 title: "Resources"
 author_profile: false
-description: "Research resources by Mengxiao Wang: security conference deadlines (with AI and NLP venues) and a map of the top security PIs and research groups at IEEE S&P, USENIX Security, CCS and NDSS."
+description: "Research resources by Mengxiao Wang: security conference deadlines (with AI and NLP venues), a map of the top security PIs and research groups, and every Best Paper and Distinguished Paper award at IEEE S&P, USENIX Security, CCS and NDSS."
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/deadlines.css' | relative_url }}">
@@ -28,6 +28,15 @@ description: "Research resources by Mengxiao Wang: security conference deadlines
       <p>A map of the 500 researchers with the most papers at IEEE S&amp;P, USENIX Security, ACM CCS and NDSS in 2024–2026, by country, US state and institution, with their main research topics. Useful for finding related work, groups to apply to, and collaborators.</p>
       <div class="res-chips"><span>500 researchers</span><span>21 countries and regions</span><span>US by state</span><span data-views="/resources/security-pi-map/"></span></div>
       <span class="res-go">Open the map →</span>
+    </div>
+  </a>
+  <a class="res-card" href="{{ '/resources/security-best-papers/' | relative_url }}">
+    <img src="{{ '/images/resources/security-best-papers.jpg' | relative_url }}" alt="Preview of the best papers page: filters by venue, award, year, topic and type of paper above a list of award papers with venue and award badges" loading="lazy" width="800" height="450">
+    <div class="res-body">
+      <h2>Best Papers at the Top Four Security Conferences</h2>
+      <p>All {{ site.data.best_papers.papers | size }} papers that won a Best Paper or Distinguished Paper award at IEEE S&amp;P, USENIX Security, ACM CCS and NDSS, each checked against the official award page. Filter by venue, year, topic and type of paper, and see what award papers of each type do well, to use as models for your own papers.</p>
+      <div class="res-chips"><span>{{ site.data.best_papers.papers | size }} award papers</span><span>2001–2026</span><span>7 types of paper</span><span data-views="/resources/security-best-papers/"></span></div>
+      <span class="res-go">Open the list →</span>
     </div>
   </a>
 </div>

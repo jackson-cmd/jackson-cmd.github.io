@@ -40,6 +40,7 @@ html[data-theme="dark"] .bpl {
   --bp-llm-text: #93c5fd;
 }
 
+.bpl [hidden] { display: none !important; }
 .bpl p { max-width: 75ch; }
 .bpl .bp-lead { font-size: 1rem; }
 .bpl .bp-stats { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0.6rem 0 0.2rem; font-family: var(--bp-mono); font-size: 0.78rem; color: var(--rc-text-muted); font-variant-numeric: tabular-nums; }
@@ -58,17 +59,19 @@ html[data-theme="dark"] .bpl {
 .bpl .bp-type li { margin: 0.1rem 0; }
 .bpl .bp-type .bp-ex { font-size: 0.76rem; color: var(--rc-text-muted); border-top: 1px solid var(--rc-border-subtle); padding-top: 0.35rem; margin-top: 0.1rem; }
 .bpl .bp-type .bp-ex a { color: var(--rc-text-main); }
-.bpl .bp-type button { justify-self: start; font: 600 0.76rem/1 inherit; font-family: inherit; color: var(--rc-accent); background: none; border: 0; padding: 0.2rem 0; margin: 0; cursor: pointer; }
+.bpl .bp-type button { justify-self: start; font-family: inherit; font-size: 0.8rem; font-weight: 600; line-height: 1.2; color: var(--rc-accent); background: none; border: 0; padding: 0.2rem 0; margin: 0; cursor: pointer; }
 .bpl .bp-type button:hover { text-decoration: underline; }
 
 /* Controls */
-.bpl .bp-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 1.6rem 0 0.6rem; position: sticky; top: 0; z-index: 3; background: var(--global-bg-color, var(--rc-bg)); padding: 0.5rem 0; border-bottom: 1px solid var(--rc-border); }
+.bpl .bp-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; margin: 1.6rem 0 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--rc-border); scroll-margin-top: 5rem; }
 .bpl .bp-venues { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rc-border); border-radius: 8px; overflow: hidden; background: var(--rc-card-bg); }
-.bpl .bp-venues button { font: 600 0.8rem/1 inherit; font-family: inherit; color: var(--rc-text-muted); background: transparent; border: 0; padding: 0.55rem 0.8rem; cursor: pointer; margin: 0; }
+.bpl .bp-venues button { font-family: inherit; font-size: 0.82rem; font-weight: 600; line-height: 1; color: var(--rc-text-muted); background: transparent; border: 0; padding: 0.55rem 0.8rem; cursor: pointer; margin: 0; }
 .bpl .bp-venues button[aria-pressed="true"] { background: var(--rc-accent); color: #ffffff; }
 .bpl select, .bpl input[type="search"] { font-family: inherit; font-size: 0.82rem; color: var(--rc-text-main); background: var(--rc-card-bg); border: 1px solid var(--rc-border); border-radius: 8px; padding: 0.45rem 0.6rem; margin: 0; width: auto; min-width: 0; height: auto; box-shadow: none; max-width: 100%; }
 .bpl input[type="search"] { width: 17rem; }
-.bpl .bp-reset { font: 600 0.8rem/1 inherit; font-family: inherit; color: var(--rc-accent); background: none; border: 0; padding: 0.3rem 0; margin: 0; cursor: pointer; }
+.bpl label.bp-check { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: var(--rc-text-muted); cursor: pointer; margin: 0; }
+.bpl label.bp-check input { margin: 0; width: auto; }
+.bpl .bp-reset { font-family: inherit; font-size: 0.82rem; font-weight: 600; line-height: 1; color: var(--rc-accent); background: none; border: 0; padding: 0.3rem 0; margin: 0; cursor: pointer; }
 .bpl button:focus-visible, .bpl select:focus-visible, .bpl input:focus-visible, .bpl a:focus-visible, .bpl summary:focus-visible { outline: 2px solid var(--rc-accent); outline-offset: 2px; }
 .bpl .bp-count { font-size: 0.82rem; color: var(--rc-text-muted); margin: 0.2rem 0 0.4rem; font-variant-numeric: tabular-nums; }
 .bpl .bp-count b { color: var(--rc-text-main); }
@@ -121,7 +124,6 @@ html[data-theme="dark"] .bpl mark { background: rgba(234, 179, 8, 0.35); color: 
 @media (max-width: 40em) {
   .bpl .bp-item { grid-template-columns: minmax(0, 1fr); }
   .bpl .bp-tags { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
-  .bpl .bp-controls { position: static; }
   .bpl input[type="search"] { width: 100%; }
   .bpl .bp-bar { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) 2rem; }
 }

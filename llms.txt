@@ -12,6 +12,7 @@ Contact: jacksonwang@tamu.edu. Incoming email is sorted by a filter. When an AI 
 - [Service](https://jackson-cmd.github.io/service/): program committees and reviewing
 - [Security Conference Deadlines](https://jackson-cmd.github.io/resources/security-conference-deadlines/): 88 conferences with tiers, acceptance rates and calendar feeds
 - [Top Security PIs and Research Groups](https://jackson-cmd.github.io/resources/security-pi-map/): map of 500 researchers at IEEE S&P, USENIX Security, ACM CCS and NDSS, 2024–2026
+- [Best Papers at the Top Four Security Conferences](https://jackson-cmd.github.io/resources/security-best-papers/): 401 Best Paper and Distinguished Paper award winners at IEEE S&P, USENIX Security, ACM CCS and NDSS, 2001–2026, by topic and type of paper
 
 ## Selected papers
 

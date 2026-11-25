@@ -1,5 +1,5 @@
 # Types of paper used on /resources/security-best-papers/. "name" must match the
-# "type" field in best_papers.json. "examples" are exact titles from that file.
+# "type" field in best_papers.json; "examples" are exact titles from that file.
 - name: "New attack"
   what: "Shows that a new kind of attack works against real, deployed systems."
   learn:
@@ -7,6 +7,10 @@
     - "An end-to-end demonstration on real products or real users, not only a simulation."
     - "The root cause explained, so the attack teaches something beyond one bug."
     - "Disclosure to vendors and their responses, and mitigations that were tested."
+  examples:
+    - "Spectre Attacks: Exploiting Speculative Execution"
+    - "TRRespass: Exploiting the Many Sides of Target Row Refresh"
+    - "Terrapin Attack: Breaking SSH Channel Integrity By Sequence Number Manipulation"
 - name: "Measurement study"
   what: "Measures how something behaves in the wild, at a scale or depth nobody had before."
   learn:
@@ -14,6 +18,10 @@
     - "A method checked against ground truth before any finding is reported."
     - "Findings stated as numbers that change what practitioners or policy makers do."
     - "An ethics section that says what was collected, what was not, and why."
+  examples:
+    - "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices"
+    - "An Analysis of Pre-installed Android Software"
+    - "Asleep at the Keyboard? Assessing the Security of GitHub Copilot's Code Contributions"
 - name: "Defense or system"
   what: "Builds a defense or a secure system and shows it works at an acceptable cost."
   learn:
@@ -21,27 +29,46 @@
     - "A security argument plus an evaluation against real attacks or known CVEs."
     - "Overhead on standard benchmarks, compared with the best prior defense."
     - "Released code, so others can check and build on it."
-- name: "Bug finding and analysis"
-  what: "A new technique (fuzzing, static or dynamic analysis, verification) that finds vulnerabilities."
+  examples:
+    - "Native Client: A Sandbox for Portable, Untrusted x86 Native Code"
+    - "Retrofitting Fine Grain Isolation in the Firefox Renderer"
+    - "DataSentinel: A Game-Theoretic Detection of Prompt Injection Attacks"
+- name: "Program analysis and bug finding"
+  what: "A new technique (fuzzing, symbolic execution, static analysis, reverse engineering) that finds vulnerabilities or explains code."
   learn:
     - "One new insight about why existing tools miss these bugs."
     - "New bugs found in widely used software, with CVEs and vendor fixes."
     - "A fair comparison with the state of the art on the same targets and time budget."
+  examples:
+    - "QSYM : A Practical Concolic Execution Engine Tailored for Hybrid Fuzzing"
+    - "Symbolic execution with SymCC: Don't interpret, compile!"
+    - "Fuzztruction: Using Fault Injection-based Fuzzing to Leverage Implicit Domain Knowledge"
 - name: "User study"
   what: "Studies how people understand, use or are harmed by security and privacy technology."
   learn:
     - "Research questions first, then a method (interviews, surveys, field study) that can answer them."
     - "The sample and its limits described honestly."
     - "Recommendations that designers, platforms or regulators can act on."
-- name: "Cryptography and formal analysis"
-  what: "Defines and proves (or breaks) the security of protocols and cryptographic systems."
+  examples:
+    - "Users Really Do Answer Telephone Scams"
+    - "Can Voters Detect Malicious Manipulation of Ballot Marking Devices?"
+    - "Committed to Trust: A Qualitative Study on Security & Trust in Open Source Software Projects"
+- name: "Cryptography and formal methods"
+  what: "Designs and proves cryptographic protocols, or verifies (or breaks) real systems with formal models."
   learn:
     - "Precise models and definitions, with proofs that are mechanized where possible."
-    - "Applied to protocols that are actually deployed, not only to toy versions."
-    - "Either a real flaw found or a guarantee that holds for the deployed design."
-- name: "SoK"
-  what: "A systematization of knowledge: organizes a crowded area and says what is solved and what is not."
+    - "Applied to protocols and systems that are actually deployed, not only to toy versions."
+    - "Either a real flaw found or a guarantee that holds for the deployed design, with an implementation that shows the cost."
+  examples:
+    - "Pinocchio: Nearly Practical Verifiable Computation"
+    - "Path ORAM: An Extremely Simple Oblivious RAM Protocol"
+    - "The EMV Standard: Break, Fix, Verify"
+- name: "SoK or position paper"
+  what: "Organizes a crowded area, or argues how the field should do its research."
   learn:
     - "A framework or taxonomy that makes a messy area easy to compare."
     - "A stated method for which papers were covered."
-    - "New insights or experiments, and concrete open problems."
+    - "New insights or experiments, and concrete open problems or recommendations."
+  examples:
+    - "SoK: Prudent Evaluation Practices for Fuzzing"
+    - "Dos and Don'ts of Machine Learning in Computer Security"
